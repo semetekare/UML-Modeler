@@ -582,8 +582,7 @@ export function renderToolbar() {
       rel: 'noopener',
       title: 'Исходный код на GitHub',
       'aria-label': 'Исходный код на GitHub',
-      html: icon('ui-github', 18),
-    }),
+    }, icon('ui-github', 18)),
     accentMenu(),
     appearanceMenu(),
   );
