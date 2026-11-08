@@ -231,7 +231,10 @@ for (const rel of pages) {
   ok(imgs.every((tag) => /\balt="[^"]+"/.test(tag) || /class="[^"]*\b(brand-mark|card-icon|shot-img)\b/.test(tag)),
     `${where}: картинка с пустым alt (разрешено марке, иконкам и второму снимку темы)`);
   const inlineSvg = [...html.matchAll(/<svg\b[^>]*role="img"[^>]*>[\s\S]*?<title[^>]*>[^<]+<\/title>/g)];
-  if (imgs.some((tag) => /\balt="[^"]+"/.test(tag)) || inlineSvg.length) illustrated += 1;
+  // Витрина экранов: у кадров пустой alt (подпись рядом), поэтому лента
+  // считается иллюстрацией отдельно — иначе страница «теряет» картинку.
+  const gallery = /class="gallery"|class="gallery-item"/.test(html);
+  if (imgs.some((tag) => /\balt="[^"]+"/.test(tag)) || inlineSvg.length || gallery) illustrated += 1;
 
   // Подвал: ссылка на /legal/ и никакого «жалоба».
   ok(html.includes('href="/legal/"'), `${where}: в подвале нет ссылки на /legal/`);
