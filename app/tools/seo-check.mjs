@@ -222,15 +222,16 @@ for (const rel of pages) {
 
   // CTA и картинка с alt.
   ok(hrefs.includes('/app/'), `${where}: нет CTA на /app/`);
-  // У каждой картинки есть alt; пустой допустим только у декоративной марки
-  // в шапке. И хотя бы одна иллюстрация с непустым alt — на сайт в целом.
+  // У каждой картинки есть alt. Пустой alt допустим у декоративных: марка в
+  // шапке, иконки карточек и второй снимок в паре «светлая/тёмная тема»
+  // (первый несёт alt, второй aria-hidden). Иллюстрацией считается либо
+  // <img> с alt, либо встроенный <svg role="img"> с <title>.
   const imgs = [...html.matchAll(/<img\b[^>]*>/g)].map((m) => m[0]);
   ok(imgs.every((tag) => /\balt="/.test(tag)), `${where}: у картинки нет alt`);
-  // Пустой alt допустим у декоративных картинок: марка в шапке и иконки
-  // карточек (они дублируют подпись рядом, озвучивать их нечего).
-  ok(imgs.every((tag) => /\balt="[^"]+"/.test(tag) || /class="(brand-mark|card-icon)"/.test(tag)),
-    `${where}: картинка с пустым alt (разрешено только декоративной марке и иконкам)`);
-  if (imgs.some((tag) => /\balt="[^"]+"/.test(tag))) illustrated += 1;
+  ok(imgs.every((tag) => /\balt="[^"]+"/.test(tag) || /class="(brand-mark|card-icon|shot-dark|shot-light)"/.test(tag)),
+    `${where}: картинка с пустым alt (разрешено марке, иконкам и второму снимку темы)`);
+  const inlineSvg = [...html.matchAll(/<svg\b[^>]*role="img"[^>]*>[\s\S]*?<title[^>]*>[^<]+<\/title>/g)];
+  if (imgs.some((tag) => /\balt="[^"]+"/.test(tag)) || inlineSvg.length) illustrated += 1;
 
   // Подвал: ссылка на /legal/ и никакого «жалоба».
   ok(html.includes('href="/legal/"'), `${where}: в подвале нет ссылки на /legal/`);
