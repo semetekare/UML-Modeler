@@ -14,7 +14,7 @@
 //       canonical/OG из STAND_URL, а сам адрес приёма в консоль не попал;
 //   (в) `--stand` без файла — код 1 и понятное сообщение (и каталога не
 //       появляется: «счётчик в никуда» не собирается);
-//   (г) в браузере на stand-сборке: без согласия — ноль POST; после «да» и
+//   (г) в браузере на stand-сборке: по умолчанию (без отказа) — один POST; после
 //       перезагрузки — ровно один POST с массивом событий, все имена из
 //       белого списка, в теле нет ни одного имени элемента модели; после
 //       «нет» — снова ноль.
@@ -469,7 +469,7 @@ async function main() {
 
     /* ---------------------------------------------- (г) браузер, стенд */
 
-    await check('стенд в браузере: без согласия — ни одного POST', async () => {
+    await check('стенд в браузере: по умолчанию включено — один POST, отказ кнопкой', async () => {
       const started = await startSite(standOut);
       const session = await startBrowser(`http://127.0.0.1:${started.port}/?model=sample`);
       await until(async () => session.evaluate("!!document.querySelector('#canvas .sh')"), 8000);
@@ -478,18 +478,20 @@ async function main() {
         const n = document.querySelector('#uml-consent');
         return !!n && !n.hidden;
       })()`), 6000);
-      assert(shown, 'строка согласия не появилась при наличии диаграммы (cfg.enabled = true)');
+      assert(shown, 'строка про счётчик не появилась при наличии диаграммы (cfg.enabled = true)');
       const stored = await session.evaluate("(() => { try { return localStorage.getItem('uml.telemetry'); } catch (e) { return 'blocked'; } })()");
-      assert(stored === null, `до ответа localStorage['uml.telemetry'] = ${JSON.stringify(stored)}, ждали null`);
+      assert(stored === null, `до выбора localStorage['uml.telemetry'] = ${JSON.stringify(stored)}, ждали null (по умолчанию)`);
 
       await clickAround(session);
-      await sleep(1200);
+      const arrived = await until(async () => started.state.posts.length > 0, 12000, 200);
+      assert(arrived, 'по умолчанию (без отказа) не пришло ни одного POST на /a/');
+      await sleep(1500);
       const posts = started.state.posts.filter((p) => p.path.startsWith('/a/'));
-      assert(posts.length === 0, `без согласия ушло ${posts.length} POST(ов) на /a/, ждали 0`);
-      return `строка согласия показана, кликов было несколько, POST на /a/ — 0`;
+      assert(posts.length === 1, `по умолчанию пришло ${posts.length} POST(ов), ждали ровно один`);
+      return `строка показана, ключа нет, событий одним POST: пришёл 1`;
     });
 
-    await check('стенд: «да» → ровно один POST, имена из белого списка, текста модели нет', async () => {
+    await check('стенд: «Оставить» → ровно один POST, имена из белого списка, текста модели нет', async () => {
       const started = site;
       const session = launched.session;
 
@@ -499,9 +501,9 @@ async function main() {
         yes.click();
         return true;
       })()`);
-      assert(clicked, 'в строке согласия нет кнопки «Да» (.cs-yes)');
+      assert(clicked, 'в строке про счётчик нет кнопки «Оставить» (.cs-yes)');
       const stored = await session.evaluate("(() => { try { return localStorage.getItem('uml.telemetry'); } catch (e) { return null; } })()");
-      assert(stored === 'on', `после «Да» localStorage['uml.telemetry'] = ${JSON.stringify(stored)}, ждали "on"`);
+      assert(stored === 'on', `после «Оставить» localStorage['uml.telemetry'] = ${JSON.stringify(stored)}, ждали "on"`);
       const gone = await session.evaluate("!document.querySelector('#uml-consent')");
       assert(gone, 'строка согласия осталась на экране после ответа');
 
@@ -542,7 +544,7 @@ async function main() {
       return `${batch.length} событий одним POST на ${posts[0].path}; имена: ${kinds}; имён модели ${names.length}, просочилось 0`;
     });
 
-    await check('стенд: «нет» → снова ни одного POST', async () => {
+    await check('стенд: «Не отправлять» → снова ни одного POST', async () => {
       const started = site;
       const session = launched.session;
       const before = started.state.posts.length;
@@ -554,9 +556,9 @@ async function main() {
       await sleep(6500);
       const posts = started.state.posts.filter((p) => p.path.startsWith('/a/'));
       assert(posts.length === before,
-        `с выбором «нет» пришло ${posts.length} POST(ов) вместо ${before}: счётчик не выключился`);
+        `с отказом пришло ${posts.length} POST(ов) вместо ${before}: счётчик не выключился`);
       const consent = await session.evaluate("!!document.querySelector('#uml-consent')");
-      assert(consent === false, 'строка согласия вернулась после выбора «нет»');
+      assert(consent === false, 'строка про счётчик вернулась после отказа');
       return `POST на /a/ не прибавилось (${posts.length}), строка не вернулась`;
     });
   } finally {

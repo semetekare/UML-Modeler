@@ -78,3 +78,17 @@
   border-color: var(--accent-on-soft, var(--accent, #b34a00));
   font-weight: 600;
 }
+
+/* Крестик — это «оставить как есть», поэтому он не выглядит как отказ:
+ * нейтральный, узкий, с подсказкой в title. */
+.cs-close {
+  padding: 0 6px;
+  height: var(--ctl-h, 28px);
+  min-width: 28px;
+  border-color: transparent;
+  color: var(--ink-faint, #6b6864);
+  font-size: 16px;
+  line-height: 1;
+}
+.cs-close:hover { background: var(--brand-soft); color: var(--ink); }
+.cs-close:focus-visible { outline: 2px solid var(--accent, #b34a00); outline-offset: 1px; }

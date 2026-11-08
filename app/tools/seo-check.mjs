@@ -228,7 +228,7 @@ for (const rel of pages) {
   // <img> с alt, либо встроенный <svg role="img"> с <title>.
   const imgs = [...html.matchAll(/<img\b[^>]*>/g)].map((m) => m[0]);
   ok(imgs.every((tag) => /\balt="/.test(tag)), `${where}: у картинки нет alt`);
-  ok(imgs.every((tag) => /\balt="[^"]+"/.test(tag) || /class="(brand-mark|card-icon|shot-dark|shot-light)"/.test(tag)),
+  ok(imgs.every((tag) => /\balt="[^"]+"/.test(tag) || /class="[^"]*\b(brand-mark|card-icon|shot-img)\b/.test(tag)),
     `${where}: картинка с пустым alt (разрешено марке, иконкам и второму снимку темы)`);
   const inlineSvg = [...html.matchAll(/<svg\b[^>]*role="img"[^>]*>[\s\S]*?<title[^>]*>[^<]+<\/title>/g)];
   if (imgs.some((tag) => /\balt="[^"]+"/.test(tag)) || inlineSvg.length) illustrated += 1;
