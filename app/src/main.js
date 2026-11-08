@@ -17,7 +17,7 @@ import {
   openChecksPanel, gotoFinding,
 } from './ui/checks.js';
 import { loadRules, ruleset } from './rules/index.js';
-import { renderToolbar, saveCurrent, loadSample } from './ui/toolbar.js';
+import { renderToolbar, saveCurrent, loadSample, currentBrand } from './ui/toolbar.js';
 import { renderToolstrip } from './ui/toolstrip.js';
 import { exportSvgString, exportPngBlob } from './ui/render.js';
 import {
@@ -44,6 +44,12 @@ import { loadProfile } from './io/stereotypes.js';
 import { loadNotation, NOTATION, keyFor } from './model/notation.js';
 import { selfRuleOf, selfRuleOfRelationship, selfRefusal } from './model/connector-style.js';
 import { applyLayoutMetrics } from './ui/theme.js';
+import { resolveMode } from './ui/appearance.js';
+// Счётчик событий: клиент выключен по умолчанию и в обычной сборке не делает
+// ни одного запроса. Здесь только точки вызова из белого списка (§6.3) и
+// строка согласия — она появляется лишь тогда, когда сборка разрешила счётчик.
+import { track } from './telemetry.js';
+import { initConsent } from './ui/consent.js';
 import { showError } from './ui/dialog.js';
 import { plural } from './util.js';
 import { importPumlFile, importPumlText, openPasteDialog, showWarnings } from './ui/import-puml.js';
@@ -57,6 +63,36 @@ import { buildAllTypesModel } from './model/sample.js';
  */
 /** Opening zoom cap: see the note at the setZoom call in start(). */
 const SAMPLE_ZOOM_CAP = 0.75;
+
+/* --------------------------------------------------------------- счётчик */
+
+/**
+ * Сбои приложения — одним событием `error {code}`. Код, а не сообщение: текст
+ * исключения может содержать имя файла или обрывок модели, и ему нечего делать
+ * в счётчике (docs/seo/SEO-PLAN.md §6.3). Обработчики ставятся один раз —
+ * модуль вычисляется один раз.
+ */
+window.addEventListener('error', () => track('error', { code: 'window.error' }));
+window.addEventListener('unhandledrejection', () => track('error', { code: 'unhandledrejection' }));
+
+/**
+ * `brand.change {value}`.
+ *
+ * Смена акцента живёт в toolbar.js (`applyBrand`), а её единственный общий
+ * след — атрибут `data-brand` на <html>: по нему считает CSS, его ставит
+ * index.html до первой отрисовки. Наблюдаем за атрибутом, а не за функцией:
+ * так событие одно на все входы (меню «Акцент», тесты, будущие вызовы) и не
+ * требует править чужой файл ради одной строки.
+ */
+{
+  let seenBrand = currentBrand();
+  new MutationObserver(() => {
+    const value = currentBrand();
+    if (value === seenBrand) return;
+    seenBrand = value;
+    track('brand.change', { value });
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-brand'] });
+}
 
 function keyTool(key) {
   const lower = String(key).toLowerCase();
@@ -469,8 +505,16 @@ initPanels();
   // смотрел бы на пустой лист, а «распаковка» начиналась бы с белого
   // прямоугольника. Видимость всё равно решает renderWelcome() по числу
   // диаграмм: если ниже поднимется автосохранение или пример, экран уйдёт.
+  //
+  // `firstRun` считается ОДИН раз здесь же: это ответ «пустой старт без
+  // автосохранения и без ?model=», и он же уходит в app.open как `first`.
+  const firstRun = startsEmpty();
   initWelcome();
-  if (startsEmpty()) showWelcome();
+  if (firstRun) showWelcome();
+  // Строка согласия на счётчик. Сама решает, показываться ли: нужны
+  // cfg.enabled (stand-сборка), отсутствие выбора и хотя бы одна диаграмма.
+  // В обычной сборке не создаёт ни узла, ни запроса.
+  initConsent();
 
   // The notation package must be in place before anything reads NOTATION:
   // the toolbar, the palette, the sample model and the renderer all ask it
@@ -580,6 +624,20 @@ initPanels();
       renderCanvas();
     }
   }
+
+  // `app.open` — один раз на запуск: первый ли это визит, какая тема, какой
+  // акцент и размер окна. Ни модели, ни имени файла, ни текста здесь нет.
+  track('app.open', {
+    first: firstRun,
+    theme: resolveMode(),
+    brand: currentBrand(),
+    w: Math.round(window.innerWidth),
+    h: Math.round(window.innerHeight),
+  });
+  // `perf.firstPaint` — после первого нарисованного кадра, а не после загрузки
+  // скриптов: человек видит лист, а не сеть. Число — миллисекунды от начала
+  // навигации; больше ничего о машине счётчик не знает.
+  requestAnimationFrame(() => track('perf.firstPaint', { ms: Math.round(performance.now()) }));
 
   // A small handle for the self-checks (tests/types.mjs) and for the
   // screenshot runs: the app has no build step, so this is the only way to

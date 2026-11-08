@@ -41,6 +41,7 @@ import { confirmDialog } from './dialog.js';
 import { closeReference } from './reference.js';
 import { icon } from './icons.js';
 import { ScToast } from '../../ui-kit/js/toast.js';
+import { track } from '../telemetry.js';
 
 const DONE_KEY = 'uml-course.done';
 const SEL_KEY = 'uml-course.selected';
@@ -124,6 +125,18 @@ function exerciseNo(ex) {
   const ch = chapterOf(ex);
   if (!ch) return ex?.number ?? '';
   return `${chapterNo(ch)}.${ch.exercises.indexOf(ex) + 1}`;
+}
+
+/**
+ * Сквозной номер упражнения в курсе: 1…20. Нужен счётчику (`course.step {n}`),
+ * чтобы по нему было видно, до какого места доходят, — строка «Упражнение
+ * 2.1» для этого не годится: сравнивать номера глав между собой нельзя.
+ * Глава — не упражнение, у неё 0.
+ */
+function flatNo(id) {
+  const list = (index?.chapters ?? []).flatMap((c) => c.exercises ?? []);
+  const i = list.findIndex((e) => e.id === id);
+  return i < 0 ? 0 : i + 1;
 }
 
 /* ------------------------------------------------------------------ загрузка */
@@ -406,6 +419,9 @@ export function openCourse() {
   if (index) openCourseTab();
   else renderCourse();          // покажет «Курс не загрузился: …»
   set({});
+  // `course.open {n}` — вошли в курс; n — сквозной номер урока, который при
+  // этом открылся (0 — курс без данных или глава без упражнений).
+  track('course.open', { n: flatNo(selectedId) });
   return true;
 }
 
@@ -438,6 +454,9 @@ export function openExercise(id) {
   if (!ex) return;
   enterMode();
   selectedId = ex.id;
+  // `course.step {n}` — шаг курса: сквозной номер упражнения. Видно, до какого
+  // места дошли и куда возвращаются.
+  track('course.step', { n: flatNo(ex.id) });
   rememberSelection();
   showLesson();
   const host = lessonHost();
@@ -452,6 +471,8 @@ export function openChapter(id) {
   if (!ch) return;
   enterMode();
   selectedId = ch.id;
+  // Глава — нулевой шаг: до упражнений человек ещё не дошёл.
+  track('course.step', { n: 0 });
   rememberSelection();
   showLesson();
   const host = lessonHost();

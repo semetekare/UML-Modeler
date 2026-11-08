@@ -1,0 +1,80 @@
+/* Строка согласия на счётчик событий (src/ui/consent.js).
+ *
+ * Отдельный лист, а не styles.css, по той же причине, что welcome.css: общий
+ * файл правят несколько агентов, и строка в нём столкнулась бы с их правками.
+ *
+ * Раскладка: узел ПРИКЛЕЕН к низу окна (position: fixed) и не участвует в
+ * потоке. Панели, лист и статусбар остаются на местах — layout-тесты этого
+ * набора меряют именно их и не должны краснеть из-за согласия.
+ *
+ * Тон — спокойная служебная строка, а не баннер: бумага панели, тонкая линия,
+ * один акцент на ссылке. Никакой анимации: строка появляется один раз.
+ */
+
+#uml-consent[hidden] { display: none; }
+
+#uml-consent {
+  position: fixed;
+  left: 50%;
+  /* Выше статусбара (его высота — токен --status) и не поверх листа. */
+  bottom: calc(var(--status, 24px) + 12px);
+  transform: translateX(-50%);
+  z-index: 15;
+  width: max-content;
+  max-width: min(780px, calc(100vw - 24px));
+  font-size: var(--fs-sm, 12.5px);
+  line-height: var(--lh, 16px);
+  color: var(--ink, #222);
+}
+
+.cs-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+  background: var(--surface-paper, #fff);
+  border: 1px solid var(--line, #ddd);
+  border-radius: var(--r-pop, 8px);
+  box-shadow: var(--shadow-dialog, 0 8px 24px rgb(0 0 0 / .18));
+}
+
+.cs-text {
+  margin: 0;
+  flex: 1 1 320px;
+  min-width: 0;
+  color: var(--ink-soft, #444);
+}
+
+.cs-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+.cs-what {
+  color: var(--accent, #b34a00);
+  font-size: var(--fs-micro, 11px);
+  text-underline-offset: 2px;
+  margin-right: 2px;
+}
+
+.cs-what:focus-visible,
+.cs-yes:focus-visible,
+.cs-no:focus-visible {
+  outline: 2px solid var(--accent, #b34a00);
+  outline-offset: 1px;
+}
+
+.cs-yes,
+.cs-no {
+  padding: 0 12px;
+  height: var(--ctl-h, 28px);
+  min-width: 44px;
+}
+
+.cs-yes {
+  border-color: var(--accent-on-soft, var(--accent, #b34a00));
+  font-weight: 600;
+}

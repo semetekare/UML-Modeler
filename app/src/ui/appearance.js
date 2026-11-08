@@ -23,6 +23,7 @@ import {
   onThemeChange,
   setAppearance,
 } from '../../ui-kit/js/theme.js';
+import { track } from '../telemetry.js';
 
 /** Три состояния выбора. `system` — по настройке ОС. */
 export const MODES = ['system', 'light', 'dark'];
@@ -59,6 +60,9 @@ export function applyMode(mode) {
   const next = MODES.includes(mode) ? mode : 'system';
   setAppearance(next);
   pinSkin();
+  // `theme.change {value}` — выбор человека: system | light | dark. Только он:
+  // стартовое чтение темы (index.html, initAppearance) событием не считается.
+  track('theme.change', { value: next });
   return next;
 }
 

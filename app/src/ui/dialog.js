@@ -15,6 +15,17 @@ import { NOTATION, TYPE_IDS, typeOf } from '../model/notation.js';
 const primary = (id, label) => ({ id, label, kind: 'primary' });
 const ghost = (id, label) => ({ id, label, kind: 'ghost' });
 
+/**
+ * Версия приложения — для справки. Одна константа, а не чтение
+ * app/package.json: import JSON в браузере без бандлера не работает, а
+ * fetch за версией стоил бы запроса ради одной строки. Значение держится
+ * в согласии с package.json («version»: "1.0.0").
+ */
+export const APP_VERSION = '1.0.0';
+
+/** Исходный код — публичный репозиторий продукта (docs/seo/SEO-PLAN.md §5.1). */
+const SOURCE_URL = 'https://github.com/semetekare/UML-Modeler';
+
 /** Yes/no question. Resolves true only when the primary button was pressed. */
 export function confirmDialog(title, message, okLabel = 'OK', cancelLabel = 'Отмена') {
   return ScDialog.open({
@@ -204,6 +215,12 @@ export function showHelp() {
       <b>Ctrl+1</b> — 100 %. «Вид» → «Сетка» — показать шаг 10 px.</p>
       <p><b>Файл.</b> Модель хранится в <span class="mono">*.uml.json</span>. Профиль
       стереотипов (304) с поиском — на вкладке «Профиль» справа.</p>
+      <p><b>Версия и исходники.</b> UML Modeler <span class="mono">v${APP_VERSION}</span> —
+      <a href="${SOURCE_URL}" target="_blank" rel="noopener"
+         style="color:var(--accent);text-decoration:underline;text-underline-offset:2px">исходный
+      код на GitHub</a>. Приложение работает офлайн: модель, файлы и текст не уходят
+      никуда. В сборке со счётчиком — только по вашему явному согласию и только
+      имена нажатых команд.</p>
     `,
     buttons: [primary('ok', 'Понятно')],
   });

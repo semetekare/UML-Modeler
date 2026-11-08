@@ -33,6 +33,7 @@ import { slugify } from '../util.js';
 import { ScToast } from '../../ui-kit/js/toast.js';
 import { openChecksPanel, checkCounts } from './checks.js';
 import { MODES, MODE_LABELS, getMode, currentMode, applyMode, onThemeChange } from './appearance.js';
+import { track } from '../telemetry.js';
 
 let openMenu = null;
 
@@ -124,7 +125,12 @@ function menu(label, items, opts = {}) {
         disabled: it.disabled,
         title: it.title,
         'aria-label': it['aria-label'] ?? it.label,
-        onclick: () => { list.remove(); openMenu = null; it.run(); },
+        onclick: () => {
+          list.remove();
+          openMenu = null;
+          track('command', { id: it.id ?? `menu:${String(it.label).toLowerCase().replace(/[^a-zа-я0-9]+/gi, '-').replace(/^-|-$/g, '').slice(0, 48)}` });
+          it.run();
+        },
       }));
     }
     return list;
@@ -328,6 +334,7 @@ async function exportPng(scale) {
     a.click();
     a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
+    track('export', { format: scale === 1 ? 'png' : 'png2' });
     set({ hint: `PNG сохранён: ${width}×${height}` });
     ScToast.show(`PNG ${width}×${height} сохранён`, { tone: 'success' });
   } catch (e) {
@@ -485,6 +492,7 @@ export function renderToolbar() {
       '-',
       { label: 'SVG этой диаграммы', run: () => {
         downloadText(exportSvgString(m, store.profile), `${slugify(m.name)}.svg`, 'image/svg+xml');
+        track('export', { format: 'svg' });
         set({ hint: 'SVG сохранён' });
         ScToast.show('SVG сохранён', { tone: 'success' });
       } },

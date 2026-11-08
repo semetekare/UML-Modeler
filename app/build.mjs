@@ -15,6 +15,20 @@
 //   node build.mjs --with-spec   локальная сборка С ПОЛНЫМ английским текстом:
 //                                для личного чтения, публиковать нельзя.
 //
+// ФЛАГИ:
+//
+//   --out=<dir>   куда писать (по умолчанию dist/). Нужен тестам: они собирают
+//                 во временные каталоги и не трогают рабочий dist/.
+//   --stand       сборка для стенда: включает счётчик событий. Адрес приёма и
+//                 адрес стенда берутся из `.build.env` в корне репозитория
+//                 (или из файла, названного в UML_BUILD_ENV). Нет файла или
+//                 обязательного ключа — сборка падает: «счётчик в никуда» не
+//                 собирается (docs/seo/SEO-PLAN.md §6.2).
+//                 Тогда в dist/src/telemetry.config.js попадает
+//                 `{ enabled: true, endpoint: '<TELEMETRY_PATH>' }`, рядом
+//                 ложится build.json, а в index.html — метаданные стенда.
+//                 Адрес приёма НЕ печатается в консоль сборки.
+//
 // Остальные файлы справочника от режима не зависят: попарная сверка двух
 // сборок показала, что spec/*.json — единственное расхождение (поисковый
 // индекс, карточки, связи и словарь побайтово те же).
@@ -24,8 +38,82 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const WITH_SPEC = process.argv.includes('--with-spec');
+const STAND = process.argv.includes('--stand');
 const root = path.dirname(fileURLToPath(import.meta.url));
-const dist = path.join(root, 'dist');
+// Корень репозитория: `.build.env` лежит рядом с app/, а не внутри него, и в
+// git не попадает (.gitignore).
+const repo = path.resolve(root, '..');
+
+const fail = (message) => {
+  console.error(`build: ${message}`);
+  process.exit(1);
+};
+
+/** `--out=<dir>` / по умолчанию dist/. Относительный путь — от app/. */
+const outArg = process.argv.find((a) => a.startsWith('--out='));
+const outValue = outArg ? outArg.slice('--out='.length).trim() : 'dist';
+if (!outValue) fail('--out= пустой: укажите каталог, например --out=/tmp/uml-build');
+const out = path.resolve(root, outValue);
+// Сборка начинается с `rm -rf out` — поэтому «каталог вывода» не имеет права
+// оказаться самим app/ или его предком: опечатка не должна сносить исходники.
+if (out === root || root.startsWith(`${out}${path.sep}`)) {
+  fail(`--out=${outValue} указывает на сам каталог приложения — сборка пишет только в отдельный каталог`);
+}
+/** Как каталог называется в сообщениях: путь наружу не нужен. */
+const outShown = (() => {
+  const rel = path.relative(root, out);
+  const text = rel && !rel.startsWith('..') ? rel : out;
+  return `${text}${/[/\\]$/.test(text) ? '' : '/'}`.split(path.sep).join('/');
+})();
+
+/**
+ * `.build.env`: строки KEY=VALUE, пустые строки и #-комментарии пропускаются.
+ * Значения могут быть в кавычках. Файл существует только у владельца; в
+ * публичном репозитории его нет, и обычная сборка о нём не спрашивает.
+ */
+async function readEnv(file) {
+  const text = await readFile(file, 'utf8');
+  const map = {};
+  for (const line of text.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const eq = trimmed.indexOf('=');
+    if (eq < 0) continue;
+    const key = trimmed.slice(0, eq).trim().replace(/^export\s+/, '');
+    let value = trimmed.slice(eq + 1).trim();
+    if ((value.startsWith('"') && value.endsWith('"'))
+      || (value.startsWith("'") && value.endsWith("'"))) value = value.slice(1, -1);
+    map[key] = value;
+  }
+  return map;
+}
+
+let ENV = {};
+if (STAND) {
+  const envPath = process.env.UML_BUILD_ENV
+    ? path.resolve(process.env.UML_BUILD_ENV)
+    : path.join(repo, '.build.env');
+  let loaded = null;
+  try {
+    loaded = await readEnv(envPath);
+  } catch {
+    fail(`--stand требует файл .build.env с ключами STAND_URL и TELEMETRY_PATH — `
+      + `прочитать ${path.basename(envPath)} не удалось. `
+      + 'Положите его в корень репозитория (в git он не попадает) '
+      + 'или укажите путь в UML_BUILD_ENV.');
+  }
+  ENV = loaded ?? {};
+  for (const key of ['STAND_URL', 'TELEMETRY_PATH']) {
+    if (!ENV[key]) fail(`в .build.env нет ${key} — он обязателен при --stand.`);
+  }
+  if (!/^https?:\/\//i.test(ENV.STAND_URL)) {
+    fail('STAND_URL в .build.env должен начинаться с http:// или https://');
+  }
+  if (!ENV.TELEMETRY_PATH.startsWith('/')) {
+    // Сам адрес не печатаем: он же ingest-токен.
+    fail('TELEMETRY_PATH в .build.env должен быть путём от корня сайта (начинаться с «/»).');
+  }
+}
 
 // Всё, что сайт отдаёт браузеру, плюс документация и стартёр; build-обвязка
 // (package.json, build.mjs) и рабочие папки (dist, shots) не копируются.
@@ -244,10 +332,74 @@ await writeFile(
   + `export const REJECTED = ${JSON.stringify(rejected, null, 2)};\n`,
 );
 
-await rm(dist, { recursive: true, force: true });
-await mkdir(dist);
+await rm(out, { recursive: true, force: true });
+await mkdir(out);
 for (const item of SITE) {
-  await cp(path.join(root, item), path.join(dist, item), { recursive: true });
+  await cp(path.join(root, item), path.join(out, item), { recursive: true });
+}
+
+/* ----------------------------------------------- счётчик, стенд, build.json */
+
+// Конфигурация счётчика пишется ВСЕГДА, в обеих сборках. Так в каталоге не
+// может остаться адрес от прошлой stand-сборки, а в обычной сборке
+// гарантированно нет ни одной строки '/a/'.
+// В обычной сборке конфиг КОПИРУЕТСЯ из исходника, а не генерируется заново:
+// иначе dist/src/telemetry.config.js расходится с src побайтово, и сверка двух
+// копий (tools/verify.mjs) краснеет на ровном месте — «человек видит не то,
+// что в исходниках». Перед копированием файл проверяется: он обязан быть
+// выключен и не содержать адреса, иначе сборка падает, а не публикует счётчик.
+const TELEMETRY_SOURCE = await readFile(path.join(root, 'src', 'telemetry.config.js'), 'utf8');
+if (!STAND) {
+  if (/enabled:\s*true/.test(TELEMETRY_SOURCE) || TELEMETRY_SOURCE.includes('/a/')) {
+    fail('src/telemetry.config.js должен быть { enabled: false } без адреса: '
+      + 'адрес приёма появляется только в --stand из .build.env');
+  }
+}
+const TELEMETRY_CONFIG = STAND
+  // Одна строка — чтобы адрес приёма было видно сразу и ровно один раз:
+  // скрывать путь бессмысленно (§6.2), защищает приёмник и согласие.
+  ? `export default ${JSON.stringify({ enabled: true, endpoint: ENV.TELEMETRY_PATH })};\n`
+  : TELEMETRY_SOURCE;
+await writeFile(path.join(out, 'src', 'telemetry.config.js'), TELEMETRY_CONFIG);
+
+// build.json — что именно лежит в каталоге. Отсутствие git (архив, свежий
+// клон без истории) не повод валить сборку: commit тогда null.
+let commit = null;
+try {
+  commit = execFileSync('git', ['rev-parse', '--short', 'HEAD'], {
+    cwd: repo, stdio: ['ignore', 'pipe', 'ignore'], encoding: 'utf8',
+  }).trim() || null;
+} catch { commit = null; }
+await writeFile(path.join(out, 'build.json'), `${JSON.stringify({
+  mode: STAND ? 'stand' : 'product',
+  telemetry: STAND,
+  builtAt: new Date().toISOString(),
+  commit,
+}, null, 2)}\n`);
+
+if (STAND) {
+  // Метаданные стенда — только там, где стенд и есть. В обычной сборке
+  // index.html остаётся без canonical, og:* и без домена (§13).
+  const base = ENV.STAND_URL.replace(/\/+$/, '');
+  const title = 'UML Modeler — офлайн-редактор UML 2.5.1';
+  const description = '14 типов диаграмм UML 2.5.1, 304 стереотипа профиля и проверки модели. Работает без сети.';
+  const meta = [
+    '<meta name="uml-build" content="stand">',
+    `<link rel="canonical" href="${base}/">`,
+    `<meta property="og:url" content="${base}/">`,
+    `<meta property="og:image" content="${base}/assets/og.png">`,
+    '<meta property="og:type" content="website">',
+    `<meta property="og:title" content="${title}">`,
+    `<meta property="og:description" content="${description}">`,
+    '<meta name="twitter:card" content="summary_large_image">',
+  ].join('\n');
+  const page = await readFile(path.join(out, 'index.html'), 'utf8');
+  const patched = /<title>[^<]*<\/title>/i.test(page)
+    ? page.replace(/(<title>[^<]*<\/title>)/i, `$1\n${meta}`)
+    : page.replace(/<head(\s[^>]*)?>/i, (m) => `${m}\n${meta}`);
+  await writeFile(path.join(out, 'index.html'), patched);
+  // Адрес приёма в консоль не печатается: он же ingest-токен.
+  console.log('stand build: telemetry on (endpoint hidden)');
 }
 
 // Поставка идёт БЕЗ прозы стандарта OMG. Условие (2) лицензии OMG запрещает
@@ -260,15 +412,15 @@ for (const item of SITE) {
 if (WITH_SPEC) {
   // Локальный режим: dist/reference/spec остаётся тем, что скопировано из
   // app/reference, то есть полным текстом. Человеку — можно, публиковать — нет.
-  console.log('build: режим --with-spec — в dist полный английский текст; это локальная сборка');
+  console.log(`build: режим --with-spec — в ${outShown} полный английский текст; это локальная сборка`);
 } else try {
-  const noText = path.join(dist, '.reference-no-text');
+  const noText = path.join(out, '.reference-no-text');
   execFileSync(process.execPath, [
     path.join(root, 'tools', 'build-reference.mjs'),
     '--lang=en', '--no-full-text', `--out=${noText}`, '--quiet',
   ], { stdio: ['ignore', 'ignore', 'inherit'] });
-  await rm(path.join(dist, 'reference', 'spec'), { recursive: true, force: true });
-  await cp(path.join(noText, 'spec'), path.join(dist, 'reference', 'spec'), { recursive: true });
+  await rm(path.join(out, 'reference', 'spec'), { recursive: true, force: true });
+  await cp(path.join(noText, 'spec'), path.join(out, 'reference', 'spec'), { recursive: true });
   await rm(noText, { recursive: true, force: true });
 } catch {
   // Исходников текста нет (например, свежий клон): полка «Спецификация»
@@ -276,15 +428,15 @@ if (WITH_SPEC) {
   console.log('build: текст стандарта не собран — нет исходников; '
     + 'полка «Спецификация» останется без английских статей');
 }
-if (!WITH_SPEC) console.log('build: режим поставки — в dist прозы стандарта нет');
+if (!WITH_SPEC) console.log(`build: режим поставки — в ${outShown} прозы стандарта нет`);
 
 // Самопроверка: страница на месте и не пустая, счётчик стереотипов в материале профиля.
-const html = await readFile(path.join(dist, 'index.html'), 'utf8');
+const html = await readFile(path.join(out, 'index.html'), 'utf8');
 if (!/<script type="module" src="src\/main.js">/.test(html)) {
-  console.error('build: dist/index.html не ссылается на src/main.js');
+  console.error(`build: ${outShown}index.html не ссылается на src/main.js`);
   process.exit(1);
 }
-const xml = await readFile(path.join(dist, 'material', 'stereotypes.xml'), 'utf8');
+const xml = await readFile(path.join(out, 'material', 'stereotypes.xml'), 'utf8');
 const count = (xml.match(/<Stereotype\b/g) || []).length;
 if (count !== 428) {
   console.error(`build: в профиле ${count} стереотипов вместо 428`);
@@ -294,7 +446,7 @@ if (count !== 428) {
 // Два числа живут рядом намеренно: 428 — записей в выгрузке профиля, 304 — то,
 // что видит человек; пересборка профиля без пересборки сайта не должна
 // проходить молча.
-const profile = JSON.parse(await readFile(path.join(dist, 'profile', 'stereotypes.json'), 'utf8'));
+const profile = JSON.parse(await readFile(path.join(out, 'profile', 'stereotypes.json'), 'utf8'));
 if (profile?.stereotypes?.length !== 304) {
   console.error(`build: в profile/stereotypes.json ${profile?.stereotypes?.length} стереотипов вместо 304 — `
     + 'запустите node tools/build-profile.mjs');
@@ -302,25 +454,25 @@ if (profile?.stereotypes?.length !== 304) {
 }
 // Курс должен доехать целиком: 20 упражнений и их тексты — иначе панель
 // откроется пустой, а сборка об этом не скажет.
-const course = JSON.parse(await readFile(path.join(dist, 'course', 'index.json'), 'utf8'));
+const course = JSON.parse(await readFile(path.join(out, 'course', 'index.json'), 'utf8'));
 const exercises = course.chapters.flatMap((c) => c.exercises);
 if (exercises.length !== 20) {
   console.error(`build: в курсе ${exercises.length} упражнений вместо 20`);
   process.exit(1);
 }
 for (const ex of exercises) {
-  const text = await stat(path.join(dist, ex.text)).catch(() => null);
+  const text = await stat(path.join(out, ex.text)).catch(() => null);
   if (!text) {
     console.error(`build: нет текста упражнения ${ex.id} (${ex.text})`);
     process.exit(1);
   }
 }
-const bytes = (await stat(path.join(dist, 'index.html'))).size;
+const bytes = (await stat(path.join(out, 'index.html'))).size;
 // The screenshot starter must survive the copy: serve.sh --screenshot runs it.
-const starter = await stat(path.join(dist, 'Build', 'uml-modeler')).catch(() => null);
+const starter = await stat(path.join(out, 'Build', 'uml-modeler')).catch(() => null);
 if (!starter) {
-  console.error('build: dist/Build/uml-modeler отсутствует — снимок экрана не заработает');
+  console.error(`build: ${outShown}Build/uml-modeler отсутствует — снимок экрана не заработает`);
   process.exit(1);
 }
-console.log(`build готов: dist/ — копия сайта (${SITE.length} позиций, index.html ${bytes} Б, `
+console.log(`build готов: ${outShown} — копия сайта (${SITE.length} позиций, index.html ${bytes} Б, `
   + `стереотипов 304 из 428 записей профиля)`);

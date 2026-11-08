@@ -21,6 +21,7 @@ import * as data from '../reference/data.js';
 import { store, set, commit, undo } from '../state/store.js';
 import { currentDiagram, placeElement, createRelationship, createLink } from '../model/model.js';
 import { ScToast } from '../../ui-kit/js/toast.js';
+import { track } from '../telemetry.js';
 // Реестр констрейнтов рисует свой модуль: данные и разметка таблицы живут в
 // одном месте (src/ui/standard.js), а полка «Стандарт» даёт им место и переход
 // в пункт. Обратного импорта нет — standard.js о читалке не знает.
@@ -2030,6 +2031,10 @@ async function openArticle(key) {
   await ensure();
   const next = parseKey(key);
   if (!VALID.has(next.shelf)) return;
+  // `reference.open {section}` — с какой полки человек читает. Раздел — это
+  // id полки из закрытого списка SHELVES: 'spec' — «Спецификация», и так
+  // далее. Ни заголовка статьи, ни поискового запроса счётчик не получает.
+  track('reference.open', { section: next.shelf });
   if (key !== keyOf(st.current) || !dom.doc.childElementCount) {
     if (dom.doc.childElementCount) {
       st.history.push({ ...st.current });

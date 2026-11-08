@@ -45,6 +45,7 @@ import { geometryFindings } from '../vendor/archify/geometry-adapter.mjs';
 // раздувать панель, а циклический импорт безопасен: `openProjectRules`
 // вызывается по клику, а не при инициализации модуля.
 import { openProjectRules } from './project-rules.js';
+import { track } from '../telemetry.js';
 
 /**
  * Слой замечания или правила: отсутствующее поле basis — это стандарт.
@@ -121,6 +122,8 @@ export function checkResult({ force = false } = {}) {
   if (!ruleset) return { findings: [], ready: false, error: loadError, rev: -1 };
   const rev = modelRevision();
   if (!force && cache.model === store.model && cache.rev === rev) return cache;
+  const startedAt = typeof performance !== 'undefined' && performance.now
+    ? performance.now() : Date.now();
   try {
     const findings = ruleset.run(store.model);
     try {
@@ -135,6 +138,23 @@ export function checkResult({ force = false } = {}) {
       findings.push(geometryFailure(e));
     }
     cache = { model: store.model, rev, findings, ready: true, error: '' };
+    // `validation.run` — настоящий прогон, а не перерисовка панели: сюда
+    // попадает только ветка, где движок действительно считал (кеш выше уже
+    // вернулся). Числа — только слой стандарта, как в счётчике статусбара:
+    // совет практики и замечания к листу не выдаются за нарушения UML.
+    let errors = 0;
+    let warnings = 0;
+    for (const f of findings) {
+      if (f.status === 'failed') continue;
+      if (f.basis === 'practice' || f.basis === 'project' || f.basis === 'geometry') continue;
+      if (f.level === 'error') errors += 1;
+      else if (f.level === 'warning') warnings += 1;
+    }
+    const endedAt = typeof performance !== 'undefined' && performance.now
+      ? performance.now() : Date.now();
+    track('validation.run', {
+      errors, warnings, ms: Math.round(endedAt - startedAt),
+    });
   } catch (e) {
     cache = { model: store.model, rev, findings: [], ready: false, error: e.message };
   }
@@ -1677,6 +1697,10 @@ export function gotoFinding(finding) {
   // модели, но не показан ни на одной диаграмме» — то есть соврал бы про
   // модель. Такую запись показываем диалогом, как это делает строка панели.
   if (finding?.status === 'failed') { showFailed(finding); return false; }
+  // `validation.fix` — человек перешёл от замечания к виноватому объекту,
+  // то есть собирается его править. Уходит только id правила: ни текста
+  // замечания, ни имени элемента здесь нет и быть не может.
+  if (finding?.ruleId) track('validation.fix', { rule: finding.ruleId });
   const model = store.model;
   const prefer = finding.diagramId ?? null;
   const targets = finding.targets ?? [];

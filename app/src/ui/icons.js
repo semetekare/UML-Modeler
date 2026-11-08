@@ -44,6 +44,8 @@ export const UI_ICONS = [
   'ui-chevron-down', 'ui-arrow-up', 'ui-arrow-down', 'ui-diagram',
   'ui-undo', 'ui-redo', 'ui-save', 'ui-open', 'ui-export', 'ui-grid',
   'ui-palette', 'ui-library', 'ui-course', 'ui-pin',
+  // Ссылка на исходный код: приветствие и справка, не тулбар (§5.1).
+  'ui-github',
   // Theme switch: the button shows the appearance that is on screen.
   'ui-sun', 'ui-moon', 'ui-contrast',
 ];

@@ -22,6 +22,7 @@ import { renderCanvas, fitToWindow } from './canvas.js';
 import { ScToast } from '../../ui-kit/js/toast.js';
 import { ScDialog } from '../../ui-kit/js/dialog.js';
 import { uid } from '../util.js';
+import { track } from '../telemetry.js';
 
 const escapeHtml = (s) => String(s ?? '').replace(/[&<>"]/g,
   (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -50,6 +51,9 @@ export function importPumlText(text, fileName = null) {
   try {
     parsed = parse(text, { fileName });
   } catch (e) {
+    // `import.plantuml` сообщает только «получилось ли» и сколько конструкций
+    // прочитано: ни текста .puml, ни строк с ошибками, ни имени файла.
+    track('import.plantuml', { ok: false, constructs: 0 });
     ScToast.show(`PlantUML не прочитан: ${e.message}`, { tone: 'danger' });
     return null;
   }
@@ -61,6 +65,7 @@ export function importPumlText(text, fileName = null) {
   const title = incoming.diagrams[0]?.name || (fileName ? fileName.replace(/\.[^.]+$/, '') : 'Импорт PlantUML');
 
   if (!elements) {
+    track('import.plantuml', { ok: false, constructs: 0 });
     ScToast.show('В тексте не нашлось ни одного элемента — импорт не выполнен',
       { tone: 'warning', action: warnings.length ? { label: 'Подробности', onSelect: () => showWarnings(warnings) } : undefined });
     return null;
@@ -80,6 +85,7 @@ export function importPumlText(text, fileName = null) {
     duration: skipped ? 8000 : 4000,
     action: skipped ? { label: 'Подробности', onSelect: () => showWarnings(warnings) } : undefined,
   });
+  track('import.plantuml', { ok: true, constructs: elements + relationships });
   return { sheet, elements, relationships, warnings };
 }
 

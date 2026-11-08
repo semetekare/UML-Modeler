@@ -6,6 +6,7 @@
 import { deepClone } from '../util.js';
 import { createModel, currentDiagram } from '../model/model.js';
 import { MECHANICS } from '../mechanics.generated.js';
+import { track } from '../telemetry.js';
 
 const MAX_HISTORY = 100;
 export const AUTOSAVE_KEY = 'uml-class-modeler.autosave';
@@ -163,6 +164,11 @@ export function set(patch) {
  */
 export function commit(label, fn) {
   const before = JSON.stringify(store.model);
+  // Счётчик диаграмм ДО правки: `diagram.create` уходит из этого же места,
+  // потому что лист заводят четыре разных входа (приглашение, «+» на полосе,
+  // дерево, палитра), и трекать каждый значило бы дублировать событие. Здесь
+  // видно любую правку, добавившую лист, — и только её.
+  const diagramsBefore = Array.isArray(store.model.diagrams) ? store.model.diagrams.length : 0;
   let result;
   try {
     result = fn(store.model);
@@ -177,6 +183,11 @@ export function commit(label, fn) {
     emit();
     return result;
   }
+  const diagrams = Array.isArray(store.model.diagrams) ? store.model.diagrams : [];
+  if (diagrams.length > diagramsBefore) {
+    track('diagram.create', { type: diagrams[diagrams.length - 1]?.kind });
+  }
+  track('commit', { label });
   store._undo.push({ label, model: JSON.parse(before) });
   if (store._undo.length > MAX_HISTORY) store._undo.shift();
   store._redo.length = 0;

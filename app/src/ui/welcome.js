@@ -33,6 +33,7 @@ import { loadSample, loadAllTypes } from './toolbar.js';
 import { openCourse } from './course.js';
 import { fitToWindow, renderCanvas } from './canvas.js';
 import { icon } from './icons.js';
+import { telemetryEnabled } from '../telemetry.js';
 import { ScToast } from '../../ui-kit/js/toast.js';
 
 /**
@@ -43,6 +44,22 @@ import { ScToast } from '../../ui-kit/js/toast.js';
 const SUBTITLE = '14 типов диаграмм UML 2.5.1, 304 стереотипа профиля. '
   + 'Проверки: 58 правил стандарта (52 проверяются), 13 советов практики. '
   + 'Всё локально — ничего не отправляется в сеть.';
+
+/**
+ * Подзаголовок ПОСЛЕ согласия на счётчик (SEO-PLAN §6.6).
+ *
+ * Первая половина прежней фразы остаётся правдой, вторая — уже нет: имена
+ * нажатых команд уходят. Обещать «ничего не отправляется» человеку, который
+ * только что разрешил отправку, было бы обманом, поэтому строка меняется
+ * ровно в тот момент, когда меняется факт.
+ */
+const SUBTITLE_CONSENT = 'Модель не покидает устройство; отправляются только имена команд.';
+
+/** Текущий подзаголовок: до согласия — прежний, после «да» — честный. */
+const currentSubtitle = () => (telemetryEnabled() ? SUBTITLE_CONSENT : SUBTITLE);
+
+/** Ссылка на исходный код: подвал карточки, не тулбар (§5.1). */
+const SOURCE_URL = 'https://github.com/semetekare/UML-Modeler';
 
 /** Drag-and-drop элемента из дерева: тот же тип, что пишет canvas.js. */
 const DND_ELEMENT = 'application/x-uml-element';
@@ -84,6 +101,9 @@ function ensureHost() {
 let host = null;
 let primary = null;
 let lastLine = null;
+// Подзаголовок: узел запоминается, чтобы переписать фразу, когда человек
+// ответит на вопрос о счётчике (SUBTITLE → SUBTITLE_CONSENT).
+let subLine = null;
 let built = false;
 // Диалог типа уже открыт: второй Enter не должен открыть второй диалог.
 let picking = false;
@@ -105,11 +125,12 @@ function build() {
     alt: '',
   });
 
+  subLine = el('p', { class: 'wl-sub', text: currentSubtitle() });
   const head = el('div', { class: 'wl-head' },
     mark,
     el('div', { class: 'wl-titles' },
       el('h1', { class: 'wl-title', text: 'UML Modeler' }),
-      el('p', { class: 'wl-sub', text: SUBTITLE })));
+      subLine));
 
   // Одна главная кнопка: всё остальное на экране — пути для тех, кто уже
   // знает, чего хочет. Крупная, на всю ширину карточки, первая в порядке Tab.
@@ -135,6 +156,19 @@ function build() {
 
   const foot = el('p', { class: 'wl-foot' },
     'Файл → Открыть, или перетащите .uml.json в окно. Ctrl+K — все команды.');
+  // Ссылка на исходники — строкой в подвале, рядом с подсказкой: правило
+  // «восемь кнопок, не двадцать две» не трогаем, в тулбар иконку не ставим
+  // (docs/seo/SEO-PLAN.md §5.1). Стиль — из токенов наследия, без нового
+  // листа: подвал и так приглушённый, а ссылка должна читаться как ссылка.
+  foot.append(' ',
+    el('a', {
+      class: 'wl-src',
+      href: SOURCE_URL,
+      target: '_blank',
+      rel: 'noopener',
+      title: 'Исходный код UML Modeler на GitHub',
+      style: { color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' },
+    }, icon('ui-github', 16), el('span', { text: ' Исходники на GitHub' })));
 
   // Строка о последнем файле необязательна: пока файла не было, её нет вовсе,
   // чтобы приглашение не начиналось с «нет данных».
@@ -298,6 +332,9 @@ export function renderWelcome() {
   if (!host) return;
   const empty = !(store.model.diagrams ?? []).length;
   const wasVisible = !host.hidden;
+  // Согласие на счётчик могли дать в другой вкладке (или в этой, пока экран
+  // был скрыт): подзаголовок обязан следовать факту, а не только сборке.
+  refreshSubtitle();
   // Создание отменили (Ctrl+Z): подсказка «Создана «…»» больше не правда.
   // Поле правится напрямую, без emit: renderStatus идёт сразу за нами в том
   // же проходе renderAll и прочитает уже очищенное значение — второй
@@ -325,6 +362,7 @@ export function renderWelcome() {
 export function showWelcome() {
   initWelcome();
   if (!host) return;
+  refreshSubtitle();
   host.hidden = false;
   refreshLastFile();
   focusPrimary();
@@ -337,4 +375,11 @@ function refreshLastFile() {
   lastLine.hidden = !name;
   lastLine.textContent = name ? `Последний файл: ${name}` : '';
   lastLine.title = name;
+}
+
+/** Переписать подзаголовок, если согласие изменилось. */
+function refreshSubtitle() {
+  if (!subLine) return;
+  const text = currentSubtitle();
+  if (subLine.textContent !== text) subLine.textContent = text;
 }

@@ -25,6 +25,7 @@ import { openReference } from './reference.js';
 import { openCourse, closeCourse, courseModeOpen } from './course.js';
 import { toolKey } from './toolbar.js';
 import { currentDiagram } from '../model/model.js';
+import { track } from '../telemetry.js';
 
 export function initCommands() {
   const paletteEl = document.getElementById('cmdpal');
@@ -106,6 +107,10 @@ export function initCommands() {
 const fileInput = () => document.getElementById('file-input');
 
 function run(id, paletteEl) {
+  // Одна точка на весь диспетчер: id — из закрытого словаря палитры, поэтому
+  // счётчику уходит именно имя команды, а не то, что человек набрал в поле
+  // поиска (строку поиска в палитре никто не запоминает).
+  track('command', { id });
   switch (id) {
     case 'file-new': newModel(); break;
     case 'file-open': fileInput().click(); break;
@@ -119,6 +124,7 @@ function run(id, paletteEl) {
     case 'file-export-svg': {
       const m = store.model;
       downloadText(exportSvgString(m, store.profile), `${slugify(m.name)}.svg`, 'image/svg+xml');
+      track('export', { format: 'svg' });
       set({ hint: 'SVG сохранён' });
       ScToast.show('SVG сохранён', { tone: 'success' });
       break;
@@ -134,6 +140,7 @@ function run(id, paletteEl) {
         a.download = `${slugify(m.name)}${scale === 1 ? '' : '@2x'}.png`;
         document.body.append(a); a.click(); a.remove();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
+        track('export', { format: 'png' });
         set({ hint: `PNG сохранён: ${width}×${height}` });
         ScToast.show(`PNG ${width}×${height} сохранён`, { tone: 'success' });
       }).catch((e) => {
