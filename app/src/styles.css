@@ -160,12 +160,25 @@ button, input, select, textarea { font: inherit; color: inherit; }
   white-space: nowrap;
 }
 #toolbar .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: var(--fs-sm);
   font-weight: 600;
   letter-spacing: 0;
   color: var(--ink);
   margin-right: var(--pad);
+  text-decoration: none;
+  border-radius: var(--r-btn);
+  padding: 2px 6px 2px 2px;
 }
+#toolbar .brand:hover { background: var(--brand-soft); }
+#toolbar .brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+/* Знак продукта: официальный логотип, встроенный — поэтому следует акценту. */
+#toolbar .brand-mark { display: inline-flex; width: 22px; height: 22px; }
+#toolbar .brand-glyph { display: block; width: 22px; height: 22px; }
+/* Ссылка на исходники — такой же iconbtn, но это <a>: убираем подчёркивание. */
+#toolbar .brand-github { text-decoration: none; }
 #toolbar .brand small { font-weight: 400; color: var(--ink-soft); }
 #toolbar .doc-name {
   flex: 1;

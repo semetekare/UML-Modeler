@@ -10,6 +10,8 @@
 // Toasts (save/export feedback) go through ScToast directly in toolbar.js.
 
 import { ScDialog } from '../../ui-kit/js/dialog.js';
+import cfg from '../telemetry.config.js';
+import { telemetryEnabled, setTelemetryChoice } from '../telemetry.js';
 import { NOTATION, TYPE_IDS, typeOf } from '../model/notation.js';
 
 const primary = (id, label) => ({ id, label, kind: 'primary' });
@@ -24,7 +26,7 @@ const ghost = (id, label) => ({ id, label, kind: 'ghost' });
 export const APP_VERSION = '1.0.0';
 
 /** Исходный код — публичный репозиторий продукта (docs/seo/SEO-PLAN.md §5.1). */
-const SOURCE_URL = 'https://github.com/semetekare/UML-Modeler';
+export const SOURCE_URL = 'https://github.com/semetekare/UML-Modeler';
 
 /** Yes/no question. Resolves true only when the primary button was pressed. */
 export function confirmDialog(title, message, okLabel = 'OK', cancelLabel = 'Отмена') {
@@ -175,8 +177,8 @@ function plural(n, one, few, many) {
 }
 
 /** The shortcut / how-to sheet (toolbar «?»). */
-export function showHelp() {
-  return ScDialog.open({
+export async function showHelp() {
+  const id = await ScDialog.open({
     heading: 'Подсказка',
     body: `
       <p><b>Типы диаграмм.</b> «+» у списка диаграмм создаёт любую из 14 диаграмм UML 2.5.
@@ -215,15 +217,28 @@ export function showHelp() {
       <b>Ctrl+1</b> — 100 %. «Вид» → «Сетка» — показать шаг 10 px.</p>
       <p><b>Файл.</b> Модель хранится в <span class="mono">*.uml.json</span>. Профиль
       стереотипов (304) с поиском — на вкладке «Профиль» справа.</p>
+      <p><b>Счётчик событий.</b> ${cfg.enabled
+    ? 'Включён: уходят имена нажатых команд и числа замечаний, ничего из модели. '
+      + 'Выключается кнопкой ниже; после отказа не уходит ничего.'
+    : 'Выключен в этой сборке: не уходит ничего.'}</p>
       <p><b>Версия и исходники.</b> UML Modeler <span class="mono">v${APP_VERSION}</span> —
       <a href="${SOURCE_URL}" target="_blank" rel="noopener"
          style="color:var(--accent);text-decoration:underline;text-underline-offset:2px">исходный
       код на GitHub</a>. Приложение работает офлайн: модель, файлы и текст не уходят
-      никуда. В сборке со счётчиком — только по вашему явному согласию и только
-      имена нажатых команд.</p>
+      никуда. Счётчик в этой сборке — про имена нажатых команд и числа; выключается
+      кнопкой в этом же окне.</p>
     `,
-    buttons: [primary('ok', 'Понятно')],
+    buttons: cfg.enabled
+      ? [ghost('telemetry', telemetryEnabled() ? 'Выключить счётчик' : 'Включить счётчик'), primary('ok', 'Понятно')]
+      : [primary('ok', 'Понятно')],
   });
+  // Переключатель живёт здесь, а не только в одноразовой строке: отказ должен
+  // быть доступен в любой момент, иначе «по умолчанию включено» — ловушка.
+  if (id === 'telemetry') {
+    setTelemetryChoice(telemetryEnabled() ? 'off' : 'on');
+    return showHelp();
+  }
+  return id;
 }
 
 /** An error the person should read, not a silent console line. */

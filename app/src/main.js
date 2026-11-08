@@ -26,6 +26,7 @@ import {
   selectedExercise,
 } from './ui/course.js';
 import { initIcons } from './ui/icons.js';
+import { initFavicon } from './ui/favicon.js';
 // Экран «Начало работы»: приглашение вместо готового примера (src/welcome.css).
 import { initWelcome, renderWelcome, showWelcome } from './ui/welcome.js';
 import { initReference, reference, openNotation, openStandardShelf } from './ui/reference.js';
@@ -533,6 +534,7 @@ initPanels();
   // hand before the first render — no pop-in, no second render. The list comes
   // from the package (each kind names its own file), so this waits for it.
   await initIcons();
+  initFavicon();
 
   // Читалка справочника: каркас, иконки шапки и обработчики. Только теперь —
   // icon() кэширован, иначе семь кнопок .ref-bar остались бы пустыми.

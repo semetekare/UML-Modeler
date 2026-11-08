@@ -33,6 +33,7 @@ import { loadSample, loadAllTypes } from './toolbar.js';
 import { openCourse } from './course.js';
 import { fitToWindow, renderCanvas } from './canvas.js';
 import { icon } from './icons.js';
+import { LOGO_SVG } from '../brand/logo.js';
 import { telemetryEnabled } from '../telemetry.js';
 import { ScToast } from '../../ui-kit/js/toast.js';
 
@@ -53,7 +54,7 @@ const SUBTITLE = '14 типов диаграмм UML 2.5.1, 304 стереоти
  * только что разрешил отправку, было бы обманом, поэтому строка меняется
  * ровно в тот момент, когда меняется факт.
  */
-const SUBTITLE_CONSENT = 'Модель не покидает устройство; отправляются только имена команд.';
+const SUBTITLE_CONSENT = 'Модель не покидает устройство; отправляются только имена команд и числа — выключить можно в справке.';
 
 /** Текущий подзаголовок: до согласия — прежний, после «да» — честный. */
 const currentSubtitle = () => (telemetryEnabled() ? SUBTITLE_CONSENT : SUBTITLE);
@@ -117,13 +118,9 @@ export const welcomeVisible = () => !!host && !host.hidden;
 /* ------------------------------------------------------------ построение */
 
 function build() {
-  const mark = el('img', {
-    class: 'wl-mark',
-    src: 'src/brand/icons/favicon.svg',
-    width: '44',
-    height: '44',
-    alt: '',
-  });
+  // Знак — официальный логотип, встроенный в разметку: он берёт акцент и
+  // цвета темы из CSS, а картинка из <img> их не видит.
+  const mark = el('span', { class: 'wl-mark', html: LOGO_SVG(44), 'aria-hidden': 'true' });
 
   subLine = el('p', { class: 'wl-sub', text: currentSubtitle() });
   const head = el('div', { class: 'wl-head' },

@@ -29,6 +29,8 @@ import { openPumlPicker, openPasteDialog } from './import-puml.js';
 import { exportSvgString, exportDiagramSvgString, exportPngBlob } from './render.js';
 import { printDiagram, printAllDiagrams } from './print.js';
 import { icon } from './icons.js';
+import { LOGO_SVG } from '../brand/logo.js';
+import { SOURCE_URL } from './dialog.js';
 import { slugify } from '../util.js';
 import { ScToast } from '../../ui-kit/js/toast.js';
 import { openChecksPanel, checkCounts } from './checks.js';
@@ -393,7 +395,14 @@ export function renderToolbar() {
   const fileName = store.ui.fileName || `${slugify(m.name)}.uml.json`;
 
   host.append(
-    el('div', { class: 'brand' }, 'UML', el('small', { text: ' Modeler' })),
+    // Название продукта — ссылка на лендинг: из редактора всегда есть путь
+    // к описанию, скриншотам и справке «что это вообще».
+    el('a', {
+      class: 'brand',
+      href: '/',
+      title: 'UML Modeler — о продукте, на главную сайта',
+    }, el('span', { class: 'brand-mark', html: LOGO_SVG(22), 'aria-hidden': 'true' }),
+      'UML', el('small', { text: ' Modeler' })),
 
     menu('Файл', () => [
       { label: 'Новая модель', run: newModel },
@@ -563,6 +572,18 @@ export function renderToolbar() {
       'aria-label': 'Подсказка: клавиши и правка',
       onclick: showHelp,
     }, icon('ui-help', 18)),
+    // Исходный код: иконка в правой группе. Правило «восемь кнопок, не
+    // двадцать две» касается панели действий над листом; здесь — служебная
+    // ссылка рядом с «Подсказкой», и её искали глазами, не находя.
+    el('a', {
+      class: 'iconbtn brand-github',
+      href: SOURCE_URL,
+      target: '_blank',
+      rel: 'noopener',
+      title: 'Исходный код на GitHub',
+      'aria-label': 'Исходный код на GitHub',
+      html: icon('ui-github', 18),
+    }),
     accentMenu(),
     appearanceMenu(),
   );
