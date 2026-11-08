@@ -1,0 +1,68 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-association-aggregation-binary-only-ok",
+  "name": "association-aggregation-binary-only (без нарушения) — агрегация только на одном конце",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Заказ",
+      "documentation": "Правило «association-aggregation-binary-only», контрольный случай без нарушения: агрегация только на одном конце.\nUML 2.5.1, п. 11.8.1.8, констрейнт Association::binary_associations: «Only binary Associations can be aggregations.»\nАгрегация на конце «Заказ», второй конец — aggregation = none."
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "Клиент"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "association",
+      "from": "e1",
+      "to": "e2",
+      "fromMultiplicity": "1",
+      "fromAggregation": "shared"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Диаграмма 1",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 360,
+          "y": 60,
+          "w": 190,
+          "h": 170
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

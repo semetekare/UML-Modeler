@@ -1,0 +1,65 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-interaction-not-nested-ok",
+  "name": "interaction_not_contained (без нарушения) — ссылка вместо вложения",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "interaction",
+      "name": "Оформление заказа",
+      "operator": "ref"
+    },
+    {
+      "id": "e2",
+      "kind": "interactionUse",
+      "name": "Оплата",
+      "documentation": "Правило «interaction-not-nested»: UML 2.5.1, п. 17.12.11.5, констрейнт Interaction::not_contained: «Экземпляр взаимодействия не должен содержаться внутри другого экземпляра взаимодействия.»\nКонтроль: Внутри взаимодействия стоит «ссылка на взаимодействие»: это ссылка, а не вложение, и правило молчит.",
+      "ownerId": "e1",
+      "refersTo": "d1",
+      "operator": "ref"
+    },
+    {
+      "id": "e3",
+      "kind": "interaction",
+      "name": "Возврат",
+      "documentation": "Правило «interaction-not-nested»: UML 2.5.1, п. 17.12.11.5, констрейнт Interaction::not_contained: «Экземпляр взаимодействия не должен содержаться внутри другого экземпляра взаимодействия.»\nКонтроль: Взаимодействие «Возврат» верхнего уровня: объемлющего взаимодействия у него нет.",
+      "operator": "ref"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "interaction_not_contained (без нарушения) — ссылка вместо вложения",
+      "kind": "interaction-overview",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 420,
+          "h": 320
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 100,
+          "y": 140,
+          "w": 320,
+          "h": 200
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 540,
+          "y": 60,
+          "w": 420,
+          "h": 320
+        }
+      ],
+      "links": []
+    }
+  ],
+  "currentDiagramId": "d1"
+}

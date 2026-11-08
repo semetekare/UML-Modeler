@@ -1,0 +1,39 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5205",
+    "figureNo": "5.2.5",
+    "exercise": "5.2.D",
+    "type": "sequence",
+    "diagramName": "Design DisplayCourseOfferings Subflow",
+    "group": "diagram",
+    "reproducible": "нет",
+    "altText": "Уточнённая UML-диаграмма последовательности Design DisplayCourseOfferings Subflow",
+    "notes": "Модель содержит только фрагмент loop, названный для эскизной версии (рис. 4.3.5).",
+    "gaps": [
+      "ни линии жизни, ни сообщения в тексте не названы; известно только, что сняты стереотипы анализа и добавлен стереотип «interface» линиям жизни объектов интерфейсов подсистем"
+    ],
+    "gapIds": [
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "loop",
+      "note": "цикл типа for; сторожевое условие не приведено"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Design DisplayCourseOfferings Subflow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

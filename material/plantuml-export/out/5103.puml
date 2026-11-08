@@ -1,0 +1,15 @@
+@startuml
+title Design Use Case Realizations
+usecase e5 as "Зарегистрироваться на курсы" <<sea level usecase>>
+' source e5: image
+usecase e6 as "Закрыть регистрацию" <<fish level usecase>>
+' source e6: image
+usecase e4 as "Войти в систему" <<fish level usecase>>
+' source e4: image
+usecase e2 as "DesignRegisterForCourses" <<usecase realization>>
+usecase e3 as "DesignCloseRegistration" <<usecase realization>>
+usecase e1 as "DesignLogin" <<usecase realization>>
+e1 ..|> e4
+e2 ..|> e5
+e3 ..|> e6
+@enduml

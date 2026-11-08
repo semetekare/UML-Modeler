@@ -1,0 +1,140 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5208",
+    "figureNo": "5.2.8",
+    "exercise": "5.2.F",
+    "type": "class",
+    "diagramName": "DBAccess",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма классов подсистемы DBAccess",
+    "notes": "Класс DBAccess со стереотипом «subsystem proxy» реализует интерфейс IDBAccess; к классам Student, User, CourseOfferingList проведены зависимости от IDBAccess; лишние ассоциации и зависимость DBAccess от CourseOffering удалены.",
+    "gaps": [
+      "текст перечисляет правки по шагам, но не полный состав классов и связей: набор зависимостей восстановлен по этим правкам",
+      "сигнатуры операций интерфейса в тексте не приведены целиком — сказано, что они должны совпадать с сигнатурами класса DBAccess (см. рис. 5.2.8)"
+    ],
+    "gapIds": [
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "interface",
+      "name": "IDBAccess",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "init()",
+          "type": ""
+        },
+        {
+          "vis": "public",
+          "name": "close()",
+          "type": ""
+        },
+        {
+          "vis": "public",
+          "name": "getCourseOfferingList()",
+          "type": "CourseOfferingList"
+        },
+        {
+          "vis": "public",
+          "name": "updateStudent(st:Student)",
+          "type": ""
+        }
+      ]
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "DBAccess",
+      "stereotype": "subsystem proxy",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "init()",
+          "type": ""
+        },
+        {
+          "vis": "public",
+          "name": "close()",
+          "type": ""
+        },
+        {
+          "vis": "public",
+          "name": "getCourseOfferingList()",
+          "type": "CourseOfferingList"
+        },
+        {
+          "vis": "public",
+          "name": "updateStudent(st:Student)",
+          "type": ""
+        }
+      ]
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "Student"
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "User"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "CourseOfferingList"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "realization",
+      "from": "e2",
+      "to": "e1"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e3"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r4",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e5"
+    },
+    {
+      "id": "r5",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e3"
+    },
+    {
+      "id": "r6",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e4"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "DBAccess",
+      "type": "class",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

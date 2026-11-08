@@ -1,0 +1,183 @@
+{
+ "schema": "uml-spec-sections/1",
+ "sourceChars": 1721620,
+ "slicedChars": 1721620,
+ "match": true,
+ "sections": [
+  {
+   "file": "spec-sections/1-scope.md",
+   "number": "1",
+   "title": "Scope",
+   "chars": 1934,
+   "bytes": 1941
+  },
+  {
+   "file": "spec-sections/2-conformance.md",
+   "number": "2",
+   "title": "Conformance",
+   "chars": 2932,
+   "bytes": 2947
+  },
+  {
+   "file": "spec-sections/3-normative-references.md",
+   "number": "3",
+   "title": "Normative References",
+   "chars": 821,
+   "bytes": 828
+  },
+  {
+   "file": "spec-sections/4-terms-and-definitions.md",
+   "number": "4",
+   "title": "Terms and Definitions",
+   "chars": 201,
+   "bytes": 208
+  },
+  {
+   "file": "spec-sections/5-notational-conventions.md",
+   "number": "5",
+   "title": "Notational Conventions",
+   "chars": 869,
+   "bytes": 876
+  },
+  {
+   "file": "spec-sections/6-additional-information.md",
+   "number": "6",
+   "title": "Additional Information",
+   "chars": 31457,
+   "bytes": 31574
+  },
+  {
+   "file": "spec-sections/7-common-structure.md",
+   "number": "7",
+   "title": "Common Structure",
+   "chars": 110494,
+   "bytes": 110805
+  },
+  {
+   "file": "spec-sections/8-values.md",
+   "number": "8",
+   "title": "Values",
+   "chars": 53787,
+   "bytes": 53878
+  },
+  {
+   "file": "spec-sections/9-classification.md",
+   "number": "9",
+   "title": "Classification",
+   "chars": 180625,
+   "bytes": 181328
+  },
+  {
+   "file": "spec-sections/10-simple-classifiers.md",
+   "number": "10",
+   "title": "Simple Classifiers",
+   "chars": 35441,
+   "bytes": 35521
+  },
+  {
+   "file": "spec-sections/11-structured-classifiers.md",
+   "number": "11",
+   "title": "Structured Classifiers",
+   "chars": 138464,
+   "bytes": 138667
+  },
+  {
+   "file": "spec-sections/12-packages.md",
+   "number": "12",
+   "title": "Packages",
+   "chars": 109277,
+   "bytes": 109508
+  },
+  {
+   "file": "spec-sections/13-common-behavior.md",
+   "number": "13",
+   "title": "Common Behavior",
+   "chars": 52593,
+   "bytes": 52726
+  },
+  {
+   "file": "spec-sections/14-statemachines.md",
+   "number": "14",
+   "title": "StateMachines",
+   "chars": 158016,
+   "bytes": 158385
+  },
+  {
+   "file": "spec-sections/15-activities.md",
+   "number": "15",
+   "title": "Activities",
+   "chars": 159176,
+   "bytes": 159455
+  },
+  {
+   "file": "spec-sections/16-actions.md",
+   "number": "16",
+   "title": "Actions",
+   "chars": 300754,
+   "bytes": 301087
+  },
+  {
+   "file": "spec-sections/17-interactions.md",
+   "number": "17",
+   "title": "Interactions",
+   "chars": 153138,
+   "bytes": 153515
+  },
+  {
+   "file": "spec-sections/18-usecases.md",
+   "number": "18",
+   "title": "UseCases",
+   "chars": 29579,
+   "bytes": 29680
+  },
+  {
+   "file": "spec-sections/19-deployments.md",
+   "number": "19",
+   "title": "Deployments",
+   "chars": 27072,
+   "bytes": 27189
+  },
+  {
+   "file": "spec-sections/20-informationflows.md",
+   "number": "20",
+   "title": "InformationFlows",
+   "chars": 18823,
+   "bytes": 18900
+  },
+  {
+   "file": "spec-sections/21-primitive-types.md",
+   "number": "21",
+   "title": "Primitive Types",
+   "chars": 2329,
+   "bytes": 2356
+  },
+  {
+   "file": "spec-sections/22-standard-profile.md",
+   "number": "22",
+   "title": "Standard Profile",
+   "chars": 11734,
+   "bytes": 11919
+  },
+  {
+   "file": "spec-sections/annex-a-diagrams.md",
+   "number": "Annex A",
+   "title": "Diagrams",
+   "chars": 6476,
+   "bytes": 6483
+  },
+  {
+   "file": "spec-sections/annex-b-uml-diagram-interchange.md",
+   "number": "Annex B",
+   "title": "UML Diagram Interchange",
+   "chars": 113427,
+   "bytes": 113504
+  },
+  {
+   "file": "spec-sections/annex-c-keywords.md",
+   "number": "Annex C",
+   "title": "Keywords",
+   "chars": 22201,
+   "bytes": 22390
+  }
+ ]
+}

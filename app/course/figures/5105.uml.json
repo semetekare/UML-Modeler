@@ -1,0 +1,188 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5105",
+  "name": "Структура уровня BusinessServices",
+  "elements": [
+    {
+      "id": "e3",
+      "kind": "package",
+      "name": "BSAccess",
+      "stereotype": "subsystem"
+    },
+    {
+      "id": "e2",
+      "kind": "package",
+      "name": "DBAccess",
+      "stereotype": "subsystem"
+    },
+    {
+      "id": "e1",
+      "kind": "package",
+      "name": "Interfaces"
+    },
+    {
+      "id": "e4",
+      "kind": "package",
+      "name": "UniversityArtefacts"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e1"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e3",
+      "to": "e1"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r4",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r5",
+      "kind": "dependency",
+      "from": "e3",
+      "to": "e4"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "BusinessServices",
+      "kind": "package",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 140,
+          "h": 100
+        },
+        {
+          "id": "s2",
+          "elementId": "e4",
+          "x": 260,
+          "y": 60,
+          "w": 140,
+          "h": 100
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 60,
+          "y": 220,
+          "w": 140,
+          "h": 100
+        },
+        {
+          "id": "s4",
+          "elementId": "e2",
+          "x": 260,
+          "y": 220,
+          "w": 140,
+          "h": 100
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s3",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "bottom"
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s4",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "bottom"
+          }
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.9
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5105",
+    "figureNo": "5.1.5",
+    "exercise": "5.1",
+    "type": "package",
+    "diagramName": "BusinessServices",
+    "group": "diagram",
+    "reproducible": "да",
+    "altText": "Структура уровня BusinessServices",
+    "notes": "Четыре пакета и пять зависимостей между ними названы текстом; рисунок 5.1.5 подтверждает и состав, и все пять зависимостей (обе модели со зрением назвали тот же набор). Пробелов не осталось.",
+    "gaps": [],
+    "gapIds": [],
+    "imageDerived": []
+  },
+  "sheet": {
+    "w": 600,
+    "h": 400
+  }
+}

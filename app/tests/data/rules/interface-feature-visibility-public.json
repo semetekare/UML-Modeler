@@ -1,0 +1,39 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-interface-feature-visibility-public",
+  "name": "interface-feature-visibility-public — у члена интерфейса видимость private",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "interface",
+      "name": "Оплата",
+      "documentation": "Правило «interface-feature-visibility-public»: у члена интерфейса видимость private.\nUML 2.5.1, п. 10.5.5.5, констрейнт Interface::visibility: «The visibility of all Features owned by an Interface must be public.»\nАтрибут «код» интерфейса «Оплата» объявлен private.",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "код"
+        }
+      ]
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Диаграмма 1",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 190,
+          "h": 110
+        }
+      ],
+      "links": []
+    }
+  ],
+  "currentDiagramId": "d1"
+}

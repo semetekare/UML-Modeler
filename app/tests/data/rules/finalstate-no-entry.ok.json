@@ -1,0 +1,69 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-finalstate-no-entry-ok",
+  "name": "finalstate-no-entry (без нарушения) — поле пусто у конечного, заполнено у обычного",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "state",
+      "name": "Закрыт",
+      "documentation": "Правило «finalstate-no-entry»: UML 2.5.1, п. 14.5.2.5, констрейнт FinalState::no_entry_behavior: «У конечного состояния нет поведения при входе.»\nКонтроль: поле «entry» у конечного состояния пусто, а у обычного состояния «Заказ» заполнено — правило смотрит только на конечные состояния.",
+      "entry": [
+        "Оформить заказ"
+      ]
+    },
+    {
+      "id": "e2",
+      "kind": "final",
+      "name": ""
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "transition",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "finalstate-no-entry (без нарушения)",
+      "kind": "state",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 20,
+          "h": 20
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

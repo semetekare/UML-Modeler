@@ -1,0 +1,95 @@
+@startuml
+title DataBase Schema
+' ! TableStudent — TableSchedule: стрелка у конца с ромбом не выражается — навигация «в обе стороны» не выгружена
+' ! TableCourseOffering — TableSchedule: навигация «в обе стороны» (`<-->`) не выгружена: импорт эту форму пока не читает
+' ! TableSchedule — TablePrimaryCourse: стрелка у конца с ромбом не выражается — навигация «в обе стороны» не выгружена
+' ! TableCourseOffering — TablePrimaryCourse: навигация «в обе стороны» (`<-->`) не выгружена: импорт эту форму пока не читает
+' ! TableCourse — TableCourseRequisites: стрелка у конца с ромбом не выражается — навигация «в обе стороны» не выгружена
+' ! TableCourse — TableCourseOffering: навигация «в обе стороны» (`<-->`) не выгружена: импорт эту форму пока не читает
+' ! TableProfessor — TableCourseOffering: навигация «в обе стороны» (`<-->`) не выгружена: импорт эту форму пока не читает
+' ! TableUser — TableStudent: стрелка у конца с ромбом не выражается — навигация «в обе стороны» не выгружена
+' ! TableUser — TableProfessor: стрелка у конца с ромбом не выражается — навигация «в обе стороны» не выгружена
+class e3 as "TableCourseOffering" <<table>> {
+  -number : long {id}
+  -code : string
+  -professorName : string
+  -day : byte
+  -pair : byte
+  -semester : byte
+  -isCanceled : boolean = false
+  -isClosed : boolean = false
+}
+' doc e3: внешние ключи (<<FK>>): code, professorName; первичный ключ (<<PK>>) записан полем isID
+' source e3: image
+class e2 as "TableSchedule" <<table>> {
+  -id : long {id}
+  -altCourse1 : long
+  -altCourse2 : long
+  -student : long
+  -semester : byte
+}
+' doc e2: внешние ключи (<<FK>>): altCourse1, altCourse2, student; первичный ключ (<<PK>>) записан полем isID
+' source e2: image
+class e4 as "TableCourse" <<table>> {
+  -code : string {id}
+  -description : string
+  -duration : byte
+}
+' source e4: image
+class e5 as "TableProfessor" <<table>> {
+  -name : string {id}
+  -login : string
+  -academicDegree : string
+  -phone1 : string
+  -phone2 : string
+}
+' doc e5: внешние ключи (<<FK>>): login; первичный ключ (<<PK>>) записан полем isID
+' source e5: image
+class e9 as "TableCourseRequisites" <<table>> {
+  -preCourse : string {id}
+  -postCourse : string {id}
+}
+' doc e9: внешние ключи (<<FK>>): preCourse, postCourse; первичный ключ (<<PK>>) записан полем isID
+' source e9: image
+class e6 as "TableUser" <<table>> {
+  -login : string {id}
+  -passwordHash1 : long
+  -passwordHash2 : long
+  -type : byte
+}
+' source e6: image
+class e1 as "TableStudent" <<table>> {
+  -id : long {id}
+  -login : string
+  -address : string
+  -classification : byte
+  -graduateDate : Date
+  -maxNumCourses : byte
+  -name : string
+  -phone1 : string
+  -phone2 : string
+}
+' doc e1: внешние ключи (<<FK>>): login; первичный ключ (<<PK>>) записан полем isID
+' source e1: image
+class e8 as "TablePrimaryCourse" <<table>> {
+  -courseOffering : long {id}
+  -schedule : long {id}
+}
+' doc e8: внешние ключи (<<FK>>): courseOffering, schedule; первичный ключ (<<PK>>) записан полем isID
+' source e8: image
+class e7 as "TableStaticValues" <<table>> {
+  -studentNextAvailableId : long
+}
+' source e7: image
+e1 "1" *-- "*" e2 : <<non identifying>>
+e3 "0..1" -- "*" e2 : <<non identifying>> alt1 → ·
+e2 "1" *-- "0..4" e8 : <<identifying>>
+e3 "1" -- "*" e8 : <<identifying>>
+e4 "1" *-- "*" e9 : <<identifying>> pre → ·
+e4 "1" -- "*" e3 : <<non identifying>>
+e5 "0..1" -- "*" e3 : <<non identifying>>
+e6 "1" *-- "0..1" e1 : <<non identifying>>
+e6 "1" *-- "0..1" e5 : <<non identifying>>
+e3 "0..1" -- "*" e2 : <<non identifying>> alt2 → ·
+e4 "1" -- "*" e9 : <<identifying>> post → ·
+@enduml

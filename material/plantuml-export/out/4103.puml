@@ -1,0 +1,67 @@
+@startuml
+title Key Abstractions
+class e2 as "CourseOffering" <<entity>> {
+  -number : long
+  -day : DayOfWeek
+  -pair : byte
+  -semester : byte
+}
+' source e2: image
+class e1 as "Course" <<entity>> {
+  -code : string {id}
+  -description : string
+  -duration : byte
+}
+' source e1: image
+class e6 as "User" <<entity>> {
+  -login : string {id}
+  -passwordHash : long[2]
+  -type : UserType
+}
+' source e6: image
+class e4 as "Schedule" <<entity>> {
+  -semester : byte
+}
+' source e4: image
+class e3 as "Professor" <<entity>> {
+  -name : string {id}
+  -phones : string[0..2]
+  -academicDegree
+}
+' source e3: image
+class e5 as "Student" <<entity>> {
+  -name : string
+  -phones : string[0..2]
+  -address : string
+  -id : long {id}
+}
+' source e5: image
+enum e8 as "UserType" {
+  STUDENT
+  PROFESSOR
+  REGISTRAR
+}
+' doc e8: литералы перечислимого типа в тексте не названы
+' source e8: image
+enum e7 as "DayOfWeek" {
+  SU
+  MO
+  TU
+  WE
+  TH
+  FR
+  SA
+}
+' doc e7: литералы SU … SA; текст приводит только SU и SA
+' source e7: image
+e5 "1" *--> "*" e4
+e1 "*" -- "*" e1 : prerequisitesOf → hasPrerequisites
+e2 ..> e7
+e6 ..> e8
+e1 "1" -- "*" e2
+e2 "*" -- "0..1" e3
+e2 "0..4" -- "*" e4 : primary → ·
+e2 "0..2" -- "*" e4 : alternative → ·
+e6 "1" *-- "0..1" e3
+e6 "1" *-- "0..1" e5
+@enduml

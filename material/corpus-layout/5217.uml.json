@@ -1,0 +1,237 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5217",
+  "name": "UML-диаграмма последовательности, описывающая реализацию операции init() в подсистеме BSAccess",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "cn:BSAccess",
+      "stereotype": "subsystem proxy"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "config:XmlRpcClientConfigImpl",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "url:URL",
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "client:XmlRpcClient",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "init(serverURL : string) : void",
+      "from": "e1",
+      "to": "e1",
+      "note": "найденное сообщение: отправитель на рисунке не показан",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "createMessage",
+      "name": "XmlRpcClientConfigImpl()",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "createMessage",
+      "name": "URL(spec : String = serverURL)",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "setServerURL(serverURL : URL = url) : void",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "setConfig(config : XmlRpcClientConfig = config) : void",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "init",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 270
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 200,
+          "h": 270
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 580,
+          "y": 60,
+          "w": 200,
+          "h": 270
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 840,
+          "y": 60,
+          "w": 200,
+          "h": 270
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.296
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.37
+          },
+          "y": 140
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.407
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.407
+          },
+          "y": 170
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.519
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.519
+          },
+          "y": 200
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.63
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.63
+          },
+          "y": 230
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.741
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.741
+          },
+          "y": 260
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.852
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.852
+          },
+          "y": 290
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5217",
+    "figureNo": "5.2.17",
+    "exercise": "5.2.G",
+    "type": "sequence",
+    "diagramName": "init",
+    "group": "diagram",
+    "reproducible": "да",
+    "altText": "UML-диаграмма последовательности, описывающая реализацию операции init() в подсистеме BSAccess",
+    "notes": "Текст называет линию жизни cn:BSAccess и сообщение init(). Рисунок 5.2.17 подтверждает их и добавляет три линии жизни (config:XmlRpcClientConfigImpl, url:URL, client:XmlRpcClient) и пять сообщений создания и настройки; всё прочитано с рисунка, пробелов не осталось.",
+    "gaps": [],
+    "gapIds": [],
+    "imageDerived": [
+      "r1"
+    ]
+  },
+  "sheet": {
+    "w": 1100,
+    "h": 400
+  }
+}

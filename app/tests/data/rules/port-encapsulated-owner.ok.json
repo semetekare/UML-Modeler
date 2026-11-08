@@ -1,0 +1,61 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-port-encapsulated-owner-ok",
+  "name": "port_encapsulated_owner (без нарушения) — порт в компоненте и свежий порт",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "component",
+      "name": "Сервис заказов"
+    },
+    {
+      "id": "e2",
+      "kind": "port",
+      "name": "приём",
+      "documentation": "Правило «port-encapsulated-owner»: UML 2.5.1, п. 11.8.14.7, констрейнт Port::encapsulated_owner: «Все порты принадлежат инкапсулированному классификатору.»\nКонтроль: Порт «приём» принадлежит компоненту «Сервис заказов» — это инкапсулированный классификатор.",
+      "ownerId": "e1"
+    },
+    {
+      "id": "e3",
+      "kind": "port",
+      "name": "выдача",
+      "documentation": "Правило «port-encapsulated-owner»: UML 2.5.1, п. 11.8.14.7, констрейнт Port::encapsulated_owner: «Все порты принадлежат инкапсулированному классификатору.»\nКонтроль: Свежий порт без владельца и без единой связи: только что нарисованная фигура ещё не заявлена как порт, и правило молчит (граница «только что нарисовано»)."
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "port_encapsulated_owner (без нарушения) — порт в компоненте и свежий порт",
+      "kind": "component",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 220,
+          "h": 140
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 300,
+          "y": 80,
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 300,
+          "y": 140,
+          "w": 20,
+          "h": 20
+        }
+      ],
+      "links": []
+    }
+  ],
+  "currentDiagramId": "d1"
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-actor-must-have-name-ok",
+  "name": "actor-must-have-name (без нарушения) — у актёра есть имя",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actor",
+      "name": "Студент",
+      "documentation": "Правило «actor-must-have-name», контрольный случай без нарушения: у актёра есть имя.\nUML 2.5.1, п. 18.2.1.4, констрейнт Actor::must_have_name: «An Actor must have a name.»\nИмя актёра — «Студент»."
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Диаграмма 1",
+      "kind": "usecase",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 40,
+          "h": 64
+        }
+      ],
+      "links": []
+    }
+  ],
+  "currentDiagramId": "d1"
+}

@@ -1,0 +1,110 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-pseudostate-initial-vertex",
+  "name": "pseudostate_initial_vertex — у начального состояния два перехода",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "state",
+      "name": "Создан"
+    },
+    {
+      "id": "e2",
+      "kind": "state",
+      "name": "Оплачен"
+    },
+    {
+      "id": "e3",
+      "kind": "state",
+      "name": "Отменён"
+    },
+    {
+      "id": "e4",
+      "kind": "initial",
+      "name": "",
+      "documentation": "Правило «pseudostate-initial-vertex»: UML 2.5.1, п. 14.5.6.7, констрейнт Pseudostate::initial_vertex: «An initial Vertex can have at most one outgoing Transition.»\nИз начального состояния выходят два перехода (r1, r2): начальная вершина предлагает один маркер, а не выбор."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "transition",
+      "from": "e4",
+      "to": "e1"
+    },
+    {
+      "id": "r2",
+      "kind": "transition",
+      "from": "e4",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "pseudostate_initial_vertex — у начального состояния два перехода",
+      "kind": "state",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 580,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 60,
+          "y": 260,
+          "w": 18,
+          "h": 18
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s4",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s4",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

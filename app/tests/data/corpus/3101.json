@@ -1,0 +1,59 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "3101",
+    "figureNo": "3.1.1",
+    "exercise": "3.1",
+    "type": "usecase",
+    "diagramName": "Main",
+    "group": "diagram",
+    "reproducible": "да",
+    "altText": "Окно Visual Paradigm с заготовкой UML-диаграммы вариантов использования",
+    "notes": "Заготовка упражнения 3.1: рамка моделируемой системы и пять действующих лиц. Вариантов использования и связей на рисунке ещё нет — текст заканчивается словами «Увеличьте размеры рамок моделируемой системы, чтобы в дальнейшем в них поместились варианты использования системы».",
+    "gaps": [],
+    "gapIds": []
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "systemBoundary",
+      "name": "Система регистрации на курсы",
+      "stereotype": "subject"
+    },
+    {
+      "id": "e2",
+      "kind": "actor",
+      "name": "Студент"
+    },
+    {
+      "id": "e3",
+      "kind": "actor",
+      "name": "Профессор"
+    },
+    {
+      "id": "e4",
+      "kind": "actor",
+      "name": "Регистратор"
+    },
+    {
+      "id": "e5",
+      "kind": "actor",
+      "name": "Расчётная система"
+    },
+    {
+      "id": "e6",
+      "kind": "actor",
+      "name": "Время"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Main",
+      "type": "usecase",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

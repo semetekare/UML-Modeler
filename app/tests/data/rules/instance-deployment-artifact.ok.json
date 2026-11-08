@@ -1,0 +1,94 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-instance-deployment-artifact-ok",
+  "name": "instance_deployment_artifact (без нарушения) — экземпляр артефакта",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "artifact",
+      "name": "app.jar"
+    },
+    {
+      "id": "e2",
+      "kind": "object",
+      "name": ":app.jar",
+      "documentation": "Правило «instance-deployment-artifact»: UML 2.5.1, п. 9.9.9.6, констрейнт InstanceSpecification::deployment_artifact: «Спецификация экземпляра может выступать как развёртываемый артефакт, если она представляет экземпляр артефакта.»\nКонтроль: Экземпляр «:app.jar» представляет артефакт «app.jar» — разворачивать его можно.",
+      "classifierId": "e1"
+    },
+    {
+      "id": "e3",
+      "kind": "node",
+      "name": "app-сервер"
+    },
+    {
+      "id": "e4",
+      "kind": "object",
+      "name": ":журнал",
+      "documentation": "Правило «instance-deployment-artifact»: UML 2.5.1, п. 9.9.9.6, констрейнт InstanceSpecification::deployment_artifact: «Спецификация экземпляра может выступать как развёртываемый артефакт, если она представляет экземпляр артефакта.»\nКонтроль: Экземпляр «:журнал» никуда не развёрнут и классификатора не имеет: правило говорит только о развёрнутых экземплярах и молчит про этот."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "deployment",
+      "from": "e2",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "instance_deployment_artifact (без нарушения) — экземпляр артефакта",
+      "kind": "deployment",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 160,
+          "h": 90
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 180,
+          "h": 80
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 620,
+          "y": 60,
+          "w": 200,
+          "h": 160
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 320,
+          "y": 240,
+          "w": 180,
+          "h": 80
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

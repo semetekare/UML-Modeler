@@ -1,0 +1,9 @@
+@startuml
+title Main
+actor e3 as "Профессор"
+actor e6 as "Время"
+actor e2 as "Студент"
+actor e5 as "Расчётная система"
+actor e4 as "Регистратор"
+rectangle e1 as "Система регистрации на курсы" <<subject>>
+@enduml

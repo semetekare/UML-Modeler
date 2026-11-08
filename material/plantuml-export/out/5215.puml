@@ -1,0 +1,34 @@
+@startuml
+title BSAccess
+class e2 as "BSAccess" <<subsystem proxy>> {
+  +init(serverURL : string) : void
+  +startTransferData() : boolean
+  +sendStudentData(name : string, address : string, cOff : CourseOffering[]) : boolean
+  +finishTransferData() : boolean
+}
+' source e2: image
+class e4 as "CourseOffering" {
+  +toJSON() : string
+}
+' source e4: image
+interface e1 as "IBSAccess" {
+  +init(serverURL : string) : void
+  +startTransferData() : boolean
+  +sendStudentData(name : string, address : string, cOff : CourseOffering[]) : boolean
+  +finishTransferData() : boolean
+}
+' source e1: image
+class e5 as "URL"
+' doc e5: на рисунке под именем напечатано (Logical View::Middleware::java::net)
+' source e5: image
+class e3 as "XmlRpcClient"
+class e6 as "XmlRpcClientConfigImpl"
+' doc e6: на рисунке под именем напечатано (Logical View::Middleware::org::apache::xmlrpc::client)
+' source e6: image
+e2 ..|> e1
+e2 ..> e4
+e1 ..> e4
+e2 "0..1" *-- "0..1" e3 : · → client
+e2 ..> e5
+e2 ..> e6
+@enduml

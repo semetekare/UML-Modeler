@@ -1,0 +1,53 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5103",
+    "figureNo": "5.1.3",
+    "exercise": "5.1",
+    "type": "composite",
+    "diagramName": "Design Use Case Realizations",
+    "group": "diagram",
+    "reproducible": "нет",
+    "altText": "UML-диаграмма составной структуры Design Use Case Realizations",
+    "notes": "Единственное, что известно из текста: диаграмма лежит в пакете Design Model::Design Use Case Realizations, а кооперации внутри него переименованы с приставкой Design (Login2 → DesignLogin и т. д.). Состав частей и зависимостей не назван.",
+    "gaps": [
+      "текст не описывает ни части этой диаграммы, ни связи между ними: сказано только «UML-диаграмма составной структуры внутри этого пакета примет вид, представленный на рисунке 5.1.3»",
+      "состав диаграммы восстановить по снимку нельзя (изображения не разбираются)",
+      "вложенность частей в кооперацию и коннекторы частей не выражаются в uml-model/3"
+    ],
+    "gapIds": [
+      "model.packageOwner",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "collaboration",
+      "name": "DesignLogin",
+      "stereotype": "usecase realization"
+    },
+    {
+      "id": "e2",
+      "kind": "collaboration",
+      "name": "DesignRegisterForCourses",
+      "stereotype": "usecase realization"
+    },
+    {
+      "id": "e3",
+      "kind": "collaboration",
+      "name": "DesignCloseRegistration",
+      "stereotype": "usecase realization"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Design Use Case Realizations",
+      "type": "composite",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

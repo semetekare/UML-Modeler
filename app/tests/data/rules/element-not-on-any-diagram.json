@@ -1,0 +1,38 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-element-not-on-any-diagram",
+  "name": "element-not-on-any-diagram — пакет есть в модели, но не на листе",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "package",
+      "name": "Приложение",
+      "documentation": "Правило «element-not-on-any-diagram» — совет практики моделирования: пункта UML у него нет, есть только объяснение, почему такую модель трудно читать.\nПакет «Приложение» есть в модели, но его фигуры нет ни на одном листе."
+    },
+    {
+      "id": "e2",
+      "kind": "package",
+      "name": "Модуль отчётов"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "element-not-on-any-diagram — пакет вне листов",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e2",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 100
+        }
+      ],
+      "links": []
+    }
+  ],
+  "currentDiagramId": "d1"
+}

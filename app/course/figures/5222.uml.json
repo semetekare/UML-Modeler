@@ -1,0 +1,180 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5222",
+  "name": "UML-диаграмма деятельности для операции RegistrationForm::createSchedule",
+  "elements": [
+    {
+      "id": "e2",
+      "kind": "action",
+      "name": "rctrl.createSchedule(sem); self.displayBlankSchedule(); cOff = rctrl.getCourseOfferingList()",
+      "structuredNode": "ConditionalNode",
+      "source": "image"
+    },
+    {
+      "id": "e1",
+      "kind": "initial",
+      "name": ""
+    },
+    {
+      "id": "e3",
+      "kind": "action",
+      "name": "Loop",
+      "documentation": "структурированный узел Loop с регионами Setup, Test и Body. В Setup — действие i = 0; в Test — ромб с ветвями [i < cOff.length()] (в Body) и [else] (из узла); в Body — действие self.displayCourseString(cOff[i].toJSON()); i++, после которого поток возвращается в Test. Регионы, ромб и ветви в uml-model/3 не выражаются отдельными элементами.",
+      "structuredNode": "LoopNode",
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "final",
+      "name": ""
+    },
+    {
+      "id": "e8",
+      "kind": "note",
+      "name": "",
+      "documentation": "RegistrationForm::createSchedule(sem):void",
+      "note": "",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "controlFlow",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "controlFlow",
+      "from": "e2",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "controlFlow",
+      "from": "e3",
+      "to": "e4",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "createSchedule",
+      "kind": "activity",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e2",
+          "x": 90,
+          "y": 190,
+          "w": 580,
+          "h": 50
+        },
+        {
+          "id": "s2",
+          "elementId": "e1",
+          "x": 370,
+          "y": 110,
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 310,
+          "y": 300,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 370,
+          "y": 410,
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "s5",
+          "elementId": "e8",
+          "x": 340,
+          "y": 490,
+          "w": 80,
+          "h": 70
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s2",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s1",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s3",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "top"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5222",
+    "figureNo": "5.2.22",
+    "exercise": "5.2.H",
+    "type": "activity",
+    "diagramName": "createSchedule",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма деятельности для операции RegistrationForm::createSchedule",
+    "notes": "Текст не даёт псевдокода и состава действий. Рисунок 5.2.22 прочитан целиком: примечание RegistrationForm::createSchedule(sem):void, начальный узел, действие с тремя строками (rctrl.createSchedule(sem); self.displayBlankSchedule(); cOff = rctrl.getCourseOfferingList()), структурированный узел Loop с регионами Setup, Test и Body, конечный узел. Условия на выходах ромба в регионе Test: [i < cOff.length()] и [else].",
+    "gaps": [
+      "псевдокод в узлах действий в тексте не приведён — прочитан с рисунка",
+      "структурированные узлы с регионами не выражаются в uml-model/3: регионы Setup, Test и Body записаны в documentation узла",
+      "состав действий и рёбер не назван в тексте — источником служит рисунок"
+    ],
+    "gapIds": [
+      "model.structuredNode",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e2",
+      "e3"
+    ]
+  },
+  "sheet": {
+    "w": 730,
+    "h": 620
+  }
+}

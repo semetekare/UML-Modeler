@@ -1,0 +1,186 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5301",
+    "figureNo": "5.3.1",
+    "exercise": "5.3",
+    "type": "class",
+    "diagramName": "DataBase Schema",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма классов DataBase Schema",
+    "notes": "Схема реляционной БД в виде диаграммы классов: таблицы — классы со стереотипом «table», внешние ключи — ассоциации, зависимость по существованию — композиция. Применена стратегия «одна таблица для всей иерархии наследования»: Classification, FullTimeClassification и PartTimeClassification слиты с TableStudent.",
+    "gaps": [
+      "состав таблиц назван поимённо, но набор связей и мощностей между ними текст не перечисляет: описаны только композиция TableStudent — TableSchedule и мощность * у полюса рядом с TableSchedule",
+      "стереотип «table» есть, а стереотип «schema» у пакета — да",
+      "столбцы-атрибуты таблиц в тексте не перечислены"
+    ],
+    "gapIds": [
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "TableStudent",
+      "stereotype": "table",
+      "attributes": [
+        {
+          "vis": "public",
+          "name": "id",
+          "type": "long"
+        }
+      ]
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "TableSchedule",
+      "stereotype": "table",
+      "attributes": [
+        {
+          "vis": "public",
+          "name": "semester",
+          "type": "byte"
+        }
+      ]
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "TableCourseOffering",
+      "stereotype": "table"
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "TableCourse",
+      "stereotype": "table"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "TableProfessor",
+      "stereotype": "table"
+    },
+    {
+      "id": "e6",
+      "kind": "class",
+      "name": "TableUser",
+      "stereotype": "table"
+    },
+    {
+      "id": "e7",
+      "kind": "class",
+      "name": "TableStaticValues",
+      "stereotype": "table"
+    },
+    {
+      "id": "e8",
+      "kind": "class",
+      "name": "TablePrimaryCourse",
+      "stereotype": "table"
+    },
+    {
+      "id": "e9",
+      "kind": "class",
+      "name": "TableCourseRequisites",
+      "stereotype": "table"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "composition",
+      "from": "e1",
+      "to": "e2",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "*",
+      "navigable": "both",
+      "note": "каскадированное удаление дочерних записей"
+    },
+    {
+      "id": "r2",
+      "kind": "association",
+      "from": "e2",
+      "to": "e3",
+      "fromMultiplicity": "*",
+      "toMultiplicity": "не названо в тексте",
+      "navigable": "both",
+      "note": "связь через служебную таблицу TablePrimaryCourse"
+    },
+    {
+      "id": "r3",
+      "kind": "association",
+      "from": "e2",
+      "to": "e8",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте",
+      "navigable": "both"
+    },
+    {
+      "id": "r4",
+      "kind": "association",
+      "from": "e3",
+      "to": "e8",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте",
+      "navigable": "both"
+    },
+    {
+      "id": "r5",
+      "kind": "association",
+      "from": "e4",
+      "to": "e9",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте",
+      "navigable": "both"
+    },
+    {
+      "id": "r6",
+      "kind": "association",
+      "from": "e4",
+      "to": "e3",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте",
+      "navigable": "both"
+    },
+    {
+      "id": "r7",
+      "kind": "association",
+      "from": "e5",
+      "to": "e3",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте",
+      "navigable": "both"
+    },
+    {
+      "id": "r8",
+      "kind": "association",
+      "from": "e1",
+      "to": "e6",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте",
+      "navigable": "both"
+    },
+    {
+      "id": "r9",
+      "kind": "association",
+      "from": "e5",
+      "to": "e6",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте",
+      "navigable": "both"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "DataBase Schema",
+      "type": "class",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

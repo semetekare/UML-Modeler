@@ -1,0 +1,8 @@
+@startuml
+title VOPC Login
+class e1 as "LoginForm" <<boundary>>
+class e3 as "LoginController" <<control>>
+class e4 as "DataAccess" <<control>>
+class e5 as "User" <<entity>>
+class e2 as "MainMenuForm" <<boundary>>
+@enduml

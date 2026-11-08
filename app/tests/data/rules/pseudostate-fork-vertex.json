@@ -1,0 +1,97 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-pseudostate-fork-vertex",
+  "name": "pseudostate_fork_vertex — у разделения один исходящий переход",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "state",
+      "name": "Оплачен"
+    },
+    {
+      "id": "e2",
+      "kind": "state",
+      "name": "Отгружен"
+    },
+    {
+      "id": "e3",
+      "kind": "fork",
+      "name": "",
+      "documentation": "Правило «pseudostate-fork-vertex»: UML 2.5.1, п. 14.5.6.7, констрейнт Pseudostate::fork_vertex: «In a complete StateMachine, a fork Vertex must have at least two outgoing Transitions and exactly one incoming Transition.»\nРазделение в машине состояний разводит поток в разные области, поэтому исходящих переходов нужно не меньше двух, а он один (r2)."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "transition",
+      "from": "e1",
+      "to": "e3"
+    },
+    {
+      "id": "r2",
+      "kind": "transition",
+      "from": "e3",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "pseudostate_fork_vertex — у разделения один исходящий переход",
+      "kind": "state",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 580,
+          "y": 60,
+          "w": 160,
+          "h": 8
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s3",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

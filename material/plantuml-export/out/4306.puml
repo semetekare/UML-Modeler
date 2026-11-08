@@ -1,0 +1,89 @@
+@startuml
+title VOPC RegisterForCourses
+class e3 as "RegistrationController" <<control>> {
+  +confirmDeleteSchedule()
+  +createSchedule(semester : byte)
+  +deleteSchedule(semester : byte)
+  +getCourseOfferingList(semester : byte) : CourseOffering[]
+  +isRegistrationOpened(semester : byte) : boolean
+  +registerForCourses(u : User)
+  +submitSelectedCourses(semester : byte, primary : CourseOffering[4], alt : CourseOffering[2])
+}
+' source e3: image
+abstract class e5 as "Student" <<entity>> {
+  -address : string
+  -id : long {id}
+  -name : string
+  -phones : string[0..2]
+  +createSchedule(semester : byte, primary : CourseOffering[4], alt : CourseOffering[2])
+  +deleteSchedule(semester : byte)
+  +getAddress() : string
+  +getName() : string
+  +hasScheduleForSemester(semester:byte) : boolean
+}
+' source e5: image
+class e8 as "CourseOffering" <<entity>> {
+  -day : DayOfWeek
+  -number : long
+  -/numStudents : byte
+  -pair : byte
+  -semester : byte
+  +removeSchedule(sch : Schedule)
+  +toJSON() : string
+}
+' source e8: image
+class e9 as "Schedule" <<entity>> {
+  -semester : byte
+  +delete()
+  +getCourseOfferingList() : CourseOffering[]
+}
+' source e9: image
+class e1 as "RegistrationForm" <<boundary>> {
+  +confirmDeleteSchedule()
+  +createSchedule(semester : byte)
+  +deleteSchedule(semester : byte)
+  +displayBlankSchedule()
+  +displayCourseString()
+  +displayMessage(msg : string)
+  +requestDeleteScheduleConfirmation()
+  +selectAltCourse(nums : long[2])
+  +selectPrimaryCourse(nums : long[4])
+  +submitSelectedCourses(semester : byte, primary : long[4], alt : long[2])
+}
+' source e1: image
+class e4 as "DataAccess" <<control>> {
+  +getCourseOfferingList(semester : byte) : CourseOffering[]
+  +getStudentByUser(u : User) : Student
+  +getStudentList() : Student[]
+  +getUserByLogin(l : string) : User
+  +updateCourseOfferings(cOffs : CourseOffering[])
+  +updateStudent(s : Student)
+}
+' source e4: image
+class e2 as "MainMenuForm" <<boundary>> {
+  +displayError()
+  +open(user : User)
+  +registerForCourses()
+}
+' source e2: image
+class e6 as "FullTimeStudent" <<entity>> {
+  -graduateDate : Date
+}
+' source e6: image
+class e7 as "PartTimeStudent" <<entity>> {
+  -maxNumCourses : byte
+}
+' source e7: image
+e1 "1" --> "1" e3
+e2 "1" --> "0..1" e3
+e3 "0..1" --> "0..1" e4
+e3 "0..1" --> "0..1" e5 : · → curStud
+e3 "0..1" --> "*" e8
+e4 --> e5
+e1 "0..1" --> "*" e8
+e5 "1" *-- "*" e9
+e6 --|> e5 : {complete, disjoint}
+e7 --|> e5 : {complete, disjoint}
+e8 "0..2" -- "*" e9 : alternative → ·
+e8 "0..4" -- "*" e9 : primary → ·
+@enduml

@@ -1,0 +1,43 @@
+{
+  "key": "generalization",
+  "kind": "connector",
+  "title": "Обобщение",
+  "oneLine": "Обобщение — связь «является разновидностью»: потомок наследует свойства и операции предка.",
+  "draws": "Сплошная линия с полым треугольником на конце предка; треугольник всегда смотрит на общее. Имя не пишется, набор обобщений обозначается пунктирной линией поперёк связей с пометкой «{complete}» или «{disjoint}». Множественное наследование рисуется несколькими треугольниками к разным предкам. Потомок может переопределять операции предка, но не отменять его инварианты.",
+  "differs": "От реализации отличается тем, что наследует и реализацию, и структуру: класс-потомок получает поля предка. Реализация только обязуется выполнить контракт и тела не даёт. От ассоциации — тем, что соединяет классификаторы, а не экземпляры. Если заменить реализацию обобщением, класс унаследует чужое состояние, и модель начнёт утверждать наследование там, где был только контракт. Признак ошибки: треугольник смотрит на потомка — направление наследования перевёрнуто. Обобщение наследует реализацию; если реализация не нужна, это реализация интерфейса.",
+  "clause": {
+    "number": "9.2",
+    "title": "Classifiers",
+    "id": "9.2-classifiers"
+  },
+  "rules": [
+    "generalization-compatible-kinds",
+    "generalization-cycle",
+    "stereotype-generalizes-stereotype"
+  ],
+  "example": "«FullTimeStudent» и «PartTimeStudent» — обобщение «Student».",
+  "plantuml": "A --|> B",
+  "stereotypes": [
+    "implementation",
+    "ORM Implementation",
+    "XSDextension",
+    "XSDrestriction"
+  ],
+  "seeAlso": [
+    "realization",
+    "dependency",
+    "stereotype"
+  ],
+  "sources": [
+    "uml.json#connectors.generalization",
+    "crossrefs.json#notationToClause.generalization",
+    "spec-tree.json#9.2",
+    "rules-uml-2.5.1.json#generalization-compatible-kinds",
+    "rules-uml-2.5.1.json#generalization-cycle",
+    "rules-uml-2.5.1.json#stereotype-generalizes-stereotype",
+    "crossrefs.json#stereotypeToShape",
+    "plantuml-grammar.json#generalization",
+    "DIAGRAM-TYPES.md#3.3"
+  ],
+  "diagrams": "3.3"
+}

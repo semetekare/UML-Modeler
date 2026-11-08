@@ -1,0 +1,41 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-namespace-members-distinguishable-ok",
+  "name": "namespace-members-distinguishable (без нарушения) — члены пространства имён различимы",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Заказ",
+      "documentation": "Правило «namespace-members-distinguishable», контрольный случай без нарушения: члены пространства имён различимы.\nUML 2.5.1, п. 7.8.10.7, констрейнт Namespace::members_distinguishable: «All the members of a Namespace are distinguishable within it.»\nАтрибуты «код» и «дата» различимы по имени.",
+      "attributes": [
+        {
+          "name": "код"
+        },
+        {
+          "name": "дата"
+        }
+      ]
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Диаграмма 1",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 190,
+          "h": 170
+        }
+      ],
+      "links": []
+    }
+  ],
+  "currentDiagramId": "d1"
+}

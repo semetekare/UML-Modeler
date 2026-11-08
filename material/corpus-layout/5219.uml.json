@@ -1,0 +1,256 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5219",
+  "name": "UML-диаграмма классов Student",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Student",
+      "abstract": true,
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "address",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "id",
+          "type": "long",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "nextAvailableId",
+          "type": "long",
+          "isStatic": true
+        },
+        {
+          "vis": "private",
+          "name": "phones",
+          "type": "string[0..2]"
+        }
+      ],
+      "operations": [
+        {
+          "name": "createSchedule(semester : byte, primary : CourseOffering[], alt : CourseOffering[])",
+          "type": "boolean"
+        },
+        {
+          "name": "deleteSchedule(semester : byte)",
+          "type": "boolean"
+        },
+        {
+          "name": "getAddress()",
+          "type": "string"
+        },
+        {
+          "name": "getId()",
+          "type": "long"
+        },
+        {
+          "name": "getName()",
+          "type": "string"
+        },
+        {
+          "name": "getNextAvailableId()",
+          "type": "long",
+          "isStatic": true
+        },
+        {
+          "name": "getPhones()",
+          "type": "string[0..2]"
+        },
+        {
+          "name": "getScheduleCourses(semester : byte)",
+          "type": "CourseOffering[]"
+        },
+        {
+          "name": "hasScheduleForSemester(semester : byte)",
+          "type": "boolean"
+        },
+        {
+          "name": "setAddress(address : string)",
+          "type": "void"
+        },
+        {
+          "name": "setId(id : long)",
+          "type": "void"
+        },
+        {
+          "name": "setName(name : string)",
+          "type": "void"
+        },
+        {
+          "vis": "private",
+          "name": "setNextAvailableId(nextAvailableId : long)",
+          "type": "void",
+          "isStatic": true
+        },
+        {
+          "name": "setPhones(phones : string[0..2])",
+          "type": "void"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "FullTimeStudent",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "graduateDate",
+          "type": "Date"
+        }
+      ],
+      "operations": [
+        {
+          "name": "getGraduateDate()",
+          "type": "Date"
+        },
+        {
+          "name": "setGraduateDate(gd : Date)",
+          "type": "void"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "PartTimeStudent",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "maxNumCourses",
+          "type": "byte"
+        }
+      ],
+      "operations": [
+        {
+          "name": "getMaxNumCourses()",
+          "type": "byte"
+        },
+        {
+          "name": "setMaxNumCourses(mNC : byte)",
+          "type": "void"
+        }
+      ],
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "generalization",
+      "from": "e2",
+      "to": "e1"
+    },
+    {
+      "id": "r2",
+      "kind": "generalization",
+      "from": "e3",
+      "to": "e1"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Student",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 590,
+          "h": 320
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 710,
+          "y": 140,
+          "w": 230,
+          "h": 170
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 240,
+          "y": 440,
+          "w": 240,
+          "h": 170
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s2",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.516
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s3",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "bottom",
+            "t": 0.508
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5219",
+    "figureNo": "5.2.19",
+    "exercise": "5.2.H",
+    "type": "class",
+    "diagramName": "Student",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма классов Student",
+    "notes": "Текст говорит только «придать диаграмме вид, схожий с рисунком 5.2.19». Рисунок показывает абстрактный класс Student с четырнадцатью операциями и пятью атрибутами (в том числе статический nextAvailableId), два потомка с их членами и набор обобщений с ограничением {complete, disjoint}; всё это прочитано с рисунка.",
+    "gaps": [
+      "состав атрибутов и операций в тексте не перечислен: сказано только, что нужно «придать диаграмме вид, схожий с рисунком 5.2.19» — прочитано с рисунка",
+      "статические члены (область действия classifier, подчёркивание) не выражаются — записаны полем isStatic",
+      "абстрактность класса Student не выражается — записана полем abstract",
+      "геттеры и сеттеры создаются автоматически, их имена в тексте не приведены — прочитаны с рисунка"
+    ],
+    "gapIds": [
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e1",
+      "e2",
+      "e3"
+    ]
+  },
+  "sheet": {
+    "w": 1000,
+    "h": 670
+  }
+}

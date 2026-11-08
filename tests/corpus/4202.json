@@ -1,0 +1,224 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4202",
+    "figureNo": "4.2.2",
+    "exercise": "4.2",
+    "type": "sequence",
+    "diagramName": "Login Basic Flow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности Login Basic Flow",
+    "notes": "Состав линий жизни и порядок сообщений названы текстом; дословные сторожевые условия фрагментов opt и alt, подпись входа login() и подписи возвратов result прочитаны с рисунка 4.2.2 — в тексте условия описаны словами («если логин указан верно»).",
+    "gaps": [
+      "сторожевые условия операндов фрагмента alt в тексте описаны словами; дословные значения прочитаны с рисунка",
+      "порядок сообщений задаётся вертикальной геометрией; в структурной записи он передан порядком массива relationships",
+      "какие сообщения покрывает каждый фрагмент, в uml-model/3 не выражается",
+      "тип сообщения close — Destroy — выражен видом связи destroyMessage",
+      "второй операнд фрагмента alt ([else]) в модели не выражается отдельным элементом — записан в имени фрагмента"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.fragmentOperands",
+      "model.messageOrder",
+      "source.guards"
+    ],
+    "imageDerived": [
+      "e7",
+      "e8",
+      "r1",
+      "r5",
+      "r7"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Пользователь"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "lform:LoginForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "menu:MainMenuForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "lctrl:LoginController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "dao:DataAccess",
+      "stereotype": "control"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "curUser:User",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "[getUserByLogin() != NULL]",
+      "operator": "opt",
+      "note": "в тексте условие описано словами «если логин указан верно»; дословная запись прочитана с рисунка; покрытие операндов прочитано с рисунка 4.2.2",
+      "source": "image",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[getUserByLogin() != NULL]",
+          "messages": [
+            "r3",
+            "r4",
+            "r5",
+            "r6",
+            "r7"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "[curUser != NULL && curUser.checkPassword() == TRUE] / [else]",
+      "operator": "alt",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[curUser != NULL && curUser.checkPassword() == TRUE]",
+          "messages": [
+            "r8",
+            "r9"
+          ]
+        },
+        {
+          "id": "o2",
+          "guard": "[else]",
+          "messages": [
+            "r10"
+          ]
+        }
+      ],
+      "note": "два операнда: первый — при верном пароле, второй — [else]; границы операндов прочитаны с рисунка; покрытие операндов прочитано с рисунка 4.2.2",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "login()",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "login()",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "getUserByLogin(l:string):User",
+      "from": "e4",
+      "to": "e5"
+    },
+    {
+      "id": "r4",
+      "kind": "createMessage",
+      "name": "create",
+      "from": "e5",
+      "to": "e6",
+      "note": "внутри операнда opt"
+    },
+    {
+      "id": "r5",
+      "kind": "reply",
+      "name": "result",
+      "from": "e5",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "checkPassword(pswrd:string):boolean",
+      "from": "e4",
+      "to": "e6"
+    },
+    {
+      "id": "r7",
+      "kind": "reply",
+      "name": "result",
+      "from": "e6",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "createMessage",
+      "name": "open(curUser)",
+      "from": "e4",
+      "to": "e3",
+      "note": "первый операнд alt"
+    },
+    {
+      "id": "r9",
+      "kind": "message",
+      "name": "getType():UserType",
+      "from": "e3",
+      "to": "e6",
+      "note": "первый операнд alt"
+    },
+    {
+      "id": "r10",
+      "kind": "message",
+      "name": "displayError()",
+      "from": "e4",
+      "to": "e2",
+      "note": "второй операнд alt"
+    },
+    {
+      "id": "r11",
+      "kind": "destroyMessage",
+      "name": "close",
+      "from": "e4",
+      "to": "e2",
+      "note": "ниже фрагмента alt"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Login Basic Flow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ],
+  "expect": {
+    "operations": [
+      "LoginForm::login()",
+      "LoginForm::displayError()",
+      "LoginForm::close()",
+      "LoginController::login()",
+      "DataAccess::getUserByLogin(l:string):User",
+      "User::checkPassword(pswrd:string):boolean",
+      "User::getType():UserType"
+    ]
+  }
+}

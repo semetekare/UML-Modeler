@@ -1,0 +1,154 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-component-no-nested-classifier-ok",
+  "name": "component_no_nested_classifiers (без нарушения) — компонент, компонент в компоненте, заметка",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Заказ",
+      "documentation": "Правило «component-no-nested-classifier»: UML 2.5.1, п. 11.8.6.7, констрейнт Component::no_nested_classifiers: «Компонент не может вкладывать классификаторы.»\nКонтроль: у компонента «Оплата» внутри класса лежит только заметка (упаковываемое, но не классификатор); у компонента верхнего уровня «Сервис» и у компонента «Ядро» внутри компонента вложенный класс — норма."
+    },
+    {
+      "id": "e2",
+      "kind": "component",
+      "name": "Оплата",
+      "ownerId": "e1"
+    },
+    {
+      "id": "e3",
+      "kind": "note",
+      "name": "",
+      "note": "Заметка на листе"
+    },
+    {
+      "id": "e4",
+      "kind": "component",
+      "name": "Сервис"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "Обработчик",
+      "ownerId": "e4"
+    },
+    {
+      "id": "e6",
+      "kind": "component",
+      "name": "Ядро",
+      "ownerId": "e4"
+    },
+    {
+      "id": "e7",
+      "kind": "class",
+      "name": "Правило",
+      "ownerId": "e6"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e1"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e4",
+      "to": "e1"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "component_no_nested_classifiers (без нарушения)",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 320,
+          "y": 200,
+          "w": 120,
+          "h": 60
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 60,
+          "y": 320,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 320,
+          "y": 320,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 560,
+          "y": 320,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s7",
+          "elementId": "e7",
+          "x": 800,
+          "y": 320,
+          "w": 150,
+          "h": 80
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s4",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

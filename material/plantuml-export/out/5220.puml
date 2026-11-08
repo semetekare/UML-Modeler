@@ -1,0 +1,28 @@
+@startuml
+title Lifecycle
+state e2 as "Active"
+e2 : entry / numStudents=0; isCancelled=FALSE; isClosed=FALSE
+' doc e2: внутренние переходы: getNumber / return number; setNumber(n) / number = n. Действие входа записано полем entry: на рисунке подпись перехода от внешнего начального псевдосостояния. Регионов по записи модели: 2; их состав в пособии не назван — регионы заведены пустыми, имя каждого — умолчание редактора.
+state e3 as "Open"
+' doc e3: внутренний переход: removeSchedule(sch) [numStudent > 0] / numStudent--; roster=roster->excluding(sch) Регионов по записи модели: 1; их состав в пособии не назван — регионы заведены пустыми, имя каждого — умолчание редактора.
+state e4 as "Closed"
+e4 : entry / isClosed = TRUE
+state e5 as "Canceled"
+e5 : entry / isCancelled = TRUE
+' doc e5: на рисунке имя состояния напечатано «Cancelled»; в корпусе оставлено имя из текста пособия
+state e6 <<choice>>
+state e7 <<choice>>
+note as e10
+другие геттеры и сеттеры аналогично
+end note
+[*] --> e2 : / numStudents=0; isCancelled=FALSE; isClosed=FALSE
+[*] --> e3
+e3 --> e6 : addSchedule(sch) / numStudents++; roster=roster->including(sch)
+e6 --> e3 : [numStudents < 10]
+e6 --> e4 : [else]
+e3 --> e7 : close
+e7 --> e4 : [numStudent > 3]
+e7 --> e5 : [else]
+e2 --> e5 : cancel [!isCancelled]
+e2 --> [*] : destroy
+@enduml

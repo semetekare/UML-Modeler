@@ -1,0 +1,803 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5208",
+  "name": "UML-диаграмма классов подсистемы DBAccess",
+  "elements": [
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "User"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "DBAccess",
+      "stereotype": "subsystem proxy",
+      "operations": [
+        {
+          "name": "init()",
+          "type": "boolean"
+        },
+        {
+          "name": "close()",
+          "type": "void"
+        },
+        {
+          "name": "getCourseOfferingList(semester : byte)",
+          "type": "CourseOfferingList"
+        },
+        {
+          "name": "getStudentByUser(u : User)",
+          "type": "Student"
+        },
+        {
+          "name": "getStudentList(semester : byte)",
+          "type": "Student[]"
+        },
+        {
+          "name": "getUserByLogin(l : string)",
+          "type": "User"
+        },
+        {
+          "name": "updateCourseOfferings(cOffs : CourseOffering[])",
+          "type": "boolean"
+        },
+        {
+          "name": "updateStudent(st : Student)",
+          "type": "boolean"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e6",
+      "kind": "class",
+      "name": "DriverManager",
+      "operations": [
+        {
+          "name": "getConnection(url : string, user : string, password : string)",
+          "type": "Connection"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e1",
+      "kind": "interface",
+      "name": "IDBAccess",
+      "operations": [
+        {
+          "name": "init()",
+          "type": "boolean"
+        },
+        {
+          "name": "close()",
+          "type": "void"
+        },
+        {
+          "name": "getCourseOfferingList(semester : byte)",
+          "type": "CourseOfferingList"
+        },
+        {
+          "name": "getStudentByUser(u : User)",
+          "type": "Student"
+        },
+        {
+          "name": "getStudentList(semester : byte)",
+          "type": "Student[]"
+        },
+        {
+          "name": "getUserByLogin(l : string)",
+          "type": "User"
+        },
+        {
+          "name": "updateCourseOfferings(cOffs : CourseOffering[])",
+          "type": "boolean"
+        },
+        {
+          "name": "updateStudent(st : Student)",
+          "type": "boolean"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e7",
+      "kind": "interface",
+      "name": "Connection",
+      "stereotype": "Interface",
+      "operations": [
+        {
+          "name": "close()",
+          "type": "void"
+        },
+        {
+          "name": "createStatement()",
+          "type": "Statement"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "Student"
+    },
+    {
+      "id": "e8",
+      "kind": "interface",
+      "name": "Statement",
+      "stereotype": "Interface",
+      "operations": [
+        {
+          "name": "executeQuery(sql : string)",
+          "type": "ResultSet"
+        },
+        {
+          "name": "executeUpdate(sql : string)",
+          "type": "int"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e9",
+      "kind": "interface",
+      "name": "ResultSet",
+      "stereotype": "Interface",
+      "operations": [
+        {
+          "name": "first()",
+          "type": "boolean"
+        },
+        {
+          "name": "getBoolean(columnLabel : string)",
+          "type": "boolean"
+        },
+        {
+          "name": "getByte(columnLabel : string)",
+          "type": "byte"
+        },
+        {
+          "name": "getDate(columnLabel : string)",
+          "type": "Date"
+        },
+        {
+          "name": "getDouble(columnLabel : string)",
+          "type": "double"
+        },
+        {
+          "name": "getFloat(columnLabel : string)",
+          "type": "float"
+        },
+        {
+          "name": "getInt(columnLabel : string)",
+          "type": "int"
+        },
+        {
+          "name": "getLong(columnLabel : string)",
+          "type": "long"
+        },
+        {
+          "name": "getObject(columnLabel : string)",
+          "type": "Object"
+        },
+        {
+          "name": "getShort(columnLabel : string)",
+          "type": "short"
+        },
+        {
+          "name": "getString(columnLabel : string)",
+          "type": "string"
+        },
+        {
+          "name": "getTime(columnLabel : string)",
+          "type": "Time"
+        },
+        {
+          "name": "isAfterLast()",
+          "type": "boolean"
+        },
+        {
+          "name": "isBeforeFirst()",
+          "type": "boolean"
+        },
+        {
+          "name": "isFirst()",
+          "type": "boolean"
+        },
+        {
+          "name": "isLast()",
+          "type": "boolean"
+        },
+        {
+          "name": "last()",
+          "type": "boolean"
+        },
+        {
+          "name": "next()",
+          "type": "boolean"
+        },
+        {
+          "name": "previous()",
+          "type": "boolean"
+        },
+        {
+          "name": "relative(rows : int)",
+          "type": "boolean"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "CourseOfferingList",
+      "operations": [
+        {
+          "name": "add(e : CourseOffering)",
+          "type": "boolean"
+        },
+        {
+          "name": "add(index : int, e : CourseOffering)",
+          "type": "void"
+        },
+        {
+          "name": "clear()"
+        },
+        {
+          "name": "clone()",
+          "type": "Object"
+        },
+        {
+          "name": "contains(o : Object)",
+          "type": "boolean"
+        },
+        {
+          "name": "equals(o : Object)",
+          "type": "boolean"
+        },
+        {
+          "name": "get(index : int)",
+          "type": "CourseOffering"
+        },
+        {
+          "name": "indexOf(o : Object)",
+          "type": "int"
+        },
+        {
+          "name": "isEmpty()",
+          "type": "boolean"
+        },
+        {
+          "name": "remove(index : int)",
+          "type": "CourseOffering"
+        },
+        {
+          "name": "remove(o : Object)",
+          "type": "boolean"
+        },
+        {
+          "name": "set(index : int, element : CourseOffering)",
+          "type": "CourseOffering"
+        },
+        {
+          "name": "size()",
+          "type": "int"
+        },
+        {
+          "name": "toString()",
+          "type": "string"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e10",
+      "kind": "class",
+      "name": "CourseOffering",
+      "source": "image"
+    },
+    {
+      "id": "e11",
+      "kind": "class",
+      "name": "ArrayList",
+      "documentation": "параметризованный класс; параметр шаблона E виден на рисунке",
+      "templateParameters": [
+        "E"
+      ],
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "realization",
+      "from": "e2",
+      "to": "e1"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e3"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r4",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e5"
+    },
+    {
+      "id": "r5",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e3"
+    },
+    {
+      "id": "r6",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r7",
+      "kind": "composition",
+      "from": "e4",
+      "to": "e3",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "0..1",
+      "note": "ромб со стороны User",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "association",
+      "from": "e2",
+      "to": "e7",
+      "fromMultiplicity": "0..1",
+      "toMultiplicity": "1",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e8",
+      "source": "image"
+    },
+    {
+      "id": "r11",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r12",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e9",
+      "source": "image"
+    },
+    {
+      "id": "r13",
+      "kind": "dependency",
+      "from": "e6",
+      "to": "e7",
+      "source": "image"
+    },
+    {
+      "id": "r14",
+      "kind": "dependency",
+      "from": "e7",
+      "to": "e8",
+      "source": "image"
+    },
+    {
+      "id": "r15",
+      "kind": "dependency",
+      "from": "e8",
+      "to": "e9",
+      "source": "image"
+    },
+    {
+      "id": "r16",
+      "kind": "dependency",
+      "from": "e5",
+      "to": "e10",
+      "source": "image"
+    },
+    {
+      "id": "r17",
+      "kind": "dependency",
+      "stereotype": "bind",
+      "from": "e5",
+      "to": "e11",
+      "note": "подпись на рисунке: <<bind>> <E->CourseOffering>",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "DBAccess",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e2",
+          "x": 550,
+          "y": 510,
+          "w": 380,
+          "h": 170
+        },
+        {
+          "id": "s2",
+          "elementId": "e1",
+          "x": 610,
+          "y": 180,
+          "w": 380,
+          "h": 150
+        },
+        {
+          "id": "s3",
+          "elementId": "e5",
+          "x": 60,
+          "y": 470,
+          "w": 380,
+          "h": 240
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 1030,
+          "y": 510,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s5",
+          "elementId": "e7",
+          "x": 150,
+          "y": 800,
+          "w": 200,
+          "h": 110
+        },
+        {
+          "id": "s6",
+          "elementId": "e3",
+          "x": 1030,
+          "y": 770,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s7",
+          "elementId": "e8",
+          "x": 550,
+          "y": 780,
+          "w": 260,
+          "h": 110
+        },
+        {
+          "id": "s8",
+          "elementId": "e6",
+          "x": 500,
+          "y": 1000,
+          "w": 470,
+          "h": 170
+        },
+        {
+          "id": "s9",
+          "elementId": "e9",
+          "x": 110,
+          "y": 60,
+          "w": 280,
+          "h": 350
+        },
+        {
+          "id": "s10",
+          "elementId": "e10",
+          "x": 1030,
+          "y": 150,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s11",
+          "elementId": "e11",
+          "x": 160,
+          "y": 1000,
+          "w": 190,
+          "h": 170
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "top",
+            "t": 0.579
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "bottom",
+            "t": 0.421
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "bottom",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "top",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s2",
+            "side": "bottom",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "top",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l7",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s4",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l8",
+          "relId": "r8",
+          "from": {
+            "shapeId": "s1",
+            "side": "bottom",
+            "t": 0.75
+          },
+          "to": {
+            "shapeId": "s8",
+            "side": "top",
+            "t": 0.75
+          }
+        },
+        {
+          "id": "l9",
+          "relId": "r9",
+          "from": {
+            "shapeId": "s1",
+            "side": "left",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l10",
+          "relId": "r10",
+          "from": {
+            "shapeId": "s1",
+            "side": "bottom",
+            "t": 0.342
+          },
+          "to": {
+            "shapeId": "s7",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l11",
+          "relId": "r11",
+          "from": {
+            "shapeId": "s1",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.521
+          }
+        },
+        {
+          "id": "l12",
+          "relId": "r12",
+          "from": {
+            "shapeId": "s1",
+            "side": "left",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s9",
+            "side": "right",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l13",
+          "relId": "r13",
+          "from": {
+            "shapeId": "s8",
+            "side": "left",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l14",
+          "relId": "r14",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.409
+          },
+          "to": {
+            "shapeId": "s7",
+            "side": "left",
+            "t": 0.591
+          }
+        },
+        {
+          "id": "l15",
+          "relId": "r15",
+          "from": {
+            "shapeId": "s7",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "s9",
+            "side": "bottom"
+          }
+        },
+        {
+          "id": "l16",
+          "relId": "r16",
+          "from": {
+            "shapeId": "s3",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s10",
+            "side": "bottom"
+          },
+          "waypoints": [
+            [
+              460,
+              600
+            ],
+            [
+              460,
+              400
+            ],
+            [
+              1125,
+              400
+            ]
+          ]
+        },
+        {
+          "id": "l17",
+          "relId": "r17",
+          "from": {
+            "shapeId": "s3",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s11",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5208",
+    "figureNo": "5.2.8",
+    "exercise": "5.2.F",
+    "type": "class",
+    "diagramName": "DBAccess",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма классов подсистемы DBAccess",
+    "notes": "Текст перечисляет правки по шагам и говорит, что сигнатуры интерфейса должны совпадать с классом DBAccess. Рисунок 5.2.8 показывает одиннадцать фигур (добавлены DriverManager, Connection, Statement, ResultSet, CourseOffering и параметризованный ArrayList с параметром E), сигнатуры операций DBAccess, интерфейсов JDBC и CourseOfferingList и семнадцать связей — всё это прочитано с рисунка.",
+    "gaps": [
+      "текст перечисляет правки по шагам, но не полный состав классов и связей: набор зависимостей восстановлен по этим правкам и уточнён по рисунку",
+      "сигнатуры операций интерфейса в тексте не приведены целиком — сказано, что они должны совпадать с сигнатурами класса DBAccess (см. рис. 5.2.8)",
+      "привязка параметра шаблона (<<bind>> <E->CourseOffering>) не выражается в uml-model/3 — записана подписью связи"
+    ],
+    "gapIds": [
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e1",
+      "e2",
+      "e5"
+    ]
+  },
+  "sheet": {
+    "w": 1280,
+    "h": 1230
+  }
+}

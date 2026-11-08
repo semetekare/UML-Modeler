@@ -1,0 +1,61 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-instance-slot-defining-feature",
+  "name": "instance_defining_feature — слот называет чужую характеристику",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Заказ",
+      "attributes": [
+        {
+          "name": "номер"
+        },
+        {
+          "name": "сумма"
+        }
+      ]
+    },
+    {
+      "id": "e2",
+      "kind": "object",
+      "name": ":Заказ",
+      "documentation": "Правило «instance-slot-defining-feature»: UML 2.5.1, п. 9.9.9.6, констрейнт InstanceSpecification::defining_feature: «definingFeature каждого слота — это структурная характеристика, связанная с классификатором спецификации экземпляра, включая прямые атрибуты, унаследованные атрибуты, закрытые атрибуты в обобщениях и концы-члены ассоциаций, но за исключением переопределённых структурных характеристик.»\nСлот «скидка» называет характеристику, которой у класса «Заказ» нет: в нём объявлены только «номер» и «сумма».",
+      "classifierId": "e1",
+      "slots": [
+        {
+          "name": "скидка",
+          "default": "10"
+        }
+      ]
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "instance_defining_feature — слот называет чужую характеристику",
+      "kind": "object",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 140
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 200,
+          "h": 100
+        }
+      ],
+      "links": []
+    }
+  ],
+  "currentDiagramId": "d1"
+}

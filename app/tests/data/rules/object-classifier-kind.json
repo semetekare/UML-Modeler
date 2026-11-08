@@ -1,0 +1,85 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-object-classifier-kind",
+  "name": "object-classifier-kind — объект объявил классификатором пакет",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Заказ",
+      "attributes": [
+        {
+          "name": "номер"
+        }
+      ]
+    },
+    {
+      "id": "e2",
+      "kind": "package",
+      "name": "Подсистема заказов"
+    },
+    {
+      "id": "e3",
+      "kind": "object",
+      "name": ":Заказ",
+      "documentation": "Правило «object-classifier-kind» — совет практики моделирования: пункта UML у него нет, есть только объяснение, почему такую модель трудно читать.\nОбъект «:Заказ» называет классификатором пакет «Подсистема заказов»: пакет — не тип, экземпляров у него не бывает.",
+      "classifierId": "e2"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "association",
+      "from": "e1",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "object-classifier-kind — объект объявил классификатором пакет",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 240,
+          "h": 160
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 620,
+          "y": 60,
+          "w": 200,
+          "h": 100
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

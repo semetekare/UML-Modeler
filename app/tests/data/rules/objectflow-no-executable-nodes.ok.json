@@ -1,0 +1,99 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-objectflow-no-executable-nodes-ok",
+  "name": "objectflow_no_executable_nodes (без нарушения) — поток между узлами объектов",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "object",
+      "name": "Заказ"
+    },
+    {
+      "id": "e2",
+      "kind": "objectNode",
+      "name": "Заказы в обработке"
+    },
+    {
+      "id": "e3",
+      "kind": "object",
+      "name": "Заказ"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "objectFlow",
+      "name": "заказ",
+      "from": "e1",
+      "to": "e2",
+      "documentation": "Правило «objectflow-no-executable-nodes»: UML 2.5.1, п. 15.7.22.6, констрейнт ObjectFlow::no_executable_nodes: «ObjectFlows may not have ExecutableNodes at either end.»\nКонтроль: оба конца — узлы объектов, поток объектов между ними законен."
+    },
+    {
+      "id": "r2",
+      "kind": "objectFlow",
+      "name": "заказ",
+      "from": "e2",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "objectflow_no_executable_nodes (без нарушения) — поток между узлами объектов",
+      "kind": "activity",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 160,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 120,
+          "h": 50
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 580,
+          "y": 60,
+          "w": 160,
+          "h": 80
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

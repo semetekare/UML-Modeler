@@ -1,0 +1,15 @@
+# Build output: `node build.mjs` copies the site into dist/ on every run.
+# It is regenerated, never edited, and must not be committed.
+dist/
+
+# Working screenshots from ./serve.sh --screenshot and ad-hoc renders.
+shots/
+
+# Python bytecode from tools/make-icons.py.
+__pycache__/
+*.pyc
+
+# Editor and OS leftovers.
+.DS_Store
+*~
+*.swp

@@ -1,0 +1,43 @@
+@startuml
+title VOPC Login
+class e3 as "LoginController" <<control>> {
+  +login()
+}
+' source e3: image
+class e5 as "User" <<entity>> {
+  -login : string {id}
+  -passwordHash : long[2]
+  -type : UserType
+  +checkPassword()
+  +getType() : UserType
+}
+' source e5: image
+class e4 as "DataAccess" <<control>> {
+  +getUserByLogin()
+  +getStudentByUser()
+  +getCourseOfferingList()
+  +updateStudent()
+  +updateCourseOfferings()
+  +getStudentList()
+}
+' doc e4: на рисунке две строки операций обрезаны многоточием: «getCourseOfferingLi…» и «updateCourseOfferi…»; полные имена взяты из корпуса рис. 4.4.3 и 5.2.8
+' source e4: image
+class e2 as "MainMenuForm" <<boundary>> {
+  +open(user : User)
+  +registerForCourses()
+  +displayError()
+}
+' source e2: image
+class e1 as "LoginForm" <<boundary>> {
+  +login()
+  +displayError()
+  +close()
+}
+' source e1: image
+e1 -- e3
+e3 --> e4
+e3 --> e5
+e3 --> e2
+e4 --> e5
+e2 --> e5
+@enduml

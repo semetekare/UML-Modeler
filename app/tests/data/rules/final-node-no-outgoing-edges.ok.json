@@ -1,0 +1,66 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-final-node-no-outgoing-edges-ok",
+  "name": "final_node_no_outgoing_edges (без нарушения) — конечный узел без исходящих",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "action",
+      "name": "Отгрузить"
+    },
+    {
+      "id": "e2",
+      "kind": "final",
+      "name": "",
+      "documentation": "Правило «final-node-no-outgoing-edges»: UML 2.5.1, п. 15.7.15.5, констрейнт FinalNode::no_outgoing_edges: «A FinalNode has no outgoing ActivityEdges.»\nКонтроль: ноль исходящих рёбер — это и есть норма для конечного узла, граница «только что нарисовано» здесь не нужна."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "controlFlow",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "final_node_no_outgoing_edges (без нарушения) — конечный узел без исходящих",
+      "kind": "activity",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 20,
+          "h": 20
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

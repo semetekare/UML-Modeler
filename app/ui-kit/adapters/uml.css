@@ -1,0 +1,123 @@
+/*
+ * UML Class Modeler adapter.
+ *
+ *   <link rel="stylesheet" href="ui-kit/css/kit.css">
+ *   <link rel="stylesheet" href="ui-kit/adapters/uml.css">
+ *   <script type="module"> initTheme({ app: 'uml' }); </script>
+ *
+ * Remaps the kit's tokens onto the app's generic variables (src/styles.css
+ * defines light values under :root; this overrides them whenever the kit
+ * runtime has set data-sc, so the HUD skins re-theme the app for free).
+ * The diagram sheet is NOT themed: it stays Visual Paradigm white with
+ * black ink on screen exactly as it exports (see src/styles.css).
+ */
+
+/* This app's identity colour (tokens.css has no "uml" entry of its own). */
+[data-app="uml"] {
+  --sc-app: #5b6ee1;
+  --sc-app-rgb: 91 110 225;
+}
+
+html[data-sc] {
+  --bg: var(--sc-bg);
+  --panel: var(--sc-panel);
+  --panel-2: var(--sc-panel-2);
+  --line: var(--sc-line-strong);
+  --line-soft: var(--sc-line);
+  --ink: var(--sc-text);
+  --ink-soft: var(--sc-text-2);
+  --ink-faint: var(--sc-text-3);
+  --accent: var(--sc-accent);
+  --accent-soft: rgb(var(--sc-accent-rgb) / 0.14);
+  --err: var(--sc-danger);
+  --warn: var(--sc-warning);
+  --ok: var(--sc-success);
+  --font: var(--sc-font-ui);
+  --mono: var(--sc-font-mono);
+  --shadow-1: 0 0 0 1px rgb(0 0 0 / 0.06), 0 1px 3px rgb(0 0 0 / 0.08);
+}
+
+html[data-sc] #toolbar .brand {
+  font-family: var(--sc-font-display);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sc-app);
+}
+
+html[data-sc] .btn {
+  border-radius: 0;
+  font-family: var(--sc-font-display);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+}
+html[data-sc] .btn:hover:not(:disabled) {
+  box-shadow: 0 0 10px rgb(var(--sc-glow-rgb) / 0.35);
+}
+html[data-sc] .btn.on {
+  background: rgb(var(--sc-accent-rgb) / 0.25);
+  border-color: var(--accent);
+  color: var(--sc-text);
+}
+
+html[data-sc] .menu-pop {
+  border-radius: 0;
+  background: rgb(var(--sc-panel-2-rgb) / 0.96);
+  border-color: var(--line-strong);
+  box-shadow: 0 14px 40px rgb(0 0 0 / 0.6), 0 0 24px rgb(var(--sc-glow-rgb) / 0.08);
+}
+
+html[data-sc] .panel-tabs .tab {
+  font-family: var(--sc-font-display);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* The palette tile: a pressed thing, so it follows the kit's grammar. */
+html[data-sc] .pal-item {
+  border-radius: 0;
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+}
+
+/* ------------------------------------------------------------------ */
+/* macOS skin: the platform's own shapes in place of the HUD ones.     */
+/* ------------------------------------------------------------------ */
+
+html[data-sc="mac"] #toolbar .brand {
+  font-family: var(--sc-font-ui);
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
+}
+html[data-sc="mac"] .btn {
+  clip-path: none;
+  border-radius: var(--sc-radius);
+  font-family: var(--sc-font-ui);
+  font-size: 13px;
+  letter-spacing: normal;
+  text-transform: none;
+}
+html[data-sc="mac"] .btn:hover:not(:disabled) {
+  box-shadow: none;
+}
+html[data-sc="mac"] .btn.on {
+  background: var(--sc-accent);
+  border-color: var(--sc-accent);
+  color: #fff;
+}
+html[data-sc="mac"] .menu-pop {
+  border-radius: 8px;
+  box-shadow: var(--sc-shadow-2, 0 8px 24px rgba(0, 0, 0, 0.16));
+}
+html[data-sc="mac"] .panel-tabs .tab {
+  font-family: var(--sc-font-ui);
+  font-size: 12px;
+  letter-spacing: normal;
+  text-transform: none;
+}
+html[data-sc="mac"] .pal-item {
+  clip-path: none;
+  border-radius: var(--sc-radius);
+}

@@ -1,0 +1,30 @@
+@startuml
+title TransferSchedulesData Subflow
+actor e1 as "Расчётная система"
+participant e2 as "crctrl:CloseRegistrationController" <<control>>
+participant e3 as "dao:DataAccess" <<control>>
+collections e4 as "studlist[i]:Student" <<entity>>
+collections e5 as "cOff[j]:CourseOffering" <<entity>>
+collections e6 as "studlist[i].schedule[s]:Schedule" <<entity>>
+participant e7 as "bs:BillingSystem" <<boundary>>
+opt bs.startTransferData()
+e2 -> e3 : getStudentList() : Student[]
+e2 -> e7 : startTransferData()
+e7 ->> e1 : isReady
+end
+loop for all students in list
+e2 -> e4 : getName() : string
+e2 -> e4 : getAddress() : string
+e2 -> e4 : getScheduleCourses(semester : byte)
+end
+loop (1, 10) [готовность к приёму данных не подтверждена
+e4 -> e6 : getCourseOfferingList() : CourseOffering[]
+e2 -> e7 : sendStudentData(name : string, address : string, cOff : CourseOffering[])
+e7 -> e5 : toJSON() : string
+end
+loop for all cOff[j]
+e7 ->> e1 : sendStudentData
+e2 -> e7 : finishTransferData()
+e7 ->> e1 : endOfData
+end
+@enduml

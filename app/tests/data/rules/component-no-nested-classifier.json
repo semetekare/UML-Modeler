@@ -1,0 +1,96 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-component-no-nested-classifier",
+  "name": "component_no_nested_classifiers — у компонента внутри класса вложенный класс",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Заказ",
+      "documentation": "Правило «component-no-nested-classifier»: UML 2.5.1, п. 11.8.6.7, констрейнт Component::no_nested_classifiers: «Компонент не может вкладывать классификаторы.»\nКомпонент «Оплата» вложен в класс «Заказ» и содержит собственный класс «Строка заказа»: у компонента внутри класса классификаторов быть не может."
+    },
+    {
+      "id": "e2",
+      "kind": "component",
+      "name": "Оплата",
+      "documentation": "Правило «component-no-nested-classifier»: UML 2.5.1, п. 11.8.6.7, констрейнт Component::no_nested_classifiers: «Компонент не может вкладывать классификаторы.»\nКомпонент «Оплата» лежит внутри класса «Заказ» (через пакет «Внутренние типы») и содержит собственный класс «Строка заказа»: у компонента, который есть часть класса, классификаторов быть не может. Пакет по дороге взят нарочно: он не классификатор, поэтому соседний констрейнт о packagedElement здесь молчит, и фикстура доказывает одно нарушение, а не два.",
+      "ownerId": "e4"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "Строка заказа",
+      "ownerId": "e2"
+    },
+    {
+      "id": "e4",
+      "kind": "package",
+      "name": "Внутренние типы",
+      "ownerId": "e1"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e1"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "component_no_nested_classifiers — у компонента внутри класса вложенный класс",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 560,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 60,
+          "y": 220,
+          "w": 200,
+          "h": 100
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

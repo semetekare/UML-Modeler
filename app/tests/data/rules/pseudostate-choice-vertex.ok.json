@@ -1,0 +1,97 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-pseudostate-choice-vertex-ok",
+  "name": "pseudostate_choice_vertex (без нарушения) — вход и выход",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "state",
+      "name": "Проверка"
+    },
+    {
+      "id": "e2",
+      "kind": "state",
+      "name": "Оплачен"
+    },
+    {
+      "id": "e3",
+      "kind": "choice",
+      "name": "",
+      "documentation": "Правило «pseudostate-choice-vertex»: UML 2.5.1, п. 14.5.6.7, констрейнт Pseudostate::choice_vertex: «In a complete statemachine, a choice Vertex must have at least one incoming and one outgoing Transition.»\nКонтроль: у выбора есть и вход, и выход."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "transition",
+      "from": "e1",
+      "to": "e3"
+    },
+    {
+      "id": "r2",
+      "kind": "transition",
+      "from": "e3",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "pseudostate_choice_vertex (без нарушения) — вход и выход",
+      "kind": "state",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 580,
+          "y": 60,
+          "w": 30,
+          "h": 30
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s3",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

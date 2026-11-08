@@ -1,0 +1,102 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4305",
+    "figureNo": "4.3.5",
+    "exercise": "4.3.A",
+    "type": "sequence",
+    "diagramName": "DisplayCourseOfferings Subflow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности DisplayCourseOfferings Subflow",
+    "notes": "Состав линий жизни и сообщения прочитаны с рисунка 4.3.5: три линии жизни (rform:RegistrationForm «boundary», rctrl:RegistrationController «control», cOff[i]:CourseOffering «entity», множественная), четыре сообщения и фрагмент loop с условием [for all cOff[i]], покрывающий сообщения 3–4. Текст пособия называет только фрагмент loop и то, что на диаграмму ссылаются через Interaction Use; остальное — с рисунка.",
+    "gaps": [
+      "сторожевое условие цикла в тексте не приведено — прочитано с рисунка: [for all cOff[i]]",
+      "покрытие сообщений фрагментом loop не выражается в uml-model/3",
+      "множественность линии жизни (Multi-object) не выражается — записана multiObject"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.multiObject",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e1"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "fragment",
+      "name": "[for all cOff[i]]",
+      "operator": "loop",
+      "note": "цикл типа for; условие прочитано с рисунка 4.3.5, в тексте его нет",
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "rform:RegistrationForm",
+      "stereotype": "boundary",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "rctrl:RegistrationController",
+      "stereotype": "control",
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "cOff[i]:CourseOffering",
+      "stereotype": "entity",
+      "multiObject": true,
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "getCourseOfferingList(semester : byte) : CourseOffering[]",
+      "from": "e2",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "reply",
+      "name": "cOff[]",
+      "from": "e3",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "toJSON() : string",
+      "from": "e2",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "displayCourseString()",
+      "from": "e2",
+      "to": "e2",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "DisplayCourseOfferings Subflow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

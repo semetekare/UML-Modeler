@@ -1,0 +1,499 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-4402",
+  "name": "UML-диаграмма последовательности TransferSchedulesData Subflow",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Расчётная система"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "crctrl:CloseRegistrationController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "dao:DataAccess",
+      "stereotype": "control"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "studlist[i]:Student",
+      "stereotype": "entity",
+      "multiObject": true
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "cOff[j]:CourseOffering",
+      "stereotype": "entity",
+      "multiObject": true
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "studlist[i].schedule[s]:Schedule",
+      "stereotype": "entity",
+      "multiObject": true
+    },
+    {
+      "id": "e7",
+      "kind": "lifeline",
+      "name": "bs:BillingSystem",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "[bs.startTransferData()]",
+      "documentation": "фрагмент opt; условие прочитано с рисунка",
+      "operator": "opt",
+      "source": "image"
+    },
+    {
+      "id": "e9",
+      "kind": "fragment",
+      "name": "[for all students in list]",
+      "documentation": "цикл по студентам; условие прочитано с рисунка",
+      "operator": "loop",
+      "source": "image"
+    },
+    {
+      "id": "e10",
+      "kind": "fragment",
+      "name": "(1, 10) [готовность к приёму данных не подтверждена]",
+      "documentation": "верхний цикл ожидания готовности; границы итераций прочитаны с рисунка",
+      "operator": "loop",
+      "source": "image"
+    },
+    {
+      "id": "e11",
+      "kind": "fragment",
+      "name": "[for all cOff[j]]",
+      "documentation": "цикл по курсам внутри передачи данных студента",
+      "operator": "loop",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "getStudentList() : Student[]",
+      "from": "e2",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "startTransferData()",
+      "from": "e2",
+      "to": "e7",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "isReady",
+      "from": "e7",
+      "to": "e1",
+      "asynchronous": true,
+      "note": "асинхронное сообщение",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "getName() : string",
+      "from": "e2",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "getAddress() : string",
+      "from": "e2",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "getScheduleCourses(semester : byte)",
+      "from": "e2",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "message",
+      "name": "getCourseOfferingList() : CourseOffering[]",
+      "from": "e4",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "message",
+      "name": "sendStudentData(name : string, address : string, cOff : CourseOffering[])",
+      "from": "e2",
+      "to": "e7",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "message",
+      "name": "toJSON() : string",
+      "from": "e7",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "message",
+      "name": "sendStudentData",
+      "from": "e7",
+      "to": "e1",
+      "asynchronous": true,
+      "note": "асинхронное сообщение",
+      "source": "image"
+    },
+    {
+      "id": "r11",
+      "kind": "message",
+      "name": "finishTransferData()",
+      "from": "e2",
+      "to": "e7",
+      "source": "image"
+    },
+    {
+      "id": "r12",
+      "kind": "message",
+      "name": "endOfData",
+      "from": "e7",
+      "to": "e1",
+      "asynchronous": true,
+      "note": "асинхронное сообщение",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "TransferSchedulesData Subflow",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 230,
+          "h": 810
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 350,
+          "y": 60,
+          "w": 230,
+          "h": 810
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 640,
+          "y": 60,
+          "w": 230,
+          "h": 810
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 930,
+          "y": 60,
+          "w": 230,
+          "h": 810
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 1220,
+          "y": 60,
+          "w": 230,
+          "h": 810
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 1510,
+          "y": 60,
+          "w": 230,
+          "h": 810
+        },
+        {
+          "id": "s7",
+          "elementId": "e7",
+          "x": 1800,
+          "y": 60,
+          "w": 230,
+          "h": 810
+        },
+        {
+          "id": "s8",
+          "elementId": "e8",
+          "x": 60,
+          "y": 150,
+          "w": 1970,
+          "h": 140
+        },
+        {
+          "id": "s9",
+          "elementId": "e9",
+          "x": 60,
+          "y": 330,
+          "w": 1970,
+          "h": 140
+        },
+        {
+          "id": "s10",
+          "elementId": "e10",
+          "x": 60,
+          "y": 510,
+          "w": 1970,
+          "h": 140
+        },
+        {
+          "id": "s11",
+          "elementId": "e11",
+          "x": 60,
+          "y": 690,
+          "w": 1970,
+          "h": 140
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.148
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.148
+          },
+          "y": 180
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.185
+          },
+          "to": {
+            "shapeId": "s7",
+            "side": "left",
+            "t": 0.185
+          },
+          "y": 210
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s7",
+            "side": "left",
+            "t": 0.222
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.222
+          },
+          "y": 240
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.37
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.37
+          },
+          "y": 360
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.407
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.407
+          },
+          "y": 390
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.444
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.444
+          },
+          "y": 420
+        },
+        {
+          "id": "l7",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.593
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.593
+          },
+          "y": 540
+        },
+        {
+          "id": "l8",
+          "relId": "r8",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.63
+          },
+          "to": {
+            "shapeId": "s7",
+            "side": "left",
+            "t": 0.63
+          },
+          "y": 570
+        },
+        {
+          "id": "l9",
+          "relId": "r9",
+          "from": {
+            "shapeId": "s7",
+            "side": "left",
+            "t": 0.667
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.667
+          },
+          "y": 600
+        },
+        {
+          "id": "l10",
+          "relId": "r10",
+          "from": {
+            "shapeId": "s7",
+            "side": "left",
+            "t": 0.815
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.815
+          },
+          "y": 720
+        },
+        {
+          "id": "l11",
+          "relId": "r11",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.852
+          },
+          "to": {
+            "shapeId": "s7",
+            "side": "left",
+            "t": 0.852
+          },
+          "y": 750
+        },
+        {
+          "id": "l12",
+          "relId": "r12",
+          "from": {
+            "shapeId": "s7",
+            "side": "left",
+            "t": 0.889
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.889
+          },
+          "y": 780
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "4402",
+    "figureNo": "4.4.2",
+    "exercise": "4.4",
+    "type": "sequence",
+    "diagramName": "TransferSchedulesData Subflow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности TransferSchedulesData Subflow",
+    "notes": "Семь линий жизни и два фрагмента (opt, loop) названы текстом; двенадцать сообщений, ещё два фрагмента loop, сторожевое условие и границы итераций loop (1, 10) прочитаны с рисунка 4.4.2 — в тексте сообщения названы только по типу (длительные, асинхронные).",
+    "gaps": [
+      "сторожевые условия и границы итераций фрагментов loop/opt в тексте не приведены — прочитаны с рисунка",
+      "асинхронность сообщения не выражается в uml-model/3 — записана полем asynchronous",
+      "множественность линий жизни (Multi-object) не выражается — записана multiObject",
+      "вложенность фрагментов (loop внутри opt) и покрытие сообщений не выражаются"
+    ],
+    "gapIds": [
+      "model.async",
+      "model.fragmentCoverage",
+      "model.multiObject",
+      "source.guards"
+    ],
+    "imageDerived": [
+      "e8",
+      "e9"
+    ]
+  },
+  "sheet": {
+    "w": 2090,
+    "h": 930
+  }
+}

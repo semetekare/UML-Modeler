@@ -1,0 +1,155 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4302",
+    "figureNo": "4.3.2",
+    "exercise": "4.3",
+    "type": "sequence",
+    "diagramName": "RegisterForCourses Basic Flow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Начальный вид UML-диаграммы последовательности RegisterForCourses Basic Flow",
+    "notes": "Начальный вид основного потока: фрагмент alt с двумя операндами, в нижнем операнде создающее сообщение open от меню к форме регистрации.",
+    "gaps": [
+      "сторожевые условия операндов opt и alt в тексте не приведены",
+      "имена сообщений к объекту доступа к данным, кроме создающего, в тексте не названы",
+      "покрытие сообщений операндами фрагментов не выражается"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "source.guards",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Студент"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "menu:MainMenuForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "rform:RegistrationForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "rctrl:RegistrationController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "dao:DataAccess",
+      "stereotype": "control"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "curStud:Student",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "opt"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "alt",
+      "note": "два операнда"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "registerForCourses",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "isRegistrationOpened",
+      "from": "e4",
+      "to": "e4",
+      "note": "рефлексивное сообщение"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "не названо в тексте",
+      "from": "e4",
+      "to": "e5",
+      "note": "внутри операнда opt: запрос сведений о студенте"
+    },
+    {
+      "id": "r5",
+      "kind": "createMessage",
+      "name": "create",
+      "from": "e5",
+      "to": "e6",
+      "note": "внутри операнда opt"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "hasScheduleForSemester(semester):boolean",
+      "from": "e4",
+      "to": "e6"
+    },
+    {
+      "id": "r7",
+      "kind": "reply",
+      "name": "",
+      "from": "e4",
+      "to": "e2",
+      "note": "ниже фрагмента opt"
+    },
+    {
+      "id": "r8",
+      "kind": "createMessage",
+      "name": "open",
+      "from": "e2",
+      "to": "e3",
+      "note": "нижний операнд фрагмента alt"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "RegisterForCourses Basic Flow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ],
+  "expect": {
+    "operations": [
+      "DataAccess::getStudentByUser(u:User):Student",
+      "MainMenuForm::displayError()",
+      "Student::hasScheduleForSemester(semester):boolean",
+      "RegistrationController::registerForCourses",
+      "RegistrationController::isRegistrationOpened"
+    ]
+  }
+}

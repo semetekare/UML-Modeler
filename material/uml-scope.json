@@ -1,0 +1,163 @@
+{
+  "_note": "Область переноса: все типы UML 2.5, которые есть в Visual Paradigm 17.3. Собрано из openapi.jar (IDiagramTypeConstants, I*DiagramUIModel) и vp163template/stereotypes.xml. Это функциональная цель проекта, а не описание внешнего вида.",
+  "source": {
+    "diagram_api": "~/Visual_Paradigm_CE_17.3/lib/openapi.jar",
+    "stereotypes": "vp163template/stereotypes.xml",
+    "evidence": [
+      "ev_c9d9355094f612930cce255b7897b3feefeebccbd24029ad11a4c98881ebcabb",
+      "ev_52100891b8976df94133497f8401610b5d12938277e9ce63980263c50b897fb0"
+    ]
+  },
+  "uml_2_5_types": [
+    {
+      "id": "class",
+      "vp_constant": "ClassDiagram",
+      "vp_ui_model": "IClassDiagramUIModel",
+      "kind": "structural",
+      "what": "Классы, интерфейсы, перечисления, пакеты, ассоциации, обобщения",
+      "status": "не начато"
+    },
+    {
+      "id": "component",
+      "vp_constant": "ComponentDiagram",
+      "vp_ui_model": "IComponentDiagramUIModel",
+      "kind": "structural",
+      "what": "Компоненты, интерфейсы, порты, зависимости",
+      "status": "не начато"
+    },
+    {
+      "id": "composite",
+      "vp_constant": "CompositeStructureDiagram",
+      "vp_ui_model": "ICompositeStructureDiagramUIModel",
+      "kind": "structural",
+      "what": "Части, порты, коннекторы внутри класса",
+      "status": "не начато"
+    },
+    {
+      "id": "deployment",
+      "vp_constant": "DeploymentDiagram",
+      "vp_ui_model": "IDeploymentDiagramUIModel",
+      "kind": "structural",
+      "what": "Узлы, артефакты, соединения",
+      "status": "не начато"
+    },
+    {
+      "id": "object",
+      "vp_constant": "ObjectDiagram",
+      "vp_ui_model": "IObjectDiagramUIModel",
+      "kind": "structural",
+      "what": "Экземпляры, слоты значений, ссылки",
+      "status": "не начато"
+    },
+    {
+      "id": "package",
+      "vp_constant": "PackageDiagram",
+      "vp_ui_model": "IPackageDiagramUIModel",
+      "kind": "structural",
+      "what": "Пакеты и зависимости между ними",
+      "status": "не начато"
+    },
+    {
+      "id": "profile",
+      "vp_constant": "ProfileDiagram",
+      "vp_ui_model": "IProfileDiagramUIModel",
+      "kind": "structural",
+      "what": "Стереотипы, метаклассы, расширения",
+      "status": "не начато"
+    },
+    {
+      "id": "activity",
+      "vp_constant": "ActivityDiagram",
+      "vp_ui_model": "IActivityDiagramUIModel",
+      "kind": "behavioural",
+      "what": "Действия, решения, потоки, дорожки",
+      "status": "не начато"
+    },
+    {
+      "id": "state",
+      "vp_constant": "StateDiagram",
+      "vp_ui_model": "IStateDiagramUIModel",
+      "kind": "behavioural",
+      "what": "Состояния, переходы, псевдосостояния",
+      "status": "не начато"
+    },
+    {
+      "id": "usecase",
+      "vp_constant": "UseCaseDiagram",
+      "vp_ui_model": "IUseCaseDiagramUIModel",
+      "kind": "behavioural",
+      "what": "Актёры, варианты использования, subject",
+      "status": "не начато"
+    },
+    {
+      "id": "sequence",
+      "vp_constant": "InteractionDiagram",
+      "vp_ui_model": "IInteractionDiagramUIModel",
+      "kind": "behavioural",
+      "what": "Линии жизни, сообщения, фрагменты",
+      "status": "не начато"
+    },
+    {
+      "id": "communication",
+      "vp_constant": "CommunicationDiagram",
+      "vp_ui_model": "ICommunicationDiagramUIModel",
+      "kind": "behavioural",
+      "what": "Объекты и нумерованные сообщения",
+      "status": "не начато"
+    },
+    {
+      "id": "timing",
+      "vp_constant": "TimingDiagram",
+      "vp_ui_model": "ITimingDiagramUIModel",
+      "kind": "behavioural",
+      "what": "Шкалы времени, состояния линий",
+      "status": "не начато"
+    },
+    {
+      "id": "interaction-overview",
+      "vp_constant": "InteractionOverviewDiagram",
+      "vp_ui_model": "IInteractionOverviewDiagramUIModel",
+      "kind": "behavioural",
+      "what": "Узлы-взаимодействия и потоки",
+      "status": "не начато"
+    }
+  ],
+  "vp_totals": {
+    "diagram_type_constants": 87,
+    "diagram_ui_models": 95,
+    "shape_type_constants": 507,
+    "shape_and_connector_ui_models": 593,
+    "note": "87 констант — все нотации VP; UML среди них 15 (14 UML 2.5 + UseCaseDescription как вариант). Остальные ~72 — не UML: ArchiMate, BPMN, CMMN, ER, wireframes, mind maps, journey maps, roadmaps, матрицы, Zachman, SoaML."
+  },
+  "stereotype_profile": {
+    "total": 428,
+    "application": 405,
+    "project": 23,
+    "tagged_value_definitions": 98,
+    "enumeration_values": 164,
+    "by_base_type": {
+      "Class": 67,
+      "Attribute": 38,
+      "BMMRelationship": 37,
+      "Component": 18,
+      "UseCase": 17,
+      "Package": 14,
+      "Dependency": 12,
+      "Collaboration2": 8,
+      "Usage": 7,
+      "Actor": 6,
+      "NOTE": 6,
+      "InteractionLifeLine": 6
+    },
+    "status": "файл уже в material/stereotypes.xml; чтение реализовано в app/src/io/stereotypes.js"
+  },
+  "model_shape": {
+    "rule": "Элемент живёт в модели, диаграмма — вид на него; связь живёт в модели, вид связи на диаграмме",
+    "vp_tables": {
+      "MODEL_ELEMENT": "содержимое: имя, тип, стереотипы, члены, tagged values",
+      "DIAGRAM_ELEMENT": "вид: геометрия, шрифт, заливка, ссылка на MODEL_ELEMENT",
+      "DIAGRAM": "диаграмма: тип, имя, владелец",
+      "PROJECT_FILE": "внутренние файлы проекта (документация, иконки стереотипов)"
+    }
+  }
+}

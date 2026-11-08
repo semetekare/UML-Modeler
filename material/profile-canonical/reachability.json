@@ -1,0 +1,2819 @@
+{
+  "version": 1,
+  "source": "app/src/io/stereotypes.js → APPLICABILITY",
+  "notation": "app/notation/uml.json (51 фигура + 27 связей)",
+  "applicability": {
+    "readable": true,
+    "kinds": 64,
+    "baseTypesDeclared": 56,
+    "profileBaseTypes": 97,
+    "reachableBaseTypes": 52,
+    "unreachableBaseTypes": 45
+  },
+  "summary": {
+    "records": 428,
+    "recordsReachable": 277,
+    "recordsUnreachable": 151,
+    "stereotypes": 304,
+    "stereotypesReachable": 173,
+    "stereotypesEntirelyUnreachable": 131,
+    "stereotypesPartlyReachable": 9,
+    "byDesignRecords": 140,
+    "gapRecords": 11,
+    "shareRecordsReachable": 0.6472
+  },
+  "foreignNotation": {
+    "records": 104,
+    "recordsReachable": 8,
+    "recordsUnreachable": 96,
+    "families": {
+      "BMM": 37,
+      "ArchiMate": 48,
+      "SysML": 19
+    },
+    "note": "BMM + ArchiMate + SysML; SysMLBlock, SysMLValueType и SysMLParticipantProperty приложение принимает через APPLICABILITY"
+  },
+  "byDesign": {
+    "records": 140,
+    "foreignNotationUnreachable": 96,
+    "membersNotElements": 44,
+    "note": "чужие нотации + атрибуты и операции, которые у нас строки членов"
+  },
+  "ourGaps": {
+    "records": 11,
+    "baseTypes": [
+      "BindingDependency",
+      "CollaborationOccurrence",
+      "ExpansionNode",
+      "Reception",
+      "Requirement",
+      "ValuePin"
+    ],
+    "note": "метаклассы UML, вида элемента или связи в нотации нет — это работа Б14"
+  },
+  "groups": [
+    {
+      "kind": "design-not-an-element",
+      "family": "Attribute",
+      "why": "у нас атрибут — строка члена (member), а не элемент: стереотип на него не надеть",
+      "baseTypes": [
+        {
+          "baseType": "Attribute",
+          "records": 38,
+          "stereotypes": [
+            "AK",
+            "Attachment",
+            "BasicInterval",
+            "CK",
+            "CMP",
+            "Constant",
+            "DirectedFeature",
+            "DistributedProperty",
+            "Event",
+            "FK",
+            "FreeFormDescriptor",
+            "IDX",
+            "Interval",
+            "Normal",
+            "PK",
+            "Property",
+            "ResourceRole",
+            "UDT",
+            "Uniform",
+            "XSDattribute",
+            "XSDelement",
+            "XSDenumeration",
+            "XSDpattern",
+            "clustKey",
+            "column",
+            "counter",
+            "index",
+            "list",
+            "map",
+            "moe",
+            "not null",
+            "nullable",
+            "partKey",
+            "set",
+            "staticColumn",
+            "surrogate",
+            "tuple"
+          ]
+        }
+      ],
+      "records": 38,
+      "stereotypeNames": [
+        "AK",
+        "Attachment",
+        "BasicInterval",
+        "CK",
+        "CMP",
+        "Constant",
+        "DirectedFeature",
+        "DistributedProperty",
+        "Event",
+        "FK",
+        "FreeFormDescriptor",
+        "IDX",
+        "Interval",
+        "Normal",
+        "PK",
+        "Property",
+        "ResourceRole",
+        "UDT",
+        "Uniform",
+        "XSDattribute",
+        "XSDelement",
+        "XSDenumeration",
+        "XSDpattern",
+        "clustKey",
+        "column",
+        "counter",
+        "index",
+        "list",
+        "map",
+        "moe",
+        "not null",
+        "nullable",
+        "partKey",
+        "set",
+        "staticColumn",
+        "surrogate",
+        "tuple"
+      ]
+    },
+    {
+      "kind": "design-not-an-element",
+      "family": "Operation",
+      "why": "у нас операция — строка члена (member), а не элемент: стереотип на неё не надеть",
+      "baseTypes": [
+        {
+          "baseType": "Operation",
+          "records": 6,
+          "stereotypes": [
+            "CORBAOneway",
+            "Default",
+            "DirectedFeature",
+            "Event",
+            "stored procedure",
+            "trigger"
+          ]
+        }
+      ],
+      "records": 6,
+      "stereotypeNames": [
+        "CORBAOneway",
+        "Default",
+        "DirectedFeature",
+        "Event",
+        "stored procedure",
+        "trigger"
+      ]
+    },
+    {
+      "kind": "foreign-notation",
+      "family": "ArchiMate",
+      "why": "ArchiMate — не UML, вне границ проекта",
+      "baseTypes": [
+        {
+          "baseType": "ArchiMateBusinessActor",
+          "records": 4,
+          "stereotypes": [
+            "Individual",
+            "Organization",
+            "Organizational Unit",
+            "Threat Agent"
+          ]
+        },
+        {
+          "baseType": "ArchiMateInfrastructureService",
+          "records": 3,
+          "stereotypes": [
+            "Communication Service",
+            "Processing Service",
+            "Storage Service"
+          ]
+        },
+        {
+          "baseType": "ArchiMateMaterial",
+          "records": 3,
+          "stereotypes": [
+            "Building Material",
+            "Fuel",
+            "Ore"
+          ]
+        },
+        {
+          "baseType": "ArchiMateApplicationComponent",
+          "records": 2,
+          "stereotypes": [
+            "Logical Application Component",
+            "Physical Application Component"
+          ]
+        },
+        {
+          "baseType": "ArchiMateApplicationInterface",
+          "records": 2,
+          "stereotypes": [
+            "Application-to-Application Interface",
+            "Graphical User Interface"
+          ]
+        },
+        {
+          "baseType": "ArchiMateAssessment",
+          "records": 2,
+          "stereotypes": [
+            "Risk (Risk & Security Overlay)",
+            "Vulnerability (Risk & Security Overlay)"
+          ]
+        },
+        {
+          "baseType": "ArchiMateAssignment",
+          "records": 2,
+          "stereotypes": [
+            "Behavior assignment",
+            "Responsibilities assignment"
+          ]
+        },
+        {
+          "baseType": "ArchiMateBusinessEvent",
+          "records": 2,
+          "stereotypes": [
+            "Loss Event (Risk & Security Overlay)",
+            "Threat Event (Risk & Security Overlay)"
+          ]
+        },
+        {
+          "baseType": "ArchiMateCourseOfAction",
+          "records": 2,
+          "stereotypes": [
+            "Strategy",
+            "Tactic"
+          ]
+        },
+        {
+          "baseType": "ArchiMateDevice",
+          "records": 2,
+          "stereotypes": [
+            "Embedded Device",
+            "Mobile Device"
+          ]
+        },
+        {
+          "baseType": "ArchiMateDistributionNetworkBox",
+          "records": 2,
+          "stereotypes": [
+            "Energy Grid",
+            "Rail Network"
+          ]
+        },
+        {
+          "baseType": "ArchiMateEquipment",
+          "records": 2,
+          "stereotypes": [
+            "Train",
+            "Vehicle"
+          ]
+        },
+        {
+          "baseType": "ArchiMateGoal",
+          "records": 2,
+          "stereotypes": [
+            "Business Objective",
+            "Control Objective (Risk & Security Overlay)"
+          ]
+        },
+        {
+          "baseType": "ArchiMateNetworkBox",
+          "records": 2,
+          "stereotypes": [
+            "WiFi Network",
+            "Wide Area Network"
+          ]
+        },
+        {
+          "baseType": "ArchiMateNode",
+          "records": 2,
+          "stereotypes": [
+            "Logical Technology Component",
+            "Physical Technology Component"
+          ]
+        },
+        {
+          "baseType": "ArchiMateRequirement",
+          "records": 2,
+          "stereotypes": [
+            "Business Rule",
+            "Control Measure (Risk & Security Overlay)"
+          ]
+        },
+        {
+          "baseType": "ArchiMateWorkPackage",
+          "records": 2,
+          "stereotypes": [
+            "Program",
+            "Project"
+          ]
+        },
+        {
+          "baseType": "ArchiMateBusinessCollaboration",
+          "records": 1,
+          "stereotypes": [
+            "Social Network"
+          ]
+        },
+        {
+          "baseType": "ArchiMateBusinessProcess",
+          "records": 1,
+          "stereotypes": [
+            "Business Activity"
+          ]
+        },
+        {
+          "baseType": "ArchiMateBusinessService",
+          "records": 1,
+          "stereotypes": [
+            "Business Decision"
+          ]
+        },
+        {
+          "baseType": "ArchiMateCapability",
+          "records": 1,
+          "stereotypes": [
+            "Capability Increment"
+          ]
+        },
+        {
+          "baseType": "ArchiMateDriver",
+          "records": 1,
+          "stereotypes": [
+            "Metric"
+          ]
+        },
+        {
+          "baseType": "ArchiMateFacility",
+          "records": 1,
+          "stereotypes": [
+            "Factory"
+          ]
+        },
+        {
+          "baseType": "ArchiMateFlow",
+          "records": 1,
+          "stereotypes": [
+            "Money Flow"
+          ]
+        },
+        {
+          "baseType": "ArchiMateGrouping",
+          "records": 1,
+          "stereotypes": [
+            "Risk Domain (Risk & Security Overlay)"
+          ]
+        },
+        {
+          "baseType": "ArchiMateOrJunction",
+          "records": 1,
+          "stereotypes": [
+            "Or-join"
+          ]
+        },
+        {
+          "baseType": "ArchiMatePrinciple",
+          "records": 1,
+          "stereotypes": [
+            "Business Policy"
+          ]
+        }
+      ],
+      "records": 48,
+      "stereotypeNames": [
+        "Application-to-Application Interface",
+        "Behavior assignment",
+        "Building Material",
+        "Business Activity",
+        "Business Decision",
+        "Business Objective",
+        "Business Policy",
+        "Business Rule",
+        "Capability Increment",
+        "Communication Service",
+        "Control Measure (Risk & Security Overlay)",
+        "Control Objective (Risk & Security Overlay)",
+        "Embedded Device",
+        "Energy Grid",
+        "Factory",
+        "Fuel",
+        "Graphical User Interface",
+        "Individual",
+        "Logical Application Component",
+        "Logical Technology Component",
+        "Loss Event (Risk & Security Overlay)",
+        "Metric",
+        "Mobile Device",
+        "Money Flow",
+        "Or-join",
+        "Ore",
+        "Organization",
+        "Organizational Unit",
+        "Physical Application Component",
+        "Physical Technology Component",
+        "Processing Service",
+        "Program",
+        "Project",
+        "Rail Network",
+        "Responsibilities assignment",
+        "Risk (Risk & Security Overlay)",
+        "Risk Domain (Risk & Security Overlay)",
+        "Social Network",
+        "Storage Service",
+        "Strategy",
+        "Tactic",
+        "Threat Agent",
+        "Threat Event (Risk & Security Overlay)",
+        "Train",
+        "Vehicle",
+        "Vulnerability (Risk & Security Overlay)",
+        "WiFi Network",
+        "Wide Area Network"
+      ]
+    },
+    {
+      "kind": "foreign-notation",
+      "family": "BMM",
+      "why": "Business Motivation Model (BMM) — не UML, вне границ проекта",
+      "baseTypes": [
+        {
+          "baseType": "BMMRelationship",
+          "records": 37,
+          "stereotypes": [
+            "act as",
+            "act as regulation",
+            "affect achievement",
+            "affect employment",
+            "amplify",
+            "basis for",
+            "channel efforts",
+            "claim",
+            "component of plan for",
+            "define",
+            "deliver",
+            "deploy",
+            "determine",
+            "discharge",
+            "effect enforcement level",
+            "enable",
+            "establish",
+            "formulated based on",
+            "govern",
+            "guide",
+            "identify",
+            "implement",
+            "judge",
+            "make",
+            "make operative",
+            "manage",
+            "provide",
+            "provide impetus",
+            "quantify",
+            "realize",
+            "recognize",
+            "require",
+            "responsible",
+            "significant to",
+            "source",
+            "support achievement",
+            "use"
+          ]
+        }
+      ],
+      "records": 37,
+      "stereotypeNames": [
+        "act as",
+        "act as regulation",
+        "affect achievement",
+        "affect employment",
+        "amplify",
+        "basis for",
+        "channel efforts",
+        "claim",
+        "component of plan for",
+        "define",
+        "deliver",
+        "deploy",
+        "determine",
+        "discharge",
+        "effect enforcement level",
+        "enable",
+        "establish",
+        "formulated based on",
+        "govern",
+        "guide",
+        "identify",
+        "implement",
+        "judge",
+        "make",
+        "make operative",
+        "manage",
+        "provide",
+        "provide impetus",
+        "quantify",
+        "realize",
+        "recognize",
+        "require",
+        "responsible",
+        "significant to",
+        "source",
+        "support achievement",
+        "use"
+      ]
+    },
+    {
+      "kind": "foreign-notation",
+      "family": "SysML",
+      "why": "SysML — вне границ проекта",
+      "baseTypes": [
+        {
+          "baseType": "SysMLBoundReference",
+          "records": 2,
+          "stereotypes": [
+            "DirectedFeature",
+            "boundReference"
+          ]
+        },
+        {
+          "baseType": "SysMLConstraintProperty",
+          "records": 2,
+          "stereotypes": [
+            "DirectedFeature",
+            "objectiveFunction"
+          ]
+        },
+        {
+          "baseType": "SysMLActivityBlock",
+          "records": 1,
+          "stereotypes": [
+            "activity"
+          ]
+        },
+        {
+          "baseType": "SysMLAllocate",
+          "records": 1,
+          "stereotypes": [
+            "allocate"
+          ]
+        },
+        {
+          "baseType": "SysMLBindingConnector",
+          "records": 1,
+          "stereotypes": [
+            "equal"
+          ]
+        },
+        {
+          "baseType": "SysMLConstraintBlock",
+          "records": 1,
+          "stereotypes": [
+            "objectiveFunction"
+          ]
+        },
+        {
+          "baseType": "SysMLElementGroup",
+          "records": 1,
+          "stereotypes": [
+            "elementGroup"
+          ]
+        },
+        {
+          "baseType": "SysMLQuantityKind",
+          "records": 1,
+          "stereotypes": [
+            "quantityKind"
+          ]
+        },
+        {
+          "baseType": "SysMLUnit",
+          "records": 1,
+          "stereotypes": [
+            "unit"
+          ]
+        }
+      ],
+      "records": 11,
+      "stereotypeNames": [
+        "DirectedFeature",
+        "activity",
+        "allocate",
+        "boundReference",
+        "elementGroup",
+        "equal",
+        "objectiveFunction",
+        "quantityKind",
+        "unit"
+      ]
+    },
+    {
+      "kind": "notation-gap",
+      "family": "UML-элемент",
+      "why": "метакласс UML: вида элемента в нотации нет — можно добавить",
+      "baseTypes": [
+        {
+          "baseType": "ExpansionNode",
+          "records": 3,
+          "stereotypes": [
+            "controlValue",
+            "noBuffer",
+            "overwrite"
+          ]
+        },
+        {
+          "baseType": "ValuePin",
+          "records": 3,
+          "stereotypes": [
+            "controlValue",
+            "noBuffer",
+            "overwrite"
+          ]
+        },
+        {
+          "baseType": "Requirement",
+          "records": 2,
+          "stereotypes": [
+            "requirement"
+          ]
+        },
+        {
+          "baseType": "Reception",
+          "records": 1,
+          "stereotypes": [
+            "DirectedFeature"
+          ]
+        }
+      ],
+      "records": 9,
+      "stereotypeNames": [
+        "DirectedFeature",
+        "controlValue",
+        "noBuffer",
+        "overwrite",
+        "requirement"
+      ]
+    },
+    {
+      "kind": "notation-gap",
+      "family": "UML-связь",
+      "why": "метакласс UML: вида связи в нотации нет — можно добавить",
+      "baseTypes": [
+        {
+          "baseType": "BindingDependency",
+          "records": 1,
+          "stereotypes": [
+            "bind"
+          ]
+        },
+        {
+          "baseType": "CollaborationOccurrence",
+          "records": 1,
+          "stereotypes": [
+            "SoaMLCollaborationUse"
+          ]
+        }
+      ],
+      "records": 2,
+      "stereotypeNames": [
+        "SoaMLCollaborationUse",
+        "bind"
+      ]
+    }
+  ],
+  "stereotypesEntirelyUnreachable": [
+    {
+      "id": "st-requirement",
+      "name": "requirement",
+      "baseTypes": [
+        "Requirement"
+      ],
+      "records": 2,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "notation-gap"
+      ],
+      "families": [
+        "UML-элемент"
+      ]
+    },
+    {
+      "id": "st-allocate",
+      "name": "allocate",
+      "baseTypes": [
+        "SysMLAllocate"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "SysML"
+      ]
+    },
+    {
+      "id": "st-activity",
+      "name": "activity",
+      "baseTypes": [
+        "SysMLActivityBlock"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "SysML"
+      ]
+    },
+    {
+      "id": "st-unit",
+      "name": "unit",
+      "baseTypes": [
+        "SysMLUnit"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "SysML"
+      ]
+    },
+    {
+      "id": "st-quantitykind",
+      "name": "quantityKind",
+      "baseTypes": [
+        "SysMLQuantityKind"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "SysML"
+      ]
+    },
+    {
+      "id": "st-act-as",
+      "name": "act as",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-act-as-regulation",
+      "name": "act as regulation",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-affect-achievement",
+      "name": "affect achievement",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-affect-employment",
+      "name": "affect employment",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-amplify",
+      "name": "amplify",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-basis-for",
+      "name": "basis for",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-channel-efforts",
+      "name": "channel efforts",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-claim",
+      "name": "claim",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-component-of-plan-for",
+      "name": "component of plan for",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-define",
+      "name": "define",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-deliver",
+      "name": "deliver",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-determine",
+      "name": "determine",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-discharge",
+      "name": "discharge",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-effect-enforcement-level",
+      "name": "effect enforcement level",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-enable",
+      "name": "enable",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-establish",
+      "name": "establish",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-formulated-based-on",
+      "name": "formulated based on",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-govern",
+      "name": "govern",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-guide",
+      "name": "guide",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-identify",
+      "name": "identify",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-judge",
+      "name": "judge",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-make",
+      "name": "make",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-make-operative",
+      "name": "make operative",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-manage",
+      "name": "manage",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-provide",
+      "name": "provide",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-provide-impetus",
+      "name": "provide impetus",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-quantify",
+      "name": "quantify",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-realize",
+      "name": "realize",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-recognize",
+      "name": "recognize",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-require",
+      "name": "require",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-responsible",
+      "name": "responsible",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-significant-to",
+      "name": "significant to",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-source",
+      "name": "source",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-support-achievement",
+      "name": "support achievement",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-use",
+      "name": "use",
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "BMM"
+      ]
+    },
+    {
+      "id": "st-attachment",
+      "name": "Attachment",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-soamlcollaborationuse",
+      "name": "SoaMLCollaborationUse",
+      "baseTypes": [
+        "CollaborationOccurrence"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "notation-gap"
+      ],
+      "families": [
+        "UML-связь"
+      ]
+    },
+    {
+      "id": "st-freeformdescriptor",
+      "name": "FreeFormDescriptor",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-objectivefunction",
+      "name": "objectiveFunction",
+      "baseTypes": [
+        "SysMLConstraintBlock",
+        "SysMLConstraintProperty"
+      ],
+      "records": 2,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "SysML"
+      ]
+    },
+    {
+      "id": "st-moe",
+      "name": "moe",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-constant",
+      "name": "Constant",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-event",
+      "name": "Event",
+      "baseTypes": [
+        "Attribute",
+        "Operation"
+      ],
+      "records": 2,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute",
+        "Operation"
+      ]
+    },
+    {
+      "id": "st-pk",
+      "name": "PK",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-property",
+      "name": "Property",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 2,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-xsdattribute",
+      "name": "XSDattribute",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-xsdenumeration",
+      "name": "XSDenumeration",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-xsdpattern",
+      "name": "XSDpattern",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-cmp",
+      "name": "CMP",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-distributedproperty",
+      "name": "DistributedProperty",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-basicinterval",
+      "name": "BasicInterval",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-interval",
+      "name": "Interval",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-uniform",
+      "name": "Uniform",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-normal",
+      "name": "Normal",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-corbaoneway",
+      "name": "CORBAOneway",
+      "baseTypes": [
+        "Operation"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Operation"
+      ]
+    },
+    {
+      "id": "st-fk",
+      "name": "FK",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-column",
+      "name": "column",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-index",
+      "name": "index",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-trigger",
+      "name": "trigger",
+      "baseTypes": [
+        "Operation"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Operation"
+      ]
+    },
+    {
+      "id": "st-stored-procedure",
+      "name": "stored procedure",
+      "baseTypes": [
+        "Operation"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Operation"
+      ]
+    },
+    {
+      "id": "st-ak",
+      "name": "AK",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-ck",
+      "name": "CK",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-not-null",
+      "name": "not null",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-nullable",
+      "name": "nullable",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-surrogate",
+      "name": "surrogate",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-individual",
+      "name": "Individual",
+      "baseTypes": [
+        "ArchiMateBusinessActor"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-organizational-unit",
+      "name": "Organizational Unit",
+      "baseTypes": [
+        "ArchiMateBusinessActor"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-organization",
+      "name": "Organization",
+      "baseTypes": [
+        "ArchiMateBusinessActor"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-threat-agent",
+      "name": "Threat Agent",
+      "baseTypes": [
+        "ArchiMateBusinessActor"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-business-decision",
+      "name": "Business Decision",
+      "baseTypes": [
+        "ArchiMateBusinessService"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-social-network",
+      "name": "Social Network",
+      "baseTypes": [
+        "ArchiMateBusinessCollaboration"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-business-activity",
+      "name": "Business Activity",
+      "baseTypes": [
+        "ArchiMateBusinessProcess"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-threat-event-risk-security-overlay",
+      "name": "Threat Event (Risk & Security Overlay)",
+      "baseTypes": [
+        "ArchiMateBusinessEvent"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-loss-event-risk-security-overlay",
+      "name": "Loss Event (Risk & Security Overlay)",
+      "baseTypes": [
+        "ArchiMateBusinessEvent"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-logical-application-component",
+      "name": "Logical Application Component",
+      "baseTypes": [
+        "ArchiMateApplicationComponent"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-physical-application-component",
+      "name": "Physical Application Component",
+      "baseTypes": [
+        "ArchiMateApplicationComponent"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-application-to-application-interface",
+      "name": "Application-to-Application Interface",
+      "baseTypes": [
+        "ArchiMateApplicationInterface"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-graphical-user-interface",
+      "name": "Graphical User Interface",
+      "baseTypes": [
+        "ArchiMateApplicationInterface"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-logical-technology-component",
+      "name": "Logical Technology Component",
+      "baseTypes": [
+        "ArchiMateNode"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-physical-technology-component",
+      "name": "Physical Technology Component",
+      "baseTypes": [
+        "ArchiMateNode"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-mobile-device",
+      "name": "Mobile Device",
+      "baseTypes": [
+        "ArchiMateDevice"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-embedded-device",
+      "name": "Embedded Device",
+      "baseTypes": [
+        "ArchiMateDevice"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-wifi-network",
+      "name": "WiFi Network",
+      "baseTypes": [
+        "ArchiMateNetworkBox"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-wide-area-network",
+      "name": "Wide Area Network",
+      "baseTypes": [
+        "ArchiMateNetworkBox"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-processing-service",
+      "name": "Processing Service",
+      "baseTypes": [
+        "ArchiMateInfrastructureService"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-storage-service",
+      "name": "Storage Service",
+      "baseTypes": [
+        "ArchiMateInfrastructureService"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-communication-service",
+      "name": "Communication Service",
+      "baseTypes": [
+        "ArchiMateInfrastructureService"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-vehicle",
+      "name": "Vehicle",
+      "baseTypes": [
+        "ArchiMateEquipment"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-train",
+      "name": "Train",
+      "baseTypes": [
+        "ArchiMateEquipment"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-factory",
+      "name": "Factory",
+      "baseTypes": [
+        "ArchiMateFacility"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-ore",
+      "name": "Ore",
+      "baseTypes": [
+        "ArchiMateMaterial"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-building-material",
+      "name": "Building Material",
+      "baseTypes": [
+        "ArchiMateMaterial"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-fuel",
+      "name": "Fuel",
+      "baseTypes": [
+        "ArchiMateMaterial"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-rail-network",
+      "name": "Rail Network",
+      "baseTypes": [
+        "ArchiMateDistributionNetworkBox"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-energy-grid",
+      "name": "Energy Grid",
+      "baseTypes": [
+        "ArchiMateDistributionNetworkBox"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-metric",
+      "name": "Metric",
+      "baseTypes": [
+        "ArchiMateDriver"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-vulnerability-risk-security-overlay",
+      "name": "Vulnerability (Risk & Security Overlay)",
+      "baseTypes": [
+        "ArchiMateAssessment"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-risk-risk-security-overlay",
+      "name": "Risk (Risk & Security Overlay)",
+      "baseTypes": [
+        "ArchiMateAssessment"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-business-objective",
+      "name": "Business Objective",
+      "baseTypes": [
+        "ArchiMateGoal"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-control-objective-risk-security-overlay",
+      "name": "Control Objective (Risk & Security Overlay)",
+      "baseTypes": [
+        "ArchiMateGoal"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-business-policy",
+      "name": "Business Policy",
+      "baseTypes": [
+        "ArchiMatePrinciple"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-control-measure-risk-security-overlay",
+      "name": "Control Measure (Risk & Security Overlay)",
+      "baseTypes": [
+        "ArchiMateRequirement"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-business-rule",
+      "name": "Business Rule",
+      "baseTypes": [
+        "ArchiMateRequirement"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-capability-increment",
+      "name": "Capability Increment",
+      "baseTypes": [
+        "ArchiMateCapability"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-strategy",
+      "name": "Strategy",
+      "baseTypes": [
+        "ArchiMateCourseOfAction"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-tactic",
+      "name": "Tactic",
+      "baseTypes": [
+        "ArchiMateCourseOfAction"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-program",
+      "name": "Program",
+      "baseTypes": [
+        "ArchiMateWorkPackage"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-project",
+      "name": "Project",
+      "baseTypes": [
+        "ArchiMateWorkPackage"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-risk-domain-risk-security-overlay",
+      "name": "Risk Domain (Risk & Security Overlay)",
+      "baseTypes": [
+        "ArchiMateGrouping"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-money-flow",
+      "name": "Money Flow",
+      "baseTypes": [
+        "ArchiMateFlow"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-responsibilities-assignment",
+      "name": "Responsibilities assignment",
+      "baseTypes": [
+        "ArchiMateAssignment"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-behavior-assignment",
+      "name": "Behavior assignment",
+      "baseTypes": [
+        "ArchiMateAssignment"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-or-join",
+      "name": "Or-join",
+      "baseTypes": [
+        "ArchiMateOrJunction"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "ArchiMate"
+      ]
+    },
+    {
+      "id": "st-boundreference",
+      "name": "boundReference",
+      "baseTypes": [
+        "SysMLBoundReference"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "SysML"
+      ]
+    },
+    {
+      "id": "st-elementgroup",
+      "name": "elementGroup",
+      "baseTypes": [
+        "SysMLElementGroup"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "SysML"
+      ]
+    },
+    {
+      "id": "st-equal",
+      "name": "equal",
+      "baseTypes": [
+        "SysMLBindingConnector"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "foreign-notation"
+      ],
+      "families": [
+        "SysML"
+      ]
+    },
+    {
+      "id": "st-partkey",
+      "name": "partKey",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-clustkey",
+      "name": "clustKey",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-staticcolumn",
+      "name": "staticColumn",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-idx",
+      "name": "IDX",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-counter",
+      "name": "counter",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-list",
+      "name": "list",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-set",
+      "name": "set",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-map",
+      "name": "map",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-udt",
+      "name": "UDT",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-tuple",
+      "name": "tuple",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-resourcerole",
+      "name": "ResourceRole",
+      "baseTypes": [
+        "Attribute"
+      ],
+      "records": 1,
+      "reason": "ни один baseType не объявлен в APPLICABILITY",
+      "kinds": [
+        "design-not-an-element"
+      ],
+      "families": [
+        "Attribute"
+      ]
+    }
+  ],
+  "stereotypesPartlyReachable": [
+    {
+      "id": "st-default",
+      "name": "Default",
+      "reachableBaseTypes": [
+        "State2",
+        "ActivityAction",
+        "Transition2"
+      ],
+      "unreachableBaseTypes": [
+        "Operation"
+      ]
+    },
+    {
+      "id": "st-deploy",
+      "name": "deploy",
+      "reachableBaseTypes": [
+        "Deployment"
+      ],
+      "unreachableBaseTypes": [
+        "BMMRelationship"
+      ]
+    },
+    {
+      "id": "st-implement",
+      "name": "implement",
+      "reachableBaseTypes": [
+        "Component"
+      ],
+      "unreachableBaseTypes": [
+        "BMMRelationship"
+      ]
+    },
+    {
+      "id": "st-nobuffer",
+      "name": "noBuffer",
+      "reachableBaseTypes": [
+        "ObjectNode",
+        "ActivityParameterNode",
+        "CentralBufferNode",
+        "DataStoreNode",
+        "InputPin",
+        "OutputPin"
+      ],
+      "unreachableBaseTypes": [
+        "ExpansionNode",
+        "ValuePin"
+      ]
+    },
+    {
+      "id": "st-controlvalue",
+      "name": "controlValue",
+      "reachableBaseTypes": [
+        "OutputPin",
+        "InputPin",
+        "ObjectNode",
+        "ActivityParameterNode",
+        "CentralBufferNode",
+        "DataStoreNode"
+      ],
+      "unreachableBaseTypes": [
+        "ValuePin",
+        "ExpansionNode"
+      ]
+    },
+    {
+      "id": "st-overwrite",
+      "name": "overwrite",
+      "reachableBaseTypes": [
+        "ObjectNode",
+        "ActivityParameterNode",
+        "CentralBufferNode",
+        "DataStoreNode",
+        "InputPin",
+        "OutputPin"
+      ],
+      "unreachableBaseTypes": [
+        "ExpansionNode",
+        "ValuePin"
+      ]
+    },
+    {
+      "id": "st-xsdelement",
+      "name": "XSDelement",
+      "reachableBaseTypes": [
+        "Class",
+        "AssociationEnd"
+      ],
+      "unreachableBaseTypes": [
+        "Attribute"
+      ]
+    },
+    {
+      "id": "st-bind",
+      "name": "bind",
+      "reachableBaseTypes": [
+        "Realization",
+        "Dependency"
+      ],
+      "unreachableBaseTypes": [
+        "BindingDependency"
+      ]
+    },
+    {
+      "id": "st-directedfeature",
+      "name": "DirectedFeature",
+      "reachableBaseTypes": [
+        "SysMLParticipantProperty"
+      ],
+      "unreachableBaseTypes": [
+        "SysMLConstraintProperty",
+        "SysMLBoundReference",
+        "Attribute",
+        "Operation",
+        "Reception"
+      ]
+    }
+  ],
+  "declaredButAbsentFromProfile": [
+    {
+      "baseType": "DeploymentSpecification",
+      "kinds": [
+        "deploymentSpec"
+      ],
+      "records": 0,
+      "note": "приложение разрешает baseType, но в профиле нет ни одной записи с ним"
+    },
+    {
+      "baseType": "Interaction",
+      "kinds": [
+        "interaction",
+        "interactionUse"
+      ],
+      "records": 0,
+      "note": "приложение разрешает baseType, но в профиле нет ни одной записи с ним"
+    },
+    {
+      "baseType": "Message",
+      "kinds": [
+        "createMessage",
+        "destroyMessage",
+        "message",
+        "reply"
+      ],
+      "records": 0,
+      "note": "приложение разрешает baseType, но в профиле нет ни одной записи с ним"
+    },
+    {
+      "baseType": "Property",
+      "kinds": [
+        "part"
+      ],
+      "records": 0,
+      "note": "в профиле есть стереотип Property, но его baseType — Attribute; baseType Property не объявлен ни разу"
+    }
+  ],
+  "kindsWithoutApplicableStereotype": [
+    "interaction",
+    "interactionUse"
+  ]
+}

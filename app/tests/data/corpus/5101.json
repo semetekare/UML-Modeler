@@ -1,0 +1,99 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5101",
+    "figureNo": "5.1.1",
+    "exercise": "5.1",
+    "type": "package",
+    "diagramName": "Main",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма пакетов Main",
+    "notes": "Иерархия архитектурных уровней Design Model: Application, BusinessServices, Middleware со стереотипом «layer», зависимости между ними и от BusinessServices к пакетам механизмов RemoteInterchange и Persistency. Зависимости механизмов от Middleware добавлены, если их не было в заготовке (текст это предусматривает).",
+    "gaps": [
+      "текст называет три архитектурных уровня и два пакета механизмов, но не перечисляет все пакеты, видимые на снимке (указатель рисунков прямо говорит, что точный состав пакетов по тексту не восстановим)",
+      "вложенность пакета в пакет не выражается в uml-model/3: у элемента нет владельца"
+    ],
+    "gapIds": [
+      "model.packageOwner",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "package",
+      "name": "Application",
+      "stereotype": "layer"
+    },
+    {
+      "id": "e2",
+      "kind": "package",
+      "name": "BusinessServices",
+      "stereotype": "layer"
+    },
+    {
+      "id": "e3",
+      "kind": "package",
+      "name": "Middleware",
+      "stereotype": "layer"
+    },
+    {
+      "id": "e4",
+      "kind": "package",
+      "name": "RemoteInterchange"
+    },
+    {
+      "id": "e5",
+      "kind": "package",
+      "name": "Persistency"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e3"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r4",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e5"
+    },
+    {
+      "id": "r5",
+      "kind": "dependency",
+      "from": "e4",
+      "to": "e3"
+    },
+    {
+      "id": "r6",
+      "kind": "dependency",
+      "from": "e5",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Main",
+      "type": "package",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

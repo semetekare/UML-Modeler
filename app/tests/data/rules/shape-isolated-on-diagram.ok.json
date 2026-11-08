@@ -1,0 +1,103 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-shape-isolated-on-diagram-ok",
+  "name": "shape-isolated-on-diagram (без нарушения) — обе фигуры соединены на обоих листах",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Заказ"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "Клиент",
+      "documentation": "Правило «shape-isolated-on-diagram» — совет практики моделирования: пункта UML у него нет, есть только объяснение, почему такую модель трудно читать.\nКонтроль: на каждом листе обе фигуры соединены связью."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "association",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Диаграмма классов",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "d2",
+      "name": "Схема выгрузки",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s3",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s4",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        }
+      ],
+      "links": [
+        {
+          "id": "l2",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s3",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

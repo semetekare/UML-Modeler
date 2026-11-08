@@ -1,0 +1,520 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5208",
+    "figureNo": "5.2.8",
+    "exercise": "5.2.F",
+    "type": "class",
+    "diagramName": "DBAccess",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма классов подсистемы DBAccess",
+    "notes": "Текст перечисляет правки по шагам и говорит, что сигнатуры интерфейса должны совпадать с классом DBAccess. Рисунок 5.2.8 показывает одиннадцать фигур (добавлены DriverManager, Connection, Statement, ResultSet, CourseOffering и параметризованный ArrayList с параметром E), сигнатуры операций DBAccess, интерфейсов JDBC и CourseOfferingList и семнадцать связей — всё это прочитано с рисунка.",
+    "gaps": [
+      "текст перечисляет правки по шагам, но не полный состав классов и связей: набор зависимостей восстановлен по этим правкам и уточнён по рисунку",
+      "сигнатуры операций интерфейса в тексте не приведены целиком — сказано, что они должны совпадать с сигнатурами класса DBAccess (см. рис. 5.2.8)",
+      "привязка параметра шаблона (<<bind>> <E->CourseOffering>) не выражается в uml-model/3 — записана подписью связи"
+    ],
+    "gapIds": [
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e1",
+      "e2",
+      "e5"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "User"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "DBAccess",
+      "stereotype": "subsystem proxy",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "init()",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "close()",
+          "type": "void"
+        },
+        {
+          "vis": "public",
+          "name": "getCourseOfferingList(semester : byte)",
+          "type": "CourseOfferingList"
+        },
+        {
+          "vis": "public",
+          "name": "getStudentByUser(u : User)",
+          "type": "Student"
+        },
+        {
+          "vis": "public",
+          "name": "getStudentList(semester : byte)",
+          "type": "Student[]"
+        },
+        {
+          "vis": "public",
+          "name": "getUserByLogin(l : string)",
+          "type": "User"
+        },
+        {
+          "vis": "public",
+          "name": "updateCourseOfferings(cOffs : CourseOffering[])",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "updateStudent(st : Student)",
+          "type": "boolean"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e6",
+      "kind": "class",
+      "name": "DriverManager",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "getConnection(url : string, user : string, password : string)",
+          "type": "Connection"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e1",
+      "kind": "interface",
+      "name": "IDBAccess",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "init()",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "close()",
+          "type": "void"
+        },
+        {
+          "vis": "public",
+          "name": "getCourseOfferingList(semester : byte)",
+          "type": "CourseOfferingList"
+        },
+        {
+          "vis": "public",
+          "name": "getStudentByUser(u : User)",
+          "type": "Student"
+        },
+        {
+          "vis": "public",
+          "name": "getStudentList(semester : byte)",
+          "type": "Student[]"
+        },
+        {
+          "vis": "public",
+          "name": "getUserByLogin(l : string)",
+          "type": "User"
+        },
+        {
+          "vis": "public",
+          "name": "updateCourseOfferings(cOffs : CourseOffering[])",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "updateStudent(st : Student)",
+          "type": "boolean"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e7",
+      "kind": "interface",
+      "name": "Connection",
+      "stereotype": "Interface",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "close()",
+          "type": "void"
+        },
+        {
+          "vis": "public",
+          "name": "createStatement()",
+          "type": "Statement"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "Student"
+    },
+    {
+      "id": "e8",
+      "kind": "interface",
+      "name": "Statement",
+      "stereotype": "Interface",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "executeQuery(sql : string)",
+          "type": "ResultSet"
+        },
+        {
+          "vis": "public",
+          "name": "executeUpdate(sql : string)",
+          "type": "int"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e9",
+      "kind": "interface",
+      "name": "ResultSet",
+      "stereotype": "Interface",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "first()",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "getBoolean(columnLabel : string)",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "getByte(columnLabel : string)",
+          "type": "byte"
+        },
+        {
+          "vis": "public",
+          "name": "getDate(columnLabel : string)",
+          "type": "Date"
+        },
+        {
+          "vis": "public",
+          "name": "getDouble(columnLabel : string)",
+          "type": "double"
+        },
+        {
+          "vis": "public",
+          "name": "getFloat(columnLabel : string)",
+          "type": "float"
+        },
+        {
+          "vis": "public",
+          "name": "getInt(columnLabel : string)",
+          "type": "int"
+        },
+        {
+          "vis": "public",
+          "name": "getLong(columnLabel : string)",
+          "type": "long"
+        },
+        {
+          "vis": "public",
+          "name": "getObject(columnLabel : string)",
+          "type": "Object"
+        },
+        {
+          "vis": "public",
+          "name": "getShort(columnLabel : string)",
+          "type": "short"
+        },
+        {
+          "vis": "public",
+          "name": "getString(columnLabel : string)",
+          "type": "string"
+        },
+        {
+          "vis": "public",
+          "name": "getTime(columnLabel : string)",
+          "type": "Time"
+        },
+        {
+          "vis": "public",
+          "name": "isAfterLast()",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "isBeforeFirst()",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "isFirst()",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "isLast()",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "last()",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "next()",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "previous()",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "relative(rows : int)",
+          "type": "boolean"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "CourseOfferingList",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "add(e : CourseOffering)",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "add(index : int, e : CourseOffering)",
+          "type": "void"
+        },
+        {
+          "vis": "public",
+          "name": "clear()"
+        },
+        {
+          "vis": "public",
+          "name": "clone()",
+          "type": "Object"
+        },
+        {
+          "vis": "public",
+          "name": "contains(o : Object)",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "equals(o : Object)",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "get(index : int)",
+          "type": "CourseOffering"
+        },
+        {
+          "vis": "public",
+          "name": "indexOf(o : Object)",
+          "type": "int"
+        },
+        {
+          "vis": "public",
+          "name": "isEmpty()",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "remove(index : int)",
+          "type": "CourseOffering"
+        },
+        {
+          "vis": "public",
+          "name": "remove(o : Object)",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "set(index : int, element : CourseOffering)",
+          "type": "CourseOffering"
+        },
+        {
+          "vis": "public",
+          "name": "size()",
+          "type": "int"
+        },
+        {
+          "vis": "public",
+          "name": "toString()",
+          "type": "string"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e10",
+      "kind": "class",
+      "name": "CourseOffering",
+      "source": "image"
+    },
+    {
+      "id": "e11",
+      "kind": "class",
+      "name": "ArrayList",
+      "templateParameters": [
+        "E"
+      ],
+      "note": "параметризованный класс; параметр шаблона E виден на рисунке",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "realization",
+      "from": "e2",
+      "to": "e1"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e3"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r4",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e5"
+    },
+    {
+      "id": "r5",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e3"
+    },
+    {
+      "id": "r6",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r7",
+      "kind": "composition",
+      "from": "e4",
+      "to": "e3",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "0..1",
+      "note": "ромб со стороны User",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "association",
+      "from": "e2",
+      "to": "e7",
+      "fromMultiplicity": "0..1",
+      "toMultiplicity": "1",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e8",
+      "source": "image"
+    },
+    {
+      "id": "r11",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r12",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e9",
+      "source": "image"
+    },
+    {
+      "id": "r13",
+      "kind": "dependency",
+      "from": "e6",
+      "to": "e7",
+      "source": "image"
+    },
+    {
+      "id": "r14",
+      "kind": "dependency",
+      "from": "e7",
+      "to": "e8",
+      "source": "image"
+    },
+    {
+      "id": "r15",
+      "kind": "dependency",
+      "from": "e8",
+      "to": "e9",
+      "source": "image"
+    },
+    {
+      "id": "r16",
+      "kind": "dependency",
+      "from": "e5",
+      "to": "e10",
+      "source": "image"
+    },
+    {
+      "id": "r17",
+      "kind": "dependency",
+      "stereotype": "bind",
+      "from": "e5",
+      "to": "e11",
+      "note": "подпись на рисунке: <<bind>> <E->CourseOffering>",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "DBAccess",
+      "type": "class",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

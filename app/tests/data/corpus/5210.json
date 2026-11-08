@@ -1,0 +1,52 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5210",
+    "figureNo": "5.2.10",
+    "exercise": "5.2.F",
+    "type": "sequence",
+    "diagramName": "init",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности, описывающая реализацию операции init() в подсистеме DBAccess",
+    "notes": "Одна линия жизни db:DBAccess, входящее сообщение связано с операцией init; ниже — потерянное сообщение типа «возврат», в имени указано, что возвращается (имя в тексте не приведено).",
+    "gaps": [],
+    "gapIds": [
+      "model.lostMessage"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "db:DBAccess"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "init()",
+      "from": "e1",
+      "to": "e1",
+      "note": "входящее сообщение связано с операцией init"
+    },
+    {
+      "id": "r2",
+      "kind": "reply",
+      "name": "не названо в тексте",
+      "from": "e1",
+      "to": null,
+      "note": "потерянное сообщение (Lost Message) типа «возврат»"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "init",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

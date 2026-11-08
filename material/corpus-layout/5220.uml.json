@@ -1,0 +1,426 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5220",
+  "name": "UML-диаграмма состояний Lifecycle класса CourseOffering",
+  "elements": [
+    {
+      "id": "e2",
+      "kind": "state",
+      "name": "Active",
+      "documentation": "внутренние переходы: getNumber / return number; setNumber(n) / number = n. Действие входа записано полем entry: на рисунке подпись перехода от внешнего начального псевдосостояния. Регионов по записи модели: 2; их состав в пособии не назван — регионы заведены пустыми, имя каждого — умолчание редактора.",
+      "regions": [
+        {
+          "id": "g1",
+          "name": "Регион 1"
+        },
+        {
+          "id": "g2",
+          "name": "Регион 2"
+        }
+      ],
+      "composite": true,
+      "source": "image",
+      "entry": [
+        "numStudents=0; isCancelled=FALSE; isClosed=FALSE"
+      ]
+    },
+    {
+      "id": "e3",
+      "kind": "state",
+      "name": "Open",
+      "documentation": "внутренний переход: removeSchedule(sch) [numStudent > 0] / numStudent--; roster=roster->excluding(sch) Регионов по записи модели: 1; их состав в пособии не назван — регионы заведены пустыми, имя каждого — умолчание редактора.",
+      "regions": [
+        {
+          "id": "g1",
+          "name": "Регион 1"
+        }
+      ],
+      "composite": true,
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "state",
+      "name": "Closed",
+      "source": "image",
+      "entry": [
+        "isClosed = TRUE"
+      ]
+    },
+    {
+      "id": "e1",
+      "kind": "initial",
+      "name": ""
+    },
+    {
+      "id": "e5",
+      "kind": "state",
+      "name": "Canceled",
+      "documentation": "на рисунке имя состояния напечатано «Cancelled»; в корпусе оставлено имя из текста пособия",
+      "source": "image",
+      "entry": [
+        "isCancelled = TRUE"
+      ]
+    },
+    {
+      "id": "e6",
+      "kind": "choice",
+      "name": ""
+    },
+    {
+      "id": "e7",
+      "kind": "choice",
+      "name": ""
+    },
+    {
+      "id": "e8",
+      "kind": "final",
+      "name": ""
+    },
+    {
+      "id": "e9",
+      "kind": "initial",
+      "name": "",
+      "documentation": "внутреннее начальное псевдосостояние внутри Active",
+      "source": "image"
+    },
+    {
+      "id": "e10",
+      "kind": "note",
+      "name": "",
+      "documentation": "другие геттеры и сеттеры аналогично",
+      "note": "",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "transition",
+      "name": "/ numStudents=0; isCancelled=FALSE; isClosed=FALSE",
+      "from": "e1",
+      "to": "e2",
+      "note": "переход от внешнего начального псевдосостояния к границе Active",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "transition",
+      "from": "e9",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "transition",
+      "name": "addSchedule(sch) / numStudents++; roster=roster->including(sch)",
+      "from": "e3",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "transition",
+      "name": "[numStudents < 10]",
+      "from": "e6",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "transition",
+      "name": "[else]",
+      "from": "e6",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "transition",
+      "name": "close",
+      "from": "e3",
+      "to": "e7",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "transition",
+      "name": "[numStudent > 3]",
+      "from": "e7",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "transition",
+      "name": "[else]",
+      "from": "e7",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "transition",
+      "name": "cancel [!isCancelled]",
+      "from": "e2",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "transition",
+      "name": "destroy",
+      "from": "e2",
+      "to": "e8",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Lifecycle",
+      "kind": "state",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e2",
+          "x": 60,
+          "y": 60,
+          "w": 360,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e3",
+          "x": 60,
+          "y": 200,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s3",
+          "elementId": "e4",
+          "x": 60,
+          "y": 340,
+          "w": 160,
+          "h": 80
+        },
+        {
+          "id": "s4",
+          "elementId": "e1",
+          "x": 60,
+          "y": 480,
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 60,
+          "y": 560,
+          "w": 180,
+          "h": 80
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 60,
+          "y": 700,
+          "w": 30,
+          "h": 30
+        },
+        {
+          "id": "s7",
+          "elementId": "e7",
+          "x": 60,
+          "y": 790,
+          "w": 30,
+          "h": 30
+        },
+        {
+          "id": "s8",
+          "elementId": "e8",
+          "x": 60,
+          "y": 880,
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "s9",
+          "elementId": "e9",
+          "x": 60,
+          "y": 960,
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "s10",
+          "elementId": "e10",
+          "x": 60,
+          "y": 1040,
+          "w": 80,
+          "h": 90
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s4",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s9",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s2",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s6",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s6",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s2",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "s7",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l7",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s7",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l8",
+          "relId": "r8",
+          "from": {
+            "shapeId": "s7",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "bottom"
+          }
+        },
+        {
+          "id": "l9",
+          "relId": "r9",
+          "from": {
+            "shapeId": "s1",
+            "side": "bottom",
+            "t": 0.75
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "top",
+            "t": 0.75
+          }
+        },
+        {
+          "id": "l10",
+          "relId": "r10",
+          "from": {
+            "shapeId": "s1",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "s8",
+            "side": "top"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5220",
+    "figureNo": "5.2.20",
+    "exercise": "5.2.H",
+    "type": "state",
+    "diagramName": "Lifecycle",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма состояний Lifecycle класса CourseOffering",
+    "notes": "Состав состояний и событий назван текстом; топология переходов прочитана с рисунка 5.2.20 (текст говорит «соедините состояния внешними переходами, как указано на рисунке»). На рисунке: два начальных псевдосостояния (внешнее и внутреннее в Active), два псевдосостояния выбора, конечное состояние, десять переходов, внутренние переходы в Active и Open, действия entry в Closed и Canceled и примечание «другие геттеры и сеттеры аналогично».",
+    "gaps": [
+      "регионы состояния и вложенность состояний не выражаются в uml-model/3",
+      "внутренние переходы и действия entry не выражаются полностью: entry записан полем entry, внутренние переходы — пояснением в documentation",
+      "локальные (local) переходы не отличаются от внешних",
+      "события-триггеры привязываются к операциям класса — привязка не выражается",
+      "в подписях рисунка имя счётчика встречается в двух написаниях (numStudents и numStudent); записано как на рисунке"
+    ],
+    "gapIds": [
+      "model.internalTransition",
+      "model.stateRegion",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e2",
+      "e3",
+      "e4",
+      "e5"
+    ]
+  },
+  "sheet": {
+    "w": 600,
+    "h": 1190
+  }
+}

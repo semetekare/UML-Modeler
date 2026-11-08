@@ -1,0 +1,340 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5203",
+  "name": "Уточнённая UML-диаграмма последовательности Design TransferSchedulesData Subflow",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "crctrl:CloseRegistrationController"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "dao:IDBAccess",
+      "stereotype": "interface"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "studlist[i]:Student",
+      "multiObject": true,
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "studlist[i].schedule[s]:Schedule",
+      "multiObject": true,
+      "source": "image"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "bs:IBSAccess",
+      "stereotype": "interface"
+    },
+    {
+      "id": "e6",
+      "kind": "fragment",
+      "name": "[bs.startTransferData()]",
+      "documentation": "условие фрагмента opt; прочитано с рисунка",
+      "operator": "opt",
+      "source": "image"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "[for all students in list]",
+      "documentation": "условие цикла; прочитано с рисунка",
+      "operator": "loop",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "getStudentList(semester : byte) : Student[]",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "startTransferData() : boolean",
+      "from": "e1",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "getName() : string",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "getAddress() : string",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "getScheduleCourses(semester : byte) : CourseOffering[]",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "getCourseOfferingList() : CourseOffering[]",
+      "from": "e3",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "message",
+      "name": "sendStudentData(name : string, address : string, cOff : CourseOffering[]) : boolean",
+      "from": "e1",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "message",
+      "name": "finishTransferData() : boolean",
+      "from": "e1",
+      "to": "e5",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Design TransferSchedulesData Subflow",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 230,
+          "h": 480
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 350,
+          "y": 60,
+          "w": 230,
+          "h": 480
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 640,
+          "y": 60,
+          "w": 230,
+          "h": 480
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 930,
+          "y": 60,
+          "w": 230,
+          "h": 480
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 1220,
+          "y": 60,
+          "w": 230,
+          "h": 480
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 60,
+          "y": 120,
+          "w": 1390,
+          "h": 170
+        },
+        {
+          "id": "s7",
+          "elementId": "e7",
+          "x": 60,
+          "y": 330,
+          "w": 1390,
+          "h": 170
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.188
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.188
+          },
+          "y": 150
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.25
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.25
+          },
+          "y": 180
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.313
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.313
+          },
+          "y": 210
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.375
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.375
+          },
+          "y": 240
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.625
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.625
+          },
+          "y": 360
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.688
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.688
+          },
+          "y": 390
+        },
+        {
+          "id": "l7",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.75
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.75
+          },
+          "y": 420
+        },
+        {
+          "id": "l8",
+          "relId": "r8",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.813
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.813
+          },
+          "y": 450
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5203",
+    "figureNo": "5.2.3",
+    "exercise": "5.2.C",
+    "type": "sequence",
+    "diagramName": "Design TransferSchedulesData Subflow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Уточнённая UML-диаграмма последовательности Design TransferSchedulesData Subflow",
+    "notes": "Текст перечисляет только правки относительно рис. 4.4.2: удалены сообщения от dao:IDBAccess и bs:IBSAccess и две линии жизни. Восемь сообщений, условия фрагментов opt ([bs.startTransferData()]) и loop ([for all students in list]) прочитаны с рисунка 5.2.3.",
+    "gaps": [
+      "сообщения в тексте не перечислены — только правки: удалены сообщения от dao:IDBAccess и bs:IBSAccess, удалены две линии жизни; состав прочитан с рисунка",
+      "покрытие сообщений фрагментами не выражается",
+      "множественность линий жизни (Multi-object) не выражается — записана multiObject"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.multiObject",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e3",
+      "e4",
+      "e6",
+      "e7"
+    ]
+  },
+  "sheet": {
+    "w": 1510,
+    "h": 600
+  }
+}

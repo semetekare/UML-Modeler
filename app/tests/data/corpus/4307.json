@@ -1,0 +1,99 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4307",
+    "figureNo": "4.3.7",
+    "exercise": "4.3.C",
+    "type": "sequence",
+    "diagramName": "DeleteSchedule Subflow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности DeleteSchedule Subflow",
+    "notes": "Состав линий жизни назван поимённо; линия жизни curSched:Schedule помечена завершённой; есть фрагменты loop и ссылка на DisplayCourseOfferings Subflow.",
+    "gaps": [
+      "сообщения между объектами в тексте не перечислены («проведём сообщения вызова между объектами»)",
+      "какие операции создаются — не названо",
+      "состояние линии жизни Stopped не выражается — записано полем stopped",
+      "покрытие сообщений фрагментами loop не выражается"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.lifelineState",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Студент"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "rform:RegistrationForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "rctrl:RegistrationController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "dao:DataAccess",
+      "stereotype": "control"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "curStud:Student",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "curSched:Schedule",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e7",
+      "kind": "lifeline",
+      "name": "primary[i]:CourseOffering",
+      "stereotype": "entity",
+      "multiObject": true
+    },
+    {
+      "id": "e8",
+      "kind": "lifeline",
+      "name": "alternative[i]:CourseOffering",
+      "stereotype": "entity",
+      "multiObject": true
+    },
+    {
+      "id": "e9",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "loop"
+    },
+    {
+      "id": "e10",
+      "kind": "interactionUse",
+      "name": "DisplayCourseOfferings Subflow",
+      "operator": "ref",
+      "refersTo": "DisplayCourseOfferings Subflow"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "DeleteSchedule Subflow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-lifeline-represents-classifier",
+  "name": "lifeline-represents-classifier — линия жизни представляет пакет",
+  "elements": [
+    {
+      "id": "L1",
+      "kind": "lifeline",
+      "name": ":Клиент"
+    },
+    {
+      "id": "L2",
+      "kind": "lifeline",
+      "name": ":Сервер",
+      "documentation": "Правило «lifeline-represents-classifier» — совет практики моделирования: пункта UML у него нет, есть только объяснение, почему такую модель трудно читать.\nЛиния жизни «:Сервер» представляет пакет «Подсистема заказов»: пакет — не классификатор, экземпляров у него не бывает.",
+      "represents": "p1"
+    },
+    {
+      "id": "p1",
+      "kind": "package",
+      "name": "Подсистема заказов"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "запрос()",
+      "from": "L1",
+      "to": "L2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "lifeline-represents-classifier — линия жизни представляет пакет",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "L1",
+          "x": 80,
+          "y": 60,
+          "w": 160,
+          "h": 600
+        },
+        {
+          "id": "s2",
+          "elementId": "L2",
+          "x": 320,
+          "y": 60,
+          "w": 160,
+          "h": 600
+        },
+        {
+          "id": "s3",
+          "elementId": "p1",
+          "x": 560,
+          "y": 60,
+          "w": 200,
+          "h": 120
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

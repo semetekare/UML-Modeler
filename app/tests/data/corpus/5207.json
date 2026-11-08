@@ -1,0 +1,93 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5207",
+    "figureNo": "5.2.7",
+    "exercise": "5.2.F",
+    "type": "package",
+    "diagramName": "DBAccess",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма пакетов в подсистеме DBAccess",
+    "notes": "Пакет-подсистема DBAccess зависит от пакетов java::lang, java::util и java::sql и связан зависимостью связывания шаблона «bind» с параметризованным пакетом RDBMS-JDBC; имя зависимости содержит подстановки параметров.",
+    "gaps": [
+      "точный состав пакетов на снимке в тексте не перечислен: названы только java::lang, java::util, java::sql и RDBMS-JDBC",
+      "вложенность java::lang в java не выражается: у элемента нет владельца",
+      "тип зависимости (Import или Dependency) текст оставляет на выбор"
+    ],
+    "gapIds": [
+      "model.packageOwner",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "package",
+      "name": "DBAccess",
+      "stereotype": "subsystem"
+    },
+    {
+      "id": "e2",
+      "kind": "package",
+      "name": "RDBMS-JDBC",
+      "templateParameters": [
+        "PersistentObject",
+        "PersistentObjectList",
+        "DBClass"
+      ]
+    },
+    {
+      "id": "e3",
+      "kind": "package",
+      "name": "java::lang"
+    },
+    {
+      "id": "e4",
+      "kind": "package",
+      "name": "java::util"
+    },
+    {
+      "id": "e5",
+      "kind": "package",
+      "name": "java::sql"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e3"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e5"
+    },
+    {
+      "id": "r4",
+      "kind": "dependency",
+      "name": "<DBClass -> DBAccess, PersistentObject -> CourseOffering, User, Student, PersistentObjectList -> CourseOfferingList>",
+      "stereotype": "bind",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "DBAccess",
+      "type": "package",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

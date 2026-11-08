@@ -1,0 +1,82 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5105",
+    "figureNo": "5.1.5",
+    "exercise": "5.1",
+    "type": "package",
+    "diagramName": "BusinessServices",
+    "group": "diagram",
+    "reproducible": "да",
+    "altText": "Структура уровня BusinessServices",
+    "notes": "Четыре пакета и пять зависимостей между ними названы текстом; рисунок 5.1.5 подтверждает и состав, и все пять зависимостей (обе модели со зрением назвали тот же набор). Пробелов не осталось.",
+    "gaps": [],
+    "gapIds": [],
+    "imageDerived": []
+  },
+  "elements": [
+    {
+      "id": "e3",
+      "kind": "package",
+      "name": "BSAccess",
+      "stereotype": "subsystem"
+    },
+    {
+      "id": "e2",
+      "kind": "package",
+      "name": "DBAccess",
+      "stereotype": "subsystem"
+    },
+    {
+      "id": "e1",
+      "kind": "package",
+      "name": "Interfaces"
+    },
+    {
+      "id": "e4",
+      "kind": "package",
+      "name": "UniversityArtefacts"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e1"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e3",
+      "to": "e1"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r4",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r5",
+      "kind": "dependency",
+      "from": "e3",
+      "to": "e4"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "BusinessServices",
+      "type": "package",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

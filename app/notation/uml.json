@@ -1,0 +1,1489 @@
+{
+ "id": "uml",
+ "title": "UML",
+ "subtitle": "Modeler · UML 2.5",
+ "schema": "uml-model/3",
+ "meta": {
+  "font": "11px Arial, Helvetica, sans-serif",
+  "fontSize": 11,
+  "lineWeight": 1,
+  "ink": "#000000",
+  "fill": "#ffffff",
+  "labelOrientation": "follow",
+  "captionHeight": 14,
+  "gridSize": 10
+ },
+ "visibilities": [
+  {
+   "key": "public",
+   "symbol": "+",
+   "title": "public",
+   "glyph": "circle"
+  },
+  {
+   "key": "private",
+   "symbol": "-",
+   "title": "private",
+   "glyph": "square"
+  },
+  {
+   "key": "protected",
+   "symbol": "#",
+   "title": "protected",
+   "glyph": "triangle",
+   "estimated": true
+  },
+  {
+   "key": "package",
+   "symbol": "~",
+   "title": "package",
+   "glyph": "diamond",
+   "estimated": true
+  }
+ ],
+ "shapes": {
+  "class": {
+   "label": "Класс",
+   "hint": "Класс — атрибуты и операции",
+   "icon": "shape-class",
+   "treeIcon": "shape-class-16",
+   "style": "classifier",
+   "defaultSize": {
+    "w": 190,
+    "h": 170
+   },
+   "compartments": [
+    {
+     "field": "attributes",
+     "title": "Атрибуты",
+     "mode": "members"
+    },
+    {
+     "field": "operations",
+     "title": "Операции",
+     "mode": "members"
+    }
+   ]
+  },
+  "interface": {
+   "label": "Интерфейс",
+   "hint": "Интерфейс — контракт без реализации",
+   "icon": "shape-interface",
+   "treeIcon": "shape-interface-16",
+   "style": "classifier",
+   "defaultSize": {
+    "w": 190,
+    "h": 110
+   },
+   "stereotype": "interface",
+   "compartments": [
+    {
+     "field": "attributes",
+     "title": "Атрибуты",
+     "mode": "members"
+    },
+    {
+     "field": "operations",
+     "title": "Операции",
+     "mode": "members"
+    }
+   ]
+  },
+  "enumeration": {
+   "label": "Перечисление",
+   "hint": "Перечисление — список литералов",
+   "icon": "shape-enumeration",
+   "treeIcon": "shape-enumeration-16",
+   "style": "classifier",
+   "defaultSize": {
+    "w": 140,
+    "h": 100
+   },
+   "stereotype": "enumeration",
+   "compartments": [
+    {
+     "field": "literals",
+     "title": "Литералы",
+     "mode": "members",
+     "novis": true
+    }
+   ]
+  },
+  "datatype": {
+   "label": "Тип данных",
+   "hint": "Тип данных — значение без идентичности",
+   "icon": "shape-datatype",
+   "treeIcon": "shape-datatype-16",
+   "style": "classifier",
+   "defaultSize": {
+    "w": 150,
+    "h": 80
+   },
+   "stereotype": "dataType",
+   "compartments": [
+    {
+     "field": "attributes",
+     "title": "Атрибуты",
+     "mode": "members"
+    }
+   ]
+  },
+  "package": {
+   "label": "Пакет",
+   "hint": "Пакет — группа элементов модели",
+   "icon": "shape-package",
+   "treeIcon": "shape-package-16",
+   "style": "package",
+   "defaultSize": {
+    "w": 140,
+    "h": 100
+   },
+   "tab": true
+  },
+  "model": {
+   "label": "Модель",
+   "hint": "Модель — корневой пакет",
+   "icon": "shape-model",
+   "treeIcon": "shape-model-16",
+   "style": "package",
+   "defaultSize": {
+    "w": 160,
+    "h": 110
+   },
+   "tab": true,
+   "stereotype": "model"
+  },
+  "profile": {
+   "label": "Профиль",
+   "hint": "Профиль — расширение UML стереотипами",
+   "icon": "shape-profile",
+   "treeIcon": "shape-profile-16",
+   "style": "package",
+   "defaultSize": {
+    "w": 180,
+    "h": 120
+   },
+   "tab": true,
+   "stereotype": "profile"
+  },
+  "component": {
+   "label": "Компонент",
+   "hint": "Компонент — модуль с портами",
+   "icon": "shape-component",
+   "treeIcon": "shape-component-16",
+   "style": "component",
+   "defaultSize": {
+    "w": 190,
+    "h": 120
+   },
+   "compartments": [
+    {
+     "field": "attributes",
+     "title": "Свойства",
+     "mode": "members"
+    },
+    {
+     "field": "operations",
+     "title": "Операции",
+     "mode": "members"
+    }
+   ]
+  },
+  "artifact": {
+   "label": "Артефакт",
+   "hint": "Артефакт — файл или библиотека",
+   "icon": "shape-artifact",
+   "treeIcon": "shape-artifact-16",
+   "style": "artifact",
+   "defaultSize": {
+    "w": 140,
+    "h": 80
+   }
+  },
+  "deploymentSpec": {
+   "label": "Спецификация развёртывания",
+   "hint": "файл конфигурации на узле",
+   "icon": "shape-deployment-spec",
+   "treeIcon": "shape-deployment-spec-16",
+   "style": "artifact",
+   "defaultSize": {
+    "w": 150,
+    "h": 80
+   },
+   "stereotype": "deployment spec"
+  },
+  "node": {
+   "label": "Узел",
+   "hint": "Узел — вычислительный ресурс",
+   "icon": "shape-node",
+   "treeIcon": "shape-node-16",
+   "style": "node",
+   "defaultSize": {
+    "w": 190,
+    "h": 120
+   }
+  },
+  "device": {
+   "label": "Устройство",
+   "hint": "Устройство — физический узел",
+   "icon": "shape-device",
+   "treeIcon": "shape-device-16",
+   "style": "node",
+   "defaultSize": {
+    "w": 190,
+    "h": 110
+   },
+   "stereotype": "device"
+  },
+  "executionEnvironment": {
+   "label": "Среда выполнения",
+   "hint": "контейнер для артефактов",
+   "icon": "shape-execution-environment",
+   "treeIcon": "shape-execution-environment-16",
+   "style": "node",
+   "defaultSize": {
+    "w": 190,
+    "h": 110
+   },
+   "stereotype": "executionEnvironment"
+  },
+  "object": {
+   "label": "Объект",
+   "hint": "Объект — экземпляр класса со слотами",
+   "icon": "shape-object",
+   "treeIcon": "shape-object-16",
+   "style": "classifier",
+   "defaultSize": {
+    "w": 160,
+    "h": 80
+   },
+   "underline": true,
+   "compartments": [
+    {
+     "field": "slots",
+     "title": "Слоты",
+     "mode": "slots"
+    }
+   ]
+  },
+  "part": {
+   "label": "Часть",
+   "hint": "Часть — роль внутри композитной структуры",
+   "icon": "shape-part",
+   "treeIcon": "shape-part-16",
+   "style": "part",
+   "defaultSize": {
+    "w": 120,
+    "h": 60
+   },
+   "stereotype": "part"
+  },
+  "port": {
+   "label": "Порт",
+   "hint": "Порт — точка взаимодействия",
+   "icon": "shape-port",
+   "treeIcon": "shape-port-16",
+   "style": "port",
+   "defaultSize": {
+    "w": 13,
+    "h": 13
+   }
+  },
+  "collaboration": {
+   "label": "Кооперация",
+   "hint": "Кооперация — роли, работающие вместе",
+   "icon": "shape-collaboration",
+   "treeIcon": "shape-collaboration-16",
+   "style": "ellipse",
+   "defaultSize": {
+    "w": 160,
+    "h": 80
+   },
+   "dashed": true,
+   "stereotype": "collaboration"
+  },
+  "collaborationUse": {
+   "label": "Использование кооперации",
+   "hint": "ссылка на кооперацию",
+   "icon": "shape-collaboration-use",
+   "treeIcon": "shape-collaboration-use-16",
+   "style": "part",
+   "defaultSize": {
+    "w": 140,
+    "h": 60
+   },
+   "stereotype": "use"
+  },
+  "stereotype": {
+   "label": "Стереотип",
+   "hint": "Стереотип профиля",
+   "icon": "shape-stereotype",
+   "treeIcon": "shape-stereotype-16",
+   "style": "classifier",
+   "defaultSize": {
+    "w": 160,
+    "h": 90
+   },
+   "stereotype": "stereotype",
+   "compartments": [
+    {
+     "field": "attributes",
+     "title": "Tagged values",
+     "mode": "members"
+    }
+   ]
+  },
+  "metaclass": {
+   "label": "Метакласс",
+   "hint": "Метакласс — расширяемый элемент UML",
+   "icon": "shape-metaclass",
+   "treeIcon": "shape-metaclass-16",
+   "style": "classifier",
+   "defaultSize": {
+    "w": 160,
+    "h": 90
+   },
+   "stereotype": "metaclass"
+  },
+  "actor": {
+   "label": "Актёр",
+   "hint": "Актёр — внешний участник",
+   "icon": "shape-actor",
+   "treeIcon": "shape-actor-16",
+   "style": "actor",
+   "defaultSize": {
+    "w": 40,
+    "h": 64
+   }
+  },
+  "usecase": {
+   "label": "Вариант использования",
+   "hint": "Вариант использования — цель актёра",
+   "icon": "shape-usecase",
+   "treeIcon": "shape-usecase-16",
+   "style": "ellipse",
+   "defaultSize": {
+    "w": 120,
+    "h": 60
+   },
+   "compartments": [
+    {
+     "field": "extensionPoints",
+     "title": "Точки расширения",
+     "mode": "lines"
+    }
+   ]
+  },
+  "systemBoundary": {
+   "label": "Граница системы",
+   "hint": "subject: что входит в систему",
+   "icon": "shape-system-boundary",
+   "treeIcon": "shape-system-boundary-16",
+   "style": "boundary",
+   "defaultSize": {
+    "w": 320,
+    "h": 220
+   }
+  },
+  "note": {
+   "label": "Примечание",
+   "hint": "Примечание — комментарий на поле",
+   "icon": "shape-note",
+   "treeIcon": "shape-note-16",
+   "style": "note",
+   "defaultSize": {
+    "w": 80,
+    "h": 70
+   },
+   "wrap": true
+  },
+  "text": {
+   "label": "Текст",
+   "hint": "свободная надпись на листе",
+   "icon": "shape-text",
+   "treeIcon": "shape-text-16",
+   "style": "text",
+   "defaultSize": {
+    "w": 120,
+    "h": 24
+   },
+   "wrap": true
+  },
+  "state": {
+   "label": "Состояние",
+   "hint": "Состояние — entry / do / exit",
+   "icon": "shape-state",
+   "treeIcon": "shape-state-16",
+   "style": "state",
+   "defaultSize": {
+    "w": 150,
+    "h": 80
+   },
+   "compartments": [
+    {
+     "field": "entry",
+     "title": "entry",
+     "mode": "lines",
+     "prefix": "entry / "
+    },
+    {
+     "field": "do",
+     "title": "do",
+     "mode": "lines",
+     "prefix": "do / "
+    },
+    {
+     "field": "exit",
+     "title": "exit",
+     "mode": "lines",
+     "prefix": "exit / "
+    }
+   ]
+  },
+  "initial": {
+   "label": "Начальное состояние",
+   "hint": "псевдосостояние входа",
+   "icon": "shape-initial",
+   "treeIcon": "shape-initial-16",
+   "style": "initial",
+   "defaultSize": {
+    "w": 18,
+    "h": 18
+   },
+   "nameless": true
+  },
+  "final": {
+   "label": "Конечное состояние",
+   "hint": "конец состояния или деятельности",
+   "icon": "shape-final",
+   "treeIcon": "shape-final-16",
+   "style": "final",
+   "defaultSize": {
+    "w": 20,
+    "h": 20
+   },
+   "nameless": true
+  },
+  "choice": {
+   "label": "Выбор",
+   "hint": "Выбор — динамическое решение",
+   "icon": "shape-choice",
+   "treeIcon": "shape-choice-16",
+   "style": "diamond",
+   "defaultSize": {
+    "w": 30,
+    "h": 30
+   },
+   "nameless": true
+  },
+  "junction": {
+   "label": "Соединение",
+   "hint": "Соединение — статическая ветвь",
+   "icon": "shape-junction",
+   "treeIcon": "shape-junction-16",
+   "style": "junction",
+   "defaultSize": {
+    "w": 16,
+    "h": 16
+   },
+   "nameless": true
+  },
+  "historyShallow": {
+   "label": "История (мелкая)",
+   "hint": "последнее состояние верхнего уровня",
+   "icon": "shape-history-shallow",
+   "treeIcon": "shape-history-shallow-16",
+   "style": "history",
+   "defaultSize": {
+    "w": 20,
+    "h": 20
+   },
+   "nameless": true,
+   "deep": false
+  },
+  "historyDeep": {
+   "label": "История (глубокая)",
+   "hint": "история состояния целиком",
+   "icon": "shape-history-deep",
+   "treeIcon": "shape-history-deep-16",
+   "style": "history",
+   "defaultSize": {
+    "w": 20,
+    "h": 20
+   },
+   "nameless": true,
+   "deep": true
+  },
+  "entryPoint": {
+   "label": "Точка входа",
+   "hint": "начало составного состояния",
+   "icon": "shape-entry-point",
+   "treeIcon": "shape-entry-point-16",
+   "style": "point",
+   "defaultSize": {
+    "w": 18,
+    "h": 18
+   },
+   "nameless": true
+  },
+  "exitPoint": {
+   "label": "Точка выхода",
+   "hint": "конец составного состояния",
+   "icon": "shape-exit-point",
+   "treeIcon": "shape-exit-point-16",
+   "style": "point",
+   "defaultSize": {
+    "w": 18,
+    "h": 18
+   },
+   "nameless": true,
+   "cross": true
+  },
+  "terminate": {
+   "label": "Завершение",
+   "hint": "немедленная остановка",
+   "icon": "shape-terminate",
+   "treeIcon": "shape-terminate-16",
+   "style": "terminate",
+   "defaultSize": {
+    "w": 20,
+    "h": 20
+   },
+   "nameless": true
+  },
+  "action": {
+   "label": "Действие",
+   "hint": "Действие — шаг деятельности",
+   "icon": "shape-action",
+   "treeIcon": "shape-action-16",
+   "style": "action",
+   "defaultSize": {
+    "w": 140,
+    "h": 50
+   }
+  },
+  "activity": {
+   "label": "Деятельность",
+   "hint": "Деятельность — рамка с действиями",
+   "icon": "shape-activity",
+   "treeIcon": "shape-activity-16",
+   "style": "activity",
+   "defaultSize": {
+    "w": 320,
+    "h": 220
+   }
+  },
+  "decision": {
+   "label": "Решение",
+   "hint": "Решение — ветвление потока",
+   "icon": "shape-decision",
+   "treeIcon": "shape-decision-16",
+   "style": "diamond",
+   "defaultSize": {
+    "w": 44,
+    "h": 44
+   },
+   "nameless": true
+  },
+  "merge": {
+   "label": "Слияние",
+   "hint": "Слияние ветвей потока",
+   "icon": "shape-merge",
+   "treeIcon": "shape-merge-16",
+   "style": "diamond",
+   "defaultSize": {
+    "w": 44,
+    "h": 44
+   },
+   "nameless": true
+  },
+  "fork": {
+   "label": "Разделение",
+   "hint": "параллельное разделение",
+   "icon": "shape-fork",
+   "treeIcon": "shape-fork-16",
+   "style": "bar",
+   "defaultSize": {
+    "w": 160,
+    "h": 8
+   },
+   "nameless": true
+  },
+  "join": {
+   "label": "Объединение",
+   "hint": "синхронизация параллельных ветвей",
+   "icon": "shape-join",
+   "treeIcon": "shape-join-16",
+   "style": "bar",
+   "defaultSize": {
+    "w": 160,
+    "h": 8
+   },
+   "nameless": true
+  },
+  "objectNode": {
+   "label": "Объект данных",
+   "hint": "данные, передаваемые потоком",
+   "icon": "shape-object-node",
+   "treeIcon": "shape-object-node-16",
+   "style": "objectnode",
+   "defaultSize": {
+    "w": 120,
+    "h": 50
+   }
+  },
+  "activityParameter": {
+   "label": "Параметр деятельности",
+   "hint": "вход или выход деятельности",
+   "icon": "shape-activity-parameter",
+   "treeIcon": "shape-activity-parameter-16",
+   "style": "objectnode",
+   "defaultSize": {
+    "w": 120,
+    "h": 40
+   }
+  },
+  "swimlane": {
+   "label": "Дорожка",
+   "hint": "Дорожка — ответственный за действия",
+   "icon": "shape-swimlane",
+   "treeIcon": "shape-swimlane-16",
+   "style": "swimlane",
+   "defaultSize": {
+    "w": 420,
+    "h": 300
+   }
+  },
+  "lifeline": {
+   "label": "Линия жизни",
+   "hint": "Линия жизни — участник взаимодействия",
+   "icon": "shape-lifeline",
+   "treeIcon": "shape-lifeline-16",
+   "style": "lifeline",
+   "defaultSize": {
+    "w": 120,
+    "h": 260
+   }
+  },
+  "actorLifeline": {
+   "label": "Актёр (линия жизни)",
+   "hint": "Внешний участник во взаимодействии",
+   "icon": "shape-actor-lifeline",
+   "treeIcon": "shape-actor-lifeline-16",
+   "style": "actorLifeline",
+   "defaultSize": {
+    "w": 70,
+    "h": 260
+   }
+  },
+  "activation": {
+   "label": "Активация",
+   "hint": "полоса выполнения на линии жизни",
+   "icon": "shape-activation",
+   "treeIcon": "shape-activation-16",
+   "style": "activation",
+   "defaultSize": {
+    "w": 8,
+    "h": 80
+   },
+   "nameless": true
+  },
+  "fragment": {
+   "label": "Комбинированный фрагмент",
+   "hint": "alt / loop / opt и операторы",
+   "icon": "shape-fragment",
+   "treeIcon": "shape-fragment-16",
+   "style": "frame",
+   "defaultSize": {
+    "w": 320,
+    "h": 160
+   },
+   "operator": "alt"
+  },
+  "interactionUse": {
+   "label": "Ссылка на взаимодействие",
+   "hint": "«ref»: вызов другого взаимодействия",
+   "icon": "shape-interaction-use",
+   "treeIcon": "shape-interaction-use-16",
+   "style": "frame",
+   "defaultSize": {
+    "w": 220,
+    "h": 80
+   },
+   "operator": "ref"
+  },
+  "interaction": {
+   "label": "Взаимодействие",
+   "hint": "узел обзора взаимодействий",
+   "icon": "shape-interaction",
+   "treeIcon": "shape-interaction-16",
+   "style": "frame",
+   "defaultSize": {
+    "w": 260,
+    "h": 90
+   },
+   "operator": "ref"
+  },
+  "timingLane": {
+   "label": "Шкала времени",
+   "hint": "состояния во времени",
+   "icon": "shape-timing-lane",
+   "treeIcon": "shape-timing-lane-16",
+   "style": "timingLane",
+   "defaultSize": {
+    "w": 420,
+    "h": 80
+   }
+  }
+ },
+ "connectors": {
+  "association": {
+   "label": "Ассоциация",
+   "hint": "Ассоциация — структурная связь",
+   "icon": "conn-association",
+   "dash": false,
+   "head": "none",
+   "multiplicity": true,
+   "roles": true,
+   "kind": "association",
+   "self": "allowed"
+  },
+  "aggregation": {
+   "label": "Агрегация",
+   "hint": "Агрегация — «часть-целое» без владения",
+   "icon": "conn-aggregation",
+   "dash": false,
+   "head": "none",
+   "tail": "diamond",
+   "multiplicity": true,
+   "roles": true,
+   "kind": "aggregation",
+   "self": "allowed"
+  },
+  "composition": {
+   "label": "Композиция",
+   "hint": "Композиция — части живут с целым",
+   "icon": "conn-composition",
+   "dash": false,
+   "head": "none",
+   "tail": "filledDiamond",
+   "multiplicity": true,
+   "roles": true,
+   "kind": "composition",
+   "self": "allowed"
+  },
+  "generalization": {
+   "label": "Обобщение",
+   "hint": "Обобщение — наследование",
+   "icon": "conn-generalization",
+   "dash": false,
+   "head": "triangle",
+   "kind": "generalization",
+   "self": "forbidden"
+  },
+  "realization": {
+   "label": "Реализация",
+   "hint": "Реализация — класс выполняет контракт",
+   "icon": "conn-realization",
+   "dash": true,
+   "head": "triangle",
+   "kind": "realization",
+   "self": "allowed"
+  },
+  "dependency": {
+   "label": "Зависимость",
+   "hint": "Зависимость — использование, пунктир",
+   "icon": "conn-dependency",
+   "dash": true,
+   "head": "open",
+   "kind": "dependency",
+   "self": "allowed"
+  },
+  "usage": {
+   "label": "Использование",
+   "hint": "«use»: элемент использует другой",
+   "icon": "conn-usage",
+   "dash": true,
+   "head": "open",
+   "keyword": "use",
+   "kind": "usage",
+   "self": "allowed"
+  },
+  "import": {
+   "label": "Импорт",
+   "hint": "«import»: пакет импортирует другой",
+   "icon": "conn-import",
+   "dash": true,
+   "head": "open",
+   "keyword": "import",
+   "kind": "import",
+   "self": "allowed"
+  },
+  "merge": {
+   "label": "Слияние пакетов",
+   "hint": "«merge»: объединение содержимого двух пакетов",
+   "icon": "conn-merge",
+   "dash": true,
+   "head": "open",
+   "keyword": "merge",
+   "kind": "merge",
+   "self": "allowed"
+  },
+  "include": {
+   "label": "Включение",
+   "hint": "«include»: обязательный вариант",
+   "icon": "conn-include",
+   "dash": true,
+   "head": "open",
+   "keyword": "include",
+   "kind": "include",
+   "self": "forbidden"
+  },
+  "extend": {
+   "label": "Расширение",
+   "hint": "«extend»: необязательный вариант",
+   "icon": "conn-extend",
+   "dash": true,
+   "head": "open",
+   "keyword": "extend",
+   "kind": "extend",
+   "self": "allowed"
+  },
+  "assembly": {
+   "label": "Сборка",
+   "hint": "Сборка — «требует / предоставляет»",
+   "icon": "conn-assembly",
+   "dash": false,
+   "head": "ball",
+   "tail": "socket",
+   "kind": "assembly",
+   "self": "allowed"
+  },
+  "delegation": {
+   "label": "Делегирование",
+   "hint": "порт передаёт работу части",
+   "icon": "conn-delegation",
+   "dash": false,
+   "head": "open",
+   "kind": "delegation",
+   "self": "allowed"
+  },
+  "connector": {
+   "label": "Коннектор",
+   "hint": "соединение частей композита",
+   "icon": "conn-connector",
+   "dash": false,
+   "head": "none",
+   "kind": "connector",
+   "self": "allowed"
+  },
+  "controlFlow": {
+   "label": "Поток управления",
+   "hint": "порядок действий",
+   "icon": "conn-control-flow",
+   "dash": false,
+   "head": "open",
+   "kind": "controlFlow",
+   "self": "allowed"
+  },
+  "objectFlow": {
+   "label": "Поток объектов",
+   "hint": "передача данных между действиями",
+   "icon": "conn-object-flow",
+   "dash": false,
+   "head": "open",
+   "kind": "objectFlow",
+   "self": "allowed"
+  },
+  "transition": {
+   "label": "Переход",
+   "hint": "Переход между состояниями",
+   "icon": "conn-transition",
+   "dash": false,
+   "head": "open",
+   "kind": "transition",
+   "self": "allowed",
+   "selfInternal": "hidden"
+  },
+  "message": {
+   "label": "Сообщение",
+   "hint": "синхронный вызов на линии жизни",
+   "icon": "conn-message",
+   "dash": false,
+   "head": "filledTriangle",
+   "sequence": true,
+   "kind": "message",
+   "self": "allowed"
+  },
+  "reply": {
+   "label": "Ответ",
+   "hint": "возврат управления, пунктир",
+   "icon": "conn-reply",
+   "dash": true,
+   "head": "open",
+   "sequence": true,
+   "kind": "reply",
+   "self": "allowed"
+  },
+  "createMessage": {
+   "label": "Создание",
+   "hint": "«create»: создаёт линию жизни",
+   "icon": "conn-create-message",
+   "dash": true,
+   "head": "open",
+   "sequence": true,
+   "keyword": "create",
+   "kind": "createMessage",
+   "self": "allowed"
+  },
+  "destroyMessage": {
+   "label": "Уничтожение",
+   "hint": "«destroy»: завершает линию жизни",
+   "icon": "conn-destroy-message",
+   "dash": false,
+   "head": "cross",
+   "sequence": true,
+   "keyword": "destroy",
+   "kind": "destroyMessage",
+   "self": "allowed"
+  },
+  "link": {
+   "label": "Связь объектов",
+   "hint": "связь между экземплярами",
+   "icon": "conn-link",
+   "dash": false,
+   "head": "none",
+   "multiplicity": true,
+   "numbered": true,
+   "kind": "link",
+   "self": "allowed"
+  },
+  "deployment": {
+   "label": "Развёртывание",
+   "hint": "«deploy»: артефакт на узле",
+   "icon": "conn-deployment",
+   "dash": true,
+   "head": "open",
+   "keyword": "deploy",
+   "kind": "deployment",
+   "self": "allowed"
+  },
+  "communicationPath": {
+   "label": "Путь связи",
+   "hint": "канал между узлами",
+   "icon": "conn-communication-path",
+   "dash": false,
+   "head": "none",
+   "kind": "communicationPath",
+   "self": "allowed"
+  },
+  "manifest": {
+   "label": "Манифестация",
+   "hint": "«manifest»: артефакт воплощает компонент",
+   "icon": "conn-manifest",
+   "dash": true,
+   "head": "open",
+   "keyword": "manifest",
+   "kind": "manifest",
+   "self": "allowed"
+  },
+  "trace": {
+   "label": "Трассировка",
+   "hint": "«trace»: след между элементами",
+   "icon": "conn-trace",
+   "dash": true,
+   "head": "open",
+   "keyword": "trace",
+   "kind": "trace",
+   "self": "allowed"
+  },
+  "extension": {
+   "label": "Расширение профиля",
+   "hint": "стереотип расширяет метакласс",
+   "icon": "conn-extension",
+   "dash": false,
+   "head": "filledTriangle",
+   "kind": "extension",
+   "self": "forbidden"
+  }
+ },
+ "types": {
+  "class": {
+   "label": "Class",
+   "ru": "Классов",
+   "kind": "structural",
+   "vp": "ClassDiagram",
+   "what": "Классы, интерфейсы, перечисления, пакеты, ассоциации, обобщения",
+   "palette": {
+    "shapes": [
+     "class",
+     "interface",
+     "enumeration",
+     "datatype",
+     "package",
+     "object",
+     "note"
+    ],
+    "connectors": [
+     "association",
+     "aggregation",
+     "composition",
+     "generalization",
+     "realization",
+     "dependency"
+    ]
+   },
+   "keys": {
+    "class": "C",
+    "interface": "I",
+    "enumeration": "E",
+    "package": "P",
+    "note": "N",
+    "association": "A",
+    "generalization": "G",
+    "dependency": "D",
+    "realization": "R"
+   }
+  },
+  "component": {
+   "label": "Component",
+   "ru": "Компонентов",
+   "kind": "structural",
+   "vp": "ComponentDiagram",
+   "what": "Компоненты, интерфейсы, порты, зависимости",
+   "palette": {
+    "shapes": [
+     "component",
+     "interface",
+     "port",
+     "artifact",
+     "class",
+     "package",
+     "note"
+    ],
+    "connectors": [
+     "assembly",
+     "dependency",
+     "realization",
+     "generalization",
+     "association"
+    ]
+   },
+   "keys": {
+    "component": "C",
+    "interface": "I",
+    "port": "O",
+    "package": "P",
+    "note": "N",
+    "assembly": "A",
+    "dependency": "D",
+    "realization": "R"
+   }
+  },
+  "composite": {
+   "label": "Composite Structure",
+   "ru": "Композитной структуры",
+   "kind": "structural",
+   "vp": "CompositeStructureDiagram",
+   "what": "Части, порты, коннекторы внутри класса",
+   "palette": {
+    "shapes": [
+     "class",
+     "component",
+     "part",
+     "port",
+     "collaboration",
+     "collaborationUse",
+     "note"
+    ],
+    "connectors": [
+     "connector",
+     "delegation",
+     "assembly",
+     "dependency"
+    ]
+   },
+   "keys": {
+    "part": "A",
+    "port": "O",
+    "class": "C",
+    "component": "K",
+    "collaboration": "L",
+    "note": "N",
+    "connector": "R",
+    "delegation": "D"
+   }
+  },
+  "deployment": {
+   "label": "Deployment",
+   "ru": "Развёртывания",
+   "kind": "structural",
+   "vp": "DeploymentDiagram",
+   "what": "Узлы, артефакты, соединения",
+   "palette": {
+    "shapes": [
+     "node",
+     "device",
+     "executionEnvironment",
+     "artifact",
+     "deploymentSpec",
+     "component",
+     "package",
+     "note"
+    ],
+    "connectors": [
+     "deployment",
+     "communicationPath",
+     "association",
+     "dependency",
+     "manifest"
+    ]
+   },
+   "keys": {
+    "node": "N",
+    "device": "D",
+    "executionEnvironment": "E",
+    "artifact": "A",
+    "component": "C",
+    "note": "T",
+    "deployment": "P",
+    "communicationPath": "K"
+   }
+  },
+  "object": {
+   "label": "Object",
+   "ru": "Объектов",
+   "kind": "structural",
+   "vp": "ObjectDiagram",
+   "what": "Экземпляры, слоты значений, ссылки",
+   "palette": {
+    "shapes": [
+     "object",
+     "class",
+     "package",
+     "note"
+    ],
+    "connectors": [
+     "link",
+     "association",
+     "dependency"
+    ]
+   },
+   "keys": {
+    "object": "O",
+    "class": "C",
+    "package": "P",
+    "note": "N",
+    "link": "L",
+    "association": "A"
+   }
+  },
+  "package": {
+   "label": "Package",
+   "ru": "Пакетов",
+   "kind": "structural",
+   "vp": "PackageDiagram",
+   "what": "Пакеты и зависимости между ними",
+   "palette": {
+    "shapes": [
+     "package",
+     "model",
+     "class",
+     "interface",
+     "note"
+    ],
+    "connectors": [
+     "dependency",
+     "import",
+     "merge",
+     "generalization",
+     "usage"
+    ]
+   },
+   "keys": {
+    "package": "P",
+    "model": "M",
+    "class": "C",
+    "interface": "I",
+    "note": "N",
+    "dependency": "D",
+    "import": "A",
+    "merge": "E"
+   }
+  },
+  "profile": {
+   "label": "Profile",
+   "ru": "Профилей",
+   "kind": "structural",
+   "vp": "ProfileDiagram",
+   "what": "Стереотипы, метаклассы, расширения",
+   "palette": {
+    "shapes": [
+     "profile",
+     "stereotype",
+     "metaclass",
+     "class",
+     "package",
+     "note"
+    ],
+    "connectors": [
+     "extension",
+     "generalization",
+     "dependency",
+     "association"
+    ]
+   },
+   "keys": {
+    "profile": "P",
+    "stereotype": "S",
+    "metaclass": "M",
+    "class": "C",
+    "note": "N",
+    "extension": "E",
+    "generalization": "G"
+   }
+  },
+  "activity": {
+   "label": "Activity",
+   "ru": "Деятельности",
+   "kind": "behavioural",
+   "vp": "ActivityDiagram",
+   "what": "Действия, решения, потоки, дорожки",
+   "palette": {
+    "shapes": [
+     "activity",
+     "action",
+     "initial",
+     "final",
+     "decision",
+     "merge",
+     "fork",
+     "join",
+     "objectNode",
+     "activityParameter",
+     "swimlane",
+     "note"
+    ],
+    "connectors": [
+     "controlFlow",
+     "objectFlow"
+    ]
+   },
+   "keys": {
+    "action": "A",
+    "initial": "S",
+    "final": "F",
+    "decision": "D",
+    "merge": "M",
+    "fork": "K",
+    "join": "J",
+    "objectNode": "O",
+    "swimlane": "L",
+    "note": "N",
+    "controlFlow": "C",
+    "objectFlow": "B"
+   }
+  },
+  "state": {
+   "label": "State Machine",
+   "ru": "Состояний",
+   "kind": "behavioural",
+   "vp": "StateDiagram",
+   "what": "Состояния, переходы, псевдосостояния",
+   "palette": {
+    "shapes": [
+     "state",
+     "initial",
+     "final",
+     "choice",
+     "junction",
+     "historyShallow",
+     "historyDeep",
+     "entryPoint",
+     "exitPoint",
+     "terminate",
+     "note"
+    ],
+    "connectors": [
+     "transition"
+    ]
+   },
+   "keys": {
+    "state": "S",
+    "initial": "I",
+    "final": "F",
+    "choice": "C",
+    "junction": "J",
+    "historyShallow": "H",
+    "terminate": "T",
+    "note": "N",
+    "transition": "A"
+   }
+  },
+  "usecase": {
+   "label": "Use Case",
+   "ru": "Вариантов использования",
+   "kind": "behavioural",
+   "vp": "UseCaseDiagram",
+   "what": "Актёры, варианты использования, subject",
+   "palette": {
+    "shapes": [
+     "actor",
+     "usecase",
+     "systemBoundary",
+     "package",
+     "note"
+    ],
+    "connectors": [
+     "association",
+     "include",
+     "extend",
+     "generalization",
+     "dependency"
+    ]
+   },
+   "keys": {
+    "actor": "A",
+    "usecase": "U",
+    "systemBoundary": "B",
+    "package": "P",
+    "note": "N",
+    "association": "S",
+    "include": "I",
+    "extend": "E",
+    "generalization": "G"
+   }
+  },
+  "sequence": {
+   "label": "Sequence",
+   "ru": "Последовательности",
+   "kind": "behavioural",
+   "vp": "InteractionDiagram",
+   "what": "Линии жизни, сообщения, фрагменты",
+   "palette": {
+    "shapes": [
+     "lifeline",
+     "actorLifeline",
+     "activation",
+     "fragment",
+     "interactionUse",
+     "note"
+    ],
+    "connectors": [
+     "message",
+     "reply",
+     "createMessage",
+     "destroyMessage"
+    ]
+   },
+   "keys": {
+    "lifeline": "L",
+    "actorLifeline": "A",
+    "activation": "V",
+    "fragment": "F",
+    "interactionUse": "R",
+    "note": "N",
+    "message": "M",
+    "reply": "T"
+   }
+  },
+  "communication": {
+   "label": "Communication",
+   "ru": "Коммуникации",
+   "kind": "behavioural",
+   "vp": "CommunicationDiagram",
+   "what": "Объекты и нумерованные сообщения",
+   "palette": {
+    "shapes": [
+     "object",
+     "actor",
+     "lifeline",
+     "note"
+    ],
+    "connectors": [
+     "link",
+     "message"
+    ]
+   },
+   "keys": {
+    "object": "O",
+    "actor": "A",
+    "lifeline": "L",
+    "note": "N",
+    "link": "K",
+    "message": "M"
+   }
+  },
+  "timing": {
+   "label": "Timing",
+   "ru": "Времени",
+   "kind": "behavioural",
+   "vp": "TimingDiagram",
+   "what": "Шкалы времени, состояния линий",
+   "palette": {
+    "shapes": [
+     "timingLane",
+     "note"
+    ],
+    "connectors": [
+     "message"
+    ]
+   },
+   "keys": {
+    "timingLane": "L",
+    "note": "N",
+    "message": "M"
+   }
+  },
+  "interaction-overview": {
+   "label": "Interaction Overview",
+   "ru": "Обзора взаимодействий",
+   "kind": "behavioural",
+   "vp": "InteractionOverviewDiagram",
+   "what": "Узлы-взаимодействия и потоки",
+   "palette": {
+    "shapes": [
+     "interaction",
+     "interactionUse",
+     "initial",
+     "final",
+     "decision",
+     "merge",
+     "fork",
+     "join",
+     "note"
+    ],
+    "connectors": [
+     "controlFlow"
+    ]
+   },
+   "keys": {
+    "interaction": "R",
+    "initial": "S",
+    "final": "F",
+    "decision": "D",
+    "merge": "M",
+    "fork": "K",
+    "join": "J",
+    "note": "N",
+    "controlFlow": "C"
+   }
+  }
+ },
+ "typeOrder": [
+  "class",
+  "component",
+  "composite",
+  "deployment",
+  "object",
+  "package",
+  "profile",
+  "activity",
+  "state",
+  "usecase",
+  "sequence",
+  "communication",
+  "timing",
+  "interaction-overview"
+ ]
+}

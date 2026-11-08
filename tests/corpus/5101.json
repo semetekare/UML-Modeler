@@ -1,0 +1,107 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5101",
+    "figureNo": "5.1.1",
+    "exercise": "5.1",
+    "type": "package",
+    "diagramName": "Main",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма пакетов Main",
+    "notes": "Пять пакетов и шесть зависимостей между ними названы текстом; рисунок 5.1.1 подтверждает и состав, и все шесть зависимостей. Дополнительно на рисунке видно, что два пакета механизмов подписаны с уточнением в скобках — «RemoteInterchange (Architectural Mechanisms)» и «Persistency (Architectural Mechanisms)»; имя из текста оставлено, уточнение записано в документации.",
+    "gaps": [
+      "текст называет три архитектурных уровня и два пакета механизмов, но не перечисляет все пакеты, видимые на снимке",
+      "вложенность пакета в пакет не выражается в uml-model/3: у элемента нет владельца"
+    ],
+    "gapIds": [
+      "model.packageOwner",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e4",
+      "e5"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "package",
+      "name": "Application",
+      "stereotype": "layer"
+    },
+    {
+      "id": "e2",
+      "kind": "package",
+      "name": "BusinessServices",
+      "stereotype": "layer"
+    },
+    {
+      "id": "e4",
+      "kind": "package",
+      "name": "RemoteInterchange",
+      "note": "на рисунке пакет подписан в три строки: «RemoteInterchange» / «(Architectural» / «Mechanisms)»",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "package",
+      "name": "Middleware",
+      "stereotype": "layer"
+    },
+    {
+      "id": "e5",
+      "kind": "package",
+      "name": "Persistency",
+      "note": "на рисунке пакет подписан в три строки: «Persistency» / «(Architectural» / «Mechanisms)»",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e3"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r4",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e5"
+    },
+    {
+      "id": "r5",
+      "kind": "dependency",
+      "from": "e4",
+      "to": "e3"
+    },
+    {
+      "id": "r6",
+      "kind": "dependency",
+      "from": "e5",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Main",
+      "type": "package",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

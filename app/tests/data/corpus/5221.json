@@ -1,0 +1,57 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5221",
+    "figureNo": "5.2.21",
+    "exercise": "5.2.H",
+    "type": "activity",
+    "diagramName": "updateStudent",
+    "group": "diagram",
+    "reproducible": "нет",
+    "altText": "UML-диаграмма деятельности для операции DBAccess::updateStudent",
+    "notes": "Известно только, что диаграмма деятельности построена внутри класса DBAccess для операции updateStudent (варианты 1 и 4) и что в ней использованы структурированные узлы с регионами.",
+    "gaps": [
+      "псевдокод в узлах действий в тексте не приведён: сказано только, как его вводить (F2, Alt+Enter, Caption Placement)",
+      "структурированные узлы Conditional Node with Regions и Loop Node with Regions не выражаются в uml-model/3: у узла нет регионов",
+      "состав действий и рёбер не назван — источником служит снимок"
+    ],
+    "gapIds": [
+      "model.structuredNode",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "initial",
+      "name": ""
+    },
+    {
+      "id": "e2",
+      "kind": "action",
+      "name": "не названо в тексте",
+      "structuredNode": "ConditionalNode"
+    },
+    {
+      "id": "e3",
+      "kind": "action",
+      "name": "не названо в тексте",
+      "structuredNode": "LoopNode"
+    },
+    {
+      "id": "e4",
+      "kind": "final",
+      "name": ""
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "updateStudent",
+      "type": "activity",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

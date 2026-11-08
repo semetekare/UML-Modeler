@@ -1,0 +1,93 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-swimlane-represents-kind",
+  "name": "swimlane-represents-kind — дорожка представляет другую дорожку",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "swimlane",
+      "name": "Студент",
+      "documentation": "Правило «swimlane-represents-kind» — совет практики моделирования: пункта UML у него нет, есть только объяснение, почему такую модель трудно читать.\nДорожка «Студент» представляет дорожку «Преподаватель»: дорожка — деление листа, а не участник, которого можно представлять.",
+      "represents": "e2"
+    },
+    {
+      "id": "e2",
+      "kind": "swimlane",
+      "name": "Преподаватель"
+    },
+    {
+      "id": "e3",
+      "kind": "action",
+      "name": "Оформить заказ"
+    },
+    {
+      "id": "e4",
+      "kind": "action",
+      "name": "Проверить склад"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "controlFlow",
+      "from": "e3",
+      "to": "e4"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "swimlane-represents-kind — дорожка представляет дорожку",
+      "kind": "activity",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 240,
+          "h": 400
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 240,
+          "h": 400
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 80,
+          "y": 120,
+          "w": 160,
+          "h": 50
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 340,
+          "y": 120,
+          "w": 160,
+          "h": 50
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s3",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

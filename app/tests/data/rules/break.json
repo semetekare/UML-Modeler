@@ -1,0 +1,205 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-break",
+  "name": "break — фрагмент break не покрывает третью линию жизни",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": ":Покупатель"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": ":Магазин"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": ":Платёжный шлюз"
+    },
+    {
+      "id": "e4",
+      "kind": "fragment",
+      "name": "Оплата заказа",
+      "documentation": "Объемлющий alt покрывает три линии жизни: «Покупатель», «Магазин» и «Платёжный шлюз».",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[карта принята]",
+          "messages": [
+            "r1",
+            "r2"
+          ]
+        },
+        {
+          "id": "o2",
+          "guard": "[карта отклонена]",
+          "messages": [
+            "r3"
+          ]
+        }
+      ],
+      "operator": "alt"
+    },
+    {
+      "id": "e5",
+      "kind": "fragment",
+      "name": "Выход при ошибке",
+      "documentation": "Правило «break»: break покрывает только «Покупателя» и «Магазин» (сообщение r1), а объемлющий фрагмент — ещё и «Платёжный шлюз».\nUML 2.5.1, п. 17.12.3.7, констрейнт CombinedFragment::break: операнд break должен покрывать все линии жизни объемлющего фрагмента.",
+      "ownerId": "e4",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[ошибка оплаты]",
+          "messages": [
+            "r1"
+          ]
+        }
+      ],
+      "operator": "break"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "оформить()",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "оплатить()",
+      "from": "e2",
+      "to": "e3"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "подтвердить()",
+      "from": "e1",
+      "to": "e3"
+    },
+    {
+      "id": "r4",
+      "kind": "reply",
+      "name": "ok",
+      "from": "e3",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Оформление заказа",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 620
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 270,
+          "y": 60,
+          "w": 150,
+          "h": 620
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 480,
+          "y": 60,
+          "w": 150,
+          "h": 620
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 60,
+          "y": 150,
+          "w": 700,
+          "h": 420
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 80,
+          "y": 200,
+          "w": 660,
+          "h": 180
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.2
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.2
+          },
+          "y": 180
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.25
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.25
+          },
+          "y": 220
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.3
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.3
+          },
+          "y": 260
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.35
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.35
+          },
+          "y": 300
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

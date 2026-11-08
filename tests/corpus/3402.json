@@ -1,0 +1,311 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "3402",
+    "figureNo": "3.4.2",
+    "exercise": "3.4",
+    "type": "activity",
+    "diagramName": "Зарегистрироваться на курсы",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма деятельности «Зарегистрироваться на курсы»",
+    "notes": "Текст называет только четыре узла действия вызова деятельности. Рисунок 3.4.2 прочитан целиком: две дорожки (Студент, Система регистрации на курсы), начальный узел, девять действий (добавлены «Запросить регистрацию», «Проверить состояние регистрации», «Сообщить об ошибке», «Запросить действие», «Выбрать действие»), два решения с условиями ([регистрация закрыта] / [else] и четыре «[выбрано … и оно возможно]» / [else]), узел слияния перед «Сообщить об ошибке» и два конечных узла («неуспех» и «успех»).",
+    "gaps": [
+      "в тексте названы только четыре узла действия вызова деятельности; остальные действия студента и системы, ветвления и их рёбра прочитаны с рисунка",
+      "поле Behavior узла действия вызова деятельности (ссылка на деятельность) не выражается; здесь оно записано строкой behaviorRef",
+      "дорожки на рисунке 3.4.2 текст не описывает — прочитаны с рисунка",
+      "у конечного узла в uml-model/3 нет имени: подписи «успех» и «неуспех» записаны в documentation"
+    ],
+    "gapIds": [
+      "model.callBehavior",
+      "model.swimlane",
+      "source.guards",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e3",
+      "e4",
+      "e5",
+      "e6",
+      "e7",
+      "r1",
+      "r2",
+      "r4",
+      "r6",
+      "r8"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e10",
+      "kind": "action",
+      "name": "Запросить регистрацию",
+      "lane": "e8",
+      "source": "image"
+    },
+    {
+      "id": "e11",
+      "kind": "action",
+      "name": "Проверить состояние регистрации",
+      "lane": "e9",
+      "source": "image"
+    },
+    {
+      "id": "e14",
+      "kind": "action",
+      "name": "Сообщить об ошибке",
+      "lane": "e9",
+      "source": "image"
+    },
+    {
+      "id": "e17",
+      "kind": "action",
+      "name": "Выбрать действие",
+      "lane": "e8",
+      "source": "image"
+    },
+    {
+      "id": "e16",
+      "kind": "action",
+      "name": "Запросить действие",
+      "lane": "e9",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "action",
+      "name": "Создать учебный план",
+      "lane": "e9",
+      "source": "image",
+      "documentation": "вызывает деятельность «Создать учебный план»; элемента деятельности в этом файле нет, поэтому ссылка behaviorRef снята"
+    },
+    {
+      "id": "e4",
+      "kind": "action",
+      "name": "Обновить учебный план",
+      "lane": "e9",
+      "source": "image",
+      "documentation": "вызывает деятельность «Обновить учебный план»; элемента деятельности в этом файле нет, поэтому ссылка behaviorRef снята"
+    },
+    {
+      "id": "e5",
+      "kind": "action",
+      "name": "Удалить учебный план",
+      "lane": "e9",
+      "source": "image",
+      "documentation": "вызывает деятельность «Удалить учебный план»; элемента деятельности в этом файле нет, поэтому ссылка behaviorRef снята"
+    },
+    {
+      "id": "e6",
+      "kind": "action",
+      "name": "Утвердить учебный план",
+      "lane": "e9",
+      "source": "image",
+      "documentation": "вызывает деятельность «Утвердить учебный план»; элемента деятельности в этом файле нет, поэтому ссылка behaviorRef снята"
+    },
+    {
+      "id": "e1",
+      "kind": "initial",
+      "name": ""
+    },
+    {
+      "id": "e2",
+      "kind": "decision",
+      "name": ""
+    },
+    {
+      "id": "e7",
+      "kind": "final",
+      "name": "",
+      "note": "на рисунке подпись под конечным узлом — «успех»",
+      "source": "image"
+    },
+    {
+      "id": "e8",
+      "kind": "swimlane",
+      "name": "Студент",
+      "source": "image"
+    },
+    {
+      "id": "e9",
+      "kind": "swimlane",
+      "name": "Система регистрации на курсы",
+      "source": "image"
+    },
+    {
+      "id": "e12",
+      "kind": "decision",
+      "name": "",
+      "lane": "e9",
+      "source": "image"
+    },
+    {
+      "id": "e13",
+      "kind": "merge",
+      "name": "",
+      "lane": "e9",
+      "source": "image"
+    },
+    {
+      "id": "e15",
+      "kind": "final",
+      "name": "",
+      "note": "на рисунке подпись под конечным узлом — «неуспех»",
+      "source": "image"
+    },
+    {
+      "id": "e18",
+      "kind": "decision",
+      "name": "",
+      "lane": "e8",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "controlFlow",
+      "from": "e1",
+      "to": "e10",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "controlFlow",
+      "name": "",
+      "from": "e10",
+      "to": "e11",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "controlFlow",
+      "name": "",
+      "from": "e11",
+      "to": "e12",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "controlFlow",
+      "name": "[регистрация закрыта]",
+      "from": "e12",
+      "to": "e13",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "controlFlow",
+      "name": "[else]",
+      "from": "e12",
+      "to": "e16",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "controlFlow",
+      "from": "e13",
+      "to": "e14",
+      "source": "image"
+    },
+    {
+      "id": "r11",
+      "kind": "controlFlow",
+      "from": "e14",
+      "to": "e15",
+      "source": "image"
+    },
+    {
+      "id": "r12",
+      "kind": "controlFlow",
+      "from": "e16",
+      "to": "e17",
+      "source": "image"
+    },
+    {
+      "id": "r13",
+      "kind": "controlFlow",
+      "from": "e17",
+      "to": "e18",
+      "source": "image"
+    },
+    {
+      "id": "r14",
+      "kind": "controlFlow",
+      "name": "[else]",
+      "from": "e18",
+      "to": "e13",
+      "source": "image"
+    },
+    {
+      "id": "r15",
+      "kind": "controlFlow",
+      "name": "[выбрано создание и оно возможно]",
+      "from": "e18",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r16",
+      "kind": "controlFlow",
+      "name": "[выбрано обновление и оно возможно]",
+      "from": "e18",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r17",
+      "kind": "controlFlow",
+      "name": "[выбрано удаление и оно возможно]",
+      "from": "e18",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r18",
+      "kind": "controlFlow",
+      "name": "[выбрано утверждение и оно возможно]",
+      "from": "e18",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "controlFlow",
+      "from": "e3",
+      "to": "e7"
+    },
+    {
+      "id": "r5",
+      "kind": "controlFlow",
+      "from": "e4",
+      "to": "e7"
+    },
+    {
+      "id": "r7",
+      "kind": "controlFlow",
+      "from": "e5",
+      "to": "e7"
+    },
+    {
+      "id": "r9",
+      "kind": "controlFlow",
+      "from": "e6",
+      "to": "e7"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Зарегистрироваться на курсы",
+      "type": "activity",
+      "shapes": [],
+      "connectors": []
+    }
+  ],
+  "expect": {
+    "rules": [
+      "узел действия вызова деятельности ссылается на деятельность с тем же именем"
+    ]
+  }
+}

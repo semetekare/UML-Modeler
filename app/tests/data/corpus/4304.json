@@ -1,0 +1,64 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4304",
+    "figureNo": "4.3.4",
+    "exercise": "4.3.A",
+    "type": "sequence",
+    "diagramName": "CreateSchedule Subflow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности CreateSchedule Subflow",
+    "notes": "Текст прямо называет: фрагмент opt (создан как loop, оператор заменён), создающее сообщение new без привязки к операции, множественную линию жизни cOff[i]:CourseOffering и ссылку на взаимодействие DisplayCourseOfferings Subflow.",
+    "gaps": [
+      "состав линий жизни, кроме cOff[i]:CourseOffering, и все сообщения, кроме new, в тексте не перечислены",
+      "множественная линия жизни (Multi-object) не выражается в uml-model/3 — записана полем multiObject",
+      "поле Refers to у Interaction Use не выражается — записано refersTo"
+    ],
+    "gapIds": [
+      "model.interactionRef",
+      "model.multiObject",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "cOff[i]:CourseOffering",
+      "multiObject": true
+    },
+    {
+      "id": "e2",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "opt"
+    },
+    {
+      "id": "e3",
+      "kind": "interactionUse",
+      "name": "DisplayCourseOfferings Subflow",
+      "operator": "ref",
+      "refersTo": "DisplayCourseOfferings Subflow"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e1",
+      "to": "e1",
+      "note": "создающее сообщение, не привязано к операции"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "CreateSchedule Subflow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

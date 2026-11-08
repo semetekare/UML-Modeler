@@ -1,0 +1,56 @@
+{
+  "key": "association",
+  "kind": "connector",
+  "title": "Ассоциация",
+  "oneLine": "Ассоциация — структурная связь между классификаторами: их экземпляры знают друг о друге.",
+  "draws": "Сплошная линия между двумя классификаторами; на концах кратность («1», «0..*»), имена ролей и стрелки навигабельности. Имя связи пишется над линией, направление чтения — маленьким треугольником рядом с именем. Навигабельность показывается стрелкой у конца: конец без стрелки не определён. Ассоциация может быть рефлексивной: класс связан сам с собой в разных ролях.",
+  "differs": "От зависимости отличается временем жизни: ассоциация часть структуры и означает поле или ссылку, а зависимость — разовое использование, и её наличие не значит, что класс хранит ссылку. От агрегации и композиции — отсутствием владения: у ассоциации нет ромба. Если смоделировать временный вызов ассоциацией, в модели появится постоянная связь, которой в коде нет. Признак ошибки: у конца ассоциации нет типа — правило требует типизировать оба конца. Ассоциация — структура, зависимость — использование; выбирайте по времени жизни ссылки.",
+  "clause": {
+    "number": "11.5",
+    "title": "Associations",
+    "id": "11.5-associations"
+  },
+  "rules": [
+    "mult-upper-ge-lower",
+    "mult-lower-non-negative",
+    "association-aggregation-binary-only",
+    "association-end-typed",
+    "stereotype-binary-association",
+    "actor-association-targets",
+    "usecase-binary-association",
+    "usecase-no-association-to-usecase"
+  ],
+  "example": "«Студент» — «Курс» с кратностями 0..* и 1..*: студент записан на несколько курсов.",
+  "plantuml": "A -- B",
+  "stereotypes": [
+    "PTN Operation Impl",
+    "PTN To-End Role Name Follow Class",
+    "identifying",
+    "non identifying",
+    "colored",
+    "weighted"
+  ],
+  "seeAlso": [
+    "aggregation",
+    "composition",
+    "dependency",
+    "link"
+  ],
+  "sources": [
+    "uml.json#connectors.association",
+    "crossrefs.json#notationToClause.association",
+    "spec-tree.json#11.5",
+    "rules-uml-2.5.1.json#mult-upper-ge-lower",
+    "rules-uml-2.5.1.json#mult-lower-non-negative",
+    "rules-uml-2.5.1.json#association-aggregation-binary-only",
+    "rules-uml-2.5.1.json#association-end-typed",
+    "rules-uml-2.5.1.json#stereotype-binary-association",
+    "rules-uml-2.5.1.json#actor-association-targets",
+    "rules-uml-2.5.1.json#usecase-binary-association",
+    "rules-uml-2.5.1.json#usecase-no-association-to-usecase",
+    "crossrefs.json#stereotypeToShape",
+    "plantuml-grammar.json#assoc",
+    "DIAGRAM-TYPES.md#3.3"
+  ],
+  "diagrams": "3.3"
+}

@@ -1,0 +1,1268 @@
+{
+  "schema": "uml-corpus/1",
+  "about": "Ожидаемые модели 54 рисунков учебного пособия. Таблица и разбор — docs/CORPUS.md, правила пользования — tests/corpus/README.md.",
+  "counts": {
+    "figures": 54,
+    "diagrams": 48,
+    "ui": 6,
+    "scheme": 0,
+    "withModel": 48,
+    "full": 7,
+    "partial": 41,
+    "no": 0
+  },
+  "gapVocabulary": {
+    "model.fragmentCoverage": "покрытие сообщений фрагментом",
+    "model.fragmentOperands": "операнды комбинированного фрагмента и сторожевые условия",
+    "model.packageOwner": "вложенность пакета в пакет (владелец элемента)",
+    "model.nodeNesting": "вложенность компонента в узел",
+    "model.multiObject": "множественная линия жизни (Multi-object)",
+    "model.lifelineState": "состояние линии жизни (Stopped)",
+    "model.lostMessage": "потерянное/найденное сообщение (нет получателя или отправителя)",
+    "model.async": "асинхронное сообщение",
+    "model.messageOrder": "порядок сообщений задаётся геометрией, а не моделью",
+    "model.interactionRef": "поле Refers to у ссылки на взаимодействие",
+    "model.qualifier": "квалификатор на полюсе ассоциации",
+    "model.swimlane": "привязка узла к дорожке и поле Represents у дорожки",
+    "model.structuredNode": "структурированные узлы деятельности с регионами",
+    "model.callBehavior": "поле Behavior у узла действия вызова деятельности",
+    "model.stateRegion": "регионы и вложенность состояний",
+    "model.internalTransition": "внутренние переходы, отличие local от external",
+    "model.instanceClassifier": "классификатор у экземпляра (Add Classifier)",
+    "source.unlisted": "текст не перечисляет состав элементов диаграммы",
+    "source.associations": "текст не перечисляет связи между элементами",
+    "source.guards": "сторожевые условия в тексте не приведены",
+    "source.names": "имена элементов в тексте не приведены",
+    "source.navigation": "направления навигации в тексте не перечислены",
+    "source.contradiction": "источники расходятся между собой"
+  },
+  "gapCounts": {
+    "model.fragmentCoverage": 16,
+    "model.fragmentOperands": 4,
+    "model.packageOwner": 6,
+    "model.nodeNesting": 1,
+    "model.multiObject": 8,
+    "model.lifelineState": 2,
+    "model.lostMessage": 2,
+    "model.async": 1,
+    "model.messageOrder": 1,
+    "model.interactionRef": 3,
+    "model.qualifier": 2,
+    "model.swimlane": 2,
+    "model.structuredNode": 2,
+    "model.callBehavior": 1,
+    "model.stateRegion": 1,
+    "model.internalTransition": 1,
+    "model.instanceClassifier": 1,
+    "source.unlisted": 27,
+    "source.associations": 6,
+    "source.guards": 10,
+    "source.names": 3,
+    "source.navigation": 4,
+    "source.contradiction": 5
+  },
+  "figures": [
+    {
+      "figure": "1001",
+      "figureNo": "1.1",
+      "file": "1001.png",
+      "exercise": "1",
+      "type": "none",
+      "diagramName": "",
+      "group": "ui",
+      "reproducible": "нет",
+      "model": null,
+      "what": "Полное окно Visual Paradigm 16.3 после настройки: меню, панель инструментов, палитра, вкладка Model Explorer слева, редактор диаграмм справа, статусбар.",
+      "gaps": [
+        "не модель: показана раскладка окна среды и разница двух проводников; диаграмма внутри окна служит фоном"
+      ],
+      "altText": "Окно Visual Paradigm после открытия шаблона проекта с проводником моделей"
+    },
+    {
+      "figure": "1001a",
+      "figureNo": "1.1a",
+      "file": "1001a.png",
+      "exercise": "1",
+      "type": "none",
+      "diagramName": "",
+      "group": "ui",
+      "reproducible": "нет",
+      "model": null,
+      "what": "То же окно, но в левой панели открыта вкладка Diagram Navigator вместо дерева модели.",
+      "gaps": [
+        "не модель: рисунок показывает разницу двух проводников, а не диаграмму"
+      ],
+      "altText": "Окно Visual Paradigm после открытия шаблона проекта с навигатором диаграмм"
+    },
+    {
+      "figure": "3101",
+      "figureNo": "3.1.1",
+      "file": "3101.png",
+      "exercise": "3.1",
+      "type": "usecase",
+      "diagramName": "Main",
+      "group": "diagram",
+      "reproducible": "да",
+      "model": "3101.json",
+      "what": "Рамка системы «Система регистрации на курсы» (стереотип «subject») и пять действующих лиц; вариантов использования и связей ещё нет",
+      "elements": 6,
+      "relationships": 0,
+      "gaps": [],
+      "gapIds": []
+    },
+    {
+      "figure": "3102",
+      "figureNo": "3.1.2",
+      "file": "3102.png",
+      "exercise": "3.1",
+      "type": "usecase",
+      "diagramName": "Main",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "3102.json",
+      "what": "Десять вариантов использования в рамке со стереотипами уровня и ассоциации от действующих лиц; дефект: у «Войти в систему» три основных действующих лица",
+      "elements": 16,
+      "relationships": 13,
+      "gaps": [
+        "набор ассоциаций на рисунке в тексте не перечислен: восстановлен по списку интересов действующих лиц (§3) и по правилу «у варианта использования одно основное действующее лицо»; рисунок его подтверждает",
+        "defect: у «Войти в систему» три основных действующих лица — дефект помечен в модели полем defect: true",
+        "имя варианта использования на рисунке короче, чем в тексте («CRUD данных о курсах» против «CRUD данных о курсах и дисциплинах»); источники расходятся",
+        "имя варианта использования на рисунке — «Посмотреть табель», в тексте пособия — «Просмотреть табель» (встречается и «Посмотреть»); оставлено имя из текста, расхождение источников не разрешено"
+      ],
+      "gapIds": [
+        "source.contradiction",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "3201",
+      "figureNo": "3.2.1",
+      "file": "3201.png",
+      "exercise": "3.2",
+      "type": "usecase",
+      "diagramName": "Main",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "3201.json",
+      "what": "То же, но с абстрактным действующим лицом Пользователь и обобщениями от трёх ролей; лишние ассоциации удалены",
+      "elements": 17,
+      "relationships": 14,
+      "gaps": [
+        "набор ассоциаций на рисунке в тексте не перечислен: восстановлен по списку интересов действующих лиц (§3) и по правилу «у варианта использования одно основное действующее лицо»; рисунок его подтверждает",
+        "абстрактность действующего лица Пользователь (флажок Abstract) не выражается в uml-model/3 — записана полем abstract",
+        "имя варианта использования на рисунке короче, чем в тексте («CRUD данных о курсах» против «CRUD данных о курсах и дисциплинах»); источники расходятся"
+      ],
+      "gapIds": [
+        "source.contradiction",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "3401",
+      "figureNo": "3.4.1",
+      "file": "3401.png",
+      "exercise": "3.4",
+      "type": "activity",
+      "diagramName": "Войти в систему",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "3401.json",
+      "what": "Дорожки «Пользователь» и «Система регистрации на курсы», шесть действий, узел решения, два узла завершения",
+      "elements": 12,
+      "relationships": 9,
+      "gaps": [
+        "сторожевые условия на рёбрах от узла решения в тексте не приведены («Задать нетривиальные сторожевые условия можно... в поле Guard») — прочитаны с рисунка",
+        "привязка дорожки к элементу модели (поле Represents) не выражается в uml-model/3",
+        "имена узлов завершения на рисунке — «успех» и «неуспех»; в uml-model/3 у конечного узла имени нет, поэтому записаны в documentation",
+        "текст пособия называет узлы «Запросить логин и пароль», «Ввести логин и пароль», «Проверить логин и пароль», а рисунок 3.4.1 — «... имя и пароль»; оставлены имена из текста, расхождение источников не разрешено"
+      ],
+      "gapIds": [
+        "model.swimlane",
+        "source.contradiction",
+        "source.guards"
+      ]
+    },
+    {
+      "figure": "3402",
+      "figureNo": "3.4.2",
+      "file": "3402.png",
+      "exercise": "3.4",
+      "type": "activity",
+      "diagramName": "Зарегистрироваться на курсы",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "3402.json",
+      "what": "Четыре узла действия вызова деятельности по подчинённым потокам 5А–Г, ветвление, завершение",
+      "elements": 18,
+      "relationships": 18,
+      "gaps": [
+        "в тексте названы только четыре узла действия вызова деятельности; остальные действия студента и системы, ветвления и их рёбра прочитаны с рисунка",
+        "поле Behavior узла действия вызова деятельности (ссылка на деятельность) не выражается; здесь оно записано строкой behaviorRef",
+        "дорожки на рисунке 3.4.2 текст не описывает — прочитаны с рисунка",
+        "у конечного узла в uml-model/3 нет имени: подписи «успех» и «неуспех» записаны в documentation"
+      ],
+      "gapIds": [
+        "model.callBehavior",
+        "model.swimlane",
+        "source.guards",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "4101",
+      "figureNo": "4.1.1",
+      "file": "4101.png",
+      "exercise": "4.1",
+      "type": "none",
+      "diagramName": "",
+      "group": "ui",
+      "reproducible": "нет",
+      "model": null,
+      "what": "Дерево Model Explorer: пакет Logical View с подпакетами Analysis Model, Use Case Realizations и кооперациями Login, RegisterForCourses, CloseRegistration.",
+      "gaps": [
+        "не диаграмма: это вид на модель в виде дерева, а не лист с фигурами и связями; иерархия пакетов в uml-model/3 не выражается (у элемента нет владельца)"
+      ],
+      "altText": "Состав Logical View в части, относящейся к эскизной модели"
+    },
+    {
+      "figure": "4102",
+      "figureNo": "4.1.2",
+      "file": "4102.png",
+      "exercise": "4.1",
+      "type": "composite",
+      "diagramName": "Use Case Realizations",
+      "group": "diagram",
+      "reproducible": "да",
+      "model": "4102.json",
+      "what": "Три кооперации со стереотипом «usecase realization» и три варианта использования, связанные реализациями",
+      "elements": 6,
+      "relationships": 3,
+      "gaps": [
+        "указатель рисунков (INDEX.md) описывает эту диаграмму как «части-кооперации и соединяющие их зависимости», а текст упражнения 4.1 п.2 — как связи реализации от коопераций к реализуемым вариантам использования; здесь взята версия упражнения как более подробная, расхождение источников зафиксировано",
+        "показана ли на диаграмме сама рамка пакета Use Case Realizations, текст не говорит"
+      ],
+      "gapIds": [
+        "model.packageOwner",
+        "source.contradiction"
+      ]
+    },
+    {
+      "figure": "4103",
+      "figureNo": "4.1.3",
+      "file": "4103.png",
+      "exercise": "4.1",
+      "type": "class",
+      "diagramName": "Key Abstractions",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "4103.json",
+      "what": "Шесть классов-сущностей, перечисления DayOfWeek и UserType, атрибуты, композиция Student — Schedule, рефлексивная ассоциация Course",
+      "elements": 8,
+      "relationships": 10,
+      "gaps": [
+        "текст называет композицию Student — Schedule и рефлексивную ассоциацию Course, но не перечисляет остальные ассоциации между ключевыми абстракциями и их мощности — прочитаны с рисунка",
+        "имена полюсов рефлексивной ассоциации Course в тексте не приведены — на рисунке prerequisitesOf и hasPrerequisites",
+        "флажок ID у атрибута (Course::code, User::login, Professor::name, Student::id) не выражается — записан полем isID",
+        "ограничение {almost one} на паре связей User—Professor и User—Student не выражается — записано в documentation связей"
+      ],
+      "gapIds": [
+        "model.qualifier",
+        "source.associations",
+        "source.names"
+      ]
+    },
+    {
+      "figure": "4201",
+      "figureNo": "4.2.1",
+      "file": "4201.png",
+      "exercise": "4.2",
+      "type": "class",
+      "diagramName": "VOPC Login",
+      "group": "diagram",
+      "reproducible": "да",
+      "model": "4201.json",
+      "what": "Пять классов анализа VOPC Login со стереотипами, без ассоциаций",
+      "elements": 5,
+      "relationships": 0,
+      "gaps": [],
+      "gapIds": []
+    },
+    {
+      "figure": "4202",
+      "figureNo": "4.2.2",
+      "file": "4202.png",
+      "exercise": "4.2",
+      "type": "sequence",
+      "diagramName": "Login Basic Flow",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "4202.json",
+      "what": "Шесть линий жизни, вызовы login/getUserByLogin/checkPassword, фрагменты opt и alt, создание и уничтожение объектов",
+      "elements": 8,
+      "relationships": 11,
+      "gaps": [
+        "сторожевые условия операндов фрагмента alt в тексте описаны словами; дословные значения прочитаны с рисунка",
+        "порядок сообщений задаётся вертикальной геометрией; в структурной записи он передан порядком массива relationships",
+        "какие сообщения покрывает каждый фрагмент, в uml-model/3 не выражается",
+        "тип сообщения close — Destroy — выражен видом связи destroyMessage",
+        "второй операнд фрагмента alt ([else]) в модели не выражается отдельным элементом — записан в имени фрагмента"
+      ],
+      "gapIds": [
+        "model.fragmentCoverage",
+        "model.fragmentOperands",
+        "model.messageOrder",
+        "source.guards"
+      ]
+    },
+    {
+      "figure": "4203",
+      "figureNo": "4.2.3",
+      "file": "4203.png",
+      "exercise": "4.2",
+      "type": "class",
+      "diagramName": "VOPC Login",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "4203.json",
+      "what": "Те же пять классов с ассоциациями, кратностями, ролями и навигацией; связанный граф",
+      "elements": 5,
+      "relationships": 6,
+      "gaps": [
+        "порядок операций и их сигнатуры в тексте признаны необязательными: «если количество операций и их сигнатуры отличаются от рисунка, в этом нет ошибки»",
+        "две строки операций DataAccess на рисунке обрезаны многоточием — полные имена восстановлены по другим рисункам корпуса",
+        "направление навигации ассоциации LoginForm—LoginController прочитано по-разному двумя прогонами — факт не установлен, поле navigable не заполнено"
+      ],
+      "gapIds": [
+        "source.navigation"
+      ]
+    },
+    {
+      "figure": "4301",
+      "figureNo": "4.3.1",
+      "file": "4301.png",
+      "exercise": "4.3",
+      "type": "class",
+      "diagramName": "VOPC RegisterForCourses",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "4301.json",
+      "what": "Пять классов анализа VOPC RegisterForCourses, без ассоциаций",
+      "elements": 7,
+      "relationships": 3,
+      "gaps": [
+        "атрибуты классов и связи с кратностями текстом не перечислены — прочитаны с рисунка",
+        "имя полюса на конце Schedule у обеих ассоциаций на рисунке не подписано"
+      ],
+      "gapIds": [
+        "source.associations",
+        "source.names"
+      ]
+    },
+    {
+      "figure": "4302",
+      "figureNo": "4.3.2",
+      "file": "4302.png",
+      "exercise": "4.3",
+      "type": "sequence",
+      "diagramName": "RegisterForCourses Basic Flow",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "4302.json",
+      "what": "Основной поток регистрации: фрагменты opt и alt, создание curStud, сообщение open",
+      "elements": 8,
+      "relationships": 10,
+      "gaps": [
+        "сторожевые условия операндов opt и alt в тексте не приведены — прочитаны с рисунка",
+        "имена сообщений к объекту доступа к данным, кроме создающего, в тексте не названы — прочитаны с рисунка",
+        "покрытие сообщений операндами фрагментов не выражается",
+        "второй операнд фрагмента alt ([else]) в модели не выражается отдельным элементом — записан в имени фрагмента"
+      ],
+      "gapIds": [
+        "model.fragmentCoverage",
+        "model.fragmentOperands",
+        "source.guards"
+      ]
+    },
+    {
+      "figure": "4303",
+      "figureNo": "4.3.3",
+      "file": "4303.png",
+      "exercise": "4.3",
+      "type": "sequence",
+      "diagramName": "RegisterForCourses Basic Flow",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "4303.json",
+      "what": "То же плюс вложенный alt с четырьмя операндами и ссылками на подчинённые потоки",
+      "elements": 13,
+      "relationships": 10,
+      "gaps": [
+        "сторожевые условия четырёх операндов вложенного alt, внешнего alt и opt в тексте не приведены — прочитаны с рисунка",
+        "поле Refers to у Interaction Use (ссылка на диаграмму) не выражается в uml-model/3 — записано полем refersTo",
+        "вложенность alt в alt и операнды фрагментов в модели не выражаются — операнды записаны в имени фрагмента",
+        "покрытие сообщений фрагментами не выражается"
+      ],
+      "gapIds": [
+        "model.fragmentCoverage",
+        "model.fragmentOperands",
+        "model.interactionRef",
+        "source.guards"
+      ]
+    },
+    {
+      "figure": "4304",
+      "figureNo": "4.3.4",
+      "file": "4304.png",
+      "exercise": "4.3.A",
+      "type": "sequence",
+      "diagramName": "CreateSchedule Subflow",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "4304.json",
+      "what": "Подчинённый поток создания плана: фрагмент opt, создающее сообщение new, множественная линия жизни cOff[i], ссылка на DisplayCourseOfferings Subflow",
+      "elements": 9,
+      "relationships": 13,
+      "gaps": [
+        "множественная линия жизни (Multi-object) не выражается в uml-model/3 — записана полем multiObject",
+        "поле Refers to у Interaction Use не выражается — записано refersTo",
+        "покрытие сообщений фрагментом opt не выражается",
+        "порядок трёх правых линий жизни (cOff[i], sch, curStud) прочитан по-разному двумя прогонами — факт не установлен"
+      ],
+      "gapIds": [
+        "model.fragmentCoverage",
+        "model.interactionRef",
+        "model.multiObject",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "4305",
+      "figureNo": "4.3.5",
+      "file": "4305.png",
+      "exercise": "4.3.A",
+      "type": "sequence",
+      "diagramName": "DisplayCourseOfferings Subflow",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "4305.json",
+      "what": "Подчинённый поток вывода списка курсов: фрагмент loop (цикл for) со сторожевым условием",
+      "elements": 4,
+      "relationships": 4,
+      "gaps": [
+        "сторожевое условие цикла в тексте не приведено — прочитано с рисунка: [for all cOff[i]]",
+        "покрытие сообщений фрагментом loop не выражается в uml-model/3",
+        "множественность линии жизни (Multi-object) не выражается — записана multiObject"
+      ],
+      "gapIds": [
+        "model.fragmentCoverage",
+        "model.multiObject",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "4306",
+      "figureNo": "4.3.6",
+      "file": "4306.png",
+      "exercise": "4.3.B",
+      "type": "class",
+      "diagramName": "VOPC RegisterForCourses",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "4306.json",
+      "what": "Итоговая диаграмма классов регистрации: операции, выводимый numStudents, FullTimeStudent/PartTimeStudent, набор обобщений {complete, disjoint}",
+      "elements": 9,
+      "relationships": 12,
+      "gaps": [
+        "набор ассоциаций и их мощности в тексте перечислены не полностью — прочитаны с рисунка",
+        "набор обобщений с ограничениями {complete, disjoint} не выражается в uml-model/3 — набор описан блоком generalizationSets",
+        "выводимость атрибута (numStudents) не выражается — записана полем isDerived",
+        "абстрактность класса Student не выражается — записана полем abstract",
+        "длинные строки операций на рисунке обрезаны многоточием; полные сигнатуры восстановлены по другим рисункам",
+        "ассоциация MainMenuForm—RegistrationForm прочитана только одним прогоном — факт не установлен, в модель не добавлена"
+      ],
+      "gapIds": [
+        "source.associations",
+        "source.navigation"
+      ]
+    },
+    {
+      "figure": "4307",
+      "figureNo": "4.3.7",
+      "file": "4307.png",
+      "exercise": "4.3.C",
+      "type": "sequence",
+      "diagramName": "DeleteSchedule Subflow",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "4307.json",
+      "what": "Подчинённый поток удаления плана: восемь линий жизни, фрагменты loop, ссылка на DisplayCourseOfferings Subflow, завершённая линия жизни",
+      "elements": 11,
+      "relationships": 14,
+      "gaps": [
+        "какие операции создаются — не названо в тексте; подписи сообщений прочитаны с рисунка",
+        "состояние линии жизни Stopped не выражается — записано полем stopped",
+        "покрытие сообщений фрагментами loop не выражается",
+        "параметр сообщения removeSchedule прочитан по-разному (sch / sdh): две модели дали разные ответы, факт не установлен — записано sch"
+      ],
+      "gapIds": [
+        "model.fragmentCoverage",
+        "model.lifelineState",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "4401",
+      "figureNo": "4.4.1",
+      "file": "4401.png",
+      "exercise": "4.4",
+      "type": "class",
+      "diagramName": "VOPC CloseRegistration",
+      "group": "diagram",
+      "reproducible": "да",
+      "model": "4401.json",
+      "what": "Шесть классов анализа VOPC CloseRegistration, без ассоциаций",
+      "elements": 7,
+      "relationships": 3,
+      "gaps": [],
+      "gapIds": []
+    },
+    {
+      "figure": "4402",
+      "figureNo": "4.4.2",
+      "file": "4402.png",
+      "exercise": "4.4",
+      "type": "sequence",
+      "diagramName": "TransferSchedulesData Subflow",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "4402.json",
+      "what": "Передача данных в расчётную систему: семь линий жизни (три множественные), фрагменты opt и loop, длительные и асинхронные сообщения",
+      "elements": 11,
+      "relationships": 12,
+      "gaps": [
+        "сторожевые условия и границы итераций фрагментов loop/opt в тексте не приведены — прочитаны с рисунка",
+        "асинхронность сообщения не выражается в uml-model/3 — записана полем asynchronous",
+        "множественность линий жизни (Multi-object) не выражается — записана multiObject",
+        "вложенность фрагментов (loop внутри opt) и покрытие сообщений не выражаются"
+      ],
+      "gapIds": [
+        "model.async",
+        "model.fragmentCoverage",
+        "model.multiObject",
+        "source.guards"
+      ]
+    },
+    {
+      "figure": "4403",
+      "figureNo": "4.4.3",
+      "file": "4403.png",
+      "exercise": "4.4",
+      "type": "class",
+      "diagramName": "VOPC CloseRegistration",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "4403.json",
+      "what": "Те же классы с ассоциациями и полными списками операций DataAccess и BillingSystem",
+      "elements": 7,
+      "relationships": 8,
+      "gaps": [
+        "ассоциации и их мощности в тексте не перечислены — прочитаны с рисунка",
+        "направления навигации в тексте указаны словами («укажем Navigable Unspecified»), но не перечислены по связям",
+        "две строки операций (DataAccess и Student) на рисунке обрезаны многоточием; полные сигнатуры восстановлены по рис. 4.2.3 и 5.2.8"
+      ],
+      "gapIds": [
+        "source.associations",
+        "source.navigation"
+      ]
+    },
+    {
+      "figure": "5101",
+      "figureNo": "5.1.1",
+      "file": "5101.png",
+      "exercise": "5.1",
+      "type": "package",
+      "diagramName": "Main",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5101.json",
+      "what": "Три архитектурных уровня «layer», пакеты механизмов RemoteInterchange и Persistency, зависимости между ними",
+      "elements": 5,
+      "relationships": 6,
+      "gaps": [
+        "текст называет три архитектурных уровня и два пакета механизмов, но не перечисляет все пакеты, видимые на снимке",
+        "вложенность пакета в пакет не выражается в uml-model/3: у элемента нет владельца"
+      ],
+      "gapIds": [
+        "model.packageOwner",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5102",
+      "figureNo": "5.1.2",
+      "file": "5102.png",
+      "exercise": "5.1",
+      "type": "none",
+      "diagramName": "",
+      "group": "ui",
+      "reproducible": "нет",
+      "model": null,
+      "what": "Дерево Model Explorer проектной модели: пакеты-подсистемы DBAccess и BSAccess со стереотипом «subsystem», их содержимое, вкладка Template Parameters.",
+      "gaps": [
+        "не диаграмма: дерево модели; к тому же вкладка спецификации — элемент интерфейса"
+      ],
+      "altText": "Структура проектной модели"
+    },
+    {
+      "figure": "5103",
+      "figureNo": "5.1.3",
+      "file": "5103.png",
+      "exercise": "5.1",
+      "type": "composite",
+      "diagramName": "Design Use Case Realizations",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5103.json",
+      "what": "Части-кооперации Design… внутри Design Use Case Realizations и связи между ними",
+      "elements": 6,
+      "relationships": 3,
+      "gaps": [
+        "текст не описывает ни части этой диаграммы, ни связи между ними: сказано только «UML-диаграмма составной структуры внутри этого пакета примет вид, представленный на рисунке 5.1.3»",
+        "вложенность частей в кооперацию и коннекторы частей не выражаются в uml-model/3"
+      ],
+      "gapIds": [
+        "model.packageOwner",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5104",
+      "figureNo": "5.1.4",
+      "file": "5104.png",
+      "exercise": "5.1",
+      "type": "package",
+      "diagramName": "Dependencies",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5104.json",
+      "what": "Пакеты уровней Application и BusinessServices, зависимости от интерфейсов и классов-артефактов",
+      "elements": 5,
+      "relationships": 7,
+      "gaps": [
+        "вложенность Interfaces и UniversityArtefacts в BusinessServices не выражается: у элемента нет владельца",
+        "направление зависимости Registration—UniversityArtefacts прочитано по-разному двумя прогонами — факт не установлен; оставлено направление из текста"
+      ],
+      "gapIds": [
+        "model.packageOwner",
+        "source.navigation"
+      ]
+    },
+    {
+      "figure": "5105",
+      "figureNo": "5.1.5",
+      "file": "5105.png",
+      "exercise": "5.1",
+      "type": "package",
+      "diagramName": "BusinessServices",
+      "group": "diagram",
+      "reproducible": "да",
+      "model": "5105.json",
+      "what": "Пакеты уровня BusinessServices: Interfaces, UniversityArtefacts, подсистемы DBAccess и BSAccess с зависимостями",
+      "elements": 4,
+      "relationships": 5,
+      "gaps": [],
+      "gapIds": []
+    },
+    {
+      "figure": "5106",
+      "figureNo": "5.1.6",
+      "file": "5106.png",
+      "exercise": "5.1",
+      "type": "deployment",
+      "diagramName": "Main",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5106.json",
+      "what": "Типы узлов: среды выполнения с компонентами-процессами, устройства, пути коммуникации",
+      "elements": 13,
+      "relationships": 6,
+      "gaps": [
+        "типы узлов названы в тексте только прозой («сервера регистрации», «коммутатор», «принтер», «компьютеры трёх типов») — стереотипы прочитаны с рисунка",
+        "точная топология связей и размещение компонентов по узлам в тексте не описаны — прочитаны с рисунка",
+        "вложенность компонента в узел не выражается в uml-model/3",
+        "кратности на концах пути коммуникации не выражаются в uml-model/3 (у вида связи нет кратностей) — записаны в документации связи"
+      ],
+      "gapIds": [
+        "model.nodeNesting",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5107",
+      "figureNo": "5.1.7",
+      "file": "5107.png",
+      "exercise": "5.1",
+      "type": "deployment",
+      "diagramName": "Installation Example",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5107.json",
+      "what": "Восемь экземпляров узлов с типами и соединения между ними",
+      "elements": 8,
+      "relationships": 7,
+      "gaps": [
+        "связи между экземплярами описаны прозой («следует связать соединениями — Link»); какие именно экземпляры соединены, текст не перечисляет — прочитаны с рисунка",
+        "поле классификатора у экземпляра не выражается в uml-model/3 — записано строкой classifier",
+        "имена экземпляров в тексте и на рисунке расходятся: текст называет pc04, srv01, prn, switch, рисунок — iNote, dellNote, spPC, eduPC; оставлены имена из текста, расхождение источников не разрешено"
+      ],
+      "gapIds": [
+        "model.instanceClassifier",
+        "source.contradiction",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5201",
+      "figureNo": "5.2.1",
+      "file": "5201.png",
+      "exercise": "5.2.A",
+      "type": "sequence",
+      "diagramName": "Design Login Basic Flow",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5201.json",
+      "what": "Проектная версия входа: dao:IDBAccess со стереотипом «interface», без сообщения new()",
+      "elements": 8,
+      "relationships": 10,
+      "gaps": [
+        "сторожевые условия операндов в тексте не приведены — прочитаны с рисунка",
+        "сообщение new() удалено, но остальные сообщения текст не перечисляет заново — состав взят из упражнения 4.2 с учётом правки, подписи уточнены по рисунку",
+        "покрытие сообщений фрагментами не выражается"
+      ],
+      "gapIds": [
+        "model.fragmentCoverage",
+        "source.guards"
+      ]
+    },
+    {
+      "figure": "5202",
+      "figureNo": "5.2.2",
+      "file": "5202.png",
+      "exercise": "5.2.B",
+      "type": "sequence",
+      "diagramName": "Design RegisterForCourses Basic Flow",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5202.json",
+      "what": "Проектная версия основного потока регистрации: dao:IDBAccess, без new(), со ссылками на подчинённые потоки",
+      "elements": 13,
+      "relationships": 8,
+      "gaps": [
+        "сторожевые условия операндов в тексте не приведены — прочитаны с рисунка",
+        "состав сообщений взят из упражнения 4.3 с учётом правки: удалено new()",
+        "покрытие сообщений фрагментами не выражается",
+        "вложенность alt в alt и операнды фрагментов в модели не выражаются — операнды записаны в имени фрагмента"
+      ],
+      "gapIds": [
+        "model.fragmentCoverage",
+        "model.fragmentOperands",
+        "source.guards"
+      ]
+    },
+    {
+      "figure": "5203",
+      "figureNo": "5.2.3",
+      "file": "5203.png",
+      "exercise": "5.2.C",
+      "type": "sequence",
+      "diagramName": "Design TransferSchedulesData Subflow",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5203.json",
+      "what": "Проектная версия передачи данных: dao:IDBAccess и bs:IBSAccess, линии жизни cOff[j] и Расчётная система удалены",
+      "elements": 7,
+      "relationships": 8,
+      "gaps": [
+        "сообщения в тексте не перечислены — только правки: удалены сообщения от dao:IDBAccess и bs:IBSAccess, удалены две линии жизни; состав прочитан с рисунка",
+        "покрытие сообщений фрагментами не выражается",
+        "множественность линий жизни (Multi-object) не выражается — записана multiObject"
+      ],
+      "gapIds": [
+        "model.fragmentCoverage",
+        "model.multiObject",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5204",
+      "figureNo": "5.2.4",
+      "file": "5204.png",
+      "exercise": "5.2.D",
+      "type": "sequence",
+      "diagramName": "Design CreateSchedule Subflow",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5204.json",
+      "what": "Проектная версия создания плана: стереотипы анализа сняты, линия жизни интерфейса помечена «interface»",
+      "elements": 9,
+      "relationships": 12,
+      "gaps": [
+        "состав линий жизни, кроме cOff[i]:CourseOffering, и сообщения в тексте не перечислены — прочитаны с рисунка",
+        "покрытие сообщений фрагментом opt не выражается",
+        "поле Refers to у Interaction Use не выражается — записано refersTo"
+      ],
+      "gapIds": [
+        "model.fragmentCoverage",
+        "model.interactionRef",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5205",
+      "figureNo": "5.2.5",
+      "file": "5205.png",
+      "exercise": "5.2.D",
+      "type": "sequence",
+      "diagramName": "Design DisplayCourseOfferings Subflow",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5205.json",
+      "what": "Проектная версия вывода списка курсов: фрагмент loop, стереотипы анализа сняты",
+      "elements": 4,
+      "relationships": 4,
+      "gaps": [
+        "ни линии жизни, ни сообщения этой диаграммы в тексте не названы — прочитаны с рисунка",
+        "сторожевое условие цикла в тексте не приведено — прочитано с рисунка",
+        "покрытие сообщений фрагментом loop не выражается",
+        "множественность линии жизни (Multi-object) не выражается — записана multiObject"
+      ],
+      "gapIds": [
+        "model.fragmentCoverage",
+        "model.multiObject",
+        "source.guards",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5206",
+      "figureNo": "5.2.6",
+      "file": "5206.png",
+      "exercise": "5.2.D",
+      "type": "sequence",
+      "diagramName": "Design DeleteSchedule Subflow",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5206.json",
+      "what": "Проектная версия удаления плана: без стереотипов анализа, dao:IDBAccess",
+      "elements": 11,
+      "relationships": 14,
+      "gaps": [
+        "сообщения в тексте не перечислены — только правки упражнения 5.2.D; состав прочитан с рисунка",
+        "состояние линии жизни Stopped не выражается — записано stopped",
+        "покрытие сообщений фрагментами loop не выражается"
+      ],
+      "gapIds": [
+        "model.fragmentCoverage",
+        "model.lifelineState",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5207",
+      "figureNo": "5.2.7",
+      "file": "5207.png",
+      "exercise": "5.2.F",
+      "type": "package",
+      "diagramName": "DBAccess",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5207.json",
+      "what": "Пакеты подсистемы DBAccess: зависимости к java::lang, java::util, java::sql и связывание шаблона «bind» с RDBMS-JDBC",
+      "elements": 5,
+      "relationships": 7,
+      "gaps": [
+        "точный состав пакетов на снимке в тексте не перечислен: названы только java::lang, java::util, java::sql и RDBMS-JDBC",
+        "вложенность java::lang в java не выражается: у элемента нет владельца",
+        "тип зависимости (Import или Dependency) текст оставляет на выбор — на рисунке все шесть помечены «import»",
+        "параметры параметризованного пакета и привязка параметров не выражаются в uml-model/3 — записаны полем templateParameters и подписью связи"
+      ],
+      "gapIds": [
+        "model.packageOwner",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5208",
+      "figureNo": "5.2.8",
+      "file": "5208.png",
+      "exercise": "5.2.F",
+      "type": "class",
+      "diagramName": "DBAccess",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5208.json",
+      "what": "Классы подсистемы DBAccess: IDBAccess, DBAccess («subsystem proxy»), зависимости к Student, User, CourseOfferingList, реализация интерфейса",
+      "elements": 11,
+      "relationships": 17,
+      "gaps": [
+        "текст перечисляет правки по шагам, но не полный состав классов и связей: набор зависимостей восстановлен по этим правкам и уточнён по рисунку",
+        "сигнатуры операций интерфейса в тексте не приведены целиком — сказано, что они должны совпадать с сигнатурами класса DBAccess (см. рис. 5.2.8)",
+        "привязка параметра шаблона (<<bind>> <E->CourseOffering>) не выражается в uml-model/3 — записана подписью связи"
+      ],
+      "gapIds": [
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5209",
+      "figureNo": "5.2.9",
+      "file": "5209.png",
+      "exercise": "5.2.F",
+      "type": "none",
+      "diagramName": "",
+      "group": "ui",
+      "reproducible": "нет",
+      "model": null,
+      "what": "Дерево подсистемы DBAccess: интерфейсы, классы и диаграммы, разложенные по пакетам.",
+      "gaps": [
+        "не диаграмма: дерево модели, показывает, где лежат элементы, созданные на диаграмме"
+      ],
+      "altText": "Структура подсистемы DBAccess в Model Explorer"
+    },
+    {
+      "figure": "5210",
+      "figureNo": "5.2.10",
+      "file": "5210.png",
+      "exercise": "5.2.F",
+      "type": "sequence",
+      "diagramName": "init",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5210.json",
+      "what": "Реализация init(): одна линия жизни db:DBAccess, потерянное сообщение-возврат",
+      "elements": 3,
+      "relationships": 5,
+      "gaps": [
+        "остальные линии жизни и сообщения в тексте не названы — прочитаны с рисунка",
+        "потерянное и найденное сообщения не выражаются в uml-model/3 — записаны связью без получателя и полем в unrepresented"
+      ],
+      "gapIds": [
+        "model.lostMessage",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5211",
+      "figureNo": "5.2.11",
+      "file": "5211.png",
+      "exercise": "5.2.F",
+      "type": "sequence",
+      "diagramName": "close",
+      "group": "diagram",
+      "reproducible": "да",
+      "model": "5211.json",
+      "what": "Реализация close(): одна линия жизни db:DBAccess и входящее сообщение",
+      "elements": 3,
+      "relationships": 2,
+      "gaps": [],
+      "gapIds": []
+    },
+    {
+      "figure": "5212",
+      "figureNo": "5.2.12",
+      "file": "5212.png",
+      "exercise": "5.2.F",
+      "type": "sequence",
+      "diagramName": "getCourseOfferingList",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5212.json",
+      "what": "Реализация getCourseOfferingList(): db:DBAccess, list:CourseOfferingList, rs:ResultSet, obj:CourseOffering, сеттеры",
+      "elements": 8,
+      "relationships": 19,
+      "gaps": [
+        "сообщения к rs:ResultSet названы в тексте только по факту («добавьте соответствующие сообщения-вызовы»), без имён — прочитаны с рисунка",
+        "порядок и число сообщений к obj:CourseOffering заданы перечнем сеттеров, но не последовательностью — порядок прочитан с рисунка",
+        "множественность линии жизни (Multi-object) не выражается — записана multiObject",
+        "покрытие сообщений фрагментами opt и loop не выражается"
+      ],
+      "gapIds": [
+        "model.fragmentCoverage",
+        "model.multiObject",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5213",
+      "figureNo": "5.2.13",
+      "file": "5213.png",
+      "exercise": "5.2.F",
+      "type": "sequence",
+      "diagramName": "updateStudent",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5213.json",
+      "what": "Реализация updateStudent(): пять линий жизни, комбинированные фрагменты, сообщение getId():long",
+      "elements": 8,
+      "relationships": 12,
+      "gaps": [
+        "кроме третьего сверху сообщения (getId():long) имена сообщений в тексте не названы — прочитаны с рисунка",
+        "комбинированные фрагменты упомянуты, но их операторы и сторожевые условия не приведены — прочитаны с рисунка",
+        "множественная линия жизни не выражается — записана multiObject",
+        "покрытие сообщений фрагментами и вложенность loop в opt не выражаются"
+      ],
+      "gapIds": [
+        "model.fragmentCoverage",
+        "model.multiObject",
+        "source.guards",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5214",
+      "figureNo": "5.2.14",
+      "file": "5214.png",
+      "exercise": "5.2.G",
+      "type": "package",
+      "diagramName": "BSAccess",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5214.json",
+      "what": "Пакеты подсистемы BSAccess: зависимости к java::net и org::apache::xmlrpc, связывание шаблона с XMLRPCInterchange",
+      "elements": 4,
+      "relationships": 5,
+      "gaps": [
+        "точный состав пакетов на снимке в тексте не перечислен: названы только java::net, org::apache::xmlrpc и XMLRPCInterchange",
+        "вложенность org::apache::xmlrpc не выражается: у элемента нет владельца",
+        "параметры параметризованного пакета и привязка параметров не выражаются в uml-model/3 — записаны полем templateParameters и подписью связи"
+      ],
+      "gapIds": [
+        "model.packageOwner",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5215",
+      "figureNo": "5.2.15",
+      "file": "5215.png",
+      "exercise": "5.2.G",
+      "type": "class",
+      "diagramName": "BSAccess",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5215.json",
+      "what": "Классы подсистемы BSAccess: IBSAccess, BSAccess («subsystem proxy»), XmlRpcClient, зависимость от CourseOffering",
+      "elements": 6,
+      "relationships": 6,
+      "gaps": [
+        "полный набор классов и зависимостей текст не перечисляет: названы скрытые TypeSerializer, TypeParser, Object, TypeFactoryImpl и требуемые зависимости; остальное прочитано с рисунка",
+        "сигнатуры операций интерфейса в тексте не приведены — сказано, что они должны совпадать с сигнатурами класса BSAccess"
+      ],
+      "gapIds": [
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5216",
+      "figureNo": "5.2.16",
+      "file": "5216.png",
+      "exercise": "5.2.G",
+      "type": "none",
+      "diagramName": "",
+      "group": "ui",
+      "reproducible": "нет",
+      "model": null,
+      "what": "Дерево подсистемы BSAccess в Model Explorer: интерфейсы, классы, диаграммы.",
+      "gaps": [
+        "не диаграмма: дерево модели"
+      ],
+      "altText": "Структура подсистемы BSAccess в Model Explorer"
+    },
+    {
+      "figure": "5217",
+      "figureNo": "5.2.17",
+      "file": "5217.png",
+      "exercise": "5.2.G",
+      "type": "sequence",
+      "diagramName": "init",
+      "group": "diagram",
+      "reproducible": "да",
+      "model": "5217.json",
+      "what": "Реализация init() в BSAccess: одна линия жизни cn:BSAccess со стереотипом «subsystem proxy»",
+      "elements": 4,
+      "relationships": 6,
+      "gaps": [],
+      "gapIds": []
+    },
+    {
+      "figure": "5218",
+      "figureNo": "5.2.18",
+      "file": "5218.png",
+      "exercise": "5.2.G",
+      "type": "sequence",
+      "diagramName": "sendStudentData",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5218.json",
+      "what": "Реализация sendStudentData(): четыре линии жизни, фрагмент loop, toJSON():string, потерянное сообщение-возврат",
+      "elements": 6,
+      "relationships": 8,
+      "gaps": [
+        "подписи сообщений в тексте не перечислены — прочитаны с рисунка",
+        "множественность линии жизни (Multi-object) не выражается — записана multiObject",
+        "потерянное сообщение не выражается в uml-model/3 — записано связью без получателя",
+        "покрытие сообщений фрагментами opt и loop не выражается"
+      ],
+      "gapIds": [
+        "model.fragmentCoverage",
+        "model.lostMessage",
+        "model.multiObject",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5219",
+      "figureNo": "5.2.19",
+      "file": "5219.png",
+      "exercise": "5.2.H",
+      "type": "class",
+      "diagramName": "Student",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5219.json",
+      "what": "Иерархия Student с FullTimeStudent и PartTimeStudent, статические члены, геттеры и сеттеры",
+      "elements": 3,
+      "relationships": 2,
+      "gaps": [
+        "состав атрибутов и операций в тексте не перечислен: сказано только, что нужно «придать диаграмме вид, схожий с рисунком 5.2.19» — прочитано с рисунка",
+        "статические члены (область действия classifier, подчёркивание) не выражаются — записаны полем isStatic",
+        "абстрактность класса Student не выражается — записана полем abstract",
+        "геттеры и сеттеры создаются автоматически, их имена в тексте не приведены — прочитаны с рисунка"
+      ],
+      "gapIds": [
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5220",
+      "figureNo": "5.2.20",
+      "file": "5220.png",
+      "exercise": "5.2.H",
+      "type": "state",
+      "diagramName": "Lifecycle",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5220.json",
+      "what": "Состояния CourseOffering: композитное Active с регионами, Open, Closed, Canceled, два псевдосостояния выбора, переходы с триггерами",
+      "elements": 10,
+      "relationships": 10,
+      "gaps": [
+        "регионы состояния и вложенность состояний не выражаются в uml-model/3",
+        "внутренние переходы и действия entry не выражаются полностью: entry записан полем entry, внутренние переходы — пояснением в documentation",
+        "локальные (local) переходы не отличаются от внешних",
+        "события-триггеры привязываются к операциям класса — привязка не выражается",
+        "в подписях рисунка имя счётчика встречается в двух написаниях (numStudents и numStudent); записано как на рисунке"
+      ],
+      "gapIds": [
+        "model.internalTransition",
+        "model.stateRegion",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5221",
+      "figureNo": "5.2.21",
+      "file": "5221.png",
+      "exercise": "5.2.H",
+      "type": "activity",
+      "diagramName": "updateStudent",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5221.json",
+      "what": "Диаграмма деятельности операции DBAccess::updateStudent со структурированными узлами и псевдокодом",
+      "elements": 6,
+      "relationships": 4,
+      "gaps": [
+        "псевдокод в узлах действий в тексте не приведён: сказано только, как его вводить (F2, Alt+Enter, Caption Placement) — прочитан с рисунка",
+        "структурированные узлы с регионами не выражаются в uml-model/3: регионы Test и Body, решение внутри Test и ветви [self.c == NULL] / [else] записаны в documentation узла",
+        "состав действий и рёбер не назван в тексте — источником служит рисунок"
+      ],
+      "gapIds": [
+        "model.structuredNode",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5222",
+      "figureNo": "5.2.22",
+      "file": "5222.png",
+      "exercise": "5.2.H",
+      "type": "activity",
+      "diagramName": "createSchedule",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5222.json",
+      "what": "Диаграмма деятельности операции RegistrationForm::createSchedule со структурированными узлами и псевдокодом",
+      "elements": 5,
+      "relationships": 3,
+      "gaps": [
+        "псевдокод в узлах действий в тексте не приведён — прочитан с рисунка",
+        "структурированные узлы с регионами не выражаются в uml-model/3: регионы Setup, Test и Body записаны в documentation узла",
+        "состав действий и рёбер не назван в тексте — источником служит рисунок"
+      ],
+      "gapIds": [
+        "model.structuredNode",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5223",
+      "figureNo": "5.2.23",
+      "file": "5223.png",
+      "exercise": "5.2.H",
+      "type": "class",
+      "diagramName": "Design VOPC RegisterForCourses",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5223.json",
+      "what": "Проектная диаграмма классов регистрации: композиции, квалификатор, интерфейсы подсистем, метаморфоза подтипов",
+      "elements": 12,
+      "relationships": 15,
+      "gaps": [
+        "полный набор классов и связей проектной диаграммы текст не перечисляет: названы правки (композиции вместо ассоциаций, квалификатор, направления, метаморфоза подтипов) — остальное прочитано с рисунка",
+        "квалификатор на полюсе ассоциации (-semester : byte у Student—Schedule) не выражается в uml-model/3 — записан в documentation связи",
+        "набор обобщений с ограничением {complete, disjoint} не выражается полностью — набор описан блоком generalizationSets",
+        "интерфейс IBSAccess оставлен в модели по тексту упражнения (метаморфоза подтипов), хотя на рисунке 5.2.23 обе модели его не увидели — факт не установлен"
+      ],
+      "gapIds": [
+        "model.qualifier",
+        "source.associations",
+        "source.unlisted"
+      ]
+    },
+    {
+      "figure": "5301",
+      "figureNo": "5.3.1",
+      "file": "5301.png",
+      "exercise": "5.3",
+      "type": "class",
+      "diagramName": "DataBase Schema",
+      "group": "diagram",
+      "reproducible": "частично",
+      "model": "5301.json",
+      "what": "Схема БД: девять таблиц со стереотипом «table», внешние ключи ассоциациями, каскадное удаление композицией",
+      "elements": 9,
+      "relationships": 11,
+      "gaps": [
+        "столбцы-атрибуты таблиц в тексте не перечислены — прочитаны с рисунка",
+        "набор связей и мощностей между таблицами текст не перечисляет — прочитаны с рисунка",
+        "пометки <<PK>> и <<FK>> у столбцов не выражаются полностью: <<PK>> записан полем isID, <<FK>> — полем isFK",
+        "ограничение {almost one} на паре связей TableUser—TableProfessor и TableUser—TableStudent не выражается — записано в documentation связей"
+      ],
+      "gapIds": [
+        "source.associations",
+        "source.names"
+      ]
+    }
+  ]
+}

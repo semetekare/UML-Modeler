@@ -1,0 +1,256 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5212",
+    "figureNo": "5.2.12",
+    "exercise": "5.2.F",
+    "type": "sequence",
+    "diagramName": "getCourseOfferingList",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности, описывающая реализацию операции getCourseOfferingList() в подсистеме DBAccess",
+    "notes": "Текст называет четыре линии жизни и перечень сеттеров. Рисунок 5.2.12 показывает шесть линий жизни (добавлены c:Connection и s:Statement), девятнадцать сообщений с точными подписями, фрагмент opt с условием [c == NULL] и фрагмент loop с условием [not rs.isAfterLast()]; всё это прочитано с рисунка.",
+    "gaps": [
+      "сообщения к rs:ResultSet названы в тексте только по факту («добавьте соответствующие сообщения-вызовы»), без имён — прочитаны с рисунка",
+      "порядок и число сообщений к obj:CourseOffering заданы перечнем сеттеров, но не последовательностью — порядок прочитан с рисунка",
+      "множественность линии жизни (Multi-object) не выражается — записана multiObject",
+      "покрытие сообщений фрагментами opt и loop не выражается"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.multiObject",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e1",
+      "e4",
+      "r1",
+      "r2",
+      "r3",
+      "r4",
+      "r5",
+      "r6"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "db:DBAccess",
+      "stereotype": "subsystem proxy",
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "list:CourseOfferingList"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "rs:ResultSet"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "obj:CourseOffering",
+      "multiObject": true,
+      "source": "image"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "c:Connection",
+      "source": "image"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "s:Statement",
+      "source": "image"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "[c == NULL]",
+      "operator": "opt",
+      "note": "фрагмент opt; условие прочитано с рисунка, покрывает сообщение init()",
+      "source": "image"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "[not rs.isAfterLast()]",
+      "operator": "loop",
+      "note": "цикл по строкам результата; прочитан с рисунка",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "getCourseOfferingList(semester : byte) : CourseOfferingList",
+      "from": "e1",
+      "to": "e1",
+      "note": "входящее сообщение связано с операцией",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "message",
+      "name": "init() : boolean",
+      "from": "e1",
+      "to": "e1",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "message",
+      "name": "createStatement() : Statement",
+      "from": "e1",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e5",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "message",
+      "name": "executeQuery(sql : string) : ResultSet",
+      "from": "e1",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r11",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e6",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r12",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "first() : boolean",
+      "from": "e1",
+      "to": "e3",
+      "note": "вызов к rs:ResultSet; на рисунке сообщений к rs несколько",
+      "source": "image"
+    },
+    {
+      "id": "r13",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r14",
+      "kind": "message",
+      "name": "getLong(columnLabel : string) : long",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "setNumber(number : long) : void",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r15",
+      "kind": "message",
+      "name": "getByte(columnLabel : string) : byte",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "setDay(day : DayOfWeek) : void",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r16",
+      "kind": "message",
+      "name": "getByte(columnLabel : string) : byte",
+      "from": "e1",
+      "to": "e3",
+      "note": "второй вызов getByte: читает поле day",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "setPair(pair : byte) : void",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r17",
+      "kind": "message",
+      "name": "getByte(columnLabel : string) : byte",
+      "from": "e1",
+      "to": "e3",
+      "note": "третий вызов getByte: читает поле pair",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "setSemester(semester : byte) : void",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r18",
+      "kind": "message",
+      "name": "add(e : CourseOffering) : boolean",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r19",
+      "kind": "message",
+      "name": "next() : boolean",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "getCourseOfferingList",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

@@ -1,0 +1,250 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4306",
+    "figureNo": "4.3.6",
+    "exercise": "4.3.B",
+    "type": "class",
+    "diagramName": "VOPC RegisterForCourses",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Итоговый вид UML-диаграммы классов VOPC RegisterForCourses в Analysis Model",
+    "notes": "Итог упражнения 4.3.B: добавлены операции из сообщений, выводимый атрибут CourseOffering::numStudents, классы FullTimeStudent и PartTimeStudent, обобщения и набор обобщений {complete, disjoint}; Student помечен абстрактным.",
+    "gaps": [
+      "набор ассоциаций и их мощности в тексте перечислены не полностью: названы ассоциация RegistrationForm — RegistrationController (1 к 0..1) и требование связать RegistrationController, DataAccess, Student, CourseOffering",
+      "набор обобщений (Generalization Set) с ограничениями {complete, disjoint} не выражается в uml-model/3 — набор описан блоком generalizationSets, а обобщения ссылаются на него полем setId",
+      "выводимость атрибута (numStudents) не выражается — записана полем derived",
+      "абстрактность класса Student не выражается — записана полем abstract"
+    ],
+    "gapIds": [
+      "source.associations"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "RegistrationForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "MainMenuForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "RegistrationController",
+      "stereotype": "control",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "registerForCourses()",
+          "type": ""
+        },
+        {
+          "vis": "public",
+          "name": "isRegistrationOpened():boolean",
+          "type": ""
+        }
+      ]
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "DataAccess",
+      "stereotype": "control",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "getStudentByUser(u:User)",
+          "type": "Student"
+        }
+      ]
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "Student",
+      "stereotype": "entity",
+      "abstract": true,
+      "attributes": [
+        {
+          "vis": "public",
+          "name": "id",
+          "type": "long",
+          "isID": true
+        }
+      ],
+      "operations": [
+        {
+          "vis": "public",
+          "name": "hasScheduleForSemester(semester:byte)",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "id": "e6",
+      "kind": "class",
+      "name": "FullTimeStudent",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e7",
+      "kind": "class",
+      "name": "PartTimeStudent",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e8",
+      "kind": "class",
+      "name": "CourseOffering",
+      "stereotype": "entity",
+      "attributes": [
+        {
+          "vis": "public",
+          "name": "number",
+          "type": "long"
+        },
+        {
+          "vis": "public",
+          "name": "day",
+          "type": "DayOfWeek"
+        },
+        {
+          "vis": "public",
+          "name": "pair",
+          "type": "byte"
+        },
+        {
+          "vis": "public",
+          "name": "semester",
+          "type": "byte"
+        },
+        {
+          "vis": "public",
+          "name": "numStudents",
+          "type": "byte",
+          "isDerived": true
+        }
+      ]
+    },
+    {
+      "id": "e9",
+      "kind": "class",
+      "name": "Schedule",
+      "stereotype": "entity",
+      "attributes": [
+        {
+          "vis": "public",
+          "name": "semester",
+          "type": "byte"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "association",
+      "from": "e1",
+      "to": "e3",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "0..1"
+    },
+    {
+      "id": "r2",
+      "kind": "association",
+      "from": "e2",
+      "to": "e3",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "0..1"
+    },
+    {
+      "id": "r3",
+      "kind": "association",
+      "from": "e3",
+      "to": "e4",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте"
+    },
+    {
+      "id": "r4",
+      "kind": "association",
+      "from": "e3",
+      "to": "e5",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте"
+    },
+    {
+      "id": "r5",
+      "kind": "association",
+      "from": "e3",
+      "to": "e8",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте"
+    },
+    {
+      "id": "r6",
+      "kind": "association",
+      "from": "e4",
+      "to": "e5",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте"
+    },
+    {
+      "id": "r7",
+      "kind": "association",
+      "from": "e4",
+      "to": "e8",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте"
+    },
+    {
+      "id": "r8",
+      "kind": "association",
+      "from": "e5",
+      "to": "e9",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте"
+    },
+    {
+      "id": "r9",
+      "kind": "generalization",
+      "from": "e6",
+      "to": "e5",
+      "setId": "GS1"
+    },
+    {
+      "id": "r10",
+      "kind": "generalization",
+      "from": "e7",
+      "to": "e5",
+      "setId": "GS1"
+    }
+  ],
+  "generalizationSets": [
+    {
+      "id": "GS1",
+      "name": "Набор обобщений",
+      "disjoint": true,
+      "covering": true,
+      "members": [
+        "FullTimeStudent",
+        "PartTimeStudent"
+      ]
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "VOPC RegisterForCourses",
+      "type": "class",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

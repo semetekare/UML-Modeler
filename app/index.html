@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>UML Modeler</title>
+<!-- The favicon is a real file from the icon set, not a data URI: the old
+     inline one was the console's only 404 source and the set ships a proper
+     32 px mark (design/icon-inventory.md §2.5). -->
+<link rel="icon" type="image/svg+xml" href="src/brand/icons/favicon.svg">
+<!-- The brand choice is read BEFORE the first paint, exactly like the theme
+     below: otherwise a reload flashes Flame before the stored preset lands.
+     Plain script, not a module, so it runs before the stylesheets resolve. -->
+<script>
+  try {
+    var b = localStorage.getItem('brand');
+    if (b && b !== 'flame') document.documentElement.dataset.brand = b;
+  } catch (e) { /* storage blocked: the default preset stands */ }
+  // Appearance (light / dark / follow the system) is read here too — BEFORE
+  // the stylesheets, so a dark preference never flashes the light theme for
+  // one frame. The same resolution lives in ui-kit/js/theme.js and in
+  // src/ui/appearance.js; this copy exists because module scripts run after
+  // the first paint.
+  try {
+    var a = localStorage.getItem('ui-kit.appearance') || 'system';
+    var dark = a === 'dark' || (a === 'system'
+      && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+    document.documentElement.setAttribute('data-sc', 'mac');
+    document.documentElement.setAttribute('data-race', dark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-app', 'uml');
+  } catch (e) { /* storage blocked: initAppearance() decides after load */ }
+</script>
+<link rel="stylesheet" href="ui-kit/css/kit.css">
+<link rel="stylesheet" href="ui-kit/adapters/uml.css">
+<link rel="stylesheet" href="src/styles.css">
+<!-- Читалка справочника: css перенесён из прототипа, те же токены и ширины. -->
+<link rel="stylesheet" href="src/reference.css">
+<!-- brand.css last: it only overrides variables (--sc-accent, --sc-glow,
+     --sc-app and the app-level surfaces/ink), never ui-kit's own files. -->
+<link rel="stylesheet" href="src/brand/brand.css">
+<!-- Три листа ниже — новые поверхности 2026-11-07 и намеренно отдельные:
+     styles.css не трогается, чтобы правки дерева, меню и печати не
+     сталкивались в одном файле. Порядок важен: print.css последний, он
+     перекрывает всё остальное только в @media print. -->
+<link rel="stylesheet" href="src/context-menu.css">
+<link rel="stylesheet" href="src/tree.css">
+<!-- Первый запуск: лист пуст, поверх него — «распаковка» (src/ui/welcome.js).
+     Лист при этом настоящий: панели, инструменты и статусбар живут как обычно,
+     а пустое состояние занимает только место листа. -->
+<link rel="stylesheet" href="src/welcome.css">
+<link rel="stylesheet" href="src/print.css">
+<!-- One skin, two appearances. The skin is pinned to the macOS one (the HUD
+     palettes are not offered); the appearance is NOT pinned — it is a user
+     setting: «Авто» follows the system, «Светлая»/«Тёмная» force one. The
+     choice lives in localStorage['ui-kit.appearance'] and the resolved value
+     is written onto <html> as data-race, which is what the CSS reads. -->
+<script type="module">
+  import { initTheme } from './ui-kit/js/theme.js';
+  import { initAppearance } from './src/ui/appearance.js';
+  try {
+    localStorage.setItem('ui-kit.skin', 'mac');
+    const saved = localStorage.getItem('ui-kit.appearance');
+    if (saved !== 'light' && saved !== 'dark') localStorage.setItem('ui-kit.appearance', 'system');
+  } catch (e) { /* storage blocked: initAppearance() still pins the skin */ }
+  initTheme({ app: 'uml' });
+  initAppearance();
+</script>
+</head>
+<body>
+  <div id="app">
+    <!-- Commands only: four menus, two panel toggles, help, theme. -->
+    <header id="toolbar"></header>
+    <div id="body">
+      <!-- The left panel holds ONE reading surface: the model tree. The course
+           is its own mode over #work now — it does not take a panel. -->
+      <aside id="left">
+        <section id="model-pane" class="tabpane active">
+          <div class="panel-head">
+            <span class="ptitle">Модель</span>
+            <input id="model-search" class="panel-search" type="search"
+                   placeholder="Поиск…" aria-label="Поиск по модели" autocomplete="off">
+          </div>
+          <section id="model" class="panel-body"></section>
+          <div id="model-foot" class="panel-foot"></div>
+        </section>
+      </aside>
+      <main id="center">
+        <!-- The ten tools, above the sheet they act on. -->
+        <div id="toolstrip" role="toolbar" aria-label="Инструменты"></div>
+        <!-- #work — «лист и читалка рядом»: flex-строка, как в прототипе
+             (material/reference-prototype/index.html). Читалка — сосед листа
+             по флексу, а не вкладка справа и не модал: текст и лист видны
+             одновременно. -->
+        <div id="work" class="split">
+          <div id="canvas-wrap">
+            <svg id="canvas" xmlns="http://www.w3.org/2000/svg"></svg>
+            <div id="inline-editor" hidden><input type="text" spellcheck="false"></div>
+            <!-- Пустое состояние первого запуска. Лежит ПОВЕРХ листа, а не
+                 вместо него: лист остаётся листом, со своей сеткой и масштабом,
+                 и после создания первой диаграммы ничего не перестраивается. -->
+            <div id="welcome" hidden aria-label="Начало работы"></div>
+          </div>
+          <!-- Читалка справочника. Разметка и классы — из прототипа; пустые
+               кнопки получают иконки из набора приложения в initReference. -->
+          <section id="ref" data-view="article" aria-label="Справочник-учебник UML 2.5.1">
+            <div class="ref-bar">
+              <button class="iconbtn" id="ref-tree" type="button" title="Дерево навигации" aria-label="Дерево навигации"></button>
+              <nav class="crumbs" id="ref-crumbs" aria-label="Где я"></nav>
+              <!-- Поиск — в шапке читалки: поле занимает место крошек, пока
+                   открыт вид «поиск», и ищет сразу по всем полкам. -->
+              <input id="ref-q" class="panel-search bar-search" type="search" autocomplete="off"
+                     placeholder="Что такое квалификатор…" aria-label="Поиск по всем полкам">
+              <button class="iconbtn" id="ref-search" type="button" title="Поиск по всем полкам" aria-label="Поиск по всем полкам"></button>
+              <button class="iconbtn" id="ref-prev" type="button" title="Предыдущая статья" aria-label="Предыдущая статья"></button>
+              <button class="iconbtn" id="ref-next" type="button" title="Следующая статья" aria-label="Следующая статья"></button>
+              <button class="iconbtn" id="ref-mode" type="button" title="Режим: рядом с листом" aria-label="Режим раскладки"></button>
+              <button class="iconbtn" id="ref-close" type="button" title="Закрыть (Esc)" aria-label="Закрыть справочник"></button>
+            </div>
+            <div class="ref-body">
+              <nav class="ref-nav" id="ref-nav" aria-label="Полки справочника"></nav>
+              <div class="ref-scroll" id="ref-scroll">
+                <article class="doc ref-doc" id="ref-doc"></article>
+              </div>
+              <aside class="ref-toc" id="ref-toc" aria-label="В этом разделе"></aside>
+            </div>
+            <div class="ref-body" id="ref-search-body">
+              <div class="search-sum" id="ref-sum"></div>
+              <ul class="results" id="ref-results"></ul>
+            </div>
+          </section>
+          <!-- Курс — РЕЖИМ, а не панель (docs/research/UX-COURSE-LIBRARY.md §2.1).
+               Лежит поверх листа внутри #work: лист сохраняет свою ширину и
+               масштаб, инспектор справа остаётся на месте, а выход — «✕»,
+               Esc или «К листу» в подвале урока. -->
+          <section id="course-mode" hidden aria-label="Курс: упражнения пособия">
+            <div class="cvm-bar">
+              <span class="cvm-mark" id="course-mark" aria-hidden="true"></span>
+              <span class="cvm-place" id="course-place">Курс</span>
+              <span id="course-progress" class="panel-note"></span>
+              <span id="course-fig-toggle" class="cv-figtoggle" role="group" aria-label="Какие рисунки показывать" hidden></span>
+              <button type="button" class="btn cvm-close" id="course-close"
+                      title="Закрыть курс (Esc) и вернуться к листу">✕ Закрыть</button>
+            </div>
+            <div class="cvm-body">
+              <nav id="course-list" aria-label="Главы курса"></nav>
+              <section id="course-view" hidden aria-label="Урок курса"></section>
+            </div>
+          </section>
+        </div>
+        <div id="statusbar"></div>
+      </main>
+      <!-- Правая колонка — только постоянные инструменты работы: что у
+           выделенного, профиль, проверки. Курса здесь нет: он режим обучения,
+           а не панель свойств, и жил тут за счёт инспектора. -->
+      <aside id="right">
+        <div class="panel-tabs" data-group="right">
+          <button class="tab active" data-tab="props" aria-label="Свойства">Свойства</button>
+          <button class="tab" data-tab="profile" aria-label="Профиль стереотипов">Профиль <span id="stcount" class="badge"></span></button>
+          <!-- Три слоя проверок: стандарт UML 2.5.1, практика моделирования и правила
+               проекта (соглашения команды из файла модели). Вкладка одна: человеку
+               важен список замечаний к модели, а слой назван в каждом разделе. -->
+          <button class="tab" data-tab="checks" aria-label="Проверки модели: UML 2.5.1, практика моделирования и правила проекта">Проверки <span id="checks-badge" class="badge"></span></button>
+          <!-- Реестр констрейнтов (449 строк стандарта) переехал на полку
+               «Стандарт» библиотеки: это справочный материал, а не инструмент
+               работы с выделенным объектом, и в 255 px таблица тесна. -->
+        </div>
+        <div class="panel-body">
+          <section id="props" class="tabpane active"></section>
+          <section id="profile" class="tabpane"></section>
+          <section id="checks" class="tabpane"></section>
+        </div>
+      </aside>
+    </div>
+  </div>
+  <div id="modal-root"></div>
+  <!-- Ctrl+K: the kit's command palette over every tool, file and view command. -->
+  <sc-command-palette id="cmdpal" hotkey="k" placeholder="Команда…"></sc-command-palette>
+  <input type="file" id="file-input" accept=".uml.json,.json" hidden>
+  <!-- PlantUML import: read as a new sheet, never replacing the open model. -->
+  <input type="file" id="puml-input" accept=".puml,.plantuml,.txt" hidden>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

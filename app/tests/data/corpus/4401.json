@@ -1,0 +1,64 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4401",
+    "figureNo": "4.4.1",
+    "exercise": "4.4",
+    "type": "class",
+    "diagramName": "VOPC CloseRegistration",
+    "group": "diagram",
+    "reproducible": "да",
+    "altText": "Начальный вариант UML-диаграммы классов VOPC CloseRegistration",
+    "notes": "Начальный вариант: классы реализации варианта использования «Закрыть регистрацию» со стереотипами анализа и без ассоциаций — они добавляются в конце упражнения 4.4.",
+    "gaps": [],
+    "gapIds": []
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "CloseRegistrationController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "SystemClock",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "BillingSystem",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "Student",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "CourseOffering",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e6",
+      "kind": "class",
+      "name": "Schedule",
+      "stereotype": "entity"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "VOPC CloseRegistration",
+      "type": "class",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

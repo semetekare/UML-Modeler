@@ -1,0 +1,26 @@
+@startuml
+title Design CreateSchedule Subflow
+actor e4 as "Студент"
+collections e1 as "cOff[i]:CourseOffering"
+participant e5 as "rform:RegistrationForm"
+participant e6 as "rctrl:RegistrationController"
+participant e7 as "dao:IDBAccess" <<interface>>
+participant e8 as "curStud:Student"
+participant e9 as "sch:Schedule"
+opt учебный план на текущий семестр у студента отсутствует
+e4 -> e5 : createSchedule(semester : byte) : void
+e5 -> e6 : createSchedule(semester : byte) : boolean
+e6 -> e7 : getCourseOfferingList(semester : byte) : CourseOfferingList
+create e9
+e8 -> e9 : new
+e5 -> e5 : displayBlankSchedule() : void
+e4 -> e5 : selectPrimaryCourse(nums : long[4]) : void
+end
+ref over e4, e1, e5, e6, e7, e8, e9 : Design DisplayCourseOfferings Subflow
+e4 -> e5 : selectAltCourse(nums : long[2]) : void
+e4 -> e5 : submitSelectedCourses(semester : byte, primary : long[4], alt : long[2]) : void
+e5 -> e6 : submitSelectedCourses(semester : byte, primary : CourseOffering[4], alt : CourseOffering[2]) : boolean
+e6 -> e8 : createSchedule(semester : byte, primary : CourseOffering[4], alt : CourseOffering[2]) : boolean
+e6 -> e7 : updateStudent(st : Student) : boolean
+e5 -> e5 : displayMessage(msg : string) : void
+@enduml

@@ -1,0 +1,67 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-mult-upper-is-unlimited-natural",
+  "name": "mult-upper-is-unlimited-natural — верхняя граница кратности не целое число и не «*»",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Заказ",
+      "documentation": "Правило «mult-upper-is-unlimited-natural»: верхняя граница кратности не целое число и не «*».\nUML 2.5.1, п. 7.8.8.8, констрейнт MultiplicityElement::upper_is_unlimitedNatural: «If it is not empty, then upperValue must have an UnlimitedNatural value.»\nУ конца «Заказ» стоит кратность 1..1.5: верхняя граница 1.5 не является UnlimitedNatural."
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "Клиент"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "association",
+      "from": "e1",
+      "to": "e2",
+      "fromMultiplicity": "1..1.5"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Диаграмма 1",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 360,
+          "y": 60,
+          "w": 190,
+          "h": 170
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

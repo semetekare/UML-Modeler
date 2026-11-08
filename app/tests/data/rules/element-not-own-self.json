@@ -1,0 +1,84 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-element-not-own-self",
+  "name": "element_not_own_self — владение замкнуто в кольцо",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "state",
+      "name": "Заказ",
+      "documentation": "Правило «element-not-own-self»: UML 2.5.1, п. 7.8.6.6, констрейнт Element::not_own_self: «Элемент не может прямо или косвенно владеть сам собой.»\nСостояние «Заказ» лежит в области состояния «Оплата», а «Оплата» — в области «Заказа»: каждый из них прямо или косвенно владеет сам собой. Владение здесь двойное — через членство в регионе (`regions[].states`), а не через `ownerId`: цикл по `ownerId` снимает загрузчик, цикл по регионам он пропускает.",
+      "regions": [
+        {
+          "id": "g1",
+          "name": "Область заказа",
+          "states": [
+            "e2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e2",
+      "kind": "state",
+      "name": "Оплата",
+      "regions": [
+        {
+          "id": "g2",
+          "name": "Область оплаты",
+          "states": [
+            "e1"
+          ]
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "transition",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "element_not_own_self — владение замкнуто в кольцо",
+      "kind": "state",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

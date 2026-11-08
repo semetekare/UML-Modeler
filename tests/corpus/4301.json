@@ -1,0 +1,175 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4301",
+    "figureNo": "4.3.1",
+    "exercise": "4.3",
+    "type": "class",
+    "diagramName": "VOPC RegisterForCourses",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма классов VOPC RegisterForCourses",
+    "notes": "Текст называет пять классов; рисунок 4.3.1 показывает семь — в нём есть уже существующие MainMenuForm и DataAccess, а также атрибуты CourseOffering, Schedule и Student и три связи с кратностями и именами полюсов (primary 0..4, alternative 0..2, композиция Student—Schedule). Всё это прочитано с рисунка.",
+    "gaps": [
+      "атрибуты классов и связи с кратностями текстом не перечислены — прочитаны с рисунка",
+      "имя полюса на конце Schedule у обеих ассоциаций на рисунке не подписано"
+    ],
+    "gapIds": [
+      "source.associations",
+      "source.names"
+    ],
+    "imageDerived": [
+      "e3",
+      "e4",
+      "e5"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "RegistrationForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e6",
+      "kind": "class",
+      "name": "MainMenuForm",
+      "stereotype": "boundary",
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "RegistrationController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e7",
+      "kind": "class",
+      "name": "DataAccess",
+      "stereotype": "control",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "Student",
+      "stereotype": "entity",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "address",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "id",
+          "type": "long",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "phones",
+          "type": "string[0..2]"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "CourseOffering",
+      "stereotype": "entity",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "day",
+          "type": "DayOfWeek"
+        },
+        {
+          "vis": "private",
+          "name": "number",
+          "type": "long"
+        },
+        {
+          "vis": "private",
+          "name": "numStudents",
+          "type": "byte",
+          "isDerived": true
+        },
+        {
+          "vis": "private",
+          "name": "pair",
+          "type": "byte"
+        },
+        {
+          "vis": "private",
+          "name": "semester",
+          "type": "byte"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "Schedule",
+      "stereotype": "entity",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "semester",
+          "type": "byte"
+        }
+      ],
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "association",
+      "from": "e4",
+      "to": "e5",
+      "fromRole": "alternative",
+      "fromMultiplicity": "0..2",
+      "toMultiplicity": "*",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "association",
+      "from": "e4",
+      "to": "e5",
+      "fromRole": "primary",
+      "fromMultiplicity": "0..4",
+      "toMultiplicity": "*",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "composition",
+      "from": "e3",
+      "to": "e5",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "*",
+      "note": "ромб со стороны Student: учебный план — часть студента",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "VOPC RegisterForCourses",
+      "type": "class",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-stereotype-generalizes-stereotype-ok",
+  "name": "stereotype-generalizes-stereotype (без нарушения) — стереотип обобщает стереотип",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "stereotype",
+      "name": "Сущность",
+      "documentation": "Правило «stereotype-generalizes-stereotype», контрольный случай без нарушения: стереотип обобщает стереотип.\nUML 2.5.1, п. 12.4.9.6, констрейнт Stereotype::generalize: «A Stereotype may only generalize or specialize another Stereotype.»\nСтереотип обобщает стереотип — предок того же вида."
+    },
+    {
+      "id": "e2",
+      "kind": "stereotype",
+      "name": "Справочник"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "generalization",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Диаграмма 1",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 160,
+          "h": 90
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 360,
+          "y": 60,
+          "w": 160,
+          "h": 90
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

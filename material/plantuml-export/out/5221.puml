@@ -1,0 +1,9 @@
+@startuml
+title updateStudent
+start
+:Conditional;
+:sql = "UPDATE Students SET name ='"; sql += st.getName(); sql += "phone1 ='"; sql += st.get1stPhone(); ... sql += "WHERE id ="; sql += st.getId().toString(); s = c.createStatement(sql); res = s.executeUpdate();;
+:return (res<>0);
+stop
+note right : DBAccess::updateStudent(st):boolean
+@enduml

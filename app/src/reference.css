@@ -1,0 +1,770 @@
+/* Читалка справочника-учебника.
+ *
+ * Перенесено из material/reference-prototype/index.html без новых цветов,
+ * кеглей и компонентов: один --brand, остальное — color-mix(in oklab, …) и
+ * токены приложения (--ink, --line, --surface-panel). Ширины — те же числа:
+ * --ref-w 420, --ref-measure 480, --ref-nav 200, --ref-toc 200.
+ *
+ * Почему всё под #ref: в приложении уже есть .kv (строка «ключ — значение»)
+ * и .empty; у прототипа .kv — карточка констрейнта. Пространство имён читалки
+ * не даёт этим двум правилам столкнуться.
+ */
+
+:root {
+  --ref-w: 420px;
+  --ref-measure: 480px;
+  --ref-nav: 200px;
+  --ref-toc: 200px;
+}
+
+/* ------------------------------------------------------ место в #center */
+
+#work {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+  min-width: 0;
+  /* Режим курса (#course-mode) лежит поверх листа: absolute внутри #work —
+     лист при этом сохраняет свою ширину, а не уступает её панели. */
+  position: relative;
+}
+#work #canvas-wrap { flex: 1 1 auto; min-width: 0; }
+/* Курс больше не в правой колонке и лист не прячет: режим курса — отдельный
+   слой над листом (#course-mode в src/styles.css). */
+
+#ref {
+  display: none;
+  flex: 0 0 var(--ref-w);
+  width: var(--ref-w);
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  background: var(--surface-paper);
+  border-left: 1px solid var(--line);
+}
+#work.ref-open #ref { display: flex; }
+
+/* «страница» — лист уходит, читалка занимает центр целиком */
+#work.page #canvas-wrap { display: none; }
+#work.page #ref { flex: 1 1 auto; width: auto; }
+
+/* «широко» — инспектор скрыт; дерево становится третьей колонкой, но только
+   когда #center действительно ≥ 980 px (.room ставит reference.js). */
+#body.wide #right { display: none; }
+
+/* ------------------------------------------------------------ шапка 32 px */
+
+#ref .ref-bar {
+  flex: 0 0 auto;
+  height: var(--bar);
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  padding: 0 6px 0 4px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-paper);
+}
+#ref .ref-bar .iconbtn { width: 24px; height: 24px; }
+#ref .ref-bar .iconbtn:disabled { color: var(--ink-faint); cursor: default; }
+#ref .ref-bar .iconbtn:disabled:hover { background: transparent; }
+
+#ref .ref-bar .bar-search {
+  display: none;
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 24px;
+  padding: 0 6px;
+  border: 1px solid var(--border-control);
+  border-radius: var(--r-field);
+  background: var(--surface-paper);
+  font-size: var(--fs-sm);
+  color: var(--ink);
+}
+#ref .ref-bar .bar-search:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+#ref[data-view="search"] .ref-bar .crumbs { display: none; }
+#ref[data-view="search"] .ref-bar .bar-search { display: block; }
+
+#ref .crumbs {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: var(--fs-micro);
+  color: var(--ink-faint);
+}
+#ref .crumbs button {
+  border: 0;
+  background: none;
+  padding: 2px;
+  font: inherit;
+  color: var(--ink-soft);
+  cursor: pointer;
+  border-radius: 3px;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#ref .crumbs button:hover { color: var(--accent-on-soft); background: var(--brand-soft); }
+#ref .crumbs .cur {
+  color: var(--ink);
+  font-weight: 600;
+  padding: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#ref .crumbs .sep { color: var(--ink-faint); padding: 0 1px; }
+
+/* -------------------------------------------------------------- тело */
+
+#ref .ref-body { flex: 1; display: flex; min-height: 0; min-width: 0; }
+#ref #ref-search-body { display: none; }
+#ref[data-view="search"] .ref-body:not(#ref-search-body) { display: none; }
+#ref[data-view="search"] #ref-search-body { display: block; overflow: auto; }
+
+/* --------------------------------------------------------- дерево полок */
+
+#ref .ref-nav {
+  display: none;
+  flex: 0 0 var(--ref-nav);
+  width: var(--ref-nav);
+  overflow: auto;
+  padding: 6px 0;
+  border-right: 1px solid var(--line);
+  background: var(--surface-panel);
+}
+#ref[data-view="tree"] .ref-nav { display: block; flex: 1 1 auto; width: auto; border-right: 0; }
+#ref[data-view="tree"] .ref-scroll { display: none; }
+#ref[data-view="tree"] .ref-toc { display: none; }
+#ref[data-view="search"] .ref-toc { display: none; }
+
+/* три колонки — только «страница/широко» и только когда есть 980 px */
+#work.page.room.wide #ref .ref-nav {
+  display: block;
+  flex: 0 0 var(--ref-nav);
+  width: var(--ref-nav);
+  border-right: 1px solid var(--line);
+}
+
+#ref .ref-main { flex: 1 1 auto; min-width: 0; display: flex; overflow: hidden; }
+
+/* Полка: название, счётчик и ВИДИМАЯ вторая строка.
+   Раньше различие полок жило в атрибуте title — видно только при наведении,
+   а на полке стояло «Правила 71» и «Стандарт 449»: два числа, которые ничего
+   не объясняют. Теперь вторая строка читается сразу; title остаётся
+   подсказкой для наведения и ничему не мешает. */
+#ref .shelf { padding: 6px 10px 4px; display: block; }
+#ref .shelf-line { display: flex; align-items: baseline; gap: 6px; min-width: 0; }
+#ref .shelf .shelf-btn {
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+  cursor: pointer;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#ref .shelf .shelf-btn:hover { color: var(--accent); }
+#ref .shelf .n { margin-left: auto; flex: 0 0 auto; font-size: 10px; color: var(--ink-faint); letter-spacing: 0; }
+#ref .shelf-hint {
+  margin: 1px 0 0;
+  font-size: var(--fs-micro);
+  line-height: 13px;
+  color: var(--ink-faint);
+}
+/* Подпись группы («Объяснения», «Стандарт», «Данные профиля») — не полка:
+   она не кликается и не раскрывается, поэтому это div, а не button. */
+#ref .shelf-caption {
+  padding: 10px 10px 2px;
+  font-size: 10px;
+  line-height: 14px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 600;
+  color: var(--ink-faint);
+}
+#ref .shelf-caption:first-child { padding-top: 4px; }
+
+#ref .ref-nav ul,
+#ref .ref-nav li { list-style: none; margin: 0; padding: 0; }
+
+#ref .node {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: var(--row);
+  padding: 0 8px;
+  font-size: var(--fs-sm);
+  color: var(--ink);
+  cursor: pointer;
+  border: 0;
+  background: none;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+}
+#ref .node:hover { background: var(--brand-soft); }
+#ref .node.current { background: var(--brand-soft); color: var(--accent-on-soft); font-weight: 600; }
+#ref .node .caret {
+  width: 12px; height: 12px; flex: 0 0 auto; color: var(--ink-faint);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+#ref .node .caret svg { display: block; }
+#ref .node .nm { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#ref .node .cnt { font-size: 10px; color: var(--ink-faint); flex: 0 0 auto; }
+#ref .node.depth1 { padding-left: 22px; }
+#ref .node.depth2 { padding-left: 38px; }
+#ref .node.depth3 { padding-left: 54px; }
+#ref .node.leaf .caret { visibility: hidden; }
+
+/* ------------------------------------------------------------- статья */
+
+#ref .ref-scroll { flex: 1 1 auto; min-width: 0; overflow: auto; padding: 0; }
+#ref .ref-doc {
+  max-width: var(--ref-measure);
+  margin: 0 auto;
+  padding: 16px var(--pad-insp) 40px;
+}
+#work:not(.page) #ref .ref-doc { max-width: none; margin: 0; padding: 14px 12px 40px; }
+
+#ref .ref-toc {
+  display: none;
+  flex: 0 0 var(--ref-toc);
+  width: var(--ref-toc);
+  overflow: auto;
+  padding: 14px 10px 40px;
+  border-left: 1px solid var(--line);
+  background: var(--surface-paper);
+}
+#work.page #ref .ref-toc { display: block; }
+#ref .ref-toc[hidden] { display: none; }
+#ref .ref-toc h4 {
+  margin: 0 0 6px;
+  font-size: var(--fs-micro);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--ink-faint);
+  font-weight: 600;
+}
+#ref .ref-toc ol { list-style: none; margin: 0; padding: 0; }
+#ref .ref-toc li { margin: 0; }
+#ref .ref-toc a {
+  display: block;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: var(--fs-micro);
+  line-height: 15px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#ref .ref-toc a:hover { background: var(--brand-soft); color: var(--accent-on-soft); }
+#ref .ref-toc a.on { background: var(--brand-soft); color: var(--accent-on-soft); font-weight: 600; }
+#ref .ref-toc .lvl4 { padding-left: 14px; }
+#ref .ref-toc .toc-foot { margin-top: 10px; font-size: 10px; color: var(--ink-faint); }
+
+/* заголовок статьи */
+#ref .doc-num { font-size: var(--fs-micro); color: var(--ink-faint); letter-spacing: .02em; }
+#ref .doc-title {
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 600;
+  margin: 2px 0 6px;
+  color: var(--ink);
+}
+#ref .doc-meta {
+  font-size: var(--fs-micro);
+  color: var(--ink-faint);
+  margin: 0 0 14px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+#ref .doc h3 { font-size: var(--fs-md); line-height: var(--lh-md); font-weight: 600; margin: 18px 0 8px; }
+#ref .doc p { margin: 0 0 12px; font-size: var(--fs-md); line-height: var(--lh-md); color: var(--ink); }
+#ref .doc ul { margin: 0 0 12px; padding-left: 18px; }
+#ref .doc li { font-size: var(--fs-md); line-height: var(--lh-md); margin: 0 0 8px; }
+#ref .doc .lead { color: var(--ink-soft); }
+#ref .doc .fine { font-size: var(--fs-micro); line-height: var(--lh); color: var(--ink-faint); }
+#ref .doc a { color: var(--accent); }
+#ref .doc a.cref {
+  text-decoration: none;
+  border-bottom: 1px dotted var(--border-control);
+  color: inherit;
+}
+#ref .doc a.cref:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* список пунктов раздела */
+#ref .doc-list { list-style: none; margin: 0 0 14px; padding: 0; }
+#ref .doc-list li { margin: 0; padding: 0; }
+#ref .doc-list a {
+  display: block;
+  padding: 3px 6px;
+  border-radius: var(--r-field);
+  font-size: var(--fs-sm);
+  line-height: var(--lh);
+  color: var(--ink);
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#ref .doc-list a:hover { background: var(--brand-soft); color: var(--accent-on-soft); }
+
+/* NOTE в стандарте — врезка, не курсив */
+#ref .note {
+  margin: 0 0 12px;
+  padding: 8px 10px;
+  background: var(--surface-sunken);
+  border-left: 2px solid var(--line);
+  border-radius: 0 var(--r-field) var(--r-field) 0;
+  font-size: var(--fs-md);
+  line-height: var(--lh-md);
+}
+#ref .note b {
+  font-size: var(--fs-micro);
+  letter-spacing: .06em;
+  color: var(--ink-faint);
+  display: block;
+  margin: 0 0 2px;
+}
+
+/* OCL и ASCII-арт метамодели — цитата, а не код приложения */
+#ref .ocl,
+#ref .ascii {
+  margin: 0 0 12px;
+  padding: 8px 10px;
+  background: var(--surface-sunken);
+  border-radius: var(--r-field);
+  overflow-x: auto;
+  font: var(--fs-sm) / var(--lh) var(--mono);
+  color: var(--ink);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+#ref .ascii { font-size: var(--fs-micro); line-height: 14px; white-space: pre; }
+
+/* таблицы стандарта: 9 штук, все простые */
+#ref .doc-table {
+  width: 100%;
+  margin: 0 0 12px;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+  line-height: var(--lh);
+}
+#ref .doc-table th,
+#ref .doc-table td {
+  padding: 4px 6px;
+  border: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+#ref .doc-table th { background: var(--surface-sunken); font-weight: 600; }
+
+/* констрейнт: имя + текст + OCL, якорь */
+#ref .kv {
+  display: block;
+  height: auto;
+  margin: 0 0 14px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pop);
+  background: var(--surface-paper);
+  font-size: var(--fs-md);
+}
+#ref .kv .kv-name {
+  font: 600 var(--fs-sm) / var(--lh) var(--mono);
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+#ref .kv .kv-text { margin: 0 0 8px; font-size: var(--fs-md); line-height: var(--lh-md); }
+#ref .kv .kv-text.oclnone { font-style: italic; color: var(--ink-soft); }
+#ref .kv .kv-ocl {
+  margin: 0;
+  padding: 8px 10px;
+  background: var(--surface-sunken);
+  border-radius: var(--r-field);
+  overflow-x: auto;
+  font: var(--fs-sm) / var(--lh) var(--mono);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+#ref .kv .kv-check {
+  margin: 8px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: var(--fs-micro);
+  color: var(--ink-soft);
+}
+#ref .kv:target { box-shadow: 0 0 0 2px var(--brand-soft); border-color: var(--accent-on-soft); }
+
+/* строки «ключ — значение» у правил и стереотипов */
+#ref .kv-row { display: flex; gap: 8px; padding: 3px 0; font-size: var(--fs-sm); align-items: baseline; }
+#ref .kv-row .k { flex: 0 0 110px; color: var(--ink-soft); }
+#ref .kv-row .v { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+
+/* «Связано» — из графа, а не из прозы */
+#ref .rel { margin: 22px 0 0; padding: 12px 0 0; border-top: 1px solid var(--line); }
+#ref .rel h4 {
+  margin: 0 0 8px;
+  font-size: var(--fs-micro);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--ink-faint);
+  font-weight: 600;
+}
+#ref .rel .grp { margin: 0 0 10px; }
+#ref .rel .grp .gl { font-size: var(--fs-micro); color: var(--ink-faint); margin: 0 0 4px; }
+#ref .chips { display: flex; flex-wrap: wrap; gap: 4px; }
+#ref .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  padding: 0 6px;
+  border: 1px solid transparent;
+  border-radius: var(--r-field);
+  background: var(--brand-soft);
+  color: var(--accent-on-soft);
+  font: inherit;
+  font-size: var(--fs-micro);
+  cursor: pointer;
+  text-decoration: none;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#ref .chip:hover { border-color: var(--accent); }
+#ref .chip.plain { background: var(--surface-sunken); color: var(--ink-soft); cursor: default; }
+
+/* «Поставить на лист» — главное действие карточки; те же токены, что в
+   прототипе (.action), и то же состояние «недоступно», что у кнопок шапки. */
+#ref .action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: var(--ctl-h);
+  margin: 14px 0 0;
+  padding: 0 var(--pad);
+  border: 1px solid var(--accent);
+  border-radius: var(--r-btn);
+  background: var(--surface-paper);
+  color: var(--accent);
+  font: 600 var(--fs-sm) / var(--lh) inherit;
+  cursor: pointer;
+}
+#ref .action:hover { background: var(--brand-soft); }
+#ref .action svg { display: block; }
+#ref .action:disabled {
+  border-color: var(--line);
+  color: var(--ink-faint);
+  cursor: default;
+}
+#ref .action:disabled:hover { background: var(--surface-paper); }
+
+/* атрибуция OMG на первой странице «Спецификации» */
+#ref .attrib {
+  margin: 4px 0 16px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pop);
+  background: var(--surface-sunken);
+}
+#ref .attrib h3 { margin: 0 0 6px; font-size: var(--fs-md); line-height: var(--lh-md); }
+#ref .attrib p { font-size: var(--fs-sm); line-height: var(--lh); margin: 0 0 8px; color: var(--ink-soft); }
+#ref .attrib p:last-child { margin-bottom: 0; }
+#ref .attrib-link { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+#ref .attrib .fine { font-size: var(--fs-micro); }
+
+/* переходы «предыдущий / следующий» */
+#ref .pager {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 20px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+#ref .pager button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 6px;
+  border: 0;
+  border-radius: var(--r-field);
+  background: none;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+#ref .pager button:hover { background: var(--brand-soft); color: var(--accent-on-soft); }
+#ref .pager button.next { justify-content: flex-end; }
+#ref .pager svg { flex: 0 0 auto; }
+
+/* текст пособия внутри читалки (рендерит markdown() из course.js) */
+#ref .cv-md { max-width: none; }
+#ref .cv-md p { margin: 0 0 12px; font-size: var(--fs-md); line-height: var(--lh-md); }
+#ref .cv-md h3, #ref .cv-md h4 { margin: 18px 0 8px; }
+#ref .cv-md .fig-label { color: var(--ink-soft); }
+#ref .fig-label { font-size: inherit; }
+
+/* -------------------------------------------------------------- поиск */
+
+#ref .search-sum { padding: 10px 12px 4px; font-size: var(--fs-micro); color: var(--ink-faint); }
+#ref .search-sum b { color: var(--ink); }
+#ref .search-sum .alias { color: var(--accent); }
+#ref .results { list-style: none; margin: 0; padding: 0 6px 20px; }
+#ref .res {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  padding: 6px 8px;
+  height: 48px;
+  border-radius: var(--r-field);
+  cursor: pointer;
+  overflow: hidden;
+}
+#ref .res:hover { background: var(--brand-soft); }
+#ref .res .r1 { display: flex; align-items: baseline; gap: 6px; height: 20px; overflow: hidden; }
+#ref .res .rt {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#ref .res .rnum { font-size: var(--fs-micro); color: var(--ink-faint); flex: 0 0 auto; }
+#ref .res .corp {
+  flex: 0 0 auto;
+  margin-left: auto;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--ink-faint);
+}
+#ref .res .r2 {
+  display: block;
+  font-size: var(--fs-micro);
+  line-height: 16px;
+  color: var(--ink-soft);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#ref .res mark { background: var(--mark-bg); color: var(--ink); border-radius: 2px; padding: 0 1px; }
+#ref .empty { padding: 16px 12px; font-size: var(--fs-sm); color: var(--ink-faint); }
+#ref .more { padding: 4px 8px 12px; list-style: none; }
+#ref .more-btn {
+  border: 0;
+  background: none;
+  padding: 4px 0;
+  font: inherit;
+  font-size: var(--fs-sm);
+  color: var(--accent);
+  cursor: pointer;
+}
+#ref .more-btn:hover { text-decoration: underline; }
+
+/* ------------------------------------------------------- курс: рисунки
+   Переключатель «Наши модели / Из пособия» (итерация 7): два сегмента в шапке
+   вкладки курса и снимок из пособия вместо нашего рендера. Новых цветов
+   нет — только токены: рамка/подложка как у карточки рисунка. */
+.cv-figtoggle { display: inline-flex; }
+.cv-figtoggle .cvt {
+  height: 18px;
+  padding: 0 6px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 10px;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.cv-figtoggle .cvt:first-child { border-radius: var(--r-field) 0 0 var(--r-field); }
+.cv-figtoggle .cvt:last-child { border-radius: 0 var(--r-field) var(--r-field) 0; border-left: 0; }
+.cv-figtoggle .cvt:hover { color: var(--ink); }
+.cv-figtoggle .cvt.on { background: var(--brand-soft); color: var(--accent-on-soft); border-color: var(--accent-on-soft); }
+
+/* Снимок пособия в блоке рисунка: та же рамка, что у нашей картинки. */
+.cv-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0;
+  border-radius: var(--r-pop);
+  background: var(--surface-paper);
+}
+/* «снимок из пособия» / «снимка нет» — мелким рядом с подписью. */
+.cv-shot-note { margin-left: 6px; color: var(--ink-faint); }
+
+/* Урок: рисунок не должен занимать весь экран — иначе текст шага начинается
+   ниже сгиба. Ширина по-прежнему 100%, пропорции держит preserveAspectRatio
+   самого SVG. В режиме курса места больше, чем было в колонке 460 px, поэтому
+   потолок выше: две картинки рядом должны читаться. */
+#course-view .cv-fig-canvas svg { max-height: 300px; }
+#course-view .cv-shot { max-height: 300px; object-fit: contain; }
+
+/* ------------------------------------------------------- полка «Стандарт»
+   Реестр 449 констрейнтов UML 2.5.1. Раньше это была четвёртая вкладка
+   правой панели — 255 px на таблицу из 449 строк; теперь статья библиотеки,
+   где рядом с листом 420 px. Поэтому ширины здесь НЕ панельные: колонка
+   тянется по месту, а всё, что может вылезти (имя констрейнта, метакласс,
+   OCL), переносится или обрезается с многоточием — горизонтальной прокрутки
+   не должно быть ни на 420, ни на 255 px.
+
+   Классы оставлены прежними (std-*): на них смотрит `standard.report()` и
+   стенд приёмки; переименование по месту ничего бы не улучшило. */
+#ref .std-root { margin-top: 6px; }
+#ref .std-head { padding-bottom: 6px; }
+#ref .std-nums {
+  font-size: var(--fs-micro); line-height: var(--lh); color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+#ref .std-nums b { font-size: var(--fs-md); color: var(--ink); }
+#ref .std-note { margin-top: 2px; }
+#ref .std-filters { display: flex; flex-direction: column; gap: 6px; margin: 8px 0; }
+#ref .std-chips { display: flex; flex-wrap: wrap; gap: 4px; }
+#ref .std-chip {
+  display: inline-flex; align-items: center; gap: 4px; height: 20px; padding: 0 7px;
+  border: 1px solid var(--line); border-radius: 999px; background: none;
+  color: var(--ink-soft); font: inherit; font-size: 10px; line-height: 1;
+  cursor: pointer; white-space: nowrap;
+}
+#ref .std-chip .std-chip-n { color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+#ref .std-chip[aria-pressed="true"] { color: var(--ink); border-color: var(--accent-on-soft); background: var(--brand-soft); }
+#ref .std-chip[aria-pressed="true"] .std-chip-n { color: var(--ink); }
+#ref .std-filter-row { display: flex; gap: 6px; align-items: center; min-width: 0; }
+#ref .std-select {
+  flex: 1 1 auto; min-width: 0; height: 24px; padding: 0 4px;
+  border: 1px solid var(--line); border-radius: var(--r-field);
+  background: var(--surface-paper); color: var(--ink); font: inherit; font-size: var(--fs-micro);
+}
+#ref .std-reset {
+  flex: 0 0 auto; height: 24px; padding: 0 8px;
+  border: 1px solid var(--line); border-radius: var(--r-field); background: none;
+  color: var(--ink-soft); font: inherit; font-size: var(--fs-micro); cursor: pointer;
+}
+#ref .std-reset:hover { color: var(--ink); border-color: var(--accent); }
+#ref .std-search {
+  width: 100%; height: 24px; padding: 0 6px;
+  border: 1px solid var(--line); border-radius: var(--r-field);
+  background: var(--surface-paper); color: var(--ink); font: inherit; font-size: var(--fs-micro);
+}
+#ref .std-search:focus,
+#ref .std-select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+#ref .std-legend { font-size: var(--fs-micro); line-height: 15px; color: var(--ink-soft); margin: 4px 0; }
+#ref .std-legend summary { cursor: pointer; color: var(--ink); }
+#ref .std-legend ul { margin: 6px 0 0; padding-left: 16px; }
+#ref .std-legend li { margin-bottom: 3px; }
+#ref .std-count { color: var(--ink-soft); padding-bottom: 4px; }
+#ref .std-rows { list-style: none; margin: 0; padding: 0; }
+#ref .std-row {
+  padding: 5px 7px; margin-bottom: 4px; cursor: pointer;
+  border: 1px solid var(--line-soft); border-left: 3px solid var(--line);
+  border-radius: var(--r-field); background: var(--surface-paper);
+}
+#ref .std-row:hover { background: var(--brand-soft); border-color: var(--accent-on-soft); }
+#ref .std-row.open { border-color: var(--accent); }
+#ref .std-row:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+#ref .std-row.executable { border-left-color: var(--accent); }
+#ref .std-row.todo { border-left-color: var(--warn-line); }
+#ref .std-row.gap { border-left-color: var(--warn-line); }
+#ref .std-row.tautology, #ref .std-row.no-ocl { border-left-color: var(--ink-faint); }
+/* «Вне области» — не долг, а граница редактора: строка тише остальных и по
+   умолчанию скрыта фильтром, чтобы 283 строки не выглядели как 283 задачи. */
+#ref .std-row.out-of-scope { border-left-color: var(--line); background: none; }
+#ref .std-line,
+#ref .std-line2 {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 8px; min-width: 0;
+}
+/* min-width: 0 у текстовых колонок — иначе flex-элемент с длинным именем
+   распирает строку и даёт горизонтальную прокрутку всему документу. */
+#ref .std-name {
+  flex: 1 1 auto; min-width: 0;
+  font-family: var(--mono); font-size: var(--fs-micro); color: var(--ink);
+  overflow-wrap: anywhere;
+}
+#ref .std-meta {
+  flex: 1 1 auto; min-width: 0;
+  font-size: 10px; line-height: 14px; color: var(--ink-faint);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+#ref .std-clause {
+  flex: 0 0 auto; padding: 0 2px; border: 0; background: none; cursor: pointer;
+  color: var(--accent); font: inherit; font-size: 10px; line-height: 14px;
+  text-decoration: underline; text-underline-offset: 2px; white-space: nowrap;
+}
+#ref .std-clause:hover { color: var(--ink); }
+/* Реестр → правило: чип в той же строке, что пункт. Ужимается первым — в
+   строке уже есть имя, метакласс и пункт, а горизонтальной прокрутки быть не
+   должно ни на 420, ни на 255 px. */
+#ref .std-row .std-rule {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 52%;
+  height: 16px;
+  padding: 0 4px;
+  font-size: 10px;
+  line-height: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Строка, на которую пришёл переход из правила: видно, куда попал. */
+#ref .std-row.hit { border-color: var(--accent-on-soft); box-shadow: 0 0 0 2px var(--brand-soft); }
+#ref .std-badge {
+  flex: 0 0 auto; font-size: 10px; line-height: 14px; letter-spacing: .02em;
+  color: var(--ink-faint); white-space: nowrap;
+}
+#ref .std-badge.executable { color: var(--accent); }
+#ref .std-badge.todo, #ref .std-badge.gap { color: var(--warn-ink); }
+#ref .std-detail { margin-top: 6px; padding-top: 5px; border-top: 1px dashed var(--line); cursor: auto; }
+#ref .std-reason { margin: 0 0 4px; font-size: var(--fs-micro); line-height: 15px; color: var(--ink-soft); }
+#ref .std-text { margin: 0 0 4px; font-size: var(--fs-micro); line-height: 15px; color: var(--ink); overflow-wrap: anywhere; }
+#ref .std-ocl {
+  margin: 0; padding: 4px 6px; border-radius: var(--r-field);
+  background: color-mix(in oklab, var(--surface-paper) 80%, var(--line));
+  font-size: 10px; line-height: 14px;
+  white-space: pre-wrap; overflow-wrap: anywhere; overflow-x: hidden;
+}
+#ref .std-missing { margin-top: 4px; font-size: var(--fs-micro); line-height: 15px; color: var(--ink-soft); }
+#ref .std-need { margin-left: 2px; overflow-wrap: anywhere; }
+
+/* Вход в реестр из панели «Проверки» (main.js досыпает его после каждой
+   перерисовки панели). Живёт здесь, а не в styles.css: это ссылка на полку
+   «Стандарт», и её вид принадлежит тому же месту, что и таблица. Строка
+   тише замечаний — она не находка, а дверь к объяснению. */
+#checks .checks-std-link {
+  display: block; width: 100%; margin: 10px 0 2px; padding: 6px 4px 0;
+  border: 0; border-top: 1px solid var(--line-soft); background: none;
+  color: var(--ink-soft); font: inherit; font-size: var(--fs-micro);
+  line-height: 15px; text-align: left; cursor: pointer;
+}
+#checks .checks-std-link:hover { color: var(--accent); }
+#checks .checks-std-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }

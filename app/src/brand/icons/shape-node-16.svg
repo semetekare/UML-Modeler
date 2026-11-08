@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <title>shape-node-16</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <rect x="2" y="6" width="8" height="6.67" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="2,6 5.33,2.67 13.33,2.67 10,6" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="10,6 13.33,2.67 13.33,9.33 10,12.67" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

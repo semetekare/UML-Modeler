@@ -1,0 +1,49 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-interaction-not-nested",
+  "name": "interaction_not_contained — взаимодействие вложено во взаимодействие",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "interaction",
+      "name": "Оформление заказа",
+      "operator": "ref"
+    },
+    {
+      "id": "e2",
+      "kind": "interaction",
+      "name": "Оплата",
+      "documentation": "Правило «interaction-not-nested»: UML 2.5.1, п. 17.12.11.5, констрейнт Interaction::not_contained: «Экземпляр взаимодействия не должен содержаться внутри другого экземпляра взаимодействия.»\nВзаимодействие «Оплата» вложено во взаимодействие «Оформление заказа». Взаимодействие — самостоятельный сценарий; сослаться на него можно «ссылкой на взаимодействие», а не вложением.",
+      "ownerId": "e1",
+      "operator": "ref"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "interaction_not_contained — взаимодействие вложено во взаимодействие",
+      "kind": "interaction-overview",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 420,
+          "h": 320
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 100,
+          "y": 140,
+          "w": 320,
+          "h": 200
+        }
+      ],
+      "links": []
+    }
+  ],
+  "currentDiagramId": "d1"
+}

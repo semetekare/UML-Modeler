@@ -1,0 +1,204 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-4305",
+  "name": "UML-диаграмма последовательности DisplayCourseOfferings Subflow",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "fragment",
+      "name": "[for all cOff[i]]",
+      "documentation": "цикл типа for; условие прочитано с рисунка 4.3.5, в тексте его нет",
+      "operator": "loop",
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "rform:RegistrationForm",
+      "stereotype": "boundary",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "rctrl:RegistrationController",
+      "stereotype": "control",
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "cOff[i]:CourseOffering",
+      "stereotype": "entity",
+      "multiObject": true,
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "getCourseOfferingList(semester : byte) : CourseOffering[]",
+      "from": "e2",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "reply",
+      "name": "cOff[]",
+      "from": "e3",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "toJSON() : string",
+      "from": "e2",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "displayCourseString()",
+      "from": "e2",
+      "to": "e2",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "DisplayCourseOfferings Subflow",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 120,
+          "w": 720,
+          "h": 170
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 270
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 320,
+          "y": 60,
+          "w": 200,
+          "h": 270
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 580,
+          "y": 60,
+          "w": 200,
+          "h": 270
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.333
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.333
+          },
+          "y": 150
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.444
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.444
+          },
+          "y": 180
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.556
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.556
+          },
+          "y": 210
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.667
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.741
+          },
+          "y": 240
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "4305",
+    "figureNo": "4.3.5",
+    "exercise": "4.3.A",
+    "type": "sequence",
+    "diagramName": "DisplayCourseOfferings Subflow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности DisplayCourseOfferings Subflow",
+    "notes": "Состав линий жизни и сообщения прочитаны с рисунка 4.3.5: три линии жизни (rform:RegistrationForm «boundary», rctrl:RegistrationController «control», cOff[i]:CourseOffering «entity», множественная), четыре сообщения и фрагмент loop с условием [for all cOff[i]], покрывающий сообщения 3–4. Текст пособия называет только фрагмент loop и то, что на диаграмму ссылаются через Interaction Use; остальное — с рисунка.",
+    "gaps": [
+      "сторожевое условие цикла в тексте не приведено — прочитано с рисунка: [for all cOff[i]]",
+      "покрытие сообщений фрагментом loop не выражается в uml-model/3",
+      "множественность линии жизни (Multi-object) не выражается — записана multiObject"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.multiObject",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e1"
+    ]
+  },
+  "sheet": {
+    "w": 840,
+    "h": 400
+  }
+}

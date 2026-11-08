@@ -1,0 +1,36 @@
+@startuml
+title getCourseOfferingList
+participant e1 as "db:DBAccess" <<subsystem proxy>>
+participant e2 as "list:CourseOfferingList"
+participant e3 as "rs:ResultSet"
+collections e4 as "obj:CourseOffering"
+participant e5 as "c:Connection"
+participant e6 as "s:Statement"
+opt c == NULL
+e1 -> e1 : getCourseOfferingList(semester : byte) : CourseOfferingList
+e1 -> e1 : init() : boolean
+e1 -> e5 : createStatement() : Statement
+create e6
+e5 -> e6 : new
+e1 -> e6 : executeQuery(sql : string) : ResultSet
+create e3
+e6 -> e3 : new
+create e2
+e1 -> e2 : new
+e1 -> e3 : first() : boolean
+create e4
+e1 -> e4 : new
+e1 -> e3 : getLong(columnLabel : string) : long
+end
+loop not rs.isAfterLast()
+e1 -> e4 : setNumber(number : long) : void
+e1 -> e3 : getByte(columnLabel : string) : byte
+e1 -> e4 : setDay(day : DayOfWeek) : void
+e1 -> e3 : getByte(columnLabel : string) : byte
+e1 -> e4 : setPair(pair : byte) : void
+e1 -> e3 : getByte(columnLabel : string) : byte
+e1 -> e4 : setSemester(semester : byte) : void
+e1 -> e2 : add(e : CourseOffering) : boolean
+e1 -> e3 : next() : boolean
+end
+@enduml

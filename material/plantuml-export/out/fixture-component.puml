@@ -1,0 +1,15 @@
+@startuml
+title component
+allow_mixing
+' ! члены «Биллинг» выгружены строками «имя : член»
+component "Биллинг"
+"Биллинг" : +версия : string
+component "Оплата"
+interface "IPayment"
+class "http" <<port>>
+artifact "billing.jar"
+"Биллинг" ..> "IPayment"
+"Оплата" ..|> "IPayment"
+"http" --> "Биллинг"
+"billing.jar" ..> "Биллинг" : <<manifest>>
+@enduml

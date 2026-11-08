@@ -1,0 +1,128 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-decision-incoming-outgoing-edges-ok",
+  "name": "decision_incoming_outgoing_edges (без нарушения) — один вход и две ветви",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "action",
+      "name": "Проверить оплату"
+    },
+    {
+      "id": "e2",
+      "kind": "action",
+      "name": "Отгрузить"
+    },
+    {
+      "id": "e3",
+      "kind": "action",
+      "name": "Отменить заказ"
+    },
+    {
+      "id": "e4",
+      "kind": "decision",
+      "name": "",
+      "documentation": "Правило «decision-incoming-outgoing-edges»: UML 2.5.1, п. 15.7.12.5, констрейнт DecisionNode::incoming_outgoing_edges: «A DecisionNode has one or two incoming ActivityEdges and at least one outgoing ActivityEdge.»\nКонтроль: одно входящее ребро и две исходящие ветви."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "controlFlow",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r2",
+      "kind": "controlFlow",
+      "from": "e4",
+      "to": "e2"
+    },
+    {
+      "id": "r3",
+      "kind": "controlFlow",
+      "from": "e4",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "decision_incoming_outgoing_edges (без нарушения) — один вход и две ветви",
+      "kind": "activity",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 580,
+          "y": 60,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 60,
+          "y": 260,
+          "w": 44,
+          "h": 44
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s4",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s4",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

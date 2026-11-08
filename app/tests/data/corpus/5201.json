@@ -1,0 +1,152 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5201",
+    "figureNo": "5.2.1",
+    "exercise": "5.2.A",
+    "type": "sequence",
+    "diagramName": "Design Login Basic Flow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Уточнённая UML-диаграмма последовательности Design Login Basic Flow",
+    "notes": "Проектная версия: со линий жизни сняты стереотипы анализа, бывший dao:DataAccess стал экземпляром интерфейса dao:IDBAccess со стереотипом «interface», сообщение new() от dao к curUser удалено.",
+    "gaps": [
+      "сторожевые условия операндов в тексте не приведены",
+      "сообщение new() удалено, но остальные сообщения текст не перечисляет заново — состав взят из упражнения 4.2 с учётом правки",
+      "покрытие сообщений фрагментами не выражается"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "source.guards",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Пользователь"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "lform:LoginForm"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "menu:MainMenuForm"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "lctrl:LoginController"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "dao:IDBAccess",
+      "stereotype": "interface"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "curUser:User"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "opt"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "alt"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "login()",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "getUserByLogin(l:string):User",
+      "from": "e4",
+      "to": "e5"
+    },
+    {
+      "id": "r4",
+      "kind": "reply",
+      "name": "",
+      "from": "e5",
+      "to": "e4"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "checkPassword(pswrd:string):boolean",
+      "from": "e4",
+      "to": "e6"
+    },
+    {
+      "id": "r6",
+      "kind": "reply",
+      "name": "",
+      "from": "e6",
+      "to": "e4"
+    },
+    {
+      "id": "r7",
+      "kind": "createMessage",
+      "name": "open(curUser)",
+      "from": "e4",
+      "to": "e3",
+      "note": "первый операнд alt"
+    },
+    {
+      "id": "r8",
+      "kind": "message",
+      "name": "getType():UserType",
+      "from": "e3",
+      "to": "e6"
+    },
+    {
+      "id": "r9",
+      "kind": "message",
+      "name": "displayError()",
+      "from": "e4",
+      "to": "e2",
+      "note": "второй операнд alt"
+    },
+    {
+      "id": "r10",
+      "kind": "destroyMessage",
+      "name": "close",
+      "from": "e4",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Design Login Basic Flow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

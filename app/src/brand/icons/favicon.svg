@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <title>favicon</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <path id="tile" d="M9 1 L23 1 C27.418 1 31 4.582 31 9 L31 23 C31 27.418 27.418 31 23 31 L9 31 C4.582 31 1 27.418 1 23 L1 9 C1 4.582 4.582 1 9 1 Z" fill="#fa5d00"/>
+    <rect id="f-body" x="9" y="7.5" width="14" height="17" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-miterlimit="10"/>
+    <line id="f-d1" x1="9" y1="13.5" x2="23" y2="13.5" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-miterlimit="10"/>
+    <line id="f-d2" x1="9" y1="19" x2="23" y2="19" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-miterlimit="10"/>
+  </g>
+</svg>

@@ -1,0 +1,7 @@
+@startuml
+title communication
+object "студент : Student" as e1
+object "контроллер : Registrar" as e2
+e1 -- e2 : 1: зарегистрировать()
+e2 --> e1 : 2: подтвердить()
+@enduml

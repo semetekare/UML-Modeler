@@ -1,0 +1,177 @@
+{
+ "version": 2,
+ "note": "Нарисованы заново по описаниям docs/PICTOGRAMS.md. Не трассировка.",
+ "grid": 16,
+ "strokeBadge": 1.25,
+ "strokeFigure": 1.5,
+ "cap": "round",
+ "join": "round",
+ "color": "currentColor",
+ "assets": [
+  {
+   "asset": "pict-actor",
+   "file": "svg/pict-actor.svg",
+   "kind": "badge",
+   "size": [
+    16.0,
+    16.0
+   ],
+   "strokes": 5,
+   "bytes": 335
+  },
+  {
+   "asset": "pict-arch-view",
+   "file": "svg/pict-arch-view.svg",
+   "kind": "badge",
+   "size": [
+    16.0,
+    16.0
+   ],
+   "strokes": 5,
+   "bytes": 342
+  },
+  {
+   "asset": "pict-boundary",
+   "file": "svg/pict-boundary.svg",
+   "kind": "badge",
+   "size": [
+    16.0,
+    16.0
+   ],
+   "strokes": 3,
+   "bytes": 285
+  },
+  {
+   "asset": "pict-control",
+   "file": "svg/pict-control.svg",
+   "kind": "badge",
+   "size": [
+    16.0,
+    16.0
+   ],
+   "strokes": 3,
+   "bytes": 292
+  },
+  {
+   "asset": "pict-entity",
+   "file": "svg/pict-entity.svg",
+   "kind": "badge",
+   "size": [
+    16.0,
+    16.0
+   ],
+   "strokes": 2,
+   "bytes": 259
+  },
+  {
+   "asset": "pict-fish",
+   "file": "svg/pict-fish.svg",
+   "kind": "figure",
+   "size": [
+    113.0,
+    57.0
+   ],
+   "strokes": 4,
+   "bytes": 421
+  },
+  {
+   "asset": "pict-layer",
+   "file": "svg/pict-layer.svg",
+   "kind": "badge",
+   "size": [
+    16.0,
+    16.0
+   ],
+   "strokes": 5,
+   "bytes": 352
+  },
+  {
+   "asset": "pict-mechanism",
+   "file": "svg/pict-mechanism.svg",
+   "kind": "badge",
+   "size": [
+    16.0,
+    16.0
+   ],
+   "strokes": 3,
+   "bytes": 374
+  },
+  {
+   "asset": "pict-schema",
+   "file": "svg/pict-schema.svg",
+   "kind": "badge",
+   "size": [
+    16.0,
+    16.0
+   ],
+   "strokes": 4,
+   "bytes": 339
+  },
+  {
+   "asset": "pict-subsystem",
+   "file": "svg/pict-subsystem.svg",
+   "kind": "badge",
+   "size": [
+    16.0,
+    16.0
+   ],
+   "strokes": 5,
+   "bytes": 360
+  },
+  {
+   "asset": "pict-table",
+   "file": "svg/pict-table.svg",
+   "kind": "badge",
+   "size": [
+    16.0,
+    16.0
+   ],
+   "strokes": 5,
+   "bytes": 353
+  },
+  {
+   "asset": "pict-usecase-ellipse",
+   "file": "svg/pict-usecase-ellipse.svg",
+   "kind": "figure",
+   "size": [
+    133.0,
+    72.0
+   ],
+   "strokes": 1,
+   "bytes": 240
+  },
+  {
+   "asset": "pict-usecase-realization",
+   "file": "svg/pict-usecase-realization.svg",
+   "kind": "badge",
+   "size": [
+    16.0,
+    16.0
+   ],
+   "strokes": 1,
+   "bytes": 264
+  },
+  {
+   "asset": "pict-view",
+   "file": "svg/pict-view.svg",
+   "kind": "badge",
+   "size": [
+    16.0,
+    16.0
+   ],
+   "strokes": 9,
+   "bytes": 547
+  },
+  {
+   "asset": "pict-waves",
+   "file": "svg/pict-waves.svg",
+   "kind": "figure",
+   "size": [
+    148.0,
+    47.0
+   ],
+   "strokes": 1,
+   "bytes": 261
+  }
+ ]
+}

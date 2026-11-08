@@ -1,0 +1,4821 @@
+{
+  "source": {
+    "file": "stereotypes.xml",
+    "sha256": "3805fe77989b304cbbe92d227340d93a797620546343aaacdc000dc3ae84525c",
+    "profile_version": "20090707"
+  },
+  "totals": {
+    "records": 428,
+    "records_by_scope": {
+      "ApplicationStereotypes": 405,
+      "ProjectStereotypes": 23
+    },
+    "distinct_names": 311,
+    "distinct_name_base_pairs": 410,
+    "distinct_base_types": 97,
+    "records_with_empty_icon_path": 399,
+    "records_without_icon_path_attribute": 77,
+    "records_with_tagged_defs": 41,
+    "records_with_formats": 8,
+    "ids_distinct": true,
+    "names_with_several_records": 57,
+    "names_with_several_base_types": 43,
+    "names_whose_records_are_all_one_base_type": 14
+  },
+  "repeats": {
+    "duplicate_pairs": {
+      "count": 18,
+      "meaning": "одно имя и один baseType объявлены в обоих профилях; один и тот же стереотип, две записи",
+      "items": [
+        {
+          "name": "Case Story",
+          "base_type": "UseCase",
+          "records": [
+            {
+              "scope": "application",
+              "id": "LFzV0esGAqACZgAC",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "c87b0a6503880028002c5f25e0ea153a55de9c2d2d64f782ca97bc6aec534129"
+            },
+            {
+              "scope": "project",
+              "id": "v2g74HKGAqACAiDA",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "c87b0a6503880028002c5f25e0ea153a55de9c2d2d64f782ca97bc6aec534129"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": true,
+            "documentation": true,
+            "tagged_defs": true,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [],
+          "verdict": "точный дубль: объявление одно, записей две"
+        },
+        {
+          "name": "Context",
+          "base_type": "UseCase",
+          "records": [
+            {
+              "scope": "application",
+              "id": "KlzV0esGAqACZgAC",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "1f0949433836347f888f9d18d6134cb65e06bcb77dbb9384caf8569cc1faa5d8"
+            },
+            {
+              "scope": "project",
+              "id": "xnUcMwcGAqACAh6r",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "1f0949433836347f888f9d18d6134cb65e06bcb77dbb9384caf8569cc1faa5d8"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": true,
+            "documentation": true,
+            "tagged_defs": true,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [],
+          "verdict": "точный дубль: объявление одно, записей две"
+        },
+        {
+          "name": "Interface",
+          "base_type": "Class",
+          "records": [
+            {
+              "scope": "application",
+              "id": "EhNy4yKGAqACZgL5",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "1ceb3aa243d3fbe951e704d15276fe98dfebc2dbacfe62e986f0971608e84c40"
+            },
+            {
+              "scope": "project",
+              "id": "ImY9UyKGAqACZgj_",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "1ceb3aa243d3fbe951e704d15276fe98dfebc2dbacfe62e986f0971608e84c40"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": true,
+            "documentation": true,
+            "tagged_defs": true,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [],
+          "verdict": "точный дубль: объявление одно, записей две"
+        },
+        {
+          "name": "Property",
+          "base_type": "Attribute",
+          "records": [
+            {
+              "scope": "application",
+              "id": "GhNy4yKGAqACZgMq",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "f5f965d128211dc270c8e439a91b86353ac2dec07ab24b1d7331c60f3764cebe"
+            },
+            {
+              "scope": "project",
+              "id": "pYwvL_qGAqACKyGX",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "f5f965d128211dc270c8e439a91b86353ac2dec07ab24b1d7331c60f3764cebe"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": true,
+            "documentation": true,
+            "tagged_defs": true,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [],
+          "verdict": "точный дубль: объявление одно, записей две"
+        },
+        {
+          "name": "UseCase",
+          "base_type": "UseCase",
+          "records": [
+            {
+              "scope": "application",
+              "id": "egkfCVqGAqACAwSs",
+              "icon_path": "",
+              "tagged_defs": 8,
+              "canonical_sha256": "a1154476cb91abe2974fd1cdc99264873772a04b348cf2c24dc77c74e7e4bbde"
+            },
+            {
+              "scope": "project",
+              "id": "59efCVqGAqACAwjo",
+              "icon_path": "",
+              "tagged_defs": 8,
+              "canonical_sha256": "70a495e1ac8fb403ced417e792a97b90d126c8704dd1465efb26e6cf0b72b59a"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": false,
+            "documentation": true,
+            "tagged_defs": false,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [
+            "порядок значений перечислений в tagged-определениях"
+          ],
+          "verdict": "совпадает во всём, кроме: порядок значений перечислений в tagged-определениях"
+        },
+        {
+          "name": "architectural view",
+          "base_type": "Package",
+          "records": [
+            {
+              "scope": "application",
+              "id": "LSVqUyKGAqACZgXn",
+              "icon_path": "stereotypeIcons/LSVqUyKGAqACZgXn",
+              "tagged_defs": 0,
+              "canonical_sha256": "3995238ec4ad4c79a7fdc38efc66562d653256002779ef878967aff8d732b516"
+            },
+            {
+              "scope": "project",
+              "id": "TRGaUyKGAqACZgXx",
+              "icon_path": "stereotypeIcons/LSVqUyKGAqACZgXn",
+              "tagged_defs": 0,
+              "canonical_sha256": "3995238ec4ad4c79a7fdc38efc66562d653256002779ef878967aff8d732b516"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": true,
+            "documentation": true,
+            "tagged_defs": true,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [],
+          "verdict": "точный дубль: объявление одно, записей две"
+        },
+        {
+          "name": "bind",
+          "base_type": "Realization",
+          "records": [
+            {
+              "scope": "application",
+              "id": "3.2g0yKGAqACZhFc",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "d1583135c5202aeed8fcfd8d4e5b93c3a5c81d25227cb530307f93a5ae7b3e54"
+            },
+            {
+              "scope": "project",
+              "id": "soeg0yKGAqACZhFe",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "d1583135c5202aeed8fcfd8d4e5b93c3a5c81d25227cb530307f93a5ae7b3e54"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": true,
+            "documentation": true,
+            "tagged_defs": true,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [],
+          "verdict": "точный дубль: объявление одно, записей две"
+        },
+        {
+          "name": "enumeration",
+          "base_type": "Class",
+          "records": [
+            {
+              "scope": "application",
+              "id": "EhNy4yKGAqACZgL9",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "f95e7d766f7d5319594f6d7497b0b70a52d15461674f0dd9e28a97b6d4b0a50d"
+            },
+            {
+              "scope": "project",
+              "id": "NYfQr_qGAqACKySc",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "f95e7d766f7d5319594f6d7497b0b70a52d15461674f0dd9e28a97b6d4b0a50d"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": true,
+            "documentation": true,
+            "tagged_defs": true,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [],
+          "verdict": "точный дубль: объявление одно, записей две"
+        },
+        {
+          "name": "fish level usecase",
+          "base_type": "UseCase",
+          "records": [
+            {
+              "scope": "application",
+              "id": "K8pbCVqGAqACAwpH",
+              "icon_path": "stereotypeIcons/K8pbCVqGAqACAwpH",
+              "tagged_defs": 0,
+              "canonical_sha256": "506e00394f4e07c2f6033353cf5540244dd2361655a965b27e5a48a7b371ac3e"
+            },
+            {
+              "scope": "project",
+              "id": "G0EPCVqGAqACAwp4",
+              "icon_path": "stereotypeIcons/K8pbCVqGAqACAwpH",
+              "tagged_defs": 0,
+              "canonical_sha256": "506e00394f4e07c2f6033353cf5540244dd2361655a965b27e5a48a7b371ac3e"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": true,
+            "documentation": true,
+            "tagged_defs": true,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [],
+          "verdict": "точный дубль: объявление одно, записей две"
+        },
+        {
+          "name": "layer",
+          "base_type": "Package",
+          "records": [
+            {
+              "scope": "application",
+              "id": "fZMKUyKGAqACZgXg",
+              "icon_path": "stereotypeIcons/fZMKUyKGAqACZgXg",
+              "tagged_defs": 0,
+              "canonical_sha256": "632352b3cf91ff1dc4d4c5b91b708644ce192e22e1d6209df1e5c86609290137"
+            },
+            {
+              "scope": "project",
+              "id": "zlMaUyKGAqACZgXp",
+              "icon_path": "stereotypeIcons/fZMKUyKGAqACZgXg",
+              "tagged_defs": 0,
+              "canonical_sha256": "632352b3cf91ff1dc4d4c5b91b708644ce192e22e1d6209df1e5c86609290137"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": true,
+            "documentation": true,
+            "tagged_defs": true,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [],
+          "verdict": "точный дубль: объявление одно, записей две"
+        },
+        {
+          "name": "mechanism",
+          "base_type": "Collaboration2",
+          "records": [
+            {
+              "scope": "application",
+              "id": "mAwbUyKGAqACZgqy",
+              "icon_path": "stereotypeIcons/mAwbUyKGAqACZgqy",
+              "tagged_defs": 0,
+              "canonical_sha256": "eacb1f8f91cd60e253869ca9c128802830763284a831f0b032f20c796df846fe"
+            },
+            {
+              "scope": "project",
+              "id": "_x0bUyKGAqACZgq0",
+              "icon_path": "stereotypeIcons/mAwbUyKGAqACZgqy",
+              "tagged_defs": 0,
+              "canonical_sha256": "eacb1f8f91cd60e253869ca9c128802830763284a831f0b032f20c796df846fe"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": true,
+            "documentation": true,
+            "tagged_defs": true,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [],
+          "verdict": "точный дубль: объявление одно, записей две"
+        },
+        {
+          "name": "primitive",
+          "base_type": "Class",
+          "records": [
+            {
+              "scope": "application",
+              "id": "EhNy4yKGAqACZgL.",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "f6784d9b2147b872fef4cdf92ae1702f5a94762fe6432f38d172022d28a4d6c7"
+            },
+            {
+              "scope": "project",
+              "id": "EYi9UyKGAqACZgkZ",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "f6784d9b2147b872fef4cdf92ae1702f5a94762fe6432f38d172022d28a4d6c7"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": true,
+            "documentation": true,
+            "tagged_defs": true,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [],
+          "verdict": "точный дубль: объявление одно, записей две"
+        },
+        {
+          "name": "requirement",
+          "base_type": "Requirement",
+          "records": [
+            {
+              "scope": "application",
+              "id": "WQ1y4yKGAqACZgAE",
+              "icon_path": "",
+              "tagged_defs": 7,
+              "canonical_sha256": "f446de3da231b6ff627d06594d2335415465125bfb4e950f0eef86b2a481e580"
+            },
+            {
+              "scope": "project",
+              "id": "sOg74HKGAqACAiDE",
+              "icon_path": "",
+              "tagged_defs": 7,
+              "canonical_sha256": "f446de3da231b6ff627d06594d2335415465125bfb4e950f0eef86b2a481e580"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": true,
+            "documentation": true,
+            "tagged_defs": true,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [],
+          "verdict": "точный дубль: объявление одно, записей две"
+        },
+        {
+          "name": "sea level usecase",
+          "base_type": "UseCase",
+          "records": [
+            {
+              "scope": "application",
+              "id": "gHSbCVqGAqACAwpB",
+              "icon_path": "stereotypeIcons/gHSbCVqGAqACAwpB",
+              "tagged_defs": 0,
+              "canonical_sha256": "67eacc551c470b604898cefd903c7f0dc50750df028976c823f217406def2125"
+            },
+            {
+              "scope": "project",
+              "id": "NzJAiVqGAqACAwkO",
+              "icon_path": "stereotypeIcons/gHSbCVqGAqACAwpB",
+              "tagged_defs": 0,
+              "canonical_sha256": "67eacc551c470b604898cefd903c7f0dc50750df028976c823f217406def2125"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": true,
+            "documentation": true,
+            "tagged_defs": true,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [],
+          "verdict": "точный дубль: объявление одно, записей две"
+        },
+        {
+          "name": "subject",
+          "base_type": "System",
+          "records": [
+            {
+              "scope": "application",
+              "id": "rRxRU9KGAqACIgri",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "ecd47509191bcc71112ca066e83c901d4a64e4a659ffcef30b9f0e04782b5863"
+            },
+            {
+              "scope": "project",
+              "id": "hLhen6aGAqDIBwoM",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "ecd47509191bcc71112ca066e83c901d4a64e4a659ffcef30b9f0e04782b5863"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": true,
+            "documentation": true,
+            "tagged_defs": true,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [],
+          "verdict": "точный дубль: объявление одно, записей две"
+        },
+        {
+          "name": "usecase",
+          "base_type": "UseCase",
+          "records": [
+            {
+              "scope": "application",
+              "id": "dz1y4yKGAqACZgHq",
+              "icon_path": "",
+              "tagged_defs": 8,
+              "canonical_sha256": "a84caff330c81f756bd6ead63149b6df83df493a0c5da591772ec200f193e655"
+            },
+            {
+              "scope": "project",
+              "id": "t2g74HKGAqACAiC2",
+              "icon_path": "",
+              "tagged_defs": 8,
+              "canonical_sha256": "a84caff330c81f756bd6ead63149b6df83df493a0c5da591772ec200f193e655"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": true,
+            "documentation": true,
+            "tagged_defs": true,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [],
+          "verdict": "точный дубль: объявление одно, записей две"
+        },
+        {
+          "name": "valueType",
+          "base_type": "SysMLValueType",
+          "records": [
+            {
+              "scope": "application",
+              "id": "BiNy4yKGAqACZgIx",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "dbdf274e89dc63ffd1198def2edc821bab382594e3a286f5b3db51700120ee56"
+            },
+            {
+              "scope": "project",
+              "id": "S0Z6UyKGAqACZgYj",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "dbdf274e89dc63ffd1198def2edc821bab382594e3a286f5b3db51700120ee56"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": true,
+            "documentation": true,
+            "tagged_defs": true,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [],
+          "verdict": "точный дубль: объявление одно, записей две"
+        },
+        {
+          "name": "view",
+          "base_type": "Package",
+          "records": [
+            {
+              "scope": "application",
+              "id": "nBNy4yKGAqACZgK8",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "814bd3cecc759197d42760567dd73091b6dcb6d1bd9923d3bc1f82649b55e527"
+            },
+            {
+              "scope": "project",
+              "id": "nrHK4yKGAqACZgUs",
+              "icon_path": "",
+              "tagged_defs": 0,
+              "canonical_sha256": "814bd3cecc759197d42760567dd73091b6dcb6d1bd9923d3bc1f82649b55e527"
+            }
+          ],
+          "ids_distinct": true,
+          "declared_in_both_scopes": true,
+          "identical": {
+            "canonical_without_id": true,
+            "documentation": true,
+            "tagged_defs": true,
+            "tagged_defs_ignoring_value_order": true,
+            "icon_path": true,
+            "formats": true
+          },
+          "differences": [],
+          "verdict": "точный дубль: объявление одно, записей две"
+        }
+      ]
+    },
+    "names_with_several_base_types": {
+      "count": 43,
+      "meaning": "НЕ дубли: UML 2.5.1 §12.3.3.4 разрешает стереотипу расширять несколько метаклассов, VP пишет это N записями",
+      "summary": {
+        "names": 43,
+        "records": 146,
+        "names_without_any_tagged_defs": 38,
+        "names_with_identical_tagged_defs": 3,
+        "names_with_differing_tagged_defs": 2,
+        "differing": [
+          "UseCase",
+          "XSDschema"
+        ],
+        "merge_loses_nothing": 41,
+        "note": "слияние N записей в одно определение с baseTypes[] безопасно для всех, кроме differing: у них наборы tagged-определений различаются"
+      },
+      "items": [
+        {
+          "name": "Default",
+          "base_types": [
+            "ActivityAction",
+            "State2",
+            "Transition2"
+          ],
+          "base_type_count": 3,
+          "records": 3,
+          "extension": [
+            {
+              "base_type": "ActivityAction",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "State2",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Transition2",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "DirectedFeature",
+          "base_types": [
+            "Attribute",
+            "Operation",
+            "Reception",
+            "SysMLBoundReference",
+            "SysMLConstraintProperty",
+            "SysMLParticipantProperty"
+          ],
+          "base_type_count": 6,
+          "records": 6,
+          "extension": [
+            {
+              "base_type": "Attribute",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 1,
+              "has_tagged_defs": true,
+              "tagged_sha256": "4818eb1171e3a94b2f59ae542d9c30d7d4ba2c627cabdcf5c31ce8dc6089554b",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Operation",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 1,
+              "has_tagged_defs": true,
+              "tagged_sha256": "4818eb1171e3a94b2f59ae542d9c30d7d4ba2c627cabdcf5c31ce8dc6089554b",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Reception",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 1,
+              "has_tagged_defs": true,
+              "tagged_sha256": "4818eb1171e3a94b2f59ae542d9c30d7d4ba2c627cabdcf5c31ce8dc6089554b",
+              "icon_paths": []
+            },
+            {
+              "base_type": "SysMLBoundReference",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 1,
+              "has_tagged_defs": true,
+              "tagged_sha256": "4818eb1171e3a94b2f59ae542d9c30d7d4ba2c627cabdcf5c31ce8dc6089554b",
+              "icon_paths": []
+            },
+            {
+              "base_type": "SysMLConstraintProperty",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 1,
+              "has_tagged_defs": true,
+              "tagged_sha256": "4818eb1171e3a94b2f59ae542d9c30d7d4ba2c627cabdcf5c31ce8dc6089554b",
+              "icon_paths": []
+            },
+            {
+              "base_type": "SysMLParticipantProperty",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 1,
+              "has_tagged_defs": true,
+              "tagged_sha256": "4818eb1171e3a94b2f59ae542d9c30d7d4ba2c627cabdcf5c31ce8dc6089554b",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определения у всех baseType одни и те же"
+        },
+        {
+          "name": "Event",
+          "base_types": [
+            "Attribute",
+            "Operation"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "Attribute",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Operation",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "Participant",
+          "base_types": [
+            "Class",
+            "Component"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Component",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "UseCase",
+          "base_types": [
+            "Class",
+            "UseCase"
+          ],
+          "base_type_count": 2,
+          "records": 3,
+          "extension": [
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 8,
+              "has_tagged_defs": true,
+              "tagged_sha256": "713f0c1a86bbb78bd65438d91f586616125d8ac2dae0483cf69a8f901d0c9162",
+              "icon_paths": [
+                "stereotypeIcons/EHXDIh6GAqDIHRGC"
+              ]
+            },
+            {
+              "base_type": "UseCase",
+              "records": 2,
+              "scopes": [
+                "application",
+                "project"
+              ],
+              "tagged_defs": 8,
+              "has_tagged_defs": true,
+              "tagged_sha256": "ee65b4fb4b1b5ce1b5c582d1b9e5264964743ecab300f980aeb1287a129cf963",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 2,
+          "tagged_defs_note": "определения различаются по baseType"
+        },
+        {
+          "name": "XSDelement",
+          "base_types": [
+            "AssociationEnd",
+            "Attribute",
+            "Class"
+          ],
+          "base_type_count": 3,
+          "records": 3,
+          "extension": [
+            {
+              "base_type": "AssociationEnd",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Attribute",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "XSDrestriction",
+          "base_types": [
+            "Class",
+            "Generalization"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Generalization",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "XSDschema",
+          "base_types": [
+            "Class",
+            "Package"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Package",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 2,
+              "has_tagged_defs": true,
+              "tagged_sha256": "042a31be588c227ec8e6dfa141fad862fb846a63d121ac346f1ae9f8e78eb781",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 2,
+          "tagged_defs_note": "определения различаются по baseType"
+        },
+        {
+          "name": "appliedProfile",
+          "base_types": [
+            "Dependency",
+            "Usage"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "Dependency",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Usage",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "auxiliary",
+          "base_types": [
+            "Class",
+            "Package"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Package",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "balking",
+          "base_types": [
+            "DiagonalMessage",
+            "MessageFrom",
+            "MessageTo",
+            "SelfMessage",
+            "SequenceMessage"
+          ],
+          "base_type_count": 5,
+          "records": 5,
+          "extension": [
+            {
+              "base_type": "DiagonalMessage",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "MessageFrom",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "MessageTo",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "SelfMessage",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "SequenceMessage",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "bind",
+          "base_types": [
+            "BindingDependency",
+            "Dependency",
+            "Realization"
+          ],
+          "base_type_count": 3,
+          "records": 4,
+          "extension": [
+            {
+              "base_type": "BindingDependency",
+              "records": 1,
+              "scopes": [
+                "project"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Dependency",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Realization",
+              "records": 2,
+              "scopes": [
+                "application",
+                "project"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "boundary",
+          "base_types": [
+            "Class",
+            "InteractionLifeLine",
+            "Object"
+          ],
+          "base_type_count": 3,
+          "records": 3,
+          "extension": [
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": [
+                "stereotypeIcons/EhNy4yKGAqACZgMA"
+              ]
+            },
+            {
+              "base_type": "InteractionLifeLine",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": [
+                "stereotypeIcons/GhNy4yKGAqACZgMI"
+              ]
+            },
+            {
+              "base_type": "Object",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": [
+                "stereotypeIcons/7hNy4yKGAqACZgNJ"
+              ]
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "colored",
+          "base_types": [
+            "Association",
+            "Class"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "Association",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 1,
+              "has_tagged_defs": true,
+              "tagged_sha256": "391d01a63e08dc8959cae30558933633e36276c5f3d6523418a2f59499b1df54",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 1,
+              "has_tagged_defs": true,
+              "tagged_sha256": "391d01a63e08dc8959cae30558933633e36276c5f3d6523418a2f59499b1df54",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определения у всех baseType одни и те же"
+        },
+        {
+          "name": "control",
+          "base_types": [
+            "Class",
+            "InteractionLifeLine",
+            "Object"
+          ],
+          "base_type_count": 3,
+          "records": 3,
+          "extension": [
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": [
+                "stereotypeIcons/EhNy4yKGAqACZgL_"
+              ]
+            },
+            {
+              "base_type": "InteractionLifeLine",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": [
+                "stereotypeIcons/GhNy4yKGAqACZgMH"
+              ]
+            },
+            {
+              "base_type": "Object",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": [
+                "stereotypeIcons/7hNy4yKGAqACZgNI"
+              ]
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "controlValue",
+          "base_types": [
+            "ActivityParameterNode",
+            "CentralBufferNode",
+            "DataStoreNode",
+            "ExpansionNode",
+            "InputPin",
+            "ObjectNode",
+            "OutputPin",
+            "ValuePin"
+          ],
+          "base_type_count": 8,
+          "records": 8,
+          "extension": [
+            {
+              "base_type": "ActivityParameterNode",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 1,
+              "has_tagged_defs": true,
+              "tagged_sha256": "be786e843960428adb86e7efca9c22eafc6b712cedf4816f6079d723b8b465b6",
+              "icon_paths": []
+            },
+            {
+              "base_type": "CentralBufferNode",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 1,
+              "has_tagged_defs": true,
+              "tagged_sha256": "be786e843960428adb86e7efca9c22eafc6b712cedf4816f6079d723b8b465b6",
+              "icon_paths": []
+            },
+            {
+              "base_type": "DataStoreNode",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 1,
+              "has_tagged_defs": true,
+              "tagged_sha256": "be786e843960428adb86e7efca9c22eafc6b712cedf4816f6079d723b8b465b6",
+              "icon_paths": []
+            },
+            {
+              "base_type": "ExpansionNode",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 1,
+              "has_tagged_defs": true,
+              "tagged_sha256": "be786e843960428adb86e7efca9c22eafc6b712cedf4816f6079d723b8b465b6",
+              "icon_paths": []
+            },
+            {
+              "base_type": "InputPin",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 1,
+              "has_tagged_defs": true,
+              "tagged_sha256": "be786e843960428adb86e7efca9c22eafc6b712cedf4816f6079d723b8b465b6",
+              "icon_paths": []
+            },
+            {
+              "base_type": "ObjectNode",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 1,
+              "has_tagged_defs": true,
+              "tagged_sha256": "be786e843960428adb86e7efca9c22eafc6b712cedf4816f6079d723b8b465b6",
+              "icon_paths": []
+            },
+            {
+              "base_type": "OutputPin",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 1,
+              "has_tagged_defs": true,
+              "tagged_sha256": "be786e843960428adb86e7efca9c22eafc6b712cedf4816f6079d723b8b465b6",
+              "icon_paths": []
+            },
+            {
+              "base_type": "ValuePin",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 1,
+              "has_tagged_defs": true,
+              "tagged_sha256": "be786e843960428adb86e7efca9c22eafc6b712cedf4816f6079d723b8b465b6",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определения у всех baseType одни и те же"
+        },
+        {
+          "name": "deploy",
+          "base_types": [
+            "BMMRelationship",
+            "Deployment"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "BMMRelationship",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Deployment",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "device",
+          "base_types": [
+            "Node",
+            "NodeInstance"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "Node",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "NodeInstance",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "entity",
+          "base_types": [
+            "AssociationClass",
+            "Class",
+            "Component",
+            "InteractionLifeLine",
+            "Object"
+          ],
+          "base_type_count": 5,
+          "records": 5,
+          "extension": [
+            {
+              "base_type": "AssociationClass",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": [
+                "stereotypeIcons/FUAwvUqGAqACAxDQ"
+              ]
+            },
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": [
+                "stereotypeIcons/EhNy4yKGAqACZgL8"
+              ]
+            },
+            {
+              "base_type": "Component",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "InteractionLifeLine",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": [
+                "stereotypeIcons/EhNy4yKGAqACZgMG"
+              ]
+            },
+            {
+              "base_type": "Object",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": [
+                "stereotypeIcons/7hNy4yKGAqACZgNH"
+              ]
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "execution environment",
+          "base_types": [
+            "Node",
+            "NodeInstance"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "Node",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "NodeInstance",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "focus",
+          "base_types": [
+            "Class",
+            "Component"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Component",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "framework",
+          "base_types": [
+            "Package",
+            "SubSystem"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "Package",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "SubSystem",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "implement",
+          "base_types": [
+            "BMMRelationship",
+            "Component"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "BMMRelationship",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Component",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "interface realization",
+          "base_types": [
+            "Collaboration",
+            "Collaboration2"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "Collaboration",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Collaboration2",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "mechanism",
+          "base_types": [
+            "Collaboration",
+            "Collaboration2",
+            "Package"
+          ],
+          "base_type_count": 3,
+          "records": 4,
+          "extension": [
+            {
+              "base_type": "Collaboration",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": [
+                "stereotypeIcons/bcTim9KGAqACIgke"
+              ]
+            },
+            {
+              "base_type": "Collaboration2",
+              "records": 2,
+              "scopes": [
+                "application",
+                "project"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": [
+                "stereotypeIcons/mAwbUyKGAqACZgqy"
+              ]
+            },
+            {
+              "base_type": "Package",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": [
+                "stereotypeIcons/bcTim9KGAqACIgke"
+              ]
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "metaclass",
+          "base_types": [
+            "Actor",
+            "Class",
+            "Component",
+            "Interface",
+            "UseCase"
+          ],
+          "base_type_count": 5,
+          "records": 5,
+          "extension": [
+            {
+              "base_type": "Actor",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Component",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Interface",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "UseCase",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "modelLibrary",
+          "base_types": [
+            "Dependency",
+            "Package",
+            "SubSystem",
+            "Usage"
+          ],
+          "base_type_count": 4,
+          "records": 4,
+          "extension": [
+            {
+              "base_type": "Dependency",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Package",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "SubSystem",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Usage",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "noBuffer",
+          "base_types": [
+            "ActivityParameterNode",
+            "CentralBufferNode",
+            "DataStoreNode",
+            "ExpansionNode",
+            "InputPin",
+            "ObjectNode",
+            "OutputPin",
+            "ValuePin"
+          ],
+          "base_type_count": 8,
+          "records": 8,
+          "extension": [
+            {
+              "base_type": "ActivityParameterNode",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "CentralBufferNode",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "DataStoreNode",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "ExpansionNode",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "InputPin",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "ObjectNode",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "OutputPin",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "ValuePin",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "objectiveFunction",
+          "base_types": [
+            "SysMLConstraintBlock",
+            "SysMLConstraintProperty"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "SysMLConstraintBlock",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "SysMLConstraintProperty",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "optional",
+          "base_types": [
+            "ActivityParameterNode",
+            "InputPin",
+            "OutputPin"
+          ],
+          "base_type_count": 3,
+          "records": 3,
+          "extension": [
+            {
+              "base_type": "ActivityParameterNode",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "InputPin",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "OutputPin",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "overwrite",
+          "base_types": [
+            "ActivityParameterNode",
+            "CentralBufferNode",
+            "DataStoreNode",
+            "ExpansionNode",
+            "InputPin",
+            "ObjectNode",
+            "OutputPin",
+            "ValuePin"
+          ],
+          "base_type_count": 8,
+          "records": 8,
+          "extension": [
+            {
+              "base_type": "ActivityParameterNode",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "CentralBufferNode",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "DataStoreNode",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "ExpansionNode",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "InputPin",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "ObjectNode",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "OutputPin",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "ValuePin",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "powertype",
+          "base_types": [
+            "Actor",
+            "Component",
+            "Interface",
+            "UseCase"
+          ],
+          "base_type_count": 4,
+          "records": 4,
+          "extension": [
+            {
+              "base_type": "Actor",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Component",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Interface",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "UseCase",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "process",
+          "base_types": [
+            "Actor",
+            "Class",
+            "Component",
+            "Interface",
+            "Node",
+            "NodeInstance",
+            "UseCase"
+          ],
+          "base_type_count": 7,
+          "records": 7,
+          "extension": [
+            {
+              "base_type": "Actor",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Component",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Interface",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Node",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "NodeInstance",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "UseCase",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "subsystem",
+          "base_types": [
+            "Component",
+            "Package"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "Component",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Package",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": [
+                "stereotypeIcons/iZtMOyKGAqACZASe"
+              ]
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "subsystem proxy",
+          "base_types": [
+            "Class",
+            "InteractionLifeLine"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "InteractionLifeLine",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "system",
+          "base_types": [
+            "InteractionLifeLine",
+            "SysMLBlock"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "InteractionLifeLine",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "SysMLBlock",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "table",
+          "base_types": [
+            "Class",
+            "Component"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": [
+                "stereotypeIcons/dcD_jKKGAqACZQrh"
+              ]
+            },
+            {
+              "base_type": "Component",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "thread",
+          "base_types": [
+            "Actor",
+            "Class",
+            "Component",
+            "Interface",
+            "UseCase"
+          ],
+          "base_type_count": 5,
+          "records": 5,
+          "extension": [
+            {
+              "base_type": "Actor",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Component",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Interface",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "UseCase",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "time-out",
+          "base_types": [
+            "DiagonalMessage",
+            "MessageFrom",
+            "MessageTo",
+            "SelfMessage",
+            "SequenceMessage"
+          ],
+          "base_type_count": 5,
+          "records": 5,
+          "extension": [
+            {
+              "base_type": "DiagonalMessage",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "MessageFrom",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "MessageTo",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "SelfMessage",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "SequenceMessage",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "trace",
+          "base_types": [
+            "Abstraction",
+            "Dependency"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "Abstraction",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Dependency",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "usecase realization",
+          "base_types": [
+            "Collaboration",
+            "Collaboration2"
+          ],
+          "base_type_count": 2,
+          "records": 2,
+          "extension": [
+            {
+              "base_type": "Collaboration",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": [
+                "stereotypeIcons/EUe7CVqGAqACAwpK"
+              ]
+            },
+            {
+              "base_type": "Collaboration2",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "utility",
+          "base_types": [
+            "Actor",
+            "Class",
+            "Component",
+            "Interface",
+            "UseCase"
+          ],
+          "base_type_count": 5,
+          "records": 5,
+          "extension": [
+            {
+              "base_type": "Actor",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Component",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "Interface",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            },
+            {
+              "base_type": "UseCase",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        },
+        {
+          "name": "view",
+          "base_types": [
+            "Class",
+            "Package"
+          ],
+          "base_type_count": 2,
+          "records": 3,
+          "extension": [
+            {
+              "base_type": "Class",
+              "records": 1,
+              "scopes": [
+                "application"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": [
+                "stereotypeIcons/oAHKm9KGAqACIgk."
+              ]
+            },
+            {
+              "base_type": "Package",
+              "records": 2,
+              "scopes": [
+                "application",
+                "project"
+              ],
+              "tagged_defs": 0,
+              "has_tagged_defs": false,
+              "tagged_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "icon_paths": []
+            }
+          ],
+          "tagged_defs_distinct_across_base_types": 1,
+          "tagged_defs_note": "определений нет ни у одного baseType"
+        }
+      ]
+    },
+    "project_only_names": {
+      "count": 4,
+      "meaning": "имя объявлено только в проектном профиле",
+      "names": [
+        "Extend",
+        "Include",
+        "import",
+        "substitute"
+      ],
+      "items": [
+        {
+          "name": "Extend",
+          "base_type": "Extend",
+          "id": "jb5G4yKGAqACZgYh",
+          "tagged_defs": 0,
+          "icon_path": "",
+          "name_equals_base_type": true,
+          "is_uml_keyword": true
+        },
+        {
+          "name": "Include",
+          "base_type": "Include",
+          "id": "mSBG4yKGAqACZgX9",
+          "tagged_defs": 0,
+          "icon_path": "",
+          "name_equals_base_type": true,
+          "is_uml_keyword": true
+        },
+        {
+          "name": "import",
+          "base_type": "Dependency",
+          "id": "q4u1TeqGAqACAwc6",
+          "tagged_defs": 0,
+          "icon_path": "",
+          "name_equals_base_type": false,
+          "is_uml_keyword": true
+        },
+        {
+          "name": "substitute",
+          "base_type": "Dependency",
+          "id": "zI3XUyKGAqACZguk",
+          "tagged_defs": 0,
+          "icon_path": "",
+          "name_equals_base_type": false,
+          "is_uml_keyword": true
+        }
+      ]
+    },
+    "how_the_numbers_relate": {
+      "names_with_several_records": 57,
+      "of_which_several_base_types": 43,
+      "of_which_one_base_type_only": 14,
+      "names_in_both_groups": [
+        "UseCase",
+        "bind",
+        "mechanism",
+        "view"
+      ],
+      "note": "57 имён имеют больше одной записи; 43 из них — разные baseType; 14 — один baseType (настоящие дубли). Четыре имени попадают в обе группы."
+    }
+  },
+  "dedup": {
+    "rule_a_pair_key": {
+      "key": "(name, baseType)",
+      "definitions": 410,
+      "extensions": 410,
+      "dropped": 18,
+      "note": "стереотип с N расширениями — N определений; так его и применит пользователь"
+    },
+    "rule_a_normalized_pair_key": {
+      "key": "(normalized name, baseType)",
+      "definitions": 407,
+      "extensions": 407,
+      "dropped": 21,
+      "note": "то же правило, но варианты написания считаются одним именем; на 3 определений меньше"
+    },
+    "rule_b_name_key": {
+      "key": "name",
+      "definitions": 311,
+      "extensions": 410,
+      "dropped": 117,
+      "note": "стереотип один, расширений N (UML 2.5.1 §12.3.3.4); N>1 у 43 имён"
+    },
+    "rule_b_normalized_name_key": {
+      "key": "normalized name",
+      "definitions": 304,
+      "extensions": 407,
+      "dropped": 124,
+      "note": "один стереотип, N расширений, варианты написания слиты"
+    }
+  },
+  "spelling_variants": {
+    "normalization": "нижний регистр, пробелы/_/- удалены",
+    "exact_spellings": 311,
+    "normalized_names": 304,
+    "extra_spellings": 7,
+    "groups": 7,
+    "defect_groups": 3,
+    "defect_records": 4,
+    "meaning": "имена, различающиеся только регистром или разбиением на слова; дефект — когда совпали и область, и baseType",
+    "items": [
+      {
+        "normalized": "default",
+        "spellings": [
+          "Default",
+          "default"
+        ],
+        "records": 4,
+        "base_types": [
+          "ActivityAction",
+          "Operation",
+          "State2",
+          "Transition2"
+        ],
+        "scopes": [
+          "application"
+        ],
+        "defects_same_scope_same_base_type": {},
+        "kind": "different_base_type",
+        "verdict": "не дефект: разные baseType, совпадение написания случайно",
+        "entries": [
+          {
+            "spelling": "Default",
+            "base_type": "State2",
+            "scope": "application",
+            "id": "iiNy4yKGAqACZgIs",
+            "icon_path": "",
+            "tagged_defs": 0,
+            "documentation": ""
+          },
+          {
+            "spelling": "Default",
+            "base_type": "ActivityAction",
+            "scope": "application",
+            "id": "BiNy4yKGAqACZgIt",
+            "icon_path": "",
+            "tagged_defs": 0,
+            "documentation": ""
+          },
+          {
+            "spelling": "Default",
+            "base_type": "Transition2",
+            "scope": "application",
+            "id": "nBNy4yKGAqACZgKx",
+            "icon_path": "",
+            "tagged_defs": 0,
+            "documentation": ""
+          },
+          {
+            "spelling": "default",
+            "base_type": "Operation",
+            "scope": "application",
+            "id": "9BofeO6GAqACSgbQ",
+            "icon_path": "",
+            "tagged_defs": 0,
+            "documentation": ""
+          }
+        ]
+      },
+      {
+        "normalized": "executionenvironment",
+        "spellings": [
+          "execution environment",
+          "executionEnvironment"
+        ],
+        "records": 3,
+        "base_types": [
+          "Node",
+          "NodeInstance"
+        ],
+        "scopes": [
+          "application"
+        ],
+        "defects_same_scope_same_base_type": {
+          "ApplicationStereotypes / Node": [
+            "execution environment",
+            "executionEnvironment"
+          ]
+        },
+        "kind": "same_scope_same_base_type",
+        "verdict": "дефект: один стереотип, два написания в одной области",
+        "entries": [
+          {
+            "spelling": "execution environment",
+            "base_type": "Node",
+            "scope": "application",
+            "id": "iiNy4yKGAqACZgIS",
+            "icon_path": "",
+            "tagged_defs": 0,
+            "documentation": ""
+          },
+          {
+            "spelling": "execution environment",
+            "base_type": "NodeInstance",
+            "scope": "application",
+            "id": "YiZwvUqGAqACAxDU",
+            "icon_path": "",
+            "tagged_defs": 0,
+            "documentation": ""
+          },
+          {
+            "spelling": "executionEnvironment",
+            "base_type": "Node",
+            "scope": "application",
+            "id": "KSkfCVqGAqACAwYZ",
+            "icon_path": "",
+            "tagged_defs": 0,
+            "documentation": ""
+          }
+        ]
+      },
+      {
+        "normalized": "interface",
+        "spellings": [
+          "Interface",
+          "interface"
+        ],
+        "records": 3,
+        "base_types": [
+          "Class",
+          "InteractionLifeLine"
+        ],
+        "scopes": [
+          "application",
+          "project"
+        ],
+        "defects_same_scope_same_base_type": {},
+        "kind": "different_base_type",
+        "verdict": "не дефект: разные baseType, совпадение написания случайно",
+        "entries": [
+          {
+            "spelling": "Interface",
+            "base_type": "Class",
+            "scope": "application",
+            "id": "EhNy4yKGAqACZgL5",
+            "icon_path": "",
+            "tagged_defs": 0,
+            "documentation": ""
+          },
+          {
+            "spelling": "interface",
+            "base_type": "InteractionLifeLine",
+            "scope": "application",
+            "id": "urDtVXKGAqACKwhX",
+            "icon_path": "",
+            "tagged_defs": 0,
+            "documentation": ""
+          },
+          {
+            "spelling": "Interface",
+            "base_type": "Class",
+            "scope": "project",
+            "id": "ImY9UyKGAqACZgj_",
+            "icon_path": "",
+            "tagged_defs": 0,
+            "documentation": ""
+          }
+        ]
+      },
+      {
+        "normalized": "participant",
+        "spellings": [
+          "Participant",
+          "participant"
+        ],
+        "records": 3,
+        "base_types": [
+          "Class",
+          "Component",
+          "SysMLParticipantProperty"
+        ],
+        "scopes": [
+          "application"
+        ],
+        "defects_same_scope_same_base_type": {},
+        "kind": "different_base_type",
+        "verdict": "не дефект: разные baseType, совпадение написания случайно",
+        "entries": [
+          {
+            "spelling": "participant",
+            "base_type": "SysMLParticipantProperty",
+            "scope": "application",
+            "id": "iiNy4yKGAqACZgIr",
+            "icon_path": "",
+            "tagged_defs": 0,
+            "documentation": ""
+          },
+          {
+            "spelling": "Participant",
+            "base_type": "Class",
+            "scope": "application",
+            "id": "DiNy4yKGAqACZgJf",
+            "icon_path": "",
+            "tagged_defs": 0,
+            "documentation": ""
+          },
+          {
+            "spelling": "Participant",
+            "base_type": "Component",
+            "scope": "application",
+            "id": "EhNy4yKGAqACZgLp",
+            "icon_path": "",
+            "tagged_defs": 0,
+            "documentation": ""
+          }
+        ]
+      },
+      {
+        "normalized": "service",
+        "spellings": [
+          "Service",
+          "service"
+        ],
+        "records": 2,
+        "base_types": [
+          "Component",
+          "Port"
+        ],
+        "scopes": [
+          "application"
+        ],
+        "defects_same_scope_same_base_type": {},
+        "kind": "different_base_type",
+        "verdict": "не дефект: разные baseType, совпадение написания случайно",
+        "entries": [
+          {
+            "spelling": "Service",
+            "base_type": "Port",
+            "scope": "application",
+            "id": "mBNy4yKGAqACZgJm",
+            "icon_path": "",
+            "tagged_defs": 0,
+            "documentation": ""
+          },
+          {
+            "spelling": "service",
+            "base_type": "Component",
+            "scope": "application",
+            "id": "EhNy4yKGAqACZgLk",
+            "icon_path": "",
+            "tagged_defs": 0,
+            "documentation": ""
+          }
+        ]
+      },
+      {
+        "normalized": "usecase",
+        "spellings": [
+          "UseCase",
+          "usecase"
+        ],
+        "records": 5,
+        "base_types": [
+          "Class",
+          "UseCase"
+        ],
+        "scopes": [
+          "application",
+          "project"
+        ],
+        "defects_same_scope_same_base_type": {
+          "ApplicationStereotypes / UseCase": [
+            "UseCase",
+            "usecase"
+          ],
+          "ProjectStereotypes / UseCase": [
+            "UseCase",
+            "usecase"
+          ]
+        },
+        "kind": "same_scope_same_base_type",
+        "verdict": "дефект: один стереотип, два написания в одной области",
+        "entries": [
+          {
+            "spelling": "usecase",
+            "base_type": "UseCase",
+            "scope": "application",
+            "id": "dz1y4yKGAqACZgHq",
+            "icon_path": "",
+            "tagged_defs": 8,
+            "documentation": ""
+          },
+          {
+            "spelling": "UseCase",
+            "base_type": "UseCase",
+            "scope": "application",
+            "id": "egkfCVqGAqACAwSs",
+            "icon_path": "",
+            "tagged_defs": 8,
+            "documentation": ""
+          },
+          {
+            "spelling": "UseCase",
+            "base_type": "Class",
+            "scope": "application",
+            "id": "EHXDIh6GAqDIHRGC",
+            "icon_path": "stereotypeIcons/EHXDIh6GAqDIHRGC",
+            "tagged_defs": 8,
+            "documentation": ""
+          },
+          {
+            "spelling": "usecase",
+            "base_type": "UseCase",
+            "scope": "project",
+            "id": "t2g74HKGAqACAiC2",
+            "icon_path": "",
+            "tagged_defs": 8,
+            "documentation": ""
+          },
+          {
+            "spelling": "UseCase",
+            "base_type": "UseCase",
+            "scope": "project",
+            "id": "59efCVqGAqACAwjo",
+            "icon_path": "",
+            "tagged_defs": 8,
+            "documentation": ""
+          }
+        ]
+      },
+      {
+        "normalized": "usecaserealization",
+        "spellings": [
+          "use case realization",
+          "usecase realization"
+        ],
+        "records": 3,
+        "base_types": [
+          "Collaboration",
+          "Collaboration2"
+        ],
+        "scopes": [
+          "application"
+        ],
+        "defects_same_scope_same_base_type": {
+          "ApplicationStereotypes / Collaboration2": [
+            "use case realization",
+            "usecase realization"
+          ]
+        },
+        "kind": "same_scope_same_base_type",
+        "verdict": "дефект: один стереотип, два написания в одной области",
+        "entries": [
+          {
+            "spelling": "usecase realization",
+            "base_type": "Collaboration2",
+            "scope": "application",
+            "id": "AMQf0yKGAqACZgme",
+            "icon_path": "",
+            "tagged_defs": 0,
+            "documentation": ""
+          },
+          {
+            "spelling": "usecase realization",
+            "base_type": "Collaboration",
+            "scope": "application",
+            "id": "EUe7CVqGAqACAwpK",
+            "icon_path": "stereotypeIcons/EUe7CVqGAqACAwpK",
+            "tagged_defs": 0,
+            "documentation": ""
+          },
+          {
+            "spelling": "use case realization",
+            "base_type": "Collaboration2",
+            "scope": "application",
+            "id": "OjhfE5aAUBAqOgsX",
+            "icon_path": "",
+            "tagged_defs": 0,
+            "documentation": ""
+          }
+        ]
+      }
+    ],
+    "tagged_def_name_collisions": [],
+    "enum_value_collisions": []
+  },
+  "notation_defaults": {
+    "readable": true,
+    "source": "app/notation/uml.json → shapes/connectors[].stereotype|keyword",
+    "checked": 23,
+    "in_profile": 14,
+    "spelling_mismatch": 2,
+    "absent_from_profile": 7,
+    "mismatched": [
+      {
+        "kind": "include",
+        "group": "connectors",
+        "field": "keyword",
+        "value": "include",
+        "in_profile": false,
+        "profile_spellings": [
+          "Include"
+        ],
+        "spelling_mismatch": true
+      },
+      {
+        "kind": "extend",
+        "group": "connectors",
+        "field": "keyword",
+        "value": "extend",
+        "in_profile": false,
+        "profile_spellings": [
+          "Extend"
+        ],
+        "spelling_mismatch": true
+      }
+    ],
+    "absent": [
+      {
+        "kind": "model",
+        "group": "shapes",
+        "field": "stereotype",
+        "value": "model",
+        "in_profile": false,
+        "profile_spellings": [],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "deploymentSpec",
+        "group": "shapes",
+        "field": "stereotype",
+        "value": "deployment spec",
+        "in_profile": false,
+        "profile_spellings": [],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "part",
+        "group": "shapes",
+        "field": "stereotype",
+        "value": "part",
+        "in_profile": false,
+        "profile_spellings": [],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "collaboration",
+        "group": "shapes",
+        "field": "stereotype",
+        "value": "collaboration",
+        "in_profile": false,
+        "profile_spellings": [],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "merge",
+        "group": "connectors",
+        "field": "keyword",
+        "value": "merge",
+        "in_profile": false,
+        "profile_spellings": [],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "destroyMessage",
+        "group": "connectors",
+        "field": "keyword",
+        "value": "destroy",
+        "in_profile": false,
+        "profile_spellings": [],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "manifest",
+        "group": "connectors",
+        "field": "keyword",
+        "value": "manifest",
+        "in_profile": false,
+        "profile_spellings": [],
+        "spelling_mismatch": false
+      }
+    ],
+    "items": [
+      {
+        "kind": "interface",
+        "group": "shapes",
+        "field": "stereotype",
+        "value": "interface",
+        "in_profile": true,
+        "profile_spellings": [
+          "Interface",
+          "interface"
+        ],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "enumeration",
+        "group": "shapes",
+        "field": "stereotype",
+        "value": "enumeration",
+        "in_profile": true,
+        "profile_spellings": [
+          "enumeration"
+        ],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "datatype",
+        "group": "shapes",
+        "field": "stereotype",
+        "value": "dataType",
+        "in_profile": true,
+        "profile_spellings": [
+          "dataType"
+        ],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "model",
+        "group": "shapes",
+        "field": "stereotype",
+        "value": "model",
+        "in_profile": false,
+        "profile_spellings": [],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "profile",
+        "group": "shapes",
+        "field": "stereotype",
+        "value": "profile",
+        "in_profile": true,
+        "profile_spellings": [
+          "profile"
+        ],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "deploymentSpec",
+        "group": "shapes",
+        "field": "stereotype",
+        "value": "deployment spec",
+        "in_profile": false,
+        "profile_spellings": [],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "device",
+        "group": "shapes",
+        "field": "stereotype",
+        "value": "device",
+        "in_profile": true,
+        "profile_spellings": [
+          "device"
+        ],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "executionEnvironment",
+        "group": "shapes",
+        "field": "stereotype",
+        "value": "executionEnvironment",
+        "in_profile": true,
+        "profile_spellings": [
+          "execution environment",
+          "executionEnvironment"
+        ],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "part",
+        "group": "shapes",
+        "field": "stereotype",
+        "value": "part",
+        "in_profile": false,
+        "profile_spellings": [],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "collaboration",
+        "group": "shapes",
+        "field": "stereotype",
+        "value": "collaboration",
+        "in_profile": false,
+        "profile_spellings": [],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "collaborationUse",
+        "group": "shapes",
+        "field": "stereotype",
+        "value": "use",
+        "in_profile": true,
+        "profile_spellings": [
+          "use"
+        ],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "stereotype",
+        "group": "shapes",
+        "field": "stereotype",
+        "value": "stereotype",
+        "in_profile": true,
+        "profile_spellings": [
+          "stereotype"
+        ],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "metaclass",
+        "group": "shapes",
+        "field": "stereotype",
+        "value": "metaclass",
+        "in_profile": true,
+        "profile_spellings": [
+          "metaclass"
+        ],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "usage",
+        "group": "connectors",
+        "field": "keyword",
+        "value": "use",
+        "in_profile": true,
+        "profile_spellings": [
+          "use"
+        ],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "import",
+        "group": "connectors",
+        "field": "keyword",
+        "value": "import",
+        "in_profile": true,
+        "profile_spellings": [
+          "import"
+        ],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "merge",
+        "group": "connectors",
+        "field": "keyword",
+        "value": "merge",
+        "in_profile": false,
+        "profile_spellings": [],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "include",
+        "group": "connectors",
+        "field": "keyword",
+        "value": "include",
+        "in_profile": false,
+        "profile_spellings": [
+          "Include"
+        ],
+        "spelling_mismatch": true
+      },
+      {
+        "kind": "extend",
+        "group": "connectors",
+        "field": "keyword",
+        "value": "extend",
+        "in_profile": false,
+        "profile_spellings": [
+          "Extend"
+        ],
+        "spelling_mismatch": true
+      },
+      {
+        "kind": "createMessage",
+        "group": "connectors",
+        "field": "keyword",
+        "value": "create",
+        "in_profile": true,
+        "profile_spellings": [
+          "create"
+        ],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "destroyMessage",
+        "group": "connectors",
+        "field": "keyword",
+        "value": "destroy",
+        "in_profile": false,
+        "profile_spellings": [],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "deployment",
+        "group": "connectors",
+        "field": "keyword",
+        "value": "deploy",
+        "in_profile": true,
+        "profile_spellings": [
+          "deploy"
+        ],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "manifest",
+        "group": "connectors",
+        "field": "keyword",
+        "value": "manifest",
+        "in_profile": false,
+        "profile_spellings": [],
+        "spelling_mismatch": false
+      },
+      {
+        "kind": "trace",
+        "group": "connectors",
+        "field": "keyword",
+        "value": "trace",
+        "in_profile": true,
+        "profile_spellings": [
+          "trace"
+        ],
+        "spelling_mismatch": false
+      }
+    ]
+  },
+  "icons": {
+    "records_with_nonempty_icon_path": 29,
+    "distinct_icon_paths": 23,
+    "paths_used_by_several_records": [
+      {
+        "icon_path": "stereotypeIcons/K8pbCVqGAqACAwpH",
+        "records": 2,
+        "stereotypes": [
+          {
+            "name": "fish level usecase",
+            "base_type": "UseCase",
+            "scope": "application",
+            "id": "K8pbCVqGAqACAwpH"
+          },
+          {
+            "name": "fish level usecase",
+            "base_type": "UseCase",
+            "scope": "project",
+            "id": "G0EPCVqGAqACAwp4"
+          }
+        ],
+        "reason": "дубль прикладного и проектного объявления"
+      },
+      {
+        "icon_path": "stereotypeIcons/LSVqUyKGAqACZgXn",
+        "records": 2,
+        "stereotypes": [
+          {
+            "name": "architectural view",
+            "base_type": "Package",
+            "scope": "application",
+            "id": "LSVqUyKGAqACZgXn"
+          },
+          {
+            "name": "architectural view",
+            "base_type": "Package",
+            "scope": "project",
+            "id": "TRGaUyKGAqACZgXx"
+          }
+        ],
+        "reason": "дубль прикладного и проектного объявления"
+      },
+      {
+        "icon_path": "stereotypeIcons/bcTim9KGAqACIgke",
+        "records": 2,
+        "stereotypes": [
+          {
+            "name": "mechanism",
+            "base_type": "Collaboration",
+            "scope": "application",
+            "id": "bcTim9KGAqACIgke"
+          },
+          {
+            "name": "mechanism",
+            "base_type": "Package",
+            "scope": "application",
+            "id": "Atspt66GAqDIBxOo"
+          }
+        ],
+        "reason": "разные стереотипы делят один рисунок"
+      },
+      {
+        "icon_path": "stereotypeIcons/fZMKUyKGAqACZgXg",
+        "records": 2,
+        "stereotypes": [
+          {
+            "name": "layer",
+            "base_type": "Package",
+            "scope": "application",
+            "id": "fZMKUyKGAqACZgXg"
+          },
+          {
+            "name": "layer",
+            "base_type": "Package",
+            "scope": "project",
+            "id": "zlMaUyKGAqACZgXp"
+          }
+        ],
+        "reason": "дубль прикладного и проектного объявления"
+      },
+      {
+        "icon_path": "stereotypeIcons/gHSbCVqGAqACAwpB",
+        "records": 2,
+        "stereotypes": [
+          {
+            "name": "sea level usecase",
+            "base_type": "UseCase",
+            "scope": "application",
+            "id": "gHSbCVqGAqACAwpB"
+          },
+          {
+            "name": "sea level usecase",
+            "base_type": "UseCase",
+            "scope": "project",
+            "id": "NzJAiVqGAqACAwkO"
+          }
+        ],
+        "reason": "дубль прикладного и проектного объявления"
+      },
+      {
+        "icon_path": "stereotypeIcons/mAwbUyKGAqACZgqy",
+        "records": 2,
+        "stereotypes": [
+          {
+            "name": "mechanism",
+            "base_type": "Collaboration2",
+            "scope": "application",
+            "id": "mAwbUyKGAqACZgqy"
+          },
+          {
+            "name": "mechanism",
+            "base_type": "Collaboration2",
+            "scope": "project",
+            "id": "_x0bUyKGAqACZgq0"
+          }
+        ],
+        "reason": "дубль прикладного и проектного объявления"
+      }
+    ],
+    "paths_used_by_several_records_after_dedup": [
+      {
+        "icon_path": "stereotypeIcons/bcTim9KGAqACIgke",
+        "stereotypes": [
+          {
+            "name": "mechanism",
+            "base_type": "Collaboration"
+          },
+          {
+            "name": "mechanism",
+            "base_type": "Package"
+          }
+        ]
+      }
+    ],
+    "map_file": "stereotype-icons.json",
+    "map_readable": true,
+    "map_keys": 23,
+    "distinct_drawings": 15,
+    "drawings": [
+      {
+        "glyph": "actor",
+        "asset": "pict-actor",
+        "icon_paths": [
+          "stereotypeIcons/vzS41FaGAqACQwxL"
+        ],
+        "stereotypes": [
+          {
+            "name": "actor",
+            "base_type": "Class",
+            "scope": "application"
+          }
+        ]
+      },
+      {
+        "glyph": "arch-view",
+        "asset": "pict-arch-view",
+        "icon_paths": [
+          "stereotypeIcons/LSVqUyKGAqACZgXn"
+        ],
+        "stereotypes": [
+          {
+            "name": "architectural view",
+            "base_type": "Package",
+            "scope": "application"
+          },
+          {
+            "name": "architectural view",
+            "base_type": "Package",
+            "scope": "project"
+          }
+        ]
+      },
+      {
+        "glyph": "boundary",
+        "asset": "pict-boundary",
+        "icon_paths": [
+          "stereotypeIcons/7hNy4yKGAqACZgNJ",
+          "stereotypeIcons/EhNy4yKGAqACZgMA",
+          "stereotypeIcons/GhNy4yKGAqACZgMI"
+        ],
+        "stereotypes": [
+          {
+            "name": "boundary",
+            "base_type": "Class",
+            "scope": "application"
+          },
+          {
+            "name": "boundary",
+            "base_type": "Object",
+            "scope": "application"
+          },
+          {
+            "name": "boundary",
+            "base_type": "InteractionLifeLine",
+            "scope": "application"
+          }
+        ]
+      },
+      {
+        "glyph": "control",
+        "asset": "pict-control",
+        "icon_paths": [
+          "stereotypeIcons/7hNy4yKGAqACZgNI",
+          "stereotypeIcons/EhNy4yKGAqACZgL_",
+          "stereotypeIcons/GhNy4yKGAqACZgMH"
+        ],
+        "stereotypes": [
+          {
+            "name": "control",
+            "base_type": "Class",
+            "scope": "application"
+          },
+          {
+            "name": "control",
+            "base_type": "Object",
+            "scope": "application"
+          },
+          {
+            "name": "control",
+            "base_type": "InteractionLifeLine",
+            "scope": "application"
+          }
+        ]
+      },
+      {
+        "glyph": "entity",
+        "asset": "pict-entity",
+        "icon_paths": [
+          "stereotypeIcons/7hNy4yKGAqACZgNH",
+          "stereotypeIcons/EhNy4yKGAqACZgL8",
+          "stereotypeIcons/EhNy4yKGAqACZgMG",
+          "stereotypeIcons/FUAwvUqGAqACAxDQ"
+        ],
+        "stereotypes": [
+          {
+            "name": "entity",
+            "base_type": "Class",
+            "scope": "application"
+          },
+          {
+            "name": "entity",
+            "base_type": "Object",
+            "scope": "application"
+          },
+          {
+            "name": "entity",
+            "base_type": "InteractionLifeLine",
+            "scope": "application"
+          },
+          {
+            "name": "entity",
+            "base_type": "AssociationClass",
+            "scope": "application"
+          }
+        ]
+      },
+      {
+        "glyph": "fish",
+        "asset": "pict-fish",
+        "icon_paths": [
+          "stereotypeIcons/K8pbCVqGAqACAwpH"
+        ],
+        "stereotypes": [
+          {
+            "name": "fish level usecase",
+            "base_type": "UseCase",
+            "scope": "application"
+          },
+          {
+            "name": "fish level usecase",
+            "base_type": "UseCase",
+            "scope": "project"
+          }
+        ]
+      },
+      {
+        "glyph": "layer",
+        "asset": "pict-layer",
+        "icon_paths": [
+          "stereotypeIcons/fZMKUyKGAqACZgXg"
+        ],
+        "stereotypes": [
+          {
+            "name": "layer",
+            "base_type": "Package",
+            "scope": "application"
+          },
+          {
+            "name": "layer",
+            "base_type": "Package",
+            "scope": "project"
+          }
+        ]
+      },
+      {
+        "glyph": "mechanism",
+        "asset": "pict-mechanism",
+        "icon_paths": [
+          "stereotypeIcons/bcTim9KGAqACIgke",
+          "stereotypeIcons/mAwbUyKGAqACZgqy"
+        ],
+        "stereotypes": [
+          {
+            "name": "mechanism",
+            "base_type": "Collaboration2",
+            "scope": "application"
+          },
+          {
+            "name": "mechanism",
+            "base_type": "Collaboration",
+            "scope": "application"
+          },
+          {
+            "name": "mechanism",
+            "base_type": "Package",
+            "scope": "application"
+          },
+          {
+            "name": "mechanism",
+            "base_type": "Collaboration2",
+            "scope": "project"
+          }
+        ]
+      },
+      {
+        "glyph": "schema",
+        "asset": "pict-schema",
+        "icon_paths": [
+          "stereotypeIcons/qs4vjKKGAqACZQqT"
+        ],
+        "stereotypes": [
+          {
+            "name": "schema",
+            "base_type": "Package",
+            "scope": "application"
+          }
+        ]
+      },
+      {
+        "glyph": "subsystem",
+        "asset": "pict-subsystem",
+        "icon_paths": [
+          "stereotypeIcons/iZtMOyKGAqACZASe"
+        ],
+        "stereotypes": [
+          {
+            "name": "subsystem",
+            "base_type": "Package",
+            "scope": "application"
+          }
+        ]
+      },
+      {
+        "glyph": "table",
+        "asset": "pict-table",
+        "icon_paths": [
+          "stereotypeIcons/dcD_jKKGAqACZQrh"
+        ],
+        "stereotypes": [
+          {
+            "name": "table",
+            "base_type": "Class",
+            "scope": "application"
+          }
+        ]
+      },
+      {
+        "glyph": "usecase-ellipse",
+        "asset": "pict-usecase-ellipse",
+        "icon_paths": [
+          "stereotypeIcons/EHXDIh6GAqDIHRGC"
+        ],
+        "stereotypes": [
+          {
+            "name": "UseCase",
+            "base_type": "Class",
+            "scope": "application"
+          }
+        ]
+      },
+      {
+        "glyph": "usecase-realization",
+        "asset": "pict-usecase-realization",
+        "icon_paths": [
+          "stereotypeIcons/EUe7CVqGAqACAwpK"
+        ],
+        "stereotypes": [
+          {
+            "name": "usecase realization",
+            "base_type": "Collaboration",
+            "scope": "application"
+          }
+        ]
+      },
+      {
+        "glyph": "view",
+        "asset": "pict-view",
+        "icon_paths": [
+          "stereotypeIcons/oAHKm9KGAqACIgk."
+        ],
+        "stereotypes": [
+          {
+            "name": "view",
+            "base_type": "Class",
+            "scope": "application"
+          }
+        ]
+      },
+      {
+        "glyph": "waves",
+        "asset": "pict-waves",
+        "icon_paths": [
+          "stereotypeIcons/gHSbCVqGAqACAwpB"
+        ],
+        "stereotypes": [
+          {
+            "name": "sea level usecase",
+            "base_type": "UseCase",
+            "scope": "application"
+          },
+          {
+            "name": "sea level usecase",
+            "base_type": "UseCase",
+            "scope": "project"
+          }
+        ]
+      }
+    ],
+    "map_covers_profile": true,
+    "profile_paths_missing_from_map": [],
+    "map_paths_not_in_profile": [],
+    "by_kind": {
+      "badge": 20,
+      "figure": 3
+    }
+  },
+  "reachability": {
+    "source": "app/src/io/stereotypes.js → APPLICABILITY",
+    "readable": true,
+    "applicability_kinds": 64,
+    "base_types_declared": 56,
+    "profile_base_types": 97,
+    "profile_base_types_reachable": 52,
+    "profile_base_types_unreachable": 45,
+    "records_reachable": 277,
+    "records_unreachable": 151,
+    "share_reachable": 0.6472,
+    "declared_but_absent_from_profile": [
+      "DeploymentSpecification",
+      "Interaction",
+      "Message",
+      "Property"
+    ],
+    "kinds_with_empty_base_list": [],
+    "unreachable_base_types": [
+      {
+        "base_type": "ArchiMateApplicationComponent",
+        "records": 2,
+        "stereotypes": [
+          "Logical Application Component",
+          "Physical Application Component"
+        ]
+      },
+      {
+        "base_type": "ArchiMateApplicationInterface",
+        "records": 2,
+        "stereotypes": [
+          "Application-to-Application Interface",
+          "Graphical User Interface"
+        ]
+      },
+      {
+        "base_type": "ArchiMateAssessment",
+        "records": 2,
+        "stereotypes": [
+          "Risk (Risk & Security Overlay)",
+          "Vulnerability (Risk & Security Overlay)"
+        ]
+      },
+      {
+        "base_type": "ArchiMateAssignment",
+        "records": 2,
+        "stereotypes": [
+          "Behavior assignment",
+          "Responsibilities assignment"
+        ]
+      },
+      {
+        "base_type": "ArchiMateBusinessActor",
+        "records": 4,
+        "stereotypes": [
+          "Individual",
+          "Organization",
+          "Organizational Unit",
+          "Threat Agent"
+        ]
+      },
+      {
+        "base_type": "ArchiMateBusinessCollaboration",
+        "records": 1,
+        "stereotypes": [
+          "Social Network"
+        ]
+      },
+      {
+        "base_type": "ArchiMateBusinessEvent",
+        "records": 2,
+        "stereotypes": [
+          "Loss Event (Risk & Security Overlay)",
+          "Threat Event (Risk & Security Overlay)"
+        ]
+      },
+      {
+        "base_type": "ArchiMateBusinessProcess",
+        "records": 1,
+        "stereotypes": [
+          "Business Activity"
+        ]
+      },
+      {
+        "base_type": "ArchiMateBusinessService",
+        "records": 1,
+        "stereotypes": [
+          "Business Decision"
+        ]
+      },
+      {
+        "base_type": "ArchiMateCapability",
+        "records": 1,
+        "stereotypes": [
+          "Capability Increment"
+        ]
+      },
+      {
+        "base_type": "ArchiMateCourseOfAction",
+        "records": 2,
+        "stereotypes": [
+          "Strategy",
+          "Tactic"
+        ]
+      },
+      {
+        "base_type": "ArchiMateDevice",
+        "records": 2,
+        "stereotypes": [
+          "Embedded Device",
+          "Mobile Device"
+        ]
+      },
+      {
+        "base_type": "ArchiMateDistributionNetworkBox",
+        "records": 2,
+        "stereotypes": [
+          "Energy Grid",
+          "Rail Network"
+        ]
+      },
+      {
+        "base_type": "ArchiMateDriver",
+        "records": 1,
+        "stereotypes": [
+          "Metric"
+        ]
+      },
+      {
+        "base_type": "ArchiMateEquipment",
+        "records": 2,
+        "stereotypes": [
+          "Train",
+          "Vehicle"
+        ]
+      },
+      {
+        "base_type": "ArchiMateFacility",
+        "records": 1,
+        "stereotypes": [
+          "Factory"
+        ]
+      },
+      {
+        "base_type": "ArchiMateFlow",
+        "records": 1,
+        "stereotypes": [
+          "Money Flow"
+        ]
+      },
+      {
+        "base_type": "ArchiMateGoal",
+        "records": 2,
+        "stereotypes": [
+          "Business Objective",
+          "Control Objective (Risk & Security Overlay)"
+        ]
+      },
+      {
+        "base_type": "ArchiMateGrouping",
+        "records": 1,
+        "stereotypes": [
+          "Risk Domain (Risk & Security Overlay)"
+        ]
+      },
+      {
+        "base_type": "ArchiMateInfrastructureService",
+        "records": 3,
+        "stereotypes": [
+          "Communication Service",
+          "Processing Service",
+          "Storage Service"
+        ]
+      },
+      {
+        "base_type": "ArchiMateMaterial",
+        "records": 3,
+        "stereotypes": [
+          "Building Material",
+          "Fuel",
+          "Ore"
+        ]
+      },
+      {
+        "base_type": "ArchiMateNetworkBox",
+        "records": 2,
+        "stereotypes": [
+          "WiFi Network",
+          "Wide Area Network"
+        ]
+      },
+      {
+        "base_type": "ArchiMateNode",
+        "records": 2,
+        "stereotypes": [
+          "Logical Technology Component",
+          "Physical Technology Component"
+        ]
+      },
+      {
+        "base_type": "ArchiMateOrJunction",
+        "records": 1,
+        "stereotypes": [
+          "Or-join"
+        ]
+      },
+      {
+        "base_type": "ArchiMatePrinciple",
+        "records": 1,
+        "stereotypes": [
+          "Business Policy"
+        ]
+      },
+      {
+        "base_type": "ArchiMateRequirement",
+        "records": 2,
+        "stereotypes": [
+          "Business Rule",
+          "Control Measure (Risk & Security Overlay)"
+        ]
+      },
+      {
+        "base_type": "ArchiMateWorkPackage",
+        "records": 2,
+        "stereotypes": [
+          "Program",
+          "Project"
+        ]
+      },
+      {
+        "base_type": "Attribute",
+        "records": 38,
+        "stereotypes": [
+          "AK",
+          "Attachment",
+          "BasicInterval",
+          "CK",
+          "CMP",
+          "Constant",
+          "DirectedFeature",
+          "DistributedProperty",
+          "Event",
+          "FK",
+          "FreeFormDescriptor",
+          "IDX",
+          "Interval",
+          "Normal",
+          "PK",
+          "Property",
+          "ResourceRole",
+          "UDT",
+          "Uniform",
+          "XSDattribute",
+          "XSDelement",
+          "XSDenumeration",
+          "XSDpattern",
+          "clustKey",
+          "column",
+          "counter",
+          "index",
+          "list",
+          "map",
+          "moe",
+          "not null",
+          "nullable",
+          "partKey",
+          "set",
+          "staticColumn",
+          "surrogate",
+          "tuple"
+        ]
+      },
+      {
+        "base_type": "BMMRelationship",
+        "records": 37,
+        "stereotypes": [
+          "act as",
+          "act as regulation",
+          "affect achievement",
+          "affect employment",
+          "amplify",
+          "basis for",
+          "channel efforts",
+          "claim",
+          "component of plan for",
+          "define",
+          "deliver",
+          "deploy",
+          "determine",
+          "discharge",
+          "effect enforcement level",
+          "enable",
+          "establish",
+          "formulated based on",
+          "govern",
+          "guide",
+          "identify",
+          "implement",
+          "judge",
+          "make",
+          "make operative",
+          "manage",
+          "provide",
+          "provide impetus",
+          "quantify",
+          "realize",
+          "recognize",
+          "require",
+          "responsible",
+          "significant to",
+          "source",
+          "support achievement",
+          "use"
+        ]
+      },
+      {
+        "base_type": "BindingDependency",
+        "records": 1,
+        "stereotypes": [
+          "bind"
+        ]
+      },
+      {
+        "base_type": "CollaborationOccurrence",
+        "records": 1,
+        "stereotypes": [
+          "SoaMLCollaborationUse"
+        ]
+      },
+      {
+        "base_type": "ExpansionNode",
+        "records": 3,
+        "stereotypes": [
+          "controlValue",
+          "noBuffer",
+          "overwrite"
+        ]
+      },
+      {
+        "base_type": "Operation",
+        "records": 6,
+        "stereotypes": [
+          "CORBAOneway",
+          "DirectedFeature",
+          "Event",
+          "default",
+          "stored procedure",
+          "trigger"
+        ]
+      },
+      {
+        "base_type": "Reception",
+        "records": 1,
+        "stereotypes": [
+          "DirectedFeature"
+        ]
+      },
+      {
+        "base_type": "Requirement",
+        "records": 2,
+        "stereotypes": [
+          "requirement"
+        ]
+      },
+      {
+        "base_type": "SysMLActivityBlock",
+        "records": 1,
+        "stereotypes": [
+          "activity"
+        ]
+      },
+      {
+        "base_type": "SysMLAllocate",
+        "records": 1,
+        "stereotypes": [
+          "allocate"
+        ]
+      },
+      {
+        "base_type": "SysMLBindingConnector",
+        "records": 1,
+        "stereotypes": [
+          "equal"
+        ]
+      },
+      {
+        "base_type": "SysMLBoundReference",
+        "records": 2,
+        "stereotypes": [
+          "DirectedFeature",
+          "boundReference"
+        ]
+      },
+      {
+        "base_type": "SysMLConstraintBlock",
+        "records": 1,
+        "stereotypes": [
+          "objectiveFunction"
+        ]
+      },
+      {
+        "base_type": "SysMLConstraintProperty",
+        "records": 2,
+        "stereotypes": [
+          "DirectedFeature",
+          "objectiveFunction"
+        ]
+      },
+      {
+        "base_type": "SysMLElementGroup",
+        "records": 1,
+        "stereotypes": [
+          "elementGroup"
+        ]
+      },
+      {
+        "base_type": "SysMLQuantityKind",
+        "records": 1,
+        "stereotypes": [
+          "quantityKind"
+        ]
+      },
+      {
+        "base_type": "SysMLUnit",
+        "records": 1,
+        "stereotypes": [
+          "unit"
+        ]
+      },
+      {
+        "base_type": "ValuePin",
+        "records": 3,
+        "stereotypes": [
+          "controlValue",
+          "noBuffer",
+          "overwrite"
+        ]
+      }
+    ],
+    "names_with_unreachable_definitions": [
+      "AK",
+      "Application-to-Application Interface",
+      "Attachment",
+      "BasicInterval",
+      "Behavior assignment",
+      "Building Material",
+      "Business Activity",
+      "Business Decision",
+      "Business Objective",
+      "Business Policy",
+      "Business Rule",
+      "CK",
+      "CMP",
+      "CORBAOneway",
+      "Capability Increment",
+      "Communication Service",
+      "Constant",
+      "Control Measure (Risk & Security Overlay)",
+      "Control Objective (Risk & Security Overlay)",
+      "DirectedFeature",
+      "DistributedProperty",
+      "Embedded Device",
+      "Energy Grid",
+      "Event",
+      "FK",
+      "Factory",
+      "FreeFormDescriptor",
+      "Fuel",
+      "Graphical User Interface",
+      "IDX",
+      "Individual",
+      "Interval",
+      "Logical Application Component",
+      "Logical Technology Component",
+      "Loss Event (Risk & Security Overlay)",
+      "Metric",
+      "Mobile Device",
+      "Money Flow",
+      "Normal",
+      "Or-join",
+      "Ore",
+      "Organization",
+      "Organizational Unit",
+      "PK",
+      "Physical Application Component",
+      "Physical Technology Component",
+      "Processing Service",
+      "Program",
+      "Project",
+      "Property",
+      "Rail Network",
+      "ResourceRole",
+      "Responsibilities assignment",
+      "Risk (Risk & Security Overlay)",
+      "Risk Domain (Risk & Security Overlay)",
+      "SoaMLCollaborationUse",
+      "Social Network",
+      "Storage Service",
+      "Strategy",
+      "Tactic",
+      "Threat Agent",
+      "Threat Event (Risk & Security Overlay)",
+      "Train",
+      "UDT",
+      "Uniform",
+      "Vehicle",
+      "Vulnerability (Risk & Security Overlay)",
+      "WiFi Network",
+      "Wide Area Network",
+      "XSDattribute",
+      "XSDelement",
+      "XSDenumeration",
+      "XSDpattern",
+      "act as",
+      "act as regulation",
+      "activity",
+      "affect achievement",
+      "affect employment",
+      "allocate",
+      "amplify",
+      "basis for",
+      "bind",
+      "boundReference",
+      "channel efforts",
+      "claim",
+      "clustKey",
+      "column",
+      "component of plan for",
+      "controlValue",
+      "counter",
+      "default",
+      "define",
+      "deliver",
+      "deploy",
+      "determine",
+      "discharge",
+      "effect enforcement level",
+      "elementGroup",
+      "enable",
+      "equal",
+      "establish",
+      "formulated based on",
+      "govern",
+      "guide",
+      "identify",
+      "implement",
+      "index",
+      "judge",
+      "list",
+      "make",
+      "make operative",
+      "manage",
+      "map",
+      "moe",
+      "noBuffer",
+      "not null",
+      "nullable",
+      "objectiveFunction",
+      "overwrite",
+      "partKey",
+      "provide",
+      "provide impetus",
+      "quantify",
+      "quantityKind",
+      "realize",
+      "recognize",
+      "require",
+      "requirement",
+      "responsible",
+      "set",
+      "significant to",
+      "source",
+      "staticColumn",
+      "stored procedure",
+      "support achievement",
+      "surrogate",
+      "trigger",
+      "tuple",
+      "unit",
+      "use"
+    ],
+    "names_reachable": 179,
+    "names_entirely_unreachable": [
+      "AK",
+      "Application-to-Application Interface",
+      "Attachment",
+      "BasicInterval",
+      "Behavior assignment",
+      "Building Material",
+      "Business Activity",
+      "Business Decision",
+      "Business Objective",
+      "Business Policy",
+      "Business Rule",
+      "CK",
+      "CMP",
+      "CORBAOneway",
+      "Capability Increment",
+      "Communication Service",
+      "Constant",
+      "Control Measure (Risk & Security Overlay)",
+      "Control Objective (Risk & Security Overlay)",
+      "DistributedProperty",
+      "Embedded Device",
+      "Energy Grid",
+      "Event",
+      "FK",
+      "Factory",
+      "FreeFormDescriptor",
+      "Fuel",
+      "Graphical User Interface",
+      "IDX",
+      "Individual",
+      "Interval",
+      "Logical Application Component",
+      "Logical Technology Component",
+      "Loss Event (Risk & Security Overlay)",
+      "Metric",
+      "Mobile Device",
+      "Money Flow",
+      "Normal",
+      "Or-join",
+      "Ore",
+      "Organization",
+      "Organizational Unit",
+      "PK",
+      "Physical Application Component",
+      "Physical Technology Component",
+      "Processing Service",
+      "Program",
+      "Project",
+      "Property",
+      "Rail Network",
+      "ResourceRole",
+      "Responsibilities assignment",
+      "Risk (Risk & Security Overlay)",
+      "Risk Domain (Risk & Security Overlay)",
+      "SoaMLCollaborationUse",
+      "Social Network",
+      "Storage Service",
+      "Strategy",
+      "Tactic",
+      "Threat Agent",
+      "Threat Event (Risk & Security Overlay)",
+      "Train",
+      "UDT",
+      "Uniform",
+      "Vehicle",
+      "Vulnerability (Risk & Security Overlay)",
+      "WiFi Network",
+      "Wide Area Network",
+      "XSDattribute",
+      "XSDenumeration",
+      "XSDpattern",
+      "act as",
+      "act as regulation",
+      "activity",
+      "affect achievement",
+      "affect employment",
+      "allocate",
+      "amplify",
+      "basis for",
+      "boundReference",
+      "channel efforts",
+      "claim",
+      "clustKey",
+      "column",
+      "component of plan for",
+      "counter",
+      "default",
+      "define",
+      "deliver",
+      "determine",
+      "discharge",
+      "effect enforcement level",
+      "elementGroup",
+      "enable",
+      "equal",
+      "establish",
+      "formulated based on",
+      "govern",
+      "guide",
+      "identify",
+      "index",
+      "judge",
+      "list",
+      "make",
+      "make operative",
+      "manage",
+      "map",
+      "moe",
+      "not null",
+      "nullable",
+      "objectiveFunction",
+      "partKey",
+      "provide",
+      "provide impetus",
+      "quantify",
+      "quantityKind",
+      "realize",
+      "recognize",
+      "require",
+      "requirement",
+      "responsible",
+      "set",
+      "significant to",
+      "source",
+      "staticColumn",
+      "stored procedure",
+      "support achievement",
+      "surrogate",
+      "trigger",
+      "tuple",
+      "unit",
+      "use"
+    ],
+    "reachable_after_dedup_rule_a": 261,
+    "reachable_after_dedup_rule_b": 179
+  },
+  "checks": {
+    "problems": [],
+    "ok": true
+  }
+}

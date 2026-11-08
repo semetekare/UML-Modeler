@@ -1,0 +1,127 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-message-signature-operation-ok",
+  "name": "message-signature-operation (без нарушения) — сигнатура называет операцию класса",
+  "elements": [
+    {
+      "id": "L1",
+      "kind": "lifeline",
+      "name": ":Клиент",
+      "represents": "c1"
+    },
+    {
+      "id": "L2",
+      "kind": "lifeline",
+      "name": ":Сервер",
+      "represents": "c2"
+    },
+    {
+      "id": "c1",
+      "kind": "class",
+      "name": "Клиент",
+      "operations": [
+        {
+          "name": "send()"
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "kind": "class",
+      "name": "Сервер",
+      "operations": [
+        {
+          "name": "read()"
+        },
+        {
+          "name": "write()"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "прочитать()",
+      "from": "L1",
+      "to": "L2",
+      "signature": "read(id: int)",
+      "documentation": "Правило «message-signature-operation» — совет практики моделирования: пункта UML у него нет, есть только объяснение, почему такую модель трудно читать.\nКонтроль: сигнатура «read(id: int)» называет операцию «read», которая есть у класса «Сервер» получателя."
+    },
+    {
+      "id": "r2",
+      "kind": "association",
+      "from": "c1",
+      "to": "c2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "message-signature-operation (без нарушения)",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "L1",
+          "x": 80,
+          "y": 60,
+          "w": 160,
+          "h": 600
+        },
+        {
+          "id": "s2",
+          "elementId": "L2",
+          "x": 320,
+          "y": 60,
+          "w": 160,
+          "h": 600
+        },
+        {
+          "id": "s3",
+          "elementId": "c1",
+          "x": 560,
+          "y": 60,
+          "w": 200,
+          "h": 90
+        },
+        {
+          "id": "s4",
+          "elementId": "c2",
+          "x": 560,
+          "y": 200,
+          "w": 200,
+          "h": 90
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s3",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

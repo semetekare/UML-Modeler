@@ -1,0 +1,105 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5217",
+    "figureNo": "5.2.17",
+    "exercise": "5.2.G",
+    "type": "sequence",
+    "diagramName": "init",
+    "group": "diagram",
+    "reproducible": "да",
+    "altText": "UML-диаграмма последовательности, описывающая реализацию операции init() в подсистеме BSAccess",
+    "notes": "Текст называет линию жизни cn:BSAccess и сообщение init(). Рисунок 5.2.17 подтверждает их и добавляет три линии жизни (config:XmlRpcClientConfigImpl, url:URL, client:XmlRpcClient) и пять сообщений создания и настройки; всё прочитано с рисунка, пробелов не осталось.",
+    "gaps": [],
+    "gapIds": [],
+    "imageDerived": [
+      "r1"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "cn:BSAccess",
+      "stereotype": "subsystem proxy"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "config:XmlRpcClientConfigImpl",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "url:URL",
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "client:XmlRpcClient",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "init(serverURL : string) : void",
+      "from": "e1",
+      "to": "e1",
+      "note": "найденное сообщение: отправитель на рисунке не показан",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "createMessage",
+      "name": "XmlRpcClientConfigImpl()",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "createMessage",
+      "name": "URL(spec : String = serverURL)",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "setServerURL(serverURL : URL = url) : void",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "setConfig(config : XmlRpcClientConfig = config) : void",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "init",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

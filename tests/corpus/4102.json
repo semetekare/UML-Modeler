@@ -1,0 +1,97 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4102",
+    "figureNo": "4.1.2",
+    "exercise": "4.1",
+    "type": "composite",
+    "diagramName": "Use Case Realizations",
+    "group": "diagram",
+    "reproducible": "да",
+    "altText": "UML-диаграмма составной структуры Use Case Realizations",
+    "notes": "Три кооперации со стереотипом «usecase realization» и три связи реализации к вариантам использования названы текстом упражнения 4.1 п.2 и подтверждены рисунком 4.1.2; с рисунка добавлены стереотипы вариантов использования («Войти в систему» и «Закрыть регистрацию» — fish level, «Зарегистрироваться на курсы» — sea level). Указатель рисунков описывает ту же диаграмму как «части-кооперации и соединяющие их зависимости» — расхождение источников остаётся.",
+    "gaps": [
+      "указатель рисунков (INDEX.md) описывает эту диаграмму как «части-кооперации и соединяющие их зависимости», а текст упражнения 4.1 п.2 — как связи реализации от коопераций к реализуемым вариантам использования; здесь взята версия упражнения как более подробная, расхождение источников зафиксировано",
+      "показана ли на диаграмме сама рамка пакета Use Case Realizations, текст не говорит"
+    ],
+    "gapIds": [
+      "model.packageOwner",
+      "source.contradiction"
+    ],
+    "imageDerived": [
+      "e4",
+      "e5",
+      "e6"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e5",
+      "kind": "usecase",
+      "name": "Зарегистрироваться на курсы",
+      "stereotype": "sea level usecase",
+      "source": "image"
+    },
+    {
+      "id": "e6",
+      "kind": "usecase",
+      "name": "Закрыть регистрацию",
+      "stereotype": "fish level usecase",
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "usecase",
+      "name": "Войти в систему",
+      "stereotype": "fish level usecase",
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "collaboration",
+      "name": "RegisterForCourses",
+      "stereotype": "usecase realization"
+    },
+    {
+      "id": "e3",
+      "kind": "collaboration",
+      "name": "CloseRegistration",
+      "stereotype": "usecase realization"
+    },
+    {
+      "id": "e1",
+      "kind": "collaboration",
+      "name": "Login",
+      "stereotype": "usecase realization"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "realization",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r2",
+      "kind": "realization",
+      "from": "e2",
+      "to": "e5"
+    },
+    {
+      "id": "r3",
+      "kind": "realization",
+      "from": "e3",
+      "to": "e6"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Use Case Realizations",
+      "type": "composite",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

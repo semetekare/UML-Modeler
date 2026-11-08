@@ -1,0 +1,53 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-relationship-not-on-any-diagram",
+  "name": "relationship-not-on-any-diagram — зависимость не нарисована",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "package",
+      "name": "Приложение"
+    },
+    {
+      "id": "e2",
+      "kind": "package",
+      "name": "Библиотека",
+      "documentation": "Правило «relationship-not-on-any-diagram» — совет практики моделирования: пункта UML у него нет, есть только объяснение, почему такую модель трудно читать.\nЗависимость «Приложение» → «Библиотека» есть в модели, но ни на одном листе её не нарисовали."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "relationship-not-on-any-diagram — связь вне листов",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 100
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 340,
+          "y": 60,
+          "w": 200,
+          "h": 100
+        }
+      ],
+      "links": []
+    }
+  ],
+  "currentDiagramId": "d1"
+}

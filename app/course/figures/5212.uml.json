@@ -1,0 +1,615 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5212",
+  "name": "UML-диаграмма последовательности, описывающая реализацию операции getCourseOfferingList() в подсистеме DBAccess",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "db:DBAccess",
+      "stereotype": "subsystem proxy",
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "list:CourseOfferingList"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "rs:ResultSet"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "obj:CourseOffering",
+      "multiObject": true,
+      "source": "image"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "c:Connection",
+      "source": "image"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "s:Statement",
+      "source": "image"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "[c == NULL]",
+      "documentation": "фрагмент opt; условие прочитано с рисунка, покрывает сообщение init()",
+      "operator": "opt",
+      "source": "image"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "[not rs.isAfterLast()]",
+      "documentation": "цикл по строкам результата; прочитан с рисунка",
+      "operator": "loop",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "getCourseOfferingList(semester : byte) : CourseOfferingList",
+      "from": "e1",
+      "to": "e1",
+      "note": "входящее сообщение связано с операцией",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "message",
+      "name": "init() : boolean",
+      "from": "e1",
+      "to": "e1",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "message",
+      "name": "createStatement() : Statement",
+      "from": "e1",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e5",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "message",
+      "name": "executeQuery(sql : string) : ResultSet",
+      "from": "e1",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r11",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e6",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r12",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "first() : boolean",
+      "from": "e1",
+      "to": "e3",
+      "note": "вызов к rs:ResultSet; на рисунке сообщений к rs несколько",
+      "source": "image"
+    },
+    {
+      "id": "r13",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r14",
+      "kind": "message",
+      "name": "getLong(columnLabel : string) : long",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "setNumber(number : long) : void",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r15",
+      "kind": "message",
+      "name": "getByte(columnLabel : string) : byte",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "setDay(day : DayOfWeek) : void",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r16",
+      "kind": "message",
+      "name": "getByte(columnLabel : string) : byte",
+      "from": "e1",
+      "to": "e3",
+      "note": "второй вызов getByte: читает поле day",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "setPair(pair : byte) : void",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r17",
+      "kind": "message",
+      "name": "getByte(columnLabel : string) : byte",
+      "from": "e1",
+      "to": "e3",
+      "note": "третий вызов getByte: читает поле pair",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "setSemester(semester : byte) : void",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r18",
+      "kind": "message",
+      "name": "add(e : CourseOffering) : boolean",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r19",
+      "kind": "message",
+      "name": "next() : boolean",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "getCourseOfferingList",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 170,
+          "h": 810
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 290,
+          "y": 60,
+          "w": 170,
+          "h": 810
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 520,
+          "y": 60,
+          "w": 170,
+          "h": 810
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 750,
+          "y": 60,
+          "w": 170,
+          "h": 810
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 980,
+          "y": 60,
+          "w": 170,
+          "h": 810
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 1210,
+          "y": 60,
+          "w": 170,
+          "h": 810
+        },
+        {
+          "id": "s7",
+          "elementId": "e7",
+          "x": 60,
+          "y": 120,
+          "w": 1320,
+          "h": 350
+        },
+        {
+          "id": "s8",
+          "elementId": "e8",
+          "x": 60,
+          "y": 510,
+          "w": 1320,
+          "h": 320
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.111
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.136
+          },
+          "y": 150
+        },
+        {
+          "id": "l2",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.148
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.173
+          },
+          "y": 180
+        },
+        {
+          "id": "l3",
+          "relId": "r8",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.185
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.185
+          },
+          "y": 210
+        },
+        {
+          "id": "l4",
+          "relId": "r9",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.222
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.222
+          },
+          "y": 240
+        },
+        {
+          "id": "l5",
+          "relId": "r10",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.259
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.259
+          },
+          "y": 270
+        },
+        {
+          "id": "l6",
+          "relId": "r11",
+          "from": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.296
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.296
+          },
+          "y": 300
+        },
+        {
+          "id": "l7",
+          "relId": "r12",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.333
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.333
+          },
+          "y": 330
+        },
+        {
+          "id": "l8",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.37
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.37
+          },
+          "y": 360
+        },
+        {
+          "id": "l9",
+          "relId": "r13",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.407
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.407
+          },
+          "y": 390
+        },
+        {
+          "id": "l10",
+          "relId": "r14",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.444
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.444
+          },
+          "y": 420
+        },
+        {
+          "id": "l11",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.593
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.593
+          },
+          "y": 540
+        },
+        {
+          "id": "l12",
+          "relId": "r15",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.63
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.63
+          },
+          "y": 570
+        },
+        {
+          "id": "l13",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.667
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.667
+          },
+          "y": 600
+        },
+        {
+          "id": "l14",
+          "relId": "r16",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.704
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.704
+          },
+          "y": 630
+        },
+        {
+          "id": "l15",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.741
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.741
+          },
+          "y": 660
+        },
+        {
+          "id": "l16",
+          "relId": "r17",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.778
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.778
+          },
+          "y": 690
+        },
+        {
+          "id": "l17",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.815
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.815
+          },
+          "y": 720
+        },
+        {
+          "id": "l18",
+          "relId": "r18",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.852
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.852
+          },
+          "y": 750
+        },
+        {
+          "id": "l19",
+          "relId": "r19",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.889
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.889
+          },
+          "y": 780
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5212",
+    "figureNo": "5.2.12",
+    "exercise": "5.2.F",
+    "type": "sequence",
+    "diagramName": "getCourseOfferingList",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности, описывающая реализацию операции getCourseOfferingList() в подсистеме DBAccess",
+    "notes": "Текст называет четыре линии жизни и перечень сеттеров. Рисунок 5.2.12 показывает шесть линий жизни (добавлены c:Connection и s:Statement), девятнадцать сообщений с точными подписями, фрагмент opt с условием [c == NULL] и фрагмент loop с условием [not rs.isAfterLast()]; всё это прочитано с рисунка.",
+    "gaps": [
+      "сообщения к rs:ResultSet названы в тексте только по факту («добавьте соответствующие сообщения-вызовы»), без имён — прочитаны с рисунка",
+      "порядок и число сообщений к obj:CourseOffering заданы перечнем сеттеров, но не последовательностью — порядок прочитан с рисунка",
+      "множественность линии жизни (Multi-object) не выражается — записана multiObject",
+      "покрытие сообщений фрагментами opt и loop не выражается"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.multiObject",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e1",
+      "e4",
+      "r1",
+      "r2",
+      "r3",
+      "r4",
+      "r5",
+      "r6"
+    ]
+  },
+  "sheet": {
+    "w": 1440,
+    "h": 930
+  }
+}

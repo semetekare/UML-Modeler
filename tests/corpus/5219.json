@@ -1,0 +1,213 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5219",
+    "figureNo": "5.2.19",
+    "exercise": "5.2.H",
+    "type": "class",
+    "diagramName": "Student",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма классов Student",
+    "notes": "Текст говорит только «придать диаграмме вид, схожий с рисунком 5.2.19». Рисунок показывает абстрактный класс Student с четырнадцатью операциями и пятью атрибутами (в том числе статический nextAvailableId), два потомка с их членами и набор обобщений с ограничением {complete, disjoint}; всё это прочитано с рисунка.",
+    "gaps": [
+      "состав атрибутов и операций в тексте не перечислен: сказано только, что нужно «придать диаграмме вид, схожий с рисунком 5.2.19» — прочитано с рисунка",
+      "статические члены (область действия classifier, подчёркивание) не выражаются — записаны полем isStatic",
+      "абстрактность класса Student не выражается — записана полем abstract",
+      "геттеры и сеттеры создаются автоматически, их имена в тексте не приведены — прочитаны с рисунка"
+    ],
+    "gapIds": [
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e1",
+      "e2",
+      "e3"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Student",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "address",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "id",
+          "type": "long",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "nextAvailableId",
+          "type": "long",
+          "isStatic": true
+        },
+        {
+          "vis": "private",
+          "name": "phones",
+          "type": "string[0..2]"
+        }
+      ],
+      "abstract": true,
+      "operations": [
+        {
+          "vis": "public",
+          "name": "createSchedule(semester : byte, primary : CourseOffering[], alt : CourseOffering[])",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "deleteSchedule(semester : byte)",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "getAddress()",
+          "type": "string"
+        },
+        {
+          "vis": "public",
+          "name": "getId()",
+          "type": "long"
+        },
+        {
+          "vis": "public",
+          "name": "getName()",
+          "type": "string"
+        },
+        {
+          "vis": "public",
+          "name": "getNextAvailableId()",
+          "type": "long",
+          "isStatic": true
+        },
+        {
+          "vis": "public",
+          "name": "getPhones()",
+          "type": "string[0..2]"
+        },
+        {
+          "vis": "public",
+          "name": "getScheduleCourses(semester : byte)",
+          "type": "CourseOffering[]"
+        },
+        {
+          "vis": "public",
+          "name": "hasScheduleForSemester(semester : byte)",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "setAddress(address : string)",
+          "type": "void"
+        },
+        {
+          "vis": "public",
+          "name": "setId(id : long)",
+          "type": "void"
+        },
+        {
+          "vis": "public",
+          "name": "setName(name : string)",
+          "type": "void"
+        },
+        {
+          "vis": "private",
+          "name": "setNextAvailableId(nextAvailableId : long)",
+          "type": "void",
+          "isStatic": true
+        },
+        {
+          "vis": "public",
+          "name": "setPhones(phones : string[0..2])",
+          "type": "void"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "FullTimeStudent",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "graduateDate",
+          "type": "Date"
+        }
+      ],
+      "operations": [
+        {
+          "vis": "public",
+          "name": "getGraduateDate()",
+          "type": "Date"
+        },
+        {
+          "vis": "public",
+          "name": "setGraduateDate(gd : Date)",
+          "type": "void"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "PartTimeStudent",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "maxNumCourses",
+          "type": "byte"
+        }
+      ],
+      "operations": [
+        {
+          "vis": "public",
+          "name": "getMaxNumCourses()",
+          "type": "byte"
+        },
+        {
+          "vis": "public",
+          "name": "setMaxNumCourses(mNC : byte)",
+          "type": "void"
+        }
+      ],
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "generalization",
+      "from": "e2",
+      "to": "e1"
+    },
+    {
+      "id": "r2",
+      "kind": "generalization",
+      "from": "e3",
+      "to": "e1"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Student",
+      "type": "class",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

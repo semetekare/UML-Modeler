@@ -1,0 +1,94 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5104",
+    "figureNo": "5.1.4",
+    "exercise": "5.1",
+    "type": "package",
+    "diagramName": "Dependencies",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма пакетов Dependencies. Связи подпакетов уровня Application",
+    "notes": "Зависимости подпакетов уровня Application. Текст объясняет каждую зависимость: Registration и CloseRegistration используют классы-артефакты и интерфейс подсистемы; Login использует классы-артефакты и классы из Registration. Стрелки — от зависящего пакета.",
+    "gaps": [
+      "вложенность Interfaces и UniversityArtefacts в BusinessServices не выражается: у элемента нет владельца"
+    ],
+    "gapIds": [
+      "model.packageOwner"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "package",
+      "name": "Login"
+    },
+    {
+      "id": "e2",
+      "kind": "package",
+      "name": "Registration"
+    },
+    {
+      "id": "e3",
+      "kind": "package",
+      "name": "CloseRegistration"
+    },
+    {
+      "id": "e4",
+      "kind": "package",
+      "name": "Interfaces"
+    },
+    {
+      "id": "e5",
+      "kind": "package",
+      "name": "UniversityArtefacts"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e5"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "from": "e3",
+      "to": "e5"
+    },
+    {
+      "id": "r4",
+      "kind": "dependency",
+      "from": "e3",
+      "to": "e4"
+    },
+    {
+      "id": "r5",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e5"
+    },
+    {
+      "id": "r6",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Dependencies",
+      "type": "package",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

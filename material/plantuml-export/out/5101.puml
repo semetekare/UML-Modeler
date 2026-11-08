@@ -1,0 +1,18 @@
+@startuml
+title Main
+package "BusinessServices" as e2 <<layer>>
+package "Middleware" as e3 <<layer>>
+package "RemoteInterchange" as e4
+' doc e4: на рисунке пакет подписан в три строки: «RemoteInterchange» / «(Architectural» / «Mechanisms)»
+' source e4: image
+package "Persistency" as e5
+' doc e5: на рисунке пакет подписан в три строки: «Persistency» / «(Architectural» / «Mechanisms)»
+' source e5: image
+package "Application" as e1 <<layer>>
+e1 ..> e2
+e2 ..> e3
+e2 ..> e4
+e2 ..> e5
+e4 ..> e3
+e5 ..> e3
+@enduml

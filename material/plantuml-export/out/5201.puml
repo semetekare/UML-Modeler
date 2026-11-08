@@ -1,0 +1,26 @@
+@startuml
+title Design Login Basic Flow
+actor e1 as "Пользователь"
+participant e2 as "lform:LoginForm"
+participant e3 as "menu:MainMenuForm"
+participant e4 as "lctrl:LoginController"
+participant e5 as "dao:IDBAccess" <<interface>>
+participant e6 as "curUser:User"
+opt getUserByLogin(l) != NULL
+e1 -> e2 : login(l : string, pswrd : string) : void
+e2 -> e4 : login(l : string, pswrd : string) : boolean
+e4 -> e5 : getUserByLogin(l : string) : User
+e5 --> e4 : result
+e4 -> e6 : checkPassword(pswrd : string) : boolean
+end
+alt curUser != NULL && curUser.checkPassword(pswrd) == TRUE
+e6 --> e4 : result
+create e3
+e4 -> e3 : open(curUser)
+e3 -> e6 : getType():UserType
+e4 -> e2 : displayError(errorMsg : string) : void
+e4 -> e2 : close()
+destroy e2
+else else
+end
+@enduml

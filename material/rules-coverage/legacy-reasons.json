@@ -1,0 +1,1710 @@
+{
+  "about": "Ручные причины отброса из docs/RULES-SOURCE.md (редакция до итерации 20), заморожены как исторический факт. Сгенерировано один раз из старого документа; build.mjs только читает.",
+  "source": "docs/RULES-SOURCE.md, раздел «Отброшенные констрейнты», 426 строк",
+  "reasons": {
+    "AcceptCallAction::result_pins": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 488
+    },
+    "AcceptCallAction::trigger_call_event": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 488
+    },
+    "AcceptCallAction::unmarshall": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 488
+    },
+    "AcceptEventAction::conforming_type": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 490
+    },
+    "AcceptEventAction::no_input_pins": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 489
+    },
+    "AcceptEventAction::no_output_pins": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 489
+    },
+    "AcceptEventAction::one_output_pin": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 489
+    },
+    "AcceptEventAction::unmarshall_signal_events": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 490
+    },
+    "ActionExecutionSpecification::action_referenced": {
+      "reason": "Наша модель не хранит спецификации выполнения",
+      "page": 607
+    },
+    "ActionInputPin::input_pin": {
+      "reason": "Наша модель не хранит пины",
+      "page": 492
+    },
+    "ActionInputPin::no_control_or_object_flow": {
+      "reason": "Наша модель не хранит пины",
+      "page": 492
+    },
+    "ActionInputPin::one_output_pin": {
+      "reason": "Наша модель не хранит пины",
+      "page": 492
+    },
+    "Activity::maximum_one_parameter_node": {
+      "reason": "Наша модель не хранит активности как элементы",
+      "page": 412
+    },
+    "Activity::maximum_two_parameter_nodes": {
+      "reason": "Наша модель не хранит активности как элементы",
+      "page": 412
+    },
+    "ActivityEdge::source_and_target": {
+      "reason": "Наша модель не хранит рёбра активностей",
+      "page": 414
+    },
+    "ActivityGroup::nodes_and_edges": {
+      "reason": "Наша модель не хранит группы активностей",
+      "page": 415
+    },
+    "ActivityGroup::not_contained": {
+      "reason": "Наша модель не хранит группы активностей",
+      "page": 415
+    },
+    "ActivityParameterNode::has_parameters": {
+      "reason": "Наша модель не хранит узлы параметров активности",
+      "page": 417
+    },
+    "ActivityParameterNode::no_edges": {
+      "reason": "Наша модель не хранит узлы параметров активности",
+      "page": 417
+    },
+    "ActivityParameterNode::no_incoming_edges": {
+      "reason": "Наша модель не хранит узлы параметров активности",
+      "page": 417
+    },
+    "ActivityParameterNode::no_outgoing_edges": {
+      "reason": "Наша модель не хранит узлы параметров активности",
+      "page": 417
+    },
+    "ActivityParameterNode::same_type": {
+      "reason": "Наша модель не хранит узлы параметров активности",
+      "page": 417
+    },
+    "ActivityPartition::dimension_not_contained": {
+      "reason": "Наша модель не хранит разделы (partitions)",
+      "page": 419
+    },
+    "ActivityPartition::represents_classifier": {
+      "reason": "Наша модель не хранит разделы (partitions)",
+      "page": 418
+    },
+    "ActivityPartition::represents_property": {
+      "reason": "Наша модель не хранит разделы (partitions)",
+      "page": 419
+    },
+    "ActivityPartition::represents_property_and_is_contained": {
+      "reason": "Наша модель не хранит разделы (partitions)",
+      "page": 419
+    },
+    "AddStructuralFeatureValueAction::insertAt_pin": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 493
+    },
+    "AddStructuralFeatureValueAction::required_value": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 493
+    },
+    "AddVariableValueAction::insertAt_pin": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 494
+    },
+    "AddVariableValueAction::required_value": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 494
+    },
+    "Association::association_ends": {
+      "reason": "Требует различения владельца конца ассоциации (класс или ассоциация)",
+      "page": 220
+    },
+    "Association::specialized_end_number": {
+      "reason": "Обобщение ассоциаций не поддерживается нашей моделью",
+      "page": 220
+    },
+    "Association::specialized_end_types": {
+      "reason": "Обобщение ассоциаций не поддерживается нашей моделью",
+      "page": 220
+    },
+    "AssociationClass::cannot_be_defined": {
+      "reason": "Наша модель не хранит ассоциативные классы",
+      "page": 221
+    },
+    "AssociationClass::disjoint_attributes_ends": {
+      "reason": "Наша модель не хранит ассоциативные классы",
+      "page": 221
+    },
+    "Behavior::feature_of_context_classifier": {
+      "reason": "Наша модель не хранит поведения как элементы",
+      "page": 296
+    },
+    "Behavior::most_one_behavior": {
+      "reason": "Наша модель не хранит поведения как элементы",
+      "page": 296
+    },
+    "Behavior::parameters_match": {
+      "reason": "Наша модель не хранит поведения как элементы",
+      "page": 296
+    },
+    "BehavioralFeature::abstract_no_method": {
+      "reason": "Методы (method) не являются элементом нашей модели",
+      "page": 131
+    },
+    "BehavioredClassifier::class_behavior": {
+      "reason": "Требует конструкции, которой нет в нашей модели",
+      "page": 174
+    },
+    "BroadcastSignalAction::no_onport": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 495
+    },
+    "BroadcastSignalAction::number_of_arguments": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 494
+    },
+    "BroadcastSignalAction::type_ordering_multiplicity": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 494
+    },
+    "CallAction::argument_pins": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 495
+    },
+    "CallAction::result_pins": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 496
+    },
+    "CallAction::synchronous_call": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 496
+    },
+    "CallBehaviorAction::no_onport": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 497
+    },
+    "CallOperationAction::type_target_pin": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 497
+    },
+    "Class::passive_class": {
+      "reason": "Приёмники и classifierBehavior не являются элементом нашей модели",
+      "page": 222
+    },
+    "Classifier::maps_to_generalization_set": {
+      "reason": "GeneralizationSet не является элементом нашей модели",
+      "page": 136
+    },
+    "Classifier::non_final_parents": {
+      "reason": "У нас нет флага isFinalSpecialization у классификатора",
+      "page": 136
+    },
+    "ClassifierTemplateParameter::actual_is_classifier": {
+      "reason": "Наша модель не поддерживает шаблоны (templates)",
+      "page": 137
+    },
+    "ClassifierTemplateParameter::constraining_classifiers_constrain_args": {
+      "reason": "Наша модель не поддерживает шаблоны (templates)",
+      "page": 137
+    },
+    "ClassifierTemplateParameter::constraining_classifiers_constrain_parametered_element": {
+      "reason": "Наша модель не поддерживает шаблоны (templates)",
+      "page": 137
+    },
+    "ClassifierTemplateParameter::has_constraining_classifier": {
+      "reason": "Наша модель не поддерживает шаблоны (templates)",
+      "page": 137
+    },
+    "ClassifierTemplateParameter::matching_abstract": {
+      "reason": "Наша модель не поддерживает шаблоны (templates)",
+      "page": 137
+    },
+    "ClassifierTemplateParameter::parametered_element_no_features": {
+      "reason": "Наша модель не поддерживает шаблоны (templates)",
+      "page": 137
+    },
+    "Clause::body_output_pins": {
+      "reason": "Наша модель не хранит клаузы условных узлов",
+      "page": 498
+    },
+    "Clause::decider_output": {
+      "reason": "Наша модель не хранит клаузы условных узлов",
+      "page": 498
+    },
+    "Clause::test_and_body": {
+      "reason": "Наша модель не хранит клаузы условных узлов",
+      "page": 499
+    },
+    "ClearAssociationAction::multiplicity": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 499
+    },
+    "ClearAssociationAction::same_type": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 499
+    },
+    "ClearStructuralFeatureAction::multiplicity_of_result": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 500
+    },
+    "ClearStructuralFeatureAction::type_of_result": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 500
+    },
+    "CollaborationUse::client_elements": {
+      "reason": "Наша модель не хранит коллаборации и их использования",
+      "page": 223
+    },
+    "CollaborationUse::connectors": {
+      "reason": "Наша модель не хранит коллаборации и их использования",
+      "page": 223
+    },
+    "CollaborationUse::every_role": {
+      "reason": "Наша модель не хранит коллаборации и их использования",
+      "page": 223
+    },
+    "CombinedFragment::break": {
+      "reason": "Операнды фрагментов не являются элементом нашей модели",
+      "page": 608
+    },
+    "CombinedFragment::consider_and_ignore": {
+      "reason": "Операнды фрагментов не являются элементом нашей модели",
+      "page": 608
+    },
+    "CombinedFragment::opt_loop_break_neg": {
+      "reason": "Операнды фрагментов не являются элементом нашей модели",
+      "page": 608
+    },
+    "CommunicationPath::association_ends": {
+      "reason": "Пути связи не являются элементом нашей модели",
+      "page": 661
+    },
+    "Component::no_packaged_elements": {
+      "reason": "Компонент внутри класса не является конструкцией нашей модели",
+      "page": 225
+    },
+    "ConditionalNode::clause_no_predecessor": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 502
+    },
+    "ConditionalNode::executable_nodes": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 501
+    },
+    "ConditionalNode::matching_output_pins": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 501
+    },
+    "ConditionalNode::no_input_pins": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 501
+    },
+    "ConditionalNode::one_clause_with_executable_node": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 501
+    },
+    "ConditionalNode::result_no_incoming": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 501
+    },
+    "ConnectionPointReference::entry_pseudostates": {
+      "reason": "Наша модель не хранит точки подключения состояний",
+      "page": 346
+    },
+    "ConnectionPointReference::exit_pseudostates": {
+      "reason": "Наша модель не хранит точки подключения состояний",
+      "page": 346
+    },
+    "Connector::roles": {
+      "reason": "Коннекторы не являются элементом нашей модели",
+      "page": 228
+    },
+    "Connector::types": {
+      "reason": "Коннекторы не являются элементом нашей модели",
+      "page": 228
+    },
+    "ConnectorEnd::multiplicity": {
+      "reason": "Наша модель не хранит коннекторы внутренней структуры",
+      "page": 229
+    },
+    "ConnectorEnd::part_with_port_empty": {
+      "reason": "Наша модель не хранит коннекторы внутренней структуры",
+      "page": 229
+    },
+    "ConnectorEnd::role_and_part_with_port": {
+      "reason": "Наша модель не хранит коннекторы внутренней структуры",
+      "page": 229
+    },
+    "ConnectorEnd::self_part_with_port": {
+      "reason": "Наша модель не хранит коннекторы внутренней структуры",
+      "page": 229
+    },
+    "ConsiderIgnoreFragment::consider_or_ignore": {
+      "reason": "Наша модель не хранит consider/ignore-фрагменты",
+      "page": 609
+    },
+    "ConsiderIgnoreFragment::type": {
+      "reason": "Наша модель не хранит consider/ignore-фрагменты",
+      "page": 609
+    },
+    "Constraint::boolean_value": {
+      "reason": "Наша модель не хранит Constraint как элемент модели",
+      "page": 41
+    },
+    "Constraint::no_side_effects": {
+      "reason": "Наша модель не хранит Constraint как элемент модели",
+      "page": 41
+    },
+    "Constraint::not_apply_to_self": {
+      "reason": "Constraint как элемент модели не поддерживается",
+      "page": 42
+    },
+    "Continuation::first_or_last_interaction_fragment": {
+      "reason": "Наша модель не хранит континуации",
+      "page": 609
+    },
+    "Continuation::global": {
+      "reason": "Наша модель не хранит континуации",
+      "page": 610
+    },
+    "Continuation::same_name": {
+      "reason": "Наша модель не хранит континуации",
+      "page": 610
+    },
+    "ControlFlow::object_nodes": {
+      "reason": "Узлы объектов не являются элементом нашей модели",
+      "page": 420
+    },
+    "CreateLinkAction::association_not_abstract": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 502
+    },
+    "CreateLinkObjectAction::association_class": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 503
+    },
+    "CreateLinkObjectAction::multiplicity": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 503
+    },
+    "CreateLinkObjectAction::type_of_result": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 503
+    },
+    "CreateObjectAction::classifier_not_abstract": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 503
+    },
+    "CreateObjectAction::classifier_not_association_class": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 503
+    },
+    "CreateObjectAction::multiplicity": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 503
+    },
+    "CreateObjectAction::same_type": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 504
+    },
+    "DecisionNode::decision_input_flow_incoming": {
+      "reason": "Наша модель не хранит узлы решений",
+      "page": 421
+    },
+    "DecisionNode::edges": {
+      "reason": "Наша модель не хранит узлы решений",
+      "page": 421
+    },
+    "DecisionNode::incoming_control_one_input_parameter": {
+      "reason": "Наша модель не хранит узлы решений",
+      "page": 422
+    },
+    "DecisionNode::incoming_object_one_input_parameter": {
+      "reason": "Наша модель не хранит узлы решений",
+      "page": 422
+    },
+    "DecisionNode::incoming_outgoing_edges": {
+      "reason": "Наша модель не хранит узлы решений",
+      "page": 422
+    },
+    "DecisionNode::parameters": {
+      "reason": "Наша модель не хранит узлы решений",
+      "page": 421
+    },
+    "DecisionNode::two_input_parameters": {
+      "reason": "Наша модель не хранит узлы решений",
+      "page": 421
+    },
+    "DecisionNode::zero_input_parameters": {
+      "reason": "Наша модель не хранит узлы решений",
+      "page": 421
+    },
+    "DeploymentSpecification::deployed_elements": {
+      "reason": "Наша модель не хранит спецификации развёртывания",
+      "page": 662
+    },
+    "DeploymentSpecification::deployment_target": {
+      "reason": "Наша модель не хранит спецификации развёртывания",
+      "page": 662
+    },
+    "DestroyObjectAction::multiplicity": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 505
+    },
+    "DestroyObjectAction::no_type": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 505
+    },
+    "DestructionOccurrenceSpecification::no_occurrence_specifications_below": {
+      "reason": "Наша модель не хранит спецификации вхождений",
+      "page": 610
+    },
+    "Duration::no_expr_requires_observation": {
+      "reason": "Наша модель не хранит временные значения",
+      "page": 79
+    },
+    "DurationConstraint::first_event_multiplicity": {
+      "reason": "Требует конструкции, которой нет в нашей модели",
+      "page": 80
+    },
+    "DurationConstraint::has_one_or_two_constrainedElements": {
+      "reason": "Требует конструкции, которой нет в нашей модели",
+      "page": 80
+    },
+    "DurationObservation::first_event_multiplicity": {
+      "reason": "Наша модель не хранит наблюдения за временем",
+      "page": 81
+    },
+    "Element::has_owner": {
+      "reason": "Требует классификации mustBeOwned(), которой у нас нет",
+      "page": 44
+    },
+    "ElementImport::imported_element_is_public": {
+      "reason": "Наша модель не хранит импорт элементов как элементы",
+      "page": 45
+    },
+    "ElementImport::visibility_public_or_private": {
+      "reason": "Наша модель не хранит импорт элементов как элементы",
+      "page": 45
+    },
+    "Enumeration::immutable": {
+      "reason": "У перечисления в нашей модели нет ownedAttribute",
+      "page": 175
+    },
+    "ExceptionHandler::edge_source_target": {
+      "reason": "Наша модель не хранит обработчики исключений",
+      "page": 423
+    },
+    "ExceptionHandler::exception_input_type": {
+      "reason": "Наша модель не хранит обработчики исключений",
+      "page": 423
+    },
+    "ExceptionHandler::handler_body_edges": {
+      "reason": "Наша модель не хранит обработчики исключений",
+      "page": 423
+    },
+    "ExceptionHandler::handler_body_owner": {
+      "reason": "Наша модель не хранит обработчики исключений",
+      "page": 423
+    },
+    "ExceptionHandler::one_input": {
+      "reason": "Наша модель не хранит обработчики исключений",
+      "page": 423
+    },
+    "ExceptionHandler::output_pins": {
+      "reason": "Наша модель не хранит обработчики исключений",
+      "page": 423
+    },
+    "ExecutionSpecification::same_lifeline": {
+      "reason": "Наша модель не хранит спецификации выполнения",
+      "page": 611
+    },
+    "ExpansionNode::region_as_input_or_output": {
+      "reason": "Наша модель не хранит узлы расширения",
+      "page": 506
+    },
+    "Extend::extension_points": {
+      "reason": "Extend не является элементом нашей модели",
+      "page": 648
+    },
+    "Extension::is_binary": {
+      "reason": "Наша модель не хранит расширения (Extension) профилей",
+      "page": 274
+    },
+    "Extension::non_owned_end": {
+      "reason": "Наша модель не хранит расширения (Extension) профилей",
+      "page": 274
+    },
+    "ExtensionEnd::aggregation": {
+      "reason": "Наша модель не хранит расширения (Extension) профилей",
+      "page": 275
+    },
+    "ExtensionEnd::multiplicity": {
+      "reason": "Наша модель не хранит расширения (Extension) профилей",
+      "page": 274
+    },
+    "ExtensionPoint::must_have_name": {
+      "reason": "Требует конструкции, которой нет в нашей модели",
+      "page": 648
+    },
+    "FinalNode::no_outgoing_edges": {
+      "reason": "Наша модель не хранит узлы активностей",
+      "page": 424
+    },
+    "FinalState::cannot_reference_submachine": {
+      "reason": "Наша модель не хранит псевдосостояния (final)",
+      "page": 347
+    },
+    "FinalState::no_entry_behavior": {
+      "reason": "Наша модель не хранит псевдосостояния (final)",
+      "page": 347
+    },
+    "FinalState::no_exit_behavior": {
+      "reason": "Наша модель не хранит псевдосостояния (final)",
+      "page": 346
+    },
+    "FinalState::no_outgoing_transitions": {
+      "reason": "Наша модель не хранит псевдосостояния (final)",
+      "page": 346
+    },
+    "FinalState::no_regions": {
+      "reason": "Наша модель не хранит псевдосостояния (final)",
+      "page": 346
+    },
+    "FinalState::no_state_behavior": {
+      "reason": "Наша модель не хранит псевдосостояния (final)",
+      "page": 347
+    },
+    "ForkNode::edges": {
+      "reason": "Наша модель не хранит узлы активностей",
+      "page": 425
+    },
+    "ForkNode::one_incoming_edge": {
+      "reason": "Наша модель не хранит узлы активностей",
+      "page": 425
+    },
+    "FunctionBehavior::one_output_parameter": {
+      "reason": "Наша модель не хранит поведения как элементы",
+      "page": 298
+    },
+    "FunctionBehavior::types_of_parameters": {
+      "reason": "Наша модель не хранит поведения как элементы",
+      "page": 298
+    },
+    "Gate::actual_gate_distinguishable": {
+      "reason": "Наша модель не хранит гейты",
+      "page": 614
+    },
+    "Gate::actual_gate_matched": {
+      "reason": "Наша модель не хранит гейты",
+      "page": 613
+    },
+    "Gate::formal_gate_distinguishable": {
+      "reason": "Наша модель не хранит гейты",
+      "page": 614
+    },
+    "Gate::inside_cf_gate_distinguishable": {
+      "reason": "Наша модель не хранит гейты",
+      "page": 614
+    },
+    "Gate::inside_cf_matched": {
+      "reason": "Наша модель не хранит гейты",
+      "page": 614
+    },
+    "Gate::outside_cf_gate_distinguishable": {
+      "reason": "Наша модель не хранит гейты",
+      "page": 614
+    },
+    "Gate::outside_cf_matched": {
+      "reason": "Наша модель не хранит гейты",
+      "page": 614
+    },
+    "GeneralOrdering::irreflexive_transitive_closure": {
+      "reason": "Наша модель не хранит общие упорядочения",
+      "page": 615
+    },
+    "GeneralizationSet::generalization_same_classifier": {
+      "reason": "Наша модель не хранит GeneralizationSet",
+      "page": 139
+    },
+    "GeneralizationSet::maps_to_generalization_set": {
+      "reason": "Наша модель не хранит GeneralizationSet",
+      "page": 140
+    },
+    "InformationFlow::convey_classifiers": {
+      "reason": "Информационные потоки не являются элементом нашей модели",
+      "page": 673
+    },
+    "InformationFlow::must_conform": {
+      "reason": "Информационные потоки не являются элементом нашей модели",
+      "page": 673
+    },
+    "InformationFlow::sources_and_targets_kind": {
+      "reason": "Информационные потоки не являются элементом нашей модели",
+      "page": 673
+    },
+    "InformationItem::has_no": {
+      "reason": "Наша модель не хранит информационные элементы",
+      "page": 674
+    },
+    "InformationItem::not_instantiable": {
+      "reason": "Наша модель не хранит информационные элементы",
+      "page": 674
+    },
+    "InformationItem::sources_and_targets": {
+      "reason": "Наша модель не хранит информационные элементы",
+      "page": 674
+    },
+    "InitialNode::control_edges": {
+      "reason": "Наша модель не хранит узлы активностей",
+      "page": 426
+    },
+    "InitialNode::no_incoming_edges": {
+      "reason": "Наша модель не хранит узлы активностей",
+      "page": 425
+    },
+    "InputPin::outgoing_edges_structured_only": {
+      "reason": "Наша модель не хранит пины",
+      "page": 507
+    },
+    "InstanceSpecification::defining_feature": {
+      "reason": "Слоты (slot) не являются элементом нашей модели",
+      "page": 141
+    },
+    "InstanceSpecification::deployment_artifact": {
+      "reason": "Требует развёртывания и слотов",
+      "page": 140
+    },
+    "InstanceSpecification::deployment_target": {
+      "reason": "Требует развёртывания",
+      "page": 141
+    },
+    "InstanceSpecification::structural_feature": {
+      "reason": "Слоты (slot) не являются элементом нашей модели",
+      "page": 140
+    },
+    "Interaction::not_contained": {
+      "reason": "Наша модель не хранит взаимодействия как элементы",
+      "page": 616
+    },
+    "InteractionConstraint::dynamic_variables": {
+      "reason": "Требует конструкции, которой нет в нашей модели",
+      "page": 617
+    },
+    "InteractionConstraint::global_data": {
+      "reason": "Требует конструкции, которой нет в нашей модели",
+      "page": 617
+    },
+    "InteractionConstraint::maxint_greater_equal_minint": {
+      "reason": "Требует конструкции, которой нет в нашей модели",
+      "page": 617
+    },
+    "InteractionConstraint::maxint_positive": {
+      "reason": "Требует конструкции, которой нет в нашей модели",
+      "page": 617
+    },
+    "InteractionConstraint::minint_maxint": {
+      "reason": "Требует конструкции, которой нет в нашей модели",
+      "page": 616
+    },
+    "InteractionConstraint::minint_non_negative": {
+      "reason": "Требует конструкции, которой нет в нашей модели",
+      "page": 616
+    },
+    "InteractionOperand::guard_contain_references": {
+      "reason": "Наша модель не хранит операнды фрагментов",
+      "page": 618
+    },
+    "InteractionOperand::guard_directly_prior": {
+      "reason": "Наша модель не хранит операнды фрагментов",
+      "page": 618
+    },
+    "InteractionUse::all_lifelines": {
+      "reason": "Наша модель не хранит ссылки на взаимодействия",
+      "page": 621
+    },
+    "InteractionUse::arguments_are_constants": {
+      "reason": "Наша модель не хранит ссылки на взаимодействия",
+      "page": 621
+    },
+    "InteractionUse::arguments_correspond_to_parameters": {
+      "reason": "Наша модель не хранит ссылки на взаимодействия",
+      "page": 621
+    },
+    "InteractionUse::gates_match": {
+      "reason": "Наша модель не хранит ссылки на взаимодействия",
+      "page": 621
+    },
+    "InteractionUse::returnValueRecipient_coverage": {
+      "reason": "Наша модель не хранит ссылки на взаимодействия",
+      "page": 621
+    },
+    "InteractionUse::returnValue_type_recipient_correspondence": {
+      "reason": "Наша модель не хранит ссылки на взаимодействия",
+      "page": 621
+    },
+    "InterruptibleActivityRegion::interrupting_edges": {
+      "reason": "Наша модель не хранит прерываемые области",
+      "page": 426
+    },
+    "JoinNode::incoming_object_flow": {
+      "reason": "Наша модель не хранит узлы активностей",
+      "page": 427
+    },
+    "JoinNode::one_outgoing_edge": {
+      "reason": "Наша модель не хранит узлы активностей",
+      "page": 427
+    },
+    "Lifeline::interaction_uses_share_lifeline": {
+      "reason": "Ссылки на взаимодействия не являются элементом нашей модели",
+      "page": 622
+    },
+    "Lifeline::same_classifier": {
+      "reason": "Требует внутренней структуры классификатора",
+      "page": 623
+    },
+    "Lifeline::selector_int_or_string": {
+      "reason": "Селекторы линий жизни не являются элементом нашей модели",
+      "page": 623
+    },
+    "Lifeline::selector_specified": {
+      "reason": "Селекторы линий жизни не являются элементом нашей модели",
+      "page": 622
+    },
+    "LinkAction::not_static": {
+      "reason": "Требует конструкции, которой нет в нашей модели",
+      "page": 508
+    },
+    "LinkAction::same_association": {
+      "reason": "Требует конструкции, которой нет в нашей модели",
+      "page": 508
+    },
+    "LinkAction::same_pins": {
+      "reason": "Требует конструкции, которой нет в нашей модели",
+      "page": 508
+    },
+    "LinkEndCreationData::insertAt_pin": {
+      "reason": "Наша модель не хранит данные концов связей",
+      "page": 509
+    },
+    "LinkEndData::end_object_input_pin": {
+      "reason": "Наша модель не хранит данные концов связей",
+      "page": 510
+    },
+    "LinkEndData::multiplicity": {
+      "reason": "Наша модель не хранит данные концов связей",
+      "page": 510
+    },
+    "LinkEndData::property_is_association_end": {
+      "reason": "Наша модель не хранит данные концов связей",
+      "page": 510
+    },
+    "LinkEndData::qualifiers": {
+      "reason": "Наша модель не хранит данные концов связей",
+      "page": 510
+    },
+    "LinkEndData::same_type": {
+      "reason": "Наша модель не хранит данные концов связей",
+      "page": 510
+    },
+    "LinkEndDestructionData::destroyAt_pin": {
+      "reason": "Наша модель не хранит данные концов связей",
+      "page": 511
+    },
+    "LoopNode::body_output_pins": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 513
+    },
+    "LoopNode::executable_nodes": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 513
+    },
+    "LoopNode::input_edges": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 513
+    },
+    "LoopNode::loop_variable_outgoing": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 514
+    },
+    "LoopNode::matching_loop_variables": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 513
+    },
+    "LoopNode::matching_output_pins": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 513
+    },
+    "LoopNode::matching_result_pins": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 514
+    },
+    "LoopNode::result_no_incoming": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 513
+    },
+    "LoopNode::setup_test_and_body": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 513
+    },
+    "MergeNode::edges": {
+      "reason": "Наша модель не хранит узлы активностей",
+      "page": 427
+    },
+    "MergeNode::one_outgoing_edge": {
+      "reason": "Наша модель не хранит узлы активностей",
+      "page": 427
+    },
+    "Message::arguments": {
+      "reason": "Аргументы сообщений не являются элементом нашей модели",
+      "page": 624
+    },
+    "Message::cannot_cross_boundaries": {
+      "reason": "Требует принадлежности линий жизни операндам фрагментов",
+      "page": 625
+    },
+    "Message::occurrence_specifications": {
+      "reason": "Спецификации вхождений не являются элементом нашей модели",
+      "page": 625
+    },
+    "Message::sending_receiving_message_event": {
+      "reason": "Требует порядка событий во времени выполнения",
+      "page": 624
+    },
+    "Message::signature_is_operation_reply": {
+      "reason": "Сигнатуры сообщений не являются элементом нашей модели",
+      "page": 626
+    },
+    "Message::signature_is_operation_request": {
+      "reason": "Сигнатуры сообщений не являются элементом нашей модели",
+      "page": 626
+    },
+    "Message::signature_is_signal": {
+      "reason": "Сигнатуры сообщений не являются элементом нашей модели",
+      "page": 625
+    },
+    "Message::signature_refer_to": {
+      "reason": "Сигнатуры сообщений не являются элементом нашей модели",
+      "page": 625
+    },
+    "MultiplicityElement::value_specification_constant": {
+      "reason": "Требует анализа выражений — вне статической структуры",
+      "page": 47
+    },
+    "MultiplicityElement::value_specification_no_side_effects": {
+      "reason": "Требует анализа побочных эффектов выражений — вне статической структуры",
+      "page": 47
+    },
+    "NamedElement::has_no_qualified_name": {
+      "reason": "Производный запрос (derived query), а не правило корректности",
+      "page": 50
+    },
+    "NamedElement::has_qualified_name": {
+      "reason": "Производный запрос (derived query), а не правило корректности",
+      "page": 49
+    },
+    "NamedElement::visibility_needs_ownership": {
+      "reason": "Требует различия «владелец-Namespace / не-Namespace», которого у нас нет",
+      "page": 49
+    },
+    "Namespace::cannot_import_ownedMembers": {
+      "reason": "Импорт элементов не является элементом нашей модели",
+      "page": 52
+    },
+    "Namespace::cannot_import_self": {
+      "reason": "Импорт пакетов не является элементом нашей модели",
+      "page": 52
+    },
+    "Node::internal_structure": {
+      "reason": "Требует внутренней структуры узла (parts), которой у нас нет",
+      "page": 665
+    },
+    "ObjectFlow::compatible_types": {
+      "reason": "Узлы объектов не являются элементом нашей модели",
+      "page": 429
+    },
+    "ObjectFlow::input_and_output_parameter": {
+      "reason": "Требует поведений и параметров",
+      "page": 428
+    },
+    "ObjectFlow::is_multicast_or_is_multireceive": {
+      "reason": "Флаги мультивещания не являются элементом нашей модели",
+      "page": 429
+    },
+    "ObjectFlow::no_executable_nodes": {
+      "reason": "Исполняемые узлы не являются элементом нашей модели",
+      "page": 428
+    },
+    "ObjectFlow::same_upper_bounds": {
+      "reason": "Узлы объектов не являются элементом нашей модели",
+      "page": 429
+    },
+    "ObjectFlow::selection_behavior": {
+      "reason": "Требует поведений и узлов объектов",
+      "page": 429
+    },
+    "ObjectFlow::target": {
+      "reason": "Узлы объектов не являются элементом нашей модели",
+      "page": 428
+    },
+    "ObjectFlow::transformation_behavior": {
+      "reason": "Требует поведений и параметров",
+      "page": 428
+    },
+    "ObjectNode::input_output_parameter": {
+      "reason": "Наша модель не хранит узлы объектов",
+      "page": 430
+    },
+    "ObjectNode::object_flow_edges": {
+      "reason": "Наша модель не хранит узлы объектов",
+      "page": 430
+    },
+    "ObjectNode::selection_behavior": {
+      "reason": "Наша модель не хранит узлы объектов",
+      "page": 430
+    },
+    "OpaqueAction::language_body_size": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 514
+    },
+    "OpaqueExpression::language_body_size": {
+      "reason": "Наша модель не хранит выражения как элементы",
+      "page": 88
+    },
+    "OpaqueExpression::one_return_result_parameter": {
+      "reason": "Наша модель не хранит выражения как элементы",
+      "page": 88
+    },
+    "OpaqueExpression::only_in_or_return_parameters": {
+      "reason": "Наша модель не хранит выражения как элементы",
+      "page": 88
+    },
+    "Operation::at_most_one_return": {
+      "reason": "Параметры операций не являются элементом нашей модели",
+      "page": 144
+    },
+    "Operation::only_body_for_query": {
+      "reason": "Параметры и bodyCondition операций не являются элементом нашей модели",
+      "page": 144
+    },
+    "OperationTemplateParameter::match_default_signature": {
+      "reason": "Наша модель не поддерживает шаблоны (templates)",
+      "page": 145
+    },
+    "OutputPin::incoming_edges_structured_only": {
+      "reason": "Наша модель не хранит пины",
+      "page": 515
+    },
+    "PackageImport::public_or_private": {
+      "reason": "Наша модель не хранит импорт пакетов как элементы",
+      "page": 52
+    },
+    "PackageableElement::namespace_needs_visibility": {
+      "reason": "Требует конструкции, которой нет в нашей модели",
+      "page": 53
+    },
+    "Parameter::connector_end": {
+      "reason": "Наша модель не хранит параметры операций",
+      "page": 146
+    },
+    "Parameter::in_and_out": {
+      "reason": "Наша модель не хранит параметры операций",
+      "page": 146
+    },
+    "Parameter::not_exception": {
+      "reason": "Наша модель не хранит параметры операций",
+      "page": 146
+    },
+    "Parameter::object_effect": {
+      "reason": "Наша модель не хранит параметры операций",
+      "page": 146
+    },
+    "Parameter::reentrant_behaviors": {
+      "reason": "Наша модель не хранит параметры операций",
+      "page": 146
+    },
+    "Parameter::stream_and_exception": {
+      "reason": "Наша модель не хранит параметры операций",
+      "page": 146
+    },
+    "ParameterSet::input": {
+      "reason": "Наша модель не хранит наборы параметров",
+      "page": 148
+    },
+    "ParameterSet::same_parameterized_entity": {
+      "reason": "Наша модель не хранит наборы параметров",
+      "page": 148
+    },
+    "ParameterSet::two_parameter_sets": {
+      "reason": "Наша модель не хранит наборы параметров",
+      "page": 148
+    },
+    "PartDecomposition::assume": {
+      "reason": "Наша модель не хранит декомпозиции частей",
+      "page": 630
+    },
+    "PartDecomposition::commutativity_of_decomposition": {
+      "reason": "Наша модель не хранит декомпозиции частей",
+      "page": 630
+    },
+    "PartDecomposition::parts_of_internal_structures": {
+      "reason": "Наша модель не хранит декомпозиции частей",
+      "page": 630
+    },
+    "Pin::control_pins": {
+      "reason": "Наша модель не хранит пины",
+      "page": 515
+    },
+    "Pin::not_unique": {
+      "reason": "Наша модель не хранит пины",
+      "page": 516
+    },
+    "Port::default_value": {
+      "reason": "Наша модель не хранит порты",
+      "page": 232
+    },
+    "Port::encapsulated_owner": {
+      "reason": "Наша модель не хранит порты",
+      "page": 232
+    },
+    "Port::port_aggregation": {
+      "reason": "Наша модель не хранит порты",
+      "page": 232
+    },
+    "Profile::metaclass_reference_not_specialized": {
+      "reason": "Наша модель не хранит профили как контейнеры",
+      "page": 279
+    },
+    "Profile::references_same_metamodel": {
+      "reason": "Наша модель не хранит профили как контейнеры",
+      "page": 279
+    },
+    "Property::binding_to_attribute": {
+      "reason": "Шаблоны не поддерживаются",
+      "page": 152
+    },
+    "Property::deployment_target": {
+      "reason": "Требует развёртывания",
+      "page": 152
+    },
+    "Property::derived_union_is_derived": {
+      "reason": "Свойство union не является элементом нашей модели",
+      "page": 152
+    },
+    "Property::derived_union_is_read_only": {
+      "reason": "Свойство union не является элементом нашей модели",
+      "page": 152
+    },
+    "Property::qualified_is_association_end": {
+      "reason": "Квалификаторы не являются элементом нашей модели",
+      "page": 153
+    },
+    "Property::redefined_property_inherited": {
+      "reason": "Отношение redefines не является элементом нашей модели",
+      "page": 152
+    },
+    "Property::subsetted_property_names": {
+      "reason": "Отношение subsets не является элементом нашей модели",
+      "page": 152
+    },
+    "Property::subsetting_context_conforms": {
+      "reason": "Отношение subsets не является элементом нашей модели",
+      "page": 151
+    },
+    "Property::subsetting_rules": {
+      "reason": "Отношение subsets не является элементом нашей модели",
+      "page": 152
+    },
+    "Property::type_of_opposite_end": {
+      "reason": "Требует различения владельца конца ассоциации (класс или ассоциация)",
+      "page": 152
+    },
+    "ProtocolStateMachine::classifier_context": {
+      "reason": "Наша модель не хранит протокольные машины состояний",
+      "page": 348
+    },
+    "ProtocolStateMachine::deep_or_shallow_history": {
+      "reason": "Наша модель не хранит протокольные машины состояний",
+      "page": 348
+    },
+    "ProtocolStateMachine::entry_exit_do": {
+      "reason": "Наша модель не хранит протокольные машины состояний",
+      "page": 348
+    },
+    "ProtocolStateMachine::protocol_transitions": {
+      "reason": "Наша модель не хранит протокольные машины состояний",
+      "page": 348
+    },
+    "ProtocolTransition::associated_actions": {
+      "reason": "Наша модель не хранит протокольные переходы",
+      "page": 349
+    },
+    "ProtocolTransition::belongs_to_psm": {
+      "reason": "Наша модель не хранит протокольные переходы",
+      "page": 349
+    },
+    "ProtocolTransition::refers_to_operation": {
+      "reason": "Наша модель не хранит протокольные переходы",
+      "page": 349
+    },
+    "Pseudostate::choice_vertex": {
+      "reason": "Наша модель не хранит псевдосостояния (initial, fork, join, choice…)",
+      "page": 350
+    },
+    "Pseudostate::fork_vertex": {
+      "reason": "Наша модель не хранит псевдосостояния (initial, fork, join, choice…)",
+      "page": 351
+    },
+    "Pseudostate::history_vertices": {
+      "reason": "Наша модель не хранит псевдосостояния (initial, fork, join, choice…)",
+      "page": 351
+    },
+    "Pseudostate::initial_vertex": {
+      "reason": "Наша модель не хранит псевдосостояния (initial, fork, join, choice…)",
+      "page": 351
+    },
+    "Pseudostate::join_vertex": {
+      "reason": "Наша модель не хранит псевдосостояния (initial, fork, join, choice…)",
+      "page": 351
+    },
+    "Pseudostate::junction_vertex": {
+      "reason": "Наша модель не хранит псевдосостояния (initial, fork, join, choice…)",
+      "page": 351
+    },
+    "Pseudostate::outgoing_from_initial": {
+      "reason": "Наша модель не хранит псевдосостояния (initial, fork, join, choice…)",
+      "page": 350
+    },
+    "Pseudostate::transitions_incoming": {
+      "reason": "Наша модель не хранит псевдосостояния (initial, fork, join, choice…)",
+      "page": 351
+    },
+    "Pseudostate::transitions_outgoing": {
+      "reason": "Наша модель не хранит псевдосостояния (initial, fork, join, choice…)",
+      "page": 350
+    },
+    "QualifierValue::multiplicity_of_qualifier": {
+      "reason": "Наша модель не хранит квалификаторы",
+      "page": 516
+    },
+    "QualifierValue::qualifier_attribute": {
+      "reason": "Наша модель не хранит квалификаторы",
+      "page": 516
+    },
+    "QualifierValue::type_of_qualifier": {
+      "reason": "Наша модель не хранит квалификаторы",
+      "page": 516
+    },
+    "ReadExtentAction::multiplicity_of_result": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 517
+    },
+    "ReadExtentAction::type_is_classifier": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 517
+    },
+    "ReadIsClassifiedObjectAction::boolean_result": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 518
+    },
+    "ReadIsClassifiedObjectAction::multiplicity_of_input": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 518
+    },
+    "ReadIsClassifiedObjectAction::multiplicity_of_output": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 518
+    },
+    "ReadIsClassifiedObjectAction::no_type": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 518
+    },
+    "ReadLinkAction::compatible_multiplicity": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 519
+    },
+    "ReadLinkAction::navigable_open_end": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 519
+    },
+    "ReadLinkAction::one_open_end": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 519
+    },
+    "ReadLinkAction::type_and_ordering": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 519
+    },
+    "ReadLinkAction::visibility": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 519
+    },
+    "ReadLinkObjectEndAction::association_of_association": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 521
+    },
+    "ReadLinkObjectEndAction::ends_of_association": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 520
+    },
+    "ReadLinkObjectEndAction::multiplicity_of_object": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 520
+    },
+    "ReadLinkObjectEndAction::multiplicity_of_result": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 520
+    },
+    "ReadLinkObjectEndAction::property": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 520
+    },
+    "ReadLinkObjectEndAction::type_of_object": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 521
+    },
+    "ReadLinkObjectEndAction::type_of_result": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 520
+    },
+    "ReadLinkObjectEndQualifierAction::association_of_association": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 521
+    },
+    "ReadLinkObjectEndQualifierAction::ends_of_association": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 522
+    },
+    "ReadLinkObjectEndQualifierAction::multiplicity_of_object": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 521
+    },
+    "ReadLinkObjectEndQualifierAction::multiplicity_of_qualifier": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 521
+    },
+    "ReadLinkObjectEndQualifierAction::multiplicity_of_result": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 522
+    },
+    "ReadLinkObjectEndQualifierAction::qualifier_attribute": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 522
+    },
+    "ReadLinkObjectEndQualifierAction::same_type": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 522
+    },
+    "ReadLinkObjectEndQualifierAction::type_of_object": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 521
+    },
+    "ReadSelfAction::contained": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 522
+    },
+    "ReadSelfAction::multiplicity": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 522
+    },
+    "ReadSelfAction::not_static": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 523
+    },
+    "ReadSelfAction::type": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 522
+    },
+    "ReadStructuralFeatureAction::multiplicity": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 523
+    },
+    "ReadStructuralFeatureAction::type_and_ordering": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 523
+    },
+    "ReadVariableAction::compatible_multiplicity": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 524
+    },
+    "ReadVariableAction::type_and_ordering": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 524
+    },
+    "Reception::same_name_as_signal": {
+      "reason": "Наша модель не хранит приёмники сигналов",
+      "page": 178
+    },
+    "Reception::same_structure_as_signal": {
+      "reason": "Наша модель не хранит приёмники сигналов",
+      "page": 178
+    },
+    "ReclassifyObjectAction::classifier_not_abstract": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 525
+    },
+    "ReclassifyObjectAction::input_pin": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 525
+    },
+    "ReclassifyObjectAction::multiplicity": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 525
+    },
+    "RedefinableElement::non_leaf_redefinition": {
+      "reason": "Наша модель не хранит redefines/redefinable-элементы",
+      "page": 154
+    },
+    "RedefinableElement::redefinition_consistent": {
+      "reason": "Наша модель не хранит redefines/redefinable-элементы",
+      "page": 154
+    },
+    "RedefinableElement::redefinition_context_valid": {
+      "reason": "Наша модель не хранит redefines/redefinable-элементы",
+      "page": 154
+    },
+    "RedefinableTemplateSignature::redefines_parents": {
+      "reason": "Наша модель не поддерживает шаблоны (templates)",
+      "page": 155
+    },
+    "ReduceAction::input_type_is_collection": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 526
+    },
+    "ReduceAction::output_types_are_compatible": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 526
+    },
+    "ReduceAction::reducer_inputs_output": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 525
+    },
+    "Region::deep_history_vertex": {
+      "reason": "Наша модель не хранит регионы",
+      "page": 354
+    },
+    "Region::initial_vertex": {
+      "reason": "Наша модель не хранит регионы",
+      "page": 354
+    },
+    "Region::owned": {
+      "reason": "Наша модель не хранит регионы",
+      "page": 354
+    },
+    "Region::shallow_history_vertex": {
+      "reason": "Наша модель не хранит регионы",
+      "page": 354
+    },
+    "RemoveStructuralFeatureValueAction::removeAt_and_value": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 526
+    },
+    "RemoveVariableValueAction::removeAt_and_value": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 527
+    },
+    "ReplyAction::event_on_reply_to_call_trigger": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 528
+    },
+    "ReplyAction::pins_match_parameter": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 528
+    },
+    "SendObjectAction::type_target_pin": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 529
+    },
+    "SendSignalAction::number_order": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 530
+    },
+    "SendSignalAction::type_ordering_multiplicity": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 529
+    },
+    "SendSignalAction::type_target_pin": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 529
+    },
+    "StartClassifierBehaviorAction::multiplicity": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 531
+    },
+    "StartClassifierBehaviorAction::type_has_classifier": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 531
+    },
+    "StartObjectBehaviorAction::multiplicity_of_object": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 532
+    },
+    "StartObjectBehaviorAction::no_onport": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 532
+    },
+    "StartObjectBehaviorAction::type_of_object": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 532
+    },
+    "State::composite_states": {
+      "reason": "Требует псевдосостояний и регионов",
+      "page": 357
+    },
+    "State::destinations_or_sources_of_transitions": {
+      "reason": "Требует псевдосостояний",
+      "page": 357
+    },
+    "State::entry_or_exit": {
+      "reason": "Псевдосостояния не являются элементом нашей модели",
+      "page": 356
+    },
+    "State::submachine_or_regions": {
+      "reason": "Регионы не являются элементом нашей модели",
+      "page": 357
+    },
+    "State::submachine_states": {
+      "reason": "Подмашины состояний не являются элементом нашей модели",
+      "page": 356
+    },
+    "StateMachine::classifier_context": {
+      "reason": "Наша модель не хранит машину состояний как элемент (только состояния и переходы)",
+      "page": 359
+    },
+    "StateMachine::connection_points": {
+      "reason": "Наша модель не хранит машину состояний как элемент (только состояния и переходы)",
+      "page": 359
+    },
+    "StateMachine::context_classifier": {
+      "reason": "Наша модель не хранит машину состояний как элемент (только состояния и переходы)",
+      "page": 359
+    },
+    "StateMachine::method": {
+      "reason": "Наша модель не хранит машину состояний как элемент (только состояния и переходы)",
+      "page": 359
+    },
+    "Stereotype::associationEndOwnership": {
+      "reason": "Требует различения владельца конца ассоциации",
+      "page": 281
+    },
+    "Stereotype::base_property_multiplicity_multiple_extension": {
+      "reason": "base-свойства расширений не являются элементом нашей модели",
+      "page": 281
+    },
+    "Stereotype::base_property_multiplicity_single_extension": {
+      "reason": "base-свойства расширений не являются элементом нашей модели",
+      "page": 281
+    },
+    "Stereotype::base_property_upper_bound": {
+      "reason": "base-свойства расширений не являются элементом нашей модели",
+      "page": 281
+    },
+    "Stereotype::name_not_clash": {
+      "reason": "Таблицы ключевых слов UML у нас нет",
+      "page": 280
+    },
+    "StringExpression::operands": {
+      "reason": "Наша модель не хранит выражения как элементы",
+      "page": 89
+    },
+    "StringExpression::subexpressions": {
+      "reason": "Наша модель не хранит выражения как элементы",
+      "page": 89
+    },
+    "StructuralFeatureAction::multiplicity": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 532
+    },
+    "StructuralFeatureAction::not_static": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 533
+    },
+    "StructuralFeatureAction::object_type": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 533
+    },
+    "StructuralFeatureAction::one_featuring_classifier": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 533
+    },
+    "StructuralFeatureAction::visibility": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 533
+    },
+    "StructuredActivityNode::edges": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 535
+    },
+    "StructuredActivityNode::input_pin_edges": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 535
+    },
+    "StructuredActivityNode::output_pin_edges": {
+      "reason": "Наша модель не хранит структурированные узлы активностей",
+      "page": 535
+    },
+    "TemplateBinding::one_parameter_substitution": {
+      "reason": "Наша модель не поддерживает шаблоны (templates)",
+      "page": 55
+    },
+    "TemplateBinding::parameter_substitution_formal": {
+      "reason": "Наша модель не поддерживает шаблоны (templates)",
+      "page": 55
+    },
+    "TemplateParameter::must_be_compatible": {
+      "reason": "Наша модель не поддерживает шаблоны (templates)",
+      "page": 56
+    },
+    "TemplateParameterSubstitution::must_be_compatible": {
+      "reason": "Наша модель не поддерживает шаблоны (templates)",
+      "page": 57
+    },
+    "TemplateSignature::own_elements": {
+      "reason": "Наша модель не поддерживает шаблоны (templates)",
+      "page": 58
+    },
+    "TemplateSignature::unique_parameters": {
+      "reason": "Наша модель не поддерживает шаблоны (templates)",
+      "page": 58
+    },
+    "TestIdentityAction::multiplicity": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 536
+    },
+    "TestIdentityAction::no_type": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 536
+    },
+    "TestIdentityAction::result_is_boolean": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 536
+    },
+    "TimeConstraint::has_one_constrainedElement": {
+      "reason": "Наша модель не хранит временные ограничения",
+      "page": 89
+    },
+    "TimeEvent::when_non_negative": {
+      "reason": "Наша модель не хранит события времени",
+      "page": 300
+    },
+    "TimeExpression::no_expr_requires_observation": {
+      "reason": "Наша модель не хранит временные выражения",
+      "page": 90
+    },
+    "Transition::fork_segment_guards": {
+      "reason": "Требует псевдосостояний fork",
+      "page": 362
+    },
+    "Transition::fork_segment_state": {
+      "reason": "Требует псевдосостояний fork",
+      "page": 361
+    },
+    "Transition::initial_transition": {
+      "reason": "Требует псевдосостояний initial",
+      "page": 361
+    },
+    "Transition::join_segment_guards": {
+      "reason": "Требует псевдосостояний join",
+      "page": 361
+    },
+    "Transition::join_segment_state": {
+      "reason": "Требует псевдосостояний join",
+      "page": 361
+    },
+    "Transition::outgoing_pseudostates": {
+      "reason": "Требует псевдосостояний",
+      "page": 361
+    },
+    "Transition::state_is_external": {
+      "reason": "Требует вида перехода (kind) и псевдосостояний",
+      "page": 361
+    },
+    "Transition::state_is_internal": {
+      "reason": "Требует вида перехода (kind = internal)",
+      "page": 361
+    },
+    "Transition::state_is_local": {
+      "reason": "Требует вида перехода (kind = local) и точек входа",
+      "page": 361
+    },
+    "Trigger::trigger_with_ports": {
+      "reason": "Наша модель не хранит триггеры переходов",
+      "page": 300
+    },
+    "UnmarshallAction::multiplicity_of_object": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 537
+    },
+    "UnmarshallAction::number_of_result": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 536
+    },
+    "UnmarshallAction::object_type": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 537
+    },
+    "UnmarshallAction::structural_feature": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 536
+    },
+    "UnmarshallAction::type_ordering_and_multiplicity": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 537
+    },
+    "ValuePin::compatible_type": {
+      "reason": "Наша модель не хранит пины",
+      "page": 537
+    },
+    "ValuePin::no_incoming_edges": {
+      "reason": "Наша модель не хранит пины",
+      "page": 537
+    },
+    "ValueSpecificationAction::compatible_type": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 538
+    },
+    "ValueSpecificationAction::multiplicity": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 538
+    },
+    "VariableAction::scope_of_variable": {
+      "reason": "Наша модель не хранит переменные активностей",
+      "page": 539
+    },
+    "WriteLinkAction::allow_access": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 539
+    },
+    "WriteStructuralFeatureAction::multiplicity_of_result": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 540
+    },
+    "WriteStructuralFeatureAction::multiplicity_of_value": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 540
+    },
+    "WriteStructuralFeatureAction::type_of_result": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 540
+    },
+    "WriteStructuralFeatureAction::type_of_value": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 540
+    },
+    "WriteVariableAction::multiplicity": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 541
+    },
+    "WriteVariableAction::value_type": {
+      "reason": "Наша модель не хранит типизированные действия",
+      "page": 541
+    }
+  }
+}

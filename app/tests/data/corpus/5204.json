@@ -1,0 +1,53 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5204",
+    "figureNo": "5.2.4",
+    "exercise": "5.2.D",
+    "type": "sequence",
+    "diagramName": "Design CreateSchedule Subflow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Уточнённая UML-диаграмма последовательности Design CreateSchedule Subflow",
+    "notes": "Проектная версия подчинённого потока: стереотипы анализа сняты, линиям жизни объектов интерфейсов подсистем добавлен стереотип «interface».",
+    "gaps": [
+      "состав линий жизни и сообщений в тексте не перечислен: упражнение 5.2.D говорит только о снятии стереотипов анализа и о правке сообщений у объектов интерфейсов",
+      "множественная линия жизни не выражается — записана multiObject"
+    ],
+    "gapIds": [
+      "model.multiObject",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "cOff[i]:CourseOffering",
+      "multiObject": true
+    },
+    {
+      "id": "e2",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "opt"
+    },
+    {
+      "id": "e3",
+      "kind": "interactionUse",
+      "name": "Design DisplayCourseOfferings Subflow",
+      "operator": "ref",
+      "refersTo": "Design DisplayCourseOfferings Subflow"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Design CreateSchedule Subflow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

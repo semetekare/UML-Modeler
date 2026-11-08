@@ -1,0 +1,133 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-message-crosses-fragment-ok",
+  "name": "message_cannot_cross_boundaries (без нарушения) — один фрагмент и верхний уровень",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": ":Клиент"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": ":Сервер"
+    },
+    {
+      "id": "e3",
+      "kind": "fragment",
+      "name": "Оплата",
+      "documentation": "Правило «message-crosses-fragment»: UML 2.5.1, п. 17.12.18.7, констрейнт Message::cannot_cross_boundaries: «Сообщения не могут пересекать границы комбинированных фрагментов или их операндов. Это верно тогда и только тогда, когда оба конца сообщения заключены в одном и том же фрагменте взаимодействия (то есть в операнде взаимодействия или во взаимодействии).»\nКонтроль: Сообщение «запрос()» названо в двух операндах ОДНОГО фрагмента: это дубль внутри фрагмента, а не пересечение границы — правило молчит.",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[карта]",
+          "messages": [
+            "r1"
+          ]
+        },
+        {
+          "id": "o2",
+          "guard": "[счёт]",
+          "messages": [
+            "r1"
+          ]
+        }
+      ],
+      "operator": "alt"
+    },
+    {
+      "id": "e4",
+      "kind": "fragment",
+      "name": "Ответ",
+      "operands": [
+        {
+          "id": "o1",
+          "messages": [
+            "r2"
+          ]
+        }
+      ],
+      "operator": "alt"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "запрос()",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "reply",
+      "name": "ответ()",
+      "from": "e2",
+      "to": "e1"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "закрыть()",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "message_cannot_cross_boundaries (без нарушения) — один фрагмент и верхний уровень",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 80,
+          "y": 60,
+          "w": 160,
+          "h": 620
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 360,
+          "y": 60,
+          "w": 160,
+          "h": 620
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 60,
+          "y": 160,
+          "w": 500,
+          "h": 160
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 60,
+          "y": 380,
+          "w": 500,
+          "h": 160
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

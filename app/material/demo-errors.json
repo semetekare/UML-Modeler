@@ -1,0 +1,3448 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-demo-errors",
+  "name": "Демо: все ошибки, которые находит проверка",
+  "elements": [
+    {
+      "id": "c1",
+      "kind": "class",
+      "name": "Заказ",
+      "documentation": "Начало цепочки кратностей: у исходящих ассоциаций испорчены кратности."
+    },
+    {
+      "id": "c2",
+      "kind": "class",
+      "name": "Клиент",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "код",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "код",
+          "type": "string"
+        }
+      ],
+      "documentation": "Два атрибута «код»: члены одного класса неразличимы (7.8.10.7).",
+      "operations": [
+        {
+          "name": "send()"
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "kind": "class",
+      "name": "Счёт"
+    },
+    {
+      "id": "c4",
+      "kind": "class",
+      "name": "Платёж"
+    },
+    {
+      "id": "c5",
+      "kind": "class",
+      "name": "Доставка"
+    },
+    {
+      "id": "c6",
+      "kind": "class",
+      "name": "Сборка",
+      "documentation": "Композиция с кратностью «*» на конце с ромбом: у композита верхняя граница не больше 1."
+    },
+    {
+      "id": "c7",
+      "kind": "class",
+      "name": "Деталь"
+    },
+    {
+      "id": "c8",
+      "kind": "class",
+      "name": "Узел",
+      "documentation": "Агрегация стоит на обоих концах ассоциации: у ассоциации должен быть конец без агрегации."
+    },
+    {
+      "id": "c9",
+      "kind": "class",
+      "name": "Связь"
+    },
+    {
+      "id": "c10",
+      "kind": "usecase",
+      "name": "Оплатить заказ",
+      "documentation": "Вариант использования обобщает класс «Операция»: виды несовместимы."
+    },
+    {
+      "id": "c11",
+      "kind": "class",
+      "name": "Операция"
+    },
+    {
+      "id": "c12",
+      "kind": "class",
+      "name": "Цикл A",
+      "documentation": "Цикл обобщения: A → B → C → A."
+    },
+    {
+      "id": "c13",
+      "kind": "class",
+      "name": "Цикл B"
+    },
+    {
+      "id": "c14",
+      "kind": "class",
+      "name": "Цикл C"
+    },
+    {
+      "id": "c15",
+      "kind": "stereotype",
+      "name": "Сущность",
+      "documentation": "Стереотип обобщает класс «Запись», а может обобщать только стереотип."
+    },
+    {
+      "id": "c16",
+      "kind": "class",
+      "name": "Запись"
+    },
+    {
+      "id": "c17",
+      "kind": "interface",
+      "name": "Оплата",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "ключ",
+          "type": "string"
+        }
+      ],
+      "documentation": "Атрибут интерфейса «ключ» объявлен private: у интерфейса все члены public."
+    },
+    {
+      "id": "c18",
+      "kind": "class",
+      "name": "Карта"
+    },
+    {
+      "id": "u1",
+      "kind": "actor",
+      "name": "",
+      "documentation": "У актёра пустое имя; он же связан с интерфейсом, а не с вариантом использования."
+    },
+    {
+      "id": "u2",
+      "kind": "usecase",
+      "name": "Оформить заказ"
+    },
+    {
+      "id": "u3",
+      "kind": "usecase",
+      "name": "",
+      "documentation": "У варианта использования пустое имя."
+    },
+    {
+      "id": "u4",
+      "kind": "usecase",
+      "name": "Оплатить",
+      "documentation": "Цикл include: «Оплатить» → «Зарезервировать товар» → «Уведомить клиента» → «Оплатить»."
+    },
+    {
+      "id": "u5",
+      "kind": "usecase",
+      "name": "Зарезервировать товар"
+    },
+    {
+      "id": "u6",
+      "kind": "usecase",
+      "name": "Уведомить клиента"
+    },
+    {
+      "id": "ui",
+      "kind": "interface",
+      "name": "Платёжный шлюз",
+      "documentation": "Актёр связан ассоциацией с интерфейсом — недопустимая цель ассоциации актёра."
+    },
+    {
+      "id": "L1",
+      "kind": "lifeline",
+      "name": ":Клиент",
+      "represents": "c2"
+    },
+    {
+      "id": "L2",
+      "kind": "lifeline",
+      "name": ":Сервер",
+      "represents": "c1"
+    },
+    {
+      "id": "L3",
+      "kind": "lifeline",
+      "name": ":База данных"
+    },
+    {
+      "id": "L4",
+      "kind": "lifeline",
+      "name": ":Сервис заказов",
+      "represents": "p-pkg"
+    },
+    {
+      "id": "floop",
+      "kind": "fragment",
+      "name": "Проверка оплаты",
+      "operator": "loop",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[каждая попытка]",
+          "messages": [
+            "r-msg1",
+            "p-msg6"
+          ]
+        },
+        {
+          "id": "o2",
+          "guard": "[ошибка]",
+          "messages": [
+            "r-msg2"
+          ]
+        }
+      ],
+      "documentation": "У loop два операнда, а стандарт требует ровно один (17.12.3.7)."
+    },
+    {
+      "id": "falt",
+      "kind": "fragment",
+      "name": "Оплата заказа",
+      "operator": "alt",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[карта]",
+          "messages": [
+            "r-msg3",
+            "p-msg6"
+          ]
+        },
+        {
+          "id": "o2",
+          "guard": "[счёт]",
+          "messages": [
+            "r-msg4"
+          ]
+        }
+      ],
+      "documentation": "Объемлющий alt покрывает три линии жизни: «Клиент», «Сервер» и «База данных»."
+    },
+    {
+      "id": "fbreak",
+      "kind": "fragment",
+      "name": "Ошибка оплаты",
+      "operator": "break",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[отказ]",
+          "messages": [
+            "r-msg5"
+          ]
+        }
+      ],
+      "ownerId": "falt",
+      "documentation": "break внутри alt покрывает только «Клиента» и «Сервер», а объемлющий alt — ещё и «Базу данных»."
+    },
+    {
+      "id": "a1",
+      "kind": "action",
+      "name": "Принять заказ"
+    },
+    {
+      "id": "a2",
+      "kind": "action",
+      "name": "Проверить склад"
+    },
+    {
+      "id": "a3",
+      "kind": "action",
+      "name": "Выставить счёт"
+    },
+    {
+      "id": "a4",
+      "kind": "action",
+      "name": "Зарезервировать товар"
+    },
+    {
+      "id": "a5",
+      "kind": "action",
+      "name": "Согласовать скидку"
+    },
+    {
+      "id": "a6",
+      "kind": "action",
+      "name": "Проверить оплату"
+    },
+    {
+      "id": "a7",
+      "kind": "action",
+      "name": "Отгрузить"
+    },
+    {
+      "id": "a8",
+      "kind": "action",
+      "name": "Закрыть заказ"
+    },
+    {
+      "id": "a9",
+      "kind": "action",
+      "name": "Сформировать накладную"
+    },
+    {
+      "id": "a10",
+      "kind": "action",
+      "name": "Отправить клиенту"
+    },
+    {
+      "id": "o1",
+      "kind": "objectNode",
+      "name": "Заказ"
+    },
+    {
+      "id": "f1",
+      "kind": "fork",
+      "name": "",
+      "documentation": "У разделения два входящих потока управления."
+    },
+    {
+      "id": "f2",
+      "kind": "fork",
+      "name": "",
+      "documentation": "Разделение смешивает поток управления и поток объектов."
+    },
+    {
+      "id": "j1",
+      "kind": "join",
+      "name": "",
+      "documentation": "У объединения два исходящих потока управления."
+    },
+    {
+      "id": "j2",
+      "kind": "join",
+      "name": "",
+      "documentation": "На входе объединения поток объектов, на выходе — поток управления."
+    },
+    {
+      "id": "m1",
+      "kind": "merge",
+      "name": "",
+      "documentation": "У слияния два исходящих потока управления."
+    },
+    {
+      "id": "m2",
+      "kind": "merge",
+      "name": "",
+      "documentation": "Слияние смешивает поток управления и поток объектов."
+    },
+    {
+      "id": "dec",
+      "kind": "decision",
+      "name": "",
+      "documentation": "У решения три входящих ребра."
+    },
+    {
+      "id": "afin",
+      "kind": "final",
+      "name": "",
+      "documentation": "У конечного узла деятельности есть исходящий поток управления."
+    },
+    {
+      "id": "si",
+      "kind": "initial",
+      "name": ""
+    },
+    {
+      "id": "s1",
+      "kind": "state",
+      "name": "Обрабатывается"
+    },
+    {
+      "id": "s2",
+      "kind": "state",
+      "name": "Завершён"
+    },
+    {
+      "id": "ch",
+      "kind": "choice",
+      "name": ""
+    },
+    {
+      "id": "ju",
+      "kind": "junction",
+      "name": ""
+    },
+    {
+      "id": "fk",
+      "kind": "fork",
+      "name": "",
+      "documentation": "У разделения один входящий и один исходящий переход: нужно не меньше двух исходящих."
+    },
+    {
+      "id": "jn",
+      "kind": "join",
+      "name": "",
+      "documentation": "У объединения один входящий и один исходящий переход: нужно не меньше двух входящих."
+    },
+    {
+      "id": "hi",
+      "kind": "historyShallow",
+      "name": "",
+      "documentation": "У истории два исходящих перехода, а допускается не больше одного."
+    },
+    {
+      "id": "sfin",
+      "kind": "final",
+      "name": "",
+      "documentation": "Из конечного состояния выходит переход."
+    },
+    {
+      "id": "p1",
+      "kind": "class",
+      "name": "Забытый класс",
+      "documentation": "Ни одной связи в модели: сирота."
+    },
+    {
+      "id": "p2",
+      "kind": "class",
+      "name": "Показан на листе",
+      "documentation": "Связь с «Класс вне листов» есть в модели, но на листе не нарисована."
+    },
+    {
+      "id": "p3",
+      "kind": "class",
+      "name": "Класс вне листов",
+      "documentation": "Есть в модели, но ни на одном листе."
+    },
+    {
+      "id": "p4",
+      "kind": "class",
+      "name": "Дубль"
+    },
+    {
+      "id": "p5",
+      "kind": "class",
+      "name": "Оригинал"
+    },
+    {
+      "id": "p6",
+      "kind": "class",
+      "name": "",
+      "documentation": "Пустое имя у класса."
+    },
+    {
+      "id": "p7",
+      "kind": "class",
+      "name": "Сосед"
+    },
+    {
+      "id": "u7",
+      "kind": "actor",
+      "name": "Гость",
+      "documentation": "Связан только обобщением с другим актёром: ни одной ассоциации, то есть ни одного варианта использования."
+    },
+    {
+      "id": "u8",
+      "kind": "usecase",
+      "name": "Войти в систему",
+      "documentation": "Два основных действующих лица — «Студент» и «Преподаватель»; основное должно быть одно."
+    },
+    {
+      "id": "u9",
+      "kind": "actor",
+      "name": "Студент"
+    },
+    {
+      "id": "u10",
+      "kind": "actor",
+      "name": "Преподаватель"
+    },
+    {
+      "id": "p-pkg",
+      "kind": "package",
+      "name": "Подсистема заказов",
+      "documentation": "Порт «приёмЗаказа» лежит в пакете. Порт принадлежит инкапсулированному классификатору (11.8.14.7): пакет им не является."
+    },
+    {
+      "id": "p-port",
+      "kind": "port",
+      "name": "приёмЗаказа",
+      "ownerId": "p-pkg"
+    },
+    {
+      "id": "p-comp",
+      "kind": "component",
+      "name": "Оплата",
+      "ownerId": "c1",
+      "documentation": "Компонент «Оплата» вложен в класс «Заказ» и содержит заметку. Компонент внутри класса не имеет упаковываемых элементов (11.8.6.7)."
+    },
+    {
+      "id": "p-note",
+      "kind": "note",
+      "name": "Заметка",
+      "ownerId": "p-comp",
+      "note": "Это и есть упаковываемый элемент внутри компонента."
+    },
+    {
+      "id": "p-ap",
+      "kind": "activityParameter",
+      "name": "заказ",
+      "documentation": "У узла параметра «заказ» есть и входящий, и исходящий поток. Узел параметра — вход или выход деятельности, сквозного прохода через него нет (15.7.6.5)."
+    },
+    {
+      "id": "p-s0",
+      "kind": "state",
+      "name": "Ожидание"
+    },
+    {
+      "id": "p-fork",
+      "kind": "fork",
+      "name": ""
+    },
+    {
+      "id": "p-s1",
+      "kind": "state",
+      "name": "Оплачен"
+    },
+    {
+      "id": "p-act",
+      "kind": "action",
+      "name": "Отгрузить",
+      "documentation": "Из разделения «p-fork» переход ведёт в действие «Отгрузить». Сегмент разделения машины состояний всегда ведёт в состояние (14.5.11.8)."
+    },
+    {
+      "id": "p-join",
+      "kind": "join",
+      "name": ""
+    },
+    {
+      "id": "p-act2",
+      "kind": "action",
+      "name": "Уведомить",
+      "documentation": "В объединение «p-join» переход приходит из действия «Уведомить». Сегмент объединения исходит из состояния (14.5.11.8)."
+    },
+    {
+      "id": "p-s2",
+      "kind": "state",
+      "name": "Закрыт"
+    },
+    {
+      "id": "p-ds-node",
+      "kind": "deploymentSpec",
+      "name": "Конфигурация узла",
+      "documentation": "Спецификация развёрнута на узле «Сервер», а её цель — среда выполнения (19.5.5.6)."
+    },
+    {
+      "id": "p-node",
+      "kind": "node",
+      "name": "Сервер"
+    },
+    {
+      "id": "p-ds-env",
+      "kind": "deploymentSpec",
+      "name": "Конфигурация среды"
+    },
+    {
+      "id": "p-ee",
+      "kind": "executionEnvironment",
+      "name": "Среда приложений"
+    },
+    {
+      "id": "p-log",
+      "kind": "artifact",
+      "name": "журнал.log",
+      "documentation": "Артефакт «журнал.log» развёрнут на той же цели, что спецификация развёртывания. Рядом с ней разворачивают компоненты (19.5.5.6)."
+    },
+    {
+      "id": "p-svc",
+      "kind": "component",
+      "name": "Сервис заказов"
+    },
+    {
+      "id": "p-obj",
+      "kind": "object",
+      "name": ":Заказ",
+      "classifierId": "c1",
+      "documentation": "Экземпляр «:Заказ» развёрнут на узле «app-сервер», но представляет экземпляр класса, а не артефакта (9.9.9.6)."
+    },
+    {
+      "id": "p-node2",
+      "kind": "node",
+      "name": "app-сервер"
+    },
+    {
+      "id": "p-c-order",
+      "kind": "class",
+      "name": "Заказ",
+      "attributes": [
+        {
+          "vis": "public",
+          "name": "номер",
+          "type": "string"
+        },
+        {
+          "vis": "public",
+          "name": "сумма",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "id": "p-obj-dup",
+      "kind": "object",
+      "name": ":Заказ",
+      "classifierId": "p-c-order",
+      "slots": [
+        {
+          "vis": "public",
+          "name": "номер",
+          "default": "1042"
+        },
+        {
+          "vis": "public",
+          "name": "номер",
+          "default": "1043"
+        }
+      ],
+      "documentation": "У объекта два слота «номер». Характеристика заполняется один к одному (9.9.9.6)."
+    },
+    {
+      "id": "p-obj-bad",
+      "kind": "object",
+      "name": ":Заказ",
+      "classifierId": "p-c-order",
+      "slots": [
+        {
+          "vis": "public",
+          "name": "скидка",
+          "default": "10"
+        }
+      ],
+      "documentation": "Слот «скидка» называет характеристику, которой у класса «Заказ» нет: объявлены только «номер» и «сумма» (9.9.9.6)."
+    },
+    {
+      "id": "p-int-init",
+      "kind": "initial",
+      "name": ""
+    },
+    {
+      "id": "p-int-outer",
+      "kind": "interaction",
+      "name": "Оформление заказа"
+    },
+    {
+      "id": "p-int-inner",
+      "kind": "interaction",
+      "name": "Оплата",
+      "ownerId": "p-int-outer",
+      "documentation": "Взаимодействие «Оплата» вложено в «Оформление заказа». Взаимодействие — самостоятельный сценарий; сослаться на него можно ссылкой на взаимодействие (17.12.11.5)."
+    },
+    {
+      "id": "p-fin",
+      "kind": "final",
+      "name": "",
+      "documentation": "Конечное состояние с полями. У конечного состояния не бывает регионов (14.5.2.5), текста входа, текста выхода и текста do: в него не входят, из него не выходят, «пока в состоянии» у него нет.",
+      "regions": [
+        {
+          "id": "g-fin",
+          "name": "Внутренняя область"
+        }
+      ],
+      "entry": [
+        "Отметить закрытие"
+      ],
+      "exit": [
+        "Снять блокировку"
+      ],
+      "do": [
+        "Ожидание"
+      ]
+    },
+    {
+      "id": "p-own-a",
+      "kind": "state",
+      "name": "Состояние A",
+      "documentation": "Владение замкнуто в кольцо: «Состояние A» лежит в области «Состояния B», а «Состояние B» — в области «Состояния A» (7.8.6.6). Владение здесь через членство в регионе, а не через ownerId.",
+      "regions": [
+        {
+          "id": "g-own-a",
+          "name": "Область A",
+          "states": [
+            "p-own-b"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-own-b",
+      "kind": "state",
+      "name": "Состояние B",
+      "regions": [
+        {
+          "id": "g-own-b",
+          "name": "Область B",
+          "states": [
+            "p-own-a"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p-cn-comp",
+      "kind": "component",
+      "name": "Компонент с классом",
+      "ownerId": "c3",
+      "documentation": "Компонент внутри класса «Смета» содержит собственный класс: у компонента, вложенного в класс, классификаторов быть не может (11.8.6.7)."
+    },
+    {
+      "id": "p-cn-inner",
+      "kind": "class",
+      "name": "Вложенный класс",
+      "ownerId": "p-cn-comp"
+    },
+    {
+      "id": "p-obj-kind",
+      "kind": "object",
+      "name": ":Заказ",
+      "classifierId": "p-pkg",
+      "documentation": "object-classifier-kind: классификатор объекта — пакет «Подсистема заказов». Пакет не тип: экземпляров у него не бывает, и слоты объекта сверять не с чем."
+    },
+    {
+      "id": "p-beh",
+      "kind": "action",
+      "name": "Оформить возврат",
+      "behaviorRef": "a1",
+      "documentation": "action-behavior-is-activity: действие «вызывает» действие «Принять заказ». Ссылка «вызывает» обещает деятельность с собственным графом, а не соседнее действие."
+    },
+    {
+      "id": "p-lane",
+      "kind": "swimlane",
+      "name": "Студент",
+      "represents": "p-pkg",
+      "documentation": "swimlane-represents-kind: дорожка «Студент» представляет пакет «Подсистема заказов». Дорожка отвечает на вопрос «кто исполняет действия», а пакет — не участник."
+    },
+    {
+      "id": "p-iu",
+      "kind": "interactionUse",
+      "name": "Оплата",
+      "operator": "ref",
+      "refersTo": "d1",
+      "documentation": "interaction-use-refers-kind: ссылка на взаимодействие ведёт на лист классов «Классы: кратности, обобщения, интерфейс». Подробностей сценария там нет."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r-mult1",
+      "kind": "association",
+      "from": "c1",
+      "to": "c2",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "3..1",
+      "fromRole": "заказы",
+      "toRole": "клиент"
+    },
+    {
+      "id": "r-mult2",
+      "kind": "association",
+      "from": "c2",
+      "to": "c3",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "-1..5",
+      "fromRole": "клиент",
+      "toRole": "счета"
+    },
+    {
+      "id": "r-mult3",
+      "kind": "association",
+      "from": "c3",
+      "to": "c4",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "1.5..2",
+      "fromRole": "счёт",
+      "toRole": "платежи"
+    },
+    {
+      "id": "r-mult4",
+      "kind": "association",
+      "from": "c4",
+      "to": "c5",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "1..1.5",
+      "fromRole": "платёж",
+      "toRole": "доставки"
+    },
+    {
+      "id": "r-comp",
+      "kind": "composition",
+      "from": "c6",
+      "to": "c7",
+      "fromMultiplicity": "*",
+      "toMultiplicity": "1",
+      "fromRole": "детали",
+      "toRole": "сборка"
+    },
+    {
+      "id": "r-agg",
+      "kind": "association",
+      "from": "c8",
+      "to": "c9",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "1",
+      "fromAggregation": "shared",
+      "toAggregation": "composite",
+      "fromRole": "узлы",
+      "toRole": "связи"
+    },
+    {
+      "id": "r-gen-kind",
+      "kind": "generalization",
+      "from": "c10",
+      "to": "c11"
+    },
+    {
+      "id": "r-cyc1",
+      "kind": "generalization",
+      "from": "c12",
+      "to": "c13"
+    },
+    {
+      "id": "r-cyc2",
+      "kind": "generalization",
+      "from": "c13",
+      "to": "c14"
+    },
+    {
+      "id": "r-cyc3",
+      "kind": "generalization",
+      "from": "c14",
+      "to": "c12"
+    },
+    {
+      "id": "r-stereo",
+      "kind": "generalization",
+      "from": "c15",
+      "to": "c16"
+    },
+    {
+      "id": "r-real",
+      "kind": "realization",
+      "from": "c18",
+      "to": "c17"
+    },
+    {
+      "id": "r-actor-usecase",
+      "kind": "association",
+      "from": "u1",
+      "to": "u2"
+    },
+    {
+      "id": "r-usecase-usecase",
+      "kind": "association",
+      "from": "u2",
+      "to": "u3"
+    },
+    {
+      "id": "r-actor-iface",
+      "kind": "association",
+      "from": "u1",
+      "to": "ui"
+    },
+    {
+      "id": "r-inc1",
+      "kind": "include",
+      "from": "u4",
+      "to": "u5"
+    },
+    {
+      "id": "r-inc2",
+      "kind": "include",
+      "from": "u5",
+      "to": "u6"
+    },
+    {
+      "id": "r-inc3",
+      "kind": "include",
+      "from": "u6",
+      "to": "u4"
+    },
+    {
+      "id": "r-msg1",
+      "kind": "message",
+      "from": "L1",
+      "to": "L2",
+      "name": "запрос()"
+    },
+    {
+      "id": "r-msg2",
+      "kind": "message",
+      "from": "L2",
+      "to": "L3",
+      "name": "чтение()"
+    },
+    {
+      "id": "r-msg3",
+      "kind": "message",
+      "from": "L2",
+      "to": "L3",
+      "name": "запись()"
+    },
+    {
+      "id": "r-msg4",
+      "kind": "reply",
+      "from": "L1",
+      "to": "L2",
+      "name": "ответ()"
+    },
+    {
+      "id": "r-msg5",
+      "kind": "message",
+      "from": "L2",
+      "to": "L1",
+      "name": "ошибка()"
+    },
+    {
+      "id": "r-msg7",
+      "kind": "message",
+      "name": "удалить()",
+      "from": "L4",
+      "to": "L1",
+      "signature": "deleteOrder(id: int)"
+    },
+    {
+      "id": "r-f1a",
+      "kind": "controlFlow",
+      "from": "a1",
+      "to": "f1"
+    },
+    {
+      "id": "r-f1b",
+      "kind": "controlFlow",
+      "from": "a2",
+      "to": "f1"
+    },
+    {
+      "id": "r-f1c",
+      "kind": "controlFlow",
+      "from": "f1",
+      "to": "a3"
+    },
+    {
+      "id": "r-f1d",
+      "kind": "controlFlow",
+      "from": "f1",
+      "to": "a4"
+    },
+    {
+      "id": "r-f2a",
+      "kind": "controlFlow",
+      "from": "a3",
+      "to": "f2"
+    },
+    {
+      "id": "r-f2b",
+      "kind": "controlFlow",
+      "from": "f2",
+      "to": "a4"
+    },
+    {
+      "id": "r-f2c",
+      "kind": "objectFlow",
+      "from": "f2",
+      "to": "o1"
+    },
+    {
+      "id": "r-j1a",
+      "kind": "controlFlow",
+      "from": "a3",
+      "to": "j1"
+    },
+    {
+      "id": "r-j1b",
+      "kind": "controlFlow",
+      "from": "a4",
+      "to": "j1"
+    },
+    {
+      "id": "r-j1c",
+      "kind": "controlFlow",
+      "from": "j1",
+      "to": "a1"
+    },
+    {
+      "id": "r-j1d",
+      "kind": "controlFlow",
+      "from": "j1",
+      "to": "a2"
+    },
+    {
+      "id": "r-j2a",
+      "kind": "objectFlow",
+      "from": "o1",
+      "to": "j2"
+    },
+    {
+      "id": "r-j2b",
+      "kind": "controlFlow",
+      "from": "j2",
+      "to": "a5"
+    },
+    {
+      "id": "r-m1a",
+      "kind": "controlFlow",
+      "from": "a5",
+      "to": "m1"
+    },
+    {
+      "id": "r-m1b",
+      "kind": "controlFlow",
+      "from": "a6",
+      "to": "m1"
+    },
+    {
+      "id": "r-m1c",
+      "kind": "controlFlow",
+      "from": "m1",
+      "to": "a7"
+    },
+    {
+      "id": "r-m1d",
+      "kind": "controlFlow",
+      "from": "m1",
+      "to": "a8"
+    },
+    {
+      "id": "r-m2a",
+      "kind": "controlFlow",
+      "from": "a7",
+      "to": "m2"
+    },
+    {
+      "id": "r-m2b",
+      "kind": "controlFlow",
+      "from": "a8",
+      "to": "m2"
+    },
+    {
+      "id": "r-m2c",
+      "kind": "objectFlow",
+      "from": "m2",
+      "to": "o1"
+    },
+    {
+      "id": "r-da",
+      "kind": "controlFlow",
+      "from": "a5",
+      "to": "dec"
+    },
+    {
+      "id": "r-db",
+      "kind": "controlFlow",
+      "from": "a6",
+      "to": "dec"
+    },
+    {
+      "id": "r-dc",
+      "kind": "controlFlow",
+      "from": "a7",
+      "to": "dec"
+    },
+    {
+      "id": "r-dd",
+      "kind": "controlFlow",
+      "from": "dec",
+      "to": "a8"
+    },
+    {
+      "id": "r-fina",
+      "kind": "controlFlow",
+      "from": "a8",
+      "to": "afin"
+    },
+    {
+      "id": "r-finb",
+      "kind": "controlFlow",
+      "from": "afin",
+      "to": "a9"
+    },
+    {
+      "id": "r-of",
+      "kind": "objectFlow",
+      "from": "a9",
+      "to": "a10"
+    },
+    {
+      "id": "r-t1",
+      "kind": "transition",
+      "from": "si",
+      "to": "s1"
+    },
+    {
+      "id": "r-t2",
+      "kind": "transition",
+      "from": "si",
+      "to": "s2"
+    },
+    {
+      "id": "r-t3",
+      "kind": "transition",
+      "from": "s1",
+      "to": "ch"
+    },
+    {
+      "id": "r-t4",
+      "kind": "transition",
+      "from": "s2",
+      "to": "ju"
+    },
+    {
+      "id": "r-t5",
+      "kind": "transition",
+      "from": "s1",
+      "to": "fk"
+    },
+    {
+      "id": "r-t6",
+      "kind": "transition",
+      "from": "fk",
+      "to": "s2"
+    },
+    {
+      "id": "r-t7",
+      "kind": "transition",
+      "from": "s2",
+      "to": "jn"
+    },
+    {
+      "id": "r-t8",
+      "kind": "transition",
+      "from": "jn",
+      "to": "s1"
+    },
+    {
+      "id": "r-t9",
+      "kind": "transition",
+      "from": "hi",
+      "to": "s1"
+    },
+    {
+      "id": "r-t10",
+      "kind": "transition",
+      "from": "hi",
+      "to": "s2"
+    },
+    {
+      "id": "r-t11",
+      "kind": "transition",
+      "from": "s2",
+      "to": "sfin"
+    },
+    {
+      "id": "r-t12",
+      "kind": "transition",
+      "from": "sfin",
+      "to": "s1"
+    },
+    {
+      "id": "r-p2",
+      "kind": "association",
+      "from": "p2",
+      "to": "p3",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "1"
+    },
+    {
+      "id": "r-dup1",
+      "kind": "association",
+      "from": "p4",
+      "to": "p5",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "1",
+      "fromRole": "дубль",
+      "toRole": "оригинал"
+    },
+    {
+      "id": "r-dup2",
+      "kind": "association",
+      "from": "p4",
+      "to": "p5",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "1",
+      "fromRole": "дубль",
+      "toRole": "оригинал"
+    },
+    {
+      "id": "r-p6",
+      "kind": "association",
+      "from": "p6",
+      "to": "p7",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "1"
+    },
+    {
+      "id": "r-actor-guest",
+      "kind": "generalization",
+      "from": "u7",
+      "to": "u1"
+    },
+    {
+      "id": "r-pa1",
+      "kind": "association",
+      "from": "u9",
+      "to": "u8",
+      "navigable": "from"
+    },
+    {
+      "id": "r-pa2",
+      "kind": "association",
+      "from": "u10",
+      "to": "u8",
+      "navigable": "from"
+    },
+    {
+      "id": "p-r-dep",
+      "kind": "dependency",
+      "from": "p-comp",
+      "to": "c2"
+    },
+    {
+      "id": "p-r-ap-in",
+      "kind": "controlFlow",
+      "from": "a1",
+      "to": "p-ap"
+    },
+    {
+      "id": "p-r-ap-out",
+      "kind": "controlFlow",
+      "from": "p-ap",
+      "to": "a2"
+    },
+    {
+      "id": "p-t1",
+      "kind": "transition",
+      "from": "p-s0",
+      "to": "p-fork"
+    },
+    {
+      "id": "p-t2",
+      "kind": "transition",
+      "from": "p-fork",
+      "to": "p-s1"
+    },
+    {
+      "id": "p-t3",
+      "kind": "transition",
+      "from": "p-fork",
+      "to": "p-act"
+    },
+    {
+      "id": "p-t4",
+      "kind": "transition",
+      "from": "p-s1",
+      "to": "p-join"
+    },
+    {
+      "id": "p-t5",
+      "kind": "transition",
+      "from": "p-act2",
+      "to": "p-join"
+    },
+    {
+      "id": "p-t6",
+      "kind": "transition",
+      "from": "p-join",
+      "to": "p-s2"
+    },
+    {
+      "id": "p-msg6",
+      "kind": "message",
+      "name": "запрос статуса()",
+      "from": "L1",
+      "to": "L3",
+      "documentation": "Сообщение «запрос статуса()» названо в операндах двух разных фрагментов — «loop» и «alt». Сообщение не может пересекать границу фрагмента (17.12.18.7)."
+    },
+    {
+      "id": "p-dep1",
+      "kind": "deployment",
+      "from": "p-ds-node",
+      "to": "p-node"
+    },
+    {
+      "id": "p-dep2",
+      "kind": "deployment",
+      "from": "p-ds-env",
+      "to": "p-ee"
+    },
+    {
+      "id": "p-dep3",
+      "kind": "deployment",
+      "from": "p-log",
+      "to": "p-ee"
+    },
+    {
+      "id": "p-dep4",
+      "kind": "deployment",
+      "from": "p-svc",
+      "to": "p-ee"
+    },
+    {
+      "id": "p-dep5",
+      "kind": "deployment",
+      "from": "p-obj",
+      "to": "p-node2"
+    },
+    {
+      "id": "p-link1",
+      "kind": "link",
+      "from": "p-obj-dup",
+      "to": "p-c-order"
+    },
+    {
+      "id": "p-link2",
+      "kind": "link",
+      "from": "p-obj-bad",
+      "to": "p-c-order"
+    },
+    {
+      "id": "p-int-flow1",
+      "kind": "controlFlow",
+      "from": "p-int-init",
+      "to": "p-int-outer"
+    },
+    {
+      "id": "p-int-flow2",
+      "kind": "controlFlow",
+      "from": "p-int-outer",
+      "to": "p-int-inner"
+    },
+    {
+      "id": "p-own-t",
+      "kind": "transition",
+      "from": "p-own-a",
+      "to": "p-own-b"
+    },
+    {
+      "id": "p-fin-t",
+      "kind": "transition",
+      "from": "p-own-b",
+      "to": "p-fin"
+    },
+    {
+      "id": "p-cn-dep",
+      "kind": "dependency",
+      "from": "p-cn-comp",
+      "to": "c3"
+    },
+    {
+      "id": "p-cn-assoc",
+      "kind": "association",
+      "from": "p-cn-inner",
+      "to": "c4"
+    },
+    {
+      "id": "p-r-obj-kind",
+      "kind": "association",
+      "from": "c1",
+      "to": "p-obj-kind"
+    },
+    {
+      "id": "p-r-beh",
+      "kind": "controlFlow",
+      "from": "a10",
+      "to": "p-beh"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Классы: кратности, обобщения, интерфейс",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "d1-c1",
+          "elementId": "c1",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "d1-c2",
+          "elementId": "c2",
+          "x": 320,
+          "y": 60,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "d1-c3",
+          "elementId": "c3",
+          "x": 580,
+          "y": 60,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "d1-c4",
+          "elementId": "c4",
+          "x": 840,
+          "y": 60,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "d1-c5",
+          "elementId": "c5",
+          "x": 1100,
+          "y": 60,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "d1-c6",
+          "elementId": "c6",
+          "x": 60,
+          "y": 280,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "d1-c7",
+          "elementId": "c7",
+          "x": 320,
+          "y": 280,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "d1-c8",
+          "elementId": "c8",
+          "x": 580,
+          "y": 280,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "d1-c9",
+          "elementId": "c9",
+          "x": 840,
+          "y": 280,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "d1-c10",
+          "elementId": "c10",
+          "x": 1100,
+          "y": 280,
+          "w": 180,
+          "h": 90
+        },
+        {
+          "id": "d1-c11",
+          "elementId": "c11",
+          "x": 1100,
+          "y": 500,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "d1-c12",
+          "elementId": "c12",
+          "x": 60,
+          "y": 500,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "d1-c13",
+          "elementId": "c13",
+          "x": 320,
+          "y": 500,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "d1-c14",
+          "elementId": "c14",
+          "x": 580,
+          "y": 500,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "d1-c15",
+          "elementId": "c15",
+          "x": 840,
+          "y": 500,
+          "w": 180,
+          "h": 110
+        },
+        {
+          "id": "d1-c16",
+          "elementId": "c16",
+          "x": 840,
+          "y": 720,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "d1-c17",
+          "elementId": "c17",
+          "x": 320,
+          "y": 720,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "d1-c18",
+          "elementId": "c18",
+          "x": 580,
+          "y": 720,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "d1-p-pkg",
+          "elementId": "p-pkg",
+          "x": 60,
+          "y": 940,
+          "w": 240,
+          "h": 160
+        },
+        {
+          "id": "d1-p-port",
+          "elementId": "p-port",
+          "x": 100,
+          "y": 980,
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "d1-p-comp",
+          "elementId": "p-comp",
+          "x": 100,
+          "y": 110,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "d1-p-note",
+          "elementId": "p-note",
+          "x": 116,
+          "y": 130,
+          "w": 120,
+          "h": 50
+        },
+        {
+          "id": "d1-p-cn-comp",
+          "elementId": "p-cn-comp",
+          "x": 340,
+          "y": 940,
+          "w": 170,
+          "h": 90
+        },
+        {
+          "id": "d1-p-cn-inner",
+          "elementId": "p-cn-inner",
+          "x": 560,
+          "y": 940,
+          "w": 170,
+          "h": 70
+        },
+        {
+          "id": "d1-p-obj-kind",
+          "elementId": "p-obj-kind",
+          "x": 60,
+          "y": 720,
+          "w": 200,
+          "h": 100
+        }
+      ],
+      "links": [
+        {
+          "id": "d1-l1",
+          "relId": "r-mult1",
+          "from": {
+            "shapeId": "d1-c1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d1-c2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d1-l2",
+          "relId": "r-mult2",
+          "from": {
+            "shapeId": "d1-c2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d1-c3",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d1-l3",
+          "relId": "r-mult3",
+          "from": {
+            "shapeId": "d1-c3",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d1-c4",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d1-l4",
+          "relId": "r-mult4",
+          "from": {
+            "shapeId": "d1-c4",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d1-c5",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d1-l5",
+          "relId": "r-comp",
+          "from": {
+            "shapeId": "d1-c6",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d1-c7",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d1-l6",
+          "relId": "r-agg",
+          "from": {
+            "shapeId": "d1-c8",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d1-c9",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d1-l7",
+          "relId": "r-gen-kind",
+          "from": {
+            "shapeId": "d1-c10",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d1-c11",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d1-l8",
+          "relId": "r-cyc1",
+          "from": {
+            "shapeId": "d1-c12",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d1-c13",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d1-l9",
+          "relId": "r-cyc2",
+          "from": {
+            "shapeId": "d1-c13",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d1-c14",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d1-l10",
+          "relId": "r-cyc3",
+          "from": {
+            "shapeId": "d1-c14",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "d1-c12",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d1-l11",
+          "relId": "r-stereo",
+          "from": {
+            "shapeId": "d1-c15",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d1-c16",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d1-l12",
+          "relId": "r-real",
+          "from": {
+            "shapeId": "d1-c18",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "d1-c17",
+            "side": "right"
+          }
+        },
+        {
+          "id": "d1-p-dep",
+          "relId": "p-r-dep",
+          "from": {
+            "shapeId": "d1-p-comp",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d1-c2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d1-p-cn-dep",
+          "relId": "p-cn-dep",
+          "from": {
+            "shapeId": "d1-p-cn-comp",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d1-c3",
+            "side": "bottom"
+          }
+        },
+        {
+          "id": "d1-p-cn-assoc",
+          "relId": "p-cn-assoc",
+          "from": {
+            "shapeId": "d1-p-cn-inner",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d1-c4",
+            "side": "bottom"
+          }
+        },
+        {
+          "id": "d1-l-obj-kind",
+          "relId": "p-r-obj-kind",
+          "from": {
+            "shapeId": "d1-c1",
+            "side": "bottom",
+            "t": 0.5
+          },
+          "to": {
+            "shapeId": "d1-p-obj-kind",
+            "side": "top",
+            "t": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "d2",
+      "name": "Варианты использования",
+      "kind": "usecase",
+      "shapes": [
+        {
+          "id": "d2-u1",
+          "elementId": "u1",
+          "x": 60,
+          "y": 220,
+          "w": 80,
+          "h": 120
+        },
+        {
+          "id": "d2-u2",
+          "elementId": "u2",
+          "x": 300,
+          "y": 160,
+          "w": 220,
+          "h": 90
+        },
+        {
+          "id": "d2-u3",
+          "elementId": "u3",
+          "x": 300,
+          "y": 320,
+          "w": 220,
+          "h": 90
+        },
+        {
+          "id": "d2-ui",
+          "elementId": "ui",
+          "x": 60,
+          "y": 420,
+          "w": 220,
+          "h": 150
+        },
+        {
+          "id": "d2-u4",
+          "elementId": "u4",
+          "x": 640,
+          "y": 80,
+          "w": 220,
+          "h": 90
+        },
+        {
+          "id": "d2-u5",
+          "elementId": "u5",
+          "x": 640,
+          "y": 240,
+          "w": 220,
+          "h": 90
+        },
+        {
+          "id": "d2-u6",
+          "elementId": "u6",
+          "x": 640,
+          "y": 400,
+          "w": 220,
+          "h": 90
+        },
+        {
+          "id": "d2-u7",
+          "elementId": "u7",
+          "x": 60,
+          "y": 40,
+          "w": 80,
+          "h": 120
+        },
+        {
+          "id": "d2-u9",
+          "elementId": "u9",
+          "x": 60,
+          "y": 640,
+          "w": 80,
+          "h": 120
+        },
+        {
+          "id": "d2-u10",
+          "elementId": "u10",
+          "x": 300,
+          "y": 640,
+          "w": 80,
+          "h": 120
+        },
+        {
+          "id": "d2-u8",
+          "elementId": "u8",
+          "x": 640,
+          "y": 640,
+          "w": 220,
+          "h": 90
+        }
+      ],
+      "links": [
+        {
+          "id": "d2-l1",
+          "relId": "r-actor-usecase",
+          "from": {
+            "shapeId": "d2-u1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d2-u2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d2-l2",
+          "relId": "r-usecase-usecase",
+          "from": {
+            "shapeId": "d2-u2",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d2-u3",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d2-l3",
+          "relId": "r-actor-iface",
+          "from": {
+            "shapeId": "d2-u1",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d2-ui",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d2-l4",
+          "relId": "r-inc1",
+          "from": {
+            "shapeId": "d2-u4",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d2-u5",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d2-l5",
+          "relId": "r-inc2",
+          "from": {
+            "shapeId": "d2-u5",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d2-u6",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d2-l6",
+          "relId": "r-inc3",
+          "from": {
+            "shapeId": "d2-u6",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d2-u4",
+            "side": "right"
+          }
+        },
+        {
+          "id": "d2-l7",
+          "relId": "r-actor-guest",
+          "from": {
+            "shapeId": "d2-u7",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d2-u1",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d2-l8",
+          "relId": "r-pa1",
+          "from": {
+            "shapeId": "d2-u9",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d2-u8",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d2-l9",
+          "relId": "r-pa2",
+          "from": {
+            "shapeId": "d2-u10",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d2-u8",
+            "side": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "d3",
+      "name": "Последовательность",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "d3-L1",
+          "elementId": "L1",
+          "x": 80,
+          "y": 60,
+          "w": 160,
+          "h": 700
+        },
+        {
+          "id": "d3-L2",
+          "elementId": "L2",
+          "x": 320,
+          "y": 60,
+          "w": 160,
+          "h": 700
+        },
+        {
+          "id": "d3-L3",
+          "elementId": "L3",
+          "x": 560,
+          "y": 60,
+          "w": 160,
+          "h": 700
+        },
+        {
+          "id": "d3-L4",
+          "elementId": "L4",
+          "x": 800,
+          "y": 60,
+          "w": 160,
+          "h": 700
+        },
+        {
+          "id": "d3-floop",
+          "elementId": "floop",
+          "x": 80,
+          "y": 140,
+          "w": 640,
+          "h": 200
+        },
+        {
+          "id": "d3-falt",
+          "elementId": "falt",
+          "x": 80,
+          "y": 400,
+          "w": 640,
+          "h": 220
+        },
+        {
+          "id": "d3-fbreak",
+          "elementId": "fbreak",
+          "x": 100,
+          "y": 440,
+          "w": 600,
+          "h": 150
+        },
+        {
+          "id": "d3-p-iu",
+          "elementId": "p-iu",
+          "x": 1000,
+          "y": 60,
+          "w": 200,
+          "h": 100
+        }
+      ],
+      "links": [
+        {
+          "id": "d3-l1",
+          "relId": "r-msg1",
+          "from": {
+            "shapeId": "d3-L1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d3-L2",
+            "side": "left"
+          },
+          "y": 180
+        },
+        {
+          "id": "d3-l2",
+          "relId": "r-msg2",
+          "from": {
+            "shapeId": "d3-L2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d3-L3",
+            "side": "left"
+          },
+          "y": 230
+        },
+        {
+          "id": "d3-l3",
+          "relId": "r-msg3",
+          "from": {
+            "shapeId": "d3-L2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d3-L3",
+            "side": "left"
+          },
+          "y": 460
+        },
+        {
+          "id": "d3-l4",
+          "relId": "r-msg4",
+          "from": {
+            "shapeId": "d3-L1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d3-L2",
+            "side": "left"
+          },
+          "y": 510
+        },
+        {
+          "id": "d3-l5",
+          "relId": "r-msg5",
+          "from": {
+            "shapeId": "d3-L2",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "d3-L1",
+            "side": "right"
+          },
+          "y": 550
+        },
+        {
+          "id": "d3-p-msg6",
+          "relId": "p-msg6",
+          "from": {
+            "shapeId": "d3-L1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d3-L3",
+            "side": "left"
+          },
+          "y": 200
+        },
+        {
+          "id": "d3-l7",
+          "relId": "r-msg7",
+          "from": {
+            "shapeId": "d3-L4",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d3-L1",
+            "side": "left"
+          },
+          "y": 680
+        }
+      ]
+    },
+    {
+      "id": "d4",
+      "name": "Деятельность",
+      "kind": "activity",
+      "shapes": [
+        {
+          "id": "d4-a1",
+          "elementId": "a1",
+          "x": 60,
+          "y": 60,
+          "w": 160,
+          "h": 50
+        },
+        {
+          "id": "d4-a2",
+          "elementId": "a2",
+          "x": 60,
+          "y": 160,
+          "w": 160,
+          "h": 50
+        },
+        {
+          "id": "d4-f1",
+          "elementId": "f1",
+          "x": 280,
+          "y": 100,
+          "w": 160,
+          "h": 8
+        },
+        {
+          "id": "d4-a3",
+          "elementId": "a3",
+          "x": 460,
+          "y": 60,
+          "w": 160,
+          "h": 50
+        },
+        {
+          "id": "d4-a4",
+          "elementId": "a4",
+          "x": 460,
+          "y": 160,
+          "w": 160,
+          "h": 50
+        },
+        {
+          "id": "d4-f2",
+          "elementId": "f2",
+          "x": 680,
+          "y": 100,
+          "w": 8,
+          "h": 120
+        },
+        {
+          "id": "d4-o1",
+          "elementId": "o1",
+          "x": 880,
+          "y": 60,
+          "w": 160,
+          "h": 70
+        },
+        {
+          "id": "d4-j1",
+          "elementId": "j1",
+          "x": 280,
+          "y": 320,
+          "w": 160,
+          "h": 8
+        },
+        {
+          "id": "d4-j2",
+          "elementId": "j2",
+          "x": 680,
+          "y": 320,
+          "w": 8,
+          "h": 120
+        },
+        {
+          "id": "d4-a5",
+          "elementId": "a5",
+          "x": 880,
+          "y": 320,
+          "w": 160,
+          "h": 50
+        },
+        {
+          "id": "d4-m1",
+          "elementId": "m1",
+          "x": 280,
+          "y": 440,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "d4-m2",
+          "elementId": "m2",
+          "x": 500,
+          "y": 440,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "d4-a6",
+          "elementId": "a6",
+          "x": 60,
+          "y": 440,
+          "w": 160,
+          "h": 50
+        },
+        {
+          "id": "d4-a7",
+          "elementId": "a7",
+          "x": 720,
+          "y": 440,
+          "w": 160,
+          "h": 50
+        },
+        {
+          "id": "d4-a8",
+          "elementId": "a8",
+          "x": 940,
+          "y": 440,
+          "w": 160,
+          "h": 50
+        },
+        {
+          "id": "d4-dec",
+          "elementId": "dec",
+          "x": 280,
+          "y": 560,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "d4-afin",
+          "elementId": "afin",
+          "x": 500,
+          "y": 560,
+          "w": 40,
+          "h": 40
+        },
+        {
+          "id": "d4-a9",
+          "elementId": "a9",
+          "x": 720,
+          "y": 560,
+          "w": 160,
+          "h": 50
+        },
+        {
+          "id": "d4-a10",
+          "elementId": "a10",
+          "x": 940,
+          "y": 560,
+          "w": 160,
+          "h": 50
+        },
+        {
+          "id": "d4-p-ap",
+          "elementId": "p-ap",
+          "x": 280,
+          "y": 700,
+          "w": 140,
+          "h": 40
+        },
+        {
+          "id": "d4-p-lane",
+          "elementId": "p-lane",
+          "x": 1140,
+          "y": 60,
+          "w": 180,
+          "h": 300
+        },
+        {
+          "id": "d4-p-beh",
+          "elementId": "p-beh",
+          "x": 1150,
+          "y": 100,
+          "w": 160,
+          "h": 50
+        }
+      ],
+      "links": [
+        {
+          "id": "d4-l1",
+          "relId": "r-f1a",
+          "from": {
+            "shapeId": "d4-a1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d4-f1",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d4-l2",
+          "relId": "r-f1b",
+          "from": {
+            "shapeId": "d4-a2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d4-f1",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d4-l3",
+          "relId": "r-f1c",
+          "from": {
+            "shapeId": "d4-f1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d4-a3",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d4-l4",
+          "relId": "r-f1d",
+          "from": {
+            "shapeId": "d4-f1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d4-a4",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d4-l5",
+          "relId": "r-f2a",
+          "from": {
+            "shapeId": "d4-a3",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d4-f2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d4-l6",
+          "relId": "r-f2b",
+          "from": {
+            "shapeId": "d4-f2",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "d4-a4",
+            "side": "right"
+          }
+        },
+        {
+          "id": "d4-l7",
+          "relId": "r-f2c",
+          "from": {
+            "shapeId": "d4-f2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d4-o1",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d4-l8",
+          "relId": "r-j1a",
+          "from": {
+            "shapeId": "d4-a3",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d4-j1",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d4-l9",
+          "relId": "r-j1b",
+          "from": {
+            "shapeId": "d4-a4",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d4-j1",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d4-l10",
+          "relId": "r-j1c",
+          "from": {
+            "shapeId": "d4-j1",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "d4-a1",
+            "side": "bottom"
+          }
+        },
+        {
+          "id": "d4-l11",
+          "relId": "r-j1d",
+          "from": {
+            "shapeId": "d4-j1",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "d4-a2",
+            "side": "bottom"
+          }
+        },
+        {
+          "id": "d4-l12",
+          "relId": "r-j2a",
+          "from": {
+            "shapeId": "d4-o1",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d4-j2",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d4-l13",
+          "relId": "r-j2b",
+          "from": {
+            "shapeId": "d4-j2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d4-a5",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d4-l14",
+          "relId": "r-m1a",
+          "from": {
+            "shapeId": "d4-a5",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d4-m1",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d4-l15",
+          "relId": "r-m1b",
+          "from": {
+            "shapeId": "d4-a6",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d4-m1",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d4-l16",
+          "relId": "r-m1c",
+          "from": {
+            "shapeId": "d4-m1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d4-a7",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d4-l17",
+          "relId": "r-m1d",
+          "from": {
+            "shapeId": "d4-m1",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d4-a8",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d4-l18",
+          "relId": "r-m2a",
+          "from": {
+            "shapeId": "d4-a7",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "d4-m2",
+            "side": "right"
+          }
+        },
+        {
+          "id": "d4-l19",
+          "relId": "r-m2b",
+          "from": {
+            "shapeId": "d4-a8",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "d4-m2",
+            "side": "right"
+          }
+        },
+        {
+          "id": "d4-l20",
+          "relId": "r-m2c",
+          "from": {
+            "shapeId": "d4-m2",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "d4-o1",
+            "side": "bottom"
+          }
+        },
+        {
+          "id": "d4-l21",
+          "relId": "r-da",
+          "from": {
+            "shapeId": "d4-a5",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d4-dec",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d4-l22",
+          "relId": "r-db",
+          "from": {
+            "shapeId": "d4-a6",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d4-dec",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d4-l23",
+          "relId": "r-dc",
+          "from": {
+            "shapeId": "d4-a7",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d4-dec",
+            "side": "right"
+          }
+        },
+        {
+          "id": "d4-l24",
+          "relId": "r-dd",
+          "from": {
+            "shapeId": "d4-dec",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d4-a8",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d4-l25",
+          "relId": "r-fina",
+          "from": {
+            "shapeId": "d4-a8",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d4-afin",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d4-l26",
+          "relId": "r-finb",
+          "from": {
+            "shapeId": "d4-afin",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d4-a9",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d4-l27",
+          "relId": "r-of",
+          "from": {
+            "shapeId": "d4-a9",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d4-a10",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d4-p-ap-in",
+          "relId": "p-r-ap-in",
+          "from": {
+            "shapeId": "d4-a1",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d4-p-ap",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d4-p-ap-out",
+          "relId": "p-r-ap-out",
+          "from": {
+            "shapeId": "d4-p-ap",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d4-a2",
+            "side": "right"
+          }
+        },
+        {
+          "id": "d4-l-beh",
+          "relId": "p-r-beh",
+          "from": {
+            "shapeId": "d4-a10",
+            "side": "right",
+            "t": 0.5
+          },
+          "to": {
+            "shapeId": "d4-p-beh",
+            "side": "left",
+            "t": 0.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "d5",
+      "name": "Состояния",
+      "kind": "state",
+      "shapes": [
+        {
+          "id": "d5-si",
+          "elementId": "si",
+          "x": 60,
+          "y": 300,
+          "w": 24,
+          "h": 24
+        },
+        {
+          "id": "d5-s1",
+          "elementId": "s1",
+          "x": 180,
+          "y": 300,
+          "w": 180,
+          "h": 80
+        },
+        {
+          "id": "d5-fk",
+          "elementId": "fk",
+          "x": 420,
+          "y": 300,
+          "w": 120,
+          "h": 10
+        },
+        {
+          "id": "d5-s2",
+          "elementId": "s2",
+          "x": 600,
+          "y": 300,
+          "w": 180,
+          "h": 80
+        },
+        {
+          "id": "d5-jn",
+          "elementId": "jn",
+          "x": 840,
+          "y": 300,
+          "w": 120,
+          "h": 10
+        },
+        {
+          "id": "d5-sfin",
+          "elementId": "sfin",
+          "x": 1020,
+          "y": 300,
+          "w": 40,
+          "h": 40
+        },
+        {
+          "id": "d5-ch",
+          "elementId": "ch",
+          "x": 180,
+          "y": 480,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "d5-ju",
+          "elementId": "ju",
+          "x": 600,
+          "y": 480,
+          "w": 44,
+          "h": 44
+        },
+        {
+          "id": "d5-hi",
+          "elementId": "hi",
+          "x": 600,
+          "y": 140,
+          "w": 24,
+          "h": 24
+        },
+        {
+          "id": "d5-p-s0",
+          "elementId": "p-s0",
+          "x": 60,
+          "y": 640,
+          "w": 160,
+          "h": 70
+        },
+        {
+          "id": "d5-p-fork",
+          "elementId": "p-fork",
+          "x": 280,
+          "y": 670,
+          "w": 100,
+          "h": 8
+        },
+        {
+          "id": "d5-p-s1",
+          "elementId": "p-s1",
+          "x": 440,
+          "y": 640,
+          "w": 160,
+          "h": 70
+        },
+        {
+          "id": "d5-p-act",
+          "elementId": "p-act",
+          "x": 440,
+          "y": 760,
+          "w": 160,
+          "h": 50
+        },
+        {
+          "id": "d5-p-join",
+          "elementId": "p-join",
+          "x": 660,
+          "y": 700,
+          "w": 100,
+          "h": 8
+        },
+        {
+          "id": "d5-p-act2",
+          "elementId": "p-act2",
+          "x": 660,
+          "y": 800,
+          "w": 160,
+          "h": 50
+        },
+        {
+          "id": "d5-p-s2",
+          "elementId": "p-s2",
+          "x": 820,
+          "y": 690,
+          "w": 160,
+          "h": 70
+        },
+        {
+          "id": "d5-p-own-a",
+          "elementId": "p-own-a",
+          "x": 180,
+          "y": 930,
+          "w": 160,
+          "h": 70
+        },
+        {
+          "id": "d5-p-own-b",
+          "elementId": "p-own-b",
+          "x": 420,
+          "y": 930,
+          "w": 160,
+          "h": 70
+        },
+        {
+          "id": "d5-p-fin",
+          "elementId": "p-fin",
+          "x": 60,
+          "y": 950,
+          "w": 40,
+          "h": 40
+        }
+      ],
+      "links": [
+        {
+          "id": "d5-l1",
+          "relId": "r-t1",
+          "from": {
+            "shapeId": "d5-si",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d5-s1",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d5-l2",
+          "relId": "r-t2",
+          "from": {
+            "shapeId": "d5-si",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "d5-s2",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d5-l3",
+          "relId": "r-t3",
+          "from": {
+            "shapeId": "d5-s1",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d5-ch",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d5-l4",
+          "relId": "r-t4",
+          "from": {
+            "shapeId": "d5-s2",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d5-ju",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d5-l5",
+          "relId": "r-t5",
+          "from": {
+            "shapeId": "d5-s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d5-fk",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d5-l6",
+          "relId": "r-t6",
+          "from": {
+            "shapeId": "d5-fk",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d5-s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d5-l7",
+          "relId": "r-t7",
+          "from": {
+            "shapeId": "d5-s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d5-jn",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d5-l8",
+          "relId": "r-t8",
+          "from": {
+            "shapeId": "d5-jn",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "d5-s1",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d5-l9",
+          "relId": "r-t9",
+          "from": {
+            "shapeId": "d5-hi",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "d5-s1",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d5-l10",
+          "relId": "r-t10",
+          "from": {
+            "shapeId": "d5-hi",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d5-s2",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d5-l11",
+          "relId": "r-t11",
+          "from": {
+            "shapeId": "d5-s2",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d5-sfin",
+            "side": "bottom"
+          }
+        },
+        {
+          "id": "d5-l12",
+          "relId": "r-t12",
+          "from": {
+            "shapeId": "d5-sfin",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "d5-s1",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d5-p-t1",
+          "relId": "p-t1",
+          "from": {
+            "shapeId": "d5-p-s0",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d5-p-fork",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d5-p-t2",
+          "relId": "p-t2",
+          "from": {
+            "shapeId": "d5-p-fork",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d5-p-s1",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d5-p-t3",
+          "relId": "p-t3",
+          "from": {
+            "shapeId": "d5-p-fork",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d5-p-act",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d5-p-t4",
+          "relId": "p-t4",
+          "from": {
+            "shapeId": "d5-p-s1",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "d5-p-join",
+            "side": "top"
+          }
+        },
+        {
+          "id": "d5-p-t5",
+          "relId": "p-t5",
+          "from": {
+            "shapeId": "d5-p-act2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d5-p-join",
+            "side": "bottom"
+          }
+        },
+        {
+          "id": "d5-p-t6",
+          "relId": "p-t6",
+          "from": {
+            "shapeId": "d5-p-join",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d5-p-s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d5-p-own-t",
+          "relId": "p-own-t",
+          "from": {
+            "shapeId": "d5-p-own-a",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d5-p-own-b",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d5-p-fin-t",
+          "relId": "p-fin-t",
+          "from": {
+            "shapeId": "d5-p-own-b",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "d5-p-fin",
+            "side": "right"
+          }
+        }
+      ]
+    },
+    {
+      "id": "d6",
+      "name": "Практика: сироты, дубли, безымянные",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "d6-p1",
+          "elementId": "p1",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 120
+        },
+        {
+          "id": "d6-p2",
+          "elementId": "p2",
+          "x": 340,
+          "y": 60,
+          "w": 200,
+          "h": 120
+        },
+        {
+          "id": "d6-p4",
+          "elementId": "p4",
+          "x": 60,
+          "y": 260,
+          "w": 200,
+          "h": 120
+        },
+        {
+          "id": "d6-p5",
+          "elementId": "p5",
+          "x": 340,
+          "y": 260,
+          "w": 200,
+          "h": 120
+        },
+        {
+          "id": "d6-p6",
+          "elementId": "p6",
+          "x": 60,
+          "y": 460,
+          "w": 200,
+          "h": 120
+        },
+        {
+          "id": "d6-p7",
+          "elementId": "p7",
+          "x": 340,
+          "y": 460,
+          "w": 200,
+          "h": 120
+        }
+      ],
+      "links": [
+        {
+          "id": "d6-l1",
+          "relId": "r-dup1",
+          "from": {
+            "shapeId": "d6-p4",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d6-p5",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d6-l2",
+          "relId": "r-dup2",
+          "from": {
+            "shapeId": "d6-p4",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d6-p5",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d6-l3",
+          "relId": "r-p6",
+          "from": {
+            "shapeId": "d6-p6",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d6-p7",
+            "side": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "d7",
+      "name": "Развёртывание: спецификации, артефакты, экземпляры",
+      "kind": "deployment",
+      "shapes": [
+        {
+          "id": "d7-p-ds-node",
+          "elementId": "p-ds-node",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 100
+        },
+        {
+          "id": "d7-p-node",
+          "elementId": "p-node",
+          "x": 400,
+          "y": 40,
+          "w": 240,
+          "h": 200
+        },
+        {
+          "id": "d7-p-ds-env",
+          "elementId": "p-ds-env",
+          "x": 60,
+          "y": 320,
+          "w": 200,
+          "h": 100
+        },
+        {
+          "id": "d7-p-ee",
+          "elementId": "p-ee",
+          "x": 400,
+          "y": 300,
+          "w": 300,
+          "h": 260
+        },
+        {
+          "id": "d7-p-log",
+          "elementId": "p-log",
+          "x": 460,
+          "y": 360,
+          "w": 160,
+          "h": 80
+        },
+        {
+          "id": "d7-p-svc",
+          "elementId": "p-svc",
+          "x": 460,
+          "y": 460,
+          "w": 180,
+          "h": 80
+        },
+        {
+          "id": "d7-p-obj",
+          "elementId": "p-obj",
+          "x": 60,
+          "y": 560,
+          "w": 200,
+          "h": 90
+        },
+        {
+          "id": "d7-p-node2",
+          "elementId": "p-node2",
+          "x": 400,
+          "y": 620,
+          "w": 240,
+          "h": 140
+        }
+      ],
+      "links": [
+        {
+          "id": "d7-p-dep1",
+          "relId": "p-dep1",
+          "from": {
+            "shapeId": "d7-p-ds-node",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d7-p-node",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d7-p-dep2",
+          "relId": "p-dep2",
+          "from": {
+            "shapeId": "d7-p-ds-env",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d7-p-ee",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d7-p-dep3",
+          "relId": "p-dep3",
+          "from": {
+            "shapeId": "d7-p-log",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d7-p-ee",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d7-p-dep4",
+          "relId": "p-dep4",
+          "from": {
+            "shapeId": "d7-p-svc",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d7-p-ee",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d7-p-dep5",
+          "relId": "p-dep5",
+          "from": {
+            "shapeId": "d7-p-obj",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d7-p-node2",
+            "side": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "d8",
+      "name": "Объекты: слоты",
+      "kind": "object",
+      "shapes": [
+        {
+          "id": "d8-p-c-order",
+          "elementId": "p-c-order",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 150
+        },
+        {
+          "id": "d8-p-obj-dup",
+          "elementId": "p-obj-dup",
+          "x": 340,
+          "y": 60,
+          "w": 200,
+          "h": 110
+        },
+        {
+          "id": "d8-p-obj-bad",
+          "elementId": "p-obj-bad",
+          "x": 340,
+          "y": 240,
+          "w": 200,
+          "h": 100
+        }
+      ],
+      "links": [
+        {
+          "id": "d8-p-link1",
+          "relId": "p-link1",
+          "from": {
+            "shapeId": "d8-p-obj-dup",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d8-p-c-order",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d8-p-link2",
+          "relId": "p-link2",
+          "from": {
+            "shapeId": "d8-p-obj-bad",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d8-p-c-order",
+            "side": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "d9",
+      "name": "Взаимодействия: рамка внутри рамки",
+      "kind": "interaction-overview",
+      "shapes": [
+        {
+          "id": "d9-p-init",
+          "elementId": "p-int-init",
+          "x": 60,
+          "y": 180,
+          "w": 24,
+          "h": 24
+        },
+        {
+          "id": "d9-p-outer",
+          "elementId": "p-int-outer",
+          "x": 160,
+          "y": 60,
+          "w": 460,
+          "h": 320
+        },
+        {
+          "id": "d9-p-inner",
+          "elementId": "p-int-inner",
+          "x": 220,
+          "y": 140,
+          "w": 340,
+          "h": 180
+        }
+      ],
+      "links": [
+        {
+          "id": "d9-p-flow1",
+          "relId": "p-int-flow1",
+          "from": {
+            "shapeId": "d9-p-init",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d9-p-outer",
+            "side": "left"
+          }
+        },
+        {
+          "id": "d9-p-flow2",
+          "relId": "p-int-flow2",
+          "from": {
+            "shapeId": "d9-p-outer",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "d9-p-inner",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "profiles": [
+    {
+      "id": "p-demo",
+      "name": "Профиль демо",
+      "scope": "project",
+      "stereotypes": [
+        {
+          "id": "p-demo-1",
+          "name": "entity",
+          "baseTypes": [
+            "Class"
+          ]
+        },
+        {
+          "id": "p-demo-2",
+          "name": "Entity",
+          "baseTypes": [
+            "Class"
+          ]
+        }
+      ]
+    }
+  ]
+}

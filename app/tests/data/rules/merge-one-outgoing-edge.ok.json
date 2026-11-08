@@ -1,0 +1,128 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-merge-one-outgoing-edge-ok",
+  "name": "merge_one_outgoing_edge (без нарушения) — две альтернативы и один выход",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "action",
+      "name": "Оплата картой"
+    },
+    {
+      "id": "e2",
+      "kind": "action",
+      "name": "Оплата счётом"
+    },
+    {
+      "id": "e3",
+      "kind": "action",
+      "name": "Закрыть заказ"
+    },
+    {
+      "id": "e4",
+      "kind": "merge",
+      "name": "",
+      "documentation": "Правило «merge-one-outgoing-edge»: UML 2.5.1, п. 15.7.21.4, констрейнт MergeNode::one_outgoing_edge: «A MergeNode has one outgoing ActivityEdge.»\nКонтроль: две альтернативы слились в один поток."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "controlFlow",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r2",
+      "kind": "controlFlow",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r3",
+      "kind": "controlFlow",
+      "from": "e4",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "merge_one_outgoing_edge (без нарушения) — две альтернативы и один выход",
+      "kind": "activity",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 580,
+          "y": 60,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 60,
+          "y": 260,
+          "w": 44,
+          "h": 44
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s4",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

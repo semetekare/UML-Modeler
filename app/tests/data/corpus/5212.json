@@ -1,0 +1,99 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5212",
+    "figureNo": "5.2.12",
+    "exercise": "5.2.F",
+    "type": "sequence",
+    "diagramName": "getCourseOfferingList",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности, описывающая реализацию операции getCourseOfferingList() в подсистеме DBAccess",
+    "notes": "Крайняя левая линия жизни — db:DBAccess, вторая справа — list:CourseOfferingList, крайняя правая — obj:CourseOffering; есть линия жизни rs:ResultSet. Добавлены сеттеры класса CourseOffering, созданные через Create Getter and Setter.",
+    "gaps": [
+      "сообщения к rs:ResultSet названы только по факту («добавьте соответствующие сообщения-вызовы»), без имён",
+      "порядок и число сообщений к obj:CourseOffering заданы перечнем сеттеров, но не последовательностью"
+    ],
+    "gapIds": [
+      "model.messageOrder",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "db:DBAccess"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "list:CourseOfferingList"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "rs:ResultSet"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "obj:CourseOffering"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "getCourseOfferingList()",
+      "from": "e1",
+      "to": "e1",
+      "note": "входящее сообщение связано с операцией"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "setDay(day:DayOfWeek):void",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "setPair(p:byte):void",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "setNumber(n:long):void",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "setSemester(s:byte):void",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "не названо в тексте",
+      "from": "e1",
+      "to": "e3",
+      "note": "сообщения к ResultSet в тексте не названы"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "getCourseOfferingList",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

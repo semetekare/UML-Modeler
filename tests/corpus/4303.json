@@ -1,0 +1,220 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4303",
+    "figureNo": "4.3.3",
+    "exercise": "4.3",
+    "type": "sequence",
+    "diagramName": "RegisterForCourses Basic Flow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Окончательный вид UML-диаграммы последовательности RegisterForCourses Basic Flow",
+    "notes": "Состав линий жизни и ссылки на подчинённые потоки названы текстом; десять сообщений и сторожевые условия четырёх операндов вложенного alt, внешнего alt и opt прочитаны с рисунка 4.3.3 — в тексте условий нет.",
+    "gaps": [
+      "сторожевые условия четырёх операндов вложенного alt, внешнего alt и opt в тексте не приведены — прочитаны с рисунка",
+      "поле Refers to у Interaction Use (ссылка на диаграмму) не выражается в uml-model/3 — записано полем refersTo",
+      "вложенность alt в alt и операнды фрагментов в модели не выражаются — операнды записаны в имени фрагмента",
+      "покрытие сообщений фрагментами не выражается"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.fragmentOperands",
+      "model.interactionRef",
+      "source.guards"
+    ],
+    "imageDerived": [
+      "e7",
+      "e8",
+      "e9",
+      "r1",
+      "r2",
+      "r3",
+      "r4",
+      "r5",
+      "r6",
+      "r7"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Студент"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "menu:MainMenuForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "rform:RegistrationForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "rctrl:RegistrationController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "dao:DataAccess",
+      "stereotype": "control"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "curStud:Student",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "[rctrl.isRegistrationOpened(s)]",
+      "operator": "opt",
+      "note": "условие фрагмента opt; прочитано с рисунка",
+      "source": "image"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "[!rctrl.registerForCourses(curUser)] / [else]",
+      "operator": "alt",
+      "note": "внешний alt: первый операнд — отказ, второй — [else]; второй операнд содержит вложенный alt",
+      "source": "image"
+    },
+    {
+      "id": "e9",
+      "kind": "fragment",
+      "name": "[создаётся учебный план] / [изменяется учебный план] / [удаляется учебный план] / [утверждается учебный план]",
+      "operator": "alt",
+      "note": "вложенный в [else] alt из четырёх операндов; в каждом — своя ссылка на взаимодействие",
+      "source": "image"
+    },
+    {
+      "id": "e10",
+      "kind": "interactionUse",
+      "name": "CreateSchedule Subflow",
+      "operator": "ref",
+      "refersTo": "CreateSchedule Subflow"
+    },
+    {
+      "id": "e11",
+      "kind": "interactionUse",
+      "name": "UpdateSchedule Subflow",
+      "operator": "ref",
+      "refersTo": "UpdateSchedule Subflow"
+    },
+    {
+      "id": "e12",
+      "kind": "interactionUse",
+      "name": "DeleteSchedule Subflow",
+      "operator": "ref",
+      "refersTo": "DeleteSchedule Subflow"
+    },
+    {
+      "id": "e13",
+      "kind": "interactionUse",
+      "name": "SubmitSchedule Subflow",
+      "operator": "ref",
+      "refersTo": "SubmitSchedule Subflow"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "registerForCourses()",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "registerForCourses(u : User)",
+      "from": "e2",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "isRegistrationOpened(semester : byte) : boolean",
+      "from": "e4",
+      "to": "e4",
+      "note": "рефлексивное сообщение",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "getStudentByUser(u : User) : Student",
+      "from": "e4",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e5",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "reply",
+      "name": "curStud",
+      "from": "e6",
+      "to": "e4",
+      "note": "возврат созданного объекта Student из dao в контроллер",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "hasScheduleForSemester(semester : byte)",
+      "from": "e4",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "reply",
+      "name": "result",
+      "from": "e4",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "message",
+      "name": "displayError()",
+      "from": "e2",
+      "to": "e2",
+      "note": "первый операнд внешнего alt: регистрация закрыта",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "createMessage",
+      "name": "open",
+      "from": "e2",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "RegisterForCourses Basic Flow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

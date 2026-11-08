@@ -1,0 +1,177 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5201",
+    "figureNo": "5.2.1",
+    "exercise": "5.2.A",
+    "type": "sequence",
+    "diagramName": "Design Login Basic Flow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Уточнённая UML-диаграмма последовательности Design Login Basic Flow",
+    "notes": "Состав взят из упражнения 4.2 с правкой (сообщение new() удалено). Дословные подписи сообщений и сторожевые условия фрагментов opt ([getUserByLogin(l) != NULL]) и alt ([curUser != NULL && curUser.checkPassword(pswrd) == TRUE] / [else]) прочитаны с рисунка 5.2.1.",
+    "gaps": [
+      "сторожевые условия операндов в тексте не приведены — прочитаны с рисунка",
+      "сообщение new() удалено, но остальные сообщения текст не перечисляет заново — состав взят из упражнения 4.2 с учётом правки, подписи уточнены по рисунку",
+      "покрытие сообщений фрагментами не выражается"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "source.guards"
+    ],
+    "imageDerived": [
+      "e7",
+      "e8",
+      "r1",
+      "r10",
+      "r2",
+      "r3",
+      "r4",
+      "r5",
+      "r6",
+      "r7",
+      "r9"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Пользователь"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "lform:LoginForm"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "menu:MainMenuForm"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "lctrl:LoginController"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "dao:IDBAccess",
+      "stereotype": "interface"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "curUser:User"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "[getUserByLogin(l) != NULL]",
+      "operator": "opt",
+      "note": "условие фрагмента opt; прочитано с рисунка",
+      "source": "image"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "[curUser != NULL && curUser.checkPassword(pswrd) == TRUE] / [else]",
+      "operator": "alt",
+      "note": "два операнда; условия прочитаны с рисунка",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "login(l : string, pswrd : string) : void",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "login(l : string, pswrd : string) : boolean",
+      "from": "e2",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "getUserByLogin(l : string) : User",
+      "from": "e4",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "reply",
+      "name": "result",
+      "from": "e5",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "checkPassword(pswrd : string) : boolean",
+      "from": "e4",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "reply",
+      "name": "result",
+      "from": "e6",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "createMessage",
+      "name": "open(curUser)",
+      "from": "e4",
+      "to": "e3",
+      "note": "первый операнд alt",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "message",
+      "name": "getType():UserType",
+      "from": "e3",
+      "to": "e6"
+    },
+    {
+      "id": "r9",
+      "kind": "message",
+      "name": "displayError(errorMsg : string) : void",
+      "from": "e4",
+      "to": "e2",
+      "note": "второй операнд alt",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "destroyMessage",
+      "name": "close()",
+      "from": "e4",
+      "to": "e2",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Design Login Basic Flow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

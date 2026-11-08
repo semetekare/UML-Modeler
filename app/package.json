@@ -1,0 +1,9 @@
+{
+  "name": "uml-class-modeler",
+  "version": "1.0.0",
+  "private": true,
+  "description": "UML Class Modeler. Само приложение в сборке не нуждается (чистые ES-модули, запускается через ./serve.sh); этот манифест существует только для проверки Craft Anything: её «npm run build» — это чистая копия сайта в dist/ (build.mjs). Зависимостей нет и не будет.",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}

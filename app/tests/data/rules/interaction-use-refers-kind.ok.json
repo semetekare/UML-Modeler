@@ -1,0 +1,134 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-interaction-use-refers-kind-ok",
+  "name": "interaction-use-refers-kind (без нарушения) — ссылка ведёт на лист последовательности",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": ":Клиент"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": ":Сервер"
+    },
+    {
+      "id": "e3",
+      "kind": "interactionUse",
+      "name": "Оплата",
+      "documentation": "Правило «interaction-use-refers-kind» — совет практики моделирования: пункта UML у него нет, есть только объяснение, почему такую модель трудно читать.\nКонтроль: ссылка ведёт на отдельный лист последовательности «Оплата заказа», а не на тот, где стоит сама.",
+      "refersTo": "d2",
+      "operator": "ref"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": ":Касса"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": ":Банк"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "from": "e4",
+      "to": "e5"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "interaction-use-refers-kind (без нарушения)",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 80,
+          "y": 60,
+          "w": 160,
+          "h": 600
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 160,
+          "h": 600
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 560,
+          "y": 80,
+          "w": 200,
+          "h": 100
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    },
+    {
+      "id": "d2",
+      "name": "Оплата заказа",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 80,
+          "y": 60,
+          "w": 160,
+          "h": 600
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 320,
+          "y": 60,
+          "w": 160,
+          "h": 600
+        }
+      ],
+      "links": [
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s4",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

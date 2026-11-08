@@ -1,0 +1,75 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-component-nested-in-class-ok",
+  "name": "component_no_packaged_elements (без нарушения) — пустой компонент в классе",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Заказ"
+    },
+    {
+      "id": "e2",
+      "kind": "component",
+      "name": "Оплата",
+      "documentation": "Правило «component-nested-in-class»: UML 2.5.1, п. 11.8.6.7, констрейнт Component::no_packaged_elements: «Компонент, вложенный в класс, не может иметь упаковываемых элементов.»\nКонтроль: Компонент «Оплата» вложен в класс «Заказ» и пуст: содержимого у него нет — так и должно быть.",
+      "ownerId": "e1"
+    },
+    {
+      "id": "e3",
+      "kind": "component",
+      "name": "Витрина"
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "Товар",
+      "documentation": "Правило «component-nested-in-class»: UML 2.5.1, п. 11.8.6.7, констрейнт Component::no_packaged_elements: «Компонент, вложенный в класс, не может иметь упаковываемых элементов.»\nКонтроль: Компонент верхнего уровня «Витрина» содержит класс «Товар» — у компонента вне класса содержимое есть по праву, и правило молчит.",
+      "ownerId": "e3"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "component_no_packaged_elements (без нарушения) — пустой компонент в классе",
+      "kind": "component",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 300,
+          "h": 200
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 100,
+          "y": 120,
+          "w": 220,
+          "h": 100
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 460,
+          "y": 60,
+          "w": 300,
+          "h": 220
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 500,
+          "y": 120,
+          "w": 220,
+          "h": 120
+        }
+      ],
+      "links": []
+    }
+  ],
+  "currentDiagramId": "d1"
+}

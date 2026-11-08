@@ -1,0 +1,421 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-4302",
+  "name": "Начальный вид UML-диаграммы последовательности RegisterForCourses Basic Flow",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Студент"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "menu:MainMenuForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "rform:RegistrationForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "rctrl:RegistrationController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "dao:DataAccess",
+      "stereotype": "control"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "curStud:Student",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "[rctrl.isRegistrationOpened(s)]",
+      "documentation": "условие фрагмента opt; прочитано с рисунка",
+      "operator": "opt",
+      "source": "image"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "[!rctrl.registerForCourses(curUser)] / [else]",
+      "documentation": "два операнда; условия прочитаны с рисунка",
+      "operator": "alt",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "registerForCourses()",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "registerForCourses(u : User)",
+      "from": "e2",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "isRegistrationOpened(semester : byte) : boolean",
+      "from": "e4",
+      "to": "e4",
+      "note": "рефлексивное сообщение",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "getStudentByUser(u : User) : Student",
+      "from": "e4",
+      "to": "e5",
+      "note": "внутри операнда opt: запрос сведений о студенте",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e5",
+      "to": "e6",
+      "note": "внутри операнда opt",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "reply",
+      "name": "curStud",
+      "from": "e6",
+      "to": "e4",
+      "note": "возврат созданного объекта Student; в тексте не назван",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "hasScheduleForSemester(semester : byte)",
+      "from": "e4",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "reply",
+      "name": "result",
+      "from": "e4",
+      "to": "e2",
+      "note": "ниже фрагмента opt",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "message",
+      "name": "displayError()",
+      "from": "e2",
+      "to": "e2",
+      "note": "первый операнд фрагмента alt: регистрация закрыта",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "createMessage",
+      "name": "open",
+      "from": "e2",
+      "to": "e3",
+      "note": "нижний операнд фрагмента alt",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "RegisterForCourses Basic Flow",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 570
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 200,
+          "h": 570
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 580,
+          "y": 60,
+          "w": 200,
+          "h": 570
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 840,
+          "y": 60,
+          "w": 200,
+          "h": 570
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 1100,
+          "y": 60,
+          "w": 200,
+          "h": 570
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 1360,
+          "y": 60,
+          "w": 200,
+          "h": 570
+        },
+        {
+          "id": "s7",
+          "elementId": "e7",
+          "x": 60,
+          "y": 150,
+          "w": 1500,
+          "h": 200
+        },
+        {
+          "id": "s8",
+          "elementId": "e8",
+          "x": 60,
+          "y": 390,
+          "w": 1500,
+          "h": 200
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.211
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.211
+          },
+          "y": 180
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.263
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.263
+          },
+          "y": 210
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.316
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.351
+          },
+          "y": 240
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.368
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.368
+          },
+          "y": 270
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.421
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.421
+          },
+          "y": 300
+        },
+        {
+          "id": "l6",
+          "relId": "r9",
+          "from": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.632
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.632
+          },
+          "y": 420
+        },
+        {
+          "id": "l7",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.684
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.684
+          },
+          "y": 450
+        },
+        {
+          "id": "l8",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.737
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.737
+          },
+          "y": 480
+        },
+        {
+          "id": "l9",
+          "relId": "r10",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.789
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.824
+          },
+          "y": 510
+        },
+        {
+          "id": "l10",
+          "relId": "r8",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.842
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.842
+          },
+          "y": 540
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "4302",
+    "figureNo": "4.3.2",
+    "exercise": "4.3",
+    "type": "sequence",
+    "diagramName": "RegisterForCourses Basic Flow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Начальный вид UML-диаграммы последовательности RegisterForCourses Basic Flow",
+    "notes": "Состав линий жизни и большая часть сообщений названы текстом; дословные подписи сообщений, сторожевые условия фрагментов opt ([rctrl.isRegistrationOpened(s)]) и alt ([!rctrl.registerForCourses(curUser)] / [else]) и два сообщения, которых в тексте не было (возврат curStud и displayError()), прочитаны с рисунка 4.3.2.",
+    "gaps": [
+      "сторожевые условия операндов opt и alt в тексте не приведены — прочитаны с рисунка",
+      "имена сообщений к объекту доступа к данным, кроме создающего, в тексте не названы — прочитаны с рисунка",
+      "покрытие сообщений операндами фрагментов не выражается",
+      "второй операнд фрагмента alt ([else]) в модели не выражается отдельным элементом — записан в имени фрагмента"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.fragmentOperands",
+      "source.guards"
+    ],
+    "imageDerived": [
+      "e7",
+      "e8",
+      "r1",
+      "r2",
+      "r3",
+      "r4",
+      "r5",
+      "r6",
+      "r7",
+      "r8"
+    ]
+  },
+  "expect": {
+    "operations": [
+      "DataAccess::getStudentByUser(u:User):Student",
+      "MainMenuForm::displayError()",
+      "Student::hasScheduleForSemester(semester):boolean",
+      "RegistrationController::registerForCourses",
+      "RegistrationController::isRegistrationOpened"
+    ]
+  },
+  "sheet": {
+    "w": 1620,
+    "h": 690
+  }
+}

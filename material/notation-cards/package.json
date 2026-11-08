@@ -1,0 +1,51 @@
+{
+  "key": "package",
+  "kind": "shape",
+  "title": "Пакет",
+  "oneLine": "Пакет — пространство имён и контейнер: он группирует элементы модели и владеет ими.",
+  "draws": "Прямоугольник с маленьким ярлыком-вкладкой в левом верхнем углу; имя стоит в ярлыке. Вложенные пакеты рисуются внутри или рядом, связи — зависимости и импорт. Содержимое можно не показывать: на диаграмме пакетов он часто изображается одним именем. Полное имя пакета пишется через двойное двоеточие: Application::Login. Пакет может быть подписан стереотипом слоя, но от этого не становится компонентом.",
+  "differs": "От компонента отличается тем, что не является единицей поставки и не имеет интерфейсов: пакет только группирует и даёт имена, поведения у него нет. От границы системы — тем, что не задаёт субъект вариантов использования. Если сложить слои приложения в компоненты, модель начнёт обещать сборку и развёртывание там, где нужна была лишь структура каталогов. Признак ошибки: внутри пакета лежит компонент, который «поставляется» — уровни перепутаны, поставку описывает компонент. Если у группы есть интерфейс и её можно заменить целиком, это компонент, а не пакет.",
+  "clause": {
+    "number": "12.2",
+    "title": "Packages",
+    "id": "12.2-packages"
+  },
+  "rules": [
+    "element-not-own-self",
+    "namespace-members-distinguishable",
+    "package-element-visibility"
+  ],
+  "example": "Пакеты «Presentation», «Application», «Persistence» на диаграмме пакетов системы регистрации.",
+  "plantuml": "package Foo {",
+  "stereotypes": [
+    "Catalog",
+    "auxiliary",
+    "view",
+    "framework",
+    "modelLibrary",
+    "XSDschema",
+    "layer",
+    "architectural view",
+    "subsystem",
+    "schema",
+    "mechanism"
+  ],
+  "seeAlso": [
+    "model",
+    "profile",
+    "import",
+    "component"
+  ],
+  "sources": [
+    "uml.json#shapes.package",
+    "crossrefs.json#notationToClause.package",
+    "spec-tree.json#12.2",
+    "rules-uml-2.5.1.json#element-not-own-self",
+    "rules-uml-2.5.1.json#namespace-members-distinguishable",
+    "rules-uml-2.5.1.json#package-element-visibility",
+    "crossrefs.json#stereotypeToShape",
+    "plantuml-grammar.json#package",
+    "DIAGRAM-TYPES.md#3.5"
+  ],
+  "diagrams": "3.5"
+}

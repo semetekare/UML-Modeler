@@ -1,0 +1,314 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5218",
+  "name": "UML-диаграмма последовательности, описывающая реализацию операции sendStudentData() в подсистеме BSAccess",
+  "elements": [
+    {
+      "id": "e4",
+      "kind": "actorLifeline",
+      "name": "Расчётная система"
+    },
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "cn:BSAccess",
+      "stereotype": "subsystem proxy"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "cOff[i]:CourseOffering",
+      "multiObject": true,
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "client:XMLRpcClient"
+    },
+    {
+      "id": "e5",
+      "kind": "fragment",
+      "name": "[for all courses]",
+      "documentation": "цикл по курсам; условие прочитано с рисунка, покрывает сообщение 3",
+      "operator": "loop",
+      "source": "image"
+    },
+    {
+      "id": "e6",
+      "kind": "fragment",
+      "name": "[client == NULL]",
+      "documentation": "фрагмент opt; условие прочитано с рисунка, покрывает сообщение 2",
+      "operator": "opt",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "sendStudentData(name : string, address : string, cOff : CourseOffering[]) : boolean",
+      "from": "e1",
+      "to": "e1",
+      "note": "входящее сообщение связано с операцией",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "init(serverURL : string) : void",
+      "from": "e1",
+      "to": "e1",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "toJSON() : string",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "execute(pMethodName : String = requestName, pParams : Object[]) : Object",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "xmlrpcRequest",
+      "from": "e3",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "reply",
+      "name": "return(xmlrpcResult)",
+      "from": "e4",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "reply",
+      "name": "return(result)",
+      "from": "e3",
+      "to": "e1",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "sendStudentData",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e4",
+          "x": 60,
+          "y": 60,
+          "w": 160,
+          "h": 480
+        },
+        {
+          "id": "s2",
+          "elementId": "e1",
+          "x": 280,
+          "y": 60,
+          "w": 160,
+          "h": 480
+        },
+        {
+          "id": "s3",
+          "elementId": "e2",
+          "x": 500,
+          "y": 60,
+          "w": 160,
+          "h": 480
+        },
+        {
+          "id": "s4",
+          "elementId": "e3",
+          "x": 720,
+          "y": 60,
+          "w": 160,
+          "h": 480
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 60,
+          "y": 150,
+          "w": 820,
+          "h": 170
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 60,
+          "y": 360,
+          "w": 820,
+          "h": 140
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.25
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.292
+          },
+          "y": 180
+        },
+        {
+          "id": "l2",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.313
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.355
+          },
+          "y": 210
+        },
+        {
+          "id": "l3",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.375
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.375
+          },
+          "y": 240
+        },
+        {
+          "id": "l4",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.438
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.438
+          },
+          "y": 270
+        },
+        {
+          "id": "l5",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.688
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.688
+          },
+          "y": 390
+        },
+        {
+          "id": "l6",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.75
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.75
+          },
+          "y": 420
+        },
+        {
+          "id": "l7",
+          "relId": "r8",
+          "from": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.813
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.813
+          },
+          "y": 450
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [
+    {
+      "id": "r3",
+      "kind": "reply",
+      "from": "e1",
+      "to": null,
+      "name": "result",
+      "why": "нет получателя: конец связи не указывает на элемент, а uml-model/3 требует оба конца"
+    }
+  ],
+  "source": {
+    "figure": "5218",
+    "figureNo": "5.2.18",
+    "exercise": "5.2.G",
+    "type": "sequence",
+    "diagramName": "sendStudentData",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности, описывающая реализацию операции sendStudentData() в подсистеме BSAccess",
+    "notes": "Текст называет четыре линии жизни, фрагмент loop, вызов toJSON():string и потерянное сообщение-возврат. Рисунок 5.2.18 показывает восемь сообщений, фрагмент opt с условием [client == NULL] и условие цикла [for all courses]; подписи сообщений прочитаны с рисунка.",
+    "gaps": [
+      "подписи сообщений в тексте не перечислены — прочитаны с рисунка",
+      "множественность линии жизни (Multi-object) не выражается — записана multiObject",
+      "потерянное сообщение не выражается в uml-model/3 — записано связью без получателя",
+      "покрытие сообщений фрагментами opt и loop не выражается"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.lostMessage",
+      "model.multiObject",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e2",
+      "e5",
+      "r1",
+      "r2",
+      "r3"
+    ]
+  },
+  "sheet": {
+    "w": 940,
+    "h": 600
+  }
+}

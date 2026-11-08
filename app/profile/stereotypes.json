@@ -1,0 +1,5001 @@
+{
+ "version": 1,
+ "source": "material/profile-canonical/profile.json (профиль 16.3)",
+ "sourceSha256": "3805fe77989b304cbbe92d227340d93a797620546343aaacdc000dc3ae84525c",
+ "counts": {
+  "records": 428,
+  "definitions": 407,
+  "stereotypes": 304,
+  "aliases": 9,
+  "icons": 15
+ },
+ "stereotypes": [
+  {
+   "id": "st-requirement",
+   "name": "requirement",
+   "aliases": [],
+   "baseTypes": [
+    "Requirement"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "Text",
+     "type": "longtext",
+     "default": "",
+     "documentation": "",
+     "values": []
+    },
+    {
+     "name": "ID",
+     "type": "text",
+     "default": "",
+     "documentation": "",
+     "values": []
+    },
+    {
+     "name": "source",
+     "type": "text",
+     "default": "",
+     "documentation": "",
+     "values": []
+    },
+    {
+     "name": "kind",
+     "type": "enum",
+     "default": "",
+     "documentation": "",
+     "values": [
+      "Functional",
+      "Performance",
+      "Interface"
+     ]
+    },
+    {
+     "name": "verifyMethod",
+     "type": "enum",
+     "default": "",
+     "documentation": "",
+     "values": [
+      "Analysis",
+      "Demonstration",
+      "Inspection",
+      "Test"
+     ]
+    },
+    {
+     "name": "risk",
+     "type": "enum",
+     "default": "",
+     "documentation": "",
+     "values": [
+      "High",
+      "Medium",
+      "Low"
+     ]
+    },
+    {
+     "name": "status",
+     "type": "enum",
+     "default": "",
+     "documentation": "",
+     "values": [
+      "Proposed",
+      "Approved",
+      "Rejected",
+      "Deferred",
+      "Implemented",
+      "Mandatory",
+      "Obsolete"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "st-usecase",
+   "name": "usecase",
+   "aliases": [
+    "UseCase"
+   ],
+   "baseTypes": [
+    "UseCase",
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": {
+    "asset": "pict-usecase-ellipse",
+    "kind": "figure",
+    "size": [
+     133,
+     72
+    ],
+    "glyph": "usecase-ellipse",
+    "iconPath": "stereotypeIcons/EHXDIh6GAqDIHRGC",
+    "iconPaths": [
+     "stereotypeIcons/EHXDIh6GAqDIHRGC"
+    ]
+   },
+   "pictogramByBaseType": {
+    "UseCase": null,
+    "Class": {
+     "asset": "pict-usecase-ellipse",
+     "kind": "figure",
+     "size": [
+      133,
+      72
+     ],
+     "glyph": "usecase-ellipse",
+     "iconPath": "stereotypeIcons/EHXDIh6GAqDIHRGC"
+    }
+   },
+   "taggedValues": [
+    {
+     "name": "Level",
+     "type": "enum",
+     "default": "",
+     "documentation": "",
+     "values": [
+      "Summary",
+      "User",
+      "Subfunction"
+     ]
+    },
+    {
+     "name": "Complexity",
+     "type": "enum",
+     "default": "",
+     "documentation": "",
+     "values": [
+      "Low",
+      "Medium",
+      "High"
+     ]
+    },
+    {
+     "name": "Use Case Status",
+     "type": "enum",
+     "default": "",
+     "documentation": "",
+     "values": [
+      "Name Only",
+      "Initial",
+      "Base",
+      "Complete",
+      "Deferred"
+     ]
+    },
+    {
+     "name": "Implementation Status",
+     "type": "enum",
+     "default": "",
+     "documentation": "",
+     "values": [
+      "Scheduled",
+      "Started",
+      "Partially Complete",
+      "Complete",
+      "Partially Deferred"
+     ]
+    },
+    {
+     "name": "Preconditions",
+     "type": "text",
+     "default": "",
+     "documentation": "",
+     "values": []
+    },
+    {
+     "name": "Post-conditions",
+     "type": "text",
+     "default": "",
+     "documentation": "",
+     "values": []
+    },
+    {
+     "name": "Author",
+     "type": "text",
+     "default": "",
+     "documentation": "",
+     "values": []
+    },
+    {
+     "name": "Assumptions",
+     "type": "text",
+     "default": "",
+     "documentation": "",
+     "values": []
+    }
+   ],
+   "taggedValuesByBaseType": {
+    "UseCase": [
+     {
+      "name": "Level",
+      "type": "enum",
+      "default": "",
+      "documentation": "",
+      "values": [
+       "Summary",
+       "User",
+       "Subfunction"
+      ]
+     },
+     {
+      "name": "Complexity",
+      "type": "enum",
+      "default": "",
+      "documentation": "",
+      "values": [
+       "Low",
+       "Medium",
+       "High"
+      ]
+     },
+     {
+      "name": "Use Case Status",
+      "type": "enum",
+      "default": "",
+      "documentation": "",
+      "values": [
+       "Name Only",
+       "Initial",
+       "Base",
+       "Complete",
+       "Deferred"
+      ]
+     },
+     {
+      "name": "Implementation Status",
+      "type": "enum",
+      "default": "",
+      "documentation": "",
+      "values": [
+       "Scheduled",
+       "Started",
+       "Partially Complete",
+       "Complete",
+       "Partially Deferred"
+      ]
+     },
+     {
+      "name": "Preconditions",
+      "type": "text",
+      "default": "",
+      "documentation": "",
+      "values": []
+     },
+     {
+      "name": "Post-conditions",
+      "type": "text",
+      "default": "",
+      "documentation": "",
+      "values": []
+     },
+     {
+      "name": "Author",
+      "type": "text",
+      "default": "",
+      "documentation": "",
+      "values": []
+     },
+     {
+      "name": "Assumptions",
+      "type": "text",
+      "default": "",
+      "documentation": "",
+      "values": []
+     }
+    ],
+    "Class": [
+     {
+      "name": "Level",
+      "type": "enum",
+      "default": "",
+      "documentation": "",
+      "values": [
+       "Subfunction",
+       "Summary",
+       "User"
+      ]
+     },
+     {
+      "name": "Complexity",
+      "type": "enum",
+      "default": "",
+      "documentation": "",
+      "values": [
+       "High",
+       "Low",
+       "Medium"
+      ]
+     },
+     {
+      "name": "Use Case Status",
+      "type": "enum",
+      "default": "",
+      "documentation": "",
+      "values": [
+       "Base",
+       "Complete",
+       "Deferred",
+       "Initial",
+       "Name Only"
+      ]
+     },
+     {
+      "name": "Implementation Status",
+      "type": "enum",
+      "default": "",
+      "documentation": "",
+      "values": [
+       "Complete",
+       "Partially Complete",
+       "Partially Deferred",
+       "Scheduled",
+       "Started"
+      ]
+     },
+     {
+      "name": "Preconditions",
+      "type": "text",
+      "default": "",
+      "documentation": "",
+      "values": []
+     },
+     {
+      "name": "Post-conditions",
+      "type": "text",
+      "default": "",
+      "documentation": "",
+      "values": []
+     },
+     {
+      "name": "Author",
+      "type": "text",
+      "default": "",
+      "documentation": "",
+      "values": []
+     },
+     {
+      "name": "Assumptions",
+      "type": "text",
+      "default": "",
+      "documentation": "",
+      "values": []
+     }
+    ]
+   },
+   "taggedValuesVariants": [
+    {
+     "baseType": "UseCase",
+     "variants": [
+      {
+       "taggedValues": [
+        {
+         "name": "Level",
+         "type": "enum",
+         "default": "",
+         "documentation": "",
+         "values": [
+          "Summary",
+          "User",
+          "Subfunction"
+         ]
+        },
+        {
+         "name": "Complexity",
+         "type": "enum",
+         "default": "",
+         "documentation": "",
+         "values": [
+          "Low",
+          "Medium",
+          "High"
+         ]
+        },
+        {
+         "name": "Use Case Status",
+         "type": "enum",
+         "default": "",
+         "documentation": "",
+         "values": [
+          "Name Only",
+          "Initial",
+          "Base",
+          "Complete",
+          "Deferred"
+         ]
+        },
+        {
+         "name": "Implementation Status",
+         "type": "enum",
+         "default": "",
+         "documentation": "",
+         "values": [
+          "Scheduled",
+          "Started",
+          "Partially Complete",
+          "Complete",
+          "Partially Deferred"
+         ]
+        },
+        {
+         "name": "Preconditions",
+         "type": "text",
+         "default": "",
+         "documentation": "",
+         "values": []
+        },
+        {
+         "name": "Post-conditions",
+         "type": "text",
+         "default": "",
+         "documentation": "",
+         "values": []
+        },
+        {
+         "name": "Author",
+         "type": "text",
+         "default": "",
+         "documentation": "",
+         "values": []
+        },
+        {
+         "name": "Assumptions",
+         "type": "text",
+         "default": "",
+         "documentation": "",
+         "values": []
+        }
+       ]
+      },
+      {
+       "taggedValues": [
+        {
+         "name": "Level",
+         "type": "enum",
+         "default": "",
+         "documentation": "",
+         "values": [
+          "Subfunction",
+          "Summary",
+          "User"
+         ]
+        },
+        {
+         "name": "Complexity",
+         "type": "enum",
+         "default": "",
+         "documentation": "",
+         "values": [
+          "High",
+          "Low",
+          "Medium"
+         ]
+        },
+        {
+         "name": "Use Case Status",
+         "type": "enum",
+         "default": "",
+         "documentation": "",
+         "values": [
+          "Base",
+          "Complete",
+          "Deferred",
+          "Initial",
+          "Name Only"
+         ]
+        },
+        {
+         "name": "Implementation Status",
+         "type": "enum",
+         "default": "",
+         "documentation": "",
+         "values": [
+          "Complete",
+          "Partially Complete",
+          "Partially Deferred",
+          "Scheduled",
+          "Started"
+         ]
+        },
+        {
+         "name": "Preconditions",
+         "type": "text",
+         "default": "",
+         "documentation": "",
+         "values": []
+        },
+        {
+         "name": "Post-conditions",
+         "type": "text",
+         "default": "",
+         "documentation": "",
+         "values": []
+        },
+        {
+         "name": "Author",
+         "type": "text",
+         "default": "",
+         "documentation": "",
+         "values": []
+        },
+        {
+         "name": "Assumptions",
+         "type": "text",
+         "default": "",
+         "documentation": "",
+         "values": []
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "st-metaclass",
+   "name": "metaclass",
+   "aliases": [],
+   "baseTypes": [
+    "Actor",
+    "UseCase",
+    "Component",
+    "Interface",
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-device",
+   "name": "device",
+   "aliases": [],
+   "baseTypes": [
+    "Node",
+    "NodeInstance"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-executionenvironment",
+   "name": "executionEnvironment",
+   "aliases": [
+    "execution environment"
+   ],
+   "baseTypes": [
+    "Node",
+    "NodeInstance"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-localprecondition",
+   "name": "localPrecondition",
+   "aliases": [],
+   "baseTypes": [
+    "NOTE"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-localpostcondition",
+   "name": "localPostcondition",
+   "aliases": [],
+   "baseTypes": [
+    "NOTE"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-decisioninput",
+   "name": "decisionInput",
+   "aliases": [],
+   "baseTypes": [
+    "NOTE"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-rationale",
+   "name": "rationale",
+   "aliases": [],
+   "baseTypes": [
+    "NOTE"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-problem",
+   "name": "problem",
+   "aliases": [],
+   "baseTypes": [
+    "NOTE"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-system",
+   "name": "system",
+   "aliases": [],
+   "baseTypes": [
+    "InteractionLifeLine",
+    "SysMLBlock"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-user",
+   "name": "user",
+   "aliases": [],
+   "baseTypes": [
+    "InteractionActor"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-flow-of-events",
+   "name": "flow of events",
+   "aliases": [],
+   "baseTypes": [
+    "CombinedFragment"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-powertype",
+   "name": "powertype",
+   "aliases": [],
+   "baseTypes": [
+    "Actor",
+    "UseCase",
+    "Component",
+    "Interface"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-process",
+   "name": "process",
+   "aliases": [],
+   "baseTypes": [
+    "Actor",
+    "UseCase",
+    "Component",
+    "Interface",
+    "Node",
+    "Class",
+    "NodeInstance"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-thread",
+   "name": "thread",
+   "aliases": [],
+   "baseTypes": [
+    "Actor",
+    "UseCase",
+    "Component",
+    "Interface",
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-utility",
+   "name": "utility",
+   "aliases": [],
+   "baseTypes": [
+    "Actor",
+    "UseCase",
+    "Component",
+    "Interface",
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-derive",
+   "name": "derive",
+   "aliases": [],
+   "baseTypes": [
+    "Abstraction"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-controloperator",
+   "name": "controlOperator",
+   "aliases": [],
+   "baseTypes": [
+    "Activity"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-allocateactivitypartition",
+   "name": "allocateActivityPartition",
+   "aliases": [],
+   "baseTypes": [
+    "ActivityPartition"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-allocate",
+   "name": "allocate",
+   "aliases": [],
+   "baseTypes": [
+    "SysMLAllocate"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-optional",
+   "name": "optional",
+   "aliases": [],
+   "baseTypes": [
+    "ActivityParameterNode",
+    "InputPin",
+    "OutputPin"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-participant",
+   "name": "participant",
+   "aliases": [
+    "Participant"
+   ],
+   "baseTypes": [
+    "SysMLParticipantProperty",
+    "Class",
+    "Component"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-default",
+   "name": "Default",
+   "aliases": [
+    "default"
+   ],
+   "baseTypes": [
+    "State2",
+    "ActivityAction",
+    "Transition2",
+    "Operation"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-valuespecificationaction",
+   "name": "valueSpecificationAction",
+   "aliases": [],
+   "baseTypes": [
+    "ActivityAction"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-parallel",
+   "name": "parallel",
+   "aliases": [],
+   "baseTypes": [
+    "State2"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-activity",
+   "name": "activity",
+   "aliases": [],
+   "baseTypes": [
+    "SysMLActivityBlock"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-valuetype",
+   "name": "valueType",
+   "aliases": [],
+   "baseTypes": [
+    "SysMLValueType"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-unit",
+   "name": "unit",
+   "aliases": [],
+   "baseTypes": [
+    "SysMLUnit"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-quantitykind",
+   "name": "quantityKind",
+   "aliases": [],
+   "baseTypes": [
+    "SysMLQuantityKind"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-block",
+   "name": "block",
+   "aliases": [],
+   "baseTypes": [
+    "SysMLBlock"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-domain",
+   "name": "domain",
+   "aliases": [],
+   "baseTypes": [
+    "SysMLBlock"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-external",
+   "name": "external",
+   "aliases": [],
+   "baseTypes": [
+    "SysMLBlock"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-act-as",
+   "name": "act as",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-act-as-regulation",
+   "name": "act as regulation",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-affect-achievement",
+   "name": "affect achievement",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-affect-employment",
+   "name": "affect employment",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-amplify",
+   "name": "amplify",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-basis-for",
+   "name": "basis for",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-channel-efforts",
+   "name": "channel efforts",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-claim",
+   "name": "claim",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-component-of-plan-for",
+   "name": "component of plan for",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-define",
+   "name": "define",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-deliver",
+   "name": "deliver",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-deploy",
+   "name": "deploy",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship",
+    "Deployment"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-determine",
+   "name": "determine",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-discharge",
+   "name": "discharge",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-effect-enforcement-level",
+   "name": "effect enforcement level",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-enable",
+   "name": "enable",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-establish",
+   "name": "establish",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-formulated-based-on",
+   "name": "formulated based on",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-govern",
+   "name": "govern",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-guide",
+   "name": "guide",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-identify",
+   "name": "identify",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-implement",
+   "name": "implement",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship",
+    "Component"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-judge",
+   "name": "judge",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-make",
+   "name": "make",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-make-operative",
+   "name": "make operative",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-manage",
+   "name": "manage",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-provide",
+   "name": "provide",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-provide-impetus",
+   "name": "provide impetus",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-quantify",
+   "name": "quantify",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-realize",
+   "name": "realize",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-recognize",
+   "name": "recognize",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-require",
+   "name": "require",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-responsible",
+   "name": "responsible",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-significant-to",
+   "name": "significant to",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-source",
+   "name": "source",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-support-achievement",
+   "name": "support achievement",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-use",
+   "name": "use",
+   "aliases": [],
+   "baseTypes": [
+    "BMMRelationship"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-motivationrealization",
+   "name": "MotivationRealization",
+   "aliases": [],
+   "baseTypes": [
+    "Realization"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-serviceinterface",
+   "name": "ServiceInterface",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-agent",
+   "name": "Agent",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-soamlport",
+   "name": "SoaMLPort",
+   "aliases": [],
+   "baseTypes": [
+    "Port"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "connectorRequired",
+     "type": "text",
+     "default": "true",
+     "documentation": "",
+     "values": []
+    }
+   ]
+  },
+  {
+   "id": "st-service",
+   "name": "Service",
+   "aliases": [
+    "service"
+   ],
+   "baseTypes": [
+    "Port",
+    "Component"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-request",
+   "name": "Request",
+   "aliases": [],
+   "baseTypes": [
+    "Port"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-servicechannel",
+   "name": "ServiceChannel",
+   "aliases": [],
+   "baseTypes": [
+    "Connector"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-messagetype",
+   "name": "MessageType",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-attachment",
+   "name": "Attachment",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-consumer",
+   "name": "Consumer",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-provider",
+   "name": "Provider",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-soamlcollaboration",
+   "name": "SoaMLCollaboration",
+   "aliases": [],
+   "baseTypes": [
+    "Collaboration2"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "strict",
+     "type": "text",
+     "default": "true",
+     "documentation": "",
+     "values": []
+    }
+   ]
+  },
+  {
+   "id": "st-servicesarchitecture",
+   "name": "ServicesArchitecture",
+   "aliases": [],
+   "baseTypes": [
+    "Collaboration2"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-servicecontract",
+   "name": "ServiceContract",
+   "aliases": [],
+   "baseTypes": [
+    "Collaboration2"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-soamlcollaborationuse",
+   "name": "SoaMLCollaborationUse",
+   "aliases": [],
+   "baseTypes": [
+    "CollaborationOccurrence"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "strict",
+     "type": "text",
+     "default": "",
+     "documentation": "",
+     "values": []
+    }
+   ]
+  },
+  {
+   "id": "st-capability",
+   "name": "Capability",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-expose",
+   "name": "Expose",
+   "aliases": [],
+   "baseTypes": [
+    "Dependency"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-milestone",
+   "name": "Milestone",
+   "aliases": [],
+   "baseTypes": [
+    "NOTE"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "progress",
+     "type": "text",
+     "default": "0",
+     "documentation": "",
+     "values": []
+    },
+    {
+     "name": "signal",
+     "type": "int",
+     "default": "",
+     "documentation": "",
+     "values": []
+    },
+    {
+     "name": "value",
+     "type": "text",
+     "default": "",
+     "documentation": "",
+     "values": []
+    }
+   ]
+  },
+  {
+   "id": "st-catalog",
+   "name": "Catalog",
+   "aliases": [],
+   "baseTypes": [
+    "Package"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-nodedescriptor",
+   "name": "NodeDescriptor",
+   "aliases": [],
+   "baseTypes": [
+    "Artifact"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-freeformdescriptor",
+   "name": "FreeFormDescriptor",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-category",
+   "name": "Category",
+   "aliases": [],
+   "baseTypes": [
+    "Artifact"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-freeformvalue",
+   "name": "FreeFormValue",
+   "aliases": [],
+   "baseTypes": [
+    "InstanceSpecification"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-categoryvalue",
+   "name": "CategoryValue",
+   "aliases": [],
+   "baseTypes": [
+    "InstanceSpecification"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-categorization",
+   "name": "Categorization",
+   "aliases": [],
+   "baseTypes": [
+    "Dependency"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-nobuffer",
+   "name": "noBuffer",
+   "aliases": [],
+   "baseTypes": [
+    "ObjectNode",
+    "ActivityParameterNode",
+    "CentralBufferNode",
+    "DataStoreNode",
+    "ExpansionNode",
+    "InputPin",
+    "OutputPin",
+    "ValuePin"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-controlvalue",
+   "name": "controlValue",
+   "aliases": [],
+   "baseTypes": [
+    "ValuePin",
+    "OutputPin",
+    "InputPin",
+    "ExpansionNode",
+    "ObjectNode",
+    "ActivityParameterNode",
+    "CentralBufferNode",
+    "DataStoreNode"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "value",
+     "type": "enum",
+     "default": "",
+     "documentation": "",
+     "values": [
+      "Enable",
+      "Disable"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "st-overwrite",
+   "name": "overwrite",
+   "aliases": [],
+   "baseTypes": [
+    "ObjectNode",
+    "ActivityParameterNode",
+    "CentralBufferNode",
+    "DataStoreNode",
+    "ExpansionNode",
+    "InputPin",
+    "OutputPin",
+    "ValuePin"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-initial",
+   "name": "initial",
+   "aliases": [],
+   "baseTypes": [
+    "Transition2"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-refine",
+   "name": "refine",
+   "aliases": [],
+   "baseTypes": [
+    "Abstraction"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-trace",
+   "name": "trace",
+   "aliases": [],
+   "baseTypes": [
+    "Abstraction",
+    "Dependency"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-global",
+   "name": "global",
+   "aliases": [],
+   "baseTypes": [
+    "AssociationEnd"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-appliedprofile",
+   "name": "appliedProfile",
+   "aliases": [],
+   "baseTypes": [
+    "Dependency",
+    "Usage"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-conform",
+   "name": "conform",
+   "aliases": [],
+   "baseTypes": [
+    "Dependency"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-modellibrary",
+   "name": "modelLibrary",
+   "aliases": [],
+   "baseTypes": [
+    "Dependency",
+    "Package",
+    "SubSystem",
+    "Usage"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-implementation",
+   "name": "implementation",
+   "aliases": [],
+   "baseTypes": [
+    "Generalization"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-orm-implementation",
+   "name": "ORM Implementation",
+   "aliases": [],
+   "baseTypes": [
+    "Generalization"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-auxiliary",
+   "name": "auxiliary",
+   "aliases": [],
+   "baseTypes": [
+    "Package",
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-view",
+   "name": "view",
+   "aliases": [],
+   "baseTypes": [
+    "Package",
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": {
+    "asset": "pict-view",
+    "kind": "badge",
+    "size": [
+     16,
+     16
+    ],
+    "glyph": "view",
+    "iconPath": "stereotypeIcons/oAHKm9KGAqACIgk.",
+    "iconPaths": [
+     "stereotypeIcons/oAHKm9KGAqACIgk."
+    ]
+   },
+   "pictogramByBaseType": {
+    "Package": null,
+    "Class": {
+     "asset": "pict-view",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "view",
+     "iconPath": "stereotypeIcons/oAHKm9KGAqACIgk."
+    }
+   },
+   "taggedValues": []
+  },
+  {
+   "id": "st-framework",
+   "name": "framework",
+   "aliases": [],
+   "baseTypes": [
+    "Package",
+    "SubSystem"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-xsdschema",
+   "name": "XSDschema",
+   "aliases": [],
+   "baseTypes": [
+    "Package",
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "Namespace",
+     "type": "text",
+     "default": "",
+     "documentation": "",
+     "values": []
+    },
+    {
+     "name": "NamespacePrefix",
+     "type": "text",
+     "default": "",
+     "documentation": "",
+     "values": []
+    }
+   ],
+   "taggedValuesByBaseType": {
+    "Package": [
+     {
+      "name": "Namespace",
+      "type": "text",
+      "default": "",
+      "documentation": "",
+      "values": []
+     },
+     {
+      "name": "NamespacePrefix",
+      "type": "text",
+      "default": "",
+      "documentation": "",
+      "values": []
+     }
+    ],
+    "Class": []
+   }
+  },
+  {
+   "id": "st-facade",
+   "name": "facade",
+   "aliases": [],
+   "baseTypes": [
+    "SubSystem"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-profile",
+   "name": "profile",
+   "aliases": [],
+   "baseTypes": [
+    "SubSystem"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-stub",
+   "name": "stub",
+   "aliases": [],
+   "baseTypes": [
+    "SubSystem"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-toplevel",
+   "name": "topLevel",
+   "aliases": [],
+   "baseTypes": [
+    "SubSystem"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-call",
+   "name": "call",
+   "aliases": [],
+   "baseTypes": [
+    "Usage"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-instantiate",
+   "name": "instantiate",
+   "aliases": [],
+   "baseTypes": [
+    "Usage"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-responsibility",
+   "name": "responsibility",
+   "aliases": [],
+   "baseTypes": [
+    "Usage"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-send",
+   "name": "send",
+   "aliases": [],
+   "baseTypes": [
+    "Usage"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-balking",
+   "name": "balking",
+   "aliases": [],
+   "baseTypes": [
+    "DiagonalMessage",
+    "SelfMessage",
+    "SequenceMessage",
+    "MessageFrom",
+    "MessageTo"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-time-out",
+   "name": "time-out",
+   "aliases": [],
+   "baseTypes": [
+    "DiagonalMessage",
+    "SelfMessage",
+    "SequenceMessage",
+    "MessageFrom",
+    "MessageTo"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-buildcomponent",
+   "name": "buildComponent",
+   "aliases": [],
+   "baseTypes": [
+    "Component"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-document",
+   "name": "document",
+   "aliases": [],
+   "baseTypes": [
+    "Component"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-entity",
+   "name": "entity",
+   "aliases": [],
+   "baseTypes": [
+    "Component",
+    "Class",
+    "Object",
+    "InteractionLifeLine",
+    "AssociationClass"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": {
+    "asset": "pict-entity",
+    "kind": "badge",
+    "size": [
+     16,
+     16
+    ],
+    "glyph": "entity",
+    "iconPath": "stereotypeIcons/EhNy4yKGAqACZgL8",
+    "iconPaths": [
+     "stereotypeIcons/EhNy4yKGAqACZgL8",
+     "stereotypeIcons/7hNy4yKGAqACZgNH",
+     "stereotypeIcons/EhNy4yKGAqACZgMG",
+     "stereotypeIcons/FUAwvUqGAqACAxDQ"
+    ]
+   },
+   "pictogramByBaseType": {
+    "Component": null,
+    "Class": {
+     "asset": "pict-entity",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "entity",
+     "iconPath": "stereotypeIcons/EhNy4yKGAqACZgL8"
+    },
+    "Object": {
+     "asset": "pict-entity",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "entity",
+     "iconPath": "stereotypeIcons/7hNy4yKGAqACZgNH"
+    },
+    "InteractionLifeLine": {
+     "asset": "pict-entity",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "entity",
+     "iconPath": "stereotypeIcons/EhNy4yKGAqACZgMG"
+    },
+    "AssociationClass": {
+     "asset": "pict-entity",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "entity",
+     "iconPath": "stereotypeIcons/FUAwvUqGAqACAxDQ"
+    }
+   },
+   "taggedValues": []
+  },
+  {
+   "id": "st-focus",
+   "name": "focus",
+   "aliases": [],
+   "baseTypes": [
+    "Component",
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-executable",
+   "name": "executable",
+   "aliases": [],
+   "baseTypes": [
+    "Component"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-file",
+   "name": "file",
+   "aliases": [],
+   "baseTypes": [
+    "Component"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-library",
+   "name": "library",
+   "aliases": [],
+   "baseTypes": [
+    "Component"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-subsystem",
+   "name": "subsystem",
+   "aliases": [],
+   "baseTypes": [
+    "Component",
+    "Package"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": {
+    "asset": "pict-subsystem",
+    "kind": "badge",
+    "size": [
+     16,
+     16
+    ],
+    "glyph": "subsystem",
+    "iconPath": "stereotypeIcons/iZtMOyKGAqACZASe",
+    "iconPaths": [
+     "stereotypeIcons/iZtMOyKGAqACZASe"
+    ]
+   },
+   "pictogramByBaseType": {
+    "Component": null,
+    "Package": {
+     "asset": "pict-subsystem",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "subsystem",
+     "iconPath": "stereotypeIcons/iZtMOyKGAqACZASe"
+    }
+   },
+   "taggedValues": []
+  },
+  {
+   "id": "st-table",
+   "name": "table",
+   "aliases": [],
+   "baseTypes": [
+    "Component",
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": {
+    "asset": "pict-table",
+    "kind": "badge",
+    "size": [
+     16,
+     16
+    ],
+    "glyph": "table",
+    "iconPath": "stereotypeIcons/dcD_jKKGAqACZQrh",
+    "iconPaths": [
+     "stereotypeIcons/dcD_jKKGAqACZQrh"
+    ]
+   },
+   "pictogramByBaseType": {
+    "Component": null,
+    "Class": {
+     "asset": "pict-table",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "table",
+     "iconPath": "stereotypeIcons/dcD_jKKGAqACZQrh"
+    }
+   },
+   "taggedValues": []
+  },
+  {
+   "id": "st-viewpoint",
+   "name": "viewpoint",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "Stakeholders",
+     "type": "text",
+     "default": "",
+     "documentation": "The set of stakeholders.",
+     "values": []
+    },
+    {
+     "name": "Purpose",
+     "type": "text",
+     "default": "",
+     "documentation": "The purpose addresses the stakeholder concerns.",
+     "values": []
+    },
+    {
+     "name": "Concerns",
+     "type": "text",
+     "default": "",
+     "documentation": "The interest of the stakeholders.",
+     "values": []
+    },
+    {
+     "name": "Languages",
+     "type": "text",
+     "default": "",
+     "documentation": "The languages used to construct the viewpoint.",
+     "values": []
+    },
+    {
+     "name": "Methods",
+     "type": "text",
+     "default": "",
+     "documentation": "The methods used to construct the views for this viewpoint.",
+     "values": []
+    }
+   ]
+  },
+  {
+   "id": "st-implementationclass",
+   "name": "implementationClass",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-interface",
+   "name": "interface",
+   "aliases": [
+    "Interface"
+   ],
+   "baseTypes": [
+    "Class",
+    "InteractionLifeLine"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-xsdattributegroup",
+   "name": "XSDattributeGroup",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-enumeration",
+   "name": "enumeration",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-primitive",
+   "name": "primitive",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-control",
+   "name": "control",
+   "aliases": [],
+   "baseTypes": [
+    "Class",
+    "Object",
+    "InteractionLifeLine"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": {
+    "asset": "pict-control",
+    "kind": "badge",
+    "size": [
+     16,
+     16
+    ],
+    "glyph": "control",
+    "iconPath": "stereotypeIcons/EhNy4yKGAqACZgL_",
+    "iconPaths": [
+     "stereotypeIcons/EhNy4yKGAqACZgL_",
+     "stereotypeIcons/7hNy4yKGAqACZgNI",
+     "stereotypeIcons/GhNy4yKGAqACZgMH"
+    ]
+   },
+   "pictogramByBaseType": {
+    "Class": {
+     "asset": "pict-control",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "control",
+     "iconPath": "stereotypeIcons/EhNy4yKGAqACZgL_"
+    },
+    "Object": {
+     "asset": "pict-control",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "control",
+     "iconPath": "stereotypeIcons/7hNy4yKGAqACZgNI"
+    },
+    "InteractionLifeLine": {
+     "asset": "pict-control",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "control",
+     "iconPath": "stereotypeIcons/GhNy4yKGAqACZgMH"
+    }
+   },
+   "taggedValues": []
+  },
+  {
+   "id": "st-boundary",
+   "name": "boundary",
+   "aliases": [],
+   "baseTypes": [
+    "Class",
+    "Object",
+    "InteractionLifeLine"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": {
+    "asset": "pict-boundary",
+    "kind": "badge",
+    "size": [
+     16,
+     16
+    ],
+    "glyph": "boundary",
+    "iconPath": "stereotypeIcons/EhNy4yKGAqACZgMA",
+    "iconPaths": [
+     "stereotypeIcons/EhNy4yKGAqACZgMA",
+     "stereotypeIcons/7hNy4yKGAqACZgNJ",
+     "stereotypeIcons/GhNy4yKGAqACZgMI"
+    ]
+   },
+   "pictogramByBaseType": {
+    "Class": {
+     "asset": "pict-boundary",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "boundary",
+     "iconPath": "stereotypeIcons/EhNy4yKGAqACZgMA"
+    },
+    "Object": {
+     "asset": "pict-boundary",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "boundary",
+     "iconPath": "stereotypeIcons/7hNy4yKGAqACZgNJ"
+    },
+    "InteractionLifeLine": {
+     "asset": "pict-boundary",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "boundary",
+     "iconPath": "stereotypeIcons/GhNy4yKGAqACZgMI"
+    }
+   },
+   "taggedValues": []
+  },
+  {
+   "id": "st-corbaconstants",
+   "name": "CORBAConstants",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-corbatypedef",
+   "name": "CORBATypedef",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-corbaprimitive",
+   "name": "CORBAPrimitive",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-corbaexception",
+   "name": "CORBAException",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-corbastruct",
+   "name": "CORBAStruct",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-orm-abstract-persistable",
+   "name": "ORM Abstract Persistable",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-xsdsequence",
+   "name": "XSDsequence",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-xsdchoice",
+   "name": "XSDchoice",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-xsdcomplextype",
+   "name": "XSDcomplexType",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-xsdsimpletype",
+   "name": "XSDsimpleType",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-xsdelement",
+   "name": "XSDelement",
+   "aliases": [],
+   "baseTypes": [
+    "Class",
+    "Attribute",
+    "AssociationEnd"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-xsdall",
+   "name": "XSDall",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-xsdrestriction",
+   "name": "XSDrestriction",
+   "aliases": [],
+   "baseTypes": [
+    "Class",
+    "Generalization"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-xsdunion",
+   "name": "XSDunion",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-xsdlist",
+   "name": "XSDlist",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-enum",
+   "name": "Enum",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-struct",
+   "name": "Struct",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-union",
+   "name": "Union",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-typedef",
+   "name": "Typedef",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-type",
+   "name": "type",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-delegate",
+   "name": "Delegate",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-entity-bean",
+   "name": "Entity Bean",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-session-bean",
+   "name": "Session Bean",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-message-driven-bean",
+   "name": "Message Driven Bean",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-orm-component",
+   "name": "ORM Component",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-orm-persistable",
+   "name": "ORM Persistable",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-orm-id-generator",
+   "name": "ORM ID Generator",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-orm-user-type",
+   "name": "ORM User Type",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-orm-parameterized-type",
+   "name": "ORM Parameterized Type",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-ptn-members-creatable",
+   "name": "PTN Members Creatable",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-ptn-cloneable",
+   "name": "PTN Cloneable",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-objectivefunction",
+   "name": "objectiveFunction",
+   "aliases": [],
+   "baseTypes": [
+    "SysMLConstraintBlock",
+    "SysMLConstraintProperty"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-moe",
+   "name": "moe",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-constant",
+   "name": "Constant",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-event",
+   "name": "Event",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute",
+    "Operation"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-pk",
+   "name": "PK",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "order",
+     "type": "text",
+     "default": "0",
+     "documentation": "",
+     "values": []
+    }
+   ]
+  },
+  {
+   "id": "st-property",
+   "name": "Property",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-xsdattribute",
+   "name": "XSDattribute",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-xsdenumeration",
+   "name": "XSDenumeration",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-xsdpattern",
+   "name": "XSDpattern",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-cmp",
+   "name": "CMP",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-distributedproperty",
+   "name": "DistributedProperty",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-basicinterval",
+   "name": "BasicInterval",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "Basic Interval distribution - value between min and max inclusive",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "min",
+     "type": "text",
+     "default": "0.0",
+     "documentation": "",
+     "values": []
+    },
+    {
+     "name": "max",
+     "type": "text",
+     "default": "0.0",
+     "documentation": "",
+     "values": []
+    }
+   ]
+  },
+  {
+   "id": "st-interval",
+   "name": "Interval",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "Interval distribution - unknown probability between min and max",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-uniform",
+   "name": "Uniform",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "Uniform distribution - constant probability between min and max",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-normal",
+   "name": "Normal",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "Normal distribution - constant probability between min and max",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "mean",
+     "type": "text",
+     "default": "0.0",
+     "documentation": "",
+     "values": []
+    },
+    {
+     "name": "standardDeviation",
+     "type": "text",
+     "default": "0.0",
+     "documentation": "",
+     "values": []
+    }
+   ]
+  },
+  {
+   "id": "st-corbaoneway",
+   "name": "CORBAOneway",
+   "aliases": [],
+   "baseTypes": [
+    "Operation"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-xsdextension",
+   "name": "XSDextension",
+   "aliases": [],
+   "baseTypes": [
+    "Generalization"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-ptn-operation-impl",
+   "name": "PTN Operation Impl",
+   "aliases": [],
+   "baseTypes": [
+    "Association"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-ptn-to-end-role-name-follow-class",
+   "name": "PTN To-End Role Name Follow Class",
+   "aliases": [],
+   "baseTypes": [
+    "Association"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-metamodel",
+   "name": "metamodel",
+   "aliases": [],
+   "baseTypes": [
+    "Model"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-systemmodel",
+   "name": "systemModel",
+   "aliases": [],
+   "baseTypes": [
+    "Model"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-layer",
+   "name": "layer",
+   "aliases": [],
+   "baseTypes": [
+    "Package"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": {
+    "asset": "pict-layer",
+    "kind": "badge",
+    "size": [
+     16,
+     16
+    ],
+    "glyph": "layer",
+    "iconPath": "stereotypeIcons/fZMKUyKGAqACZgXg",
+    "iconPaths": [
+     "stereotypeIcons/fZMKUyKGAqACZgXg"
+    ]
+   },
+   "pictogramByBaseType": {
+    "Package": {
+     "asset": "pict-layer",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "layer",
+     "iconPath": "stereotypeIcons/fZMKUyKGAqACZgXg"
+    }
+   },
+   "taggedValues": []
+  },
+  {
+   "id": "st-architectural-view",
+   "name": "architectural view",
+   "aliases": [],
+   "baseTypes": [
+    "Package"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": {
+    "asset": "pict-arch-view",
+    "kind": "badge",
+    "size": [
+     16,
+     16
+    ],
+    "glyph": "arch-view",
+    "iconPath": "stereotypeIcons/LSVqUyKGAqACZgXn",
+    "iconPaths": [
+     "stereotypeIcons/LSVqUyKGAqACZgXn"
+    ]
+   },
+   "pictogramByBaseType": {
+    "Package": {
+     "asset": "pict-arch-view",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "arch-view",
+     "iconPath": "stereotypeIcons/LSVqUyKGAqACZgXn"
+    }
+   },
+   "taggedValues": []
+  },
+  {
+   "id": "st-mechanism",
+   "name": "mechanism",
+   "aliases": [],
+   "baseTypes": [
+    "Collaboration2",
+    "Collaboration",
+    "Package"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": {
+    "asset": "pict-mechanism",
+    "kind": "badge",
+    "size": [
+     16,
+     16
+    ],
+    "glyph": "mechanism",
+    "iconPath": "stereotypeIcons/mAwbUyKGAqACZgqy",
+    "iconPaths": [
+     "stereotypeIcons/mAwbUyKGAqACZgqy",
+     "stereotypeIcons/bcTim9KGAqACIgke"
+    ]
+   },
+   "pictogramByBaseType": {
+    "Collaboration2": {
+     "asset": "pict-mechanism",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "mechanism",
+     "iconPath": "stereotypeIcons/mAwbUyKGAqACZgqy"
+    },
+    "Collaboration": {
+     "asset": "pict-mechanism",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "mechanism",
+     "iconPath": "stereotypeIcons/bcTim9KGAqACIgke"
+    },
+    "Package": {
+     "asset": "pict-mechanism",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "mechanism",
+     "iconPath": "stereotypeIcons/bcTim9KGAqACIgke"
+    }
+   },
+   "taggedValues": []
+  },
+  {
+   "id": "st-bind",
+   "name": "bind",
+   "aliases": [],
+   "baseTypes": [
+    "Realization",
+    "Dependency",
+    "BindingDependency"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-interface-realization",
+   "name": "interface realization",
+   "aliases": [],
+   "baseTypes": [
+    "Collaboration2",
+    "Collaboration"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-usecase-realization",
+   "name": "usecase realization",
+   "aliases": [
+    "use case realization"
+   ],
+   "baseTypes": [
+    "Collaboration2",
+    "Collaboration"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": {
+    "asset": "pict-usecase-realization",
+    "kind": "badge",
+    "size": [
+     16,
+     16
+    ],
+    "glyph": "usecase-realization",
+    "iconPath": "stereotypeIcons/EUe7CVqGAqACAwpK",
+    "iconPaths": [
+     "stereotypeIcons/EUe7CVqGAqACAwpK"
+    ]
+   },
+   "pictogramByBaseType": {
+    "Collaboration2": null,
+    "Collaboration": {
+     "asset": "pict-usecase-realization",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "usecase-realization",
+     "iconPath": "stereotypeIcons/EUe7CVqGAqACAwpK"
+    }
+   },
+   "taggedValues": []
+  },
+  {
+   "id": "st-subsystem-proxy",
+   "name": "subsystem proxy",
+   "aliases": [],
+   "baseTypes": [
+    "Class",
+    "InteractionLifeLine"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-fk",
+   "name": "FK",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "table",
+     "type": "text",
+     "default": "",
+     "documentation": "",
+     "values": []
+    },
+    {
+     "name": "source column",
+     "type": "text",
+     "default": "",
+     "documentation": "",
+     "values": []
+    }
+   ]
+  },
+  {
+   "id": "st-column",
+   "name": "column",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "nullable",
+     "type": "text",
+     "default": "Unspecified",
+     "documentation": "",
+     "values": []
+    }
+   ]
+  },
+  {
+   "id": "st-identifying",
+   "name": "identifying",
+   "aliases": [],
+   "baseTypes": [
+    "Association"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-non-identifying",
+   "name": "non identifying",
+   "aliases": [],
+   "baseTypes": [
+    "Association"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-schema",
+   "name": "schema",
+   "aliases": [],
+   "baseTypes": [
+    "Package"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": {
+    "asset": "pict-schema",
+    "kind": "badge",
+    "size": [
+     16,
+     16
+    ],
+    "glyph": "schema",
+    "iconPath": "stereotypeIcons/qs4vjKKGAqACZQqT",
+    "iconPaths": [
+     "stereotypeIcons/qs4vjKKGAqACZQqT"
+    ]
+   },
+   "pictogramByBaseType": {
+    "Package": {
+     "asset": "pict-schema",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "schema",
+     "iconPath": "stereotypeIcons/qs4vjKKGAqACZQqT"
+    }
+   },
+   "taggedValues": []
+  },
+  {
+   "id": "st-index",
+   "name": "index",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-case-story",
+   "name": "Case Story",
+   "aliases": [],
+   "baseTypes": [
+    "UseCase"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-subject",
+   "name": "subject",
+   "aliases": [],
+   "baseTypes": [
+    "System"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-specification",
+   "name": "specification",
+   "aliases": [],
+   "baseTypes": [
+    "Component"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-trigger",
+   "name": "trigger",
+   "aliases": [],
+   "baseTypes": [
+    "Operation"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "event",
+     "type": "text",
+     "default": "",
+     "documentation": "",
+     "values": []
+    }
+   ]
+  },
+  {
+   "id": "st-stored-procedure",
+   "name": "stored procedure",
+   "aliases": [],
+   "baseTypes": [
+    "Operation"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-create",
+   "name": "create",
+   "aliases": [],
+   "baseTypes": [
+    "Usage"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-context",
+   "name": "Context",
+   "aliases": [],
+   "baseTypes": [
+    "UseCase"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-ak",
+   "name": "AK",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-ck",
+   "name": "CK",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-not-null",
+   "name": "not null",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-nullable",
+   "name": "nullable",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-surrogate",
+   "name": "surrogate",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-individual",
+   "name": "Individual",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateBusinessActor"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-organizational-unit",
+   "name": "Organizational Unit",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateBusinessActor"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-organization",
+   "name": "Organization",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateBusinessActor"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-threat-agent",
+   "name": "Threat Agent",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateBusinessActor"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-business-decision",
+   "name": "Business Decision",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateBusinessService"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-social-network",
+   "name": "Social Network",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateBusinessCollaboration"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-business-activity",
+   "name": "Business Activity",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateBusinessProcess"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-threat-event-risk-security-overlay",
+   "name": "Threat Event (Risk & Security Overlay)",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateBusinessEvent"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-loss-event-risk-security-overlay",
+   "name": "Loss Event (Risk & Security Overlay)",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateBusinessEvent"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-logical-application-component",
+   "name": "Logical Application Component",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateApplicationComponent"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-physical-application-component",
+   "name": "Physical Application Component",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateApplicationComponent"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-application-to-application-interface",
+   "name": "Application-to-Application Interface",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateApplicationInterface"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-graphical-user-interface",
+   "name": "Graphical User Interface",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateApplicationInterface"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-logical-technology-component",
+   "name": "Logical Technology Component",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateNode"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-physical-technology-component",
+   "name": "Physical Technology Component",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateNode"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-mobile-device",
+   "name": "Mobile Device",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateDevice"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-embedded-device",
+   "name": "Embedded Device",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateDevice"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-wifi-network",
+   "name": "WiFi Network",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateNetworkBox"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-wide-area-network",
+   "name": "Wide Area Network",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateNetworkBox"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-processing-service",
+   "name": "Processing Service",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateInfrastructureService"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-storage-service",
+   "name": "Storage Service",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateInfrastructureService"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-communication-service",
+   "name": "Communication Service",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateInfrastructureService"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-vehicle",
+   "name": "Vehicle",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateEquipment"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-train",
+   "name": "Train",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateEquipment"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-factory",
+   "name": "Factory",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateFacility"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-ore",
+   "name": "Ore",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateMaterial"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-building-material",
+   "name": "Building Material",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateMaterial"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-fuel",
+   "name": "Fuel",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateMaterial"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-rail-network",
+   "name": "Rail Network",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateDistributionNetworkBox"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-energy-grid",
+   "name": "Energy Grid",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateDistributionNetworkBox"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-metric",
+   "name": "Metric",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateDriver"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-vulnerability-risk-security-overlay",
+   "name": "Vulnerability (Risk & Security Overlay)",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateAssessment"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-risk-risk-security-overlay",
+   "name": "Risk (Risk & Security Overlay)",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateAssessment"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-business-objective",
+   "name": "Business Objective",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateGoal"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-control-objective-risk-security-overlay",
+   "name": "Control Objective (Risk & Security Overlay)",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateGoal"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-business-policy",
+   "name": "Business Policy",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMatePrinciple"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-control-measure-risk-security-overlay",
+   "name": "Control Measure (Risk & Security Overlay)",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateRequirement"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-business-rule",
+   "name": "Business Rule",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateRequirement"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-capability-increment",
+   "name": "Capability Increment",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateCapability"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-strategy",
+   "name": "Strategy",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateCourseOfAction"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-tactic",
+   "name": "Tactic",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateCourseOfAction"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-program",
+   "name": "Program",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateWorkPackage"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-project",
+   "name": "Project",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateWorkPackage"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-risk-domain-risk-security-overlay",
+   "name": "Risk Domain (Risk & Security Overlay)",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateGrouping"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-money-flow",
+   "name": "Money Flow",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateFlow"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-responsibilities-assignment",
+   "name": "Responsibilities assignment",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateAssignment"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-behavior-assignment",
+   "name": "Behavior assignment",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateAssignment"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-or-join",
+   "name": "Or-join",
+   "aliases": [],
+   "baseTypes": [
+    "ArchiMateOrJunction"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-static",
+   "name": "static",
+   "aliases": [],
+   "baseTypes": [
+    "AssociationEnd"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-boundreference",
+   "name": "boundReference",
+   "aliases": [],
+   "baseTypes": [
+    "SysMLBoundReference"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-elementgroup",
+   "name": "elementGroup",
+   "aliases": [],
+   "baseTypes": [
+    "SysMLElementGroup"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-equal",
+   "name": "equal",
+   "aliases": [],
+   "baseTypes": [
+    "SysMLBindingConnector"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-proxy",
+   "name": "proxy",
+   "aliases": [],
+   "baseTypes": [
+    "Port"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-full",
+   "name": "full",
+   "aliases": [],
+   "baseTypes": [
+    "Port"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-adjunct",
+   "name": "adjunct",
+   "aliases": [],
+   "baseTypes": [
+    "AssociationEnd"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-computenode",
+   "name": "ComputeNode",
+   "aliases": [],
+   "baseTypes": [
+    "InstanceSpecification"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "processingType",
+     "type": "text",
+     "default": "",
+     "documentation": "",
+     "values": []
+    }
+   ]
+  },
+  {
+   "id": "st-storagenode",
+   "name": "StorageNode",
+   "aliases": [],
+   "baseTypes": [
+    "InstanceSpecification"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-sourcenode",
+   "name": "SourceNode",
+   "aliases": [],
+   "baseTypes": [
+    "InstanceSpecification"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "type",
+     "type": "text",
+     "default": "",
+     "documentation": "",
+     "values": []
+    }
+   ]
+  },
+  {
+   "id": "st-dataset",
+   "name": "Dataset",
+   "aliases": [],
+   "baseTypes": [
+    "InstanceSpecification"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-gastep",
+   "name": "GaStep",
+   "aliases": [],
+   "baseTypes": [
+    "ActivityAction"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-cassandratable",
+   "name": "cassandraTable",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "queryName",
+     "type": "text",
+     "default": "",
+     "documentation": "",
+     "values": []
+    }
+   ]
+  },
+  {
+   "id": "st-partkey",
+   "name": "partKey",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-clustkey",
+   "name": "clustKey",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "isASC",
+     "type": "text",
+     "default": "Unspecified",
+     "documentation": "",
+     "values": []
+    }
+   ]
+  },
+  {
+   "id": "st-staticcolumn",
+   "name": "staticColumn",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-idx",
+   "name": "IDX",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-counter",
+   "name": "counter",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-list",
+   "name": "list",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-set",
+   "name": "set",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-map",
+   "name": "map",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-udt",
+   "name": "UDT",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-tuple",
+   "name": "tuple",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-datatype",
+   "name": "dataType",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-actor",
+   "name": "actor",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": {
+    "asset": "pict-actor",
+    "kind": "badge",
+    "size": [
+     16,
+     16
+    ],
+    "glyph": "actor",
+    "iconPath": "stereotypeIcons/vzS41FaGAqACQwxL",
+    "iconPaths": [
+     "stereotypeIcons/vzS41FaGAqACQwxL"
+    ]
+   },
+   "pictogramByBaseType": {
+    "Class": {
+     "asset": "pict-actor",
+     "kind": "badge",
+     "size": [
+      16,
+      16
+     ],
+     "glyph": "actor",
+     "iconPath": "stereotypeIcons/vzS41FaGAqACQwxL"
+    }
+   },
+   "taggedValues": []
+  },
+  {
+   "id": "st-fish-level-usecase",
+   "name": "fish level usecase",
+   "aliases": [],
+   "baseTypes": [
+    "UseCase"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": {
+    "asset": "pict-fish",
+    "kind": "figure",
+    "size": [
+     113,
+     57
+    ],
+    "glyph": "fish",
+    "iconPath": "stereotypeIcons/K8pbCVqGAqACAwpH",
+    "iconPaths": [
+     "stereotypeIcons/K8pbCVqGAqACAwpH"
+    ]
+   },
+   "pictogramByBaseType": {
+    "UseCase": {
+     "asset": "pict-fish",
+     "kind": "figure",
+     "size": [
+      113,
+      57
+     ],
+     "glyph": "fish",
+     "iconPath": "stereotypeIcons/K8pbCVqGAqACAwpH"
+    }
+   },
+   "taggedValues": []
+  },
+  {
+   "id": "st-sea-level-usecase",
+   "name": "sea level usecase",
+   "aliases": [],
+   "baseTypes": [
+    "UseCase"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": {
+    "asset": "pict-waves",
+    "kind": "figure",
+    "size": [
+     148,
+     47
+    ],
+    "glyph": "waves",
+    "iconPath": "stereotypeIcons/gHSbCVqGAqACAwpB",
+    "iconPaths": [
+     "stereotypeIcons/gHSbCVqGAqACAwpB"
+    ]
+   },
+   "pictogramByBaseType": {
+    "UseCase": {
+     "asset": "pict-waves",
+     "kind": "figure",
+     "size": [
+      148,
+      47
+     ],
+     "glyph": "waves",
+     "iconPath": "stereotypeIcons/gHSbCVqGAqACAwpB"
+    }
+   },
+   "taggedValues": []
+  },
+  {
+   "id": "st-resourcerole",
+   "name": "ResourceRole",
+   "aliases": [],
+   "baseTypes": [
+    "Attribute"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "RoleKind",
+     "type": "enum",
+     "default": "",
+     "documentation": "",
+     "values": [
+      "Part",
+      "Component",
+      "UsedConfiguration",
+      "HumanResource",
+      "Platform",
+      "System",
+      "SubOrganization",
+      "PostRole",
+      "ResponsibilityRole",
+      "Equipment",
+      "SubSystemPart",
+      "UsedPhysicalArchitecture",
+      "HostedSoftware",
+      "ArtifactComponent",
+      "NaturalResourceComponent",
+      "Other"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "st-information",
+   "name": "information",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-representation",
+   "name": "representation",
+   "aliases": [],
+   "baseTypes": [
+    "Dependency"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-flow",
+   "name": "flow",
+   "aliases": [],
+   "baseTypes": [
+    "Dependency"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-stereotype",
+   "name": "stereotype",
+   "aliases": [],
+   "baseTypes": [
+    "Class"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-colored",
+   "name": "colored",
+   "aliases": [],
+   "baseTypes": [
+    "Class",
+    "Association"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "color",
+     "type": "int",
+     "default": "",
+     "documentation": "",
+     "values": []
+    }
+   ]
+  },
+  {
+   "id": "st-weighted",
+   "name": "weighted",
+   "aliases": [],
+   "baseTypes": [
+    "Association"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "weight",
+     "type": "int",
+     "default": "",
+     "documentation": "",
+     "values": []
+    }
+   ]
+  },
+  {
+   "id": "st-instanceof",
+   "name": "instanceOf",
+   "aliases": [],
+   "baseTypes": [
+    "Dependency"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-stakeholder",
+   "name": "stakeholder",
+   "aliases": [],
+   "baseTypes": [
+    "Actor"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-directedfeature",
+   "name": "DirectedFeature",
+   "aliases": [],
+   "baseTypes": [
+    "SysMLConstraintProperty",
+    "SysMLParticipantProperty",
+    "SysMLBoundReference",
+    "Attribute",
+    "Operation",
+    "Reception"
+   ],
+   "scope": "application",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": [
+    {
+     "name": "FeatureDirectionKind",
+     "type": "enum",
+     "default": "",
+     "documentation": "",
+     "values": [
+      "provided",
+      "required",
+      "providedrequired"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "st-include",
+   "name": "include",
+   "aliases": [
+    "Include"
+   ],
+   "baseTypes": [
+    "Include"
+   ],
+   "scope": "project",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-extend",
+   "name": "extend",
+   "aliases": [
+    "Extend"
+   ],
+   "baseTypes": [
+    "Extend"
+   ],
+   "scope": "project",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-substitute",
+   "name": "substitute",
+   "aliases": [],
+   "baseTypes": [
+    "Dependency"
+   ],
+   "scope": "project",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  },
+  {
+   "id": "st-import",
+   "name": "import",
+   "aliases": [],
+   "baseTypes": [
+    "Dependency"
+   ],
+   "scope": "project",
+   "documentation": "",
+   "pictogram": null,
+   "taggedValues": []
+  }
+ ]
+}

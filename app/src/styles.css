@@ -1,0 +1,1800 @@
+/* UML Class Modeler — chrome and the SVG sheet.
+ *
+ * Density comes from design/density-spec.md, not from app/mechanics.json:
+ * the four layout numbers there carry the source "reference screenshot" and
+ * 0 of 7 of those were confirmed (design/MEASUREMENTS-AUDIT.md). Grid 4 px,
+ * every height a multiple of it:
+ *
+ *   tree row 24 · control 28 · command strip 32 · header 44 · statusbar 24
+ *   radii: button 6 · field 4 · popover 8 · dialog 12
+ *   panels: left 264/240/216 · inspector 320/296/overlay
+ *
+ * Line-height is set EXPLICITLY to 16 px for the 11 and 12.5 sizes instead
+ * of a multiplier: Inter's natural 11 px line is 13.31 px, and a 24 px tree
+ * row would then need (24 − 13.31)/2 = 5.345 px of padding — fractional, the
+ * baseline lands between pixels and 11 px text shimmers row to row. At 16 px
+ * every row is 16 + 2·k·4 and every padding is a whole number.
+ *
+ * Colour lives in src/brand/brand.css (loaded after this file): the accent
+ * is one variable, and --accent here is the *ink* variant, safe as text.
+ *
+ * The sheet's paper is a tint of the accent too (--surface-desk), so changing
+ * the preset repaints the whole window, not only the selection. What never
+ * themes is the diagram itself: shapes are white with black Arial 11, exactly
+ * as they save and export.
+ */
+:root {
+  /* density (4 px grid) */
+  --row: 24px;
+  --ctl-h: 28px;
+  --bar: 32px;
+  --head: 44px;
+  --status: 24px;
+  --strip: 32px;          /* icon form; 56 px with labels, see @media below */
+  --strip-labels: 56px;
+
+  /* radii */
+  --r-btn: 6px;
+  --r-field: 4px;
+  --r-pop: 8px;
+  --r-dialog: 12px;
+
+  /* type */
+  --fs-micro: 11px;
+  --fs-sm: 12.5px;
+  --fs-md: 14px;
+  --lh: 16px;
+  --lh-md: 20px;
+
+  /* spacing */
+  --pad: 8px;
+  --pad-insp: 12px;
+  --gap: 4px;
+  --gap-group: 12px;
+
+  /* panels */
+  --left-w: 264px;
+  --right-w: 320px;
+
+  /* Лист диаграммы. В светлой теме — бумага листа: белый лист,
+   * чёрные чернила Arial 11, сетка #c0c0c0 — ровно то, что уходит в SVG и PNG
+   * (render.js#exportDiagramSvgString берёт ink()/fill() из нотации, а не из
+   * CSS). Тёмная тема перекрашивает ЛИСТ НА ЭКРАНЕ, но не экспорт: человек
+   * выбрал «адаптировать всё, кроме экспорта», и это два разных вопроса —
+   * что я вижу и что уйдёт в файл. Поэтому значения листа живут здесь, а не
+   * в brand.css: они не выводятся из акцента. */
+  --sheet: #ffffff;            /* бумага фигур: их заливка по умолчанию */
+  --sheet-ink: #000000;        /* чернила фигур: подписи, линии, маркеры */
+  --grid-line: #c0c0c0;        /* решётка холста = mechanics.json «grid colour» */
+  /* Бумага под рисунком пособия: скан или наш же экспорт — они всегда белые,
+   * поэтому в тёмной теме это единственная поверхность, которая не темнеет.
+   * Иначе вокруг белой картинки стояла бы тёмная рамка, а внутри белая. */
+  --plate: #ffffff;
+
+  /* Смысловые цвета уровней — единственный цвет приложения помимо акцента.
+   *
+   * Скин (`ui-kit/adapters/uml.css`) даёт `--err: #ff3b30` и `--warn: #ff9500`,
+   * но это статусные заливки чужой, холодной палитры, и рядом с тёплым брендом
+   * `#fa5d00` они читаются как чужие: охристое `#ff9500` почти совпадает с
+   * акцентом, а `#ff3b30` для подписи 10 px даёт 3.5:1 — ниже AA. Поэтому у
+   * панели своя пара того же смысла и той же температуры, что и бренд.
+   * Контраст на панели: ошибка 6.5:1, текст предупреждения 5.9:1, линия
+   * предупреждения 4.2:1 (нетекстовой хватает 3:1 по WCAG 1.4.11).
+   * В тёмной теме — светлые варианты того же смысла (6.9–7.5:1), иначе
+   * #b3261e на #18181b даёт 2.4:1 и замечание читается как обычный текст. */
+  --err-ink: #b3261e;    /* текст и линия ошибки */
+  --err-wash: #fbe3e1;   /* подложка при наведении на опасное действие */
+  --warn-ink: #8a5a00;   /* текст предупреждения */
+  --warn-line: #b26b00;  /* линия предупреждения */
+
+  /* Глубина. Тень — это цвет фона, а не украшение: на тёмном фоне слабая
+   * тень не читается, поэтому тёмная тема её усиливает, а не ослабляет. */
+  --shadow-pop: 0 8px 24px rgb(29 30 28 / .14), 0 1px 3px rgb(29 30 28 / .08);
+  --shadow-dialog: 0 24px 64px rgb(29 30 28 / .28);
+  --shadow-panel: -8px 0 24px rgb(29 30 28 / .16);
+  --shadow-tip: 0 4px 14px rgb(0 0 0 / 14%);
+  --scrim: rgb(29 30 28 / .38);
+  /* Маркер совпадения (поиск по дереву и по справочнику) и точки сетки
+     приветствия: обе поверхности — «акцент, разбавленный основным фоном»,
+     поэтому в тёмной теме они смешиваются не с белым, а с бумагой. */
+  --mark-bg: color-mix(in oklab, var(--brand) 22%, #fff);
+  --pattern-dot: color-mix(in oklab, var(--brand) 16%, #c9c3bc);
+
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* ---- тёмная тема: лист, смысловые цвета, глубина ---------------------- */
+/* Поверхности, чернила и акцент в тёмной теме задаёт brand.css (они выводятся
+ * из акцента). Здесь — то, что от акцента не зависит, но обязано перевернуться
+ * вместе с ним. Числа измерены tools/contrast.mjs. */
+html[data-race="dark"] {
+  /* Лист — бумага и в тёмной теме: он чуть светлее стола вокруг него и
+   * чуть теплее чистого серого, иначе рядом с акцентной оболочкой выглядел
+   * бы провалом. Разница с столом та же, что в светлой теме (≈1.05:1): лист
+   * читается границей, а не заливкой. Акцентом лист не тонируется никогда —
+   * это документ, а не деталь интерфейса. */
+  --sheet: #1f1d1e;
+  --sheet-ink: #ecebe9;
+  --grid-line: #3b393b;
+  --plate: #ffffff;              /* скан пособия и наш экспорт остаются бумагой */
+
+  --err-ink: #ff8f86;            /* 6.5:1 на панели, 7.1:1 на бумаге */
+  --err-wash: color-mix(in oklab, #ff8f86 16%, var(--surface-panel));
+  --warn-ink: #e8b056;           /* 7.9:1 на панели */
+  --warn-line: #e8b056;
+
+  --shadow-pop: 0 10px 28px rgb(0 0 0 / .55), 0 1px 3px rgb(0 0 0 / .35);
+  --shadow-dialog: 0 28px 72px rgb(0 0 0 / .65);
+  --shadow-panel: -8px 0 24px rgb(0 0 0 / .5);
+  --shadow-tip: 0 6px 18px rgb(0 0 0 / .5);
+  --scrim: rgb(0 0 0 / .55);
+  --mark-bg: color-mix(in oklab, var(--brand-on-dark) 26%, var(--surface-paper));
+  --pattern-dot: color-mix(in oklab, var(--brand) 20%, #3a3a40);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  font: var(--fs-sm) / var(--lh) var(--font);
+  color: var(--ink);
+  background: var(--panel);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+#app { height: 100vh; display: flex; flex-direction: column; }
+
+/* ================================================================ header */
+/* 44 = menu item 28 + 2×8. Commands only: the ten tools live in the strip
+   above the sheet, so nothing here repeats a tool. */
+#toolbar {
+  flex: 0 0 auto;
+  height: var(--head);
+  display: flex;
+  align-items: center;
+  gap: var(--pad);
+  padding: 0 var(--pad);
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+#toolbar .brand {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--ink);
+  margin-right: var(--pad);
+}
+#toolbar .brand small { font-weight: 400; color: var(--ink-soft); }
+#toolbar .doc-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: var(--fs-md);
+  line-height: var(--lh-md);
+  font-weight: 600;
+  color: var(--ink);
+  padding: 0 var(--pad);
+}
+#toolbar .doc-name small { font-weight: 400; color: var(--ink-soft); }
+/* The diagram picker: one model, many sheets. It sits between the menus and
+   the document name, 28 px high like every other control in the bar. */
+#toolbar .diagram-pick {
+  height: var(--ctl-h);
+  max-width: 190px;
+  padding: 0 6px;
+  border: 1px solid var(--border-control);
+  border-radius: var(--r-field);
+  background: var(--surface-paper);
+  font-size: var(--fs-sm);
+  line-height: var(--lh);
+  color: var(--ink);
+}
+#toolbar .diagram-pick:hover { border-color: var(--border-control-hover); }
+#toolbar .diagram-pick:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+#toolbar .diagram-pick-wrap { display: flex; align-items: center; gap: 4px; }
+.tb-sep { width: 1px; align-self: stretch; background: var(--line); margin: 0 var(--gap); }
+
+/* buttons: 28 high, radius 6, no chrome until hover */
+.btn {
+  height: var(--ctl-h);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 var(--pad);
+  border: 1px solid transparent;
+  border-radius: var(--r-btn);
+  background: transparent;
+  color: var(--ink);
+  font-size: var(--fs-sm);
+  line-height: var(--lh);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn:hover:not(:disabled) { background: var(--brand-soft); }
+.btn:active:not(:disabled) { background: color-mix(in oklab, var(--brand) 18%, var(--surface-paper)); }
+.btn:disabled { color: var(--ink-faint); opacity: .55; cursor: default; }
+.btn.on {
+  background: var(--brand-soft);
+  border-color: var(--accent-on-soft);
+  color: var(--accent-on-soft);
+  font-weight: 600;
+}
+.btn.danger:hover { background: var(--err-wash); border-color: var(--err-ink); color: var(--err-ink); }
+
+/* icon-only buttons: 24 square (icon 16 + 2×4) */
+.iconbtn {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: var(--r-btn);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+}
+.iconbtn svg { display: block; }
+.iconbtn:hover { background: var(--brand-soft); }
+.iconbtn.on { background: var(--brand-soft); border-color: var(--accent-on-soft); color: var(--accent-on-soft); }
+
+/* popovers: radius 8, items 28 */
+.menu { position: relative; display: inline-flex; }
+.menu-pop {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 40;
+  min-width: 200px;
+  padding: var(--gap);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pop);
+  box-shadow: var(--shadow-pop);
+}
+.menu-pop button {
+  display: flex;
+  align-items: center;
+  gap: var(--pad);
+  width: 100%;
+  height: var(--ctl-h);
+  padding: 0 var(--pad);
+  border: 0;
+  border-radius: var(--r-field);
+  background: none;
+  text-align: left;
+  font-size: var(--fs-sm);
+  line-height: var(--lh);
+  cursor: pointer;
+}
+.menu-pop button:hover:not(:disabled) { background: var(--brand-soft); }
+.menu-pop button:disabled { color: var(--ink-faint); cursor: default; }
+.menu-pop hr { border: 0; border-top: 1px solid var(--line-soft); margin: var(--gap) 2px; }
+.menu-pop .mnote { padding: 4px var(--pad); color: var(--ink-soft); font-size: var(--fs-micro); line-height: var(--lh); }
+.menu-pop .swatch-dot {
+  width: 16px; height: 16px; border-radius: 999px; flex: 0 0 auto;
+  border: 1px solid var(--border-control);
+}
+.menu-pop .check { width: 16px; flex: 0 0 auto; color: var(--accent); font-size: 12px; }
+/* Пункт меню, у которого вместо цветного кружка значок (оформление). */
+.menu-pop .seg-ico {
+  width: 16px; flex: 0 0 auto; display: inline-flex;
+  align-items: center; justify-content: center; color: var(--ink-soft);
+}
+
+/* ================================================================ layout */
+#body { flex: 1; display: flex; min-height: 0; position: relative; }
+#left, #right { display: flex; flex-direction: column; background: var(--panel); min-width: 0; }
+#left { flex: 0 0 var(--left-w); border-right: 1px solid var(--line); }
+#right { flex: 0 0 var(--right-w); border-left: 1px solid var(--line); }
+body.hide-left #left { display: none; }
+body.hide-right #right { display: none; }
+#center { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+
+/* panel head: 32 (field 24 + 2×4) */
+.panel-head {
+  flex: 0 0 auto;
+  height: var(--bar);
+  display: flex;
+  align-items: center;
+  gap: var(--pad);
+  padding: 0 var(--pad);
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-sm);
+  line-height: var(--lh);
+  font-weight: 600;
+}
+.panel-head .ptitle { flex: 0 0 auto; }
+.panel-search {
+  flex: 1;
+  min-width: 0;
+  height: var(--row);
+  padding: 0 6px;
+  border: 1px solid var(--border-control);
+  border-radius: var(--r-field);
+  background: var(--surface-sunken);
+  font-size: var(--fs-micro);
+  line-height: var(--lh);
+}
+.panel-search::placeholder { color: var(--ink-faint); }
+.panel-search:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.panel-body { flex: 1; overflow: auto; min-height: 0; padding: var(--pad); }
+.panel-foot {
+  flex: 0 0 auto;
+  height: var(--row);
+  display: flex;
+  align-items: center;
+  gap: var(--pad);
+  padding: 0 var(--pad);
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: var(--fs-micro);
+  line-height: var(--lh);
+}
+.panel-foot b { color: var(--ink); font-weight: 600; }
+
+/* right panel tabs: 32 (line 16 + 2×8), underline 2 inside */
+.panel-tabs { display: flex; flex: 0 0 auto; height: var(--bar); border-bottom: 1px solid var(--line); }
+.panel-tabs .tab {
+  flex: 1;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--ink-soft);
+  font-size: var(--fs-sm);
+  line-height: var(--lh);
+  cursor: pointer;
+  /* Четыре вкладки — уже тесно: «Свойства · Профиль · Проверки · Стандарт»
+   * требуют 265 px, а панель при 255 обрезала бы последнюю. Два пикселя
+   * вместо четырёх по краям дают 249 — подписи целы. `min-width: 0` и
+   * многоточие — сторож на случай ещё более узкой панели: перенос строки в
+   * полосе вкладок выглядел бы поломкой, а горизонтальная прокрутка панели
+   * ломает замер отсутствия прокрутки (tests/layout.mjs). */
+  min-width: 0;
+  padding: 0 2px;
+}
+.panel-tabs .tab:hover { color: var(--ink); background: var(--brand-soft); }
+.panel-tabs .tab.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+.tabpane { display: none; padding: var(--pad-insp); }
+.tabpane.active { display: block; }
+
+/* ======================================================== tool strip */
+/* Above the sheet, not in the left panel: nine create tools plus the arrow,
+   drawn from the notation package's own order.
+   The chips are SMALLER than the strip: 26 px in a 32 px bar, 48 px in a
+   56 px bar, so the selected chip's ring and its focus outline have 3–4 px
+   of air on every side. They used to be exactly the strip height, and a
+   horizontal scrollbar (14 Class chips need ~1076 px, the centre column is
+   856 at 1440) squeezed the content box to 45 px — the ring was drawn
+   outside the content box and clipped top and bottom. Two changes fix it:
+   the scrollbar is invisible (it must not steal height), and the chips are
+   inset from the strip's edges. */
+#toolstrip {
+  flex: 0 0 auto;
+  height: var(--strip);
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  padding: 3px var(--pad) 2px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  /* A type with many tools (Class, Component, Activity) can exceed the centre
+     column. Scroll rather than clip: a tool the palette offers must stay
+     reachable, and a wrapped strip would change the canvas height.
+     scrollbar-width: none — a visible one eats 10 px of the 32/56 px strip
+     and shrinks the chips; the wheel handler in toolstrip.js maps a vertical
+     wheel onto scrollLeft so the hidden tools stay reachable with a mouse. */
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  white-space: nowrap;
+}
+#toolstrip::-webkit-scrollbar { display: none; }
+.tstrip-sep { flex: 0 0 auto; width: 1px; height: 24px; background: var(--line); margin: 0 var(--gap); }
+.tool {
+  flex: 0 0 auto;
+  height: 26px;                 /* 24 px icon + the 1 px ring on each side */
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 4px;
+  border: 1px solid transparent;
+  border-radius: var(--r-btn);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+.tool:hover { background: var(--brand-soft); }
+.tool.on {
+  background: var(--brand-soft);
+  border-color: var(--accent-on-soft);
+  color: var(--accent-on-soft);
+}
+.tool .lbl {
+  display: none;
+  font-size: var(--fs-micro);
+  line-height: var(--lh);
+  letter-spacing: 0;
+}
+.tool svg { display: block; flex: 0 0 auto; }
+.tool.on .lbl { font-weight: 600; }
+
+/* Labels are the strip's wide form: 48 px chip = 1 px ring + 1 px padding +
+   24 icon + 4 gap + 16 label. The strip starts in this form and toolstrip.js
+   drops it to icons when the labels do not fit — measured, not guessed:
+   14 Class chips need ~1076 px, so at 1440 (856 px of centre column) the
+   labels go and every tool stays on screen. */
+#toolstrip:not(.tight) { height: var(--strip-labels); padding: 4px var(--pad) 3px; }
+#toolstrip:not(.tight) .tool { height: 48px; padding: 1px 6px; }
+#toolstrip:not(.tight) .tool .lbl { display: block; }
+#toolstrip:not(.tight) .tstrip-sep { height: 32px; margin: 0 2px; }
+/* The kit's mac skin draws focus as a 3 px box-shadow OUTSIDE the box, and the
+   strip is a scroll container — the ring would be cropped top and bottom.
+   Inside the strip it is an inset outline instead (WCAG 2.4.11 wants it
+   visible, not cropped). Specificity beats html[data-sc="mac"] :focus-visible. */
+html[data-sc] #toolstrip .tool:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -3px;
+  box-shadow: none;
+}
+
+/* ================================================================ sheet */
+#canvas-wrap { flex: 1; position: relative; overflow: hidden; background: var(--surface-desk); }
+#canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+
+#statusbar {
+  flex: 0 0 auto;
+  height: var(--status);
+  display: flex;
+  align-items: center;
+  gap: var(--gap-group);
+  padding: 0 var(--pad);
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: var(--fs-micro);
+  line-height: var(--lh);
+  white-space: nowrap;
+  overflow: hidden;
+}
+#statusbar b { color: var(--ink); font-weight: 600; }
+#statusbar .hint { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+/* Пункты статусбара не сжимались вовсе, и на узком окне крайний справа
+ * обрезался молча: `overflow: hidden` на полосе прятал хвост без всякого
+ * признака. Ширина выделения меняется от имени объекта, поэтому она сжимается
+ * с многоточием, а остальные пункты держат ширину. */
+#statusbar .sb-item { flex: 0 0 auto; min-width: 0; }
+#statusbar #sb-sel { flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; }
+#statusbar .zoom-wrap { position: relative; flex: 0 0 auto; }
+#statusbar .zoom-btn {
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 4px;
+  border: 1px solid transparent;
+  border-radius: var(--r-field);
+  background: transparent;
+  color: var(--ink);
+  font-size: var(--fs-micro);
+  line-height: var(--lh);
+  cursor: pointer;
+  font-variant-numeric: tabular-nums;
+}
+#statusbar .zoom-btn:hover { background: var(--brand-soft); border-color: var(--accent-on-soft); }
+#statusbar .zoom-pop {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 0;
+  z-index: 40;
+  min-width: 176px;
+  padding: var(--gap);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pop);
+  box-shadow: var(--shadow-pop);
+}
+#statusbar .zoom-pop button {
+  display: flex;
+  align-items: center;
+  gap: var(--pad);
+  width: 100%;
+  height: var(--ctl-h);
+  padding: 0 var(--pad);
+  border: 0;
+  border-radius: var(--r-field);
+  background: none;
+  text-align: left;
+  font-size: var(--fs-sm);
+  line-height: var(--lh);
+  cursor: pointer;
+}
+#statusbar .zoom-pop button:hover:not(:disabled) { background: var(--brand-soft); }
+#statusbar .zoom-pop button:disabled { color: var(--ink-faint); cursor: default; }
+#statusbar .zoom-pop hr { border: 0; border-top: 1px solid var(--line-soft); margin: var(--gap) 2px; }
+#statusbar .zoom-pop .key { margin-left: auto; color: var(--ink-faint); font-size: var(--fs-micro); }
+#statusbar .zoom-pop .check { width: 16px; flex: 0 0 auto; color: var(--accent); }
+
+#inline-editor { position: absolute; z-index: 20; }
+/* Редактор стоит НА ЛИСТЕ: его бумага и чернила — листовые (--sheet),
+   в тёмной теме это единственный способ не получить белый прямоугольник
+   с белым же текстом. */
+#inline-editor input {
+  width: 100%; height: 100%; text-align: center;
+  border: 2px solid var(--accent-fill); border-radius: 2px; padding: 2px 4px;
+  background: var(--sheet); color: var(--sheet-ink);
+  outline: none; font: 600 11px Arial, Helvetica, sans-serif;
+}
+#inline-editor textarea {
+  width: 100%; height: 100%; resize: none;
+  border: 2px solid var(--accent-fill); border-radius: 2px; padding: 3px 5px;
+  background: var(--sheet); color: var(--sheet-ink);
+  outline: none; font: 11px/15px Arial, Helvetica, sans-serif;
+}
+
+/* ============================================================ model tree */
+/* Row 24 = 16 line + 2×4. Icon 16 (the 16 px grid), name 11, ellipsis. */
+.tree ul { list-style: none; margin: 0; padding: 0; }
+.tree li { margin: 0; }
+.tree .node {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: var(--row);
+  padding: 0 var(--pad);
+  border-radius: var(--r-field);
+  cursor: pointer;
+  font-size: var(--fs-micro);
+  line-height: var(--lh);
+}
+.tree .node:hover { background: var(--brand-soft); }
+.tree .node.current { background: var(--brand-soft); color: var(--accent-on-soft); font-weight: 600; }
+/* Строка, о которой говорит замечание. Не то же, что `current` (выбор): это
+   ответ на «вот про это», поэтому подсветка тише выбора — фон и акцентная
+   черта слева, без жирного шрифта, иначе две подсветки спорили бы. */
+.tree .node.hit {
+  background: color-mix(in oklab, var(--brand-soft) 60%, var(--surface-paper));
+  box-shadow: inset 2px 0 0 var(--accent);
+  color: var(--ink);
+}
+.tree .node svg { flex: 0 0 auto; color: var(--ink-soft); }
+.tree .node.current svg { color: var(--accent); }
+.tree .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1 1 auto; min-width: 0; }
+/* Three states of an element (design/model-view-ui §2.2): ● here, ○ on another
+   diagram, ◌ nowhere. The glyph is the only place the third state can live. */
+.tree .st-glyph { flex: 0 0 auto; padding-left: 4px; font-size: 10px; color: var(--ink-faint); }
+.tree .st-here { color: var(--accent); }
+.tree .node.current .st-glyph { color: var(--accent); }
+.tree .empty { padding: 4px 0; }
+
+/* ============================================================ inspector */
+.field { margin-bottom: var(--pad); }
+.field label {
+  display: block;
+  font-size: var(--fs-micro);
+  line-height: var(--lh);
+  color: var(--ink-soft);
+  margin-bottom: 2px;
+}
+.field input[type=text],
+.field input[type=number],
+.field select,
+.field textarea,
+.stereo-filter .filter {
+  width: 100%;
+  min-height: var(--ctl-h);
+  padding: 0 6px;
+  border: 1px solid var(--border-control);
+  border-radius: var(--r-field);
+  background: var(--surface-paper);
+  font-size: var(--fs-sm);
+  line-height: var(--lh);
+}
+.field textarea { padding: 5px 6px; min-height: 56px; resize: vertical; }
+.field input:hover, .field select:hover, .field textarea:hover { border-color: var(--border-control-hover); }
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.row { display: flex; gap: var(--pad); }
+.row > * { flex: 1; min-width: 0; }
+.checkline { display: flex; align-items: center; gap: 6px; height: var(--ctl-h); }
+.checkline input { margin: 0; }
+.stereo-filter { position: relative; }
+.stereo-filter select { max-height: none; }
+.stereo-filter .filter { margin-bottom: var(--gap); }
+
+h3.sect {
+  display: flex;
+  align-items: center;
+  gap: var(--pad);
+  height: var(--ctl-h);
+  margin: var(--gap-group) 0 6px;
+  padding: 0 0 0 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: var(--fs-micro);
+  line-height: var(--lh);
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+h3.sect:first-child { margin-top: 0; }
+h3.sect .mini {
+  margin-left: auto;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--ink-faint);
+}
+.empty { color: var(--ink-soft); padding: 6px 0; font-size: var(--fs-micro); line-height: var(--lh); }
+.kv {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--pad);
+  height: var(--row);
+  align-items: center;
+  font-size: var(--fs-micro);
+  line-height: var(--lh);
+}
+.kv span:first-child { color: var(--ink-soft); }
+.mono { font-family: var(--mono); font-size: var(--fs-micro); }
+.badge {
+  display: inline-block;
+  min-width: 16px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--line);
+  color: var(--ink);
+  font-size: 10px;
+  line-height: 16px;
+  text-align: center;
+  font-weight: 600;
+}
+.xbtn {
+  border: 0; background: none; cursor: pointer; color: var(--ink-soft);
+  width: 24px; height: 24px; border-radius: var(--r-field); line-height: 1;
+  display: inline-grid; place-items: center;
+}
+.xbtn svg { display: block; }
+.xbtn:disabled { color: var(--ink-faint); cursor: default; }
+.xbtn:disabled:hover { color: var(--ink-faint); background: none; }
+.xbtn:hover { color: var(--err-ink); background: var(--err-wash); }
+.tag-row { display: flex; gap: var(--gap); margin-bottom: var(--gap); align-items: center; }
+.tag-row .tag-name,
+.tag-row .tag-val,
+.tag-row input[type=text] {
+  height: var(--ctl-h);
+  padding: 0 6px;
+  border: 1px solid var(--border-control);
+  border-radius: var(--r-field);
+  background: var(--surface-paper);
+  font-size: var(--fs-sm);
+}
+.tag-row .tag-name { flex: 0 0 38%; }
+.tag-row .tag-val { flex: 1; min-width: 0; }
+.tag-head {
+  display: flex; gap: var(--gap);
+  font-size: var(--fs-micro); line-height: var(--lh);
+  color: var(--ink-soft); margin-bottom: 2px;
+}
+.tag-head span:first-child { flex: 0 0 38%; }
+.swatches { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 var(--pad); align-items: center; }
+.swatch {
+  width: 24px; height: 24px; padding: 0;
+  border: 1px solid var(--border-control);
+  border-radius: var(--r-field);
+  cursor: pointer;
+}
+.swatch:hover { border-color: var(--border-control-hover); }
+.swatch.on { outline: 2px solid var(--accent); outline-offset: 1px; }
+.color-custom { font-size: var(--fs-micro); color: var(--ink-soft); }
+/* Заливка градиентом: 16 направлений из v/cmw/aw#a(I…) — MECHANICS.md §14.
+   Кнопка показывает сам градиент в текущих цветах, поэтому подпись не нужна. */
+.fillgrad { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 0 0 var(--pad); }
+.grad-toggle.on { border-color: var(--accent); color: var(--accent); }
+.grad-dirs { display: grid; grid-template-columns: repeat(8, 18px); gap: 3px; }
+.grad-dir {
+  width: 18px; height: 18px; padding: 0;
+  border: 1px solid var(--border-control);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.grad-dir:hover { border-color: var(--border-control-hover); }
+.grad-dir.on { outline: 2px solid var(--accent); outline-offset: 1px; }
+.member-hint { font-size: var(--fs-micro); line-height: var(--lh); color: var(--ink-soft); margin-top: 2px; }
+.addbar { display: flex; gap: 6px; margin: 6px 0; flex-wrap: wrap; }
+
+/* ====================================================== member table §3.3
+   Columns: visibility / name / type / default. One row = one member; the
+   table writes exactly the fields the file stores ({vis, name, type,
+   default}), so there is no second representation to keep in sync. */
+.mtable-wrap { overflow-x: auto; }
+.mtable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: var(--fs-micro);
+  line-height: var(--lh);
+}
+.mtable th {
+  padding: 0 2px 2px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--ink-soft);
+}
+.mtable td { padding: 0 2px 3px 0; vertical-align: middle; }
+.mtable input[type=text] {
+  width: 100%;
+  min-width: 0;
+  height: 24px;
+  padding: 0 4px;
+  border: 1px solid var(--border-control);
+  border-radius: var(--r-field);
+  background: var(--surface-paper);
+  font-size: var(--fs-micro);
+  line-height: var(--lh);
+}
+.mtable input[type=text]:hover { border-color: var(--border-control-hover); }
+.mtable input[type=text]:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.mtable .c-vis { width: 26px; }
+.mtable .c-act { width: 64px; white-space: nowrap; text-align: right; }
+.mtable .c-act .xbtn { width: 18px; height: 22px; font-size: 11px; padding: 0; }
+/* Three UML flags per member row: S (static), / (derived), {id}. */
+.mtable .c-flags { width: 44px; white-space: nowrap; }
+.mtable .c-flags .flag { width: 12px; height: 12px; margin: 0 1px 0 0; padding: 0; vertical-align: middle; }
+.mtable-empty { color: var(--ink-soft); padding: 4px 0; }
+/* A checkbox with its own label, in the inspector flow. */
+.checkrow { display: flex; align-items: center; gap: 6px; margin: 2px 0 var(--pad); }
+.checkrow label { display: flex; align-items: center; gap: 6px; font-size: var(--fs-micro); color: var(--ink); cursor: pointer; }
+.checkrow input[type=checkbox] { width: 13px; height: 13px; margin: 0; }
+/* Align / distribute pictograms: shown only for a group of two or more. */
+.align-strip { display: flex; gap: 4px; flex-wrap: wrap; margin: 4px 0 var(--pad); }
+.align-btn {
+  width: 28px; height: 28px; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border-control); border-radius: var(--r-field);
+  background: var(--surface-paper); color: var(--ink); cursor: pointer;
+}
+.align-btn:hover { border-color: var(--border-control-hover); }
+.align-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.align-ic .align-edge, .align-ic .align-box { stroke: currentColor; stroke-width: 1.25; fill: none; }
+.vis-btn {
+  width: 22px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid var(--border-control);
+  border-radius: var(--r-field);
+  background: var(--surface-paper);
+  font-weight: 700;
+  cursor: pointer;
+}
+.vis-btn:hover { border-color: var(--border-control-hover); }
+.vis-btn:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+
+/* ======================================================== profile browser */
+.pf-count { font-size: var(--fs-micro); line-height: var(--lh); color: var(--ink-soft); margin: 0 0 6px; }
+.pf-group {
+  font-size: var(--fs-micro);
+  line-height: var(--lh);
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin: var(--gap-group) 0 2px;
+}
+.pf-item { padding: 2px 6px; border-radius: var(--r-field); cursor: pointer; }
+.pf-item:hover { background: var(--brand-soft); }
+.pf-item .pf-name { font-size: var(--fs-micro); line-height: var(--lh); font-weight: 600; }
+.pf-item .pf-doc { color: var(--ink-soft); font-size: var(--fs-micro); line-height: var(--lh); white-space: pre-wrap; }
+.pf-item.used .pf-name { color: var(--accent); }
+.pf-doc:empty { display: none; }
+#profile input[type=text] {
+  width: 100%;
+  height: var(--ctl-h);
+  padding: 0 6px;
+  margin-bottom: var(--gap);
+  border: 1px solid var(--border-control);
+  border-radius: var(--r-field);
+  background: var(--surface-paper);
+  font-size: var(--fs-sm);
+}
+
+/* ================================================================= modal */
+.modal-back {
+  position: fixed; inset: 0;
+  background: var(--scrim);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100;
+}
+.modal {
+  background: var(--surface-paper);
+  border-radius: var(--r-dialog);
+  box-shadow: var(--shadow-dialog);
+  width: min(560px, 92vw);
+  max-height: 86vh;
+  display: flex;
+  flex-direction: column;
+}
+.modal h2 {
+  margin: 0;
+  padding: 12px 16px;
+  font-size: 17px;
+  line-height: 28px;
+  font-weight: 500;
+  border-bottom: 1px solid var(--line);
+}
+.modal .mbody { padding: 16px; overflow: auto; font-size: var(--fs-md); line-height: var(--lh-md); }
+.modal .mfoot {
+  padding: 12px 16px;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: flex-end; gap: var(--pad);
+}
+.modal .mfoot .btn { height: 32px; padding: 0 12px; }
+.modal .mfoot .btn.on { background: var(--brand-strong); border-color: var(--brand-strong); color: var(--on-strong); }
+.modal pre {
+  background: var(--surface-sunken);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-field);
+  padding: 12px;
+  overflow: auto;
+  max-height: 46vh;
+  font-family: var(--mono);
+  font-size: var(--fs-micro);
+  line-height: var(--lh);
+  white-space: pre;
+  margin: 0;
+}
+
+/* ============================================= svg sheet (the sheet look) */
+/* Any stylesheet rule beats an SVG presentation attribute, so the sheet
+   rules stay weaker than element classes via :where(#canvas). */
+/* Лист — это весь холст (#canvas-wrap, --surface-desk), отдельной белой
+   подложки у него нет и не было: правило `.sheet-bg` тут когда-то стояло, но
+   узел с таким классом не создавал ни canvas.js, ни render.js. Убрано, чтобы
+   следующий читатель не искал несуществующую деталь. Цвет самой сетки —
+   единственное, что рисуется классом: --grid-line (в тёмной теме тусклее). */
+#canvas .grid-line { stroke: var(--grid-line); }
+/* Вспышка перехода от замечания к объекту: обводка вокруг фигуры или по самой
+   линии связи на 1,2 с. Живёт отдельным слоем поверх листа, а не классом на
+   узле: экспорт строит SVG из модели и DOM листа не читает, поэтому случайный
+   экспорт во время вспышки не утащит её в файл. Толщина не масштабируется —
+   2 pt читаются одинаково и в 40 %, и в 150 %. */
+/* Вспышка — не одна линия, а ореол под ней и заливка поверх фигуры.
+ * Одна линия при дробном масштабе ложится на сетку пикселей неравномерно: с
+ * одной стороны 2 px, с другой 1, и сторона читается как отсутствующая.
+ * Ореол шириной 6 pt с прозрачностью .22 такой судьбы не имеет. */
+#canvas .finding-flash-layer {
+  pointer-events: none;
+  animation: finding-flash 1200ms ease-out forwards;
+}
+#canvas .finding-flash,
+#canvas .finding-flash-halo {
+  fill: none;
+  stroke: var(--accent);
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  /* Толщина в экранных точках: 2 pt и в 40 %, и в 150 % — иначе на мелком
+     масштабе вспышка превращается в волосок, а на крупном в жирную рамку. */
+  vector-effect: non-scaling-stroke;
+}
+#canvas .finding-flash { stroke-width: 2; }
+#canvas .finding-flash-halo { stroke-width: 6; opacity: .22; }
+#canvas .finding-flash-wash {
+  fill: var(--accent);
+  fill-opacity: .10;
+  stroke: none;
+}
+@keyframes finding-flash {
+  0% { opacity: 0; }
+  12% { opacity: 1; }
+  55% { opacity: 1; }
+  100% { opacity: 0; }
+}
+/* Маркеры замечаний — свой слой между листом и оверлеем (markslayer). В
+ * оверлее они мигали бы: renderOverlay() очищает его на каждом движении
+ * указателя. Размер бейджа задаётся в экранных точках (canvas.js делит на
+ * масштаб), поэтому на 40 % он читается так же, как на 150 %.
+ * Три цвета — три уровня: ошибка красная, предупреждение охристое, совет
+ * тихий серый. Это существующие токены панели, новых цветов не заводим. */
+#markslayer { pointer-events: none; }
+/* Перетаскивание: маркеры не пересчитываются на pointermove (это было бы
+ * перерисовкой слоя каждый кадр), поэтому на время жеста они скрыты — иначе
+ * бейдж отрывается от фигуры. После отпускания кнопки emit пересобирает слой,
+ * и маркеры встают на новые места. */
+#markslayer.dragging { display: none; }
+#markslayer .finding-mark { pointer-events: none; }
+#markslayer .finding-mark-dot {
+  stroke: var(--sheet);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+  pointer-events: all;
+  cursor: pointer;
+}
+#markslayer .finding-mark.error .finding-mark-dot { fill: var(--err-ink); }
+#markslayer .finding-mark.warning .finding-mark-dot { fill: var(--warn-line); }
+#markslayer .finding-mark.practice .finding-mark-dot { fill: var(--ink-soft); }
+#markslayer .finding-mark-dot:hover { stroke: var(--accent); stroke-width: 2.5; }
+#markslayer .finding-mark-count {
+  fill: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+/* Подсказка маркера — ОПОЗНАНИЕ, а не объяснение: id правила и его короткая
+ * формулировка. `hint` сюда не попадает намеренно: совет без контекста модели —
+ * общее место, и он дублировал карточку-паспорт. Своя, а не <title>: она
+ * появляется без задержки браузера и не уезжает от бейджа при наведении. */
+.mark-tip {
+  position: absolute;
+  z-index: 6;
+  max-width: 300px;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-field);
+  background: var(--surface-paper);
+  box-shadow: var(--shadow-tip);
+  color: var(--ink);
+  font-size: var(--fs-micro);
+  line-height: var(--lh);
+  pointer-events: none;
+}
+.mark-tip[hidden] { display: none; }
+.mark-tip .mark-tip-rule { font-family: var(--mono); font-size: 10px; color: var(--ink-soft); }
+.mark-tip .mark-tip-msg { font-weight: 600; overflow-wrap: anywhere; }
+.mark-tip .mark-tip-more { color: var(--ink-faint); }
+/* Подвал называет, куда идти за подробностями. Отделён линией и тише текста:
+ * это подсказка о следующем шаге, а не ещё одно замечание. */
+.mark-tip .mark-tip-foot {
+  margin-top: 5px; padding-top: 4px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 10px; color: var(--ink-faint);
+}
+.mark-tip .mark-tip-sep { height: 1px; margin: 4px 0; background: var(--line-soft); }
+/* Кандидат-цель при протягивании связи (§7.5): тонкая сплошная рамка вокруг
+   фигуры, к которой связь подключится, если отпустить кнопку. Отдельный
+   класс, чтобы её нельзя было спутать с выделением: фигура не выбирается,
+   инспектор не открывается, в модель и в историю отмены ничего не идёт.
+   Цвет — существующий акцент; толщина приходит атрибутом в экранных точках,
+   поэтому на любом масштабе рамка остаётся тонкой. */
+#canvas .drop-target {
+  fill: none;
+  stroke: var(--accent);
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+:where(#canvas) text { font-family: Arial, Helvetica, sans-serif; fill: var(--sheet-ink); }
+.sh-body { fill: var(--sheet); stroke: var(--sheet-ink); stroke-width: 1; stroke-linecap: butt; }
+/* Подложка хитбокса (render.js#hitRect): невидима, но ловит мышь по всей
+   рамке фигуры. fill: transparent — это краска, поэтому попадание считается;
+   без правила узел остался бы без заливки и не ловил бы ничего. */
+.sh-hit { fill: transparent; stroke: none; pointer-events: fill; }
+.sh-body.hover { stroke: var(--accent-fill); stroke-width: 1.2; }
+.sh-body.sel { stroke: var(--accent-fill); stroke-width: 1.6; }
+/* Тёмная тема: фигура, залитая палитровой пастелью, остаётся светлой —
+ * значит и подпись на ней должна быть тёмной, как на белом листе светлой
+ * темы. Класс ставит render.js#renderShape по яркости заливки (fill.js). */
+html[data-race="dark"] .sh.on-light { --sheet-ink: #16161a; }
+.sh-name { font-size: 11px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+/* UML 2.5.1 §9.2.4: an abstract classifier is set in italics. */
+.sh-name.italic { font-style: italic; }
+.sh-stereo { font-size: 11px; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+/* Stereotype drawings (material/stereotype-icons.json). `badge` is the 16 px
+   glyph in a shape's corner; `figure` is a drawing that stands in for the
+   body. Both inherit the sheet ink through currentColor, so a dark fill on a
+   shape keeps them legible instead of painting black on black. */
+.sh-pict { color: var(--sheet-ink); pointer-events: none; }
+/* The drawing is a mark in the corner, so it must not eat the click that
+   selects the shape — `pointer-events: none` above already sees to that. */
+.sh-row { font-size: 11px; dominant-baseline: middle; pointer-events: none; cursor: default; }
+/* UML 2.5.1 §9.4.4: a static feature is underlined. */
+.sh-row.static { text-decoration: underline; }
+.sh-tab { fill: var(--sheet); stroke: var(--sheet-ink); stroke-width: 1; stroke-linecap: butt; }
+.sh-note { fill: var(--sheet); stroke: var(--sheet-ink); stroke-width: 1; stroke-linecap: butt; }
+.sh-note-text { font-size: 11px; dominant-baseline: middle; pointer-events: none; }
+.conn { fill: none; stroke: var(--conn-ink, var(--sheet-ink)); stroke-width: 1; stroke-linejoin: round; stroke-linecap: butt; }
+.conn.dash { stroke-dasharray: var(--dash, 8 5); }
+.conn.sel { stroke: var(--accent-fill); stroke-width: 1.6; }
+.conn-hit { fill: none; stroke: transparent; stroke-width: 12; cursor: pointer; }
+.head-tri { fill: var(--sheet); stroke: var(--conn-ink, var(--sheet-ink)); stroke-width: 1; stroke-linejoin: round; stroke-linecap: butt; }
+.head-tri.sel { stroke: var(--accent-fill); }
+.head-open { fill: none; stroke: var(--conn-ink, var(--sheet-ink)); stroke-width: 1; stroke-linejoin: round; stroke-linecap: butt; }
+.head-open.sel { stroke: var(--accent-fill); stroke-width: 1.6; }
+.conn-lbl {
+  font-size: 11px; text-anchor: middle; dominant-baseline: middle; paint-order: stroke;
+  stroke: var(--sheet); stroke-width: 3.5; stroke-linejoin: round;
+  pointer-events: auto; cursor: pointer;
+}
+.conn-lbl.sel { fill: var(--accent-fill); }
+.conn-multi {
+  font-size: 11px; dominant-baseline: middle; paint-order: stroke;
+  stroke: var(--sheet); stroke-width: 3; stroke-linejoin: round;
+  pointer-events: auto; cursor: pointer;
+}
+.conn-multi.sel { fill: var(--accent-fill); }
+.stereo-tag { font-size: 11px; text-anchor: middle; paint-order: stroke; stroke: var(--sheet); stroke-width: 3.5; stroke-linejoin: round; }
+/* selection handles (small white squares with a coloured rim) */
+.hnd { fill: #fff; stroke: var(--accent-fill); stroke-width: 1.4; }
+.hnd[data-resize="nw"], .hnd[data-resize="se"] { cursor: nwse-resize; }
+.hnd[data-resize="ne"], .hnd[data-resize="sw"] { cursor: nesw-resize; }
+.endh { fill: #fff; stroke: var(--accent-fill); stroke-width: 1.4; cursor: crosshair; }
+.endh:hover, .endh.hot { fill: var(--accent-fill); }
+/* Bend points of the selected connector (plan 7.1): 6×6 squares in the accent
+   token — a handle, not a second selection frame. */
+.conn-wp { fill: #fff; stroke: var(--accent-fill); stroke-width: 1.2; cursor: move; }
+.conn-wp:hover, .conn-wp.on { fill: var(--accent-fill); }
+.ghost { fill: none; stroke: var(--accent-fill); stroke-width: 1.6; stroke-dasharray: 5 4; pointer-events: none; }
+.lasso { fill: var(--accent-fill); fill-opacity: .06; stroke: var(--accent-fill); pointer-events: none; }
+/* A view that is already on the sheet, pointed at after a second drop. */
+.sh.flash .sh-body, .sh.flash .sh-tab, .sh.flash .sh-note { stroke: var(--accent-fill); stroke-width: 2.4; }
+.dropzone { fill: var(--accent-fill); opacity: .08; stroke: var(--accent-fill); stroke-dasharray: 6 4; stroke-width: 1.2; pointer-events: none; }
+/* visibility glyphs on the sheet: monochrome, the token decides the colour */
+.vis-ic { pointer-events: none; color: var(--sheet-ink); }
+
+/* ============================================================== widths */
+/* Panels per DESIGN-BRIEF §6.6: 264/320 ≥1200, 240/296 at 1024, 216 and an
+   overlay inspector below 1000 (the docked inspector needs a ≥462 px
+   canvas, and 1000 is where that stops being true). */
+@media (max-width: 1199px) {
+  :root { --left-w: 240px; --right-w: 296px; }
+  /* Центральная колонка сжимается до ~564 px, и счётчик проверок вместе с
+   * хвостом советов перестаёт помещаться. Убираем самое избыточное: число
+   * стереотипов целиком видно на вкладке «Профиль» справа. */
+  #statusbar #sb-profile { display: none; }
+}
+@media (max-width: 999px) {
+  :root { --left-w: 216px; --right-w: 296px; }
+  #right {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    display: none;
+    width: var(--right-w);
+    z-index: 30;
+    box-shadow: var(--shadow-panel);
+  }
+  body.show-right #right { display: flex; }
+}
+
+/* ============================================== kit dialog (light brand) */
+/* <sc-dialog> is light DOM with kit classes, so it is styled from here
+   instead of editing ui-kit. Radius 12 (density-spec §2.3): a dialog is one
+   step above a popover (8) and must not read as one. The kit's mac skin sets
+   these at `html[data-sc="mac"] sc-dialog[open]`, so the same specificity is
+   restated from this later file; the dialog's children are not wrapped in a
+   .sc-dialog-body — the body paragraphs are direct children. */
+sc-dialog[open],
+html[data-sc] sc-dialog[open],
+html[data-sc="mac"] sc-dialog[open] {
+  border-radius: var(--r-dialog);
+  border: 1px solid var(--line);
+  background: var(--surface-paper);
+  box-shadow: var(--shadow-dialog);
+  padding: 0;
+  /* The kit caps a dialog at 76vh with overflow:auto. 76vh is 684 px at
+     1440×900, and the type picker needs ~740, so the box scrolled — and
+     focus landing on the primary button scrolled it 58 px down, putting the
+     heading above the top edge where overflow:hidden cut it off. Give the
+     dialog the room it needs, and let it scroll (not clip) when a short
+     window forces it; the head and the foot stick so they survive that. */
+  width: min(600px, 92vw);
+  max-height: min(86vh, 860px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--fs-md);
+  line-height: var(--lh-md);
+}
+sc-dialog[open] > .sc-dialog-head,
+html[data-sc] sc-dialog[open] > .sc-dialog-head,
+html[data-sc="mac"] sc-dialog[open] > .sc-dialog-head {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  margin: 0;
+  padding: 12px 16px;
+  background: var(--surface-paper);
+  border-bottom: 1px solid var(--line);
+}
+sc-dialog[open] > .sc-dialog-foot,
+html[data-sc] sc-dialog[open] > .sc-dialog-foot {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  margin: 0;
+  padding: 12px 16px;
+  background: var(--surface-paper);
+  border-top: 1px solid var(--line);
+  gap: var(--pad);
+}
+sc-dialog[open] > p {
+  margin-top: 0;
+  margin-bottom: var(--pad);
+  padding: 0;
+}
+sc-dialog[open] > p:first-of-type { margin-top: 16px; }
+sc-dialog[open] > p:last-of-type { margin-bottom: 16px; }
+/* The kit bleeds the head and the foot back over its own 16 px padding, and
+   the app removes that padding so both can carry a full-width border. The
+   body therefore has to be inset here — and it was inset only for `> p`,
+   which left every other body child (the type cards, the name field) flush
+   against the frame while the heading stood 16 px in. */
+sc-dialog[open] > :not(.sc-dialog-head):not(.sc-dialog-foot) {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+sc-dialog[open] .sc-button,
+html[data-sc="mac"] sc-dialog[open] .sc-button {
+  height: 32px;
+  padding: 0 12px;
+  border-radius: var(--r-btn);
+  font-family: var(--font);
+  font-size: var(--fs-sm);
+  letter-spacing: 0;
+  text-transform: none;
+  clip-path: none;
+}
+sc-dialog[open] .sc-button--primary,
+html[data-sc="mac"] sc-dialog[open] .sc-button--primary {
+  background: var(--brand-strong);
+  border-color: var(--brand-strong);
+  color: var(--on-strong);
+}
+sc-dialog[open] .sc-button--ghost,
+html[data-sc="mac"] sc-dialog[open] .sc-button--ghost {
+  background: transparent;
+  border-color: var(--border-control);
+  color: var(--ink);
+}
+
+/* ================================== re-asserting the app over the skin */
+/* ui-kit/adapters/uml.css styles this app's own classes (`.btn`, `.menu-pop`,
+ * `.panel-tabs .tab`, `#toolbar .brand`) at `html[data-sc…]` specificity — one
+ * step above a bare class — so it wins over the base rules above: 13 px
+ * buttons, 2 px radius, chamfered corners, an accent fill under a white
+ * label (white on #fa5d00 is 3.17:1, below AA). The vendor copy is not
+ * edited; the app re-states its own grammar here, from the later file and at
+ * the same specificity. Colour still comes from the brand layer; only shape
+ * and type are re-asserted. */
+html[data-sc] .btn,
+html[data-sc="mac"] .btn {
+  height: var(--ctl-h);
+  border-radius: var(--r-btn);
+  font-family: var(--font);
+  font-size: var(--fs-sm);
+  letter-spacing: 0;
+  text-transform: none;
+  clip-path: none;
+}
+html[data-sc] .btn:hover:not(:disabled),
+html[data-sc="mac"] .btn:hover:not(:disabled) { box-shadow: none; }
+html[data-sc] .btn.on,
+html[data-sc="mac"] .btn.on {
+  background: var(--brand-soft);
+  border-color: var(--accent-on-soft);
+  color: var(--accent-on-soft);
+}
+html[data-sc] .menu-pop,
+html[data-sc="mac"] .menu-pop {
+  border-radius: var(--r-pop);
+  background: var(--panel-2);
+  border-color: var(--line);
+  box-shadow: var(--shadow-pop);
+}
+html[data-sc] .panel-tabs .tab,
+html[data-sc="mac"] .panel-tabs .tab {
+  font-family: var(--font);
+  font-size: var(--fs-sm);
+  letter-spacing: 0;
+  text-transform: none;
+}
+html[data-sc] #toolbar .brand,
+html[data-sc="mac"] #toolbar .brand {
+  font-family: var(--font);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  /* The mark is 12.5 px text, so it takes the ink variant (5.00 on the
+     panel), never --brand (2.97 — below AA for text). */
+  color: var(--accent);
+}
+html[data-sc] #toolbar .brand small,
+html[data-sc="mac"] #toolbar .brand small { color: var(--ink-soft); }
+
+#app > sc-portal-bar { flex: 0 0 auto; }
+
+/* ======================================= the rest of the UML notation */
+/* Shapes added for the thirteen diagram types after Class. They reuse the
+   sheet tokens, so every one of them follows the same ink and fill. */
+.sh-fill { fill: var(--sheet-ink); stroke: var(--sheet-ink); stroke-width: 1; }
+.sh-line { fill: none; stroke: var(--sheet-ink); stroke-width: 1; stroke-linecap: butt; }
+.sh-dash { fill: none; stroke: var(--sheet-ink); stroke-width: 1; stroke-dasharray: var(--dash, 8 5); }
+.sh-body.dash { stroke-dasharray: var(--dash, 8 5); }
+.sh-body.frame { fill: none; }
+.sh-name.left { text-anchor: start; }
+.sh-name.small { font-weight: 400; font-size: 10px; }
+.sh-name.underline { text-decoration: underline; }
+.head-fill { fill: var(--conn-ink, var(--sheet-ink)); stroke: var(--conn-ink, var(--sheet-ink)); stroke-width: 1; stroke-linejoin: round; }
+
+/* --- the tree grows diagrams and nested diagrams ------------------- */
+.tree-group {
+  padding: 6px 10px 2px;
+  font-size: var(--fs-micro);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--ink-faint);
+}
+.tree ul.nested { padding-left: 16px; }
+.tree .node.diagram { color: var(--ink-soft); }
+.tree .node.diagram .dglyph { font-size: 11px; color: var(--ink-faint); display: inline-flex; }
+.tree .node.diagram .dglyph svg { display: block; }
+.tree .node.diagram .dtype { font-size: 10px; color: var(--ink-faint); margin-left: 6px; }
+.tree .nested-count { font-size: 10px; color: var(--ink-faint); padding-left: 4px; }
+.nested-list { display: flex; flex-direction: column; gap: 2px; }
+.nested-row { display: flex; align-items: center; gap: 6px; }
+.nested-row .linkbtn {
+  border: 0; background: none; padding: 2px 0; font: inherit; color: var(--accent);
+  cursor: pointer; text-align: left; flex: 1 1 auto; min-width: 0;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.nested-row .linkbtn:hover { text-decoration: underline; }
+.nested-row .dtype { font-size: 10px; color: var(--ink-faint); }
+
+/* --- plain text rows (entry / do / exit, extension points) --------- */
+.line-row { display: flex; align-items: center; gap: var(--gap); margin-bottom: 4px; }
+.line-row input[type=text] {
+  flex: 1 1 auto; min-width: 0;
+  font: inherit; font-size: var(--fs-sm);
+  padding: 3px 6px; border: 1px solid var(--border-control);
+  border-radius: var(--r-sm); background: var(--surface-paper);
+}
+.line-row input[type=number] {
+  width: 56px; font: inherit; font-size: var(--fs-sm);
+  padding: 3px 4px; border: 1px solid var(--border-control);
+  border-radius: var(--r-sm); background: var(--surface-paper);
+}
+.line-prefix { font-size: 11px; color: var(--ink-soft); min-width: 42px; }
+
+/* --- the new-diagram dialog --------------------------------------- */
+/* Horizontal inset comes from the generic body rule above; only the vertical
+   rhythm and the cards are set here. Gaps are on the 4 px grid: 6 between
+   cards, 14 before the name field, 16 under it. Longhands only — a `margin`
+   shorthand would zero the left and right inset restored above. */
+.dt-group {
+  margin-top: 16px; margin-bottom: 6px; font-size: var(--fs-micro);
+  text-transform: uppercase; letter-spacing: .06em; color: var(--ink-faint);
+}
+.dt-group:first-of-type { margin-top: 6px; }
+.dt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.dt-item {
+  display: grid; grid-template-columns: auto 1fr; gap: 1px 8px;
+  align-items: start; padding: 7px 9px; border: 1px solid var(--border-control);
+  border-radius: var(--r-field); cursor: pointer;
+  transition: border-color .12s ease, background-color .12s ease;
+}
+.dt-item:hover { border-color: var(--accent-on-soft); background: var(--brand-soft); }
+.dt-item:has(input:checked) { border-color: var(--accent-on-soft); background: var(--brand-soft); }
+.dt-item input { grid-row: span 2; margin: 3px 0 0; accent-color: var(--accent); }
+.dt-name { font-size: var(--fs-sm); font-weight: 600; line-height: var(--lh); }
+.dt-what { font-size: var(--fs-micro); color: var(--ink-soft); line-height: 15px; }
+.dt-label {
+  display: block; margin-top: 14px; margin-bottom: 16px;
+  font-size: var(--fs-sm); color: var(--ink-soft);
+}
+.dt-label input {
+  display: block; width: 100%; margin-top: 4px; font: inherit; font-size: var(--fs-sm);
+  padding: 5px 8px; border: 1px solid var(--border-control);
+  border-radius: var(--r-field); background: var(--surface-paper);
+}
+
+/* --- «Подробности» о прочитанном файле ----------------------------- */
+/* Список замечаний чтения в диалоге: одна строка — одно исправление.
+   Только отступ и ритм, ни нового цвета, ни нового значка. */
+.repairs { margin: 8px 0 0; padding-left: 18px; line-height: 1.45; font-size: var(--fs-sm); }
+.repairs li { margin-top: 3px; }
+
+/* ============================================================ checks panel
+   Замечания движка правил UML 2.5.1 (§5.6 плана). Одна строка — один пункт:
+   уровень, сообщение, что именно нашлось, и ссылка на пункт стандарта.
+   Клик по строке выделяет виноватый объект; ссылка на пункт открывает
+   дословный текст констрейнта и не выделяет ничего (иначе она «прыгала»
+   бы вместе со строкой). Уровни — единственное место, где панель вводит
+   цвет помимо акцента: ошибка красная, предупреждение охристое. */
+.checks-head {
+  display: flex; align-items: center; gap: var(--pad); margin-bottom: 6px;
+  /* Две галочки в шапке занимают ровно ширину панели (замер: 255 из 255 при
+   * окне 1100). Перенос вместо обрезки: на узкой панели вторая галочка уйдёт
+   * на строку ниже, а не пропадёт за краем. */
+  flex-wrap: wrap; row-gap: 4px;
+}
+.checks-head .btn { flex: 0 0 auto; }
+.checks-filter {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: var(--fs-micro); color: var(--ink-soft); cursor: pointer;
+}
+.checks-filter input { margin: 0; accent-color: var(--accent); }
+.checks-sum { font-size: var(--fs-micro); color: var(--ink-soft); padding-bottom: 6px; }
+.checks-sum b { color: var(--ink); font-variant-numeric: tabular-nums; }
+#checks .mini { font-size: var(--fs-micro); color: var(--ink-soft); line-height: 15px; }
+.findings { list-style: none; margin: 0; padding: 0; }
+.finding {
+  /* Колонки: метка уровня, сообщение, ссылка или чип. Средняя обязана уметь
+   * сжиматься, иначе одно длинное имя элемента распирает строку: `1fr` по
+   * умолчанию не уже своего min-content, и панель уезжала вправо на 169 px
+   * (замер: содержимое 472 при панели 303). Отсюда `minmax(0, 1fr)` и
+   * `min-width: 0` у детей; перенос длинных слов — на самой сетке, чтобы
+   * правило было одно. */
+  display: grid; grid-template-columns: 50px minmax(0, 1fr) auto; gap: 6px;
+  align-items: start; padding: 6px; margin-bottom: 4px;
+  border: 1px solid var(--line-soft); border-left: 3px solid var(--line);
+  border-radius: var(--r-field); background: var(--surface-paper);
+  cursor: pointer;
+}
+.finding > * { min-width: 0; }
+.finding:hover { background: var(--brand-soft); border-color: var(--accent-on-soft); }
+.finding.error { border-left-color: var(--err-ink); }
+.finding.warning { border-left-color: var(--warn-line); }
+.finding .lvl {
+  font-size: 10px; line-height: var(--lh); padding-top: 1px;
+  text-transform: uppercase; letter-spacing: .04em; color: var(--ink-faint);
+}
+.finding.error .lvl { color: var(--err-ink); }
+.finding.warning .lvl { color: var(--warn-ink); }
+.finding .mt { font-size: var(--fs-sm); line-height: var(--lh); overflow-wrap: anywhere; }
+.finding .det { font-size: var(--fs-micro); line-height: 15px; color: var(--ink-soft); margin-top: 2px; overflow-wrap: anywhere; }
+.finding .hint { font-size: var(--fs-micro); line-height: 15px; color: var(--ink-faint); margin-top: 2px; overflow-wrap: anywhere; }
+.finding .clause {
+  padding: 0 2px; border: 0; background: none; cursor: pointer;
+  color: var(--accent); font-size: var(--fs-micro); line-height: var(--lh);
+  text-decoration: underline; text-underline-offset: 2px; white-space: nowrap;
+}
+.finding .clause:hover { color: var(--ink); }
+/* Два слоя правил. Слои разделены воздухом и линией: у них разная природа —
+ * пункт стандарта и совет, — и слипаться в один список они не должны. Чип
+ * практики нарочно не похож ни на кнопку пункта (та — подчёркнутая ссылка
+ * цветом акцента), ни на метку уровня: тихая пилюля на токенах панели, без
+ * красного и охристого, потому что совет — не нарушение. */
+.checks-section + .checks-section {
+  margin-top: 12px; padding-top: 8px; border-top: 1px solid var(--line-soft);
+}
+.checks-section-head {
+  margin-bottom: 8px; font-size: var(--fs-micro); font-weight: 600;
+  line-height: var(--lh); color: var(--ink); letter-spacing: .02em;
+}
+.checks-note { margin-bottom: 4px; }
+.checks-none {
+  padding: 2px 0 0; font-size: var(--fs-micro); line-height: var(--lh); color: var(--ink-soft);
+}
+.finding.practice { border-left-color: var(--line); }
+.finding.practice .lvl { color: var(--ink-faint); }
+/* Строка, к которой привёл клик по маркеру: короткая подсветка, чтобы было
+ * видно, какое именно замечание открыто, а не просто «панель открылась». */
+.finding.picked { background: var(--brand-soft); box-shadow: inset 0 0 0 2px var(--accent); }
+/* Сбой проверки — не нарушение модели: строка не красная и не охристая, а
+ * пунктирная и тихая, чтобы её не прочитали как ещё одно замечание. */
+.finding.failed { border-left-style: dashed; border-left-color: var(--ink-faint); }
+.finding.failed .lvl { color: var(--ink-soft); }
+.finding .chip-basis {
+  display: inline-flex; align-items: center; height: 18px; padding: 0 6px;
+  border: 1px solid var(--line); border-radius: 999px;
+  background: color-mix(in oklab, var(--surface-paper) 88%, var(--ink-soft));
+  color: var(--ink-soft); font: inherit; font-size: 10px; line-height: 1;
+  letter-spacing: .02em; white-space: nowrap; cursor: pointer;
+}
+.finding .chip-basis:hover { color: var(--ink); border-color: var(--ink-faint); }
+/* Третий слой — правила проекта. Строка тише стандарта (у неё нет пункта) и
+ * тише практики (это не совет по моделированию): уровень остаётся цветным,
+ * потому что уровень правила задаёт команда, а чип «проект» — тихая пилюля
+ * с пунктирной рамкой: слой, который можно изменить, не должен выглядеть как
+ * пункт стандарта, который изменить нельзя. */
+.finding.project { border-left-color: var(--line); }
+.finding.project .lvl { color: var(--ink-soft); }
+.finding.project.error .lvl { color: var(--err-ink); }
+.finding.project.warning .lvl { color: var(--warn-ink); }
+.finding .chip-project, .finding .chip-geometry { border-style: dashed; }
+.checks-project-edit { margin-top: 6px; }
+/* Четвёртый слой — геометрия листа. Строка такой же тишины, как у проекта:
+ * это не нарушение стандарта, а свойство картинки. Чип красится акцентом и
+ * остаётся пунктирным (слой необязательный, поправимый), чтобы его не путали
+ * ни с «проектом» (серая пилюля), ни с кнопкой пункта стандарта (подчёркнутая
+ * ссылка). */
+.finding.geometry { border-left-color: var(--line); }
+.finding.geometry .lvl { color: var(--ink-soft); }
+.finding.geometry.warning .lvl { color: var(--warn-ink); }
+.finding .chip-geometry { color: var(--accent); border-color: color-mix(in oklab, var(--accent) 40%, var(--line)); }
+
+/* Редактор правил проекта: список сверху, форма под ним. Ширину задаёт диалог
+ * (min(560px, 92vw)), поэтому здесь только `min-width: 0`: иначе строка
+ * условия из трёх списков распирала бы диалог и он уезжал бы за край. */
+.rules-editor { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.rules-editor .rules-intro { color: var(--ink-soft); }
+.rules-list { display: flex; flex-direction: column; gap: 3px; }
+.rules-count { color: var(--ink-soft); }
+.rules-row {
+  display: grid; grid-template-columns: 76px minmax(0, 1fr) auto auto 20px;
+  gap: 6px; align-items: center; padding: 4px 6px;
+  border: 1px solid var(--line-soft); border-left: 3px solid var(--line);
+  border-radius: var(--r-field); background: var(--surface-paper); cursor: pointer;
+}
+.rules-row:hover { background: var(--brand-soft); border-color: var(--accent-on-soft); }
+.rules-row .rules-name { font-size: var(--fs-sm); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rules-row .rules-where { color: var(--ink-faint); }
+.rules-lvl {
+  font-size: 10px; line-height: var(--lh); text-transform: uppercase;
+  letter-spacing: .04em; color: var(--ink-faint);
+}
+.rules-lvl.error { color: var(--err-ink); }
+.rules-lvl.warning { color: var(--warn-ink); }
+.rules-del {
+  border: 0; background: none; cursor: pointer; color: var(--ink-faint);
+  font: inherit; line-height: 1; padding: 0 2px;
+}
+.rules-del:hover { color: var(--err-ink); }
+.rules-form {
+  display: flex; flex-direction: column; gap: 6px;
+  padding-top: 8px; border-top: 1px solid var(--line-soft);
+}
+.rules-form-head { font-size: var(--fs-sm); font-weight: 600; }
+.rules-field { display: flex; flex-direction: column; gap: 2px; font-size: var(--fs-micro); color: var(--ink-soft); }
+.rules-field input, .rules-field select, .rules-field textarea {
+  font: inherit; font-size: var(--fs-sm); padding: 3px 5px;
+  border: 1px solid var(--line); border-radius: var(--r-field);
+  background: var(--surface-paper); color: var(--ink);
+}
+.rules-kinds { min-height: 60px; }
+.rules-field-label { font-size: var(--fs-micro); color: var(--ink-soft); }
+.rules-condition {
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 6px; border: 1px dashed var(--line-soft); border-radius: var(--r-field);
+}
+.rules-row-condition {
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr) 20px;
+  gap: 4px; align-items: center;
+}
+.rules-row-condition select, .rules-row-condition input {
+  font: inherit; font-size: var(--fs-micro); padding: 2px 4px; min-width: 0;
+  border: 1px solid var(--line); border-radius: var(--r-field);
+  background: var(--surface-paper); color: var(--ink);
+}
+.rules-actions, .rules-foot { display: flex; gap: 6px; flex-wrap: wrap; }
+.rules-foot { padding-top: 6px; border-top: 1px solid var(--line-soft); }
+.rules-error {
+  padding: 5px 6px; border: 1px solid var(--err-ink); border-radius: var(--r-field);
+  color: var(--err-ink); font-size: var(--fs-micro); line-height: 15px;
+}
+.rules-warn {
+  display: flex; flex-direction: column; gap: 4px; align-items: flex-start;
+  font-size: var(--fs-micro); color: var(--warn-ink); line-height: 15px;
+}
+.rules-note { font-size: var(--fs-micro); color: var(--ink-soft); }
+.rules-empty { color: var(--ink-soft); }
+
+.checks-ok b { display: block; font-size: var(--fs-sm); color: var(--ink); margin-bottom: 2px; }
+.coverage {
+  margin-top: var(--gap-group); padding-top: 6px;
+  border-top: 1px solid var(--line-soft);
+  font-size: var(--fs-micro); line-height: 15px; color: var(--ink-soft);
+}
+.coverage summary { cursor: pointer; }
+.coverage ul { margin: 6px 0 0; padding-left: 16px; }
+.coverage li { margin-bottom: 4px; }
+#statusbar .sb-link {
+  height: 20px; display: inline-flex; align-items: center;
+  padding: 0 4px; border: 1px solid transparent; border-radius: var(--r-field);
+  background: transparent; color: var(--ink); font-size: var(--fs-micro);
+  line-height: var(--lh); cursor: pointer; font-variant-numeric: tabular-nums;
+}
+#statusbar .sb-link:hover { background: var(--brand-soft); border-color: var(--accent-on-soft); }
+#statusbar .sb-link.has-errors { color: var(--err-ink); font-weight: 600; }
+/* ================================================================= course
+   Курс — РЕЖИМ на весь #work, а не вкладка правой колонки
+   (docs/UX-COURSE-LIBRARY.md §2.1, §4). Панель лежит поверх листа, поэтому
+   лист сохраняет свою ширину и масштаб (при 1440×900 — 856 px), а инспектор
+   справа не отбирается: вкладки «Курс» в правой колонке нет вовсе.
+
+   Внутри: шапка режима («Курс · глава N «…» · M / 20» и «✕ Закрыть»), слева
+   главы, справа урок. Цвета, шрифты и плотность — прежние токены. */
+#left .tabpane { flex: 1; min-height: 0; padding: 0; }
+#left .tabpane.active { display: flex; flex-direction: column; }
+.panel-note {
+  margin-left: auto; font-size: var(--fs-micro); line-height: var(--lh);
+  color: var(--ink-soft); font-variant-numeric: tabular-nums;
+}
+
+#course-mode {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  background: var(--surface-paper);
+}
+#course-mode[hidden] { display: none; }
+
+.cvm-bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--pad);
+  height: var(--head);
+  padding: 0 var(--pad) 0 12px;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+.cvm-mark { display: inline-flex; flex: 0 0 auto; color: var(--accent); }
+.cvm-place {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--fs-md);
+  line-height: var(--lh-md);
+  font-weight: 600;
+  color: var(--ink);
+}
+.cvm-bar .panel-note { flex: 0 0 auto; margin-left: 0; }
+.cvm-close { flex: 0 0 auto; margin-left: auto; }
+
+.cvm-body { flex: 1 1 auto; display: flex; min-width: 0; min-height: 0; }
+#course-list {
+  flex: 0 0 236px;
+  min-width: 0;
+  overflow: auto;
+  padding: 4px 6px 12px;
+  border-right: 1px solid var(--line);
+}
+#course-view {
+  flex: 1 1 auto; min-width: 0; min-height: 0;
+  display: flex; flex-direction: column;
+  background: var(--surface-paper);
+}
+#course-view[hidden] { display: none; }
+
+/* Переключатель рисунков «Наши модели / Из пособия» — сегмент в шапке;
+   сами сегменты и снимок описаны в reference.css (стили читалки). Это
+   ЗАПАСНОЙ путь: когда места хватает, в уроке стоят две картинки рядом и
+   переключатель скрыт (renderFigureToggle). */
+.cv-figtoggle { margin-left: 6px; }
+.cv-figtoggle[hidden] { display: none; }
+
+.course-tree .tree-group {
+  cursor: pointer; border-radius: var(--r-field);
+}
+.course-tree .tree-group:hover { background: var(--brand-soft); color: var(--ink); }
+.course-tree .tree-group.current { color: var(--accent); }
+.course-tree .node { padding-right: 6px; }
+.course-tree .ex-num {
+  flex: 0 0 auto; color: var(--ink-faint); font-variant-numeric: tabular-nums;
+}
+.course-tree .node.done .nm { color: var(--ink-soft); }
+.course-tree .node.nomodel .nm { color: var(--ink-faint); }
+.course-tree .ex-done { flex: 0 0 auto; display: inline-flex; align-items: center; }
+.course-tree .ex-done input {
+  width: 14px; height: 14px; margin: 0; accent-color: var(--accent); cursor: pointer;
+}
+.course-tree .dglyph { flex: 0 0 auto; display: inline-flex; color: var(--ink-faint); }
+.course-tree .node.current .dglyph { color: var(--accent); }
+
+/* --- урок в режиме курса -------------------------------------------- */
+/* Лист не пересчитывается и не сужается: урок лежит поверх #work, и когда
+   режим закрыт, лист с прежним масштабом просто снова виден. */
+#course-view .cv-body { flex-direction: column; overflow: auto; overflow-x: hidden; }
+#course-view .cv-head { padding: 12px 16px 8px; }
+#course-view .cv-title { margin: 2px 0 6px; font-size: 18px; line-height: 24px; }
+#course-view .cv-meta { flex-wrap: wrap; gap: 8px; }
+#course-view .cv-text { flex: 0 0 auto; overflow: visible; padding: 12px 16px 16px; }
+#course-view .cv-md { max-width: 40em; }
+#course-view .cv-figs {
+  flex: 0 0 auto; min-width: 0; overflow: auto;
+  max-height: 46vh;               /* текст урока должен быть виден без прокрутки на экран вниз */
+  display: flex; flex-wrap: wrap; gap: 16px;
+  padding: 12px 16px 20px;
+  border-left: 0; border-top: 1px solid var(--line);
+  background: var(--surface-desk);
+  /* Рисунки — выше текста: урок длиной в две-три тысячи пикселей, и пара
+     картинок в его конце оказалась бы за горизонтом. Сначала то, что надо
+     построить, потом шаги. */
+  order: -1;
+  border-top: 0;
+  border-bottom: 1px solid var(--line);
+}
+#course-view .cv-fig { flex: 1 1 100%; min-width: 0; }
+#course-view .cv-foot { padding: 8px 16px; }
+
+/* Две картинки рядом: наш рендер и снимок пособия. Сравнивать надо бок о бок,
+   а не по очереди (§5.5); переключатель остаётся запасным путём для узкого
+   окна — тогда renderFigureToggle показывает его, а блоки идут друг под
+   другом. */
+.cv-fig-pair { display: flex; gap: 12px; align-items: flex-start; }
+.cv-fig-src { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; }
+.cv-fig-src .cv-fig-canvas { padding: 6px; }
+.cv-fig-note {
+  margin-top: 4px; font-size: var(--fs-micro); line-height: var(--lh);
+  color: var(--ink-faint);
+}
+@media (max-width: 900px) {
+  .cv-fig-pair { flex-direction: column; }
+}
+/* Номер главы/упражнения пособия — мелким, рядом с номером курса. */
+.cv-src { color: var(--ink-faint); }
+
+.cv-head {
+  flex: 0 0 auto; padding: 12px 16px 8px;
+  border-bottom: 1px solid var(--line);
+}
+.cv-crumb { font-size: var(--fs-micro); line-height: var(--lh); color: var(--ink-faint); }
+.cv-title {
+  margin: 2px 0 6px; font-size: 18px; line-height: 24px; font-weight: 600; color: var(--ink);
+}
+.cv-meta {
+  display: flex; align-items: center; gap: var(--gap-group);
+  font-size: var(--fs-micro); line-height: var(--lh); color: var(--ink-soft);
+}
+.cv-meta .cv-type { color: var(--ink); font-weight: 600; }
+.cv-done {
+  display: inline-flex; align-items: center; gap: 4px;
+  color: var(--ink-soft); cursor: pointer;
+}
+.cv-done input { width: 14px; height: 14px; margin: 0; accent-color: var(--accent); }
+
+.cv-body { flex: 1; min-height: 0; display: flex; }
+.cv-text { flex: 1 1 auto; min-width: 0; overflow: auto; padding: 12px 16px 24px; }
+.cv-md {
+  max-width: 34em;                     /* ≈ 68 знаков при 14 px */
+  font-size: var(--fs-md); line-height: var(--lh-md); color: var(--ink);
+}
+.cv-md p { margin: 0 0 8px; }
+.cv-md h3, .cv-md h4, .cv-md h5, .cv-md h6 {
+  margin: 12px 0 4px; font-size: var(--fs-md); line-height: var(--lh-md); font-weight: 600;
+}
+.cv-md ul, .cv-md ol { margin: 0 0 8px; padding-left: 20px; }
+.cv-md li { margin-bottom: 4px; }
+.cv-md blockquote {
+  margin: 0 0 8px; padding-left: 12px; border-left: 2px solid var(--line); color: var(--ink-soft);
+}
+.cv-md code {
+  padding: 0 3px; border-radius: var(--r-field); background: var(--surface-sunken);
+  font-family: var(--mono); font-size: 12.5px; line-height: var(--lh);
+}
+.cv-md b { font-weight: 600; }
+
+.fig-ref {
+  padding: 0 2px; border: 0; border-radius: var(--r-field);
+  background: var(--brand-soft); color: var(--accent-on-soft); font: inherit; cursor: pointer;
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.fig-ref:hover { background: var(--accent-soft); }
+
+.cv-figs {
+  flex: 0 0 46%; min-width: 320px; overflow: auto; padding: 12px 16px 24px;
+  border-left: 1px solid var(--line); background: var(--surface-desk);
+}
+.cv-fig { margin: 0 0 16px; }
+.cv-fig.flash { outline: 2px solid var(--accent); outline-offset: 2px; }
+.cv-fig-canvas {
+  padding: 8px; border: 1px solid var(--line); border-radius: var(--r-pop);
+  background: var(--plate);
+}
+.cv-fig-canvas svg { display: block; width: 100%; height: auto; }
+.cv-cap { margin-top: 6px; font-size: var(--fs-micro); line-height: 15px; color: var(--ink-soft); }
+.cv-cap b { color: var(--ink); font-weight: 600; }
+.cv-fig-links { display: flex; gap: var(--pad); margin-top: 2px; }
+.cv-fig-links .linkbtn, .cv-toc .linkbtn {
+  padding: 0; border: 0; background: none; font: inherit;
+  font-size: var(--fs-micro); line-height: var(--lh);
+  color: var(--accent); cursor: pointer; text-align: left;
+}
+.cv-fig-links .linkbtn:hover, .cv-toc .linkbtn:hover { text-decoration: underline; }
+.cv-nomodel {
+  padding: 8px; font-size: var(--fs-micro); line-height: 15px; color: var(--ink-soft);
+}
+.cv-toc-head {
+  margin-bottom: 4px; font-size: var(--fs-micro); text-transform: uppercase;
+  letter-spacing: .06em; color: var(--ink-faint);
+}
+.cv-toc { list-style: none; margin: 0; padding: 0; }
+.cv-toc li { margin-bottom: 4px; }
+
+.cv-foot {
+  flex: 0 0 auto; display: flex; align-items: center; gap: var(--pad);
+  padding: 8px 16px; border-top: 1px solid var(--line); background: var(--panel);
+}
+.cv-foot .cv-why { font-size: var(--fs-micro); line-height: var(--lh); color: var(--ink-soft); }
+
+/* Узкое окно: две колонки не помещаются — текст и рисунки идут друг за другом. */
+@media (max-width: 1180px) {
+  .cv-body { flex-direction: column; overflow: auto; }
+  .cv-text { flex: 0 0 auto; overflow: visible; }
+  .cv-figs {
+    flex: 0 0 auto; min-width: 0; overflow: visible;
+    border-left: 0; border-top: 1px solid var(--line);
+  }
+}
+
+/* ====================================================== карточка правила
+   Фаза 4.2 плана валидатора. Карточка — НЕ пересказ стандарта: пункт,
+   дословный текст и OCL живут в справочнике (полка «Правила»), и вторая
+   копия того же текста в панели означала бы два места, где написано одно и
+   то же. Здесь — только то, чего в справочнике нет: что нашлось в этой
+   модели, где именно, что делать и вход в статью правила.
+
+   Раскрывается ВНУТРИ строки списка, а не модалом: человек не должен терять
+   место, на котором читал. Строка — grid, поэтому карточка занимает все
+   колонки (grid-column: 1 / -1), а не сжимается в среднюю. */
+.finding-side { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.finding-open {
+  padding: 0 2px; border: 0; background: none; cursor: pointer;
+  color: var(--ink-faint); font: inherit; font-size: 10px; line-height: 12px;
+}
+.finding-open:hover { color: var(--accent); }
+.finding.card-open { border-color: var(--accent); }
+.rule-card {
+  grid-column: 1 / -1; margin-top: 6px; padding-top: 6px;
+  border-top: 1px dashed var(--line);
+  font-size: var(--fs-micro); line-height: 15px; color: var(--ink-soft);
+  cursor: auto;
+}
+.rc-head { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; margin-bottom: 4px; }
+.rc-id { color: var(--ink); overflow-wrap: anywhere; }
+.rc-lvl {
+  font-size: 10px; text-transform: uppercase; letter-spacing: .04em;
+  color: var(--ink-faint);
+}
+.rc-lvl.error { color: var(--err-ink); }
+.rc-lvl.warning { color: var(--warn-ink); }
+.rc-lvl.practice { color: var(--ink-faint); }
+/* Четвёртый слой в паспорте объекта: та же тихая подпись, что у практики, —
+ * это замечание к листу, а не к модели, и краснеть ему незачем. */
+.rc-lvl.geometry { color: var(--accent); }
+.rc-sec { margin-bottom: 4px; }
+.rc-sec > b { display: block; color: var(--ink); font-weight: 600; }
+.rc-body { overflow-wrap: anywhere; }
+.rc-advice .rc-body { color: var(--ink); }
+.rc-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.rc-btn {
+  height: 20px; padding: 0 6px; border: 1px solid var(--line);
+  border-radius: var(--r-field); background: var(--surface-paper);
+  color: var(--ink); font: inherit; font-size: var(--fs-micro); line-height: 1;
+  cursor: pointer; white-space: nowrap;
+}
+.rc-btn:hover { border-color: var(--accent); color: var(--accent); }
+.rc-absent { color: var(--ink-faint); }
+/* Паспорт объекта: все замечания одного маркера, сгруппированные по правилам.
+   Стоит ПЕРВОЙ карточкой над списком, а не модалом: список остаётся на месте,
+   и человек не теряет строку, к которой вернётся. Отличие от карточки строки —
+   только в том, что групп сразу несколько, по одной на правило. */
+.mark-card {
+  margin: 8px 0; padding: 8px;
+  border: 1px solid var(--line); border-radius: var(--r-field);
+  background: var(--surface-paper);
+}
+.mark-card .mc-note { margin-bottom: 6px; color: var(--ink-soft); }
+/* Заголовок паспорта: имя объекта — обычным регистром и полужирным, счётчик
+ * правил — тихой строкой (rc-lvl для этого делает капс, здесь он лишний). */
+.mc-subject { font-weight: 600; overflow-wrap: anywhere; }
+.mc-count { text-transform: none; letter-spacing: 0; color: var(--ink-soft); }
+.mc-group { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--line-soft); }
+.mc-note + .mc-group { margin-top: 0; padding-top: 0; border-top: 0; }
+.mc-group-head { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+.mc-clause { color: var(--ink-faint); font-size: 10px; }
+.mc-finding { margin-top: 4px; }
+.mc-msg { color: var(--ink); font-weight: 600; overflow-wrap: anywhere; }
+/* Строка «не проверяется»: у неё нет замечания, поэтому карточка живёт в
+   списке покрытия внизу панели — это единственный вход к причине отказа. */
+.coverage-rule { cursor: pointer; border-radius: var(--r-field); }
+.coverage-rule:hover { color: var(--ink); }
+.coverage-rule.card-open { color: var(--ink); }
+.coverage-rule .rule-card { margin-top: 4px; }

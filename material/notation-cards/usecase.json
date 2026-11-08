@@ -1,0 +1,53 @@
+{
+  "key": "usecase",
+  "kind": "shape",
+  "title": "Вариант использования",
+  "oneLine": "Вариант использования — законченная цель, которую актёр достигает с помощью системы.",
+  "draws": "Эллипс с именем внутри (глагол с дополнением), внутри рамки системы; соединяется с актёрами ассоциацией, с другими вариантами — зависимостями «include» и «extend». Вариант использования может быть абстрактным (курсив) — тогда его выполняет только потомок. Вариантов у одного актёра может быть сколько угодно: их не объединяют в один.",
+  "differs": "От действия на диаграмме деятельности отличается уровнем: вариант использования — цель внешнего участника, действие — шаг внутри поведения. От кооперации — тем, что говорит «что», а не «кто с кем». Если разбить вариант на шаги и нарисовать их эллипсами, диаграмма перестанет отвечать на вопрос, зачем актёр пришёл в систему. Признак ошибки: два варианта одного субъекта соединены ассоциацией — для этого есть «include» и «extend». Если шаг нельзя назвать целью актёра, это действие деятельности, а не вариант использования.",
+  "clause": {
+    "number": "18.1",
+    "title": "Use Cases",
+    "id": "18.1-use-cases"
+  },
+  "rules": [
+    "usecase-binary-association",
+    "usecase-no-association-to-usecase",
+    "usecase-include-cycle",
+    "usecase-must-have-name"
+  ],
+  "example": "«Зарегистрироваться на курсы», «Просмотреть табель».",
+  "plantuml": "usecase UC1",
+  "stereotypes": [
+    "usecase",
+    "metaclass",
+    "powertype",
+    "process",
+    "thread",
+    "utility",
+    "Case Story",
+    "Context",
+    "fish level usecase",
+    "sea level usecase"
+  ],
+  "seeAlso": [
+    "actor",
+    "include",
+    "extend",
+    "systemBoundary",
+    "collaboration"
+  ],
+  "sources": [
+    "uml.json#shapes.usecase",
+    "crossrefs.json#notationToClause.usecase",
+    "spec-tree.json#18.1",
+    "rules-uml-2.5.1.json#usecase-binary-association",
+    "rules-uml-2.5.1.json#usecase-no-association-to-usecase",
+    "rules-uml-2.5.1.json#usecase-include-cycle",
+    "rules-uml-2.5.1.json#usecase-must-have-name",
+    "crossrefs.json#stereotypeToShape",
+    "plantuml-grammar.json#element-usecase",
+    "DIAGRAM-TYPES.md#3.1"
+  ],
+  "diagrams": "3.1"
+}

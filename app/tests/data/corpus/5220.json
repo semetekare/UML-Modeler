@@ -1,0 +1,82 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5220",
+    "figureNo": "5.2.20",
+    "exercise": "5.2.H",
+    "type": "state",
+    "diagramName": "Lifecycle",
+    "group": "diagram",
+    "reproducible": "нет",
+    "altText": "UML-диаграмма состояний Lifecycle класса CourseOffering",
+    "notes": "Состав состояний и событий назван поимённо: начальное псевдосостояние, финальное состояние, композитное Active с вложенным начальным псевдосостоянием и регионами, подсостояния Open, Closed, Canceled, два псевдосостояния выбора; события addSchedule, removeSchedule, destroy, close, cancel, getNumber, setNumber — все типа Call Trigger. Переходы между ними в тексте не перечислены.",
+    "gaps": [
+      "топология переходов в тексте не описана: сказано «соедините состояния внешними переходами, как указано на рисунке 5.2.20» — то есть источником служит снимок",
+      "регионы состояния и вложенность состояний не выражаются в uml-model/3",
+      "внутренние переходы и действия entry не выражаются (entry/do/exit есть у состояния, внутренних переходов нет)",
+      "локальные (local) переходы не отличаются от внешних",
+      "события-триггеры привязываются к операциям класса — привязка не выражается"
+    ],
+    "gapIds": [
+      "model.internalTransition",
+      "model.stateRegion",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "initial",
+      "name": ""
+    },
+    {
+      "id": "e2",
+      "kind": "state",
+      "name": "Active",
+      "composite": true,
+      "regions": 2
+    },
+    {
+      "id": "e3",
+      "kind": "state",
+      "name": "Open",
+      "composite": true,
+      "regions": 1
+    },
+    {
+      "id": "e4",
+      "kind": "state",
+      "name": "Closed"
+    },
+    {
+      "id": "e5",
+      "kind": "state",
+      "name": "Canceled"
+    },
+    {
+      "id": "e6",
+      "kind": "choice",
+      "name": ""
+    },
+    {
+      "id": "e7",
+      "kind": "choice",
+      "name": ""
+    },
+    {
+      "id": "e8",
+      "kind": "final",
+      "name": ""
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Lifecycle",
+      "type": "state",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

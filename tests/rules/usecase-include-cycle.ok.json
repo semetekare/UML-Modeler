@@ -1,0 +1,66 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-usecase-include-cycle-ok",
+  "name": "usecase-include-cycle (без нарушения) — включения без цикла",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "usecase",
+      "name": "Войти в систему",
+      "documentation": "Правило «usecase-include-cycle», контрольный случай без нарушения: включения без цикла.\nUML 2.5.1, п. 18.2.5.6, констрейнт UseCase::cannot_include_self: «A UseCase cannot include UseCases that directly or indirectly include it.»\nОдно включение, обратного нет."
+    },
+    {
+      "id": "e2",
+      "kind": "usecase",
+      "name": "Проверить пароль"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "include",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Диаграмма 1",
+      "kind": "usecase",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 120,
+          "h": 60
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 360,
+          "y": 60,
+          "w": 120,
+          "h": 60
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

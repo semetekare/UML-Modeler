@@ -1,0 +1,47 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-port-encapsulated-owner",
+  "name": "port_encapsulated_owner — порт лежит в пакете, а не в классификаторе",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "package",
+      "name": "Подсистема заказов"
+    },
+    {
+      "id": "e2",
+      "kind": "port",
+      "name": "приёмЗаказа",
+      "documentation": "Правило «port-encapsulated-owner»: UML 2.5.1, п. 11.8.14.7, констрейнт Port::encapsulated_owner: «Все порты принадлежат инкапсулированному классификатору.»\nПорт «приёмЗаказа» принадлежит пакету «Подсистема заказов». Порт существует только внутри инкапсулированного классификатора — класса, компонента, интерфейса, узла или артефакта; пакет им не является.",
+      "ownerId": "e1"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "port_encapsulated_owner — порт лежит в пакете, а не в классификаторе",
+      "kind": "component",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 220,
+          "h": 140
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 80,
+          "w": 20,
+          "h": 20
+        }
+      ],
+      "links": []
+    }
+  ],
+  "currentDiagramId": "d1"
+}

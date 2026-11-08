@@ -1,0 +1,9 @@
+@startuml
+title close
+participant e1 as "db:DBAccess" <<subsystem proxy>>
+participant e2 as "c:Connection"
+opt c <> NULL
+e1 -> e1 : close() : void
+e1 -> e2 : close() : void
+end
+@enduml

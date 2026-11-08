@@ -1,0 +1,195 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5204",
+    "figureNo": "5.2.4",
+    "exercise": "5.2.D",
+    "type": "sequence",
+    "diagramName": "Design CreateSchedule Subflow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Уточнённая UML-диаграмма последовательности Design CreateSchedule Subflow",
+    "notes": "Текст называет только линию жизни cOff[i]:CourseOffering и правки относительно рис. 4.3.4. Шесть линий жизни (Студент, rform:RegistrationForm, rctrl:RegistrationController, dao:IDBAccess, curStud:Student, sch:Schedule), двенадцать сообщений и условие фрагмента opt прочитаны с рисунка 5.2.4.",
+    "gaps": [
+      "состав линий жизни, кроме cOff[i]:CourseOffering, и сообщения в тексте не перечислены — прочитаны с рисунка",
+      "покрытие сообщений фрагментом opt не выражается",
+      "поле Refers to у Interaction Use не выражается — записано refersTo"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.interactionRef",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e2"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e4",
+      "kind": "actorLifeline",
+      "name": "Студент",
+      "source": "image"
+    },
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "cOff[i]:CourseOffering",
+      "multiObject": true
+    },
+    {
+      "id": "e2",
+      "kind": "fragment",
+      "name": "[учебный план на текущий семестр у студента отсутствует]",
+      "operator": "opt",
+      "note": "условие фрагмента opt; прочитано с рисунка, охватывает все сообщения диаграммы",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "interactionUse",
+      "name": "Design DisplayCourseOfferings Subflow",
+      "operator": "ref",
+      "refersTo": "Design DisplayCourseOfferings Subflow"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "rform:RegistrationForm",
+      "source": "image"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "rctrl:RegistrationController",
+      "source": "image"
+    },
+    {
+      "id": "e7",
+      "kind": "lifeline",
+      "name": "dao:IDBAccess",
+      "stereotype": "interface",
+      "source": "image"
+    },
+    {
+      "id": "e8",
+      "kind": "lifeline",
+      "name": "curStud:Student",
+      "source": "image"
+    },
+    {
+      "id": "e9",
+      "kind": "lifeline",
+      "name": "sch:Schedule",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "createSchedule(semester : byte) : void",
+      "from": "e4",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "createSchedule(semester : byte) : boolean",
+      "from": "e5",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "getCourseOfferingList(semester : byte) : CourseOfferingList",
+      "from": "e6",
+      "to": "e7",
+      "source": "image"
+    },
+    {
+      "id": "r1",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e8",
+      "to": "e9",
+      "note": "создание учебного плана: curStud создаёт sch",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "displayBlankSchedule() : void",
+      "from": "e5",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "selectPrimaryCourse(nums : long[4]) : void",
+      "from": "e4",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "message",
+      "name": "selectAltCourse(nums : long[2]) : void",
+      "from": "e4",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "message",
+      "name": "submitSelectedCourses(semester : byte, primary : long[4], alt : long[2]) : void",
+      "from": "e4",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "message",
+      "name": "submitSelectedCourses(semester : byte, primary : CourseOffering[4], alt : CourseOffering[2]) : boolean",
+      "from": "e5",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "message",
+      "name": "createSchedule(semester : byte, primary : CourseOffering[4], alt : CourseOffering[2]) : boolean",
+      "from": "e6",
+      "to": "e8",
+      "source": "image"
+    },
+    {
+      "id": "r11",
+      "kind": "message",
+      "name": "updateStudent(st : Student) : boolean",
+      "from": "e6",
+      "to": "e7",
+      "source": "image"
+    },
+    {
+      "id": "r12",
+      "kind": "message",
+      "name": "displayMessage(msg : string) : void",
+      "from": "e5",
+      "to": "e5",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Design CreateSchedule Subflow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

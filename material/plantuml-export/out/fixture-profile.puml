@@ -1,0 +1,8 @@
+@startuml
+title profile
+package "Профиль разработки" as e1 <<profile>> {
+class e2 as "entity" <<stereotype>>
+class e3 as "Class" <<metaclass>>
+}
+e2 --|> e3
+@enduml

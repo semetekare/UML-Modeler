@@ -1,0 +1,70 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5219",
+    "figureNo": "5.2.19",
+    "exercise": "5.2.H",
+    "type": "class",
+    "diagramName": "Student",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма классов Student",
+    "notes": "Иерархия Student с FullTimeStudent и PartTimeStudent, подтянутая через Related Element -> Visualize Related Model Elements; обобщения уже существуют и заново не проводятся.",
+    "gaps": [
+      "состав атрибутов и операций в тексте не перечислен: сказано только, что нужно «придать диаграмме вид, схожий с рисунком 5.2.19»",
+      "статические члены (область действия classifier, подчёркивание) не выражаются — записаны полем isStatic",
+      "геттеры и сеттеры создаются автоматически, их имена в тексте не приведены"
+    ],
+    "gapIds": [
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Student",
+      "attributes": [
+        {
+          "vis": "public",
+          "name": "id",
+          "type": "long",
+          "isID": true
+        }
+      ]
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "FullTimeStudent"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "PartTimeStudent"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "generalization",
+      "from": "e2",
+      "to": "e1"
+    },
+    {
+      "id": "r2",
+      "kind": "generalization",
+      "from": "e3",
+      "to": "e1"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Student",
+      "type": "class",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

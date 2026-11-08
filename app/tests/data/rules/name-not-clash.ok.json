@@ -1,0 +1,89 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-name-not-clash-ok",
+  "name": "name-not-clash (без нарушения) — имена стереотипов различаются",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Заказ",
+      "documentation": "Правило «name-not-clash» — совет практики моделирования: пункта UML у него нет, есть только объяснение, почему такую модель трудно читать.\nКонтроль: у двух стереотипов разные имена."
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "Клиент"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "association",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "name-not-clash (без нарушения)",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "profiles": [
+    {
+      "id": "p-fixture",
+      "name": "Профиль фикстуры",
+      "scope": "project",
+      "stereotypes": [
+        {
+          "id": "s1",
+          "name": "entity",
+          "baseTypes": [
+            "Class"
+          ]
+        },
+        {
+          "id": "s2",
+          "name": "valueObject",
+          "baseTypes": [
+            "Class"
+          ]
+        }
+      ]
+    }
+  ]
+}

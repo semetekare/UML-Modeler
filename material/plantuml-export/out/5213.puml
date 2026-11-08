@@ -1,0 +1,27 @@
+@startuml
+title updateStudent
+participant e1 as "db:DBAccess" <<subsystem proxy>>
+collections e2 as "cOff[i]:CourseOffering"
+participant e3 as "obj:Student"
+participant e4 as "c:Connection"
+participant e5 as "s:Statement"
+opt c == NULL
+e1 -> e1 : updateStudent(st : Student) : boolean
+e1 -> e1 : без подписи
+e1 -> e3 : getId() : long
+e1 -> e3 : getName() : string
+end
+opt obj.hasScheduleForSemester(s)
+e1 -> e3 : getAddress() : string
+e1 -> e3 : getPhones() : string[0..2]
+e1 -> e3 : hasScheduleForSemester(semester : byte) : boolean
+e1 -> e3 : getScheduleCourses(semester : byte) : CourseOffering[]
+end
+loop for all courseOfferings
+e1 -> e2 : toSQL() : string
+e1 -> e4 : createStatement() : Statement
+create e5
+e4 -> e5 : new
+e1 -> e5 : executeUpdate(sql : string) : int
+end
+@enduml

@@ -1,0 +1,71 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5211",
+    "figureNo": "5.2.11",
+    "exercise": "5.2.F",
+    "type": "sequence",
+    "diagramName": "close",
+    "group": "diagram",
+    "reproducible": "да",
+    "altText": "UML-диаграмма последовательности, описывающая реализацию операции close() в подсистеме DBAccess",
+    "notes": "Текст называет линию жизни db:DBAccess и сообщение close(). Рисунок 5.2.11 подтверждает их и добавляет линию жизни c:Connection, второе сообщение close() к ней и фрагмент opt с условием [c <> NULL]; всё прочитано с рисунка, пробелов не осталось.",
+    "gaps": [],
+    "gapIds": [],
+    "imageDerived": [
+      "e1",
+      "r1"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "db:DBAccess",
+      "stereotype": "subsystem proxy",
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "c:Connection",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "fragment",
+      "name": "[c <> NULL]",
+      "operator": "opt",
+      "note": "фрагмент opt; условие прочитано с рисунка, покрывает сообщение 2",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "close() : void",
+      "from": "e1",
+      "to": "e1",
+      "note": "найденное сообщение: отправитель на рисунке не показан",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "close() : void",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "close",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

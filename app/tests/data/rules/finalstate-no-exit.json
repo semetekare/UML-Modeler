@@ -1,0 +1,69 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-finalstate-no-exit",
+  "name": "finalstate-no-exit — у конечного состояния задан текст выхода",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "state",
+      "name": "Закрыт"
+    },
+    {
+      "id": "e2",
+      "kind": "final",
+      "name": "",
+      "documentation": "Правило «finalstate-no-exit»: UML 2.5.1, п. 14.5.2.5, констрейнт FinalState::no_exit_behavior: «У конечного состояния нет поведения при выходе.»\nУ конечного состояния заполнено поле «exit» («Очистить корзину»), а текст выхода у него быть не может.",
+      "exit": [
+        "Очистить корзину"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "transition",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "finalstate-no-exit — у конечного состояния задан текст выхода",
+      "kind": "state",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 20,
+          "h": 20
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

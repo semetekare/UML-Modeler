@@ -1,0 +1,107 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5213",
+    "figureNo": "5.2.13",
+    "exercise": "5.2.F",
+    "type": "sequence",
+    "diagramName": "updateStudent",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности, описывающая реализацию операции updateStudent(st:Student) в подсистеме DBAccess",
+    "notes": "Линии жизни: db:DBAccess, cOff[i]:CourseOffering, obj:Student, c:Connection, s:Statement. Третье сверху сообщение связано с операцией getId():long; геттеры класса Student созданы через Create Getter and Setter.",
+    "gaps": [
+      "кроме третьего сверху сообщения (getId():long) имена сообщений не названы",
+      "комбинированные фрагменты упомянуты, но их операторы и сторожевые условия не приведены",
+      "множественная линия жизни не выражается — записана multiObject"
+    ],
+    "gapIds": [
+      "model.fragmentOperands",
+      "model.multiObject",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "db:DBAccess"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "cOff[i]:CourseOffering",
+      "multiObject": true
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "obj:Student"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "c:Connection"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "s:Statement"
+    },
+    {
+      "id": "e6",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "не названо в тексте"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "updateStudent(st:Student)",
+      "from": "e1",
+      "to": "e1",
+      "note": "входящее сообщение связано с операцией"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "не названо в тексте",
+      "from": "e1",
+      "to": "e3",
+      "note": "второе сверху сообщение; имя не названо"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "getId():long",
+      "from": "e1",
+      "to": "e3",
+      "note": "третье сверху сообщение"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "не названо в тексте",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "не названо в тексте",
+      "from": "e1",
+      "to": "e5"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "updateStudent",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

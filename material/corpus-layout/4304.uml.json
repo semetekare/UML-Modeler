@@ -1,0 +1,487 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-4304",
+  "name": "UML-диаграмма последовательности CreateSchedule Subflow",
+  "elements": [
+    {
+      "id": "e4",
+      "kind": "actorLifeline",
+      "name": "Студент",
+      "source": "image"
+    },
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "cOff[i]:CourseOffering",
+      "multiObject": true
+    },
+    {
+      "id": "e2",
+      "kind": "fragment",
+      "name": "[учебный план на текущий семестр у студента отсутствует]",
+      "documentation": "условие фрагмента opt; прочитано с рисунка, охватывает все сообщения диаграммы",
+      "operator": "opt",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "interactionUse",
+      "name": "DisplayCourseOfferings Subflow",
+      "refersTo": "DisplayCourseOfferings Subflow",
+      "operator": "ref"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "rform:RegistrationForm",
+      "stereotype": "boundary",
+      "source": "image"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "rctrl:RegistrationController",
+      "stereotype": "control",
+      "source": "image"
+    },
+    {
+      "id": "e7",
+      "kind": "lifeline",
+      "name": "dao:DataAccess",
+      "stereotype": "control",
+      "source": "image"
+    },
+    {
+      "id": "e8",
+      "kind": "lifeline",
+      "name": "sch:Schedule",
+      "stereotype": "entity",
+      "source": "image"
+    },
+    {
+      "id": "e9",
+      "kind": "lifeline",
+      "name": "curStud:Student",
+      "stereotype": "entity",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "createSchedule(semester : byte)",
+      "from": "e4",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "createSchedule(semester : byte)",
+      "from": "e5",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "getCourseOfferingList(semester : byte) : CourseOffering[]",
+      "from": "e6",
+      "to": "e7",
+      "source": "image"
+    },
+    {
+      "id": "r1",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e7",
+      "to": "e1",
+      "note": "создающее сообщение, не привязано к операции",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "displayBlankSchedule()",
+      "from": "e5",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "selectPrimaryCourse(nums : long[4])",
+      "from": "e4",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "message",
+      "name": "selectAltCourse(nums : long[2])",
+      "from": "e4",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "message",
+      "name": "submitSelectedCourses(semester : byte, primary : long[4], alt : long[2])",
+      "from": "e4",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "message",
+      "name": "submitSelectedCourses(semester : byte, primary : CourseOffering[4], alt : CourseOffering[2])",
+      "from": "e5",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "message",
+      "name": "createSchedule(semester : byte, primary : CourseOffering[4], alt : CourseOffering[2])",
+      "from": "e6",
+      "to": "e9",
+      "source": "image"
+    },
+    {
+      "id": "r11",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e9",
+      "to": "e8",
+      "source": "image"
+    },
+    {
+      "id": "r12",
+      "kind": "message",
+      "name": "updateStudent(s : Student)",
+      "from": "e6",
+      "to": "e7",
+      "source": "image"
+    },
+    {
+      "id": "r13",
+      "kind": "message",
+      "name": "displayMessage(msg : string)",
+      "from": "e5",
+      "to": "e5",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "CreateSchedule Subflow",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e4",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 660
+        },
+        {
+          "id": "s2",
+          "elementId": "e1",
+          "x": 320,
+          "y": 60,
+          "w": 200,
+          "h": 660
+        },
+        {
+          "id": "s3",
+          "elementId": "e2",
+          "x": 60,
+          "y": 150,
+          "w": 1760,
+          "h": 260
+        },
+        {
+          "id": "s4",
+          "elementId": "e3",
+          "x": 60,
+          "y": 450,
+          "w": 1760,
+          "h": 230
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 580,
+          "y": 60,
+          "w": 200,
+          "h": 660
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 840,
+          "y": 60,
+          "w": 200,
+          "h": 660
+        },
+        {
+          "id": "s7",
+          "elementId": "e7",
+          "x": 1100,
+          "y": 60,
+          "w": 200,
+          "h": 660
+        },
+        {
+          "id": "s8",
+          "elementId": "e8",
+          "x": 1360,
+          "y": 60,
+          "w": 200,
+          "h": 660
+        },
+        {
+          "id": "s9",
+          "elementId": "e9",
+          "x": 1620,
+          "y": 60,
+          "w": 200,
+          "h": 660
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.182
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.182
+          },
+          "y": 180
+        },
+        {
+          "id": "l2",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.227
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.227
+          },
+          "y": 210
+        },
+        {
+          "id": "l3",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s6",
+            "side": "right",
+            "t": 0.273
+          },
+          "to": {
+            "shapeId": "s7",
+            "side": "left",
+            "t": 0.273
+          },
+          "y": 240
+        },
+        {
+          "id": "l4",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s7",
+            "side": "left",
+            "t": 0.318
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.318
+          },
+          "y": 270
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.364
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.394
+          },
+          "y": 300
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.409
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.409
+          },
+          "y": 330
+        },
+        {
+          "id": "l7",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.455
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.455
+          },
+          "y": 360
+        },
+        {
+          "id": "l8",
+          "relId": "r8",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.636
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.636
+          },
+          "y": 480
+        },
+        {
+          "id": "l9",
+          "relId": "r9",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.682
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.682
+          },
+          "y": 510
+        },
+        {
+          "id": "l10",
+          "relId": "r10",
+          "from": {
+            "shapeId": "s6",
+            "side": "right",
+            "t": 0.727
+          },
+          "to": {
+            "shapeId": "s9",
+            "side": "left",
+            "t": 0.727
+          },
+          "y": 540
+        },
+        {
+          "id": "l11",
+          "relId": "r11",
+          "from": {
+            "shapeId": "s9",
+            "side": "left",
+            "t": 0.773
+          },
+          "to": {
+            "shapeId": "s8",
+            "side": "right",
+            "t": 0.773
+          },
+          "y": 570
+        },
+        {
+          "id": "l12",
+          "relId": "r12",
+          "from": {
+            "shapeId": "s6",
+            "side": "right",
+            "t": 0.818
+          },
+          "to": {
+            "shapeId": "s7",
+            "side": "left",
+            "t": 0.818
+          },
+          "y": 600
+        },
+        {
+          "id": "l13",
+          "relId": "r13",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.864
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.894
+          },
+          "y": 630
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "4304",
+    "figureNo": "4.3.4",
+    "exercise": "4.3.A",
+    "type": "sequence",
+    "diagramName": "CreateSchedule Subflow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности CreateSchedule Subflow",
+    "notes": "Текст называет только линию жизни cOff[i]:CourseOffering, сообщение new, фрагмент opt и ссылку DisplayCourseOfferings Subflow. Остальные шесть линий жизни (Студент, rform:RegistrationForm, rctrl:RegistrationController, dao:DataAccess, sch:Schedule, curStud:Student), двенадцать сообщений и сторожевое условие opt прочитаны с рисунка 4.3.4.",
+    "gaps": [
+      "множественная линия жизни (Multi-object) не выражается в uml-model/3 — записана полем multiObject",
+      "поле Refers to у Interaction Use не выражается — записано refersTo",
+      "покрытие сообщений фрагментом opt не выражается",
+      "порядок трёх правых линий жизни (cOff[i], sch, curStud) прочитан по-разному двумя прогонами — факт не установлен"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.interactionRef",
+      "model.multiObject",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e2",
+      "r1"
+    ]
+  },
+  "sheet": {
+    "w": 1880,
+    "h": 780
+  }
+}

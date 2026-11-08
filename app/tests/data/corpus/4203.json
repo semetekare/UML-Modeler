@@ -1,0 +1,113 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4203",
+    "figureNo": "4.2.3",
+    "exercise": "4.2",
+    "type": "class",
+    "diagramName": "VOPC Login",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Итоговая версия UML-диаграммы классов VOPC Login в Analysis Model",
+    "notes": "Ассоциации восстановлены по диаграмме последовательности 4.2.2: обмен сообщениями требует соединения между классами. Мощности не названы.",
+    "gaps": [
+      "текст не перечисляет ассоциации и их мощности: сказано только «добавим ассоциации, необходимые для того, чтобы взаимодействие было осуществимо» и «итоговая диаграмма является связанным графом»",
+      "порядок операций и их сигнатуры в тексте признаны необязательными: «если количество операций и их сигнатуры отличаются от рисунка, в этом нет ошибки»"
+    ],
+    "gapIds": [
+      "source.associations",
+      "source.navigation"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "LoginForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "MainMenuForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "LoginController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "DataAccess",
+      "stereotype": "control"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "User",
+      "stereotype": "entity"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "association",
+      "from": "e1",
+      "to": "e3",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте"
+    },
+    {
+      "id": "r2",
+      "kind": "association",
+      "from": "e3",
+      "to": "e4",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте"
+    },
+    {
+      "id": "r3",
+      "kind": "association",
+      "from": "e3",
+      "to": "e5",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте"
+    },
+    {
+      "id": "r4",
+      "kind": "association",
+      "from": "e3",
+      "to": "e2",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте"
+    },
+    {
+      "id": "r5",
+      "kind": "association",
+      "from": "e4",
+      "to": "e5",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте"
+    },
+    {
+      "id": "r6",
+      "kind": "association",
+      "from": "e2",
+      "to": "e5",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "VOPC Login",
+      "type": "class",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

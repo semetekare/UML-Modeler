@@ -1,0 +1,151 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5218",
+    "figureNo": "5.2.18",
+    "exercise": "5.2.G",
+    "type": "sequence",
+    "diagramName": "sendStudentData",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности, описывающая реализацию операции sendStudentData() в подсистеме BSAccess",
+    "notes": "Текст называет четыре линии жизни, фрагмент loop, вызов toJSON():string и потерянное сообщение-возврат. Рисунок 5.2.18 показывает восемь сообщений, фрагмент opt с условием [client == NULL] и условие цикла [for all courses]; подписи сообщений прочитаны с рисунка.",
+    "gaps": [
+      "подписи сообщений в тексте не перечислены — прочитаны с рисунка",
+      "множественность линии жизни (Multi-object) не выражается — записана multiObject",
+      "потерянное сообщение не выражается в uml-model/3 — записано связью без получателя",
+      "покрытие сообщений фрагментами opt и loop не выражается"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.lostMessage",
+      "model.multiObject",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e2",
+      "e5",
+      "r1",
+      "r2",
+      "r3"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e4",
+      "kind": "actorLifeline",
+      "name": "Расчётная система"
+    },
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "cn:BSAccess",
+      "stereotype": "subsystem proxy"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "cOff[i]:CourseOffering",
+      "multiObject": true,
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "client:XMLRpcClient"
+    },
+    {
+      "id": "e5",
+      "kind": "fragment",
+      "name": "[for all courses]",
+      "operator": "loop",
+      "note": "цикл по курсам; условие прочитано с рисунка, покрывает сообщение 3",
+      "source": "image"
+    },
+    {
+      "id": "e6",
+      "kind": "fragment",
+      "name": "[client == NULL]",
+      "operator": "opt",
+      "note": "фрагмент opt; условие прочитано с рисунка, покрывает сообщение 2",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "sendStudentData(name : string, address : string, cOff : CourseOffering[]) : boolean",
+      "from": "e1",
+      "to": "e1",
+      "note": "входящее сообщение связано с операцией",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "init(serverURL : string) : void",
+      "from": "e1",
+      "to": "e1",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "toJSON() : string",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "execute(pMethodName : String = requestName, pParams : Object[]) : Object",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "xmlrpcRequest",
+      "from": "e3",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "reply",
+      "name": "return(xmlrpcResult)",
+      "from": "e4",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "reply",
+      "name": "return(result)",
+      "from": "e3",
+      "to": "e1",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "reply",
+      "name": "result",
+      "from": "e1",
+      "to": null,
+      "note": "потерянное сообщение (Lost Message) типа «возврат»",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "sendStudentData",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

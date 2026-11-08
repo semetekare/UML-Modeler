@@ -1,0 +1,372 @@
+#!/usr/bin/env python3
+"""UML Class Modeler — стартёр, который запускает Craft Anything.
+
+    uml-modeler                      обслуживать сайт на http://127.0.0.1:8123
+    uml-modeler [порт]               тот же сайт на другом порту
+    uml-modeler --screenshot FILE    поднять сайт, снять страницу headless-браузером
+                                     в FILE (PNG) и завершиться
+    uml-modeler --self-test FILE     поднять сайт, прогнать шаги самопроверки
+                                     и записать отчёт в FILE (JSON): 0 — все шаги
+                                     прошли, 1 — нет
+
+Приложение — обычные ES-модули рядом (index.html, src/, ui-kit/, material/):
+здесь его ничего не собирают и ничего не устанавливают, всё работает без сети.
+"""
+import glob
+import html
+import http.server
+import json
+import os
+import re
+import shutil
+import struct
+import subprocess
+import sys
+import tempfile
+import threading
+import zlib
+from pathlib import Path
+
+APP = Path(__file__).resolve().parent.parent
+SHOT_BYTES_MIN = 5000
+# A screenshot is judged by what is drawn, not by how many bytes it weighs:
+# a blank 1440×900 PNG is ~12 KB of white and used to pass the size test.
+SHOT_INK_MIN = 0.03      # ≥ 3 % of the area carries ink (plan Э0)
+INK_TOLERANCE = 12       # a channel this far from the background colour is ink
+
+
+
+class Handler(http.server.SimpleHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, directory=str(APP), **kwargs)
+
+    def end_headers(self):
+        self.send_header("Cache-Control", "no-store")
+        super().end_headers()
+
+    def log_message(self, *args):
+        pass
+
+
+def serve(port=0):
+    srv = http.server.ThreadingHTTPServer(("127.0.0.1", port), Handler)
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    return srv
+
+
+def browser_candidates():
+    """Headless-браузеры по порядку надёжности; пробуем каждый, пока не выйдет снимок.
+
+    Первым идёт headless-shell из кеша Playwright: он снимает страницу за
+    полсекунды. Chromium, который ставит сам Craft Anything, в этой системе
+    подвисает на фоновых запросах и выходит без файла — поэтому он лишь один
+    из кандидатов, а не единственный.
+    """
+    env = os.environ.get("UML_BROWSER")
+    if env:
+        yield [env]
+    for pattern in (
+        "~/.cache/ms-playwright/chromium_headless_shell-*/chrome-headless-shell-linux64/chrome-headless-shell",
+        "~/.cache/ms-playwright/chromium-*/chrome-linux64/chrome",
+        "~/.hermes/tools/chromium-*/chrome-linux64/chrome",
+    ):
+        for p in sorted(glob.glob(os.path.expanduser(pattern)), reverse=True):
+            if os.access(p, os.X_OK):
+                yield [p]
+    for name in ("chromium", "chromium-browser", "google-chrome-stable", "google-chrome"):
+        p = shutil.which(name)
+        if p:
+            yield [p]
+    p = shutil.which("firefox")
+    if p:
+        yield [p, "firefox"]
+
+
+def png_ink_ratio(path: Path):
+    """Доля площади с «чернилами» на PNG, или None если формат не разобран.
+
+    «Чернила» — пиксели, отличные от фона. Фон берётся как самый частый цвет
+    кадра, а не как белый: лист приложения — светло-кремовый (#fff3ee), и
+    порог «темнее 250» считал бы фон чернилами (94 % вместо 9 %). Поэтому
+    сравниваем с модальным цветом: пустой кадр даёт 0 %, интерфейс — 9 %.
+    """
+    try:
+        data = path.read_bytes()
+    except OSError:
+        return None
+    if data[:8] != b"\x89PNG\r\n\x1a\n":
+        return None
+    pos = 8
+    width = height = depth = ctype = None
+    idat = bytearray()
+    while pos + 8 <= len(data):
+        (length,) = struct.unpack(">I", data[pos:pos + 4])
+        ctype_name = data[pos + 4:pos + 8]
+        chunk = data[pos + 8:pos + 8 + length]
+        pos += 12 + length
+        if ctype_name == b"IHDR":
+            width, height, depth, ctype = struct.unpack(">IIBB", chunk[:10])
+        elif ctype_name == b"IDAT":
+            idat += chunk
+        elif ctype_name == b"IEND":
+            break
+    if not width or not height or depth != 8 or ctype not in (2, 6):
+        return None
+    bpp = 3 if ctype == 2 else 4
+    try:
+        raw = zlib.decompress(bytes(idat))
+    except zlib.error:
+        return None
+    stride = width * bpp
+    prev = bytearray(stride)
+    rows = []
+    off = 0
+    for _y in range(height):
+        if off >= len(raw):
+            break
+        filt = raw[off]
+        off += 1
+        line = bytearray(raw[off:off + stride])
+        off += stride
+        if filt == 1:
+            for i in range(bpp, stride):
+                line[i] = (line[i] + line[i - bpp]) & 0xFF
+        elif filt == 2:
+            for i in range(stride):
+                line[i] = (line[i] + prev[i]) & 0xFF
+        elif filt == 3:
+            for i in range(stride):
+                a = line[i - bpp] if i >= bpp else 0
+                line[i] = (line[i] + ((a + prev[i]) >> 1)) & 0xFF
+        elif filt == 4:
+            for i in range(stride):
+                a = line[i - bpp] if i >= bpp else 0
+                b = prev[i]
+                c = prev[i - bpp] if i >= bpp else 0
+                p = a + b - c
+                pa, pb, pc = abs(p - a), abs(p - b), abs(p - c)
+                pr = a if (pa <= pb and pa <= pc) else (b if pb <= pc else c)
+                line[i] = (line[i] + pr) & 0xFF
+        rows.append(line)
+        prev = line
+    if not rows:
+        return None
+    # A fixed 2×2 grid: less work, and the same picture always yields the same
+    # number (determinism matters more than per-pixel exactness here).
+    step = 2
+    counts = {}
+    for y in range(0, len(rows), step):
+        line = rows[y]
+        for x in range(0, width, step):
+            i = x * bpp
+            key = (line[i], line[i + 1], line[i + 2])
+            counts[key] = counts.get(key, 0) + 1
+    bg = max(counts.items(), key=lambda kv: kv[1])[0]
+    ink = 0
+    total = 0
+    for y in range(0, len(rows), step):
+        line = rows[y]
+        for x in range(0, width, step):
+            i = x * bpp
+            if bpp == 4 and line[i + 3] == 0:
+                continue
+            total += 1
+            if (abs(line[i] - bg[0]) > INK_TOLERANCE
+                    or abs(line[i + 1] - bg[1]) > INK_TOLERANCE
+                    or abs(line[i + 2] - bg[2]) > INK_TOLERANCE):
+                ink += 1
+    return ink / total if total else None
+
+
+def shot_once(cmd, url, out: Path) -> bool:
+    """One browser run; True when a real picture landed in `out`.
+
+    «Реальная картинка» = файл не меньше порога И на нём есть интерфейс:
+    не меньше 3 % площади с чернилами. Пустой белый PNG проходит по размеру,
+    но даёт 0 % — и больше не считается успехом.
+    """
+    profile = tempfile.mkdtemp(prefix="uml-shot-")
+    try:
+        if cmd[-1] == "firefox":
+            run = [cmd[0], "--headless", "--no-remote", "-profile", profile,
+                   "--window-size", "1440,900", "--screenshot", str(out.resolve()), url]
+        elif cmd[0].endswith("chrome-headless-shell"):
+            # Without a virtual time budget the shell writes the PNG before the
+            # ES modules have drawn anything: the picture is white. The same
+            # two flags the full Chrome branch has always carried.
+            run = [cmd[0], "--disable-gpu", "--no-sandbox", "--hide-scrollbars",
+                   f"--user-data-dir={profile}", "--window-size=1440,900",
+                   "--virtual-time-budget=4000", "--run-all-compositor-stages-before-draw",
+                   f"--screenshot={out.resolve()}", url]
+        else:
+            run = [cmd[0], "--headless=new", "--disable-gpu", "--no-sandbox",
+                   "--hide-scrollbars", "--no-first-run", "--no-default-browser-check",
+                   "--disable-background-networking", "--disable-component-update",
+                   "--disable-sync", "--disable-features=Translate",
+                   f"--user-data-dir={profile}", "--window-size=1440,900",
+                   "--virtual-time-budget=4000", "--run-all-compositor-stages-before-draw",
+                   f"--screenshot={out.resolve()}", url]
+        subprocess.run(run, cwd=str(APP), timeout=30,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except Exception as e:  # не запустился или подвис
+        print(f"  {os.path.basename(cmd[0])}: {e}", file=sys.stderr)
+    finally:
+        # Chrome пишет в профиль, пока его удаляют: строгая уборка падает
+        # «Directory not empty» уже после хорошего снимка.
+        shutil.rmtree(profile, ignore_errors=True)
+    if not out.is_file():
+        return False
+    size = out.stat().st_size
+    if size < SHOT_BYTES_MIN:
+        print(f"  {os.path.basename(cmd[0])}: {size} Б < {SHOT_BYTES_MIN}", file=sys.stderr)
+        return False
+    ratio = png_ink_ratio(out)
+    if ratio is None:
+        print(f"  {os.path.basename(cmd[0])}: PNG не разобран — снимок не принят", file=sys.stderr)
+        return False
+    if ratio < SHOT_INK_MIN:
+        print(f"  {os.path.basename(cmd[0])}: чернил {ratio:.1%} < {SHOT_INK_MIN:.0%} — пустой снимок",
+              file=sys.stderr)
+        return False
+    print(f"  {os.path.basename(cmd[0])}: {size} Б, чернил {ratio:.1%}")
+    return True
+
+
+
+SELFTEST_RE = re.compile(r'<pre id="self-test-report"[^>]*>(.*?)</pre>', re.S)
+
+
+def dump_dom(cmd, url, budget_ms=8000):
+    """DOM страницы после того, как она отработала: браузер печатает его сам.
+
+    Это единственный способ заглянуть внутрь приложения без CDP: страница
+    по `?selftest=1` прогоняет шаги и кладёт отчёт в `<pre id="self-test-report">`,
+    а `--dump-dom` отдаёт готовый DOM в stdout.
+    """
+    profile = tempfile.mkdtemp(prefix="uml-self-")
+    try:
+        if cmd[-1] == "firefox":
+            return None
+        run = [cmd[0], "--disable-gpu", "--no-sandbox", "--hide-scrollbars",
+               "--no-first-run", "--no-default-browser-check",
+               "--disable-background-networking", "--disable-component-update",
+               "--disable-sync", "--disable-features=Translate",
+               f"--user-data-dir={profile}", "--window-size=1440,900",
+               f"--virtual-time-budget={budget_ms}",
+               "--run-all-compositor-stages-before-draw",
+               "--dump-dom", url]
+        # chrome-headless-shell — уже headless; полному Chrome нужен флаг.
+        if not cmd[0].endswith("chrome-headless-shell"):
+            run.insert(1, "--headless=new")
+        p = subprocess.run(run, cwd=str(APP), timeout=90,
+                           stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+        return p.stdout.decode("utf-8", "replace")
+    except Exception as e:  # не запустился или подвис
+        print(f"  {os.path.basename(cmd[0])}: {e}", file=sys.stderr)
+        return None
+    finally:
+        shutil.rmtree(profile, ignore_errors=True)
+
+
+def report_from_dom(dom):
+    """Отчёт самопроверки из `<pre id="self-test-report">`, или None."""
+    if not dom:
+        return None
+    m = SELFTEST_RE.search(dom)
+    if not m:
+        return None
+    try:
+        report = json.loads(html.unescape(m.group(1)))
+    except (ValueError, TypeError):
+        return None
+    return report if isinstance(report, dict) else None
+
+
+def self_test(out: Path) -> int:
+    """Открыть приложение headless-браузером, прогнать шаги, записать отчёт."""
+    srv = serve()
+    url = f"http://127.0.0.1:{srv.server_address[1]}/?selftest=1"
+    try:
+        for cmd in browser_candidates():
+            report = report_from_dom(dump_dom(cmd, url))
+            if not report:
+                continue
+            steps = report.get("steps") or []
+            passed = [s for s in steps if s.get("passed")]
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(json.dumps(report, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+            print(f"self-test → {out}: {len(passed)}/{len(steps)} шагов")
+            for s in steps:
+                print(f"  {'ok  ' if s.get('passed') else 'FAIL'} {s.get('step')} — {s.get('detail')}")
+            return 0 if steps and len(passed) == len(steps) else 1
+        print("self-test failed: no browser produced a report", file=sys.stderr)
+        return 1
+    finally:
+        srv.shutdown()
+
+
+def screenshot(out: Path, view: str | None = None, query: str | None = None) -> int:
+    srv = serve()
+    # The fitted view (no ?view=) is the one to compare with Visual Paradigm:
+    # at 1440×900 the sample lands on 75%, the zoom of the reference screens.
+    # `--view 1` pins the zoom instead, for reading small type or checking a
+    # shape at its true size. `--query` adds model=all&diagram=<kind> so a
+    # single type can be photographed without touching the app.
+    url = f"http://127.0.0.1:{srv.server_address[1]}/"
+    parts = []
+    if query:
+        parts.append(query.lstrip('?&'))
+    if view:
+        parts.append(f"view={view}")
+    if parts:
+        url += "?" + "&".join(parts)
+    try:
+        out.unlink(missing_ok=True)
+        for cmd in browser_candidates():
+            if shot_once(cmd, url, out):
+                print(f"screenshot → {out}")
+                return 0
+        print("screenshot failed: no browser produced a picture", file=sys.stderr)
+        return 1
+    finally:
+        srv.shutdown()
+
+
+def main():
+    args = sys.argv[1:]
+    if "--self-test" in args:
+        i = args.index("--self-test")
+        if i + 1 >= len(args):
+            print("--self-test needs a file path", file=sys.stderr)
+            return 2
+        return self_test(Path(args[i + 1]))
+    if "--screenshot" in args:
+        i = args.index("--screenshot")
+        if i + 1 >= len(args):
+            print("--screenshot needs a file path", file=sys.stderr)
+            return 2
+        out = Path(args[i + 1])
+        out.parent.mkdir(parents=True, exist_ok=True)
+        view = None
+        if "--view" in args:
+            j = args.index("--view")
+            if j + 1 < len(args):
+                view = args[j + 1]
+        query = None
+        if "--query" in args:
+            k = args.index("--query")
+            if k + 1 < len(args):
+                query = args[k + 1]
+        return screenshot(out, view, query)
+    port = int(args[0]) if args and args[0].isdigit() else 8123
+    srv = serve(port)
+    print(f"UML Class Modeler → http://localhost:{srv.server_address[1]}")
+    try:
+        threading.Event().wait()
+    except KeyboardInterrupt:
+        pass
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

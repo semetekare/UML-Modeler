@@ -1,0 +1,85 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-deploy-spec-deployed-components-ok",
+  "name": "deploy_spec_deployed_elements (без нарушения) — на цели компонент",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "deploymentSpec",
+      "name": "Конфигурация узла",
+      "documentation": "Правило «deploy-spec-deployed-components»: UML 2.5.1, п. 19.5.5.6, констрейнт DeploymentSpecification::deployed_elements: «deployedElements цели развёртывания, участвующие в развёртывании, с которым связана спецификация развёртывания, — вид компонента (то есть конфигурируемые компоненты).»\nКонтроль: На цели спецификации развёрнут компонент «Сервис заказов» — так и должно быть."
+    },
+    {
+      "id": "e2",
+      "kind": "executionEnvironment",
+      "name": "Среда приложений"
+    },
+    {
+      "id": "e3",
+      "kind": "component",
+      "name": "Сервис заказов"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "deployment",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "deployment",
+      "from": "e3",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "deploy_spec_deployed_elements (без нарушения) — на цели компонент",
+      "kind": "deployment",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 100
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 420,
+          "y": 40,
+          "w": 260,
+          "h": 240
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 460,
+          "y": 140,
+          "w": 180,
+          "h": 90
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

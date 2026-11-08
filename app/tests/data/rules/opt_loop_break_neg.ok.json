@@ -1,0 +1,278 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-opt-loop-break-neg-ok",
+  "name": "opt_loop_break_neg (без нарушения) — один операнд и свежий opt без операндов",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": ":Покупатель"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": ":Магазин"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": ":Платёжный шлюз"
+    },
+    {
+      "id": "e4",
+      "kind": "fragment",
+      "name": "Свежий opt",
+      "documentation": "Граница: только что нарисованный opt, операндов ещё нет. Правило обязано молчать, иначе оно ругалось бы на каждый новый фрагмент.",
+      "operator": "opt"
+    },
+    {
+      "id": "e5",
+      "kind": "fragment",
+      "name": "Проверка",
+      "documentation": "Контроль: у loop ровно один операнд. Сообщения у каждого фрагмента свои: одно сообщение в двух фрагментах без общей вложенности — уже другой дефект, Message::cannot_cross_boundaries.",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[есть заказ]",
+          "messages": [
+            "r1",
+            "r2"
+          ]
+        }
+      ],
+      "operator": "loop"
+    },
+    {
+      "id": "e6",
+      "kind": "fragment",
+      "name": "Ветвление",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[карта]",
+          "messages": [
+            "r3"
+          ]
+        },
+        {
+          "id": "o2",
+          "guard": "[счёт]",
+          "messages": [
+            "r4"
+          ]
+        }
+      ],
+      "operator": "alt"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "Утверждение",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[оплата прошла]",
+          "messages": [
+            "r5"
+          ]
+        }
+      ],
+      "operator": "assert"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "Отрицание",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[ошибка]",
+          "messages": [
+            "r6"
+          ]
+        }
+      ],
+      "operator": "neg"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "оформить()",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "оплатить()",
+      "from": "e2",
+      "to": "e3"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "подтвердить()",
+      "from": "e1",
+      "to": "e3"
+    },
+    {
+      "id": "r4",
+      "kind": "reply",
+      "name": "ok",
+      "from": "e3",
+      "to": "e2"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "проверить()",
+      "from": "e1",
+      "to": "e3"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "отклонить()",
+      "from": "e2",
+      "to": "e1"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Оформление заказа",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 620
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 270,
+          "y": 60,
+          "w": 150,
+          "h": 620
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 480,
+          "y": 60,
+          "w": 150,
+          "h": 620
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 60,
+          "y": 120,
+          "w": 700,
+          "h": 80
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 60,
+          "y": 220,
+          "w": 700,
+          "h": 90
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 60,
+          "y": 330,
+          "w": 700,
+          "h": 140
+        },
+        {
+          "id": "s7",
+          "elementId": "e7",
+          "x": 60,
+          "y": 490,
+          "w": 700,
+          "h": 70
+        },
+        {
+          "id": "s8",
+          "elementId": "e8",
+          "x": 60,
+          "y": 580,
+          "w": 700,
+          "h": 70
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.2
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.2
+          },
+          "y": 180
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.25
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.25
+          },
+          "y": 220
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.3
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.3
+          },
+          "y": 260
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.35
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.35
+          },
+          "y": 300
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

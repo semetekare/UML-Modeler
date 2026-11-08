@@ -1,0 +1,40 @@
+{
+  "key": "node",
+  "kind": "shape",
+  "title": "Узел",
+  "oneLine": "Узел — вычислительный ресурс, на котором развёртываются артефакты.",
+  "draws": "Трёхмерный параллелепипед с именем на верхней грани; внутри рисуются развёрнутые артефакты. Виды узла — устройство и среда выполнения — различаются стереотипом или вложенностью. Узел может нести и свойства: объём памяти, число ядер, адрес. На листе узел подписывают как «имя : Тип узла», если тип задан классификатором.",
+  "differs": "От компонента отличается уровнем: узел — физический или виртуальный компьютер, а не часть программы. От артефакта — тем, что артефакт на узле лежит, а узел его исполняет. Если смоделировать сервер классом, модель потеряет различие между «где работает» и «что работает», и оценка мощностей или отказоустойчивости станет невозможной. Признак ошибки: на узле лежит класс, а не артефакт — размещать на узле можно только физические элементы. Узлы нужны, когда обсуждают железо и размещение; иначе диаграмма развёртывания не нужна.",
+  "clause": {
+    "number": "19.4",
+    "title": "Nodes",
+    "id": "19.4-nodes"
+  },
+  "rules": [
+    "namespace-members-distinguishable"
+  ],
+  "example": "Узел «app01», на котором развёрнут «registration.war».",
+  "plantuml": "node N",
+  "stereotypes": [
+    "device",
+    "execution environment",
+    "process",
+    "executionEnvironment"
+  ],
+  "seeAlso": [
+    "device",
+    "executionEnvironment",
+    "communicationPath",
+    "deployment"
+  ],
+  "sources": [
+    "uml.json#shapes.node",
+    "crossrefs.json#notationToClause.node",
+    "spec-tree.json#19.4",
+    "rules-uml-2.5.1.json#namespace-members-distinguishable",
+    "crossrefs.json#stereotypeToShape",
+    "plantuml-grammar.json#element-usecase",
+    "DIAGRAM-TYPES.md#3.7"
+  ],
+  "diagrams": "3.7"
+}

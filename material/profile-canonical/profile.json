@@ -1,0 +1,7070 @@
+{
+  "version": 1,
+  "source": "material/stereotypes.xml (VP 16.3)",
+  "sourceSha256": "3805fe77989b304cbbe92d227340d93a797620546343aaacdc000dc3ae84525c",
+  "rules": {
+    "record": "одна запись <Stereotype> из ApplicationStereotypes или ProjectStereotypes, в порядке файла",
+    "normalization": "нижний регистр, пробелы, _ и - выброшены",
+    "dedup": "группы по (нормализованное имя, baseType): остаётся прикладная запись, иначе первая проектная; отброшенные адреса — в sources",
+    "spelling": "все написания одного понятия сводятся к одному стереотипу; прочие написания остаются в aliases",
+    "canonicalChoice": "1) написание из app/notation/uml.json (stereotype|keyword); 2) написание первой прикладной записи в файле; 3) первой проектной",
+    "canonicalSpellingMayBeNew": "два имени (include, extend) нотация пишет иначе, чем профиль; в профиле они остаются с aliases Include/Extend",
+    "baseTypes": "один стереотип на каноническое имя, baseTypes[] в порядке первого появления (UML 2.5.1 §12.3.3.4)",
+    "taggedValues": "набор записи канонического написания; если наборы различаются по baseType — taggedValuesByBaseType; если внутри одного baseType — taggedValuesVariants",
+    "iconPath": "все непустые iconPath схлопнутых записей (iconPaths, по файлу); рисунок выбирается по первому и переводится через material/stereotype-icons.json",
+    "scope": "application, если хоть одна схлопнутая запись прикладная, иначе project",
+    "documentation": "первая непустая документация схлопнутых записей по файлу"
+  },
+  "counts": {
+    "records": 428,
+    "definitions": 407,
+    "stereotypes": 304,
+    "aliases": 9,
+    "icons": 15
+  },
+  "stereotypes": [
+    {
+      "id": "st-requirement",
+      "name": "requirement",
+      "aliases": [],
+      "baseTypes": [
+        "Requirement"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "Text",
+          "type": "longtext",
+          "default": "",
+          "documentation": "",
+          "values": []
+        },
+        {
+          "name": "ID",
+          "type": "text",
+          "default": "",
+          "documentation": "",
+          "values": []
+        },
+        {
+          "name": "source",
+          "type": "text",
+          "default": "",
+          "documentation": "",
+          "values": []
+        },
+        {
+          "name": "kind",
+          "type": "enum",
+          "default": "",
+          "documentation": "",
+          "values": [
+            "Functional",
+            "Performance",
+            "Interface"
+          ]
+        },
+        {
+          "name": "verifyMethod",
+          "type": "enum",
+          "default": "",
+          "documentation": "",
+          "values": [
+            "Analysis",
+            "Demonstration",
+            "Inspection",
+            "Test"
+          ]
+        },
+        {
+          "name": "risk",
+          "type": "enum",
+          "default": "",
+          "documentation": "",
+          "values": [
+            "High",
+            "Medium",
+            "Low"
+          ]
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "default": "",
+          "documentation": "",
+          "values": [
+            "Proposed",
+            "Approved",
+            "Rejected",
+            "Deferred",
+            "Implemented",
+            "Mandatory",
+            "Obsolete"
+          ]
+        }
+      ],
+      "sources": [
+        "A:WQ1y4yKGAqACZgAE",
+        "P:sOg74HKGAqACAiDE"
+      ]
+    },
+    {
+      "id": "st-usecase",
+      "name": "usecase",
+      "aliases": [
+        "UseCase"
+      ],
+      "baseTypes": [
+        "UseCase",
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": {
+        "asset": "pict-usecase-ellipse",
+        "kind": "figure",
+        "size": [
+          133,
+          72
+        ],
+        "glyph": "usecase-ellipse",
+        "iconPath": "stereotypeIcons/EHXDIh6GAqDIHRGC",
+        "iconPaths": [
+          "stereotypeIcons/EHXDIh6GAqDIHRGC"
+        ]
+      },
+      "taggedValues": [
+        {
+          "name": "Level",
+          "type": "enum",
+          "default": "",
+          "documentation": "",
+          "values": [
+            "Summary",
+            "User",
+            "Subfunction"
+          ]
+        },
+        {
+          "name": "Complexity",
+          "type": "enum",
+          "default": "",
+          "documentation": "",
+          "values": [
+            "Low",
+            "Medium",
+            "High"
+          ]
+        },
+        {
+          "name": "Use Case Status",
+          "type": "enum",
+          "default": "",
+          "documentation": "",
+          "values": [
+            "Name Only",
+            "Initial",
+            "Base",
+            "Complete",
+            "Deferred"
+          ]
+        },
+        {
+          "name": "Implementation Status",
+          "type": "enum",
+          "default": "",
+          "documentation": "",
+          "values": [
+            "Scheduled",
+            "Started",
+            "Partially Complete",
+            "Complete",
+            "Partially Deferred"
+          ]
+        },
+        {
+          "name": "Preconditions",
+          "type": "text",
+          "default": "",
+          "documentation": "",
+          "values": []
+        },
+        {
+          "name": "Post-conditions",
+          "type": "text",
+          "default": "",
+          "documentation": "",
+          "values": []
+        },
+        {
+          "name": "Author",
+          "type": "text",
+          "default": "",
+          "documentation": "",
+          "values": []
+        },
+        {
+          "name": "Assumptions",
+          "type": "text",
+          "default": "",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "pictogramByBaseType": {
+        "UseCase": null,
+        "Class": {
+          "asset": "pict-usecase-ellipse",
+          "kind": "figure",
+          "size": [
+            133,
+            72
+          ],
+          "glyph": "usecase-ellipse",
+          "iconPath": "stereotypeIcons/EHXDIh6GAqDIHRGC"
+        }
+      },
+      "taggedValuesByBaseType": {
+        "UseCase": [
+          {
+            "name": "Level",
+            "type": "enum",
+            "default": "",
+            "documentation": "",
+            "values": [
+              "Summary",
+              "User",
+              "Subfunction"
+            ]
+          },
+          {
+            "name": "Complexity",
+            "type": "enum",
+            "default": "",
+            "documentation": "",
+            "values": [
+              "Low",
+              "Medium",
+              "High"
+            ]
+          },
+          {
+            "name": "Use Case Status",
+            "type": "enum",
+            "default": "",
+            "documentation": "",
+            "values": [
+              "Name Only",
+              "Initial",
+              "Base",
+              "Complete",
+              "Deferred"
+            ]
+          },
+          {
+            "name": "Implementation Status",
+            "type": "enum",
+            "default": "",
+            "documentation": "",
+            "values": [
+              "Scheduled",
+              "Started",
+              "Partially Complete",
+              "Complete",
+              "Partially Deferred"
+            ]
+          },
+          {
+            "name": "Preconditions",
+            "type": "text",
+            "default": "",
+            "documentation": "",
+            "values": []
+          },
+          {
+            "name": "Post-conditions",
+            "type": "text",
+            "default": "",
+            "documentation": "",
+            "values": []
+          },
+          {
+            "name": "Author",
+            "type": "text",
+            "default": "",
+            "documentation": "",
+            "values": []
+          },
+          {
+            "name": "Assumptions",
+            "type": "text",
+            "default": "",
+            "documentation": "",
+            "values": []
+          }
+        ],
+        "Class": [
+          {
+            "name": "Level",
+            "type": "enum",
+            "default": "",
+            "documentation": "",
+            "values": [
+              "Subfunction",
+              "Summary",
+              "User"
+            ]
+          },
+          {
+            "name": "Complexity",
+            "type": "enum",
+            "default": "",
+            "documentation": "",
+            "values": [
+              "High",
+              "Low",
+              "Medium"
+            ]
+          },
+          {
+            "name": "Use Case Status",
+            "type": "enum",
+            "default": "",
+            "documentation": "",
+            "values": [
+              "Base",
+              "Complete",
+              "Deferred",
+              "Initial",
+              "Name Only"
+            ]
+          },
+          {
+            "name": "Implementation Status",
+            "type": "enum",
+            "default": "",
+            "documentation": "",
+            "values": [
+              "Complete",
+              "Partially Complete",
+              "Partially Deferred",
+              "Scheduled",
+              "Started"
+            ]
+          },
+          {
+            "name": "Preconditions",
+            "type": "text",
+            "default": "",
+            "documentation": "",
+            "values": []
+          },
+          {
+            "name": "Post-conditions",
+            "type": "text",
+            "default": "",
+            "documentation": "",
+            "values": []
+          },
+          {
+            "name": "Author",
+            "type": "text",
+            "default": "",
+            "documentation": "",
+            "values": []
+          },
+          {
+            "name": "Assumptions",
+            "type": "text",
+            "default": "",
+            "documentation": "",
+            "values": []
+          }
+        ]
+      },
+      "taggedValuesVariants": [
+        {
+          "baseType": "UseCase",
+          "variants": [
+            {
+              "taggedValues": [
+                {
+                  "name": "Level",
+                  "type": "enum",
+                  "default": "",
+                  "documentation": "",
+                  "values": [
+                    "Summary",
+                    "User",
+                    "Subfunction"
+                  ]
+                },
+                {
+                  "name": "Complexity",
+                  "type": "enum",
+                  "default": "",
+                  "documentation": "",
+                  "values": [
+                    "Low",
+                    "Medium",
+                    "High"
+                  ]
+                },
+                {
+                  "name": "Use Case Status",
+                  "type": "enum",
+                  "default": "",
+                  "documentation": "",
+                  "values": [
+                    "Name Only",
+                    "Initial",
+                    "Base",
+                    "Complete",
+                    "Deferred"
+                  ]
+                },
+                {
+                  "name": "Implementation Status",
+                  "type": "enum",
+                  "default": "",
+                  "documentation": "",
+                  "values": [
+                    "Scheduled",
+                    "Started",
+                    "Partially Complete",
+                    "Complete",
+                    "Partially Deferred"
+                  ]
+                },
+                {
+                  "name": "Preconditions",
+                  "type": "text",
+                  "default": "",
+                  "documentation": "",
+                  "values": []
+                },
+                {
+                  "name": "Post-conditions",
+                  "type": "text",
+                  "default": "",
+                  "documentation": "",
+                  "values": []
+                },
+                {
+                  "name": "Author",
+                  "type": "text",
+                  "default": "",
+                  "documentation": "",
+                  "values": []
+                },
+                {
+                  "name": "Assumptions",
+                  "type": "text",
+                  "default": "",
+                  "documentation": "",
+                  "values": []
+                }
+              ],
+              "sources": [
+                "A:dz1y4yKGAqACZgHq",
+                "P:t2g74HKGAqACAiC2",
+                "P:59efCVqGAqACAwjo"
+              ]
+            },
+            {
+              "taggedValues": [
+                {
+                  "name": "Level",
+                  "type": "enum",
+                  "default": "",
+                  "documentation": "",
+                  "values": [
+                    "Subfunction",
+                    "Summary",
+                    "User"
+                  ]
+                },
+                {
+                  "name": "Complexity",
+                  "type": "enum",
+                  "default": "",
+                  "documentation": "",
+                  "values": [
+                    "High",
+                    "Low",
+                    "Medium"
+                  ]
+                },
+                {
+                  "name": "Use Case Status",
+                  "type": "enum",
+                  "default": "",
+                  "documentation": "",
+                  "values": [
+                    "Base",
+                    "Complete",
+                    "Deferred",
+                    "Initial",
+                    "Name Only"
+                  ]
+                },
+                {
+                  "name": "Implementation Status",
+                  "type": "enum",
+                  "default": "",
+                  "documentation": "",
+                  "values": [
+                    "Complete",
+                    "Partially Complete",
+                    "Partially Deferred",
+                    "Scheduled",
+                    "Started"
+                  ]
+                },
+                {
+                  "name": "Preconditions",
+                  "type": "text",
+                  "default": "",
+                  "documentation": "",
+                  "values": []
+                },
+                {
+                  "name": "Post-conditions",
+                  "type": "text",
+                  "default": "",
+                  "documentation": "",
+                  "values": []
+                },
+                {
+                  "name": "Author",
+                  "type": "text",
+                  "default": "",
+                  "documentation": "",
+                  "values": []
+                },
+                {
+                  "name": "Assumptions",
+                  "type": "text",
+                  "default": "",
+                  "documentation": "",
+                  "values": []
+                }
+              ],
+              "sources": [
+                "A:egkfCVqGAqACAwSs"
+              ]
+            }
+          ]
+        }
+      ],
+      "sources": [
+        "A:dz1y4yKGAqACZgHq",
+        "A:egkfCVqGAqACAwSs",
+        "A:EHXDIh6GAqDIHRGC",
+        "P:t2g74HKGAqACAiC2",
+        "P:59efCVqGAqACAwjo"
+      ]
+    },
+    {
+      "id": "st-metaclass",
+      "name": "metaclass",
+      "aliases": [],
+      "baseTypes": [
+        "Actor",
+        "UseCase",
+        "Component",
+        "Interface",
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIQ",
+        "A:iiNy4yKGAqACZgIf",
+        "A:EhNy4yKGAqACZgLh",
+        "A:EhNy4yKGAqACZgLq",
+        "A:EhNy4yKGAqACZgL6"
+      ]
+    },
+    {
+      "id": "st-device",
+      "name": "device",
+      "aliases": [],
+      "baseTypes": [
+        "Node",
+        "NodeInstance"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIR",
+        "A:HEJwvUqGAqACAxDS"
+      ]
+    },
+    {
+      "id": "st-executionenvironment",
+      "name": "executionEnvironment",
+      "aliases": [
+        "execution environment"
+      ],
+      "baseTypes": [
+        "Node",
+        "NodeInstance"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIS",
+        "A:YiZwvUqGAqACAxDU",
+        "A:KSkfCVqGAqACAwYZ"
+      ]
+    },
+    {
+      "id": "st-localprecondition",
+      "name": "localPrecondition",
+      "aliases": [],
+      "baseTypes": [
+        "NOTE"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIT"
+      ]
+    },
+    {
+      "id": "st-localpostcondition",
+      "name": "localPostcondition",
+      "aliases": [],
+      "baseTypes": [
+        "NOTE"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIU"
+      ]
+    },
+    {
+      "id": "st-decisioninput",
+      "name": "decisionInput",
+      "aliases": [],
+      "baseTypes": [
+        "NOTE"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIV"
+      ]
+    },
+    {
+      "id": "st-rationale",
+      "name": "rationale",
+      "aliases": [],
+      "baseTypes": [
+        "NOTE"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIW"
+      ]
+    },
+    {
+      "id": "st-problem",
+      "name": "problem",
+      "aliases": [],
+      "baseTypes": [
+        "NOTE"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIX"
+      ]
+    },
+    {
+      "id": "st-system",
+      "name": "system",
+      "aliases": [],
+      "baseTypes": [
+        "InteractionLifeLine",
+        "SysMLBlock"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIY",
+        "A:BiNy4yKGAqACZgI3"
+      ]
+    },
+    {
+      "id": "st-user",
+      "name": "user",
+      "aliases": [],
+      "baseTypes": [
+        "InteractionActor"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIZ"
+      ]
+    },
+    {
+      "id": "st-flow-of-events",
+      "name": "flow of events",
+      "aliases": [],
+      "baseTypes": [
+        "CombinedFragment"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIa"
+      ]
+    },
+    {
+      "id": "st-powertype",
+      "name": "powertype",
+      "aliases": [],
+      "baseTypes": [
+        "Actor",
+        "UseCase",
+        "Component",
+        "Interface"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIb",
+        "A:iiNy4yKGAqACZgIg",
+        "A:EhNy4yKGAqACZgLi",
+        "A:EhNy4yKGAqACZgLr"
+      ]
+    },
+    {
+      "id": "st-process",
+      "name": "process",
+      "aliases": [],
+      "baseTypes": [
+        "Actor",
+        "UseCase",
+        "Component",
+        "Interface",
+        "Node",
+        "Class",
+        "NodeInstance"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIc",
+        "A:iiNy4yKGAqACZgIh",
+        "A:EhNy4yKGAqACZgLj",
+        "A:EhNy4yKGAqACZgLs",
+        "A:YVN1U9KGAqACIg7N",
+        "A:5qaQiTKGAqACKwn0",
+        "A:f50IvUqGAqACAxDW"
+      ]
+    },
+    {
+      "id": "st-thread",
+      "name": "thread",
+      "aliases": [],
+      "baseTypes": [
+        "Actor",
+        "UseCase",
+        "Component",
+        "Interface",
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgId",
+        "A:iiNy4yKGAqACZgIi",
+        "A:EhNy4yKGAqACZgLn",
+        "A:EhNy4yKGAqACZgLt",
+        "A:vklQiTKGAqACKwq5"
+      ]
+    },
+    {
+      "id": "st-utility",
+      "name": "utility",
+      "aliases": [],
+      "baseTypes": [
+        "Actor",
+        "UseCase",
+        "Component",
+        "Interface",
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIe",
+        "A:iiNy4yKGAqACZgIj",
+        "A:EhNy4yKGAqACZgLo",
+        "A:EhNy4yKGAqACZgLu",
+        "A:GhNy4yKGAqACZgMY"
+      ]
+    },
+    {
+      "id": "st-derive",
+      "name": "derive",
+      "aliases": [],
+      "baseTypes": [
+        "Abstraction"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIk"
+      ]
+    },
+    {
+      "id": "st-controloperator",
+      "name": "controlOperator",
+      "aliases": [],
+      "baseTypes": [
+        "Activity"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIl"
+      ]
+    },
+    {
+      "id": "st-allocateactivitypartition",
+      "name": "allocateActivityPartition",
+      "aliases": [],
+      "baseTypes": [
+        "ActivityPartition"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIm"
+      ]
+    },
+    {
+      "id": "st-allocate",
+      "name": "allocate",
+      "aliases": [],
+      "baseTypes": [
+        "SysMLAllocate"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIn"
+      ]
+    },
+    {
+      "id": "st-optional",
+      "name": "optional",
+      "aliases": [],
+      "baseTypes": [
+        "ActivityParameterNode",
+        "InputPin",
+        "OutputPin"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIo",
+        "A:iiNy4yKGAqACZgIp",
+        "A:iiNy4yKGAqACZgIq"
+      ]
+    },
+    {
+      "id": "st-participant",
+      "name": "participant",
+      "aliases": [
+        "Participant"
+      ],
+      "baseTypes": [
+        "SysMLParticipantProperty",
+        "Class",
+        "Component"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIr",
+        "A:DiNy4yKGAqACZgJf",
+        "A:EhNy4yKGAqACZgLp"
+      ]
+    },
+    {
+      "id": "st-default",
+      "name": "Default",
+      "aliases": [
+        "default"
+      ],
+      "baseTypes": [
+        "State2",
+        "ActivityAction",
+        "Transition2",
+        "Operation"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iiNy4yKGAqACZgIs",
+        "A:BiNy4yKGAqACZgIt",
+        "A:nBNy4yKGAqACZgKx",
+        "A:9BofeO6GAqACSgbQ"
+      ]
+    },
+    {
+      "id": "st-valuespecificationaction",
+      "name": "valueSpecificationAction",
+      "aliases": [],
+      "baseTypes": [
+        "ActivityAction"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgIu"
+      ]
+    },
+    {
+      "id": "st-parallel",
+      "name": "parallel",
+      "aliases": [],
+      "baseTypes": [
+        "State2"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgIv"
+      ]
+    },
+    {
+      "id": "st-activity",
+      "name": "activity",
+      "aliases": [],
+      "baseTypes": [
+        "SysMLActivityBlock"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgIw"
+      ]
+    },
+    {
+      "id": "st-valuetype",
+      "name": "valueType",
+      "aliases": [],
+      "baseTypes": [
+        "SysMLValueType"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgIx",
+        "P:S0Z6UyKGAqACZgYj"
+      ]
+    },
+    {
+      "id": "st-unit",
+      "name": "unit",
+      "aliases": [],
+      "baseTypes": [
+        "SysMLUnit"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgIy"
+      ]
+    },
+    {
+      "id": "st-quantitykind",
+      "name": "quantityKind",
+      "aliases": [],
+      "baseTypes": [
+        "SysMLQuantityKind"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgIz"
+      ]
+    },
+    {
+      "id": "st-block",
+      "name": "block",
+      "aliases": [],
+      "baseTypes": [
+        "SysMLBlock"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgI0"
+      ]
+    },
+    {
+      "id": "st-domain",
+      "name": "domain",
+      "aliases": [],
+      "baseTypes": [
+        "SysMLBlock"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgI1"
+      ]
+    },
+    {
+      "id": "st-external",
+      "name": "external",
+      "aliases": [],
+      "baseTypes": [
+        "SysMLBlock"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgI2"
+      ]
+    },
+    {
+      "id": "st-act-as",
+      "name": "act as",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgI4"
+      ]
+    },
+    {
+      "id": "st-act-as-regulation",
+      "name": "act as regulation",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgI5"
+      ]
+    },
+    {
+      "id": "st-affect-achievement",
+      "name": "affect achievement",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgI6"
+      ]
+    },
+    {
+      "id": "st-affect-employment",
+      "name": "affect employment",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgI7"
+      ]
+    },
+    {
+      "id": "st-amplify",
+      "name": "amplify",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgI8"
+      ]
+    },
+    {
+      "id": "st-basis-for",
+      "name": "basis for",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgI9"
+      ]
+    },
+    {
+      "id": "st-channel-efforts",
+      "name": "channel efforts",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgI."
+      ]
+    },
+    {
+      "id": "st-claim",
+      "name": "claim",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgI_"
+      ]
+    },
+    {
+      "id": "st-component-of-plan-for",
+      "name": "component of plan for",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJA"
+      ]
+    },
+    {
+      "id": "st-define",
+      "name": "define",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJB"
+      ]
+    },
+    {
+      "id": "st-deliver",
+      "name": "deliver",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJC"
+      ]
+    },
+    {
+      "id": "st-deploy",
+      "name": "deploy",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship",
+        "Deployment"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJD",
+        "A:7hNy4yKGAqACZgM_"
+      ]
+    },
+    {
+      "id": "st-determine",
+      "name": "determine",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJE"
+      ]
+    },
+    {
+      "id": "st-discharge",
+      "name": "discharge",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJF"
+      ]
+    },
+    {
+      "id": "st-effect-enforcement-level",
+      "name": "effect enforcement level",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJG"
+      ]
+    },
+    {
+      "id": "st-enable",
+      "name": "enable",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJH"
+      ]
+    },
+    {
+      "id": "st-establish",
+      "name": "establish",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJI"
+      ]
+    },
+    {
+      "id": "st-formulated-based-on",
+      "name": "formulated based on",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJJ"
+      ]
+    },
+    {
+      "id": "st-govern",
+      "name": "govern",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJK"
+      ]
+    },
+    {
+      "id": "st-guide",
+      "name": "guide",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJL"
+      ]
+    },
+    {
+      "id": "st-identify",
+      "name": "identify",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJM"
+      ]
+    },
+    {
+      "id": "st-implement",
+      "name": "implement",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship",
+        "Component"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJN",
+        "A:EhNy4yKGAqACZgLf"
+      ]
+    },
+    {
+      "id": "st-judge",
+      "name": "judge",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJO"
+      ]
+    },
+    {
+      "id": "st-make",
+      "name": "make",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJP"
+      ]
+    },
+    {
+      "id": "st-make-operative",
+      "name": "make operative",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJQ"
+      ]
+    },
+    {
+      "id": "st-manage",
+      "name": "manage",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJR"
+      ]
+    },
+    {
+      "id": "st-provide",
+      "name": "provide",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJS"
+      ]
+    },
+    {
+      "id": "st-provide-impetus",
+      "name": "provide impetus",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJT"
+      ]
+    },
+    {
+      "id": "st-quantify",
+      "name": "quantify",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJU"
+      ]
+    },
+    {
+      "id": "st-realize",
+      "name": "realize",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJV"
+      ]
+    },
+    {
+      "id": "st-recognize",
+      "name": "recognize",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJW"
+      ]
+    },
+    {
+      "id": "st-require",
+      "name": "require",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BiNy4yKGAqACZgJX"
+      ]
+    },
+    {
+      "id": "st-responsible",
+      "name": "responsible",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:DiNy4yKGAqACZgJY"
+      ]
+    },
+    {
+      "id": "st-significant-to",
+      "name": "significant to",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:DiNy4yKGAqACZgJZ"
+      ]
+    },
+    {
+      "id": "st-source",
+      "name": "source",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:DiNy4yKGAqACZgJa"
+      ]
+    },
+    {
+      "id": "st-support-achievement",
+      "name": "support achievement",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:DiNy4yKGAqACZgJb"
+      ]
+    },
+    {
+      "id": "st-use",
+      "name": "use",
+      "aliases": [],
+      "baseTypes": [
+        "BMMRelationship"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:DiNy4yKGAqACZgJc"
+      ]
+    },
+    {
+      "id": "st-motivationrealization",
+      "name": "MotivationRealization",
+      "aliases": [],
+      "baseTypes": [
+        "Realization"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:DiNy4yKGAqACZgJd"
+      ]
+    },
+    {
+      "id": "st-serviceinterface",
+      "name": "ServiceInterface",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:DiNy4yKGAqACZgJe"
+      ]
+    },
+    {
+      "id": "st-agent",
+      "name": "Agent",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:DiNy4yKGAqACZgJg"
+      ]
+    },
+    {
+      "id": "st-soamlport",
+      "name": "SoaMLPort",
+      "aliases": [],
+      "baseTypes": [
+        "Port"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "connectorRequired",
+          "type": "text",
+          "default": "true",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "sources": [
+        "A:UBNy4yKGAqACZgJj"
+      ]
+    },
+    {
+      "id": "st-service",
+      "name": "Service",
+      "aliases": [
+        "service"
+      ],
+      "baseTypes": [
+        "Port",
+        "Component"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:mBNy4yKGAqACZgJm",
+        "A:EhNy4yKGAqACZgLk"
+      ]
+    },
+    {
+      "id": "st-request",
+      "name": "Request",
+      "aliases": [],
+      "baseTypes": [
+        "Port"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:mBNy4yKGAqACZgJo"
+      ]
+    },
+    {
+      "id": "st-servicechannel",
+      "name": "ServiceChannel",
+      "aliases": [],
+      "baseTypes": [
+        "Connector"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:mBNy4yKGAqACZgJq"
+      ]
+    },
+    {
+      "id": "st-messagetype",
+      "name": "MessageType",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:mBNy4yKGAqACZgJr"
+      ]
+    },
+    {
+      "id": "st-attachment",
+      "name": "Attachment",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:mBNy4yKGAqACZgJs"
+      ]
+    },
+    {
+      "id": "st-consumer",
+      "name": "Consumer",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:mBNy4yKGAqACZgJt"
+      ]
+    },
+    {
+      "id": "st-provider",
+      "name": "Provider",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:mBNy4yKGAqACZgJu"
+      ]
+    },
+    {
+      "id": "st-soamlcollaboration",
+      "name": "SoaMLCollaboration",
+      "aliases": [],
+      "baseTypes": [
+        "Collaboration2"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "strict",
+          "type": "text",
+          "default": "true",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "sources": [
+        "A:mBNy4yKGAqACZgJv"
+      ]
+    },
+    {
+      "id": "st-servicesarchitecture",
+      "name": "ServicesArchitecture",
+      "aliases": [],
+      "baseTypes": [
+        "Collaboration2"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:mBNy4yKGAqACZgJy"
+      ]
+    },
+    {
+      "id": "st-servicecontract",
+      "name": "ServiceContract",
+      "aliases": [],
+      "baseTypes": [
+        "Collaboration2"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:lBNy4yKGAqACZgJ0"
+      ]
+    },
+    {
+      "id": "st-soamlcollaborationuse",
+      "name": "SoaMLCollaborationUse",
+      "aliases": [],
+      "baseTypes": [
+        "CollaborationOccurrence"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "strict",
+          "type": "text",
+          "default": "",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "sources": [
+        "A:lBNy4yKGAqACZgJ2"
+      ]
+    },
+    {
+      "id": "st-capability",
+      "name": "Capability",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:lBNy4yKGAqACZgJ5"
+      ]
+    },
+    {
+      "id": "st-expose",
+      "name": "Expose",
+      "aliases": [],
+      "baseTypes": [
+        "Dependency"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:lBNy4yKGAqACZgJ6"
+      ]
+    },
+    {
+      "id": "st-milestone",
+      "name": "Milestone",
+      "aliases": [],
+      "baseTypes": [
+        "NOTE"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "progress",
+          "type": "text",
+          "default": "0",
+          "documentation": "",
+          "values": []
+        },
+        {
+          "name": "signal",
+          "type": "int",
+          "default": "",
+          "documentation": "",
+          "values": []
+        },
+        {
+          "name": "value",
+          "type": "text",
+          "default": "",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "sources": [
+        "A:lBNy4yKGAqACZgJ7"
+      ]
+    },
+    {
+      "id": "st-catalog",
+      "name": "Catalog",
+      "aliases": [],
+      "baseTypes": [
+        "Package"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:lBNy4yKGAqACZgKA"
+      ]
+    },
+    {
+      "id": "st-nodedescriptor",
+      "name": "NodeDescriptor",
+      "aliases": [],
+      "baseTypes": [
+        "Artifact"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:lBNy4yKGAqACZgKB"
+      ]
+    },
+    {
+      "id": "st-freeformdescriptor",
+      "name": "FreeFormDescriptor",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:lBNy4yKGAqACZgKC"
+      ]
+    },
+    {
+      "id": "st-category",
+      "name": "Category",
+      "aliases": [],
+      "baseTypes": [
+        "Artifact"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:lBNy4yKGAqACZgKD"
+      ]
+    },
+    {
+      "id": "st-freeformvalue",
+      "name": "FreeFormValue",
+      "aliases": [],
+      "baseTypes": [
+        "InstanceSpecification"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:lBNy4yKGAqACZgKF"
+      ]
+    },
+    {
+      "id": "st-categoryvalue",
+      "name": "CategoryValue",
+      "aliases": [],
+      "baseTypes": [
+        "InstanceSpecification"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:lBNy4yKGAqACZgKG"
+      ]
+    },
+    {
+      "id": "st-categorization",
+      "name": "Categorization",
+      "aliases": [],
+      "baseTypes": [
+        "Dependency"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:lBNy4yKGAqACZgKI"
+      ]
+    },
+    {
+      "id": "st-nobuffer",
+      "name": "noBuffer",
+      "aliases": [],
+      "baseTypes": [
+        "ObjectNode",
+        "ActivityParameterNode",
+        "CentralBufferNode",
+        "DataStoreNode",
+        "ExpansionNode",
+        "InputPin",
+        "OutputPin",
+        "ValuePin"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:lBNy4yKGAqACZgKJ",
+        "A:lBNy4yKGAqACZgKK",
+        "A:lBNy4yKGAqACZgKL",
+        "A:lBNy4yKGAqACZgKM",
+        "A:lBNy4yKGAqACZgKN",
+        "A:lBNy4yKGAqACZgKO",
+        "A:lBNy4yKGAqACZgKP",
+        "A:lBNy4yKGAqACZgKQ"
+      ]
+    },
+    {
+      "id": "st-controlvalue",
+      "name": "controlValue",
+      "aliases": [],
+      "baseTypes": [
+        "ValuePin",
+        "OutputPin",
+        "InputPin",
+        "ExpansionNode",
+        "ObjectNode",
+        "ActivityParameterNode",
+        "CentralBufferNode",
+        "DataStoreNode"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "value",
+          "type": "enum",
+          "default": "",
+          "documentation": "",
+          "values": [
+            "Enable",
+            "Disable"
+          ]
+        }
+      ],
+      "sources": [
+        "A:lBNy4yKGAqACZgKR",
+        "A:lBNy4yKGAqACZgKU",
+        "A:nBNy4yKGAqACZgKX",
+        "A:nBNy4yKGAqACZgKa",
+        "A:nBNy4yKGAqACZgKd",
+        "A:nBNy4yKGAqACZgKg",
+        "A:nBNy4yKGAqACZgKj",
+        "A:nBNy4yKGAqACZgKm"
+      ]
+    },
+    {
+      "id": "st-overwrite",
+      "name": "overwrite",
+      "aliases": [],
+      "baseTypes": [
+        "ObjectNode",
+        "ActivityParameterNode",
+        "CentralBufferNode",
+        "DataStoreNode",
+        "ExpansionNode",
+        "InputPin",
+        "OutputPin",
+        "ValuePin"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgKp",
+        "A:nBNy4yKGAqACZgKq",
+        "A:nBNy4yKGAqACZgKr",
+        "A:nBNy4yKGAqACZgKs",
+        "A:nBNy4yKGAqACZgKt",
+        "A:nBNy4yKGAqACZgKu",
+        "A:nBNy4yKGAqACZgKv",
+        "A:nBNy4yKGAqACZgKw"
+      ]
+    },
+    {
+      "id": "st-initial",
+      "name": "initial",
+      "aliases": [],
+      "baseTypes": [
+        "Transition2"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgKy"
+      ]
+    },
+    {
+      "id": "st-refine",
+      "name": "refine",
+      "aliases": [],
+      "baseTypes": [
+        "Abstraction"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgKz"
+      ]
+    },
+    {
+      "id": "st-trace",
+      "name": "trace",
+      "aliases": [],
+      "baseTypes": [
+        "Abstraction",
+        "Dependency"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgK0",
+        "A:kMaP0yKGAqACZgju"
+      ]
+    },
+    {
+      "id": "st-global",
+      "name": "global",
+      "aliases": [],
+      "baseTypes": [
+        "AssociationEnd"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgK1"
+      ]
+    },
+    {
+      "id": "st-appliedprofile",
+      "name": "appliedProfile",
+      "aliases": [],
+      "baseTypes": [
+        "Dependency",
+        "Usage"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgK2",
+        "A:nBNy4yKGAqACZgLJ"
+      ]
+    },
+    {
+      "id": "st-conform",
+      "name": "conform",
+      "aliases": [],
+      "baseTypes": [
+        "Dependency"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgK3"
+      ]
+    },
+    {
+      "id": "st-modellibrary",
+      "name": "modelLibrary",
+      "aliases": [],
+      "baseTypes": [
+        "Dependency",
+        "Package",
+        "SubSystem",
+        "Usage"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgK4",
+        "A:nBNy4yKGAqACZgK.",
+        "A:nBNy4yKGAqACZgLF",
+        "A:nBNy4yKGAqACZgLM"
+      ]
+    },
+    {
+      "id": "st-implementation",
+      "name": "implementation",
+      "aliases": [],
+      "baseTypes": [
+        "Generalization"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgK5"
+      ]
+    },
+    {
+      "id": "st-orm-implementation",
+      "name": "ORM Implementation",
+      "aliases": [],
+      "baseTypes": [
+        "Generalization"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgK6"
+      ]
+    },
+    {
+      "id": "st-auxiliary",
+      "name": "auxiliary",
+      "aliases": [],
+      "baseTypes": [
+        "Package",
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgK7",
+        "A:EhNy4yKGAqACZgLv"
+      ]
+    },
+    {
+      "id": "st-view",
+      "name": "view",
+      "aliases": [],
+      "baseTypes": [
+        "Package",
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": {
+        "asset": "pict-view",
+        "kind": "badge",
+        "size": [
+          16,
+          16
+        ],
+        "glyph": "view",
+        "iconPath": "stereotypeIcons/oAHKm9KGAqACIgk.",
+        "iconPaths": [
+          "stereotypeIcons/oAHKm9KGAqACIgk."
+        ]
+      },
+      "taggedValues": [],
+      "pictogramByBaseType": {
+        "Package": null,
+        "Class": {
+          "asset": "pict-view",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "view",
+          "iconPath": "stereotypeIcons/oAHKm9KGAqACIgk."
+        }
+      },
+      "sources": [
+        "A:nBNy4yKGAqACZgK8",
+        "A:oAHKm9KGAqACIgk.",
+        "P:nrHK4yKGAqACZgUs"
+      ]
+    },
+    {
+      "id": "st-framework",
+      "name": "framework",
+      "aliases": [],
+      "baseTypes": [
+        "Package",
+        "SubSystem"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgK9",
+        "A:nBNy4yKGAqACZgLE"
+      ]
+    },
+    {
+      "id": "st-xsdschema",
+      "name": "XSDschema",
+      "aliases": [],
+      "baseTypes": [
+        "Package",
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "Namespace",
+          "type": "text",
+          "default": "",
+          "documentation": "",
+          "values": []
+        },
+        {
+          "name": "NamespacePrefix",
+          "type": "text",
+          "default": "",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "taggedValuesByBaseType": {
+        "Package": [
+          {
+            "name": "Namespace",
+            "type": "text",
+            "default": "",
+            "documentation": "",
+            "values": []
+          },
+          {
+            "name": "NamespacePrefix",
+            "type": "text",
+            "default": "",
+            "documentation": "",
+            "values": []
+          }
+        ],
+        "Class": []
+      },
+      "sources": [
+        "A:nBNy4yKGAqACZgK_",
+        "A:2JwtnUaAUBwIXwZd"
+      ]
+    },
+    {
+      "id": "st-facade",
+      "name": "facade",
+      "aliases": [],
+      "baseTypes": [
+        "SubSystem"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgLD"
+      ]
+    },
+    {
+      "id": "st-profile",
+      "name": "profile",
+      "aliases": [],
+      "baseTypes": [
+        "SubSystem"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgLG"
+      ]
+    },
+    {
+      "id": "st-stub",
+      "name": "stub",
+      "aliases": [],
+      "baseTypes": [
+        "SubSystem"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgLH"
+      ]
+    },
+    {
+      "id": "st-toplevel",
+      "name": "topLevel",
+      "aliases": [],
+      "baseTypes": [
+        "SubSystem"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgLI"
+      ]
+    },
+    {
+      "id": "st-call",
+      "name": "call",
+      "aliases": [],
+      "baseTypes": [
+        "Usage"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgLK"
+      ]
+    },
+    {
+      "id": "st-instantiate",
+      "name": "instantiate",
+      "aliases": [],
+      "baseTypes": [
+        "Usage"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgLL"
+      ]
+    },
+    {
+      "id": "st-responsibility",
+      "name": "responsibility",
+      "aliases": [],
+      "baseTypes": [
+        "Usage"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgLN"
+      ]
+    },
+    {
+      "id": "st-send",
+      "name": "send",
+      "aliases": [],
+      "baseTypes": [
+        "Usage"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgLO"
+      ]
+    },
+    {
+      "id": "st-balking",
+      "name": "balking",
+      "aliases": [],
+      "baseTypes": [
+        "DiagonalMessage",
+        "SelfMessage",
+        "SequenceMessage",
+        "MessageFrom",
+        "MessageTo"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgLP",
+        "A:nBNy4yKGAqACZgLR",
+        "A:EhNy4yKGAqACZgLT",
+        "A:EhNy4yKGAqACZgLV",
+        "A:EhNy4yKGAqACZgLX"
+      ]
+    },
+    {
+      "id": "st-time-out",
+      "name": "time-out",
+      "aliases": [],
+      "baseTypes": [
+        "DiagonalMessage",
+        "SelfMessage",
+        "SequenceMessage",
+        "MessageFrom",
+        "MessageTo"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:nBNy4yKGAqACZgLQ",
+        "A:EhNy4yKGAqACZgLS",
+        "A:EhNy4yKGAqACZgLU",
+        "A:EhNy4yKGAqACZgLW",
+        "A:EhNy4yKGAqACZgLY"
+      ]
+    },
+    {
+      "id": "st-buildcomponent",
+      "name": "buildComponent",
+      "aliases": [],
+      "baseTypes": [
+        "Component"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:EhNy4yKGAqACZgLZ"
+      ]
+    },
+    {
+      "id": "st-document",
+      "name": "document",
+      "aliases": [],
+      "baseTypes": [
+        "Component"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:EhNy4yKGAqACZgLa"
+      ]
+    },
+    {
+      "id": "st-entity",
+      "name": "entity",
+      "aliases": [],
+      "baseTypes": [
+        "Component",
+        "Class",
+        "Object",
+        "InteractionLifeLine",
+        "AssociationClass"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": {
+        "asset": "pict-entity",
+        "kind": "badge",
+        "size": [
+          16,
+          16
+        ],
+        "glyph": "entity",
+        "iconPath": "stereotypeIcons/EhNy4yKGAqACZgL8",
+        "iconPaths": [
+          "stereotypeIcons/EhNy4yKGAqACZgL8",
+          "stereotypeIcons/7hNy4yKGAqACZgNH",
+          "stereotypeIcons/EhNy4yKGAqACZgMG",
+          "stereotypeIcons/FUAwvUqGAqACAxDQ"
+        ]
+      },
+      "taggedValues": [],
+      "pictogramByBaseType": {
+        "Component": null,
+        "Class": {
+          "asset": "pict-entity",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "entity",
+          "iconPath": "stereotypeIcons/EhNy4yKGAqACZgL8"
+        },
+        "Object": {
+          "asset": "pict-entity",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "entity",
+          "iconPath": "stereotypeIcons/7hNy4yKGAqACZgNH"
+        },
+        "InteractionLifeLine": {
+          "asset": "pict-entity",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "entity",
+          "iconPath": "stereotypeIcons/EhNy4yKGAqACZgMG"
+        },
+        "AssociationClass": {
+          "asset": "pict-entity",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "entity",
+          "iconPath": "stereotypeIcons/FUAwvUqGAqACAxDQ"
+        }
+      },
+      "sources": [
+        "A:EhNy4yKGAqACZgLb",
+        "A:EhNy4yKGAqACZgL8",
+        "A:7hNy4yKGAqACZgNH",
+        "A:EhNy4yKGAqACZgMG",
+        "A:FUAwvUqGAqACAxDQ"
+      ]
+    },
+    {
+      "id": "st-focus",
+      "name": "focus",
+      "aliases": [],
+      "baseTypes": [
+        "Component",
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:EhNy4yKGAqACZgLc",
+        "A:EhNy4yKGAqACZgL3"
+      ]
+    },
+    {
+      "id": "st-executable",
+      "name": "executable",
+      "aliases": [],
+      "baseTypes": [
+        "Component"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:EhNy4yKGAqACZgLd"
+      ]
+    },
+    {
+      "id": "st-file",
+      "name": "file",
+      "aliases": [],
+      "baseTypes": [
+        "Component"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:EhNy4yKGAqACZgLe"
+      ]
+    },
+    {
+      "id": "st-library",
+      "name": "library",
+      "aliases": [],
+      "baseTypes": [
+        "Component"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:EhNy4yKGAqACZgLg"
+      ]
+    },
+    {
+      "id": "st-subsystem",
+      "name": "subsystem",
+      "aliases": [],
+      "baseTypes": [
+        "Component",
+        "Package"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": {
+        "asset": "pict-subsystem",
+        "kind": "badge",
+        "size": [
+          16,
+          16
+        ],
+        "glyph": "subsystem",
+        "iconPath": "stereotypeIcons/iZtMOyKGAqACZASe",
+        "iconPaths": [
+          "stereotypeIcons/iZtMOyKGAqACZASe"
+        ]
+      },
+      "taggedValues": [],
+      "pictogramByBaseType": {
+        "Component": null,
+        "Package": {
+          "asset": "pict-subsystem",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "subsystem",
+          "iconPath": "stereotypeIcons/iZtMOyKGAqACZASe"
+        }
+      },
+      "sources": [
+        "A:EhNy4yKGAqACZgLl",
+        "A:iZtMOyKGAqACZASe"
+      ]
+    },
+    {
+      "id": "st-table",
+      "name": "table",
+      "aliases": [],
+      "baseTypes": [
+        "Component",
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": {
+        "asset": "pict-table",
+        "kind": "badge",
+        "size": [
+          16,
+          16
+        ],
+        "glyph": "table",
+        "iconPath": "stereotypeIcons/dcD_jKKGAqACZQrh",
+        "iconPaths": [
+          "stereotypeIcons/dcD_jKKGAqACZQrh"
+        ]
+      },
+      "taggedValues": [],
+      "pictogramByBaseType": {
+        "Component": null,
+        "Class": {
+          "asset": "pict-table",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "table",
+          "iconPath": "stereotypeIcons/dcD_jKKGAqACZQrh"
+        }
+      },
+      "sources": [
+        "A:EhNy4yKGAqACZgLm",
+        "A:dcD_jKKGAqACZQrh"
+      ]
+    },
+    {
+      "id": "st-viewpoint",
+      "name": "viewpoint",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "Stakeholders",
+          "type": "text",
+          "default": "",
+          "documentation": "The set of stakeholders.",
+          "values": []
+        },
+        {
+          "name": "Purpose",
+          "type": "text",
+          "default": "",
+          "documentation": "The purpose addresses the stakeholder concerns.",
+          "values": []
+        },
+        {
+          "name": "Concerns",
+          "type": "text",
+          "default": "",
+          "documentation": "The interest of the stakeholders.",
+          "values": []
+        },
+        {
+          "name": "Languages",
+          "type": "text",
+          "default": "",
+          "documentation": "The languages used to construct the viewpoint.",
+          "values": []
+        },
+        {
+          "name": "Methods",
+          "type": "text",
+          "default": "",
+          "documentation": "The methods used to construct the views for this viewpoint.",
+          "values": []
+        }
+      ],
+      "sources": [
+        "A:EhNy4yKGAqACZgLw"
+      ]
+    },
+    {
+      "id": "st-implementationclass",
+      "name": "implementationClass",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:EhNy4yKGAqACZgL4"
+      ]
+    },
+    {
+      "id": "st-interface",
+      "name": "interface",
+      "aliases": [
+        "Interface"
+      ],
+      "baseTypes": [
+        "Class",
+        "InteractionLifeLine"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:EhNy4yKGAqACZgL5",
+        "A:urDtVXKGAqACKwhX",
+        "P:ImY9UyKGAqACZgj_"
+      ]
+    },
+    {
+      "id": "st-xsdattributegroup",
+      "name": "XSDattributeGroup",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:EhNy4yKGAqACZgL7"
+      ]
+    },
+    {
+      "id": "st-enumeration",
+      "name": "enumeration",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:EhNy4yKGAqACZgL9",
+        "P:NYfQr_qGAqACKySc"
+      ]
+    },
+    {
+      "id": "st-primitive",
+      "name": "primitive",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:EhNy4yKGAqACZgL.",
+        "P:EYi9UyKGAqACZgkZ"
+      ]
+    },
+    {
+      "id": "st-control",
+      "name": "control",
+      "aliases": [],
+      "baseTypes": [
+        "Class",
+        "Object",
+        "InteractionLifeLine"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": {
+        "asset": "pict-control",
+        "kind": "badge",
+        "size": [
+          16,
+          16
+        ],
+        "glyph": "control",
+        "iconPath": "stereotypeIcons/EhNy4yKGAqACZgL_",
+        "iconPaths": [
+          "stereotypeIcons/EhNy4yKGAqACZgL_",
+          "stereotypeIcons/7hNy4yKGAqACZgNI",
+          "stereotypeIcons/GhNy4yKGAqACZgMH"
+        ]
+      },
+      "taggedValues": [],
+      "pictogramByBaseType": {
+        "Class": {
+          "asset": "pict-control",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "control",
+          "iconPath": "stereotypeIcons/EhNy4yKGAqACZgL_"
+        },
+        "Object": {
+          "asset": "pict-control",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "control",
+          "iconPath": "stereotypeIcons/7hNy4yKGAqACZgNI"
+        },
+        "InteractionLifeLine": {
+          "asset": "pict-control",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "control",
+          "iconPath": "stereotypeIcons/GhNy4yKGAqACZgMH"
+        }
+      },
+      "sources": [
+        "A:EhNy4yKGAqACZgL_",
+        "A:7hNy4yKGAqACZgNI",
+        "A:GhNy4yKGAqACZgMH"
+      ]
+    },
+    {
+      "id": "st-boundary",
+      "name": "boundary",
+      "aliases": [],
+      "baseTypes": [
+        "Class",
+        "Object",
+        "InteractionLifeLine"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": {
+        "asset": "pict-boundary",
+        "kind": "badge",
+        "size": [
+          16,
+          16
+        ],
+        "glyph": "boundary",
+        "iconPath": "stereotypeIcons/EhNy4yKGAqACZgMA",
+        "iconPaths": [
+          "stereotypeIcons/EhNy4yKGAqACZgMA",
+          "stereotypeIcons/7hNy4yKGAqACZgNJ",
+          "stereotypeIcons/GhNy4yKGAqACZgMI"
+        ]
+      },
+      "taggedValues": [],
+      "pictogramByBaseType": {
+        "Class": {
+          "asset": "pict-boundary",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "boundary",
+          "iconPath": "stereotypeIcons/EhNy4yKGAqACZgMA"
+        },
+        "Object": {
+          "asset": "pict-boundary",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "boundary",
+          "iconPath": "stereotypeIcons/7hNy4yKGAqACZgNJ"
+        },
+        "InteractionLifeLine": {
+          "asset": "pict-boundary",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "boundary",
+          "iconPath": "stereotypeIcons/GhNy4yKGAqACZgMI"
+        }
+      },
+      "sources": [
+        "A:EhNy4yKGAqACZgMA",
+        "A:7hNy4yKGAqACZgNJ",
+        "A:GhNy4yKGAqACZgMI"
+      ]
+    },
+    {
+      "id": "st-corbaconstants",
+      "name": "CORBAConstants",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:EhNy4yKGAqACZgMB"
+      ]
+    },
+    {
+      "id": "st-corbatypedef",
+      "name": "CORBATypedef",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:EhNy4yKGAqACZgMC"
+      ]
+    },
+    {
+      "id": "st-corbaprimitive",
+      "name": "CORBAPrimitive",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:EhNy4yKGAqACZgMD"
+      ]
+    },
+    {
+      "id": "st-corbaexception",
+      "name": "CORBAException",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:EhNy4yKGAqACZgME"
+      ]
+    },
+    {
+      "id": "st-corbastruct",
+      "name": "CORBAStruct",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:EhNy4yKGAqACZgMF"
+      ]
+    },
+    {
+      "id": "st-orm-abstract-persistable",
+      "name": "ORM Abstract Persistable",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMJ"
+      ]
+    },
+    {
+      "id": "st-xsdsequence",
+      "name": "XSDsequence",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMK"
+      ]
+    },
+    {
+      "id": "st-xsdchoice",
+      "name": "XSDchoice",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgML"
+      ]
+    },
+    {
+      "id": "st-xsdcomplextype",
+      "name": "XSDcomplexType",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMM"
+      ]
+    },
+    {
+      "id": "st-xsdsimpletype",
+      "name": "XSDsimpleType",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMN"
+      ]
+    },
+    {
+      "id": "st-xsdelement",
+      "name": "XSDelement",
+      "aliases": [],
+      "baseTypes": [
+        "Class",
+        "Attribute",
+        "AssociationEnd"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMO",
+        "A:GhNy4yKGAqACZgMr",
+        "A:7hNy4yKGAqACZgNE"
+      ]
+    },
+    {
+      "id": "st-xsdall",
+      "name": "XSDall",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMP"
+      ]
+    },
+    {
+      "id": "st-xsdrestriction",
+      "name": "XSDrestriction",
+      "aliases": [],
+      "baseTypes": [
+        "Class",
+        "Generalization"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMQ",
+        "A:7hNy4yKGAqACZgND"
+      ]
+    },
+    {
+      "id": "st-xsdunion",
+      "name": "XSDunion",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMR"
+      ]
+    },
+    {
+      "id": "st-xsdlist",
+      "name": "XSDlist",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMS"
+      ]
+    },
+    {
+      "id": "st-enum",
+      "name": "Enum",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMT"
+      ]
+    },
+    {
+      "id": "st-struct",
+      "name": "Struct",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMU"
+      ]
+    },
+    {
+      "id": "st-union",
+      "name": "Union",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMV"
+      ]
+    },
+    {
+      "id": "st-typedef",
+      "name": "Typedef",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMW"
+      ]
+    },
+    {
+      "id": "st-type",
+      "name": "type",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMX"
+      ]
+    },
+    {
+      "id": "st-delegate",
+      "name": "Delegate",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMZ"
+      ]
+    },
+    {
+      "id": "st-entity-bean",
+      "name": "Entity Bean",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMa"
+      ]
+    },
+    {
+      "id": "st-session-bean",
+      "name": "Session Bean",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMb"
+      ]
+    },
+    {
+      "id": "st-message-driven-bean",
+      "name": "Message Driven Bean",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMc"
+      ]
+    },
+    {
+      "id": "st-orm-component",
+      "name": "ORM Component",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMd"
+      ]
+    },
+    {
+      "id": "st-orm-persistable",
+      "name": "ORM Persistable",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMe"
+      ]
+    },
+    {
+      "id": "st-orm-id-generator",
+      "name": "ORM ID Generator",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMf"
+      ]
+    },
+    {
+      "id": "st-orm-user-type",
+      "name": "ORM User Type",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMg"
+      ]
+    },
+    {
+      "id": "st-orm-parameterized-type",
+      "name": "ORM Parameterized Type",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMh"
+      ]
+    },
+    {
+      "id": "st-ptn-members-creatable",
+      "name": "PTN Members Creatable",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMi"
+      ]
+    },
+    {
+      "id": "st-ptn-cloneable",
+      "name": "PTN Cloneable",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMj"
+      ]
+    },
+    {
+      "id": "st-objectivefunction",
+      "name": "objectiveFunction",
+      "aliases": [],
+      "baseTypes": [
+        "SysMLConstraintBlock",
+        "SysMLConstraintProperty"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMk",
+        "A:GhNy4yKGAqACZgMl"
+      ]
+    },
+    {
+      "id": "st-moe",
+      "name": "moe",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMm"
+      ]
+    },
+    {
+      "id": "st-constant",
+      "name": "Constant",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMn"
+      ]
+    },
+    {
+      "id": "st-event",
+      "name": "Event",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute",
+        "Operation"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMo",
+        "A:7hNy4yKGAqACZgNA"
+      ]
+    },
+    {
+      "id": "st-pk",
+      "name": "PK",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "order",
+          "type": "text",
+          "default": "0",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "sources": [
+        "A:GhNy4yKGAqACZgMp"
+      ]
+    },
+    {
+      "id": "st-property",
+      "name": "Property",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMq",
+        "P:pYwvL_qGAqACKyGX"
+      ]
+    },
+    {
+      "id": "st-xsdattribute",
+      "name": "XSDattribute",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMs"
+      ]
+    },
+    {
+      "id": "st-xsdenumeration",
+      "name": "XSDenumeration",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMt"
+      ]
+    },
+    {
+      "id": "st-xsdpattern",
+      "name": "XSDpattern",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMu"
+      ]
+    },
+    {
+      "id": "st-cmp",
+      "name": "CMP",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMv"
+      ]
+    },
+    {
+      "id": "st-distributedproperty",
+      "name": "DistributedProperty",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:GhNy4yKGAqACZgMw"
+      ]
+    },
+    {
+      "id": "st-basicinterval",
+      "name": "BasicInterval",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "Basic Interval distribution - value between min and max inclusive",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "min",
+          "type": "text",
+          "default": "0.0",
+          "documentation": "",
+          "values": []
+        },
+        {
+          "name": "max",
+          "type": "text",
+          "default": "0.0",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "sources": [
+        "A:GhNy4yKGAqACZgMx"
+      ]
+    },
+    {
+      "id": "st-interval",
+      "name": "Interval",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "Interval distribution - unknown probability between min and max",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:FhNy4yKGAqACZgM2"
+      ]
+    },
+    {
+      "id": "st-uniform",
+      "name": "Uniform",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "Uniform distribution - constant probability between min and max",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:FhNy4yKGAqACZgM4"
+      ]
+    },
+    {
+      "id": "st-normal",
+      "name": "Normal",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "Normal distribution - constant probability between min and max",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "mean",
+          "type": "text",
+          "default": "0.0",
+          "documentation": "",
+          "values": []
+        },
+        {
+          "name": "standardDeviation",
+          "type": "text",
+          "default": "0.0",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "sources": [
+        "A:FhNy4yKGAqACZgM6"
+      ]
+    },
+    {
+      "id": "st-corbaoneway",
+      "name": "CORBAOneway",
+      "aliases": [],
+      "baseTypes": [
+        "Operation"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:7hNy4yKGAqACZgNB"
+      ]
+    },
+    {
+      "id": "st-xsdextension",
+      "name": "XSDextension",
+      "aliases": [],
+      "baseTypes": [
+        "Generalization"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:7hNy4yKGAqACZgNC"
+      ]
+    },
+    {
+      "id": "st-ptn-operation-impl",
+      "name": "PTN Operation Impl",
+      "aliases": [],
+      "baseTypes": [
+        "Association"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:7hNy4yKGAqACZgNF"
+      ]
+    },
+    {
+      "id": "st-ptn-to-end-role-name-follow-class",
+      "name": "PTN To-End Role Name Follow Class",
+      "aliases": [],
+      "baseTypes": [
+        "Association"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:7hNy4yKGAqACZgNG"
+      ]
+    },
+    {
+      "id": "st-metamodel",
+      "name": "metamodel",
+      "aliases": [],
+      "baseTypes": [
+        "Model"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:7hNy4yKGAqACZgNK"
+      ]
+    },
+    {
+      "id": "st-systemmodel",
+      "name": "systemModel",
+      "aliases": [],
+      "baseTypes": [
+        "Model"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:7hNy4yKGAqACZgNL"
+      ]
+    },
+    {
+      "id": "st-layer",
+      "name": "layer",
+      "aliases": [],
+      "baseTypes": [
+        "Package"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": {
+        "asset": "pict-layer",
+        "kind": "badge",
+        "size": [
+          16,
+          16
+        ],
+        "glyph": "layer",
+        "iconPath": "stereotypeIcons/fZMKUyKGAqACZgXg",
+        "iconPaths": [
+          "stereotypeIcons/fZMKUyKGAqACZgXg"
+        ]
+      },
+      "taggedValues": [],
+      "pictogramByBaseType": {
+        "Package": {
+          "asset": "pict-layer",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "layer",
+          "iconPath": "stereotypeIcons/fZMKUyKGAqACZgXg"
+        }
+      },
+      "sources": [
+        "A:fZMKUyKGAqACZgXg",
+        "P:zlMaUyKGAqACZgXp"
+      ]
+    },
+    {
+      "id": "st-architectural-view",
+      "name": "architectural view",
+      "aliases": [],
+      "baseTypes": [
+        "Package"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": {
+        "asset": "pict-arch-view",
+        "kind": "badge",
+        "size": [
+          16,
+          16
+        ],
+        "glyph": "arch-view",
+        "iconPath": "stereotypeIcons/LSVqUyKGAqACZgXn",
+        "iconPaths": [
+          "stereotypeIcons/LSVqUyKGAqACZgXn"
+        ]
+      },
+      "taggedValues": [],
+      "pictogramByBaseType": {
+        "Package": {
+          "asset": "pict-arch-view",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "arch-view",
+          "iconPath": "stereotypeIcons/LSVqUyKGAqACZgXn"
+        }
+      },
+      "sources": [
+        "A:LSVqUyKGAqACZgXn",
+        "P:TRGaUyKGAqACZgXx"
+      ]
+    },
+    {
+      "id": "st-mechanism",
+      "name": "mechanism",
+      "aliases": [],
+      "baseTypes": [
+        "Collaboration2",
+        "Collaboration",
+        "Package"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": {
+        "asset": "pict-mechanism",
+        "kind": "badge",
+        "size": [
+          16,
+          16
+        ],
+        "glyph": "mechanism",
+        "iconPath": "stereotypeIcons/mAwbUyKGAqACZgqy",
+        "iconPaths": [
+          "stereotypeIcons/mAwbUyKGAqACZgqy",
+          "stereotypeIcons/bcTim9KGAqACIgke"
+        ]
+      },
+      "taggedValues": [],
+      "pictogramByBaseType": {
+        "Collaboration2": {
+          "asset": "pict-mechanism",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "mechanism",
+          "iconPath": "stereotypeIcons/mAwbUyKGAqACZgqy"
+        },
+        "Collaboration": {
+          "asset": "pict-mechanism",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "mechanism",
+          "iconPath": "stereotypeIcons/bcTim9KGAqACIgke"
+        },
+        "Package": {
+          "asset": "pict-mechanism",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "mechanism",
+          "iconPath": "stereotypeIcons/bcTim9KGAqACIgke"
+        }
+      },
+      "sources": [
+        "A:mAwbUyKGAqACZgqy",
+        "A:bcTim9KGAqACIgke",
+        "A:Atspt66GAqDIBxOo",
+        "P:_x0bUyKGAqACZgq0"
+      ]
+    },
+    {
+      "id": "st-bind",
+      "name": "bind",
+      "aliases": [],
+      "baseTypes": [
+        "Realization",
+        "Dependency",
+        "BindingDependency"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:3.2g0yKGAqACZhFc",
+        "A:Fx1Vly6GAqDIBwxm",
+        "P:HXW3UyKGAqACZgu2",
+        "P:soeg0yKGAqACZhFe"
+      ]
+    },
+    {
+      "id": "st-interface-realization",
+      "name": "interface realization",
+      "aliases": [],
+      "baseTypes": [
+        "Collaboration2",
+        "Collaboration"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:ilPv0yKGAqACZgmc",
+        "A:9ux7CVqGAqACAwpM"
+      ]
+    },
+    {
+      "id": "st-usecase-realization",
+      "name": "usecase realization",
+      "aliases": [
+        "use case realization"
+      ],
+      "baseTypes": [
+        "Collaboration2",
+        "Collaboration"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": {
+        "asset": "pict-usecase-realization",
+        "kind": "badge",
+        "size": [
+          16,
+          16
+        ],
+        "glyph": "usecase-realization",
+        "iconPath": "stereotypeIcons/EUe7CVqGAqACAwpK",
+        "iconPaths": [
+          "stereotypeIcons/EUe7CVqGAqACAwpK"
+        ]
+      },
+      "taggedValues": [],
+      "pictogramByBaseType": {
+        "Collaboration2": null,
+        "Collaboration": {
+          "asset": "pict-usecase-realization",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "usecase-realization",
+          "iconPath": "stereotypeIcons/EUe7CVqGAqACAwpK"
+        }
+      },
+      "sources": [
+        "A:AMQf0yKGAqACZgme",
+        "A:EUe7CVqGAqACAwpK",
+        "A:OjhfE5aAUBAqOgsX"
+      ]
+    },
+    {
+      "id": "st-subsystem-proxy",
+      "name": "subsystem proxy",
+      "aliases": [],
+      "baseTypes": [
+        "Class",
+        "InteractionLifeLine"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:BQ9sOyKGAqACZASy",
+        "A:zR2vVXKGAqACKxEi"
+      ]
+    },
+    {
+      "id": "st-fk",
+      "name": "FK",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "table",
+          "type": "text",
+          "default": "",
+          "documentation": "",
+          "values": []
+        },
+        {
+          "name": "source column",
+          "type": "text",
+          "default": "",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "sources": [
+        "A:b3KsOyKGAqACZASr"
+      ]
+    },
+    {
+      "id": "st-column",
+      "name": "column",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "nullable",
+          "type": "text",
+          "default": "Unspecified",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "sources": [
+        "A:w6msOyKGAqACZASt"
+      ]
+    },
+    {
+      "id": "st-identifying",
+      "name": "identifying",
+      "aliases": [],
+      "baseTypes": [
+        "Association"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:K07MOyKGAqACZASg"
+      ]
+    },
+    {
+      "id": "st-non-identifying",
+      "name": "non identifying",
+      "aliases": [],
+      "baseTypes": [
+        "Association"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:qpXMOyKGAqACZASi"
+      ]
+    },
+    {
+      "id": "st-schema",
+      "name": "schema",
+      "aliases": [],
+      "baseTypes": [
+        "Package"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": {
+        "asset": "pict-schema",
+        "kind": "badge",
+        "size": [
+          16,
+          16
+        ],
+        "glyph": "schema",
+        "iconPath": "stereotypeIcons/qs4vjKKGAqACZQqT",
+        "iconPaths": [
+          "stereotypeIcons/qs4vjKKGAqACZQqT"
+        ]
+      },
+      "taggedValues": [],
+      "pictogramByBaseType": {
+        "Package": {
+          "asset": "pict-schema",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "schema",
+          "iconPath": "stereotypeIcons/qs4vjKKGAqACZQqT"
+        }
+      },
+      "sources": [
+        "A:qs4vjKKGAqACZQqT"
+      ]
+    },
+    {
+      "id": "st-index",
+      "name": "index",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:M9hkTKKGAqACZRZd"
+      ]
+    },
+    {
+      "id": "st-case-story",
+      "name": "Case Story",
+      "aliases": [],
+      "baseTypes": [
+        "UseCase"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:LFzV0esGAqACZgAC",
+        "P:v2g74HKGAqACAiDA"
+      ]
+    },
+    {
+      "id": "st-subject",
+      "name": "subject",
+      "aliases": [],
+      "baseTypes": [
+        "System"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:rRxRU9KGAqACIgri",
+        "P:hLhen6aGAqDIBwoM"
+      ]
+    },
+    {
+      "id": "st-specification",
+      "name": "specification",
+      "aliases": [],
+      "baseTypes": [
+        "Component"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:OLdFU9KGAqACIg3A"
+      ]
+    },
+    {
+      "id": "st-trigger",
+      "name": "trigger",
+      "aliases": [],
+      "baseTypes": [
+        "Operation"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "event",
+          "type": "text",
+          "default": "",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "sources": [
+        "A:yP5ym9KGAqACIgku"
+      ]
+    },
+    {
+      "id": "st-stored-procedure",
+      "name": "stored procedure",
+      "aliases": [],
+      "baseTypes": [
+        "Operation"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:lKVym9KGAqACIgkw"
+      ]
+    },
+    {
+      "id": "st-create",
+      "name": "create",
+      "aliases": [],
+      "baseTypes": [
+        "Usage"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:NaY9QDKAUBAcLQOs"
+      ]
+    },
+    {
+      "id": "st-context",
+      "name": "Context",
+      "aliases": [],
+      "baseTypes": [
+        "UseCase"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:KlzV0esGAqACZgAC",
+        "P:xnUcMwcGAqACAh6r"
+      ]
+    },
+    {
+      "id": "st-ak",
+      "name": "AK",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:fmOnCVqGAqACAwpd"
+      ]
+    },
+    {
+      "id": "st-ck",
+      "name": "CK",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:IyenCVqGAqACAwpf"
+      ]
+    },
+    {
+      "id": "st-not-null",
+      "name": "not null",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:scJnCVqGAqACAwph"
+      ]
+    },
+    {
+      "id": "st-nullable",
+      "name": "nullable",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:LJ5nCVqGAqACAwpj"
+      ]
+    },
+    {
+      "id": "st-surrogate",
+      "name": "surrogate",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:8UtnCVqGAqACAwpl"
+      ]
+    },
+    {
+      "id": "st-individual",
+      "name": "Individual",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateBusinessActor"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYi"
+      ]
+    },
+    {
+      "id": "st-organizational-unit",
+      "name": "Organizational Unit",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateBusinessActor"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYj"
+      ]
+    },
+    {
+      "id": "st-organization",
+      "name": "Organization",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateBusinessActor"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYk"
+      ]
+    },
+    {
+      "id": "st-threat-agent",
+      "name": "Threat Agent",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateBusinessActor"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYl"
+      ]
+    },
+    {
+      "id": "st-business-decision",
+      "name": "Business Decision",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateBusinessService"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYm"
+      ]
+    },
+    {
+      "id": "st-social-network",
+      "name": "Social Network",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateBusinessCollaboration"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYn"
+      ]
+    },
+    {
+      "id": "st-business-activity",
+      "name": "Business Activity",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateBusinessProcess"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYo"
+      ]
+    },
+    {
+      "id": "st-threat-event-risk-security-overlay",
+      "name": "Threat Event (Risk & Security Overlay)",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateBusinessEvent"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYp"
+      ]
+    },
+    {
+      "id": "st-loss-event-risk-security-overlay",
+      "name": "Loss Event (Risk & Security Overlay)",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateBusinessEvent"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYq"
+      ]
+    },
+    {
+      "id": "st-logical-application-component",
+      "name": "Logical Application Component",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateApplicationComponent"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYr"
+      ]
+    },
+    {
+      "id": "st-physical-application-component",
+      "name": "Physical Application Component",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateApplicationComponent"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYs"
+      ]
+    },
+    {
+      "id": "st-application-to-application-interface",
+      "name": "Application-to-Application Interface",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateApplicationInterface"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYt"
+      ]
+    },
+    {
+      "id": "st-graphical-user-interface",
+      "name": "Graphical User Interface",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateApplicationInterface"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYu"
+      ]
+    },
+    {
+      "id": "st-logical-technology-component",
+      "name": "Logical Technology Component",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateNode"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYv"
+      ]
+    },
+    {
+      "id": "st-physical-technology-component",
+      "name": "Physical Technology Component",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateNode"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYw"
+      ]
+    },
+    {
+      "id": "st-mobile-device",
+      "name": "Mobile Device",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateDevice"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYx"
+      ]
+    },
+    {
+      "id": "st-embedded-device",
+      "name": "Embedded Device",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateDevice"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYy"
+      ]
+    },
+    {
+      "id": "st-wifi-network",
+      "name": "WiFi Network",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateNetworkBox"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:9K5f13qGAqAEAgYz"
+      ]
+    },
+    {
+      "id": "st-wide-area-network",
+      "name": "Wide Area Network",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateNetworkBox"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgY0"
+      ]
+    },
+    {
+      "id": "st-processing-service",
+      "name": "Processing Service",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateInfrastructureService"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgY1"
+      ]
+    },
+    {
+      "id": "st-storage-service",
+      "name": "Storage Service",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateInfrastructureService"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgY2"
+      ]
+    },
+    {
+      "id": "st-communication-service",
+      "name": "Communication Service",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateInfrastructureService"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgY3"
+      ]
+    },
+    {
+      "id": "st-vehicle",
+      "name": "Vehicle",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateEquipment"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgY4"
+      ]
+    },
+    {
+      "id": "st-train",
+      "name": "Train",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateEquipment"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgY5"
+      ]
+    },
+    {
+      "id": "st-factory",
+      "name": "Factory",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateFacility"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgY6"
+      ]
+    },
+    {
+      "id": "st-ore",
+      "name": "Ore",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateMaterial"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgY7"
+      ]
+    },
+    {
+      "id": "st-building-material",
+      "name": "Building Material",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateMaterial"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgY8"
+      ]
+    },
+    {
+      "id": "st-fuel",
+      "name": "Fuel",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateMaterial"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgY9"
+      ]
+    },
+    {
+      "id": "st-rail-network",
+      "name": "Rail Network",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateDistributionNetworkBox"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgY."
+      ]
+    },
+    {
+      "id": "st-energy-grid",
+      "name": "Energy Grid",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateDistributionNetworkBox"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgY_"
+      ]
+    },
+    {
+      "id": "st-metric",
+      "name": "Metric",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateDriver"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZA"
+      ]
+    },
+    {
+      "id": "st-vulnerability-risk-security-overlay",
+      "name": "Vulnerability (Risk & Security Overlay)",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateAssessment"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZB"
+      ]
+    },
+    {
+      "id": "st-risk-risk-security-overlay",
+      "name": "Risk (Risk & Security Overlay)",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateAssessment"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZC"
+      ]
+    },
+    {
+      "id": "st-business-objective",
+      "name": "Business Objective",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateGoal"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZD"
+      ]
+    },
+    {
+      "id": "st-control-objective-risk-security-overlay",
+      "name": "Control Objective (Risk & Security Overlay)",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateGoal"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZE"
+      ]
+    },
+    {
+      "id": "st-business-policy",
+      "name": "Business Policy",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMatePrinciple"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZF"
+      ]
+    },
+    {
+      "id": "st-control-measure-risk-security-overlay",
+      "name": "Control Measure (Risk & Security Overlay)",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateRequirement"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZG"
+      ]
+    },
+    {
+      "id": "st-business-rule",
+      "name": "Business Rule",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateRequirement"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZH"
+      ]
+    },
+    {
+      "id": "st-capability-increment",
+      "name": "Capability Increment",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateCapability"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZI"
+      ]
+    },
+    {
+      "id": "st-strategy",
+      "name": "Strategy",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateCourseOfAction"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZJ"
+      ]
+    },
+    {
+      "id": "st-tactic",
+      "name": "Tactic",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateCourseOfAction"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZK"
+      ]
+    },
+    {
+      "id": "st-program",
+      "name": "Program",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateWorkPackage"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZL"
+      ]
+    },
+    {
+      "id": "st-project",
+      "name": "Project",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateWorkPackage"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZM"
+      ]
+    },
+    {
+      "id": "st-risk-domain-risk-security-overlay",
+      "name": "Risk Domain (Risk & Security Overlay)",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateGrouping"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZN"
+      ]
+    },
+    {
+      "id": "st-money-flow",
+      "name": "Money Flow",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateFlow"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZO"
+      ]
+    },
+    {
+      "id": "st-responsibilities-assignment",
+      "name": "Responsibilities assignment",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateAssignment"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZP"
+      ]
+    },
+    {
+      "id": "st-behavior-assignment",
+      "name": "Behavior assignment",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateAssignment"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZQ"
+      ]
+    },
+    {
+      "id": "st-or-join",
+      "name": "Or-join",
+      "aliases": [],
+      "baseTypes": [
+        "ArchiMateOrJunction"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_K5f13qGAqAEAgZR"
+      ]
+    },
+    {
+      "id": "st-static",
+      "name": "static",
+      "aliases": [],
+      "baseTypes": [
+        "AssociationEnd"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:6FklKgaGAqDIAgcD"
+      ]
+    },
+    {
+      "id": "st-boundreference",
+      "name": "boundReference",
+      "aliases": [],
+      "baseTypes": [
+        "SysMLBoundReference"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:mCoBJuaGAqACQwan"
+      ]
+    },
+    {
+      "id": "st-elementgroup",
+      "name": "elementGroup",
+      "aliases": [],
+      "baseTypes": [
+        "SysMLElementGroup"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:mCoBJuaGAqACQwao"
+      ]
+    },
+    {
+      "id": "st-equal",
+      "name": "equal",
+      "aliases": [],
+      "baseTypes": [
+        "SysMLBindingConnector"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:mCoBJuaGAqACQwap"
+      ]
+    },
+    {
+      "id": "st-proxy",
+      "name": "proxy",
+      "aliases": [],
+      "baseTypes": [
+        "Port"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:FCoBJuaGAqACQwaq"
+      ]
+    },
+    {
+      "id": "st-full",
+      "name": "full",
+      "aliases": [],
+      "baseTypes": [
+        "Port"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:FCoBJuaGAqACQwar"
+      ]
+    },
+    {
+      "id": "st-adjunct",
+      "name": "adjunct",
+      "aliases": [],
+      "baseTypes": [
+        "AssociationEnd"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:FCoBJuaGAqACQwas"
+      ]
+    },
+    {
+      "id": "st-computenode",
+      "name": "ComputeNode",
+      "aliases": [],
+      "baseTypes": [
+        "InstanceSpecification"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "processingType",
+          "type": "text",
+          "default": "",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "sources": [
+        "A:aSBYohaGAqDIBwbw"
+      ]
+    },
+    {
+      "id": "st-storagenode",
+      "name": "StorageNode",
+      "aliases": [],
+      "baseTypes": [
+        "InstanceSpecification"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:u5T4ohaGAqDIBwdT"
+      ]
+    },
+    {
+      "id": "st-sourcenode",
+      "name": "SourceNode",
+      "aliases": [],
+      "baseTypes": [
+        "InstanceSpecification"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "type",
+          "type": "text",
+          "default": "",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "sources": [
+        "A:0HwEohaGAqDIBwdq"
+      ]
+    },
+    {
+      "id": "st-dataset",
+      "name": "Dataset",
+      "aliases": [],
+      "baseTypes": [
+        "InstanceSpecification"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:4sdEohaGAqDIBweg"
+      ]
+    },
+    {
+      "id": "st-gastep",
+      "name": "GaStep",
+      "aliases": [],
+      "baseTypes": [
+        "ActivityAction"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:VQ_6ohaGAqDIBwn8"
+      ]
+    },
+    {
+      "id": "st-cassandratable",
+      "name": "cassandraTable",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "queryName",
+          "type": "text",
+          "default": "",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "sources": [
+        "A:zGLCMhaGAqDIBwsd"
+      ]
+    },
+    {
+      "id": "st-partkey",
+      "name": "partKey",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:elCiMhaGAqDIBwtd"
+      ]
+    },
+    {
+      "id": "st-clustkey",
+      "name": "clustKey",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "isASC",
+          "type": "text",
+          "default": "Unspecified",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "sources": [
+        "A:r1WiMhaGAqDIBwtt"
+      ]
+    },
+    {
+      "id": "st-staticcolumn",
+      "name": "staticColumn",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:csLiMhaGAqDIBwuV"
+      ]
+    },
+    {
+      "id": "st-idx",
+      "name": "IDX",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:k_ASMhaGAqDIBwun"
+      ]
+    },
+    {
+      "id": "st-counter",
+      "name": "counter",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:MSUSMhaGAqDIBwu1"
+      ]
+    },
+    {
+      "id": "st-list",
+      "name": "list",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:rZSSMhaGAqDIBwvD"
+      ]
+    },
+    {
+      "id": "st-set",
+      "name": "set",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:iarKMhaGAqDIBwxp"
+      ]
+    },
+    {
+      "id": "st-map",
+      "name": "map",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:ZxpqMhaGAqDIBwyC"
+      ]
+    },
+    {
+      "id": "st-udt",
+      "name": "UDT",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:_qIGMhaGAqDIBwyx"
+      ]
+    },
+    {
+      "id": "st-tuple",
+      "name": "tuple",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:O_8GMhaGAqDIBwzA"
+      ]
+    },
+    {
+      "id": "st-datatype",
+      "name": "dataType",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:TwxrshaGAqDIBwyZ"
+      ]
+    },
+    {
+      "id": "st-actor",
+      "name": "actor",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": {
+        "asset": "pict-actor",
+        "kind": "badge",
+        "size": [
+          16,
+          16
+        ],
+        "glyph": "actor",
+        "iconPath": "stereotypeIcons/vzS41FaGAqACQwxL",
+        "iconPaths": [
+          "stereotypeIcons/vzS41FaGAqACQwxL"
+        ]
+      },
+      "taggedValues": [],
+      "pictogramByBaseType": {
+        "Class": {
+          "asset": "pict-actor",
+          "kind": "badge",
+          "size": [
+            16,
+            16
+          ],
+          "glyph": "actor",
+          "iconPath": "stereotypeIcons/vzS41FaGAqACQwxL"
+        }
+      },
+      "sources": [
+        "A:vzS41FaGAqACQwxL"
+      ]
+    },
+    {
+      "id": "st-fish-level-usecase",
+      "name": "fish level usecase",
+      "aliases": [],
+      "baseTypes": [
+        "UseCase"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": {
+        "asset": "pict-fish",
+        "kind": "figure",
+        "size": [
+          113,
+          57
+        ],
+        "glyph": "fish",
+        "iconPath": "stereotypeIcons/K8pbCVqGAqACAwpH",
+        "iconPaths": [
+          "stereotypeIcons/K8pbCVqGAqACAwpH"
+        ]
+      },
+      "taggedValues": [],
+      "pictogramByBaseType": {
+        "UseCase": {
+          "asset": "pict-fish",
+          "kind": "figure",
+          "size": [
+            113,
+            57
+          ],
+          "glyph": "fish",
+          "iconPath": "stereotypeIcons/K8pbCVqGAqACAwpH"
+        }
+      },
+      "sources": [
+        "A:K8pbCVqGAqACAwpH",
+        "P:G0EPCVqGAqACAwp4"
+      ]
+    },
+    {
+      "id": "st-sea-level-usecase",
+      "name": "sea level usecase",
+      "aliases": [],
+      "baseTypes": [
+        "UseCase"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": {
+        "asset": "pict-waves",
+        "kind": "figure",
+        "size": [
+          148,
+          47
+        ],
+        "glyph": "waves",
+        "iconPath": "stereotypeIcons/gHSbCVqGAqACAwpB",
+        "iconPaths": [
+          "stereotypeIcons/gHSbCVqGAqACAwpB"
+        ]
+      },
+      "taggedValues": [],
+      "pictogramByBaseType": {
+        "UseCase": {
+          "asset": "pict-waves",
+          "kind": "figure",
+          "size": [
+            148,
+            47
+          ],
+          "glyph": "waves",
+          "iconPath": "stereotypeIcons/gHSbCVqGAqACAwpB"
+        }
+      },
+      "sources": [
+        "A:gHSbCVqGAqACAwpB",
+        "P:NzJAiVqGAqACAwkO"
+      ]
+    },
+    {
+      "id": "st-resourcerole",
+      "name": "ResourceRole",
+      "aliases": [],
+      "baseTypes": [
+        "Attribute"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "RoleKind",
+          "type": "enum",
+          "default": "",
+          "documentation": "",
+          "values": [
+            "Part",
+            "Component",
+            "UsedConfiguration",
+            "HumanResource",
+            "Platform",
+            "System",
+            "SubOrganization",
+            "PostRole",
+            "ResponsibilityRole",
+            "Equipment",
+            "SubSystemPart",
+            "UsedPhysicalArchitecture",
+            "HostedSoftware",
+            "ArtifactComponent",
+            "NaturalResourceComponent",
+            "Other"
+          ]
+        }
+      ],
+      "sources": [
+        "A:hYK6G3aGAqDIBwbL"
+      ]
+    },
+    {
+      "id": "st-information",
+      "name": "information",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:t7JjUR6GAqDIHQ97"
+      ]
+    },
+    {
+      "id": "st-representation",
+      "name": "representation",
+      "aliases": [],
+      "baseTypes": [
+        "Dependency"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:wDkTUR6GAqDIHQ_V"
+      ]
+    },
+    {
+      "id": "st-flow",
+      "name": "flow",
+      "aliases": [],
+      "baseTypes": [
+        "Dependency"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:XKvrUR6GAqDIHRF3"
+      ]
+    },
+    {
+      "id": "st-stereotype",
+      "name": "stereotype",
+      "aliases": [],
+      "baseTypes": [
+        "Class"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:B5Ci8R6GAqDIHRM7"
+      ]
+    },
+    {
+      "id": "st-colored",
+      "name": "colored",
+      "aliases": [],
+      "baseTypes": [
+        "Class",
+        "Association"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "color",
+          "type": "int",
+          "default": "",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "sources": [
+        "A:52Xy8R6GAqDIHRQP",
+        "A:y0y68R6GAqDIHRYK"
+      ]
+    },
+    {
+      "id": "st-weighted",
+      "name": "weighted",
+      "aliases": [],
+      "baseTypes": [
+        "Association"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "weight",
+          "type": "int",
+          "default": "",
+          "documentation": "",
+          "values": []
+        }
+      ],
+      "sources": [
+        "A:7AG68R6GAqDIHRYN"
+      ]
+    },
+    {
+      "id": "st-instanceof",
+      "name": "instanceOf",
+      "aliases": [],
+      "baseTypes": [
+        "Dependency"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:rVEhfF6GAqDIHQfg"
+      ]
+    },
+    {
+      "id": "st-stakeholder",
+      "name": "stakeholder",
+      "aliases": [],
+      "baseTypes": [
+        "Actor"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "A:tv.y8j6GAqDIHQbp"
+      ]
+    },
+    {
+      "id": "st-directedfeature",
+      "name": "DirectedFeature",
+      "aliases": [],
+      "baseTypes": [
+        "SysMLConstraintProperty",
+        "SysMLParticipantProperty",
+        "SysMLBoundReference",
+        "Attribute",
+        "Operation",
+        "Reception"
+      ],
+      "scope": "application",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [
+        {
+          "name": "FeatureDirectionKind",
+          "type": "enum",
+          "default": "",
+          "documentation": "",
+          "values": [
+            "provided",
+            "required",
+            "providedrequired"
+          ]
+        }
+      ],
+      "sources": [
+        "A:jv.y8j6GAqDIHQbq",
+        "A:Tv.y8j6GAqDIHQbt",
+        "A:zv.y8j6GAqDIHQbw",
+        "A:zv.y8j6GAqDIHQbz",
+        "A:Lv.y8j6GAqDIHQb2",
+        "A:Lv.y8j6GAqDIHQb5"
+      ]
+    },
+    {
+      "id": "st-include",
+      "name": "include",
+      "aliases": [
+        "Include"
+      ],
+      "baseTypes": [
+        "Include"
+      ],
+      "scope": "project",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "P:mSBG4yKGAqACZgX9"
+      ]
+    },
+    {
+      "id": "st-extend",
+      "name": "extend",
+      "aliases": [
+        "Extend"
+      ],
+      "baseTypes": [
+        "Extend"
+      ],
+      "scope": "project",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "P:jb5G4yKGAqACZgYh"
+      ]
+    },
+    {
+      "id": "st-substitute",
+      "name": "substitute",
+      "aliases": [],
+      "baseTypes": [
+        "Dependency"
+      ],
+      "scope": "project",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "P:zI3XUyKGAqACZguk"
+      ]
+    },
+    {
+      "id": "st-import",
+      "name": "import",
+      "aliases": [],
+      "baseTypes": [
+        "Dependency"
+      ],
+      "scope": "project",
+      "documentation": "",
+      "pictogram": null,
+      "taggedValues": [],
+      "sources": [
+        "P:q4u1TeqGAqACAwc6"
+      ]
+    }
+  ],
+  "notExpressible": [
+    {
+      "baseType": "Attribute",
+      "family": "Attribute",
+      "kind": "design-not-an-element",
+      "records": 38,
+      "stereotypes": [
+        "AK",
+        "Attachment",
+        "BasicInterval",
+        "CK",
+        "CMP",
+        "Constant",
+        "DirectedFeature",
+        "DistributedProperty",
+        "Event",
+        "FK",
+        "FreeFormDescriptor",
+        "IDX",
+        "Interval",
+        "Normal",
+        "PK",
+        "Property",
+        "ResourceRole",
+        "UDT",
+        "Uniform",
+        "XSDattribute",
+        "XSDelement",
+        "XSDenumeration",
+        "XSDpattern",
+        "clustKey",
+        "column",
+        "counter",
+        "index",
+        "list",
+        "map",
+        "moe",
+        "not null",
+        "nullable",
+        "partKey",
+        "set",
+        "staticColumn",
+        "surrogate",
+        "tuple"
+      ],
+      "why": "у нас атрибут — строка члена (member), а не элемент: стереотип на него не надеть"
+    },
+    {
+      "baseType": "BMMRelationship",
+      "family": "BMM",
+      "kind": "foreign-notation",
+      "records": 37,
+      "stereotypes": [
+        "act as",
+        "act as regulation",
+        "affect achievement",
+        "affect employment",
+        "amplify",
+        "basis for",
+        "channel efforts",
+        "claim",
+        "component of plan for",
+        "define",
+        "deliver",
+        "deploy",
+        "determine",
+        "discharge",
+        "effect enforcement level",
+        "enable",
+        "establish",
+        "formulated based on",
+        "govern",
+        "guide",
+        "identify",
+        "implement",
+        "judge",
+        "make",
+        "make operative",
+        "manage",
+        "provide",
+        "provide impetus",
+        "quantify",
+        "realize",
+        "recognize",
+        "require",
+        "responsible",
+        "significant to",
+        "source",
+        "support achievement",
+        "use"
+      ],
+      "why": "Business Motivation Model (BMM) — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "Operation",
+      "family": "Operation",
+      "kind": "design-not-an-element",
+      "records": 6,
+      "stereotypes": [
+        "CORBAOneway",
+        "Default",
+        "DirectedFeature",
+        "Event",
+        "stored procedure",
+        "trigger"
+      ],
+      "why": "у нас операция — строка члена (member), а не элемент: стереотип на неё не надеть"
+    },
+    {
+      "baseType": "ArchiMateBusinessActor",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 4,
+      "stereotypes": [
+        "Individual",
+        "Organization",
+        "Organizational Unit",
+        "Threat Agent"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateInfrastructureService",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 3,
+      "stereotypes": [
+        "Communication Service",
+        "Processing Service",
+        "Storage Service"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateMaterial",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 3,
+      "stereotypes": [
+        "Building Material",
+        "Fuel",
+        "Ore"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ExpansionNode",
+      "family": "UML-элемент",
+      "kind": "notation-gap",
+      "records": 3,
+      "stereotypes": [
+        "controlValue",
+        "noBuffer",
+        "overwrite"
+      ],
+      "why": "метакласс UML: вида элемента в нотации нет — можно добавить"
+    },
+    {
+      "baseType": "ValuePin",
+      "family": "UML-элемент",
+      "kind": "notation-gap",
+      "records": 3,
+      "stereotypes": [
+        "controlValue",
+        "noBuffer",
+        "overwrite"
+      ],
+      "why": "метакласс UML: вида элемента в нотации нет — можно добавить"
+    },
+    {
+      "baseType": "ArchiMateApplicationComponent",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 2,
+      "stereotypes": [
+        "Logical Application Component",
+        "Physical Application Component"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateApplicationInterface",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 2,
+      "stereotypes": [
+        "Application-to-Application Interface",
+        "Graphical User Interface"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateAssessment",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 2,
+      "stereotypes": [
+        "Risk (Risk & Security Overlay)",
+        "Vulnerability (Risk & Security Overlay)"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateAssignment",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 2,
+      "stereotypes": [
+        "Behavior assignment",
+        "Responsibilities assignment"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateBusinessEvent",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 2,
+      "stereotypes": [
+        "Loss Event (Risk & Security Overlay)",
+        "Threat Event (Risk & Security Overlay)"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateCourseOfAction",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 2,
+      "stereotypes": [
+        "Strategy",
+        "Tactic"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateDevice",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 2,
+      "stereotypes": [
+        "Embedded Device",
+        "Mobile Device"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateDistributionNetworkBox",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 2,
+      "stereotypes": [
+        "Energy Grid",
+        "Rail Network"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateEquipment",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 2,
+      "stereotypes": [
+        "Train",
+        "Vehicle"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateGoal",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 2,
+      "stereotypes": [
+        "Business Objective",
+        "Control Objective (Risk & Security Overlay)"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateNetworkBox",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 2,
+      "stereotypes": [
+        "WiFi Network",
+        "Wide Area Network"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateNode",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 2,
+      "stereotypes": [
+        "Logical Technology Component",
+        "Physical Technology Component"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateRequirement",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 2,
+      "stereotypes": [
+        "Business Rule",
+        "Control Measure (Risk & Security Overlay)"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateWorkPackage",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 2,
+      "stereotypes": [
+        "Program",
+        "Project"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "Requirement",
+      "family": "UML-элемент",
+      "kind": "notation-gap",
+      "records": 2,
+      "stereotypes": [
+        "requirement"
+      ],
+      "why": "метакласс UML: вида элемента в нотации нет — можно добавить"
+    },
+    {
+      "baseType": "SysMLBoundReference",
+      "family": "SysML",
+      "kind": "foreign-notation",
+      "records": 2,
+      "stereotypes": [
+        "DirectedFeature",
+        "boundReference"
+      ],
+      "why": "SysML — вне границ проекта"
+    },
+    {
+      "baseType": "SysMLConstraintProperty",
+      "family": "SysML",
+      "kind": "foreign-notation",
+      "records": 2,
+      "stereotypes": [
+        "DirectedFeature",
+        "objectiveFunction"
+      ],
+      "why": "SysML — вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateBusinessCollaboration",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 1,
+      "stereotypes": [
+        "Social Network"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateBusinessProcess",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 1,
+      "stereotypes": [
+        "Business Activity"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateBusinessService",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 1,
+      "stereotypes": [
+        "Business Decision"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateCapability",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 1,
+      "stereotypes": [
+        "Capability Increment"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateDriver",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 1,
+      "stereotypes": [
+        "Metric"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateFacility",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 1,
+      "stereotypes": [
+        "Factory"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateFlow",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 1,
+      "stereotypes": [
+        "Money Flow"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateGrouping",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 1,
+      "stereotypes": [
+        "Risk Domain (Risk & Security Overlay)"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMateOrJunction",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 1,
+      "stereotypes": [
+        "Or-join"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "ArchiMatePrinciple",
+      "family": "ArchiMate",
+      "kind": "foreign-notation",
+      "records": 1,
+      "stereotypes": [
+        "Business Policy"
+      ],
+      "why": "ArchiMate — не UML, вне границ проекта"
+    },
+    {
+      "baseType": "BindingDependency",
+      "family": "UML-связь",
+      "kind": "notation-gap",
+      "records": 1,
+      "stereotypes": [
+        "bind"
+      ],
+      "why": "метакласс UML: вида связи в нотации нет — можно добавить"
+    },
+    {
+      "baseType": "CollaborationOccurrence",
+      "family": "UML-связь",
+      "kind": "notation-gap",
+      "records": 1,
+      "stereotypes": [
+        "SoaMLCollaborationUse"
+      ],
+      "why": "метакласс UML: вида связи в нотации нет — можно добавить"
+    },
+    {
+      "baseType": "Reception",
+      "family": "UML-элемент",
+      "kind": "notation-gap",
+      "records": 1,
+      "stereotypes": [
+        "DirectedFeature"
+      ],
+      "why": "метакласс UML: вида элемента в нотации нет — можно добавить"
+    },
+    {
+      "baseType": "SysMLActivityBlock",
+      "family": "SysML",
+      "kind": "foreign-notation",
+      "records": 1,
+      "stereotypes": [
+        "activity"
+      ],
+      "why": "SysML — вне границ проекта"
+    },
+    {
+      "baseType": "SysMLAllocate",
+      "family": "SysML",
+      "kind": "foreign-notation",
+      "records": 1,
+      "stereotypes": [
+        "allocate"
+      ],
+      "why": "SysML — вне границ проекта"
+    },
+    {
+      "baseType": "SysMLBindingConnector",
+      "family": "SysML",
+      "kind": "foreign-notation",
+      "records": 1,
+      "stereotypes": [
+        "equal"
+      ],
+      "why": "SysML — вне границ проекта"
+    },
+    {
+      "baseType": "SysMLConstraintBlock",
+      "family": "SysML",
+      "kind": "foreign-notation",
+      "records": 1,
+      "stereotypes": [
+        "objectiveFunction"
+      ],
+      "why": "SysML — вне границ проекта"
+    },
+    {
+      "baseType": "SysMLElementGroup",
+      "family": "SysML",
+      "kind": "foreign-notation",
+      "records": 1,
+      "stereotypes": [
+        "elementGroup"
+      ],
+      "why": "SysML — вне границ проекта"
+    },
+    {
+      "baseType": "SysMLQuantityKind",
+      "family": "SysML",
+      "kind": "foreign-notation",
+      "records": 1,
+      "stereotypes": [
+        "quantityKind"
+      ],
+      "why": "SysML — вне границ проекта"
+    },
+    {
+      "baseType": "SysMLUnit",
+      "family": "SysML",
+      "kind": "foreign-notation",
+      "records": 1,
+      "stereotypes": [
+        "unit"
+      ],
+      "why": "SysML — вне границ проекта"
+    }
+  ],
+  "report": {
+    "recordsIn": 428,
+    "recordsByScope": {
+      "application": 405,
+      "project": 23
+    },
+    "distinctNames": 311,
+    "normalizedNames": 304,
+    "definitionsAfterExactDedup": 410,
+    "mergedDuplicates": 18,
+    "mergedSpellingVariants": 3,
+    "after": 407,
+    "merged": 21,
+    "stereotypes": 304,
+    "extensions": 407,
+    "baseTypeExtensionsMerged": 103,
+    "aliases": 9,
+    "recordsWithIconPathIn": 29,
+    "iconPaths": 23,
+    "drawings": 15,
+    "stereotypesWithPictogram": 15,
+    "definitionsWithPictogram": 24,
+    "recordsWithFormats": 8,
+    "projectOnlyStereotypes": 4,
+    "mixedScopeStereotypes": 17,
+    "taggedValuesDivergent": [
+      "XSDschema",
+      "usecase"
+    ],
+    "taggedValuesVariantNames": [
+      "usecase"
+    ],
+    "byRule": {
+      "duplicates": {
+        "rule": "(name, baseType) объявлена дважды: прикладная запись остаётся, проектная в sources",
+        "removed": 18,
+        "pairs": [
+          {
+            "name": "Case Story",
+            "baseType": "UseCase",
+            "kept": "A:LFzV0esGAqACZgAC",
+            "dropped": [
+              "P:v2g74HKGAqACAiDA"
+            ],
+            "identicalContent": true
+          },
+          {
+            "name": "Context",
+            "baseType": "UseCase",
+            "kept": "A:KlzV0esGAqACZgAC",
+            "dropped": [
+              "P:xnUcMwcGAqACAh6r"
+            ],
+            "identicalContent": true
+          },
+          {
+            "name": "Interface",
+            "baseType": "Class",
+            "kept": "A:EhNy4yKGAqACZgL5",
+            "dropped": [
+              "P:ImY9UyKGAqACZgj_"
+            ],
+            "identicalContent": true
+          },
+          {
+            "name": "Property",
+            "baseType": "Attribute",
+            "kept": "A:GhNy4yKGAqACZgMq",
+            "dropped": [
+              "P:pYwvL_qGAqACKyGX"
+            ],
+            "identicalContent": true
+          },
+          {
+            "name": "UseCase",
+            "baseType": "UseCase",
+            "kept": "A:egkfCVqGAqACAwSs",
+            "dropped": [
+              "P:59efCVqGAqACAwjo"
+            ],
+            "identicalContent": false
+          },
+          {
+            "name": "architectural view",
+            "baseType": "Package",
+            "kept": "A:LSVqUyKGAqACZgXn",
+            "dropped": [
+              "P:TRGaUyKGAqACZgXx"
+            ],
+            "identicalContent": true
+          },
+          {
+            "name": "bind",
+            "baseType": "Realization",
+            "kept": "A:3.2g0yKGAqACZhFc",
+            "dropped": [
+              "P:soeg0yKGAqACZhFe"
+            ],
+            "identicalContent": true
+          },
+          {
+            "name": "enumeration",
+            "baseType": "Class",
+            "kept": "A:EhNy4yKGAqACZgL9",
+            "dropped": [
+              "P:NYfQr_qGAqACKySc"
+            ],
+            "identicalContent": true
+          },
+          {
+            "name": "fish level usecase",
+            "baseType": "UseCase",
+            "kept": "A:K8pbCVqGAqACAwpH",
+            "dropped": [
+              "P:G0EPCVqGAqACAwp4"
+            ],
+            "identicalContent": true
+          },
+          {
+            "name": "layer",
+            "baseType": "Package",
+            "kept": "A:fZMKUyKGAqACZgXg",
+            "dropped": [
+              "P:zlMaUyKGAqACZgXp"
+            ],
+            "identicalContent": true
+          },
+          {
+            "name": "mechanism",
+            "baseType": "Collaboration2",
+            "kept": "A:mAwbUyKGAqACZgqy",
+            "dropped": [
+              "P:_x0bUyKGAqACZgq0"
+            ],
+            "identicalContent": true
+          },
+          {
+            "name": "primitive",
+            "baseType": "Class",
+            "kept": "A:EhNy4yKGAqACZgL.",
+            "dropped": [
+              "P:EYi9UyKGAqACZgkZ"
+            ],
+            "identicalContent": true
+          },
+          {
+            "name": "requirement",
+            "baseType": "Requirement",
+            "kept": "A:WQ1y4yKGAqACZgAE",
+            "dropped": [
+              "P:sOg74HKGAqACAiDE"
+            ],
+            "identicalContent": true
+          },
+          {
+            "name": "sea level usecase",
+            "baseType": "UseCase",
+            "kept": "A:gHSbCVqGAqACAwpB",
+            "dropped": [
+              "P:NzJAiVqGAqACAwkO"
+            ],
+            "identicalContent": true
+          },
+          {
+            "name": "subject",
+            "baseType": "System",
+            "kept": "A:rRxRU9KGAqACIgri",
+            "dropped": [
+              "P:hLhen6aGAqDIBwoM"
+            ],
+            "identicalContent": true
+          },
+          {
+            "name": "usecase",
+            "baseType": "UseCase",
+            "kept": "A:dz1y4yKGAqACZgHq",
+            "dropped": [
+              "P:t2g74HKGAqACAiC2"
+            ],
+            "identicalContent": true
+          },
+          {
+            "name": "valueType",
+            "baseType": "SysMLValueType",
+            "kept": "A:BiNy4yKGAqACZgIx",
+            "dropped": [
+              "P:S0Z6UyKGAqACZgYj"
+            ],
+            "identicalContent": true
+          },
+          {
+            "name": "view",
+            "baseType": "Package",
+            "kept": "A:nBNy4yKGAqACZgK8",
+            "dropped": [
+              "P:nrHK4yKGAqACZgUs"
+            ],
+            "identicalContent": true
+          }
+        ]
+      },
+      "spelling": {
+        "rule": "одно понятие — одно написание; каноническое — из нотации, иначе первая прикладная запись",
+        "removed": 3,
+        "groups": [
+          {
+            "normalized": "executionenvironment",
+            "spellings": [
+              "execution environment",
+              "executionEnvironment"
+            ],
+            "canonical": "executionEnvironment",
+            "records": 3,
+            "defect": true,
+            "defects": {
+              "application/Node": [
+                "execution environment",
+                "executionEnvironment"
+              ]
+            },
+            "collapsedDefinitions": 1,
+            "verdict": "дефект: одно понятие, два написания на одном baseType"
+          },
+          {
+            "normalized": "usecase",
+            "spellings": [
+              "usecase",
+              "UseCase"
+            ],
+            "canonical": "usecase",
+            "records": 5,
+            "defect": true,
+            "defects": {
+              "application/UseCase": [
+                "UseCase",
+                "usecase"
+              ],
+              "project/UseCase": [
+                "UseCase",
+                "usecase"
+              ]
+            },
+            "collapsedDefinitions": 1,
+            "verdict": "дефект: одно понятие, два написания на одном baseType"
+          },
+          {
+            "normalized": "usecaserealization",
+            "spellings": [
+              "usecase realization",
+              "use case realization"
+            ],
+            "canonical": "usecase realization",
+            "records": 3,
+            "defect": true,
+            "defects": {
+              "application/Collaboration2": [
+                "use case realization",
+                "usecase realization"
+              ]
+            },
+            "collapsedDefinitions": 1,
+            "verdict": "дефект: одно понятие, два написания на одном baseType"
+          },
+          {
+            "normalized": "default",
+            "spellings": [
+              "Default",
+              "default"
+            ],
+            "canonical": "Default",
+            "records": 4,
+            "defect": false,
+            "defects": {},
+            "collapsedDefinitions": 0,
+            "verdict": "не дефект: написания случайно совпали, baseType разные"
+          },
+          {
+            "normalized": "interface",
+            "spellings": [
+              "Interface",
+              "interface"
+            ],
+            "canonical": "interface",
+            "records": 3,
+            "defect": false,
+            "defects": {},
+            "collapsedDefinitions": 0,
+            "verdict": "не дефект: написания случайно совпали, baseType разные"
+          },
+          {
+            "normalized": "participant",
+            "spellings": [
+              "participant",
+              "Participant"
+            ],
+            "canonical": "participant",
+            "records": 3,
+            "defect": false,
+            "defects": {},
+            "collapsedDefinitions": 0,
+            "verdict": "не дефект: написания случайно совпали, baseType разные"
+          },
+          {
+            "normalized": "service",
+            "spellings": [
+              "Service",
+              "service"
+            ],
+            "canonical": "Service",
+            "records": 2,
+            "defect": false,
+            "defects": {},
+            "collapsedDefinitions": 0,
+            "verdict": "не дефект: написания случайно совпали, baseType разные"
+          }
+        ]
+      },
+      "baseTypes": {
+        "rule": "одно имя — один стереотип с baseTypes[] (UML 2.5.1 §12.3.3.4)",
+        "mergedExtensions": 103
+      }
+    },
+    "notation": {
+      "source": "app/notation/uml.json",
+      "spellings": 22,
+      "usedForCanonicalChoice": [
+        {
+          "normalized": "metaclass",
+          "notation": "metaclass",
+          "profileSpellings": [
+            "metaclass"
+          ]
+        },
+        {
+          "normalized": "device",
+          "notation": "device",
+          "profileSpellings": [
+            "device"
+          ]
+        },
+        {
+          "normalized": "executionenvironment",
+          "notation": "executionEnvironment",
+          "profileSpellings": [
+            "execution environment",
+            "executionEnvironment"
+          ]
+        },
+        {
+          "normalized": "deploy",
+          "notation": "deploy",
+          "profileSpellings": [
+            "deploy"
+          ]
+        },
+        {
+          "normalized": "use",
+          "notation": "use",
+          "profileSpellings": [
+            "use"
+          ]
+        },
+        {
+          "normalized": "trace",
+          "notation": "trace",
+          "profileSpellings": [
+            "trace"
+          ]
+        },
+        {
+          "normalized": "profile",
+          "notation": "profile",
+          "profileSpellings": [
+            "profile"
+          ]
+        },
+        {
+          "normalized": "interface",
+          "notation": "interface",
+          "profileSpellings": [
+            "Interface",
+            "interface"
+          ]
+        },
+        {
+          "normalized": "enumeration",
+          "notation": "enumeration",
+          "profileSpellings": [
+            "enumeration"
+          ]
+        },
+        {
+          "normalized": "create",
+          "notation": "create",
+          "profileSpellings": [
+            "create"
+          ]
+        },
+        {
+          "normalized": "datatype",
+          "notation": "dataType",
+          "profileSpellings": [
+            "dataType"
+          ]
+        },
+        {
+          "normalized": "stereotype",
+          "notation": "stereotype",
+          "profileSpellings": [
+            "stereotype"
+          ]
+        },
+        {
+          "normalized": "include",
+          "notation": "include",
+          "profileSpellings": [
+            "Include"
+          ]
+        },
+        {
+          "normalized": "extend",
+          "notation": "extend",
+          "profileSpellings": [
+            "Extend"
+          ]
+        },
+        {
+          "normalized": "import",
+          "notation": "import",
+          "profileSpellings": [
+            "import"
+          ]
+        }
+      ],
+      "renamedFromProfile": [
+        {
+          "normalized": "include",
+          "notation": "include",
+          "profileSpellings": [
+            "Include"
+          ]
+        },
+        {
+          "normalized": "extend",
+          "notation": "extend",
+          "profileSpellings": [
+            "Extend"
+          ]
+        }
+      ]
+    },
+    "checks": {
+      "problems": [],
+      "ok": true
+    }
+  }
+}

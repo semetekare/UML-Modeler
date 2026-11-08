@@ -1,0 +1,97 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-activity-parameter-node-no-edges",
+  "name": "activity_parameter_node_no_edges — у узла параметра есть и вход, и выход",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "action",
+      "name": "Принять заказ"
+    },
+    {
+      "id": "e2",
+      "kind": "activityParameter",
+      "name": "заказ",
+      "documentation": "Правило «activity-parameter-node-no-edges»: UML 2.5.1, п. 15.7.6.5, констрейнт ActivityParameterNode::no_edges: «Узел параметра деятельности может иметь все входящие рёбра деятельности или все исходящие, но не должен иметь одновременно и входящие, и исходящие.»\nВ узел параметра «заказ» входит поток из действия «Принять заказ» и выходит поток в действие «Отгрузить». Узел параметра — вход или выход деятельности, сквозного прохода через него нет."
+    },
+    {
+      "id": "e3",
+      "kind": "action",
+      "name": "Отгрузить"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "controlFlow",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "controlFlow",
+      "from": "e2",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "activity_parameter_node_no_edges — у узла параметра есть и вход, и выход",
+      "kind": "activity",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 160,
+          "h": 50
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 300,
+          "y": 65,
+          "w": 120,
+          "h": 40
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 500,
+          "y": 60,
+          "w": 160,
+          "h": 50
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

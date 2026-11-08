@@ -1,0 +1,104 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5221",
+    "figureNo": "5.2.21",
+    "exercise": "5.2.H",
+    "type": "activity",
+    "diagramName": "updateStudent",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма деятельности для операции DBAccess::updateStudent",
+    "notes": "Текст не даёт ни псевдокода, ни состава действий. Рисунок 5.2.21 прочитан целиком: примечание DBAccess::updateStudent(st):boolean, начальный узел, структурированный узел Conditional с регионами Test и Body (в Test — решение с ветвями [self.c == NULL] и [else], в Body — действие self.init() и слияние), действие с псевдокодом UPDATE, действие return (res<>0) и конечный узел. Узла цикла на рисунке нет — запись LoopNode из текста удалена.",
+    "gaps": [
+      "псевдокод в узлах действий в тексте не приведён: сказано только, как его вводить (F2, Alt+Enter, Caption Placement) — прочитан с рисунка",
+      "структурированные узлы с регионами не выражаются в uml-model/3: регионы Test и Body, решение внутри Test и ветви [self.c == NULL] / [else] записаны в documentation узла",
+      "состав действий и рёбер не назван в тексте — источником служит рисунок"
+    ],
+    "gapIds": [
+      "model.structuredNode",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e2"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e9",
+      "kind": "action",
+      "name": "return (res<>0)",
+      "source": "image"
+    },
+    {
+      "id": "e1",
+      "kind": "initial",
+      "name": ""
+    },
+    {
+      "id": "e2",
+      "kind": "action",
+      "name": "Conditional",
+      "structuredNode": "ConditionalNode",
+      "documentation": "структурированный узел Conditional с регионами Test и Body. В регионе Test — решение с ветвями [self.c == NULL] (в регион Body) и [else] (к слиянию); в регионе Body — действие self.init() и узел слияния, после которого поток выходит из узла. Регионы, решение и слияние в uml-model/3 не выражаются отдельными элементами.",
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "final",
+      "name": ""
+    },
+    {
+      "id": "e8",
+      "kind": "action",
+      "name": "sql = \"UPDATE Students SET name ='\"; sql += st.getName(); sql += \"phone1 ='\"; sql += st.get1stPhone(); ... sql += \"WHERE id =\"; sql += st.getId().toString(); s = c.createStatement(sql); res = s.executeUpdate();",
+      "source": "image"
+    },
+    {
+      "id": "e10",
+      "kind": "note",
+      "name": "",
+      "note": "DBAccess::updateStudent(st):boolean",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "controlFlow",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "controlFlow",
+      "from": "e2",
+      "to": "e8",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "controlFlow",
+      "from": "e8",
+      "to": "e9",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "controlFlow",
+      "from": "e9",
+      "to": "e4",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "updateStudent",
+      "type": "activity",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

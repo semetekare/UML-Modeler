@@ -1,0 +1,300 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5107",
+  "name": "UML-диаграмма размещения Installation Example",
+  "elements": [
+    {
+      "id": "e4",
+      "kind": "object",
+      "name": "laserJet : Кампусный принтер",
+      "classifier": "Кампусный принтер"
+    },
+    {
+      "id": "e3",
+      "kind": "object",
+      "name": "spider : Коммутатор",
+      "classifier": "Коммутатор"
+    },
+    {
+      "id": "e2",
+      "kind": "object",
+      "name": "main : Сервер системы регистрации",
+      "classifier": "Сервер системы регистрации"
+    },
+    {
+      "id": "e1",
+      "kind": "object",
+      "name": "asys : Сервер расчётной системы",
+      "classifier": "Сервер расчётной системы"
+    },
+    {
+      "id": "e5",
+      "kind": "object",
+      "name": "pc04 : Компьютер студента",
+      "classifier": "Компьютер студента"
+    },
+    {
+      "id": "e6",
+      "kind": "object",
+      "name": "srv01 : Компьютер студента",
+      "classifier": "Компьютер студента"
+    },
+    {
+      "id": "e7",
+      "kind": "object",
+      "name": "prn : Компьютер лектора",
+      "classifier": "Компьютер лектора"
+    },
+    {
+      "id": "e8",
+      "kind": "object",
+      "name": "switch : Компьютер работника учебного отдела",
+      "classifier": "Компьютер работника учебного отдела"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "link",
+      "from": "e5",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "link",
+      "from": "e6",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "link",
+      "from": "e7",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "link",
+      "from": "e8",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "link",
+      "from": "e4",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "link",
+      "from": "e3",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "link",
+      "from": "e2",
+      "to": "e1",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Installation Example",
+      "kind": "deployment",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e4",
+          "x": 420,
+          "y": 200,
+          "w": 200,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e3",
+          "x": 130,
+          "y": 200,
+          "w": 160,
+          "h": 80
+        },
+        {
+          "id": "s3",
+          "elementId": "e2",
+          "x": 680,
+          "y": 200,
+          "w": 230,
+          "h": 80
+        },
+        {
+          "id": "s4",
+          "elementId": "e1",
+          "x": 410,
+          "y": 60,
+          "w": 210,
+          "h": 80
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 430,
+          "y": 340,
+          "w": 180,
+          "h": 80
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 120,
+          "y": 60,
+          "w": 180,
+          "h": 80
+        },
+        {
+          "id": "s7",
+          "elementId": "e7",
+          "x": 710,
+          "y": 60,
+          "w": 170,
+          "h": 80
+        },
+        {
+          "id": "s8",
+          "elementId": "e8",
+          "x": 60,
+          "y": 340,
+          "w": 290,
+          "h": 80
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s6",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s7",
+            "side": "left",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s8",
+            "side": "top",
+            "t": 0.517
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "bottom"
+          }
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s1",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right"
+          }
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s2",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l7",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.9
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5107",
+    "figureNo": "5.1.7",
+    "exercise": "5.1",
+    "type": "deployment",
+    "diagramName": "Installation Example",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма размещения Installation Example",
+    "notes": "Восемь экземпляров названы текстом; рисунок 5.1.7 показывает те же восемь типов, но с другими именами экземпляров (iNote, dellNote, spPC, eduPC вместо pc04, srv01, prn, switch) — имена из текста оставлены, расхождение источников записано в пробелах. Семь соединений (Link) между экземплярами прочитаны с рисунка: их текст не перечисляет.",
+    "gaps": [
+      "связи между экземплярами описаны прозой («следует связать соединениями — Link»); какие именно экземпляры соединены, текст не перечисляет — прочитаны с рисунка",
+      "поле классификатора у экземпляра не выражается в uml-model/3 — записано строкой classifier",
+      "имена экземпляров в тексте и на рисунке расходятся: текст называет pc04, srv01, prn, switch, рисунок — iNote, dellNote, spPC, eduPC; оставлены имена из текста, расхождение источников не разрешено"
+    ],
+    "gapIds": [
+      "model.instanceClassifier",
+      "source.contradiction",
+      "source.unlisted"
+    ],
+    "imageDerived": []
+  },
+  "sheet": {
+    "w": 970,
+    "h": 480
+  }
+}

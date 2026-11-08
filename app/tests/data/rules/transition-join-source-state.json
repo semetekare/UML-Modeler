@@ -1,0 +1,128 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-transition-join-source-state",
+  "name": "transition_join_segment_state — в объединение переход приходит из действия",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "state",
+      "name": "Оплачен"
+    },
+    {
+      "id": "e2",
+      "kind": "join",
+      "name": ""
+    },
+    {
+      "id": "e3",
+      "kind": "state",
+      "name": "Закрыт"
+    },
+    {
+      "id": "e4",
+      "kind": "action",
+      "name": "Уведомить",
+      "documentation": "Правило «transition-join-source-state»: UML 2.5.1, п. 14.5.11.8, констрейнт Transition::join_segment_state: «Сегмент объединения всегда должен исходить из состояния.»\nВ объединение «join» переход приходит из действия «Уведомить». Сегмент объединения машины состояний всегда исходит из состояния; действие — узел деятельности, а не состояние."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "transition",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "transition",
+      "from": "e4",
+      "to": "e2"
+    },
+    {
+      "id": "r3",
+      "kind": "transition",
+      "from": "e2",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "transition_join_segment_state — в объединение переход приходит из действия",
+      "kind": "state",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 180,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 120,
+          "w": 120,
+          "h": 10
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 520,
+          "y": 120,
+          "w": 180,
+          "h": 80
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 60,
+          "y": 200,
+          "w": 180,
+          "h": 70
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s4",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

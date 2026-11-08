@@ -1,0 +1,235 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5101",
+  "name": "UML-диаграмма пакетов Main",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "package",
+      "name": "Application",
+      "stereotype": "layer"
+    },
+    {
+      "id": "e2",
+      "kind": "package",
+      "name": "BusinessServices",
+      "stereotype": "layer"
+    },
+    {
+      "id": "e4",
+      "kind": "package",
+      "name": "RemoteInterchange",
+      "documentation": "на рисунке пакет подписан в три строки: «RemoteInterchange» / «(Architectural» / «Mechanisms)»",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "package",
+      "name": "Middleware",
+      "stereotype": "layer"
+    },
+    {
+      "id": "e5",
+      "kind": "package",
+      "name": "Persistency",
+      "documentation": "на рисунке пакет подписан в три строки: «Persistency» / «(Architectural» / «Mechanisms)»",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e3"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r4",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e5"
+    },
+    {
+      "id": "r5",
+      "kind": "dependency",
+      "from": "e4",
+      "to": "e3"
+    },
+    {
+      "id": "r6",
+      "kind": "dependency",
+      "from": "e5",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Main",
+      "kind": "package",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e2",
+          "x": 260,
+          "y": 60,
+          "w": 140,
+          "h": 100
+        },
+        {
+          "id": "s2",
+          "elementId": "e3",
+          "x": 260,
+          "y": 220,
+          "w": 140,
+          "h": 100
+        },
+        {
+          "id": "s3",
+          "elementId": "e4",
+          "x": 60,
+          "y": 60,
+          "w": 140,
+          "h": 100
+        },
+        {
+          "id": "s4",
+          "elementId": "e5",
+          "x": 460,
+          "y": 60,
+          "w": 140,
+          "h": 100
+        },
+        {
+          "id": "s5",
+          "elementId": "e1",
+          "x": 60,
+          "y": 220,
+          "w": 140,
+          "h": 100
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "left",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s1",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s1",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "right"
+          }
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.1
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5101",
+    "figureNo": "5.1.1",
+    "exercise": "5.1",
+    "type": "package",
+    "diagramName": "Main",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма пакетов Main",
+    "notes": "Пять пакетов и шесть зависимостей между ними названы текстом; рисунок 5.1.1 подтверждает и состав, и все шесть зависимостей. Дополнительно на рисунке видно, что два пакета механизмов подписаны с уточнением в скобках — «RemoteInterchange (Architectural Mechanisms)» и «Persistency (Architectural Mechanisms)»; имя из текста оставлено, уточнение записано в документации.",
+    "gaps": [
+      "текст называет три архитектурных уровня и два пакета механизмов, но не перечисляет все пакеты, видимые на снимке",
+      "вложенность пакета в пакет не выражается в uml-model/3: у элемента нет владельца"
+    ],
+    "gapIds": [
+      "model.packageOwner",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e4",
+      "e5"
+    ]
+  },
+  "sheet": {
+    "w": 660,
+    "h": 400
+  }
+}

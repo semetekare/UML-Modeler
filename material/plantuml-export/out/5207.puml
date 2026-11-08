@@ -1,0 +1,23 @@
+@startuml
+title DBAccess
+package "DBAccess" as e1 <<subsystem>>
+package "RDBMS-JDBC" as e2
+' doc e2: параметризованный пакет; под именем на рисунке напечатано (Persistency), в присоединённой рамке — три параметра
+' source e2: image
+package "lang" as e3
+' doc e3: на рисунке имя пакета — lang, под ним квалификатор (Logical View::Middleware::java)
+' source e3: image
+package "util" as e4
+' doc e4: на рисунке имя пакета — util, под ним квалификатор (Logical View::Middleware::java)
+' source e4: image
+package "sql" as e5
+' doc e5: на рисунке имя пакета — sql, под ним квалификатор (Logical View::Middleware::java)
+' source e5: image
+e1 ..> e3 : <<import>>
+e1 ..> e4 : <<import>>
+e1 ..> e5 : <<import>>
+e1 ..> e2 : <<bind>> <DBClass -> DBAccess, PersistentObject -> CourseOffering, User, Student, PersistentObjectList -> CourseOfferingList>
+e2 ..> e3 : <<import>>
+e2 ..> e4 : <<import>>
+e2 ..> e5 : <<import>>
+@enduml

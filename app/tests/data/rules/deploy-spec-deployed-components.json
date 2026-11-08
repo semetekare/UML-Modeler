@@ -1,0 +1,85 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-deploy-spec-deployed-components",
+  "name": "deploy_spec_deployed_elements — на цели спецификации развёрнут артефакт",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "deploymentSpec",
+      "name": "Конфигурация узла",
+      "documentation": "Правило «deploy-spec-deployed-components»: UML 2.5.1, п. 19.5.5.6, констрейнт DeploymentSpecification::deployed_elements: «deployedElements цели развёртывания, участвующие в развёртывании, с которым связана спецификация развёртывания, — вид компонента (то есть конфигурируемые компоненты).»\nНа цели спецификации «Конфигурация узла» развёрнут артефакт «журнал.log», а не компонент: рядом со спецификацией развёртывания разворачивают сконфигурированные компоненты."
+    },
+    {
+      "id": "e2",
+      "kind": "executionEnvironment",
+      "name": "Среда приложений"
+    },
+    {
+      "id": "e3",
+      "kind": "artifact",
+      "name": "журнал.log"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "deployment",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "deployment",
+      "from": "e3",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "deploy_spec_deployed_elements — на цели спецификации развёрнут артефакт",
+      "kind": "deployment",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 100
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 420,
+          "y": 40,
+          "w": 260,
+          "h": 240
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 460,
+          "y": 140,
+          "w": 160,
+          "h": 80
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

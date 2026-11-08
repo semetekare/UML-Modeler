@@ -1,0 +1,81 @@
+/* Контекстное меню листа (правый клик) — своя панель и свои классы.
+ *
+ * Почему не `.menu-pop` из styles.css: тот файл правят параллельно (дерево,
+ * печать), и меню листа не должно зависеть от правок в меню шапки. Здесь
+ * только то, что нужно панели: строка 28 px, разделитель, опасный пункт,
+ * колонка сочетаний. Токены — общие (--panel-2, --line, --fs-sm): меню обязано
+ * читаться частью того же приложения, а не чужой вставкой.
+ *
+ * Геометрию (left/top/max-height) ставит context-menu.js: она зависит от
+ * размера панели и окна, а не от класса. */
+
+.ctx-menu {
+  position: fixed;
+  z-index: 90;                 /* выше меню шапки (40), ниже модала (100) */
+  min-width: 208px;
+  max-width: 320px;
+  padding: 4px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-pop);
+  box-shadow: var(--shadow-pop);
+  /* Панель не должна «протекать» прокруткой в лист под собой. */
+  overscroll-behavior: contain;
+}
+
+.ctx-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  min-height: var(--ctl-h);
+  padding: 4px var(--pad);
+  border: 0;
+  border-radius: var(--r-field);
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: var(--fs-sm);
+  line-height: var(--lh);
+  text-align: left;
+  cursor: pointer;
+}
+.ctx-item:hover:not(:disabled),
+.ctx-item:focus-visible { background: var(--brand-soft); }
+/* Кольцо фокуса — внутри пункта: панель стоит у края окна, и наружное кольцо
+   там срезалось бы. */
+.ctx-item:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.ctx-item:disabled { color: var(--ink-faint); cursor: default; }
+
+/* Опасный пункт — единственный, который уносит объект из модели целиком:
+   цвет и подложка при наведении говорят об этом до нажатия. */
+.ctx-item.danger { color: var(--err-ink); }
+.ctx-item.danger:hover:not(:disabled),
+.ctx-item.danger:focus-visible { background: var(--err-wash); }
+.ctx-item.danger .ctx-hint { color: inherit; opacity: .85; }
+
+.ctx-main { display: flex; align-items: center; gap: var(--pad); }
+.ctx-label { flex: 1 1 auto; }
+.ctx-key {
+  flex: 0 0 auto;
+  color: var(--ink-faint);
+  font-size: var(--fs-micro);
+  font-variant-numeric: tabular-nums;
+}
+.ctx-item.danger .ctx-key { color: inherit; opacity: .75; }
+
+/* Пояснение — второй строкой: у «Удалить из модели» цена действия («со всех
+   диаграмм») не помещается в подпись, а знать её нужно до нажатия. */
+.ctx-hint { color: var(--ink-soft); font-size: var(--fs-micro); line-height: var(--lh); }
+
+.ctx-sep {
+  height: 0;
+  margin: 4px 2px;
+  border: 0;
+  border-top: 1px solid var(--line-soft);
+}
+
+/* На печати меню — гость: его там быть не должно. */
+@media print {
+  .ctx-menu { display: none; }
+}

@@ -1,0 +1,85 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-deploy-spec-target-environment-ok",
+  "name": "deploy_spec_deployment_target (без нарушения) — среда выполнения",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "deploymentSpec",
+      "name": "Конфигурация узла",
+      "documentation": "Правило «deploy-spec-target-environment»: UML 2.5.1, п. 19.5.5.6, констрейнт DeploymentSpecification::deployment_target: «Цель развёртывания спецификации развёртывания — вид среды выполнения.»\nКонтроль: Спецификация развёрнута в среду выполнения «Среда приложений» — так и должно быть."
+    },
+    {
+      "id": "e2",
+      "kind": "executionEnvironment",
+      "name": "Среда приложений"
+    },
+    {
+      "id": "e3",
+      "kind": "component",
+      "name": "Сервис заказов"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "deployment",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "deployment",
+      "from": "e3",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "deploy_spec_deployment_target (без нарушения) — среда выполнения",
+      "kind": "deployment",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 100
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 420,
+          "y": 40,
+          "w": 260,
+          "h": 240
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 460,
+          "y": 80,
+          "w": 180,
+          "h": 90
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

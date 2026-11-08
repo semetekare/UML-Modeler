@@ -1,0 +1,8 @@
+@startuml
+title interaction-overview
+participant e3 as "Пользователь"
+participant e4 as "Система"
+ref over e3, e4 : Авторизация
+ref over e3, e4 : Регистрация
+e3 -> e4 : войти()
+@enduml

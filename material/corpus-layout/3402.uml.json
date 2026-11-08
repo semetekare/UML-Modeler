@@ -1,0 +1,708 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-3402",
+  "name": "UML-диаграмма деятельности «Зарегистрироваться на курсы»",
+  "elements": [
+    {
+      "id": "e10",
+      "kind": "action",
+      "name": "Запросить регистрацию",
+      "lane": "e8",
+      "source": "image"
+    },
+    {
+      "id": "e11",
+      "kind": "action",
+      "name": "Проверить состояние регистрации",
+      "lane": "e9",
+      "source": "image"
+    },
+    {
+      "id": "e14",
+      "kind": "action",
+      "name": "Сообщить об ошибке",
+      "lane": "e9",
+      "source": "image"
+    },
+    {
+      "id": "e17",
+      "kind": "action",
+      "name": "Выбрать действие",
+      "lane": "e8",
+      "source": "image"
+    },
+    {
+      "id": "e16",
+      "kind": "action",
+      "name": "Запросить действие",
+      "lane": "e9",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "action",
+      "name": "Создать учебный план",
+      "documentation": "вызывает деятельность «Создать учебный план»; элемента деятельности в этом файле нет, поэтому ссылка behaviorRef снята",
+      "lane": "e9",
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "action",
+      "name": "Обновить учебный план",
+      "documentation": "вызывает деятельность «Обновить учебный план»; элемента деятельности в этом файле нет, поэтому ссылка behaviorRef снята",
+      "lane": "e9",
+      "source": "image"
+    },
+    {
+      "id": "e5",
+      "kind": "action",
+      "name": "Удалить учебный план",
+      "documentation": "вызывает деятельность «Удалить учебный план»; элемента деятельности в этом файле нет, поэтому ссылка behaviorRef снята",
+      "lane": "e9",
+      "source": "image"
+    },
+    {
+      "id": "e6",
+      "kind": "action",
+      "name": "Утвердить учебный план",
+      "documentation": "вызывает деятельность «Утвердить учебный план»; элемента деятельности в этом файле нет, поэтому ссылка behaviorRef снята",
+      "lane": "e9",
+      "source": "image"
+    },
+    {
+      "id": "e1",
+      "kind": "initial",
+      "name": ""
+    },
+    {
+      "id": "e2",
+      "kind": "decision",
+      "name": ""
+    },
+    {
+      "id": "e7",
+      "kind": "final",
+      "name": "",
+      "documentation": "на рисунке подпись под конечным узлом — «успех»",
+      "source": "image"
+    },
+    {
+      "id": "e8",
+      "kind": "swimlane",
+      "name": "Студент",
+      "source": "image"
+    },
+    {
+      "id": "e9",
+      "kind": "swimlane",
+      "name": "Система регистрации на курсы",
+      "source": "image"
+    },
+    {
+      "id": "e12",
+      "kind": "decision",
+      "name": "",
+      "lane": "e9",
+      "source": "image"
+    },
+    {
+      "id": "e13",
+      "kind": "merge",
+      "name": "",
+      "lane": "e9",
+      "source": "image"
+    },
+    {
+      "id": "e15",
+      "kind": "final",
+      "name": "",
+      "documentation": "на рисунке подпись под конечным узлом — «неуспех»",
+      "source": "image"
+    },
+    {
+      "id": "e18",
+      "kind": "decision",
+      "name": "",
+      "lane": "e8",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "controlFlow",
+      "from": "e1",
+      "to": "e10",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "controlFlow",
+      "from": "e10",
+      "to": "e11",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "controlFlow",
+      "from": "e11",
+      "to": "e12",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "controlFlow",
+      "name": "[регистрация закрыта]",
+      "from": "e12",
+      "to": "e13",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "controlFlow",
+      "name": "[else]",
+      "from": "e12",
+      "to": "e16",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "controlFlow",
+      "from": "e13",
+      "to": "e14",
+      "source": "image"
+    },
+    {
+      "id": "r11",
+      "kind": "controlFlow",
+      "from": "e14",
+      "to": "e15",
+      "source": "image"
+    },
+    {
+      "id": "r12",
+      "kind": "controlFlow",
+      "from": "e16",
+      "to": "e17",
+      "source": "image"
+    },
+    {
+      "id": "r13",
+      "kind": "controlFlow",
+      "from": "e17",
+      "to": "e18",
+      "source": "image"
+    },
+    {
+      "id": "r14",
+      "kind": "controlFlow",
+      "name": "[else]",
+      "from": "e18",
+      "to": "e13",
+      "source": "image"
+    },
+    {
+      "id": "r15",
+      "kind": "controlFlow",
+      "name": "[выбрано создание и оно возможно]",
+      "from": "e18",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r16",
+      "kind": "controlFlow",
+      "name": "[выбрано обновление и оно возможно]",
+      "from": "e18",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r17",
+      "kind": "controlFlow",
+      "name": "[выбрано удаление и оно возможно]",
+      "from": "e18",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r18",
+      "kind": "controlFlow",
+      "name": "[выбрано утверждение и оно возможно]",
+      "from": "e18",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "controlFlow",
+      "from": "e3",
+      "to": "e7"
+    },
+    {
+      "id": "r5",
+      "kind": "controlFlow",
+      "from": "e4",
+      "to": "e7"
+    },
+    {
+      "id": "r7",
+      "kind": "controlFlow",
+      "from": "e5",
+      "to": "e7"
+    },
+    {
+      "id": "r9",
+      "kind": "controlFlow",
+      "from": "e6",
+      "to": "e7"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Зарегистрироваться на курсы",
+      "kind": "activity",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e10",
+          "x": 200,
+          "y": 190,
+          "w": 150,
+          "h": 50
+        },
+        {
+          "id": "s2",
+          "elementId": "e11",
+          "x": 860,
+          "y": 300,
+          "w": 210,
+          "h": 50
+        },
+        {
+          "id": "s3",
+          "elementId": "e14",
+          "x": 850,
+          "y": 960,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s4",
+          "elementId": "e17",
+          "x": 200,
+          "y": 630,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s5",
+          "elementId": "e16",
+          "x": 890,
+          "y": 520,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s6",
+          "elementId": "e3",
+          "x": 510,
+          "y": 850,
+          "w": 150,
+          "h": 50
+        },
+        {
+          "id": "s7",
+          "elementId": "e4",
+          "x": 720,
+          "y": 850,
+          "w": 150,
+          "h": 50
+        },
+        {
+          "id": "s8",
+          "elementId": "e5",
+          "x": 930,
+          "y": 850,
+          "w": 150,
+          "h": 50
+        },
+        {
+          "id": "s9",
+          "elementId": "e6",
+          "x": 1140,
+          "y": 850,
+          "w": 160,
+          "h": 50
+        },
+        {
+          "id": "s10",
+          "elementId": "e1",
+          "x": 260,
+          "y": 110,
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "s11",
+          "elementId": "e2",
+          "x": 250,
+          "y": 1150,
+          "w": 50,
+          "h": 50
+        },
+        {
+          "id": "s12",
+          "elementId": "e7",
+          "x": 1050,
+          "y": 970,
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "s13",
+          "elementId": "e8",
+          "x": 60,
+          "y": 60,
+          "w": 420,
+          "h": 1170
+        },
+        {
+          "id": "s14",
+          "elementId": "e9",
+          "x": 480,
+          "y": 60,
+          "w": 960,
+          "h": 1170
+        },
+        {
+          "id": "s15",
+          "elementId": "e12",
+          "x": 940,
+          "y": 410,
+          "w": 50,
+          "h": 50
+        },
+        {
+          "id": "s16",
+          "elementId": "e13",
+          "x": 1360,
+          "y": 850,
+          "w": 50,
+          "h": 50
+        },
+        {
+          "id": "s17",
+          "elementId": "e15",
+          "x": 950,
+          "y": 1070,
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "s18",
+          "elementId": "e18",
+          "x": 250,
+          "y": 740,
+          "w": 50,
+          "h": 50
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s10",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "top",
+            "t": 0.467
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s2",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s15",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l4",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s15",
+            "side": "bottom",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s16",
+            "side": "top",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l5",
+          "relId": "r8",
+          "from": {
+            "shapeId": "s15",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "top",
+            "t": 0.536
+          }
+        },
+        {
+          "id": "l6",
+          "relId": "r10",
+          "from": {
+            "shapeId": "s16",
+            "side": "left",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l7",
+          "relId": "r11",
+          "from": {
+            "shapeId": "s3",
+            "side": "bottom",
+            "t": 0.786
+          },
+          "to": {
+            "shapeId": "s17",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l8",
+          "relId": "r12",
+          "from": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l9",
+          "relId": "r13",
+          "from": {
+            "shapeId": "s4",
+            "side": "bottom",
+            "t": 0.536
+          },
+          "to": {
+            "shapeId": "s18",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l10",
+          "relId": "r14",
+          "from": {
+            "shapeId": "s18",
+            "side": "right",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s16",
+            "side": "left",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l11",
+          "relId": "r15",
+          "from": {
+            "shapeId": "s18",
+            "side": "right",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l12",
+          "relId": "r16",
+          "from": {
+            "shapeId": "s18",
+            "side": "right",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s7",
+            "side": "left",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l13",
+          "relId": "r17",
+          "from": {
+            "shapeId": "s18",
+            "side": "right",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s8",
+            "side": "left",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l14",
+          "relId": "r18",
+          "from": {
+            "shapeId": "s18",
+            "side": "right",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s9",
+            "side": "left",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l15",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s6",
+            "side": "right",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s12",
+            "side": "left",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l16",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s7",
+            "side": "right",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s12",
+            "side": "left",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l17",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s8",
+            "side": "bottom",
+            "t": 0.867
+          },
+          "to": {
+            "shapeId": "s12",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l18",
+          "relId": "r9",
+          "from": {
+            "shapeId": "s9",
+            "side": "left",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s12",
+            "side": "right",
+            "t": 0.1
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "3402",
+    "figureNo": "3.4.2",
+    "exercise": "3.4",
+    "type": "activity",
+    "diagramName": "Зарегистрироваться на курсы",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма деятельности «Зарегистрироваться на курсы»",
+    "notes": "Текст называет только четыре узла действия вызова деятельности. Рисунок 3.4.2 прочитан целиком: две дорожки (Студент, Система регистрации на курсы), начальный узел, девять действий (добавлены «Запросить регистрацию», «Проверить состояние регистрации», «Сообщить об ошибке», «Запросить действие», «Выбрать действие»), два решения с условиями ([регистрация закрыта] / [else] и четыре «[выбрано … и оно возможно]» / [else]), узел слияния перед «Сообщить об ошибке» и два конечных узла («неуспех» и «успех»).",
+    "gaps": [
+      "в тексте названы только четыре узла действия вызова деятельности; остальные действия студента и системы, ветвления и их рёбра прочитаны с рисунка",
+      "поле Behavior узла действия вызова деятельности (ссылка на деятельность) не выражается; здесь оно записано строкой behaviorRef",
+      "дорожки на рисунке 3.4.2 текст не описывает — прочитаны с рисунка",
+      "у конечного узла в uml-model/3 нет имени: подписи «успех» и «неуспех» записаны в documentation"
+    ],
+    "gapIds": [
+      "model.callBehavior",
+      "model.swimlane",
+      "source.guards",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e3",
+      "e4",
+      "e5",
+      "e6",
+      "e7",
+      "r1",
+      "r2",
+      "r4",
+      "r6",
+      "r8"
+    ]
+  },
+  "expect": {
+    "rules": [
+      "узел действия вызова деятельности ссылается на деятельность с тем же именем"
+    ]
+  },
+  "sheet": {
+    "w": 1500,
+    "h": 1290
+  }
+}

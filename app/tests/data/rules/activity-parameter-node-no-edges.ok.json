@@ -1,0 +1,125 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-activity-parameter-node-no-edges-ok",
+  "name": "activity_parameter_node_no_edges (без нарушения) — вход, выход и свежий узел",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "action",
+      "name": "Принять заказ"
+    },
+    {
+      "id": "e2",
+      "kind": "activityParameter",
+      "name": "заказ",
+      "documentation": "Правило «activity-parameter-node-no-edges»: UML 2.5.1, п. 15.7.6.5, констрейнт ActivityParameterNode::no_edges: «Узел параметра деятельности может иметь все входящие рёбра деятельности или все исходящие, но не должен иметь одновременно и входящие, и исходящие.»\nКонтроль: Узел параметра «заказ» — вход деятельности: у него только входящее ребро."
+    },
+    {
+      "id": "e3",
+      "kind": "activityParameter",
+      "name": "накладная",
+      "documentation": "Правило «activity-parameter-node-no-edges»: UML 2.5.1, п. 15.7.6.5, констрейнт ActivityParameterNode::no_edges: «Узел параметра деятельности может иметь все входящие рёбра деятельности или все исходящие, но не должен иметь одновременно и входящие, и исходящие.»\nКонтроль: Узел параметра «накладная» — выход деятельности: у него только исходящее ребро."
+    },
+    {
+      "id": "e4",
+      "kind": "activityParameter",
+      "name": "итог",
+      "documentation": "Правило «activity-parameter-node-no-edges»: UML 2.5.1, п. 15.7.6.5, констрейнт ActivityParameterNode::no_edges: «Узел параметра деятельности может иметь все входящие рёбра деятельности или все исходящие, но не должен иметь одновременно и входящие, и исходящие.»\nКонтроль: Свежий узел параметра без рёбер: оба множества пусты, условие выполняется само."
+    },
+    {
+      "id": "e5",
+      "kind": "action",
+      "name": "Отгрузить"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "controlFlow",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "controlFlow",
+      "from": "e3",
+      "to": "e5"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "activity_parameter_node_no_edges (без нарушения) — вход, выход и свежий узел",
+      "kind": "activity",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 160,
+          "h": 50
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 300,
+          "y": 65,
+          "w": 120,
+          "h": 40
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 300,
+          "y": 200,
+          "w": 120,
+          "h": 40
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 300,
+          "y": 320,
+          "w": 120,
+          "h": 40
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 500,
+          "y": 195,
+          "w": 160,
+          "h": 50
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s3",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

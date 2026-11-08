@@ -1,0 +1,63 @@
+{
+  "key": "component",
+  "kind": "shape",
+  "title": "Компонент",
+  "oneLine": "Компонент — модульная часть системы с явно заданными интерфейсами и портами.",
+  "draws": "Прямоугольник с иконкой компонента (два выступающих прямоугольника) в правом верхнем углу или со стереотипом «component». Предоставляемые интерфейсы — кружки на линии, требуемые — полукруги-розетки. Внутрь можно вложить части и порты. Компонент может содержать вложенные компоненты, если нужно показать внутреннюю сборку. Компонент может быть абстрактным: интерфейсы заданы, реализация появится позже.",
+  "differs": "От класса отличается единицей модульности: компонент поставляется и заменяется целиком, и у него есть предоставляемые и требуемые интерфейсы. От артефакта — уровнем: компонент логическая единица, артефакт — файл, который её воплощает. Если заменить компонент классом, пропадёт различие между «что обещано» и «чем реализовано», и сборку перестанет быть чем проверять. Признак ошибки: у компонента есть вложенный класс — это запрещено, вложенность даёт пакет, а не компонент. Компонент выбирают, когда важна замена и сборка; класс — когда важна структура данных.",
+  "clause": {
+    "number": "11.6",
+    "title": "Components",
+    "id": "11.6-components"
+  },
+  "rules": [
+    "namespace-members-distinguishable",
+    "component-no-nested-classifier"
+  ],
+  "example": "«DBAccess» и «BSAccess» — компоненты-подсистемы в архитектуре системы регистрации.",
+  "plantuml": "component C",
+  "stereotypes": [
+    "facade",
+    "framework",
+    "modelLibrary",
+    "profile",
+    "stub",
+    "topLevel",
+    "buildComponent",
+    "document",
+    "entity",
+    "focus",
+    "executable",
+    "file",
+    "implement",
+    "library",
+    "metaclass",
+    "powertype",
+    "process",
+    "service",
+    "subsystem",
+    "table",
+    "thread",
+    "utility",
+    "Participant",
+    "specification"
+  ],
+  "seeAlso": [
+    "class",
+    "interface",
+    "artifact",
+    "port",
+    "assembly"
+  ],
+  "sources": [
+    "uml.json#shapes.component",
+    "crossrefs.json#notationToClause.component",
+    "spec-tree.json#11.6",
+    "rules-uml-2.5.1.json#namespace-members-distinguishable",
+    "rules-uml-2.5.1.json#component-no-nested-classifier",
+    "crossrefs.json#stereotypeToShape",
+    "plantuml-grammar.json#element-usecase",
+    "DIAGRAM-TYPES.md#3.7"
+  ],
+  "diagrams": "3.7"
+}

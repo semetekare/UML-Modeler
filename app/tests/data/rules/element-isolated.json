@@ -1,0 +1,79 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-element-isolated",
+  "name": "element-isolated — класс не участвует ни в одной связи",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Заказ"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "Клиент"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "Отчёт",
+      "documentation": "Правило «element-isolated» — совет практики моделирования: пункта UML у него нет, есть только объяснение, почему такую модель трудно читать.\nКласс «Отчёт» показан на листе, но ни одной связи у него нет: он не связан с моделью."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "association",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "element-isolated — сирота в модели",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 60,
+          "y": 240,
+          "w": 150,
+          "h": 80
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

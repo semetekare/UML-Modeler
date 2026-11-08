@@ -1,0 +1,121 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5214",
+    "figureNo": "5.2.14",
+    "exercise": "5.2.G",
+    "type": "package",
+    "diagramName": "BSAccess",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма пакетов подсистемы BSAccess",
+    "notes": "Текст называет пакеты java::net, org::apache::xmlrpc и XMLRPCInterchange. Рисунок 5.2.14 показывает их короткими именами (net, xmlrpc) с квалификаторами под именем, стереотип «mechanism» у XMLRPCInterchange с шестью параметрами шаблона и пять зависимостей, помеченных «import», плюс связь «bind» с привязкой XMLRPCConnector -> BSAccess.",
+    "gaps": [
+      "точный состав пакетов на снимке в тексте не перечислен: названы только java::net, org::apache::xmlrpc и XMLRPCInterchange",
+      "вложенность org::apache::xmlrpc не выражается: у элемента нет владельца",
+      "параметры параметризованного пакета и привязка параметров не выражаются в uml-model/3 — записаны полем templateParameters и подписью связи"
+    ],
+    "gapIds": [
+      "model.packageOwner",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e2",
+      "e3",
+      "e4",
+      "r1",
+      "r2",
+      "r3"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "package",
+      "name": "BSAccess",
+      "stereotype": "subsystem"
+    },
+    {
+      "id": "e2",
+      "kind": "package",
+      "name": "XMLRPCInterchange",
+      "templateParameters": [
+        "XMLRPCConnector",
+        "ObjectToSend",
+        "ObjectToReceive",
+        "CustomTypeFactory",
+        "CustomSerializer",
+        "CustomParser"
+      ],
+      "stereotype": "mechanism",
+      "note": "на рисунке под именем напечатано (RemoteInterchange), в присоединённой рамке — шесть параметров шаблона",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "package",
+      "name": "net",
+      "note": "на рисунке имя пакета — net, под ним квалификатор (Logical View::Middleware::java)",
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "package",
+      "name": "xmlrpc",
+      "note": "на рисунке имя пакета — xmlrpc, под ним квалификатор (Logical View::Middleware::org::apache)",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e3",
+      "stereotype": "import",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e4",
+      "stereotype": "import",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "name": "<XMLRPCConnector -> BSAccess>",
+      "stereotype": "bind",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "dependency",
+      "stereotype": "import",
+      "from": "e2",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "dependency",
+      "stereotype": "import",
+      "from": "e2",
+      "to": "e4",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "BSAccess",
+      "type": "package",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

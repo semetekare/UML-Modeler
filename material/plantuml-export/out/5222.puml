@@ -1,0 +1,8 @@
+@startuml
+title createSchedule
+start
+:rctrl.createSchedule(sem); self.displayBlankSchedule(); cOff = rctrl.getCourseOfferingList();
+:Loop;
+stop
+note right : RegistrationForm::createSchedule(sem):void
+@enduml

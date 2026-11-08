@@ -1,0 +1,94 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4402",
+    "figureNo": "4.4.2",
+    "exercise": "4.4",
+    "type": "sequence",
+    "diagramName": "TransferSchedulesData Subflow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности TransferSchedulesData Subflow",
+    "notes": "Состав семи линий жизни назван поимённо; три линии жизни помечены множественными; есть фрагменты opt и loop, длительные и асинхронные сообщения.",
+    "gaps": [
+      "сообщения названы только по типу (длительные, асинхронные), не по именам",
+      "сторожевые условия и границы итераций фрагментов loop/opt в тексте не приведены",
+      "асинхронность сообщения не выражается в uml-model/3 — записана полем asynchronous",
+      "множественность линий жизни (Multi-object) не выражается — записана multiObject"
+    ],
+    "gapIds": [
+      "model.async",
+      "model.multiObject",
+      "source.guards",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Расчётная система"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "crctrl:CloseRegistrationController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "dao:DataAccess",
+      "stereotype": "control"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "studlist[i]:Student",
+      "stereotype": "entity",
+      "multiObject": true
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "cOff[j]:CourseOffering",
+      "stereotype": "entity",
+      "multiObject": true
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "studlist[i].schedule[s]:Schedule",
+      "stereotype": "entity",
+      "multiObject": true
+    },
+    {
+      "id": "e7",
+      "kind": "lifeline",
+      "name": "bs:BillingSystem",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "opt"
+    },
+    {
+      "id": "e9",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "loop"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "TransferSchedulesData Subflow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

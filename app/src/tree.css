@@ -1,0 +1,257 @@
+/* Дерево модели: то, что добавилось к styles.css в итерации «дерево и
+   инспектор» (UX-аудит 2026-11-07, D4, D5, D7, D10).
+   ---------------------------------------------------------------------
+   ПОЧЕМУ ОТДЕЛЬНЫЙ ФАЙЛ. styles.css правит не одна задача: полотно, печать,
+   меню и дерево делаются параллельно. Поэтому здесь только классы с
+   префиксом `.tr-` — они ни с чем не столкнутся, и файл можно читать как
+   описание того, что появилось, не вычитывая 1400 строк общего листа.
+
+   ЧТО ЗДЕСЬ НЕТ. Строка элемента (`.node`, `.nm`, `.st-glyph`) остаётся в
+   styles.css: она была и остаётся общей для дерева и списка курса. Здесь —
+   только новое: треугольник, группы связей и «где используется», шапка
+   панели и вложения в инспекторе.
+
+   ЦВЕТА И РАЗМЕРЫ — из токенов темы (styles.css: :root), ни одного литерала:
+   тёмная тема и бренд-пресеты меняют только переменные. */
+
+/* ------------------------------------------------------------- шапка */
+
+/* Строка под полем поиска: свернуть/развернуть всё, порядок, счётчик.
+   Высота — та же сетка, что у строки дерева (--row), иначе шапка «прыгала»
+   бы при появлении счётчика найденного. */
+.tr-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: var(--row);
+  margin: 0 0 2px;
+}
+
+.tr-tool {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: var(--r-field, 4px);
+  background: none;
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+}
+.tr-tool:hover { background: var(--brand-soft); color: var(--ink); }
+.tr-tool:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* Порядок в дереве. Ширина ограничена, чтобы «по порядку в файле» не съел
+   место у счётчика найденного; текст пункта виден целиком в подсказке. */
+.tr-sort {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 132px;
+  height: 22px;
+  padding: 0 4px;
+  border: 1px solid var(--border-control);
+  border-radius: var(--r-field, 4px);
+  background: var(--surface-paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: var(--fs-micro);
+  cursor: pointer;
+}
+.tr-sort:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.tr-found {
+  margin-left: auto;
+  flex: 0 0 auto;
+  font-size: var(--fs-micro);
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------- треугольник */
+
+/* Стопка «развернуть/свернуть». Это кнопка, а не глиф: у неё есть
+   aria-expanded, поэтому диктор говорит состояние узла, а не «▸».
+   Ширина 14 — по сетке строки; в обход Tab не входит (tabindex=-1 в JS):
+   стоп один на строку, иначе клавиатура проходила бы каждый узел дважды. */
+.tr-twisty {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 18px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: none;
+  color: var(--ink-faint);
+  font-size: 9px;
+  line-height: 1;
+  cursor: pointer;
+}
+.tr-twisty:hover { color: var(--ink); }
+.tr-twisty:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; border-radius: 3px; }
+/* У листа без детей места нет, но колонка остаётся: имена соседних строк
+   должны начинаться на одной вертикали. */
+.tr-twisty-none { cursor: default; }
+
+/* ------------------------------------------------------------ группы */
+
+/* «Связи (N)», «Диаграммы (N)», «Где используется (N)»: тише строки
+   элемента — это не объект модели, а подпись к списку. */
+.tr-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 20px;
+  padding: 0 var(--pad) 0 0;
+  border-radius: var(--r-field);
+  cursor: pointer;
+  color: var(--ink-soft);
+  font-size: var(--fs-micro);
+  line-height: var(--lh);
+}
+.tr-group:hover { background: var(--brand-soft); color: var(--ink); }
+.tr-group:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.tr-glabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Дети узла: отступ тот же, что у .tree ul.nested в styles.css, но линия
+   слева показывает, что список принадлежит строке выше, — на глубокой
+   вложенности (пакет в пакете) без неё не видно, где кончается один. */
+.tr-kids { border-left: 1px solid var(--line-soft); margin-left: 7px; }
+
+/* ------------------------------------------------------------ связи */
+
+/* Строка связи. Три части: вид, имя, второй конец. Имя сжимается, вид и
+   конец — нет: «→ Студент» и «Ассоциация» короче любого имени. */
+.tr-rel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: var(--row);
+  padding: 0 var(--pad) 0 0;
+  border-radius: var(--r-field);
+  cursor: pointer;
+  font-size: var(--fs-micro);
+  line-height: var(--lh);
+  color: var(--ink-soft);
+}
+.tr-rel:hover { background: var(--brand-soft); color: var(--ink); }
+.tr-rel.current { background: var(--brand-soft); color: var(--accent-on-soft); }
+.tr-rel.current .tr-rkind { color: var(--accent); }
+.tr-rel:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.tr-rkind { flex: 0 0 auto; color: var(--ink-faint); }
+.tr-rel .nm { flex: 1 1 auto; min-width: 0; }
+/* Второй конец — «куда ведёт»: он и есть смысл строки, поэтому цветом
+   чернил, а не подсказки. */
+.tr-rend {
+  flex: 0 1 auto;
+  max-width: 45%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--ink);
+  font-size: 10px;
+}
+.tr-rel.current .tr-rend { color: var(--accent); }
+
+/* Счётчик связей у элемента: «↔ 13». Он же — обещание, что под строкой
+   есть что раскрыть. */
+.tr-relcount {
+  flex: 0 0 auto;
+  padding-left: 4px;
+  color: var(--ink-faint);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Подсветка совпадения в имени. Фон — не акцентная плашка, а маркер:
+   иначе на строке из трёх совпадений дерево выглядело бы выбранным. */
+.tr-bar ~ .tree mark,
+.tree mark {
+  background: color-mix(in oklab, var(--accent) 26%, transparent);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+/* ------------------------------------------------- вложения в инспекторе */
+
+.tr-att-list { display: flex; flex-direction: column; gap: 2px; margin-bottom: 4px; }
+.tr-att-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-micro);
+  line-height: var(--lh);
+}
+.tr-att-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tr-att-size {
+  flex: 0 0 auto;
+  color: var(--ink-faint);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.tr-att-total { margin: 2px 0 4px; color: var(--ink-faint); font-size: 10px; }
+/* Отказ «файл больше 2 МБ» — не всплывающая подсказка: он остаётся на месте,
+   пока человек не приложит другой файл, и его читает диктор (aria-live). */
+.tr-att-status { color: var(--ink-soft); font-size: var(--fs-micro); }
+.tr-att-status:empty { display: none; }
+.tr-att-file { display: none; }
+
+/* ------------------------------------------------- подпись перехода */
+
+/* Предпросмотр `событие [условие] / действие`: показывает, что попадёт на
+   линию. Моноширинный — чтобы скобки и «/» читались как часть подписи. */
+.tr-transition-preview {
+  margin: -2px 0 var(--pad);
+  padding: 3px 6px;
+  border-left: 2px solid var(--line-soft);
+  color: var(--ink-soft);
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 10px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+/* -------------------------------------------------- ветка «Модель» */
+
+/* Отдельная ветка внизу дерева: то, что есть в модели, но не на листах
+   (лист — корень, поэтому «модель» — второй ответ на вопрос «что в проекте»).
+   Чуть отделена сверху: это другой разрез, а не ещё одна группа листа. */
+.tr-model-list { margin-top: 6px; padding-top: 4px; border-top: 1px solid var(--line-soft); }
+.tr-group.tr-model { color: var(--ink-soft); }
+.tr-model .tr-glabel { font-weight: 600; }
+
+/* Переименование прямо в строке: поле занимает место имени и не двигает
+   соседей — иначе строка «прыгала» бы на каждом F2. */
+.tr-rename {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 18px;
+  padding: 0 4px;
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  background: var(--surface-paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: var(--fs-micro);
+  outline: none;
+}
+
+.tr-empty { padding: 2px 0 2px 4px; }

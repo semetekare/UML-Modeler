@@ -1,0 +1,275 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-break-ok",
+  "name": "break (без нарушения) — break покрывает все линии объемлющего фрагмента",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": ":Покупатель"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": ":Магазин"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": ":Платёжный шлюз"
+    },
+    {
+      "id": "e4",
+      "kind": "fragment",
+      "name": "Цикл оплаты",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[пока не оплачено]",
+          "messages": [
+            "r1",
+            "r2",
+            "r3"
+          ]
+        }
+      ],
+      "operator": "loop"
+    },
+    {
+      "id": "e5",
+      "kind": "fragment",
+      "name": "Выход из цикла",
+      "documentation": "Контроль: break покрывает те же три линии жизни, что и объемлющий loop, — правило молчит.",
+      "ownerId": "e4",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[оплата прошла]",
+          "messages": [
+            "r1",
+            "r2",
+            "r3"
+          ]
+        }
+      ],
+      "operator": "break"
+    },
+    {
+      "id": "e6",
+      "kind": "fragment",
+      "name": "Верхний break",
+      "documentation": "Граница: у break нет объемлющего фрагмента (ownerId не задан) — сравнивать не с чем, правило молчит. Сообщение у него своё (r4): одно сообщение в двух фрагментах без общей вложенности — уже другой дефект, Message::cannot_cross_boundaries.",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[отмена]",
+          "messages": [
+            "r4"
+          ]
+        }
+      ],
+      "operator": "break"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "Внешний без сообщений",
+      "operands": [
+        {
+          "id": "o1"
+        }
+      ],
+      "operator": "opt"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "Вложенный break без покрытия",
+      "documentation": "Граница: у объемлющего фрагмента ещё нет сообщений, покрытие не выведено — правило молчит. Сообщение у него тоже своё (r5), чтобы не делить его с соседними фрагментами.",
+      "ownerId": "e7",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[ошибка]",
+          "messages": [
+            "r5"
+          ]
+        }
+      ],
+      "operator": "break"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "оформить()",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "оплатить()",
+      "from": "e2",
+      "to": "e3"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "подтвердить()",
+      "from": "e1",
+      "to": "e3"
+    },
+    {
+      "id": "r4",
+      "kind": "reply",
+      "name": "ok",
+      "from": "e3",
+      "to": "e2"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "вернуть()",
+      "from": "e2",
+      "to": "e1"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Оформление заказа",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 620
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 270,
+          "y": 60,
+          "w": 150,
+          "h": 620
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 480,
+          "y": 60,
+          "w": 150,
+          "h": 620
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 60,
+          "y": 120,
+          "w": 700,
+          "h": 150
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 80,
+          "y": 160,
+          "w": 660,
+          "h": 90
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 60,
+          "y": 300,
+          "w": 700,
+          "h": 90
+        },
+        {
+          "id": "s7",
+          "elementId": "e7",
+          "x": 60,
+          "y": 420,
+          "w": 700,
+          "h": 90
+        },
+        {
+          "id": "s8",
+          "elementId": "e8",
+          "x": 80,
+          "y": 450,
+          "w": 660,
+          "h": 50
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.2
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.2
+          },
+          "y": 180
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.25
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.25
+          },
+          "y": 220
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.3
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.3
+          },
+          "y": 260
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.35
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.35
+          },
+          "y": 300
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

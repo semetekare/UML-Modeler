@@ -1,0 +1,84 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-relationship-duplicate",
+  "name": "relationship-duplicate — две одинаковые ассоциации между одной парой",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Заказ"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "Клиент",
+      "documentation": "Правило «relationship-duplicate» — совет практики моделирования: пункта UML у него нет, есть только объяснение, почему такую модель трудно читать.\nМежду «Заказом» и «Клиентом» заведены две ассоциации, совпадающие по виду, концам, ролям, кратностям и навигации: вторая повторяет первую."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "association",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "association",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "relationship-duplicate — дубль связи",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

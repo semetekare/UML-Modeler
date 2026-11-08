@@ -1,0 +1,484 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-4303",
+  "name": "Окончательный вид UML-диаграммы последовательности RegisterForCourses Basic Flow",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Студент"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "menu:MainMenuForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "rform:RegistrationForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "rctrl:RegistrationController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "dao:DataAccess",
+      "stereotype": "control"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "curStud:Student",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "[rctrl.isRegistrationOpened(s)]",
+      "documentation": "условие фрагмента opt; прочитано с рисунка",
+      "operator": "opt",
+      "source": "image"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "[!rctrl.registerForCourses(curUser)] / [else]",
+      "documentation": "внешний alt: первый операнд — отказ, второй — [else]; второй операнд содержит вложенный alt",
+      "operator": "alt",
+      "source": "image"
+    },
+    {
+      "id": "e9",
+      "kind": "fragment",
+      "name": "[создаётся учебный план] / [изменяется учебный план] / [удаляется учебный план] / [утверждается учебный план]",
+      "documentation": "вложенный в [else] alt из четырёх операндов; в каждом — своя ссылка на взаимодействие",
+      "operator": "alt",
+      "source": "image"
+    },
+    {
+      "id": "e10",
+      "kind": "interactionUse",
+      "name": "CreateSchedule Subflow",
+      "refersTo": "CreateSchedule Subflow",
+      "operator": "ref"
+    },
+    {
+      "id": "e11",
+      "kind": "interactionUse",
+      "name": "UpdateSchedule Subflow",
+      "refersTo": "UpdateSchedule Subflow",
+      "operator": "ref"
+    },
+    {
+      "id": "e12",
+      "kind": "interactionUse",
+      "name": "DeleteSchedule Subflow",
+      "refersTo": "DeleteSchedule Subflow",
+      "operator": "ref"
+    },
+    {
+      "id": "e13",
+      "kind": "interactionUse",
+      "name": "SubmitSchedule Subflow",
+      "refersTo": "SubmitSchedule Subflow",
+      "operator": "ref"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "registerForCourses()",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "registerForCourses(u : User)",
+      "from": "e2",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "isRegistrationOpened(semester : byte) : boolean",
+      "from": "e4",
+      "to": "e4",
+      "note": "рефлексивное сообщение",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "getStudentByUser(u : User) : Student",
+      "from": "e4",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e5",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "reply",
+      "name": "curStud",
+      "from": "e6",
+      "to": "e4",
+      "note": "возврат созданного объекта Student из dao в контроллер",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "hasScheduleForSemester(semester : byte)",
+      "from": "e4",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "reply",
+      "name": "result",
+      "from": "e4",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "message",
+      "name": "displayError()",
+      "from": "e2",
+      "to": "e2",
+      "note": "первый операнд внешнего alt: регистрация закрыта",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "createMessage",
+      "name": "open",
+      "from": "e2",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "RegisterForCourses Basic Flow",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 1060
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 200,
+          "h": 1060
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 580,
+          "y": 60,
+          "w": 200,
+          "h": 1060
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 840,
+          "y": 60,
+          "w": 200,
+          "h": 1060
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 1100,
+          "y": 60,
+          "w": 200,
+          "h": 1060
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 1360,
+          "y": 60,
+          "w": 200,
+          "h": 1060
+        },
+        {
+          "id": "s7",
+          "elementId": "e7",
+          "x": 60,
+          "y": 150,
+          "w": 1500,
+          "h": 110
+        },
+        {
+          "id": "s8",
+          "elementId": "e8",
+          "x": 60,
+          "y": 300,
+          "w": 1500,
+          "h": 90
+        },
+        {
+          "id": "s9",
+          "elementId": "e9",
+          "x": 60,
+          "y": 430,
+          "w": 1500,
+          "h": 110
+        },
+        {
+          "id": "s10",
+          "elementId": "e10",
+          "x": 60,
+          "y": 580,
+          "w": 1500,
+          "h": 90
+        },
+        {
+          "id": "s11",
+          "elementId": "e11",
+          "x": 60,
+          "y": 710,
+          "w": 1500,
+          "h": 110
+        },
+        {
+          "id": "s12",
+          "elementId": "e12",
+          "x": 60,
+          "y": 860,
+          "w": 1500,
+          "h": 90
+        },
+        {
+          "id": "s13",
+          "elementId": "e13",
+          "x": 60,
+          "y": 990,
+          "w": 1500,
+          "h": 90
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.113
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.113
+          },
+          "y": 180
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.142
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.142
+          },
+          "y": 210
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.255
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.274
+          },
+          "y": 330
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.377
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.377
+          },
+          "y": 460
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.406
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.406
+          },
+          "y": 490
+        },
+        {
+          "id": "l6",
+          "relId": "r9",
+          "from": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.519
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.519
+          },
+          "y": 610
+        },
+        {
+          "id": "l7",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.642
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.642
+          },
+          "y": 740
+        },
+        {
+          "id": "l8",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.67
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.67
+          },
+          "y": 770
+        },
+        {
+          "id": "l9",
+          "relId": "r10",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.783
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.802
+          },
+          "y": 890
+        },
+        {
+          "id": "l10",
+          "relId": "r8",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.906
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.906
+          },
+          "y": 1020
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "4303",
+    "figureNo": "4.3.3",
+    "exercise": "4.3",
+    "type": "sequence",
+    "diagramName": "RegisterForCourses Basic Flow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Окончательный вид UML-диаграммы последовательности RegisterForCourses Basic Flow",
+    "notes": "Состав линий жизни и ссылки на подчинённые потоки названы текстом; десять сообщений и сторожевые условия четырёх операндов вложенного alt, внешнего alt и opt прочитаны с рисунка 4.3.3 — в тексте условий нет.",
+    "gaps": [
+      "сторожевые условия четырёх операндов вложенного alt, внешнего alt и opt в тексте не приведены — прочитаны с рисунка",
+      "поле Refers to у Interaction Use (ссылка на диаграмму) не выражается в uml-model/3 — записано полем refersTo",
+      "вложенность alt в alt и операнды фрагментов в модели не выражаются — операнды записаны в имени фрагмента",
+      "покрытие сообщений фрагментами не выражается"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.fragmentOperands",
+      "model.interactionRef",
+      "source.guards"
+    ],
+    "imageDerived": [
+      "e7",
+      "e8",
+      "e9",
+      "r1",
+      "r2",
+      "r3",
+      "r4",
+      "r5",
+      "r6",
+      "r7"
+    ]
+  },
+  "sheet": {
+    "w": 1620,
+    "h": 1180
+  }
+}

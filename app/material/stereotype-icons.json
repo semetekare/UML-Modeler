@@ -1,0 +1,473 @@
+{
+ "version": 1,
+ "note": "Ключ — значение iconPath из material/stereotypes.xml. asset — имя нашей иконки, которую нарисует VectorCraft-пайплайн (файл app/src/brand/icons/<asset>.svg). glyph — уникальный рисунок: несколько iconPath могут давать один и тот же пиксель-в-пиксель глиф, тогда у них общий asset. kind: figure — пиктограмма заменяет фигуру целиком, badge — значок 16×16 в углу фигуры. size — фактические пиксели GIF. file — путь внутри архива stereotypes_files.zip. Все GIF статичные (1 кадр). Суффикса -16 у badge нет намеренно: 24-пиксельного варианта не существует, размер несёт поле size. Поле caption: inside — подпись внутри рисунка (замкнутая форма), below — под рисунком (линия без внутренности). Любой рисунок ставится знаком в правый верхний угол фигуры; фигура сохраняет своё тело.",
+ "map": {
+  "stereotypeIcons/EhNy4yKGAqACZgL8": {
+   "asset": "pict-entity",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "entity",
+   "stereotype": "entity",
+   "baseType": "Class",
+   "file": "Workspace/stereotypeIcons/EhNy4yKGAqACZgL8",
+   "stereotypes": [
+    {
+     "name": "entity",
+     "baseType": "Class",
+     "scope": "application"
+    }
+   ]
+  },
+  "stereotypeIcons/EhNy4yKGAqACZgL_": {
+   "asset": "pict-control",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "control",
+   "stereotype": "control",
+   "baseType": "Class",
+   "file": "Workspace/stereotypeIcons/EhNy4yKGAqACZgL_",
+   "stereotypes": [
+    {
+     "name": "control",
+     "baseType": "Class",
+     "scope": "application"
+    }
+   ]
+  },
+  "stereotypeIcons/EhNy4yKGAqACZgMA": {
+   "asset": "pict-boundary",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "boundary",
+   "stereotype": "boundary",
+   "baseType": "Class",
+   "file": "Workspace/stereotypeIcons/EhNy4yKGAqACZgMA",
+   "stereotypes": [
+    {
+     "name": "boundary",
+     "baseType": "Class",
+     "scope": "application"
+    }
+   ]
+  },
+  "stereotypeIcons/7hNy4yKGAqACZgNH": {
+   "asset": "pict-entity",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "entity",
+   "stereotype": "entity",
+   "baseType": "Object",
+   "file": "Workspace/stereotypeIcons/7hNy4yKGAqACZgNH",
+   "stereotypes": [
+    {
+     "name": "entity",
+     "baseType": "Object",
+     "scope": "application"
+    }
+   ]
+  },
+  "stereotypeIcons/7hNy4yKGAqACZgNI": {
+   "asset": "pict-control",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "control",
+   "stereotype": "control",
+   "baseType": "Object",
+   "file": "Workspace/stereotypeIcons/7hNy4yKGAqACZgNI",
+   "stereotypes": [
+    {
+     "name": "control",
+     "baseType": "Object",
+     "scope": "application"
+    }
+   ]
+  },
+  "stereotypeIcons/7hNy4yKGAqACZgNJ": {
+   "asset": "pict-boundary",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "boundary",
+   "stereotype": "boundary",
+   "baseType": "Object",
+   "file": "Workspace/stereotypeIcons/7hNy4yKGAqACZgNJ",
+   "stereotypes": [
+    {
+     "name": "boundary",
+     "baseType": "Object",
+     "scope": "application"
+    }
+   ]
+  },
+  "stereotypeIcons/fZMKUyKGAqACZgXg": {
+   "asset": "pict-layer",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "layer",
+   "stereotype": "layer",
+   "baseType": "Package",
+   "file": "Workspace/stereotypeIcons/fZMKUyKGAqACZgXg",
+   "stereotypes": [
+    {
+     "name": "layer",
+     "baseType": "Package",
+     "scope": "application"
+    },
+    {
+     "name": "layer",
+     "baseType": "Package",
+     "scope": "project"
+    }
+   ]
+  },
+  "stereotypeIcons/LSVqUyKGAqACZgXn": {
+   "asset": "pict-arch-view",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "arch-view",
+   "stereotype": "architectural view",
+   "baseType": "Package",
+   "file": "Workspace/stereotypeIcons/LSVqUyKGAqACZgXn",
+   "stereotypes": [
+    {
+     "name": "architectural view",
+     "baseType": "Package",
+     "scope": "application"
+    },
+    {
+     "name": "architectural view",
+     "baseType": "Package",
+     "scope": "project"
+    }
+   ]
+  },
+  "stereotypeIcons/mAwbUyKGAqACZgqy": {
+   "asset": "pict-mechanism",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "mechanism",
+   "stereotype": "mechanism",
+   "baseType": "Collaboration2",
+   "file": "Workspace/stereotypeIcons/mAwbUyKGAqACZgqy",
+   "stereotypes": [
+    {
+     "name": "mechanism",
+     "baseType": "Collaboration2",
+     "scope": "application"
+    },
+    {
+     "name": "mechanism",
+     "baseType": "Collaboration2",
+     "scope": "project"
+    }
+   ]
+  },
+  "stereotypeIcons/iZtMOyKGAqACZASe": {
+   "asset": "pict-subsystem",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "subsystem",
+   "stereotype": "subsystem",
+   "baseType": "Package",
+   "file": "Workspace/stereotypeIcons/iZtMOyKGAqACZASe",
+   "stereotypes": [
+    {
+     "name": "subsystem",
+     "baseType": "Package",
+     "scope": "application"
+    }
+   ]
+  },
+  "stereotypeIcons/qs4vjKKGAqACZQqT": {
+   "asset": "pict-schema",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "schema",
+   "stereotype": "schema",
+   "baseType": "Package",
+   "file": "Workspace/stereotypeIcons/qs4vjKKGAqACZQqT",
+   "stereotypes": [
+    {
+     "name": "schema",
+     "baseType": "Package",
+     "scope": "application"
+    }
+   ]
+  },
+  "stereotypeIcons/dcD_jKKGAqACZQrh": {
+   "asset": "pict-table",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "table",
+   "stereotype": "table",
+   "baseType": "Class",
+   "file": "Workspace/stereotypeIcons/dcD_jKKGAqACZQrh",
+   "stereotypes": [
+    {
+     "name": "table",
+     "baseType": "Class",
+     "scope": "application"
+    }
+   ]
+  },
+  "stereotypeIcons/bcTim9KGAqACIgke": {
+   "asset": "pict-mechanism",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "mechanism",
+   "stereotype": "mechanism",
+   "baseType": "Collaboration",
+   "file": "Workspace/stereotypeIcons/bcTim9KGAqACIgke",
+   "stereotypes": [
+    {
+     "name": "mechanism",
+     "baseType": "Collaboration",
+     "scope": "application"
+    },
+    {
+     "name": "mechanism",
+     "baseType": "Package",
+     "scope": "application"
+    }
+   ]
+  },
+  "stereotypeIcons/oAHKm9KGAqACIgk.": {
+   "asset": "pict-view",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "view",
+   "stereotype": "view",
+   "baseType": "Class",
+   "file": "Workspace/stereotypeIcons/oAHKm9KGAqACIgk.",
+   "stereotypes": [
+    {
+     "name": "view",
+     "baseType": "Class",
+     "scope": "application"
+    }
+   ]
+  },
+  "stereotypeIcons/GhNy4yKGAqACZgMI": {
+   "asset": "pict-boundary",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "boundary",
+   "stereotype": "boundary",
+   "baseType": "InteractionLifeLine",
+   "file": "Workspace/stereotypeIcons/GhNy4yKGAqACZgMI",
+   "stereotypes": [
+    {
+     "name": "boundary",
+     "baseType": "InteractionLifeLine",
+     "scope": "application"
+    }
+   ]
+  },
+  "stereotypeIcons/GhNy4yKGAqACZgMH": {
+   "asset": "pict-control",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "control",
+   "stereotype": "control",
+   "baseType": "InteractionLifeLine",
+   "file": "Workspace/stereotypeIcons/GhNy4yKGAqACZgMH",
+   "stereotypes": [
+    {
+     "name": "control",
+     "baseType": "InteractionLifeLine",
+     "scope": "application"
+    }
+   ]
+  },
+  "stereotypeIcons/EhNy4yKGAqACZgMG": {
+   "asset": "pict-entity",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "entity",
+   "stereotype": "entity",
+   "baseType": "InteractionLifeLine",
+   "file": "Workspace/stereotypeIcons/EhNy4yKGAqACZgMG",
+   "stereotypes": [
+    {
+     "name": "entity",
+     "baseType": "InteractionLifeLine",
+     "scope": "application"
+    }
+   ]
+  },
+  "stereotypeIcons/FUAwvUqGAqACAxDQ": {
+   "asset": "pict-entity",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "entity",
+   "stereotype": "entity",
+   "baseType": "AssociationClass",
+   "file": "Workspace/stereotypeIcons/FUAwvUqGAqACAxDQ",
+   "stereotypes": [
+    {
+     "name": "entity",
+     "baseType": "AssociationClass",
+     "scope": "application"
+    }
+   ]
+  },
+  "stereotypeIcons/EUe7CVqGAqACAwpK": {
+   "asset": "pict-usecase-realization",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "usecase-realization",
+   "stereotype": "usecase realization",
+   "baseType": "Collaboration",
+   "file": "Workspace/stereotypeIcons/EUe7CVqGAqACAwpK",
+   "stereotypes": [
+    {
+     "name": "usecase realization",
+     "baseType": "Collaboration",
+     "scope": "application"
+    }
+   ]
+  },
+  "stereotypeIcons/vzS41FaGAqACQwxL": {
+   "asset": "pict-actor",
+   "kind": "badge",
+   "size": [
+    16,
+    16
+   ],
+   "glyph": "actor",
+   "stereotype": "actor",
+   "baseType": "Class",
+   "file": "Workspace/stereotypeIcons/vzS41FaGAqACQwxL",
+   "stereotypes": [
+    {
+     "name": "actor",
+     "baseType": "Class",
+     "scope": "application"
+    }
+   ]
+  },
+  "stereotypeIcons/K8pbCVqGAqACAwpH": {
+   "asset": "pict-fish",
+   "kind": "figure",
+   "size": [
+    113,
+    57
+   ],
+   "glyph": "fish",
+   "stereotype": "fish level usecase",
+   "baseType": "UseCase",
+   "file": "Workspace/stereotypeIcons/K8pbCVqGAqACAwpH",
+   "stereotypes": [
+    {
+     "name": "fish level usecase",
+     "baseType": "UseCase",
+     "scope": "application"
+    },
+    {
+     "name": "fish level usecase",
+     "baseType": "UseCase",
+     "scope": "project"
+    }
+   ]
+  },
+  "stereotypeIcons/gHSbCVqGAqACAwpB": {
+   "asset": "pict-waves",
+   "kind": "figure",
+   "size": [
+    148,
+    47
+   ],
+   "glyph": "waves",
+   "stereotype": "sea level usecase",
+   "baseType": "UseCase",
+   "file": "Workspace/stereotypeIcons/gHSbCVqGAqACAwpB",
+   "stereotypes": [
+    {
+     "name": "sea level usecase",
+     "baseType": "UseCase",
+     "scope": "application"
+    },
+    {
+     "name": "sea level usecase",
+     "baseType": "UseCase",
+     "scope": "project"
+    }
+   ]
+  },
+  "stereotypeIcons/EHXDIh6GAqDIHRGC": {
+   "asset": "pict-usecase-ellipse",
+   "kind": "figure",
+   "size": [
+    133,
+    72
+   ],
+   "glyph": "usecase-ellipse",
+   "stereotype": "UseCase",
+   "baseType": "Class",
+   "file": "Workspace/stereotypeIcons/EHXDIh6GAqDIHRGC",
+   "stereotypes": [
+    {
+     "name": "UseCase",
+     "baseType": "Class",
+     "scope": "application"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,356 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5106",
+  "name": "UML-диаграмма размещения Main",
+  "elements": [
+    {
+      "id": "e5",
+      "kind": "executionEnvironment",
+      "name": "Компьютер студента",
+      "documentation": "на рисунке компьютер — среда выполнения «executionEnvironment», а не устройство",
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "device",
+      "name": "Кампусный принтер"
+    },
+    {
+      "id": "e6",
+      "kind": "executionEnvironment",
+      "name": "Компьютер лектора",
+      "documentation": "на рисунке компьютер — среда выполнения «executionEnvironment», а не устройство",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "device",
+      "name": "Коммутатор"
+    },
+    {
+      "id": "e1",
+      "kind": "executionEnvironment",
+      "name": "Сервер системы регистрации"
+    },
+    {
+      "id": "e7",
+      "kind": "executionEnvironment",
+      "name": "Компьютер работника учебного отдела",
+      "documentation": "на рисунке компьютер — среда выполнения «executionEnvironment», а не устройство",
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "executionEnvironment",
+      "name": "Сервер расчётной системы"
+    },
+    {
+      "id": "e8",
+      "kind": "component",
+      "name": "StudentApplication.exe"
+    },
+    {
+      "id": "e9",
+      "kind": "component",
+      "name": "ProfessorApplication.exe"
+    },
+    {
+      "id": "e10",
+      "kind": "component",
+      "name": "RegistrarApplication.exe"
+    },
+    {
+      "id": "e11",
+      "kind": "component",
+      "name": "RegistrationProcess"
+    },
+    {
+      "id": "e12",
+      "kind": "component",
+      "name": "BSAccessProcess"
+    },
+    {
+      "id": "e13",
+      "kind": "component",
+      "name": "DBAccessProcess"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "communicationPath",
+      "name": "Campus Wi-Fi",
+      "from": "e5",
+      "to": "e3",
+      "documentation": "кратности на рисунке: 0..* — 0..1",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "communicationPath",
+      "name": "Campus Wi-Fi",
+      "from": "e6",
+      "to": "e3",
+      "documentation": "кратности на рисунке: 0..* — 0..1",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "communicationPath",
+      "name": "Campus LAN",
+      "from": "e7",
+      "to": "e3",
+      "documentation": "кратности на рисунке: 0..* — 0..1",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "communicationPath",
+      "name": "USB",
+      "from": "e3",
+      "to": "e4",
+      "documentation": "кратности на рисунке: 0..1 — 0..1",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "communicationPath",
+      "name": "Campus LAN",
+      "from": "e3",
+      "to": "e1",
+      "documentation": "кратности на рисунке: 0..1 — 0..1",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "communicationPath",
+      "name": "Accounting Department LAN",
+      "from": "e1",
+      "to": "e2",
+      "documentation": "кратности на рисунке: 1 — 1",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Main",
+      "kind": "deployment",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e5",
+          "x": 60,
+          "y": 60,
+          "w": 230,
+          "h": 190
+        },
+        {
+          "id": "s2",
+          "elementId": "e4",
+          "x": 400,
+          "y": 60,
+          "w": 190,
+          "h": 110
+        },
+        {
+          "id": "s3",
+          "elementId": "e6",
+          "x": 60,
+          "y": 300,
+          "w": 230,
+          "h": 190
+        },
+        {
+          "id": "s4",
+          "elementId": "e3",
+          "x": 400,
+          "y": 320,
+          "w": 190,
+          "h": 110
+        },
+        {
+          "id": "s5",
+          "elementId": "e1",
+          "x": 740,
+          "y": 60,
+          "w": 230,
+          "h": 510
+        },
+        {
+          "id": "s6",
+          "elementId": "e7",
+          "x": 60,
+          "y": 540,
+          "w": 280,
+          "h": 190
+        },
+        {
+          "id": "s7",
+          "elementId": "e2",
+          "x": 740,
+          "y": 600,
+          "w": 230,
+          "h": 110
+        },
+        {
+          "id": "s8",
+          "elementId": "e8",
+          "x": 80,
+          "y": 110,
+          "w": 190,
+          "h": 120
+        },
+        {
+          "id": "s9",
+          "elementId": "e9",
+          "x": 80,
+          "y": 350,
+          "w": 190,
+          "h": 120
+        },
+        {
+          "id": "s10",
+          "elementId": "e10",
+          "x": 80,
+          "y": 590,
+          "w": 190,
+          "h": 120
+        },
+        {
+          "id": "s11",
+          "elementId": "e11",
+          "x": 760,
+          "y": 110,
+          "w": 190,
+          "h": 120
+        },
+        {
+          "id": "s12",
+          "elementId": "e12",
+          "x": 760,
+          "y": 430,
+          "w": 190,
+          "h": 120
+        },
+        {
+          "id": "s13",
+          "elementId": "e13",
+          "x": 760,
+          "y": 270,
+          "w": 190,
+          "h": 120
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.2
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s3",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s6",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.8
+          }
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s4",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "bottom"
+          }
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s4",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s5",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s7",
+            "side": "top"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5106",
+    "figureNo": "5.1.6",
+    "exercise": "5.1",
+    "type": "deployment",
+    "diagramName": "Main",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма размещения Main",
+    "notes": "Состав узлов и компонентов назван текстом; стереотипы узлов, шесть путей коммуникации с кратностями и подписями (Campus Wi-Fi, Campus LAN, USB, Accounting Department LAN) прочитаны с рисунка 5.1.6. Компьютеры на рисунке — среды выполнения «executionEnvironment», а не устройства «device»: вид трёх узлов исправлен по рисунку.",
+    "gaps": [
+      "типы узлов названы в тексте только прозой («сервера регистрации», «коммутатор», «принтер», «компьютеры трёх типов») — стереотипы прочитаны с рисунка",
+      "точная топология связей и размещение компонентов по узлам в тексте не описаны — прочитаны с рисунка",
+      "вложенность компонента в узел не выражается в uml-model/3",
+      "кратности на концах пути коммуникации не выражаются в uml-model/3 (у вида связи нет кратностей) — записаны в документации связи"
+    ],
+    "gapIds": [
+      "model.nodeNesting",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e5",
+      "e6",
+      "e7"
+    ]
+  },
+  "sheet": {
+    "w": 1030,
+    "h": 790
+  }
+}

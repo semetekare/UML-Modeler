@@ -1,0 +1,65 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-instance-slot-unique-feature",
+  "name": "instance_structural_feature — два слота на одну характеристику",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Заказ",
+      "attributes": [
+        {
+          "name": "номер"
+        },
+        {
+          "name": "сумма"
+        }
+      ]
+    },
+    {
+      "id": "e2",
+      "kind": "object",
+      "name": ":Заказ",
+      "documentation": "Правило «instance-slot-unique-feature»: UML 2.5.1, п. 9.9.9.6, констрейнт InstanceSpecification::structural_feature: «В спецификации экземпляра не более одного слота могут иметь один и тот же definingFeature.»\nУ объекта «:Заказ» два слота с именем «номер». Характеристика заполняется один к одному: второй слот с тем же именем — это два значения одного атрибута.",
+      "classifierId": "e1",
+      "slots": [
+        {
+          "name": "номер",
+          "default": "1042"
+        },
+        {
+          "name": "номер",
+          "default": "1043"
+        }
+      ]
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "instance_structural_feature — два слота на одну характеристику",
+      "kind": "object",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 140
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 200,
+          "h": 120
+        }
+      ],
+      "links": []
+    }
+  ],
+  "currentDiagramId": "d1"
+}

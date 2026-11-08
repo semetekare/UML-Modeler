@@ -1,0 +1,12 @@
+@startuml
+title Design DisplayCourseOfferings Subflow
+participant e2 as "rform:RegistrationForm"
+participant e3 as "rctrl:RegistrationController"
+collections e4 as "cOff[i]:CourseOffering"
+loop for all cOff[i]
+e2 -> e3 : getCourseOfferingList(semester : byte) : CourseOffering[]
+e3 --> e2 : cOff[]
+e2 -> e4 : toJSON() : string
+e2 -> e2 : displayCourseString(cf : string) : void
+end
+@enduml

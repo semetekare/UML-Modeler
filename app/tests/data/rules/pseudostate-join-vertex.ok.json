@@ -1,0 +1,128 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-pseudostate-join-vertex-ok",
+  "name": "pseudostate_join_vertex (без нарушения) — два входа и один выход",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "state",
+      "name": "Отгружен"
+    },
+    {
+      "id": "e2",
+      "kind": "state",
+      "name": "Упакован"
+    },
+    {
+      "id": "e3",
+      "kind": "state",
+      "name": "Закрыт"
+    },
+    {
+      "id": "e4",
+      "kind": "join",
+      "name": "",
+      "documentation": "Правило «pseudostate-join-vertex»: UML 2.5.1, п. 14.5.6.7, констрейнт Pseudostate::join_vertex: «In a complete StateMachine, a join Vertex must have at least two incoming Transitions and exactly one outgoing Transition.»\nКонтроль: две ветви вошли, одна вышла."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "transition",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r2",
+      "kind": "transition",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r3",
+      "kind": "transition",
+      "from": "e4",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "pseudostate_join_vertex (без нарушения) — два входа и один выход",
+      "kind": "state",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 580,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 60,
+          "y": 260,
+          "w": 160,
+          "h": 8
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s4",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

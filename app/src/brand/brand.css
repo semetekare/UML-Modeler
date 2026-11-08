@@ -1,0 +1,293 @@
+/* Brand layer — the only file that owns the accent colour.
+ *
+ * design/README.md §2 шаг 1, design/DESIGN-BRIEF.md §5.
+ *
+ * ui-kit/ is a vendor copy and is never edited: this file only *overrides*
+ * its variables (--sc-accent, --sc-accent-rgb, --sc-glow, --sc-glow-rgb,
+ * --sc-app) and the app-level names styles.css reads.
+ *
+ * ONE variable sets everything: --brand. Presets are one line each; the
+ * derived inks AND the surfaces are computed with color-mix(in oklab, …) so
+ * a new preset needs no second colour and no build step. The chrome is a
+ * tint of the accent, not a fixed warm white: pick Teal and the header, both
+ * panels, the strip above the sheet, the statusbar and the sheet's paper all
+ * turn cool. Only the shapes keep their own colours.
+ *
+ * TWO appearances, one palette. The light theme mixes the accent into white,
+ * the dark theme mixes the same accent into a near-black neutral: the recipe
+ * is one, the ground is what changes. So a preset chosen in one appearance
+ * still means the same hue in the other — Teal stays cool, Plum stays wine —
+ * and nothing is hard-coded per appearance except the neutral itself, which
+ * has to be, because a dark surface is not a colour you can derive from white.
+ *
+ * Why --brand-on-dark exists. An accent tuned to be text on white is *dark*:
+ * Graphite #3f3f42 on a dark panel is 1.9:1 and simply disappears. So each
+ * preset carries a lifted twin — the same hue, raised until it clears 4.5:1
+ * on every dark surface (measured 6.6–8.4, tools/contrast.mjs). It is also
+ * the primary-button fill in the dark theme, with --on-strong #151515 on it,
+ * which keeps one rule for both appearances: the label always sits on a
+ * surface that was chosen for it.
+ *
+ * Why --brand-rgb exists. The kit consumes accents as channel triplets
+ * (`rgb(var(--sc-accent-rgb) / .14)`). CSS cannot slice a colour into
+ * channels without relative-colour syntax (`rgb(from …)`, not in every
+ * browser we must run in), so each preset carries its channels next to the
+ * hex. It is a mirror of --brand, not a second decision: change both or
+ * neither. --brand-on-dark-rgb is the same mirror for the lifted accent.
+ *
+ * Contrast (WCAG 2.1, sRGB), measured with tools/contrast.mjs:
+ *   light  --brand-ink is 80 % brand in oklab: #ba4300 for Flame, 5.40 on
+ *          paper / 5.06 on the panel / 4.72 on the desk — above 4.5 on all.
+ *          The raw --brand is ~3:1 on the panel, so the accent NEVER paints
+ *          small text: focus rings, small text and icon strokes take
+ *          --accent, which is the ink variant in light and the lifted one in
+ *          dark; --brand stays a fill.
+ *   dark   --brand-on-dark is 6.6–8.4 on paper, 6.9–8.9 on the panel; the
+ *          tightest case is Plum (6.65). --ink-faint is 5.1–5.6 on the
+ *          lightest dark surface, so 11 px captions still pass AA.
+ *
+ * Field borders: --border-control is #84817c in light, not the brief's
+ * driftwood #8e8b87. Driftwood was measured against the three fixed warm
+ * surfaces the brief had at the time; once the panels became accent tints
+ * (Graphite panel is #eaeaea) driftwood fell to 2.82:1 — under the 3:1 of
+ * WCAG 1.4.11. #84817c is measured 3.1–3.6 across all six presets. Dark uses
+ * its own #767370 (3.3–4.0).
+ */
+
+/* Inter (SIL OFL 1.1, app/src/brand/fonts/OFL.txt). Vendored, not linked:
+ * the app must open with the network unplugged, and every width in
+ * design/density-spec.md §4 is computed from these metrics (UPM 2048,
+ * x-height .5459, cap .7275). The kit's own fonts are latin-only — 0 of 66
+ * Cyrillic glyphs — which is why the UI used to render Russian in the system
+ * font while Latin came from Exo 2 (DESIGN-BRIEF §7.2). Three subsets cover
+ * ASCII + Cyrillic; 93 KB total. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/inter-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/inter-cyrillic-ext.woff2") format("woff2");
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+    U+FE2E-FE2F;
+}
+
+:root {
+  /* ---- presets: the single switch ------------------------------------ */
+  --brand: #fa5d00;
+  --brand-rgb: 250 93 0;
+  /* The accent as text/fill on a dark surface. See the header. */
+  --brand-on-dark: #ff8f4d;
+  --brand-on-dark-rgb: 255 143 77;
+
+  /* ---- light surfaces: a tint of the accent, not a fixed warm white ----
+   * Switching the preset must repaint the window, not only the selection.
+   * Every chrome surface is the accent mixed into white, so Flame is peach,
+   * Teal is cool, Violet is lilac — header, both panels, the strip above the
+   * sheet, the statusbar and the sheet's own background all follow --brand.
+   * Percentages are low enough that --ink-soft still clears 4.5:1 on the
+   * darkest of them. */
+  --surface-paper: #ffffff;                                      /* fields, cards, menus */
+  --surface-sunken: color-mix(in oklab, var(--brand) 5%, #fff);  /* inputs */
+  --surface-panel: color-mix(in oklab, var(--brand) 10%, #fff);  /* header, panels, bars */
+  --surface-desk: color-mix(in oklab, var(--brand) 8%, #fff);    /* around the shapes */
+
+  /* ---- ink (all ≥ 4.5:1 on every surface above) ---------------------- */
+  --ink: #1d1e1c;             /* 13.9–15.1 */
+  --ink-soft: #5c5a57;        /* 5.7–6.3 */
+  --ink-faint: #6b6864;       /* 4.6–5.3 — still passes AA for 11 px */
+
+  /* ---- boundaries ---------------------------------------------------- */
+  --border-control: #84817c;        /* 3.1–3.6 ≥ 3:1 (WCAG 1.4.11), see header */
+  --border-control-hover: #777571;  /* 3.8–4.2 */
+  --line: color-mix(in oklab, var(--brand) 14%, #e6e0d9);   /* structural hairline */
+  --line-soft: color-mix(in oklab, var(--brand) 8%, #efe9e2); /* inside a pane */
+
+  /* What sits on --brand-strong (primary buttons, welcome CTA). */
+  --on-strong: #ffffff;
+}
+
+[data-brand="moss"] {
+  --brand: #4f6b21; --brand-rgb: 79 107 33;
+  --brand-on-dark: #a9c078; --brand-on-dark-rgb: 169 192 120;
+}
+[data-brand="teal"] {
+  --brand: #0e7490; --brand-rgb: 14 116 144;
+  --brand-on-dark: #4fc3e0; --brand-on-dark-rgb: 79 195 224;
+}
+[data-brand="violet"] {
+  --brand: #6b3fd4; --brand-rgb: 107 63 212;
+  --brand-on-dark: #b09af0; --brand-on-dark-rgb: 176 154 240;
+}
+[data-brand="plum"] {
+  --brand: #9a1f6e; --brand-rgb: 154 31 110;
+  --brand-on-dark: #d98cb8; --brand-on-dark-rgb: 217 140 184;
+}
+[data-brand="graphite"] {
+  --brand: #3f3f42; --brand-rgb: 63 63 66;
+  --brand-on-dark: #adadb2; --brand-on-dark-rgb: 173 173 178;
+}
+
+/* ---- derived: nothing below is ever set by hand ---------------------- */
+/* The mix percentages are not the brief's 78 / 62. Those two were solved to
+ * reproduce #ba4500 / #9b3a00 when the mix happens channel-wise in sRGB; in
+ * oklab the same percentages land darker (#b44000, 5.72 on paper), which is
+ * outside the ±0.15 tolerance README §2 asks for. 80 % gives #ba4300 — the
+ * text-safe accent. Measured on the tinted surfaces of all six presets, the
+ * tightest case is Flame: 4.86 on the panel, 4.96 on the desk (Teal 7.4,
+ * Graphite 11.6). 70 % gives #9b3700 with white at 7.14. */
+:root {
+  --brand-ink:    color-mix(in oklab, var(--brand) 80%, #000);
+  --brand-strong: color-mix(in oklab, var(--brand) 70%, #000);
+  /* Soft is mixed into the panel, not into white: the panel itself is a tint
+   * of the accent now, so a 12 % wash on paper would vanish on it. */
+  --brand-soft:   color-mix(in oklab, var(--brand) 20%, var(--surface-panel));
+  --brand-hover:  color-mix(in oklab, var(--brand) 92%, #000);
+}
+
+/* ====================================================== dark appearance */
+/* The same recipe on the other ground. Percentages are lower than in light
+ * (4–7 % against 5–10): a saturated hue moves a dark neutral further than a
+ * white one, and at 10 % Flame's panel turns visibly brown.
+ *
+ * The neutrals are warm on purpose — #212124 / #18181b / #0f0f11 / #121215 —
+ * so the dark theme belongs to the same family as the paper one instead of
+ * being a second, blue-grey product. Measured (tools/contrast.mjs): ink
+ * 12.6–13.6, soft 7.1–8.0, faint 5.1–5.6, accent 6.6–8.4 on paper. */
+html[data-race="dark"] {
+  --surface-paper: color-mix(in oklab, var(--brand) 5%, #212124);   /* cards, menus, dialog */
+  --surface-sunken: color-mix(in oklab, var(--brand) 3%, #121215);  /* inputs */
+  --surface-panel: color-mix(in oklab, var(--brand) 5%, #18181b);   /* header, panels, bars */
+  --surface-desk: color-mix(in oklab, var(--brand) 3%, #0e0e10);    /* around the shapes */
+
+  --ink: #ebe9e6;
+  --ink-soft: #b3b0ab;
+  --ink-faint: #96938e;
+
+  --border-control: #767370;
+  --border-control-hover: #918e89;
+  /* Hairlines are lifted the other way: in light they are darker than the
+   * surface, here lighter. Same job, same subtlety (1.4–1.9 against the
+   * panel) — a separator, not a frame. */
+  --line: color-mix(in oklab, var(--brand) 12%, #303035);
+  --line-soft: color-mix(in oklab, var(--brand) 8%, #28282d);
+
+  /* The lifted accent is BOTH the text colour and the fill here: on a dark
+   * sheet a dark selection stroke would disappear the same way. */
+  --brand-ink: var(--brand-on-dark);
+  --brand-strong: var(--brand-on-dark);
+  --on-strong: #151515;
+  --brand-soft: color-mix(in oklab, var(--brand) 22%, var(--surface-panel));
+  --brand-hover: color-mix(in oklab, var(--brand-on-dark) 88%, #fff);
+}
+
+/* ---- bridge to the kit ----------------------------------------------- */
+/* Loaded after ui-kit/adapters/uml.css; same specificity, later wins. */
+html[data-sc] {
+  --sc-accent: var(--brand);
+  --sc-accent-rgb: var(--brand-rgb);
+  --sc-glow: var(--brand);
+  --sc-glow-rgb: var(--brand-rgb);
+}
+html[data-app="uml"] {
+  --sc-app: var(--brand);
+  --sc-app-rgb: var(--brand-rgb);
+}
+/* The kit's own dark race is a blue-grey HUD palette; the accent it paints
+ * focus rings, scrollbars and menus with must be the lifted one, or a
+ * Graphite preset would have no visible focus at all. */
+html[data-race="dark"][data-sc] {
+  --sc-accent: var(--brand-on-dark);
+  --sc-accent-rgb: var(--brand-on-dark-rgb);
+  --sc-glow: var(--brand-on-dark);
+  --sc-glow-rgb: var(--brand-on-dark-rgb);
+}
+html[data-race="dark"][data-app="uml"] {
+  --sc-app: var(--brand-on-dark);
+  --sc-app-rgb: var(--brand-on-dark-rgb);
+}
+
+/* ---- bridge to the app ----------------------------------------------- */
+/* Overrides ui-kit/adapters/uml.css, which maps these to the kit's neutral
+ * light skin. Two appearances: warm paper and warm ink. Both are named
+ * explicitly at the same specificity as the kit's `html[data-sc]` (0,1,1)
+ * and from this later file, so the vendor palette never leaks through. */
+:root,
+html[data-race="light"] {
+  --bg: var(--surface-desk);
+  --panel: var(--surface-panel);
+  --panel-2: var(--surface-paper);
+  --ctl: var(--surface-sunken);
+  /* Hairlines must be declared here, not only in :root: ui-kit's
+   * `html[data-sc]` (0,1,1) sets them from its own neutral palette and would
+   * otherwise beat the `:root` (0,1,0) declaration. */
+  --line: color-mix(in oklab, var(--brand) 14%, #e6e0d9);
+  --line-soft: color-mix(in oklab, var(--brand) 8%, #efe9e2);
+  --ink: #1d1e1c;               /* 14.6–16.7 on every surface */
+  --ink-soft: #5c5a57;
+  --ink-faint: #6b6864;
+  --accent: var(--brand-ink);          /* text + focus rings: 5.00 on panel */
+  /* Text on a --brand-soft wash is the one place the accent needs more than
+   * --accent: on the hover/selected tint #ffd5c4 the ink variant reads 4.00:1
+   * for Flame (measured), under AA for a 12.5 px label. --brand-strong gives
+   * 5.29–5.86 on the same wash for all six presets. */
+  --accent-on-soft: var(--brand-strong);
+  --accent-fill: var(--brand);         /* fills only: selected tint, dot */
+  --accent-soft: var(--brand-soft);
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font: "Inter", "InterVariable", system-ui, -apple-system, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html[data-race="dark"] {
+  --bg: var(--surface-desk);
+  --panel: var(--surface-panel);
+  --panel-2: var(--surface-paper);
+  --ctl: var(--surface-sunken);
+  --accent: var(--brand-on-dark);
+  /* On a dark wash the lifted accent already clears AA (5.6–7.8). */
+  --accent-on-soft: var(--brand-on-dark);
+  --accent-fill: var(--brand-on-dark);
+  --accent-soft: var(--brand-soft);
+  --font: "Inter", "InterVariable", system-ui, -apple-system, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* ui-kit/css/base.css sets `html[data-sc] body` (0,1,2) — a dark vignette,
+ * Exo 2 at 14/1.5, letter-spacing .01em. The editor's own type scale must win,
+ * so the override is written at the same specificity, from the later file.
+ * `color-scheme` is what makes native controls (select popups, checkboxes,
+ * scrollbars, the caret) follow the appearance instead of staying white. */
+html[data-sc][data-race="light"] {
+  color-scheme: light;
+}
+html[data-sc][data-race="dark"] {
+  color-scheme: dark;
+}
+html[data-sc][data-race="light"] body,
+html[data-sc][data-race="dark"] body {
+  color: var(--ink);
+  background: var(--panel);
+  font-family: var(--font);
+  font-size: var(--fs-sm);
+  line-height: var(--lh);
+  letter-spacing: 0;
+}

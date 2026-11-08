@@ -1,0 +1,543 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-3102",
+  "name": "Начальная версия UML-диаграммы вариантов использования",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "systemBoundary",
+      "name": "Система регистрации на курсы",
+      "stereotype": "subject"
+    },
+    {
+      "id": "e8",
+      "kind": "usecase",
+      "name": "Войти в систему",
+      "stereotype": "fish level usecase"
+    },
+    {
+      "id": "e10",
+      "kind": "usecase",
+      "name": "Выбрать читаемые курсы",
+      "stereotype": "sea level usecase",
+      "documentation": "в тексте пособия вариант назван «Просмотреть табель», на рисунке 3.1.2 — «Посмотреть табель»; оставлено имя из текста",
+      "source": "image"
+    },
+    {
+      "id": "e11",
+      "kind": "usecase",
+      "name": "Поставить оценки",
+      "stereotype": "sea level usecase"
+    },
+    {
+      "id": "e3",
+      "kind": "actor",
+      "name": "Профессор"
+    },
+    {
+      "id": "e7",
+      "kind": "usecase",
+      "name": "Зарегистрироваться на курсы",
+      "stereotype": "sea level usecase"
+    },
+    {
+      "id": "e6",
+      "kind": "actor",
+      "name": "Время"
+    },
+    {
+      "id": "e2",
+      "kind": "actor",
+      "name": "Студент"
+    },
+    {
+      "id": "e16",
+      "kind": "usecase",
+      "name": "Закрыть регистрацию",
+      "stereotype": "fish level usecase"
+    },
+    {
+      "id": "e12",
+      "kind": "usecase",
+      "name": "CRUD данных о профессорах",
+      "stereotype": "sea level usecase"
+    },
+    {
+      "id": "e15",
+      "kind": "usecase",
+      "name": "Открыть регистрацию",
+      "stereotype": "sea level usecase"
+    },
+    {
+      "id": "e5",
+      "kind": "actor",
+      "name": "Расчётная система"
+    },
+    {
+      "id": "e4",
+      "kind": "actor",
+      "name": "Регистратор"
+    },
+    {
+      "id": "e13",
+      "kind": "usecase",
+      "name": "CRUD данных о студентах",
+      "stereotype": "sea level usecase"
+    },
+    {
+      "id": "e9",
+      "kind": "usecase",
+      "name": "Просмотреть табель",
+      "stereotype": "sea level usecase"
+    },
+    {
+      "id": "e14",
+      "kind": "usecase",
+      "name": "CRUD данных о курсах и дисциплинах",
+      "stereotype": "sea level usecase"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "association",
+      "from": "e2",
+      "to": "e7",
+      "navigable": "from"
+    },
+    {
+      "id": "r2",
+      "kind": "association",
+      "from": "e2",
+      "to": "e9",
+      "navigable": "from"
+    },
+    {
+      "id": "r3",
+      "kind": "association",
+      "from": "e3",
+      "to": "e10",
+      "navigable": "from"
+    },
+    {
+      "id": "r4",
+      "kind": "association",
+      "from": "e3",
+      "to": "e11",
+      "navigable": "from"
+    },
+    {
+      "id": "r5",
+      "kind": "association",
+      "from": "e4",
+      "to": "e15",
+      "navigable": "from"
+    },
+    {
+      "id": "r6",
+      "kind": "association",
+      "from": "e4",
+      "to": "e12",
+      "navigable": "from"
+    },
+    {
+      "id": "r7",
+      "kind": "association",
+      "from": "e4",
+      "to": "e13",
+      "navigable": "from"
+    },
+    {
+      "id": "r8",
+      "kind": "association",
+      "from": "e4",
+      "to": "e14",
+      "navigable": "from"
+    },
+    {
+      "id": "r9",
+      "kind": "association",
+      "from": "e2",
+      "to": "e8",
+      "navigable": "from",
+      "defect": true
+    },
+    {
+      "id": "r10",
+      "kind": "association",
+      "from": "e3",
+      "to": "e8",
+      "navigable": "from",
+      "defect": true
+    },
+    {
+      "id": "r11",
+      "kind": "association",
+      "from": "e4",
+      "to": "e8",
+      "navigable": "from",
+      "defect": true
+    },
+    {
+      "id": "r12",
+      "kind": "association",
+      "from": "e6",
+      "to": "e16",
+      "navigable": "from"
+    },
+    {
+      "id": "r13",
+      "kind": "association",
+      "from": "e5",
+      "to": "e16",
+      "navigable": "to",
+      "note": "второстепенное действующее лицо"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Main",
+      "kind": "usecase",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 210,
+          "y": 60,
+          "w": 760,
+          "h": 520
+        },
+        {
+          "id": "s2",
+          "elementId": "e8",
+          "x": 280,
+          "y": 130,
+          "w": 150,
+          "h": 60
+        },
+        {
+          "id": "s3",
+          "elementId": "e10",
+          "x": 540,
+          "y": 130,
+          "w": 160,
+          "h": 60
+        },
+        {
+          "id": "s4",
+          "elementId": "e11",
+          "x": 780,
+          "y": 130,
+          "w": 140,
+          "h": 60
+        },
+        {
+          "id": "s5",
+          "elementId": "e3",
+          "x": 90,
+          "y": 100,
+          "w": 40,
+          "h": 70
+        },
+        {
+          "id": "s6",
+          "elementId": "e7",
+          "x": 260,
+          "y": 250,
+          "w": 190,
+          "h": 60
+        },
+        {
+          "id": "s7",
+          "elementId": "e6",
+          "x": 90,
+          "y": 230,
+          "w": 40,
+          "h": 70
+        },
+        {
+          "id": "s8",
+          "elementId": "e2",
+          "x": 90,
+          "y": 350,
+          "w": 40,
+          "h": 70
+        },
+        {
+          "id": "s9",
+          "elementId": "e16",
+          "x": 540,
+          "y": 250,
+          "w": 150,
+          "h": 60
+        },
+        {
+          "id": "s10",
+          "elementId": "e12",
+          "x": 760,
+          "y": 250,
+          "w": 180,
+          "h": 60
+        },
+        {
+          "id": "s11",
+          "elementId": "e15",
+          "x": 290,
+          "y": 370,
+          "w": 140,
+          "h": 60
+        },
+        {
+          "id": "s12",
+          "elementId": "e5",
+          "x": 1070,
+          "y": 290,
+          "w": 40,
+          "h": 70
+        },
+        {
+          "id": "s13",
+          "elementId": "e4",
+          "x": 90,
+          "y": 470,
+          "w": 40,
+          "h": 70
+        },
+        {
+          "id": "s14",
+          "elementId": "e13",
+          "x": 530,
+          "y": 370,
+          "w": 170,
+          "h": 60
+        },
+        {
+          "id": "s15",
+          "elementId": "e9",
+          "x": 780,
+          "y": 370,
+          "w": 140,
+          "h": 60
+        },
+        {
+          "id": "s16",
+          "elementId": "e14",
+          "x": 240,
+          "y": 490,
+          "w": 230,
+          "h": 60
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s8",
+            "side": "right",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s8",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s15",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s5",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s5",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s13",
+            "side": "right",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s11",
+            "side": "left",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s13",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s10",
+            "side": "bottom"
+          }
+        },
+        {
+          "id": "l7",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s13",
+            "side": "right",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s14",
+            "side": "left",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l8",
+          "relId": "r8",
+          "from": {
+            "shapeId": "s13",
+            "side": "right",
+            "t": 0.643
+          },
+          "to": {
+            "shapeId": "s16",
+            "side": "left",
+            "t": 0.417
+          }
+        },
+        {
+          "id": "l9",
+          "relId": "r9",
+          "from": {
+            "shapeId": "s8",
+            "side": "right",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l10",
+          "relId": "r10",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.714
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.333
+          }
+        },
+        {
+          "id": "l11",
+          "relId": "r11",
+          "from": {
+            "shapeId": "s13",
+            "side": "top",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "bottom",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l12",
+          "relId": "r12",
+          "from": {
+            "shapeId": "s7",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s9",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l13",
+          "relId": "r13",
+          "from": {
+            "shapeId": "s12",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "s9",
+            "side": "bottom"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "3102",
+    "figureNo": "3.1.2",
+    "exercise": "3.1",
+    "type": "usecase",
+    "diagramName": "Main",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Начальная версия UML-диаграммы вариантов использования",
+    "notes": "Состав и ассоциации названы текстом; рисунок 3.1.2 подтверждает их полностью: пять действующих лиц, десять вариантов использования, тринадцать ассоциаций и пометка «fish level» у двух вариантов. У варианта использования на рисунке имя короче — «CRUD данных о курсах», в тексте — «CRUD данных о курсах и дисциплинах»; оставлено имя из текста.",
+    "gaps": [
+      "набор ассоциаций на рисунке в тексте не перечислен: восстановлен по списку интересов действующих лиц (§3) и по правилу «у варианта использования одно основное действующее лицо»; рисунок его подтверждает",
+      "defect: у «Войти в систему» три основных действующих лица — дефект помечен в модели полем defect: true",
+      "имя варианта использования на рисунке короче, чем в тексте («CRUD данных о курсах» против «CRUD данных о курсах и дисциплинах»); источники расходятся",
+      "имя варианта использования на рисунке — «Посмотреть табель», в тексте пособия — «Просмотреть табель» (встречается и «Посмотреть»); оставлено имя из текста, расхождение источников не разрешено"
+    ],
+    "gapIds": [
+      "source.contradiction",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e10"
+    ]
+  },
+  "expect": {
+    "rules": [
+      "у варианта использования «Войти в систему» больше одного основного действующего лица (дефект)",
+      "между действующими лицами нет ассоциаций",
+      "между вариантами использования внутри одной рамки нет ассоциаций"
+    ]
+  },
+  "sheet": {
+    "w": 1170,
+    "h": 640
+  }
+}

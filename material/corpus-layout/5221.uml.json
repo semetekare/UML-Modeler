@@ -1,0 +1,213 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5221",
+  "name": "UML-диаграмма деятельности для операции DBAccess::updateStudent",
+  "elements": [
+    {
+      "id": "e9",
+      "kind": "action",
+      "name": "return (res<>0)",
+      "source": "image"
+    },
+    {
+      "id": "e1",
+      "kind": "initial",
+      "name": ""
+    },
+    {
+      "id": "e2",
+      "kind": "action",
+      "name": "Conditional",
+      "documentation": "структурированный узел Conditional с регионами Test и Body. В регионе Test — решение с ветвями [self.c == NULL] (в регион Body) и [else] (к слиянию); в регионе Body — действие self.init() и узел слияния, после которого поток выходит из узла. Регионы, решение и слияние в uml-model/3 не выражаются отдельными элементами.",
+      "structuredNode": "ConditionalNode",
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "final",
+      "name": ""
+    },
+    {
+      "id": "e8",
+      "kind": "action",
+      "name": "sql = \"UPDATE Students SET name ='\"; sql += st.getName(); sql += \"phone1 ='\"; sql += st.get1stPhone(); ... sql += \"WHERE id =\"; sql += st.getId().toString(); s = c.createStatement(sql); res = s.executeUpdate();",
+      "source": "image"
+    },
+    {
+      "id": "e10",
+      "kind": "note",
+      "name": "",
+      "documentation": "DBAccess::updateStudent(st):boolean",
+      "note": "",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "controlFlow",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "controlFlow",
+      "from": "e2",
+      "to": "e8",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "controlFlow",
+      "from": "e8",
+      "to": "e9",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "controlFlow",
+      "from": "e9",
+      "to": "e4",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "updateStudent",
+      "kind": "activity",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e9",
+          "x": 670,
+          "y": 410,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s2",
+          "elementId": "e1",
+          "x": 730,
+          "y": 110,
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "s3",
+          "elementId": "e2",
+          "x": 670,
+          "y": 190,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 730,
+          "y": 520,
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "s5",
+          "elementId": "e8",
+          "x": 90,
+          "y": 300,
+          "w": 1290,
+          "h": 50
+        },
+        {
+          "id": "s6",
+          "elementId": "e10",
+          "x": 700,
+          "y": 600,
+          "w": 80,
+          "h": 70
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s2",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s3",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "top",
+            "t": 0.504
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s5",
+            "side": "bottom",
+            "t": 0.504
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l4",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s1",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "top"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5221",
+    "figureNo": "5.2.21",
+    "exercise": "5.2.H",
+    "type": "activity",
+    "diagramName": "updateStudent",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма деятельности для операции DBAccess::updateStudent",
+    "notes": "Текст не даёт ни псевдокода, ни состава действий. Рисунок 5.2.21 прочитан целиком: примечание DBAccess::updateStudent(st):boolean, начальный узел, структурированный узел Conditional с регионами Test и Body (в Test — решение с ветвями [self.c == NULL] и [else], в Body — действие self.init() и слияние), действие с псевдокодом UPDATE, действие return (res<>0) и конечный узел. Узла цикла на рисунке нет — запись LoopNode из текста удалена.",
+    "gaps": [
+      "псевдокод в узлах действий в тексте не приведён: сказано только, как его вводить (F2, Alt+Enter, Caption Placement) — прочитан с рисунка",
+      "структурированные узлы с регионами не выражаются в uml-model/3: регионы Test и Body, решение внутри Test и ветви [self.c == NULL] / [else] записаны в documentation узла",
+      "состав действий и рёбер не назван в тексте — источником служит рисунок"
+    ],
+    "gapIds": [
+      "model.structuredNode",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e2"
+    ]
+  },
+  "sheet": {
+    "w": 1440,
+    "h": 730
+  }
+}

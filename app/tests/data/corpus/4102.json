@@ -1,0 +1,85 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4102",
+    "figureNo": "4.1.2",
+    "exercise": "4.1",
+    "type": "composite",
+    "diagramName": "Use Case Realizations",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма составной структуры Use Case Realizations",
+    "notes": "Упражнение 4.1 п.2: кооперации Login, RegisterForCourses и CloseRegistration со стереотипом «usecase realization» связаны связями реализации с вариантами использования, которые они реализуют; стрелки направлены от коопераций к вариантам использования.",
+    "gaps": [
+      "указатель рисунков (INDEX.md) описывает эту диаграмму как «части-кооперации и соединяющие их зависимости», а текст упражнения 4.1 п.2 — как связи реализации от коопераций к реализуемым вариантам использования; здесь взята версия упражнения как более подробная, расхождение источников зафиксировано",
+      "показана ли на диаграмме сама рамка пакета Use Case Realizations, текст не говорит"
+    ],
+    "gapIds": [
+      "source.contradiction"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "collaboration",
+      "name": "Login",
+      "stereotype": "usecase realization"
+    },
+    {
+      "id": "e2",
+      "kind": "collaboration",
+      "name": "RegisterForCourses",
+      "stereotype": "usecase realization"
+    },
+    {
+      "id": "e3",
+      "kind": "collaboration",
+      "name": "CloseRegistration",
+      "stereotype": "usecase realization"
+    },
+    {
+      "id": "e4",
+      "kind": "usecase",
+      "name": "Войти в систему"
+    },
+    {
+      "id": "e5",
+      "kind": "usecase",
+      "name": "Зарегистрироваться на курсы"
+    },
+    {
+      "id": "e6",
+      "kind": "usecase",
+      "name": "Закрыть регистрацию"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "realization",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r2",
+      "kind": "realization",
+      "from": "e2",
+      "to": "e5"
+    },
+    {
+      "id": "r3",
+      "kind": "realization",
+      "from": "e3",
+      "to": "e6"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Use Case Realizations",
+      "type": "composite",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

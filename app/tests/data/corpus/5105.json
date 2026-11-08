@@ -1,0 +1,87 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5105",
+    "figureNo": "5.1.5",
+    "exercise": "5.1",
+    "type": "package",
+    "diagramName": "BusinessServices",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Структура уровня BusinessServices",
+    "notes": "Пакеты уровня BusinessServices и зависимости между ними. Каждая подсистема реализует свой интерфейс — отсюда зависимости подсистем от пакета Interfaces; классы-артефакты нужны Interfaces, BSAccess и DBAccess — отсюда остальные зависимости.",
+    "gaps": [
+      "направления отдельных зависимостей описаны прозой («отсюда остальные зависимости»); точный набор пар на снимке не перечислен",
+      "вложенность пакетов не выражается в uml-model/3"
+    ],
+    "gapIds": [
+      "model.packageOwner",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "package",
+      "name": "Interfaces"
+    },
+    {
+      "id": "e2",
+      "kind": "package",
+      "name": "DBAccess",
+      "stereotype": "subsystem"
+    },
+    {
+      "id": "e3",
+      "kind": "package",
+      "name": "BSAccess",
+      "stereotype": "subsystem"
+    },
+    {
+      "id": "e4",
+      "kind": "package",
+      "name": "UniversityArtefacts"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e1"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e3",
+      "to": "e1"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r4",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r5",
+      "kind": "dependency",
+      "from": "e3",
+      "to": "e4"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "BusinessServices",
+      "type": "package",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

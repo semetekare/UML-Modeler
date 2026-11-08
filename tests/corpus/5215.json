@@ -1,0 +1,172 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5215",
+    "figureNo": "5.2.15",
+    "exercise": "5.2.G",
+    "type": "class",
+    "diagramName": "BSAccess",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма классов подсистемы BSAccess",
+    "notes": "Текст называет IBSAccess, BSAccess, XmlRpcClient, CourseOffering и скрытые TypeSerializer, TypeParser, Object, TypeFactoryImpl. Рисунок 5.2.15 показывает шесть фигур (добавлены URL и XmlRpcClientConfigImpl), сигнатуры четырёх операций BSAccess, операцию toJSON() у CourseOffering и шесть связей — в том числе композицию BSAccess—XmlRpcClient с полюсом client и кратностями 0..1 / 0..1.",
+    "gaps": [
+      "полный набор классов и зависимостей текст не перечисляет: названы скрытые TypeSerializer, TypeParser, Object, TypeFactoryImpl и требуемые зависимости; остальное прочитано с рисунка",
+      "сигнатуры операций интерфейса в тексте не приведены — сказано, что они должны совпадать с сигнатурами класса BSAccess"
+    ],
+    "gapIds": [
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e1",
+      "e2",
+      "e4",
+      "r4"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "BSAccess",
+      "stereotype": "subsystem proxy",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "init(serverURL : string)",
+          "type": "void"
+        },
+        {
+          "vis": "public",
+          "name": "startTransferData()",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "sendStudentData(name : string, address : string, cOff : CourseOffering[])",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "finishTransferData()",
+          "type": "boolean"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "CourseOffering",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "toJSON()",
+          "type": "string"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e1",
+      "kind": "interface",
+      "name": "IBSAccess",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "init(serverURL : string)",
+          "type": "void"
+        },
+        {
+          "vis": "public",
+          "name": "startTransferData()",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "sendStudentData(name : string, address : string, cOff : CourseOffering[])",
+          "type": "boolean"
+        },
+        {
+          "vis": "public",
+          "name": "finishTransferData()",
+          "type": "boolean"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "URL",
+      "note": "на рисунке под именем напечатано (Logical View::Middleware::java::net)",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "XmlRpcClient"
+    },
+    {
+      "id": "e6",
+      "kind": "class",
+      "name": "XmlRpcClientConfigImpl",
+      "note": "на рисунке под именем напечатано (Logical View::Middleware::org::apache::xmlrpc::client)",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "realization",
+      "from": "e2",
+      "to": "e1"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r4",
+      "kind": "composition",
+      "from": "e2",
+      "to": "e3",
+      "fromMultiplicity": "0..1",
+      "toMultiplicity": "0..1",
+      "toRole": "client",
+      "note": "на рисунке ромб со стороны BSAccess, у XmlRpcClient — имя полюса client",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e6",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "BSAccess",
+      "type": "class",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

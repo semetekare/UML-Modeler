@@ -1,0 +1,356 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4103",
+    "figureNo": "4.1.3",
+    "exercise": "4.1",
+    "type": "class",
+    "diagramName": "Key Abstractions",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма классов Key Abstractions",
+    "notes": "Текст называет композицию Student—Schedule, рефлексивную ассоциацию Course и две зависимости; рисунок 4.1.3 показывает все восемь классов, семь связей с кратностями и именами полюсов (prerequisitesOf / hasPrerequisites, primary 0..4, alternative 0..2), литералы перечислений (STUDENT, PROFESSOR, REGISTRAR и SU…SA) и ограничение {almost one}. Всё это прочитано с рисунка.",
+    "gaps": [
+      "текст называет композицию Student — Schedule и рефлексивную ассоциацию Course, но не перечисляет остальные ассоциации между ключевыми абстракциями и их мощности — прочитаны с рисунка",
+      "имена полюсов рефлексивной ассоциации Course в тексте не приведены — на рисунке prerequisitesOf и hasPrerequisites",
+      "флажок ID у атрибута (Course::code, User::login, Professor::name, Student::id) не выражается — записан полем isID",
+      "ограничение {almost one} на паре связей User—Professor и User—Student не выражается — записано в documentation связей"
+    ],
+    "gapIds": [
+      "model.qualifier",
+      "source.associations",
+      "source.names"
+    ],
+    "imageDerived": [
+      "e1",
+      "e2",
+      "e3",
+      "e4",
+      "e5",
+      "e6",
+      "e7",
+      "e8",
+      "r1",
+      "r2"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Course",
+      "stereotype": "entity",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "code",
+          "type": "string",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "duration",
+          "type": "byte"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e8",
+      "kind": "enumeration",
+      "name": "UserType",
+      "literals": [
+        {
+          "vis": "public",
+          "name": "STUDENT"
+        },
+        {
+          "vis": "public",
+          "name": "PROFESSOR"
+        },
+        {
+          "vis": "public",
+          "name": "REGISTRAR"
+        }
+      ],
+      "note": "литералы перечислимого типа в тексте не названы",
+      "source": "image"
+    },
+    {
+      "id": "e6",
+      "kind": "class",
+      "name": "User",
+      "stereotype": "entity",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "login",
+          "type": "string",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "passwordHash",
+          "type": "long[2]"
+        },
+        {
+          "vis": "private",
+          "name": "type",
+          "type": "UserType"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "CourseOffering",
+      "stereotype": "entity",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "number",
+          "type": "long"
+        },
+        {
+          "vis": "private",
+          "name": "day",
+          "type": "DayOfWeek"
+        },
+        {
+          "vis": "private",
+          "name": "pair",
+          "type": "byte"
+        },
+        {
+          "vis": "private",
+          "name": "semester",
+          "type": "byte"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "Professor",
+      "stereotype": "entity",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "name",
+          "type": "string",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "phones",
+          "type": "string[0..2]"
+        },
+        {
+          "vis": "private",
+          "name": "academicDegree",
+          "type": ""
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "Student",
+      "stereotype": "entity",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "phones",
+          "type": "string[0..2]"
+        },
+        {
+          "vis": "private",
+          "name": "address",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "id",
+          "type": "long",
+          "isID": true
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e7",
+      "kind": "enumeration",
+      "name": "DayOfWeek",
+      "literals": [
+        {
+          "vis": "public",
+          "name": "SU"
+        },
+        {
+          "vis": "public",
+          "name": "MO"
+        },
+        {
+          "vis": "public",
+          "name": "TU"
+        },
+        {
+          "vis": "public",
+          "name": "WE"
+        },
+        {
+          "vis": "public",
+          "name": "TH"
+        },
+        {
+          "vis": "public",
+          "name": "FR"
+        },
+        {
+          "vis": "public",
+          "name": "SA"
+        }
+      ],
+      "note": "литералы SU … SA; текст приводит только SU и SA",
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "Schedule",
+      "stereotype": "entity",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "semester",
+          "type": "byte"
+        }
+      ],
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "composition",
+      "from": "e5",
+      "to": "e4",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "*",
+      "fromRole": "",
+      "toRole": "",
+      "navigable": "from",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "association",
+      "from": "e1",
+      "to": "e1",
+      "fromMultiplicity": "*",
+      "toMultiplicity": "*",
+      "fromRole": "prerequisitesOf",
+      "toRole": "hasPrerequisites",
+      "note": "рефлексивная ассоциация: предварительные дисциплины и дисциплины, доступные после сдачи",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e7"
+    },
+    {
+      "id": "r4",
+      "kind": "dependency",
+      "from": "e6",
+      "to": "e8"
+    },
+    {
+      "id": "r5",
+      "kind": "association",
+      "from": "e1",
+      "to": "e2",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "*",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "association",
+      "from": "e2",
+      "to": "e3",
+      "fromMultiplicity": "*",
+      "toMultiplicity": "0..1",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "association",
+      "from": "e2",
+      "to": "e4",
+      "fromRole": "primary",
+      "fromMultiplicity": "0..4",
+      "toMultiplicity": "*",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "association",
+      "from": "e2",
+      "to": "e4",
+      "fromRole": "alternative",
+      "fromMultiplicity": "0..2",
+      "toMultiplicity": "*",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "composition",
+      "from": "e6",
+      "to": "e3",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "0..1",
+      "documentation": "вместе со связью r10 входит в ограничение {almost one}: у пользователя либо профессор, либо студент",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "composition",
+      "from": "e6",
+      "to": "e5",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "0..1",
+      "documentation": "вместе со связью r9 входит в ограничение {almost one}: у пользователя либо профессор, либо студент",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Key Abstractions",
+      "type": "class",
+      "shapes": [],
+      "connectors": []
+    }
+  ],
+  "expect": {
+    "rules": [
+      "атрибут-идентификатор помечен ID",
+      "композиция Student — Schedule"
+    ]
+  }
+}

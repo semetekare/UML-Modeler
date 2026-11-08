@@ -1,0 +1,956 @@
+{
+  "version": 1,
+  "values": [
+    {
+      "name": "sheet background",
+      "group": "sheet",
+      "value": "#ffffff",
+      "source": "code: vpplatform.jar!v/dap/r#<init>+0x0054 Ee = T = new Color(255,255,255) (built at <clinit>+0x0021); record: ClassDiagram diagramBackground=(255,255,255,255)"
+    },
+    {
+      "name": "grid size",
+      "group": "sheet",
+      "value": 10,
+      "unit": "px",
+      "source": "code: vpplatform.jar!v/dap/r#<init>+0x0118 EM=10 (horizontal), +0x0112 EL=10 (vertical); reader v/dan/i#b+0x0127 HorizontalGridSize"
+    },
+    {
+      "name": "grid colour",
+      "group": "sheet",
+      "value": "#c0c0c0",
+      "source": "code: vpplatform.jar!v/dap/r#<init>+0x010c EK = bp = Color.LIGHT_GRAY (set at <clinit>+0x0054)"
+    },
+    {
+      "name": "grid visible by default",
+      "group": "sheet",
+      "value": false,
+      "source": "code: vpplatform.jar!v/dap/r#<init>+0x0105 EJ=false (ShowGrid); reader v/dan/i#b+0x016f"
+    },
+    {
+      "name": "snap to grid",
+      "group": "sheet",
+      "value": true,
+      "source": "code: v/dap/r#<init>+0x0007 DR=false (AlignToGrid), turned on by packaged .defaultvpuml.properties AlignToGrid=true; reader v/dan/i#b+0x004f"
+    },
+    {
+      "name": "element font",
+      "group": "notation",
+      "value": "Arial 11px black",
+      "source": "record: myProject.vpp Class _elementFont=(@name=\"Arial\"; @size=11; @style=0); the code default is Dialog 11 at v/dap/r#<clinit>+0x0004/+0x0008"
+    },
+    {
+      "name": "name caption height",
+      "group": "notation",
+      "value": 14,
+      "unit": "px",
+      "source": "record: myProject.vpp Class _captionUIModel=(@height=14); the 17.3 sample resources/BaggageSchemas.vpp row tEUB0LqGAqAKag2a stores 15 - the height is per shape, not a constant"
+    },
+    {
+      "name": "caption line height",
+      "group": "notation",
+      "value": 14,
+      "unit": "px",
+      "source": "record: every Class in myProject.vpp stores _captionUIModel @height = 14 per text line — 32 classes with no stereotype store 14, 15 with a stereotype store 28 (2 lines), 2 with a stereotype store 42 (3 lines); the four 40s and the two 28s that break the rule are classes whose caption was resized by hand, which a free-move caption keeps. code: the height is never a constant in the jar — lib01.jar!v/cmo/er#<init>()V leaves field d (height) at 0 and v/bep/i#resetCaptionSize()V+0x0004 only raises the flag \"pRsCpSz\" (v/cmo/gj#p) for the layout pass to recompute it from the text, so 14 is one 11 px line as the program measures it"
+    },
+    {
+      "name": "shape border weight",
+      "group": "notation",
+      "value": 1,
+      "unit": "px",
+      "source": "record: Class _lineModel=(@weight=1.0; @color=(0,0,0,255); @hasStroke=T)"
+    },
+    {
+      "name": "stroke line cap",
+      "group": "notation",
+      "value": "butt",
+      "source": "record: every Class/Association/Generalization/Dependency/Realization _lineModel stores @cap=0, which is Java2D's CAP_BUTT"
+    },
+    {
+      "name": "shape fill",
+      "group": "notation",
+      "value": "#ffffff",
+      "source": "record: Class _fillColor @gradientStyle=1 @type=1 @color1=(255,255,255,255), painted flat"
+    },
+    {
+      "name": "code default shape fill",
+      "group": "notation",
+      "value": "#7acff5",
+      "source": "code: vpplatform.jar!v/dap/r#<init>+0x015c EY = bT = new Color(122,207,245) (built at <clinit>+0x0071/+0x0083) - the fill a brand-new shape gets"
+    },
+    {
+      "name": "default class size",
+      "group": "shapes",
+      "value": "190x170",
+      "source": "record: myProject.vpp Class width=190; height=170"
+    },
+    {
+      "name": "default package size",
+      "group": "shapes",
+      "value": "140x100",
+      "source": "record: myProject.vpp Package width=140; height=100"
+    },
+    {
+      "name": "default note size",
+      "group": "shapes",
+      "value": "80x70",
+      "source": "record: myProject.vpp NOTE width=80; height=70"
+    },
+    {
+      "name": "note connector dog-ear",
+      "group": "shapes",
+      "value": "10 along edge + 40 header",
+      "source": "record: Class parentConnectorLineLength=10; parentConnectorHeaderLength=40"
+    },
+    {
+      "name": "visibility style",
+      "group": "notation",
+      "value": 1,
+      "unit": "0 icon, 1 UML, 2 off",
+      "source": "code: vpplatform.jar!v/dap/r#<init>+0x0030 DY=1 (ClassVisibilityStyle); v/cpo/abx#a(I)V registers \"Visibility Style\" with default 1; reader v/dan/i#b+0x01db copies the byte unchanged. 1 is the SECOND entry of IClassUIModel.VISIBILITY_STYLES, i.e. UML characters, not icons (§16)"
+    },
+    {
+      "name": "visibility drawn as",
+      "group": "notation",
+      "value": "UML characters (+ - # ~)",
+      "source": "code: IClassUIModel.VISIBILITY_STYLES[1] = \"UML\" (openapi.jar!IClassUIModel#<clinit>+0x000b); the reader copies 1 through unchanged, so every shape in the samples draws the notation's own symbol shown by the panel, not a painted glyph. Corrected in §16: an earlier draft of this sheet read 1 as \"icons\" and the build drew glyphs"
+    },
+    {
+      "name": "visibility icon public colour",
+      "group": "notation",
+      "value": "#1a7f37",
+      "rejected": true,
+      "source": "rejected: docs/MEASUREMENTS-AUDIT.md §4.6 — класса «Заказ» в reference/vp163/1001.png нет (лист пуст, x 254…714 × y 173…270 ровно 255), ближайший зелёный (8,112,66) в точке (138,88) с Δ 25.9 — это значок палитры, а не глиф видимости; во всей книге 12 рисунков классов без насыщенных пикселей"
+    },
+    {
+      "name": "visibility icon private colour",
+      "group": "notation",
+      "value": "#b3261e",
+      "rejected": true,
+      "source": "rejected: docs/MEASUREMENTS-AUDIT.md §4.7 — класса «Пользователь» в 1001.png нет; ближайший красный (174,61,47) в точке (680,11) с Δ 29.0 — розовая деталь в углу окна, не глиф видимости"
+    },
+    {
+      "name": "visibility icon protected colour",
+      "group": "notation",
+      "value": "#9a6700",
+      "rejected": true,
+      "source": "rejected: the program has no colour per visibility kind, so this hex is not one of its values. §22a found neither the string \"9a6700\" nor the Integer constant 10118400 (0x9a6700) in the constant pools of all 19 jars or in any resource file of the installation, and §23f re-checked where the style actually lands: v/bet/gg#setVisibilityStyle(I)+0x0008 puts the int into the shape graphic's own field (getfield c:Lv/cnk/vd; invokevirtual v/cnk/vd.u(I)V -> v/cnk/er#u(I)+0x0009 putfield gi:int) and fires the property \"visibilityStyle\" — one int, no colour beside it. The glyph is drawn monochrome in the shape's foreground (record: InteractionLifeLine foreground=(0,0,0,255)), which is what the build does: src/ui/icons.js paints vis-* with currentColor, so no hex is read anywhere."
+    },
+    {
+      "name": "visibility icon package colour",
+      "group": "notation",
+      "value": "#1f5fa9",
+      "rejected": true,
+      "source": "rejected: same search, same outcome — zero hits for \"1f5fa9\"/\"#1f5fa9\" and for Integer 2056105 (0x1f5fa9) in the 19 jars' constant pools and in the installation's resources; the three visibility styles are names only and the style itself is one int with no colour table (§23f, v/cnk/er#u(I)+0x0009). The build paints vis-* with currentColor and reads no hex."
+    },
+    {
+      "name": "stereotype line above name",
+      "group": "notation",
+      "value": true,
+      "source": "code: v/dap/r#<init>+0x0172 Fc=true (ShowStereotypes); record: ClassDiagram showStereotypes=T"
+    },
+    {
+      "name": "show empty compartments: follow diagram",
+      "group": "notation",
+      "value": 0,
+      "source": "code: lib01.jar!v/cni/a#z+0x0c11 lconst_0 - the registry's own default for the key \"Class.showEmptyCompartments\"; its label is \"Follow Diagram\" at v/cni/b#b+0x1fd5 (Class.showEmptyCompartments.0)"
+    },
+    {
+      "name": "show empty compartments: yes",
+      "group": "notation",
+      "value": 1,
+      "source": "code: lib01.jar!v/cni/b#b+0x1fe2 \"Class.showEmptyCompartments.1\" = \"Yes\" (value at +0x1fe5); the diagram's own table agrees at v/cni/d#b+0x20b3 \"ClassDiagram.showClassEmptyCompartments.1\" = \"Yes\""
+    },
+    {
+      "name": "show empty compartments: no",
+      "group": "notation",
+      "value": 2,
+      "source": "code: lib01.jar!v/cni/b#b+0x1fef \"Class.showEmptyCompartments.2\" = \"No\" (value at +0x1ff2); diagram table v/cni/d#b+0x20bd \"ClassDiagram.showClassEmptyCompartments.2\" = \"No\" (value at +0x20c0)"
+    },
+    {
+      "name": "show empty compartments: diagram default",
+      "group": "notation",
+      "value": 1,
+      "source": "decision: the original stores no default for the diagram key - it is a checkbox in its options dialog (lib01.jar!v/acq/ac+0x045c \"Show empty compartments\"), and the shipped sample writes 2 by hand. The build takes 1 (\"Yes\") as the state of a fresh class diagram"
+    },
+    {
+      "name": "sample class diagram empty compartments",
+      "group": "notation",
+      "value": 2,
+      "source": "record: resources/BaggageSchemas.vpp ClassDiagram showClassEmptyCompartments=2 - i.e. \"No\" by the table above, not \"two compartments\""
+    },
+    {
+      "name": "connector line weight",
+      "group": "connectors",
+      "value": 1,
+      "unit": "px",
+      "source": "record: Association/Generalization/Dependency/Realization _lineModel=(@weight=1.0; @color=(0,0,0,255); @cap=0)"
+    },
+    {
+      "name": "connector style",
+      "group": "connectors",
+      "value": "rectilinear",
+      "source": "code: vpplatform.jar!v/dap/r#<init>+0x003a Ea=1 (DefaultConnectorStyle); reader v/dan/i#b+0x035a copies the byte unchanged"
+    },
+    {
+      "name": "connection point style",
+      "group": "connectors",
+      "value": 0,
+      "source": "code: v/dap/r#<init>+0x0035 DZ=0; reader v/dan/i#b+0x0318..+0x0325: stored 2 -> 1, anything else -> 0"
+    },
+    {
+      "name": "label background hides the line",
+      "group": "connectors",
+      "value": true,
+      "source": "record: myProject.vpp ClassDiagram paintConnectorThroughLabel=0 (the 17.3 sample stores 1 - see MECHANICS §9)"
+    },
+    {
+      "name": "connector label side",
+      "group": "connectors",
+      "value": "above the line",
+      "source": "record: connector _captionUIModel @side=1; ClassDiagram connectorLabelOrientation=0"
+    },
+    {
+      "name": "association multiplicities shown",
+      "group": "connectors",
+      "value": true,
+      "source": "record: Association showFromMultiplicity=T; showToMultiplicity=T"
+    },
+    {
+      "name": "multiplicity box offset",
+      "group": "connectors",
+      "value": 20,
+      "unit": "px",
+      "source": "record: Association multiplicityARectangle=(-1,-20,39,15) - the box's y is -20, i.e. 20 px off the line"
+    },
+    {
+      "name": "multiplicity box height",
+      "group": "connectors",
+      "value": 15,
+      "unit": "px",
+      "source": "record: Association multiplicityARectangle height=15; multiplicityBRectangle height=15"
+    },
+    {
+      "name": "association multiplicity box",
+      "group": "connectors",
+      "value": "39x15 / 27x15, 20 px off the line",
+      "source": "record: Association multiplicityARectangle=(-1,-20,39,15); multiplicityBRectangle=(-29,0,27,15)"
+    },
+    {
+      "name": "navigation arrows",
+      "group": "connectors",
+      "value": 3,
+      "source": "record: resources/BaggageSchemas.vpp ClassDiagram showAssociationNavigationArrows=3 (no arrowheads drawn)"
+    },
+    {
+      "name": "connector dash pattern",
+      "group": "connectors",
+      "value": "8 5",
+      "source": "code: vpplatform.jar!v/dal/au#<clinit> - the static BasicStroke[23] table; entry 2 = {8.0f, 5.0f}, built by v/dal/au#a([F)Ljava/awt/BasicStroke; as new BasicStroke(1.0f, 0, 1, 0.0f, dash, 0.0f). v.ber.e#setLineStyle maps LineStyle.Style2 (ordinal 2) to entry 2"
+    },
+    {
+      "name": "connector dash on",
+      "group": "connectors",
+      "value": 8,
+      "unit": "px",
+      "source": "code: v/dal/au#<clinit> au.a[2] = au.a(new float[]{8.0f, 5.0f})"
+    },
+    {
+      "name": "connector dash off",
+      "group": "connectors",
+      "value": 5,
+      "unit": "px",
+      "source": "code: v/dal/au#<clinit> au.a[2] = au.a(new float[]{8.0f, 5.0f})"
+    },
+    {
+      "name": "arrow head hollow triangle",
+      "group": "connectors",
+      "value": "8x11",
+      "source": "code: vpplatform.jar!v/ccq/h#<init>+0x0085 bipush 8 -> c(8) = length, +0x008b bipush 11 -> b(11) = width, +0x0080 a(0) = hollow; painter v/ccq/bk#a(Graphics2D,Point2D,Point2D,DD)"
+    },
+    {
+      "name": "arrow head hollow length",
+      "group": "connectors",
+      "value": 8,
+      "unit": "px",
+      "source": "code: v/ccq/h#<init>+0x0085 bipush 8 c(8) - length along the line (v/cco/a#i() returns field a)"
+    },
+    {
+      "name": "arrow head hollow width",
+      "group": "connectors",
+      "value": 11,
+      "unit": "px",
+      "source": "code: v/ccq/h#<init>+0x008b bipush 11 b(11) - full base width (v/cco/a#g() returns field b); the painter uses width/2 each side"
+    },
+    {
+      "name": "arrow head open",
+      "group": "connectors",
+      "value": "8x4",
+      "source": "code: vpplatform.jar!v/ccq/c#<init>+0x0006 iconst_4 b(4) = width, +0x000b bipush 8 c(8) = length; painter v/ccq/a#a draws two barbs from (x +/- width/2, y+length) to the tip"
+    },
+    {
+      "name": "arrow head open length",
+      "group": "connectors",
+      "value": 8,
+      "unit": "px",
+      "source": "code: v/ccq/c#<init>+0x000b bipush 8 c(8)"
+    },
+    {
+      "name": "arrow head open width",
+      "group": "connectors",
+      "value": 4,
+      "unit": "px",
+      "source": "code: v/ccq/c#<init>+0x0006 iconst_4 b(4); v/ccq/a#a barbs at x +/- width/2"
+    },
+    {
+      "name": "arrow head solid",
+      "group": "connectors",
+      "value": "7x4",
+      "source": "code: vpplatform.jar!v/ccq/n#<init>+0x0006 iconst_4 b(4) = width, +0x000b bipush 7 c(7) = length, +0x0011 a(1) = filled; painter v/ccq/bk"
+    },
+    {
+      "name": "arrow head solid length",
+      "group": "connectors",
+      "value": 7,
+      "unit": "px",
+      "source": "code: v/ccq/n#<init>+0x000b bipush 7 c(7)"
+    },
+    {
+      "name": "arrow head solid width",
+      "group": "connectors",
+      "value": 4,
+      "unit": "px",
+      "source": "code: v/ccq/n#<init>+0x0006 iconst_4 b(4)"
+    },
+    {
+      "name": "arrow head diamond",
+      "group": "connectors",
+      "value": "8x16",
+      "source": "code: vpplatform.jar!v/ccq/q#<init>+0x0012 bipush 8 c(8) = length, +0x0018 bipush 16 b(16) = width, +0x001e a(0) = hollow; painter v/ccq/bb#a draws tip, two side points at +/- width/2 and length/2, and the back point at length"
+    },
+    {
+      "name": "arrow head diamond length",
+      "group": "connectors",
+      "value": 8,
+      "unit": "px",
+      "source": "code: v/ccq/q#<init>+0x0012 bipush 8 c(8)"
+    },
+    {
+      "name": "arrow head diamond width",
+      "group": "connectors",
+      "value": 16,
+      "unit": "px",
+      "source": "code: v/ccq/q#<init>+0x0018 bipush 16 b(16)"
+    },
+    {
+      "name": "arrow head size codes",
+      "group": "connectors",
+      "value": 7,
+      "source": "code: vpplatform.jar!v/cco/a#<init>+0x0026 — the multiplier tables k[] and l[] are allocated with `bipush 7` (newarray double), and the class's own size constants c…i are 0…6; every painter (v/ccq/h#<init>, #c, #n, #q) fills exactly seven slots"
+    },
+    {
+      "name": "arrow head size default",
+      "group": "connectors",
+      "value": 2,
+      "source": "code: vpplatform.jar!v/cco/a#<init>+0x0021 — iconst_2 → putfield v/cco/a.x (the size code). At code 2 both multiplier tables are 1.0, so a head is drawn at its base size"
+    },
+    {
+      "name": "arrow size steps",
+      "group": "connectors",
+      "value": "0.7/0.8/1/1.2/1.4/2.7/5.1 (length) by SIZE_VERY_SMALL..SIZE_COLOSSAL",
+      "source": "code: v/cco/a#f() returns the size index (default 2 = SIZE_MEDIUM, v/cco/a#<init> x=2); each head's k[]/l[] arrays hold the 7 multipliers, e.g. v/ccq/h#<init> k={0.7,0.8,1,1.2,1.4,2.7,5.1}"
+    },
+    {
+      "name": "toolbar height",
+      "group": "layout",
+      "value": 78,
+      "unit": "px",
+      "rejected": true,
+      "source": "rejected: docs/MEASUREMENTS-AUDIT.md §4.1 — в reference/vp163/1001.png три полосы: меню y 1…28 = 28, панель инструментов y 30…51 = 22, палитра y 53…136 = 84; ни одна не 78 (ближайшая 84, разница 6 px больше погрешности ±1)"
+    },
+    {
+      "name": "left panel width",
+      "group": "layout",
+      "value": 236,
+      "unit": "px",
+      "rejected": true,
+      "source": "rejected: docs/MEASUREMENTS-AUDIT.md §4.2 — в 1001.png x 8…209 = 202 px, в контрольном 1001a.png x 8…335 = 328 px; ширина задаётся сплиттером (состояние сеанса), 236 нет ни в одном кадре"
+    },
+    {
+      "name": "right panel width",
+      "group": "layout",
+      "value": 300,
+      "unit": "px",
+      "rejected": true,
+      "source": "rejected: docs/MEASUREMENTS-AUDIT.md §4.3 — правой панели в 1001.png нет: холст идёт до x 716, рамка окна x 720; проверить нечем, в этом сеансе панель была скрыта"
+    },
+    {
+      "name": "status bar height",
+      "group": "layout",
+      "value": 28,
+      "unit": "px",
+      "source": "measured: reference/vp163/1001.png, полоса y 475…502 = 28 px (docs/MEASUREMENTS-AUDIT.md §4.4; прежние 26 отвергнуты — расхождение 2 px, 7.7 %)"
+    },
+    {
+      "name": "zoom on the sample sheet",
+      "group": "layout",
+      "value": 75,
+      "unit": "%",
+      "rejected": true,
+      "source": "rejected: docs/MEASUREMENTS-AUDIT.md §4.5 — в статусбаре 1001.png нет ни одного текстового пикселя (только иконки x 650…667 и x 685…699), лист пуст; масштаб — состояние сеанса, а не свойство окна"
+    },
+    {
+      "name": "stereotype profile",
+      "group": "profile",
+      "value": 304,
+      "source": "app/profile/stereotypes.json, which is what the app loads at boot (src/io/stereotypes.js#PROFILE_PATH); built by tools/build-profile.mjs from material/profile-canonical/: 428 records in the VP export (405 ApplicationStereotypes + 23 ProjectStereotypes) → 407 definitions → 304 stereotypes after canonicalisation. material/stereotypes.xml is the build input, not a file the app reads."
+    },
+    {
+      "name": "lifeline width",
+      "group": "sequence",
+      "value": 120,
+      "unit": "px",
+      "source": "record: myProject.vpp InteractionLifeLine width=120 (caption @height=14)"
+    },
+    {
+      "name": "lifeline head height",
+      "group": "sequence",
+      "value": 35,
+      "unit": "px",
+      "source": "code: lib01.jar!v/qi/o#e()+0x00b0..+0x00c1 — a new InteractionLifeLine is inserted at (frame.x+100, frame.y+40) through v/cnk/abb.a(IIII) = (x, y, 100, 35): a 100x35 box, i.e. a 35 px head. The argument order is fixed by the caller, not assumed: v/cmo/gj#a(IIII)V+0x0002..+0x000f forwards the four ints to n/o/p/q, v/cmo/af#n(I)V writes the x field cg (read back by #O()), #p(I)V writes ci (read back by #Q()), and e() itself places the activation at O()+Q()/2-4 with width 8 (+0x016a..+0x017b) — a centre, so Q() is the width and the third argument is width. Record: myProject.vpp stores y=40 on 21 of its 35 lifelines (the same +40), keeps only the caption at @y=0 (@height=14, or 26 with a stereotype line, i.e. 12 px per line + 2), and its widths 70..120 with height 530 are hand resizes of this insert box."
+    },
+    {
+      "name": "actor lifeline head height",
+      "group": "sequence",
+      "value": 48,
+      "unit": "px",
+      "source": "record, one witness, with the code's insert box beside it: myProject.vpp!DIAGRAM_ELEMENT(InteractionActor) (the XMLRPCServer lifeline) stores width=60 and _captionUIModel @x=-20 @y=34 @width=99 @height=14 — the stick figure fills the 34 px above the caption, so the drawn head is 34+14 = 48. The factory inserts an actor as the same 100x35 box as a lifeline: lib01.jar!v/qi/o#a(v/cia/bts,String,Z)+0x0053..+0x0067 calls v/cnk/aay.a(p.a(frame)+100, frame.b+40, 100, 35), then g(1) at +0x006c and ak() at +0x0070 — so 35 is the insert size and the figure grows past it. 48 is the drawn head at the recorded width of 60; the figure scales with the head width and only one width is recorded, so the value is the record's case, not an average. Build: ACTOR_LIFELINE_HEAD 70 -> 48."
+    },
+    {
+      "name": "message spacing",
+      "group": "sequence",
+      "value": 30,
+      "unit": "px",
+      "source": "code: vpplatform.jar!v/dal/ak#<init>+0x002b bipush 30 → field s; the setter v/dal/ak#b(I)V writes s (+0x000f putfield) and fires the change whose name is the constant at +0x0016, \"absoluteMessageSpacingDistance\". record agrees: myProject.vpp InteractionDiagram _interactionDiagramLayoutOptions @absoluteMessageSpacingDistance=30"
+    },
+    {
+      "name": "lifeline spacing",
+      "group": "sequence",
+      "value": 80,
+      "unit": "px",
+      "source": "code: vpplatform.jar!v/dal/ak#<init>+0x0025 bipush 80 → field r; the setter v/dal/ak#a(I)V writes r (+0x000f putfield) and fires \"absoluteLifelineSpacingDistance\" (ldc at +0x0016). record agrees: myProject.vpp InteractionDiagram _interactionDiagramLayoutOptions @absoluteLifelineSpacingDistance=80"
+    },
+    {
+      "name": "activation width",
+      "group": "sequence",
+      "value": 8,
+      "unit": "px",
+      "source": "record: myProject.vpp Activation width=8"
+    },
+    {
+      "name": "port size",
+      "group": "shapes",
+      "value": 13,
+      "source": "code: vpplatform.jar!v/due/f#a(v.drc.b,v.dvk.i,v.cmo.gj,v.drc.l)+0x0202 new Dimension; +0x0206 bipush 13; +0x0208 bipush 13 — a port gets a 13×13 box when the model gives it a position but no size; the branch is `instanceof v.cnk.ade` (+0x01ea) and `Port` → `v.cnk.ade` in v.mm#initDiagramElementClassTable+0x0fa3 (notation/shape-types.json). Both sides are 13, and the value is in pixels, not millimetres: it is a plain `new Dimension`, not `v/due/f#a(I)I` (§33)"
+    },
+    {
+      "name": "combined fragment caption height",
+      "group": "sequence",
+      "value": 18,
+      "unit": "px",
+      "source": "record: myProject.vpp CombinedFragment _captionUIModel @height=18"
+    },
+    {
+      "name": "message caption height",
+      "group": "sequence",
+      "value": 16,
+      "unit": "px",
+      "source": "record: myProject.vpp Message _captionUIModel @height=16"
+    },
+    {
+      "name": "interaction actor width",
+      "group": "sequence",
+      "value": 60,
+      "unit": "px",
+      "source": "record: myProject.vpp InteractionActor width=60"
+    },
+    {
+      "name": "part width",
+      "group": "composite",
+      "value": 120,
+      "unit": "px",
+      "source": "record: myProject.vpp Part width=120 (caption @height=14)"
+    },
+    {
+      "name": "grid width",
+      "group": "sheet",
+      "value": 10,
+      "unit": "px",
+      "source": "code: vpplatform.jar!v/dap/r#<init>+0x0118 EM=10, written by setter v/dap/r#h(I)V which reports the change as \"GridWidth\"; reader v/dan/i#b+0x0127 reads HorizontalGridSize into it"
+    },
+    {
+      "name": "grid height",
+      "group": "sheet",
+      "value": 10,
+      "unit": "px",
+      "source": "code: vpplatform.jar!v/dap/r#<init>+0x0112 EL=10, setter v/dap/r#g(I)V reports it as \"GridHeight\"; reader v/dan/i#b+0x01b7 reads VerticalGridSize"
+    },
+    {
+      "name": "align to grid by default",
+      "group": "sheet",
+      "value": false,
+      "source": "code: vpplatform.jar!v/dap/r#<init>+0x0007 DR=false, setter v/dap/r#a(Z)V (\"AlignToGrid\"); reader v/dan/i#b+0x004f; packaged .defaultvpuml.properties turns it on (AlignToGrid=true)"
+    },
+    {
+      "name": "class visibility style",
+      "group": "sheet",
+      "value": 1,
+      "unit": "enum 0/1/2",
+      "source": "code: vpplatform.jar!v/dap/r#<init>+0x0030 DY=1, setter v/dap/r#b(B)V (\"ClassVisibilityStyle\"); reader v/dan/i#b+0x01db. IClassUIModel.VS_ICON=0 / VS_UML=1 / VS_OFF=2, so the factory default 1 is UML characters (§16)"
+    },
+    {
+      "name": "visibility style icon",
+      "group": "notation",
+      "value": 0,
+      "unit": "enum",
+      "source": "code: openapi.jar!com/vp/plugin/diagram/shape/IClassUIModel fields VS_ICON=0, VS_UML=1, VS_OFF=2; <clinit>+0x0006/+0x000b/+0x0010 build VISIBILITY_STYLES = {\"Icon\", \"UML\", \"Off\"} and putstatic it at +0x0013 — the property value is an INDEX into that array. The bridge v/bet/gg#getVisibilityStyle (lib01.jar) reads it unchanged: ldc \"7UdFrDg2Pl\" -> v/cnk/vd#hV_()I -> ireturn"
+    },
+    {
+      "name": "visibility style uml",
+      "group": "notation",
+      "value": 1,
+      "unit": "enum",
+      "source": "code: openapi.jar!com/vp/plugin/diagram/shape/IClassUIModel fields VS_ICON=0, VS_UML=1, VS_OFF=2; <clinit>+0x0006/+0x000b/+0x0010 build VISIBILITY_STYLES = {\"Icon\", \"UML\", \"Off\"} and putstatic it at +0x0013 — the property value is an INDEX into that array. The bridge v/bet/gg#getVisibilityStyle (lib01.jar) reads it unchanged: ldc \"7UdFrDg2Pl\" -> v/cnk/vd#hV_()I -> ireturn — the factory default and every class record in the samples"
+    },
+    {
+      "name": "visibility style off",
+      "group": "notation",
+      "value": 2,
+      "unit": "enum",
+      "source": "code: openapi.jar!com/vp/plugin/diagram/shape/IClassUIModel fields VS_ICON=0, VS_UML=1, VS_OFF=2; <clinit>+0x0006/+0x000b/+0x0010 build VISIBILITY_STYLES = {\"Icon\", \"UML\", \"Off\"} and putstatic it at +0x0013 — the property value is an INDEX into that array. The bridge v/bet/gg#getVisibilityStyle (lib01.jar) reads it unchanged: ldc \"7UdFrDg2Pl\" -> v/cnk/vd#hV_()I -> ireturn — the third entry, \"Off\""
+    },
+    {
+      "name": "default connector style",
+      "group": "sheet",
+      "value": 1,
+      "unit": "enum",
+      "source": "code: vpplatform.jar!v/dap/r#<init>+0x003a Ea=1 (rectilinear), setter v/dap/r#d(B)V (\"DefaultConnectorStyle\"); reader v/dan/i#b+0x035a"
+    },
+    {
+      "name": "default show attribute option",
+      "group": "sheet",
+      "value": 1,
+      "unit": "enum",
+      "source": "code: vpplatform.jar!v/dap/r#<init>+0x00b0 Es=1, setter v/dap/r#f(B)V (\"DefaultShowAttributeOption\"); reader v/dan/i#b+0x01ff"
+    },
+    {
+      "name": "default show operation option",
+      "group": "sheet",
+      "value": 1,
+      "unit": "enum",
+      "source": "code: vpplatform.jar!v/dap/r#<init>+0x00ce Ey=1, setter v/dap/r#g(B)V (\"DefaultShowOperationOption\"); reader v/dan/i#b+0x0247"
+    },
+    {
+      "name": "default shape background (code)",
+      "group": "notation",
+      "value": "#7acff5",
+      "source": "code: vpplatform.jar!v/dap/r#<clinit>+0x0074..0x0083 bT=new Color(122,207,245); copied into field EY at <init>+0x015c"
+    },
+    {
+      "name": "default shape background (packaged)",
+      "group": "notation",
+      "value": "#c8c8f0",
+      "source": "packaged: vpplatform.jar!.defaultvpuml.properties DefaultShapeBackground=200, 200, 240 — applied over the code default on a fresh install"
+    },
+    {
+      "name": "default shape foreground",
+      "group": "notation",
+      "value": "#000000",
+      "source": "code: vpplatform.jar!v/dap/r#<clinit>+0x0086 bV=Color.BLACK; copied into field EZ at <init>+0x0163"
+    },
+    {
+      "name": "default font (code)",
+      "group": "notation",
+      "value": "Dialog 11",
+      "source": "code: vpplatform.jar!v/dap/r#<clinit>+0x0000 P and +0x0030 ab = new Font(\"Dialog\", 0, 11); copied into Ec at <init>+0x0046 and Ei at <init>+0x006a"
+    },
+    {
+      "name": "align to grid (effective)",
+      "group": "sheet",
+      "value": true,
+      "source": "layers: code default false (vpplatform.jar!v/dap/r#<init>+0x0007 DR, setter a(Z)) overridden by the packaged first-run file .defaultvpuml.properties AlignToGrid=true — the effective value a fresh diagram gets"
+    },
+    {
+      "name": "fill type solid",
+      "group": "fill",
+      "value": 1,
+      "source": "code: lib01.jar!v/cmw/aw#a(Lv/byf/cn;Ljava/awt/Rectangle;)Ljava/awt/Paint; — type compared with 2 at +0x000c, with 1 at +0x0029; the solid branch loads cn.b() (color1) at +0x002e. The type constants are v/cmw/i#<clinit>: a=1"
+    },
+    {
+      "name": "fill type gradient",
+      "group": "fill",
+      "value": 2,
+      "source": "code: lib01.jar!v/cmw/aw#a(Lv/byf/cn;Ljava/awt/Rectangle;)Ljava/awt/Paint; — type==2 at +0x000c and rect!=null at +0x0011 lead to aw.a(cn.d(), rect, cn.b(), cn.c()) at +0x0021 → GradientPaint; v/cmw/i#<clinit> b=2"
+    },
+    {
+      "name": "gradient directions",
+      "group": "fill",
+      "value": 16,
+      "source": "code: lib01.jar!v/cmw/aw#a(ILjava/awt/Rectangle;Ljava/awt/Color;Ljava/awt/Color;)Ljava/awt/GradientPaint; — 614 instructions, one branch per style 1..16 (vpplatform.jar!v/cqk/bz#a with the same signature has the identical 614-instruction body); v/cmw/aw#a(I)I lets only 1..16 through"
+    },
+    {
+      "name": "gradient cyclic",
+      "group": "fill",
+      "value": true,
+      "source": "code: lib01.jar!v/cmw/aw#a(ILjava/awt/Rectangle;Ljava/awt/Color;Ljava/awt/Color;)Ljava/awt/GradientPaint; @0x04c6 iconst_1 before new GradientPaint(p1, c1, p2, c2, true) at +0x04c7 — cyclic, so a half-box gradient mirrors"
+    },
+    {
+      "name": "note caption side",
+      "group": "notation",
+      "value": 12,
+      "unit": "px",
+      "source": "record: all 5 NOTE records in myProject.vpp store _captionUIModel @x=0, @side=12 (widths 80/140/90, heights 70/60/40); code: vpplatform.jar!v/cnk/hw#<init>+0x0004 sets the angle field dr=0 (key dq=\"angle\") and lib01.jar!v/bet/kw#getAngle+0x0001 returns it, so no NOTE record carries an angle — the 12 is the caption's own side inset, not a per-shape number"
+    },
+    {
+      "name": "note text inset",
+      "group": "notation",
+      "value": 12,
+      "unit": "px",
+      "source": "choice: the record carries no text inset for a note — its _captionUIModel holds the caption BOX (x, y, width, height) and a placement code, and nothing else (MECHANICS §30). The build keeps 12 px from the left edge because that is what it has always drawn; it is listed here so the number is visible as the build's own, not the program's (MECHANICS §8)."
+    },
+    {
+      "name": "note caption width delta",
+      "group": "notation",
+      "value": 15,
+      "unit": "px",
+      "source": "record: _captionUIModel@width = shape width − 15 in all 5 NOTE records (80→65, 140→125, 90→75), @height=0 so the caption follows the text; the build wraps note text to width − (15 + side)"
+    },
+    {
+      "name": "member row height",
+      "group": "plantuml import",
+      "unit": "px",
+      "value": 14,
+      "source": "code: vpplatform.jar!v/due/f#a(v.dvk.i,v.dvk.i,v.cmo.gj,v.drc.l)+0x0324 ldc \"font\" → +0x0336 FontMetrics.getHeight() → +0x033d imul (× member count) → +0x0342 iconst_2 iadd: the block of member lines is lineHeight × n + 2. lineHeight is the caption's own font metric (v/cmo/gj#bs()Lv/cmw/g;#g()Ljava/awt/Font;), 14 for Arial 11 — the same 14 every record stores as _captionUIModel @height for one line (§30)"
+    },
+    {
+      "name": "member compartment padding",
+      "group": "plantuml import",
+      "unit": "px",
+      "value": 2,
+      "source": "code: vpplatform.jar!v/due/f#a(v.dvk.i,v.dvk.i,v.cmo.gj,v.drc.l)+0x0342 iconst_2 → +0x0343 iadd, added to lineHeight × member count (+0x033d imul) before the block is applied at +0x0346: a member compartment is rows × 14 + 2, i.e. one pixel above the first line and one below the last"
+    },
+    {
+      "name": "seed sibling gap",
+      "group": "plantuml import",
+      "unit": "px",
+      "value": 40,
+      "source": "decision: four grid cells (grid size 10, code). The seed puts two shapes 40 px apart; the original never places shapes by itself, so there is no code address for a gap (MECHANICS §21c)"
+    },
+    {
+      "name": "seed frame inset",
+      "group": "plantuml import",
+      "unit": "px",
+      "value": 20,
+      "source": "decision: two grid cells — the inset of a package/frame around its children"
+    },
+    {
+      "name": "seed activity step",
+      "group": "plantuml import",
+      "unit": "px",
+      "value": 120,
+      "source": "decision: the vertical pitch of a column of activity nodes. Falsified in the original: the shipped activity diagram stands at y 53/171/269/382 (gaps 118/98/113, BaggageSchemas.vpp) — no constant pitch exists because the person places the nodes (MECHANICS §21c)"
+    },
+    {
+      "name": "seed state step",
+      "group": "plantuml import",
+      "unit": "px",
+      "value": 140,
+      "source": "decision: the vertical pitch of a state chain, same reason as the activity step"
+    },
+    {
+      "name": "seed lane width",
+      "group": "plantuml import",
+      "unit": "px",
+      "value": 200,
+      "source": "decision: one swimlane column, equal to the swimlane shape those nodes stand in (notation swimlane 200×300)"
+    },
+    {
+      "name": "seed sheet width",
+      "group": "plantuml import",
+      "unit": "px",
+      "value": 720,
+      "source": "decision: the smallest sheet the seed will draw"
+    },
+    {
+      "name": "seed sheet height",
+      "group": "plantuml import",
+      "unit": "px",
+      "value": 440,
+      "source": "decision: the smallest sheet the seed will draw"
+    },
+    {
+      "name": "seed wrap width",
+      "group": "plantuml import",
+      "unit": "px",
+      "value": 1400,
+      "source": "decision: a page limit — a row of shapes breaks before it"
+    },
+    {
+      "name": "connector style: rectilinear",
+      "group": "connectors",
+      "value": 0,
+      "source": "code: lib01.jar!v/cni/b#a()V+0x047a ldc_w \"connectorStyle.0\" → \"Rectilinear\"; accepted range vpplatform.jar!v/dap/r#d(B)+0x0021..+0x0046 (0..5); diagram default vpplatform.jar!v/dap/r#<init>+0x0039 iconst_1"
+    },
+    {
+      "name": "connector style: oblique",
+      "group": "connectors",
+      "value": 1,
+      "source": "code: lib01.jar!v/cni/b#a()V+0x0487 ldc_w \"connectorStyle.1\" → \"Oblique\"; accepted range vpplatform.jar!v/dap/r#d(B)+0x0021..+0x0046 (0..5); diagram default vpplatform.jar!v/dap/r#<init>+0x0039 iconst_1"
+    },
+    {
+      "name": "connector style: curve",
+      "group": "connectors",
+      "value": 2,
+      "source": "code: lib01.jar!v/cni/b#a()V+0x0494 ldc_w \"connectorStyle.2\" → \"Curve\"; accepted range vpplatform.jar!v/dap/r#d(B)+0x0021..+0x0046 (0..5); diagram default vpplatform.jar!v/dap/r#<init>+0x0039 iconst_1"
+    },
+    {
+      "name": "connector style: follow diagram",
+      "group": "connectors",
+      "value": 3,
+      "source": "code: lib01.jar!v/cni/b#a()V+0x04a1 ldc_w \"connectorStyle.3\" → \"Follow Diagram\"; accepted range vpplatform.jar!v/dap/r#d(B)+0x0021..+0x0046 (0..5); diagram default vpplatform.jar!v/dap/r#<init>+0x0039 iconst_1"
+    },
+    {
+      "name": "connector style: round oblique",
+      "group": "connectors",
+      "value": 4,
+      "source": "code: lib01.jar!v/cni/b#a()V+0x04ae ldc_w \"connectorStyle.4\" → \"Round Oblique\"; accepted range vpplatform.jar!v/dap/r#d(B)+0x0021..+0x0046 (0..5); diagram default vpplatform.jar!v/dap/r#<init>+0x0039 iconst_1"
+    },
+    {
+      "name": "connector style: round rectilinear",
+      "group": "connectors",
+      "value": 5,
+      "source": "code: lib01.jar!v/cni/b#a()V+0x04bb ldc_w \"connectorStyle.5\" → \"Round Rectilinear\"; accepted range vpplatform.jar!v/dap/r#d(B)+0x0021..+0x0046 (0..5); diagram default vpplatform.jar!v/dap/r#<init>+0x0039 iconst_1"
+    },
+    {
+      "name": "label orientation: horizontal only",
+      "group": "connectors",
+      "value": 0,
+      "source": "code: lib01.jar!v/cni/b#a()V+0x03f9 ldc_w \"connectorLabelOrientation.0\" → \"Horizontal Only\"; diagram preference default vpplatform.jar!v/dap/r#<init>+0x0712 putfield Kk:C (iconst_0 at +0x0711); record: ClassDiagram connectorLabelOrientation=0"
+    },
+    {
+      "name": "label orientation: horizontal or vertical",
+      "group": "connectors",
+      "value": 1,
+      "source": "code: lib01.jar!v/cni/b#a()V+0x0406 ldc_w \"connectorLabelOrientation.1\" → \"Horizontal or Vertical Only\"; diagram preference default vpplatform.jar!v/dap/r#<init>+0x0712 putfield Kk:C (iconst_0 at +0x0711); record: ClassDiagram connectorLabelOrientation=0"
+    },
+    {
+      "name": "label orientation: follow angle",
+      "group": "connectors",
+      "value": 2,
+      "source": "code: lib01.jar!v/cni/b#a()V+0x0413 ldc_w \"connectorLabelOrientation.2\" → \"Follow Connector Angle\"; diagram preference default vpplatform.jar!v/dap/r#<init>+0x0712 putfield Kk:C (iconst_0 at +0x0711); record: ClassDiagram connectorLabelOrientation=0"
+    },
+    {
+      "name": "label orientation: follow angle, keep up right",
+      "group": "connectors",
+      "value": 3,
+      "source": "code: lib01.jar!v/cni/b#a()V+0x0420 ldc_w \"connectorLabelOrientation.3\" → \"Follow Connector Angle and Keep Text Up Right\"; diagram preference default vpplatform.jar!v/dap/r#<init>+0x0712 putfield Kk:C (iconst_0 at +0x0711); record: ClassDiagram connectorLabelOrientation=0"
+    },
+    {
+      "name": "label orientation: follow diagram",
+      "group": "connectors",
+      "value": 4,
+      "source": "code: lib01.jar!v/cni/b#a()V+0x042d ldc_w \"connectorLabelOrientation.4\" → \"Follow Diagram\"; diagram preference default vpplatform.jar!v/dap/r#<init>+0x0712 putfield Kk:C (iconst_0 at +0x0711); record: ClassDiagram connectorLabelOrientation=0"
+    },
+    {
+      "name": "default label orientation",
+      "group": "connectors",
+      "value": 0,
+      "source": "code: vpplatform.jar!v/dap/r#<init>+0x0712 putfield Kk:C with iconst_0 (field Kk = ConnectorLabelOrientation); setter v/dap/r#i(C)+0x0021 accepts 0..3; record: every ClassDiagram stores connectorLabelOrientation=0"
+    },
+    {
+      "name": "connector style property inherits",
+      "group": "connectors",
+      "value": 3,
+      "source": "code: lib01.jar!v/cni/a#<clinit>+0x0e42 ldc_w \"Connector.connectorStyle\" → 3L (Follow Diagram): a connector without its own choice uses the diagram's"
+    },
+    {
+      "name": "connector end: fraction of the shape box",
+      "group": "connectors",
+      "value": "x = shape.x + fx*w + dx",
+      "source": "draw.io 20.8.3 mxGraph.prototype.getConnectionPoint (mxClient.js), research docs/DRAWIO-CONNECTORS.md §3.1; evidence ev_1268ac2da6e72033f0b93ec86e7f001114538adb961d87d7b56b586685477c04"
+    },
+    {
+      "name": "connector end: perimeter projection",
+      "group": "connectors",
+      "value": "ray from the centre to the box border",
+      "source": "draw.io 20.8.3 mxView.getPerimeterPoint via getConnectionPoint(..., constraint.perimeter), research §3.1"
+    },
+    {
+      "name": "connector end: entry perimeter default",
+      "group": "connectors",
+      "value": false,
+      "source": "research §3.1: the product writes entryPerimeter=0 on 435 of 486 corpus edges; draw.io's own style default is true"
+    },
+    {
+      "name": "connector end: rounding on import",
+      "group": "connectors",
+      "value": 0,
+      "unit": "px",
+      "source": "research §3.1: mxGraph.getConnectionPoint rounds only when drawing (round=true); files keep 0.904, -0.008, 1.001"
+    },
+    {
+      "name": "arc size default (draw.io)",
+      "group": "connectors",
+      "value": 20,
+      "unit": "px",
+      "source": "draw.io 20.8.3 mxShape.addPoints, LINE_ARCSIZE=20 → radius 10; research §3.4"
+    },
+    {
+      "name": "segment drag: points moved",
+      "group": "connectors",
+      "value": 2,
+      "source": "research §4.5: mxEdgeSegmentHandler.getPreviewPoints moves both bounding points of an orthogonal segment; measured (240,60)(240,400)→(270,60)(270,400)"
+    },
+    {
+      "name": "straight edge segment drag: points inserted",
+      "group": "connectors",
+      "value": 1,
+      "source": "research §4.5: measured mxEdgeHandler path, points.splice(VIRTUAL_HANDLE-index,0,cursor) — one new point"
+    },
+    {
+      "name": "target choice: deepest shape wins",
+      "group": "connectors",
+      "value": "smallest area under the cursor, tie → top of z",
+      "source": "research §4.4: measured mxGraph.getCellAt on a swimlane with children (child wins, empty area and caption give the container, overlapping neighbour gives the top one)"
+    },
+    {
+      "name": "line jumps: off",
+      "group": "connectors",
+      "value": 0,
+      "source": "code: lib01.jar!v/cni/b#a(String,String,int)V+0x043a ldc_w \"connectorLineJumps.0\" → \"Off\" — the value→label table the properties dialog prints (§26b)"
+    },
+    {
+      "name": "line jumps: arc",
+      "group": "connectors",
+      "value": 1,
+      "source": "code: lib01.jar!v/cni/b#a+0x0447 ldc_w \"connectorLineJumps.1\" → \"Arc\""
+    },
+    {
+      "name": "line jumps: gap",
+      "group": "connectors",
+      "value": 2,
+      "source": "code: lib01.jar!v/cni/b#a+0x0453 ldc_w \"connectorLineJumps.2\" → \"Gap\""
+    },
+    {
+      "name": "line jumps: square",
+      "group": "connectors",
+      "value": 3,
+      "source": "code: lib01.jar!v/cni/b#a+0x0460 ldc_w \"connectorLineJumps.3\" → \"Square\""
+    },
+    {
+      "name": "line jumps: follow diagram",
+      "group": "connectors",
+      "value": 4,
+      "source": "code: lib01.jar!v/cni/b#a+0x046d ldc_w \"connectorLineJumps.4\" → \"Follow Diagram\""
+    },
+    {
+      "name": "line jumps property inherits",
+      "group": "connectors",
+      "value": 4,
+      "source": "code: lib01.jar!v/cni/a#<clinit>+0x0e2e ldc 4L → put(\"Connector.connectorLineJumps\",4L) — a connector stores \"follow the diagram\" until one link overrides it"
+    },
+    {
+      "name": "default line jumps",
+      "group": "connectors",
+      "value": 0,
+      "source": "code: vpplatform.jar!v/dap/r#<init>+0x003e iconst_0, +0x003f putfield Eb:byte (Eb = DefaultLineJumps); the setter v/dap/r#e(B)V+0x0021…+0x0039 accepts 0…3 only — 4 belongs to a connector, never to the preference (§26c)"
+    },
+    {
+      "name": "line jump size default",
+      "group": "connectors",
+      "value": 0,
+      "source": "code: vpplatform.jar!v/dap/r#<init>+0x0a27 iconst_0, +0x0a28 putfield MR:byte (MR = LineJumpSize); getter bR()B, setter bR(B)V → \"LineJumpSize\""
+    },
+    {
+      "name": "line jump size: largest code",
+      "group": "connectors",
+      "value": 2,
+      "source": "code: vpplatform.jar!v/dap/r#bR(B)V+0x0021…+0x003e — three comparisons (0, 1, 2) set the accept flag, else \"unknown setting on VPPreference: ….LineJumpSize\" at +0x004a"
+    },
+    {
+      "name": "line jump arc: width",
+      "group": "connectors",
+      "value": 6,
+      "unit": "px",
+      "source": "record: icons/VPUML/toolbar/LineJumpsArc.png (lib02.jar, 18×18) — the bump spans x 5…10 across the 1 px line at row 9, i.e. 6 px wide"
+    },
+    {
+      "name": "line jump arc: height",
+      "group": "connectors",
+      "value": 3,
+      "unit": "px",
+      "source": "record: same icon — the arc rises from row 9 to row 6, 3 px above the line"
+    },
+    {
+      "name": "line jump gap: half width",
+      "group": "connectors",
+      "value": 2.5,
+      "unit": "px",
+      "source": "record: LineJumpsGap.png — the line breaks 2 px either side of the 1 px crossing line, so 2.5 px from its centre"
+    },
+    {
+      "name": "line jump square: width",
+      "group": "connectors",
+      "value": 6,
+      "unit": "px",
+      "source": "record: icons/VPUML/toolbar/LineJumpsSquare.png (18×18) — the square notch spans x 5…10, 6 px wide, the same 6 as the arc's foot"
+    },
+    {
+      "name": "line jump square: height",
+      "group": "connectors",
+      "value": 4,
+      "unit": "px",
+      "source": "record: same icon — the notch stands 4 px above the line (rows 5…8 over row 9)"
+    },
+    {
+      "name": "line jump size step",
+      "group": "connectors",
+      "value": 2,
+      "unit": "px",
+      "source": "decision: the program has three size codes (0…2, §26c) but no radius or scale anywhere in the 19 jars — the bump grows 2 px per code, and the sheet says so instead of inventing an address"
+    },
+    {
+      "name": "connector curve sample step",
+      "group": "connectors",
+      "value": 0.00625,
+      "source": "code: lib01.jar!v/cct/ba#l()+0x0223 ldc2_w 0.00625 — the t increment of the sample loop that runs 0…1 (+0x0203…+0x022f). Style 2 (Curve) reaches this class through v/dfl/acb#a(Z,I)+0x001d (style==2 -> char 3) and v/cct/ju#a(C) tableswitch 2..6 (case 3 -> new v/cct/ba)"
+    },
+    {
+      "name": "connector curve duplicate nudge",
+      "group": "connectors",
+      "value": 8,
+      "unit": "px",
+      "source": "code: lib01.jar!v/cct/ba#l()+0x0160 dload 8.0, +0x0164 dadd — a route point equal to the one before it is moved +8 in x and +8 in y before the spline is built, so no segment has zero length"
+    },
+    {
+      "name": "connector corner cut",
+      "group": "connectors",
+      "value": 7,
+      "unit": "px",
+      "source": "code: lib01.jar!v/cct/es#a(D)+0x00b1 ldc2_w 7.0 * the zoom double, d2i at +0x00b6 = the cut back along both legs of a corner; the cubic through the corner is at +0x0190…+0x01a6. Styles 4 and 5 reach it through v/dfl/acb#a(Z,I)+0x002b/+0x0039 and v/cct/ju#a(C) cases 5 and 6"
+    },
+    {
+      "name": "parallel connector step",
+      "group": "connectors",
+      "value": 0.12,
+      "unit": "share of the figure's side",
+      "source": "decision, with the original's records checked: `myProject.vpp` has no pair with two structural connectors, `Visokih.vpp` has eleven (342 structural connectors) and each of the two connectors there carries its OWN `_points` — no pair shares a first point, so the program separates parallel lines by storing per-connector geometry, not by an offset at draw time. Our step is an addition: 0.12 of the side between neighbours (23 px on a 190 px side), the largest value that keeps 5223's pair clear of RegistrationForm — 0.2 walked that line through the class (MECHANICS §31d)"
+    },
+    {
+      "name": "parallel connector edge margin",
+      "group": "connectors",
+      "value": 0.06,
+      "unit": "share of the figure's side",
+      "source": "decision: src/model/parallel-links.js EDGE — a shifted end never comes closer than 6 % of the side to a corner, so the arrow head keeps its place on the border (MECHANICS §31)"
+    }
+  ]
+}

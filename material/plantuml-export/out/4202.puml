@@ -1,0 +1,28 @@
+@startuml
+title Login Basic Flow
+actor e1 as "Пользователь"
+participant e2 as "lform:LoginForm" <<boundary>>
+participant e3 as "menu:MainMenuForm" <<boundary>>
+participant e4 as "lctrl:LoginController" <<control>>
+participant e5 as "dao:DataAccess" <<control>>
+participant e6 as "curUser:User" <<entity>>
+opt getUserByLogin() != NULL
+e1 -> e2 : login()
+e2 -> e4 : login()
+e4 -> e5 : getUserByLogin(l:string):User
+create e6
+e5 -> e6 : create
+e5 --> e4 : result
+e4 -> e6 : checkPassword(pswrd:string):boolean
+e6 --> e4 : result
+end
+alt curUser != NULL && curUser.checkPassword() == TRUE
+create e3
+e4 -> e3 : open(curUser)
+e3 -> e6 : getType():UserType
+e4 -> e2 : displayError()
+else else
+end
+e4 -> e2 : close
+destroy e2
+@enduml

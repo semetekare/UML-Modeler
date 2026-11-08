@@ -1,0 +1,6 @@
+@startuml
+title timing
+participant e1 as "CourseOffering"
+note over e1 : Open: 0–40; Closed: 40–100
+participant e2 as "Регистратор"
+@enduml

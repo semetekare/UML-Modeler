@@ -1,0 +1,75 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5203",
+    "figureNo": "5.2.3",
+    "exercise": "5.2.C",
+    "type": "sequence",
+    "diagramName": "Design TransferSchedulesData Subflow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Уточнённая UML-диаграмма последовательности Design TransferSchedulesData Subflow",
+    "notes": "Проектная версия: сняты стереотипы анализа, dao:DataAccess стал dao:IDBAccess, bs:BillingSystem стал bs:IBSAccess (оба со стереотипом «interface»); удалены линии жизни cOff[j]:CourseOffering и Расчётная система и все сообщения, исходящие от объектов интерфейсов подсистем.",
+    "gaps": [
+      "сообщения в тексте не перечислены — только правки: удалены сообщения от dao:IDBAccess и bs:IBSAccess, удалены две линии жизни",
+      "покрытие сообщений фрагментами не выражается"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "crctrl:CloseRegistrationController"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "dao:IDBAccess",
+      "stereotype": "interface"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "studlist[i]:Student",
+      "multiObject": true
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "studlist[i].schedule[s]:Schedule",
+      "multiObject": true
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "bs:IBSAccess",
+      "stereotype": "interface"
+    },
+    {
+      "id": "e6",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "opt"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "loop"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Design TransferSchedulesData Subflow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

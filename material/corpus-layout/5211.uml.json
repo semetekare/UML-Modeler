@@ -1,0 +1,135 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5211",
+  "name": "UML-диаграмма последовательности, описывающая реализацию операции close() в подсистеме DBAccess",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "db:DBAccess",
+      "stereotype": "subsystem proxy",
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "c:Connection",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "fragment",
+      "name": "[c <> NULL]",
+      "documentation": "фрагмент opt; условие прочитано с рисунка, покрывает сообщение 2",
+      "operator": "opt",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "close() : void",
+      "from": "e1",
+      "to": "e1",
+      "note": "найденное сообщение: отправитель на рисунке не показан",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "close() : void",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "close",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 130,
+          "h": 210
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 250,
+          "y": 60,
+          "w": 130,
+          "h": 210
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 60,
+          "y": 120,
+          "w": 320,
+          "h": 110
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.429
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.524
+          },
+          "y": 150
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.571
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.571
+          },
+          "y": 180
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5211",
+    "figureNo": "5.2.11",
+    "exercise": "5.2.F",
+    "type": "sequence",
+    "diagramName": "close",
+    "group": "diagram",
+    "reproducible": "да",
+    "altText": "UML-диаграмма последовательности, описывающая реализацию операции close() в подсистеме DBAccess",
+    "notes": "Текст называет линию жизни db:DBAccess и сообщение close(). Рисунок 5.2.11 подтверждает их и добавляет линию жизни c:Connection, второе сообщение close() к ней и фрагмент opt с условием [c <> NULL]; всё прочитано с рисунка, пробелов не осталось.",
+    "gaps": [],
+    "gapIds": [],
+    "imageDerived": [
+      "e1",
+      "r1"
+    ]
+  },
+  "sheet": {
+    "w": 600,
+    "h": 400
+  }
+}

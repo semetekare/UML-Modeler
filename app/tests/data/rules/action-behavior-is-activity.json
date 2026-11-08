@@ -1,0 +1,112 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-action-behavior-is-activity",
+  "name": "action-behavior-is-activity — действие вызывает класс",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "activity",
+      "name": "Обработка заказа"
+    },
+    {
+      "id": "e2",
+      "kind": "action",
+      "name": "Оформить возврат",
+      "behaviorRef": "e1"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "Правила возврата"
+    },
+    {
+      "id": "e4",
+      "kind": "action",
+      "name": "Согласовать возврат",
+      "documentation": "Правило «action-behavior-is-activity» — совет практики моделирования: пункта UML у него нет, есть только объяснение, почему такую модель трудно читать.\nДействие «Согласовать возврат» вызывает класс «Правила возврата»: класс — не деятельность, поддиаграммы с графом у него нет.",
+      "behaviorRef": "e3"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "controlFlow",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r2",
+      "kind": "association",
+      "from": "e1",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "action-behavior-is-activity — действие вызывает класс",
+      "kind": "activity",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 70
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 60,
+          "y": 180,
+          "w": 180,
+          "h": 50
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 340,
+          "y": 60,
+          "w": 200,
+          "h": 120
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 60,
+          "y": 300,
+          "w": 180,
+          "h": 50
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

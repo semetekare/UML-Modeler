@@ -1,0 +1,66 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-generalization-compatible-kinds-ok",
+  "name": "generalization-compatible-kinds (без нарушения) — обобщение между элементами одного вида",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Заказ",
+      "documentation": "Правило «generalization-compatible-kinds», контрольный случай без нарушения: обобщение между элементами одного вида.\nUML 2.5.1, п. 9.9.4.8, констрейнт Classifier::specialize_type: «A Classifier may only specialize Classifiers of a valid type.»\nКласс обобщает класс — вид совместим."
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "Документ"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "generalization",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Диаграмма 1",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 360,
+          "y": 60,
+          "w": 190,
+          "h": 170
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

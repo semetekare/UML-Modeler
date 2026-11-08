@@ -1,0 +1,19 @@
+@startuml
+title Dependencies
+package "Login" as e1
+package "Registration" as e2
+package "UniversityArtefacts" as e5
+' doc e5: на рисунке под именем напечатан квалификатор (BusinessServices)
+' source e5: image
+package "Interfaces" as e4
+' doc e4: на рисунке под именем напечатан квалификатор (BusinessServices)
+' source e4: image
+package "CloseRegistration" as e3
+e2 ..> e5
+e2 ..> e4
+e3 ..> e5
+e3 ..> e4
+e1 ..> e5
+e1 ..> e2
+e1 ..> e4
+@enduml

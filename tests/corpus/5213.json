@@ -1,0 +1,202 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5213",
+    "figureNo": "5.2.13",
+    "exercise": "5.2.F",
+    "type": "sequence",
+    "diagramName": "updateStudent",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности, описывающая реализацию операции updateStudent(st:Student) в подсистеме DBAccess",
+    "notes": "Текст называет только третье сверху сообщение (getId():long) и упоминает комбинированные фрагменты. Рисунок 5.2.13 показывает пять линий жизни, двенадцать сообщений, три фрагмента (opt [c == NULL], opt [obj.hasScheduleForSemester(s)], вложенный loop [for all courseOfferings]) — всё прочитано с рисунка.",
+    "gaps": [
+      "кроме третьего сверху сообщения (getId():long) имена сообщений в тексте не названы — прочитаны с рисунка",
+      "комбинированные фрагменты упомянуты, но их операторы и сторожевые условия не приведены — прочитаны с рисунка",
+      "множественная линия жизни не выражается — записана multiObject",
+      "покрытие сообщений фрагментами и вложенность loop в opt не выражаются"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.multiObject",
+      "source.guards",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e1",
+      "e2",
+      "e6",
+      "r1",
+      "r2",
+      "r3",
+      "r4",
+      "r5"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "db:DBAccess",
+      "stereotype": "subsystem proxy",
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "cOff[i]:CourseOffering",
+      "multiObject": true,
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "obj:Student"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "c:Connection"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "s:Statement"
+    },
+    {
+      "id": "e6",
+      "kind": "fragment",
+      "name": "[c == NULL]",
+      "operator": "opt",
+      "note": "первый фрагмент opt; условие прочитано с рисунка, покрывает сообщение 2",
+      "source": "image"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "[obj.hasScheduleForSemester(s)]",
+      "operator": "opt",
+      "note": "второй фрагмент opt; прочитан с рисунка, покрывает сообщения 8–9",
+      "source": "image"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "[for all courseOfferings]",
+      "operator": "loop",
+      "note": "цикл, вложенный во второй opt; прочитан с рисунка",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "updateStudent(st : Student) : boolean",
+      "from": "e1",
+      "to": "e1",
+      "note": "найденное сообщение: отправитель на рисунке не показан",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "без подписи",
+      "from": "e1",
+      "to": "e1",
+      "note": "рефлексивный вызов без подписи (вероятно init())",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "getId() : long",
+      "from": "e1",
+      "to": "e3",
+      "note": "третье сверху сообщение",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "getName() : string",
+      "from": "e1",
+      "to": "e3",
+      "note": "второе сверху сообщение; имя не названо",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "message",
+      "name": "getAddress() : string",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "message",
+      "name": "getPhones() : string[0..2]",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "message",
+      "name": "hasScheduleForSemester(semester : byte) : boolean",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "message",
+      "name": "getScheduleCourses(semester : byte) : CourseOffering[]",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r11",
+      "kind": "message",
+      "name": "toSQL() : string",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "createStatement() : Statement",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r12",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e4",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "executeUpdate(sql : string) : int",
+      "from": "e1",
+      "to": "e5",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "updateStudent",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

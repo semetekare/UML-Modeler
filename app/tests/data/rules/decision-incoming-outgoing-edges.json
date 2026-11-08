@@ -1,0 +1,172 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-decision-incoming-outgoing-edges",
+  "name": "decision_incoming_outgoing_edges — у решения три входящих ребра",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "action",
+      "name": "Принять заказ"
+    },
+    {
+      "id": "e2",
+      "kind": "action",
+      "name": "Проверить склад"
+    },
+    {
+      "id": "e3",
+      "kind": "action",
+      "name": "Проверить оплату"
+    },
+    {
+      "id": "e4",
+      "kind": "action",
+      "name": "Согласовать скидку"
+    },
+    {
+      "id": "e5",
+      "kind": "action",
+      "name": "Отгрузить"
+    },
+    {
+      "id": "e6",
+      "kind": "decision",
+      "name": "",
+      "documentation": "Правило «decision-incoming-outgoing-edges»: UML 2.5.1, п. 15.7.12.5, констрейнт DecisionNode::incoming_outgoing_edges: «A DecisionNode has one or two incoming ActivityEdges and at least one outgoing ActivityEdge.»\nУ решения три входящих ребра (r1, r2, r3), а стандарт допускает одно или два: три потока — это уже слияние."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "controlFlow",
+      "from": "e1",
+      "to": "e6"
+    },
+    {
+      "id": "r2",
+      "kind": "controlFlow",
+      "from": "e2",
+      "to": "e6"
+    },
+    {
+      "id": "r3",
+      "kind": "controlFlow",
+      "from": "e3",
+      "to": "e6"
+    },
+    {
+      "id": "r4",
+      "kind": "controlFlow",
+      "from": "e6",
+      "to": "e5"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "decision_incoming_outgoing_edges — у решения три входящих ребра",
+      "kind": "activity",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 580,
+          "y": 60,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 60,
+          "y": 260,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 320,
+          "y": 260,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 580,
+          "y": 260,
+          "w": 44,
+          "h": 44
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s3",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s6",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

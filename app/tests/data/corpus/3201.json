@@ -1,0 +1,249 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "3201",
+    "figureNo": "3.2.1",
+    "exercise": "3.2",
+    "type": "usecase",
+    "diagramName": "Main",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Уточнённая версия UML-диаграммы вариантов использования",
+    "notes": "Дефект исправлен: введено абстрактное действующее лицо Пользователь, три пользовательские роли связаны с ним обобщением, лишние ассоциации к «Войти в систему» удалены из модели. Текст: «теперь на нашей диаграмме каждый вариант использования связан ровно с одним действующим лицом, которое для него является основным».",
+    "gaps": [
+      "набор ассоциаций на рисунке в тексте не перечислен: восстановлен по списку интересов действующих лиц (§3) и по правилу «у варианта использования одно основное действующее лицо»",
+      "абстрактность действующего лица Пользователь (флажок Abstract) не выражается в uml-model/3 — записана полем abstract"
+    ],
+    "gapIds": [
+      "source.associations"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "systemBoundary",
+      "name": "Система регистрации на курсы",
+      "stereotype": "subject"
+    },
+    {
+      "id": "e2",
+      "kind": "actor",
+      "name": "Пользователь",
+      "abstract": true
+    },
+    {
+      "id": "e3",
+      "kind": "actor",
+      "name": "Студент"
+    },
+    {
+      "id": "e4",
+      "kind": "actor",
+      "name": "Профессор"
+    },
+    {
+      "id": "e5",
+      "kind": "actor",
+      "name": "Регистратор"
+    },
+    {
+      "id": "e6",
+      "kind": "actor",
+      "name": "Расчётная система"
+    },
+    {
+      "id": "e7",
+      "kind": "actor",
+      "name": "Время"
+    },
+    {
+      "id": "e8",
+      "kind": "usecase",
+      "name": "Зарегистрироваться на курсы",
+      "stereotype": "sea level usecase"
+    },
+    {
+      "id": "e9",
+      "kind": "usecase",
+      "name": "Войти в систему",
+      "stereotype": "fish level usecase"
+    },
+    {
+      "id": "e10",
+      "kind": "usecase",
+      "name": "Просмотреть табель",
+      "stereotype": "sea level usecase"
+    },
+    {
+      "id": "e11",
+      "kind": "usecase",
+      "name": "Выбрать читаемые курсы",
+      "stereotype": "sea level usecase"
+    },
+    {
+      "id": "e12",
+      "kind": "usecase",
+      "name": "Поставить оценки",
+      "stereotype": "sea level usecase"
+    },
+    {
+      "id": "e13",
+      "kind": "usecase",
+      "name": "CRUD данных о профессорах",
+      "stereotype": "sea level usecase"
+    },
+    {
+      "id": "e14",
+      "kind": "usecase",
+      "name": "CRUD данных о студентах",
+      "stereotype": "sea level usecase"
+    },
+    {
+      "id": "e15",
+      "kind": "usecase",
+      "name": "CRUD данных о курсах и дисциплинах",
+      "stereotype": "sea level usecase"
+    },
+    {
+      "id": "e16",
+      "kind": "usecase",
+      "name": "Открыть регистрацию",
+      "stereotype": "sea level usecase"
+    },
+    {
+      "id": "e17",
+      "kind": "usecase",
+      "name": "Закрыть регистрацию",
+      "stereotype": "fish level usecase"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "generalization",
+      "from": "e3",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "generalization",
+      "from": "e4",
+      "to": "e2"
+    },
+    {
+      "id": "r3",
+      "kind": "generalization",
+      "from": "e5",
+      "to": "e2"
+    },
+    {
+      "id": "r4",
+      "kind": "association",
+      "from": "e2",
+      "to": "e9",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "navigable": "from"
+    },
+    {
+      "id": "r5",
+      "kind": "association",
+      "from": "e3",
+      "to": "e8",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "navigable": "from"
+    },
+    {
+      "id": "r6",
+      "kind": "association",
+      "from": "e3",
+      "to": "e10",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "navigable": "from"
+    },
+    {
+      "id": "r7",
+      "kind": "association",
+      "from": "e4",
+      "to": "e11",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "navigable": "from"
+    },
+    {
+      "id": "r8",
+      "kind": "association",
+      "from": "e4",
+      "to": "e12",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "navigable": "from"
+    },
+    {
+      "id": "r9",
+      "kind": "association",
+      "from": "e5",
+      "to": "e16",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "navigable": "from"
+    },
+    {
+      "id": "r10",
+      "kind": "association",
+      "from": "e5",
+      "to": "e13",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "navigable": "from"
+    },
+    {
+      "id": "r11",
+      "kind": "association",
+      "from": "e5",
+      "to": "e14",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "navigable": "from"
+    },
+    {
+      "id": "r12",
+      "kind": "association",
+      "from": "e5",
+      "to": "e15",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "navigable": "from"
+    },
+    {
+      "id": "r13",
+      "kind": "association",
+      "from": "e7",
+      "to": "e17",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "navigable": "from"
+    },
+    {
+      "id": "r14",
+      "kind": "association",
+      "from": "e6",
+      "to": "e17",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "navigable": "to",
+      "note": "второстепенное действующее лицо"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Main",
+      "type": "usecase",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

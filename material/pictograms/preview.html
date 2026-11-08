@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<title>Пиктограммы стереотипов — 15 рисунков</title>
+<style>
+  :root { color-scheme: light dark; --ink:#1d1d1f; --bg:#fff; --line:#d8d8dc; --muted:#6b6b70; }
+  @media (prefers-color-scheme: dark) { :root { --ink:#f2f2f4; --bg:#17171a; --line:#3a3a40; --muted:#a0a0a8; } }
+  body { margin:0; padding:32px; background:var(--bg); color:var(--ink);
+         font:14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  h1 { font-size:20px; font-weight:600; margin:0 0 4px; }
+  p.lead { margin:0 0 28px; color:var(--muted); max-width:70ch; }
+  h2 { font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:.08em;
+       color:var(--muted); margin:32px 0 12px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(190px, 1fr)); gap:12px; }
+  .card { border:1px solid var(--line); border-radius:10px; padding:14px 12px 10px; }
+  .sizes { display:flex; align-items:flex-end; gap:16px; min-height:66px; }
+  .sizes figure { margin:0; display:flex; flex-direction:column; align-items:center; gap:4px; }
+  .sizes img { display:block; }
+  .sizes figcaption { font-size:10px; color:var(--muted); font-variant-numeric:tabular-nums; }
+  .name { margin-top:10px; font-family:ui-monospace, monospace; font-size:11.5px; }
+  .desc { font-size:12px; color:var(--muted); margin-top:2px; }
+  .dark { background:#1b1b1f; border-radius:8px; padding:10px; margin-top:10px; display:flex; gap:16px; align-items:center; }
+  .dark .sizes { min-height:0; }
+</style>
+<h1>Пиктограммы стереотипов — 15 рисунков</h1>
+<p class="lead">Нарисованы заново по описаниям из <code>docs/uml/pictograms.md</code>, без трассировки
+исходных GIF. Сетка 16 px, обводка 1,25, <code>currentColor</code>. Ниже — 16, 32 и 64 px,
+чтобы видеть, как рисунок ведёт себя при масштабе.</p>
+<div class="grid" id="badges"></div>
+<h2>Три рисунка, заменяющие фигуру целиком</h2>
+<div class="grid" id="figures"></div>
+<script>
+const badges = [
+  ['pict-entity','кружок над чертой','entity'],
+  ['pict-control','кружок со стрелкой','control'],
+  ['pict-boundary','кружок на стойке','boundary'],
+  ['pict-layer','рамка с веером','layer'],
+  ['pict-arch-view','рамка, три черты книзу','architectural view'],
+  ['pict-subsystem','рамка с «» и чертой','subsystem'],
+  ['pict-mechanism','силуэт с прорезями','mechanism'],
+  ['pict-schema','цилиндр базы данных','schema'],
+  ['pict-table','сетка с шапкой','table'],
+  ['pict-view','линейки и точки','view'],
+  ['pict-usecase-realization','пунктирный овал','usecase realization'],
+  ['pict-actor','человечек','actor'],
+];
+const figures = [
+  ['pict-fish','рыба 113×57','fish level usecase'],
+  ['pict-waves','волны 148×47','sea level usecase'],
+  ['pict-usecase-ellipse','овал 133×72','UseCase'],
+];
+const img = (n, s) => `<img src="svg/${n}.svg" width="${s}" height="${s}" alt="">`;
+function card([n, d, s]) {
+  return `<div class="card">
+    <div class="sizes">
+      <figure>${img(n,16)}<figcaption>16</figcaption></figure>
+      <figure>${img(n,32)}<figcaption>32</figcaption></figure>
+      <figure>${img(n,64)}<figcaption>64</figcaption></figure>
+    </div>
+    <div class="name">${n}.svg</div>
+    <div class="desc">${d} — стереотип «${s}»</div>
+    <div class="dark"><div class="sizes">
+      <figure>${img(n,16)}<figcaption>16</figcaption></figure>
+      <figure>${img(n,32)}<figcaption>32</figcaption></figure>
+    </div></div>
+  </div>`;
+}
+document.getElementById('badges').innerHTML = badges.map(card).join('');
+document.getElementById('figures').innerHTML = figures.map(([n, d, s]) => `
+  <div class="card">
+    <div style="display:flex;align-items:center;justify-content:center;min-height:80px">
+      <img src="svg/${n}.svg" style="max-width:100%;height:auto;max-height:80px" alt="">
+    </div>
+    <div class="name">${n}.svg</div>
+    <div class="desc">${d} — стереотип «${s}»</div>
+  </div>`).join('');
+</script>
+</html>

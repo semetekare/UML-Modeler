@@ -1,0 +1,31 @@
+@startuml
+title VOPC RegisterForCourses
+class e5 as "Schedule" <<entity>> {
+  -semester : byte
+}
+' source e5: image
+class e4 as "CourseOffering" <<entity>> {
+  -day : DayOfWeek
+  -number : long
+  -/numStudents : byte
+  -pair : byte
+  -semester : byte
+}
+' source e4: image
+class e3 as "Student" <<entity>> {
+  -address : string
+  -id : long {id}
+  -name : string
+  -phones : string[0..2]
+}
+' source e3: image
+class e1 as "RegistrationForm" <<boundary>>
+class e6 as "MainMenuForm" <<boundary>>
+' source e6: image
+class e2 as "RegistrationController" <<control>>
+class e7 as "DataAccess" <<control>>
+' source e7: image
+e4 "0..2" -- "*" e5 : alternative → ·
+e4 "0..4" -- "*" e5 : primary → ·
+e3 "1" *-- "*" e5
+@enduml

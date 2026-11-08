@@ -1,0 +1,528 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5206",
+  "name": "Уточнённая UML-диаграмма последовательности DeleteSchedule Subflow",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Студент"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "rform:RegistrationForm"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "rctrl:RegistrationController"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "dao:IDBAccess",
+      "stereotype": "interface"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "curStud:Student"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "curSched:Schedule",
+      "documentation": "линия жизни завершена (крестик) после сообщения 11",
+      "stopped": true,
+      "source": "image"
+    },
+    {
+      "id": "e7",
+      "kind": "lifeline",
+      "name": "primary[i]:CourseOffering",
+      "multiObject": true
+    },
+    {
+      "id": "e8",
+      "kind": "lifeline",
+      "name": "alternative[i]:CourseOffering",
+      "multiObject": true
+    },
+    {
+      "id": "e9",
+      "kind": "fragment",
+      "name": "[for all primary courses]",
+      "documentation": "цикл по основным курсам; покрывает сообщение 10",
+      "operator": "loop",
+      "source": "image"
+    },
+    {
+      "id": "e10",
+      "kind": "interactionUse",
+      "name": "Design DisplayCourseOfferings Subflow",
+      "refersTo": "Design DisplayCourseOfferings Subflow",
+      "operator": "ref"
+    },
+    {
+      "id": "e11",
+      "kind": "fragment",
+      "name": "[for all alternative courses]",
+      "documentation": "цикл по альтернативным курсам; покрывает сообщение 11",
+      "operator": "loop",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "deleteSchedule(semester : byte) : void",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "deleteSchedule(semester : byte) : boolean",
+      "from": "e2",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "getScheduleCourses(semester : byte) : CourseOffering[]",
+      "from": "e3",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "getCourseOfferingList() : CourseOffering[]",
+      "from": "e5",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "requestDeleteScheduleConfirmation() : void",
+      "from": "e2",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "confirmDeleteSchedule() : void",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "message",
+      "name": "confirmDeleteSchedule() : void",
+      "from": "e2",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "message",
+      "name": "deleteSchedule(semester : byte) : boolean",
+      "from": "e3",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "message",
+      "name": "delete()",
+      "from": "e5",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "message",
+      "name": "removeSchedule(sch : Schedule) : boolean",
+      "from": "e6",
+      "to": "e7",
+      "source": "image"
+    },
+    {
+      "id": "r11",
+      "kind": "message",
+      "name": "removeSchedule(sch : Schedule) : boolean",
+      "from": "e6",
+      "to": "e8",
+      "source": "image"
+    },
+    {
+      "id": "r12",
+      "kind": "message",
+      "name": "updateCourseOfferings(cOffs : CourseOffering[]) : boolean",
+      "from": "e3",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r13",
+      "kind": "message",
+      "name": "updateStudent(st : Student) : boolean",
+      "from": "e3",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r14",
+      "kind": "message",
+      "name": "displayMessage(msg : string) : void",
+      "from": "e2",
+      "to": "e2",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Design DeleteSchedule Subflow",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 780
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 200,
+          "h": 780
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 580,
+          "y": 60,
+          "w": 200,
+          "h": 780
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 840,
+          "y": 60,
+          "w": 200,
+          "h": 780
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 1100,
+          "y": 60,
+          "w": 200,
+          "h": 780
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 1360,
+          "y": 60,
+          "w": 200,
+          "h": 780
+        },
+        {
+          "id": "s7",
+          "elementId": "e7",
+          "x": 1620,
+          "y": 60,
+          "w": 200,
+          "h": 780
+        },
+        {
+          "id": "s8",
+          "elementId": "e8",
+          "x": 1880,
+          "y": 60,
+          "w": 200,
+          "h": 780
+        },
+        {
+          "id": "s9",
+          "elementId": "e9",
+          "x": 60,
+          "y": 150,
+          "w": 2020,
+          "h": 200
+        },
+        {
+          "id": "s10",
+          "elementId": "e10",
+          "x": 60,
+          "y": 390,
+          "w": 2020,
+          "h": 200
+        },
+        {
+          "id": "s11",
+          "elementId": "e11",
+          "x": 60,
+          "y": 630,
+          "w": 2020,
+          "h": 170
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.154
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.154
+          },
+          "y": 180
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.192
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.192
+          },
+          "y": 210
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.231
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.231
+          },
+          "y": 240
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.269
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.269
+          },
+          "y": 270
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.308
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.334
+          },
+          "y": 300
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.462
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.462
+          },
+          "y": 420
+        },
+        {
+          "id": "l7",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          },
+          "y": 450
+        },
+        {
+          "id": "l8",
+          "relId": "r8",
+          "from": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.538
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.538
+          },
+          "y": 480
+        },
+        {
+          "id": "l9",
+          "relId": "r9",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.577
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.577
+          },
+          "y": 510
+        },
+        {
+          "id": "l10",
+          "relId": "r10",
+          "from": {
+            "shapeId": "s6",
+            "side": "right",
+            "t": 0.615
+          },
+          "to": {
+            "shapeId": "s7",
+            "side": "left",
+            "t": 0.615
+          },
+          "y": 540
+        },
+        {
+          "id": "l11",
+          "relId": "r11",
+          "from": {
+            "shapeId": "s6",
+            "side": "right",
+            "t": 0.769
+          },
+          "to": {
+            "shapeId": "s8",
+            "side": "left",
+            "t": 0.769
+          },
+          "y": 660
+        },
+        {
+          "id": "l12",
+          "relId": "r12",
+          "from": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.808
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.808
+          },
+          "y": 690
+        },
+        {
+          "id": "l13",
+          "relId": "r13",
+          "from": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.846
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.846
+          },
+          "y": 720
+        },
+        {
+          "id": "l14",
+          "relId": "r14",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.885
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.911
+          },
+          "y": 750
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5206",
+    "figureNo": "5.2.6",
+    "exercise": "5.2.D",
+    "type": "sequence",
+    "diagramName": "Design DeleteSchedule Subflow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Уточнённая UML-диаграмма последовательности DeleteSchedule Subflow",
+    "notes": "Текст перечисляет только правки упражнения 5.2.D. Четырнадцать сообщений, условия двух фрагментов loop ([for all primary courses], [for all alternative courses]), ссылка Design DisplayCourseOfferings Subflow и завершение линии жизни curSched:Schedule прочитаны с рисунка 5.2.6.",
+    "gaps": [
+      "сообщения в тексте не перечислены — только правки упражнения 5.2.D; состав прочитан с рисунка",
+      "состояние линии жизни Stopped не выражается — записано stopped",
+      "покрытие сообщений фрагментами loop не выражается"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.lifelineState",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e6",
+      "e9"
+    ]
+  },
+  "sheet": {
+    "w": 2140,
+    "h": 900
+  }
+}

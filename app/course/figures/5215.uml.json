@@ -1,0 +1,299 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5215",
+  "name": "UML-диаграмма классов подсистемы BSAccess",
+  "elements": [
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "BSAccess",
+      "stereotype": "subsystem proxy",
+      "operations": [
+        {
+          "name": "init(serverURL : string)",
+          "type": "void"
+        },
+        {
+          "name": "startTransferData()",
+          "type": "boolean"
+        },
+        {
+          "name": "sendStudentData(name : string, address : string, cOff : CourseOffering[])",
+          "type": "boolean"
+        },
+        {
+          "name": "finishTransferData()",
+          "type": "boolean"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "CourseOffering",
+      "operations": [
+        {
+          "name": "toJSON()",
+          "type": "string"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e1",
+      "kind": "interface",
+      "name": "IBSAccess",
+      "operations": [
+        {
+          "name": "init(serverURL : string)",
+          "type": "void"
+        },
+        {
+          "name": "startTransferData()",
+          "type": "boolean"
+        },
+        {
+          "name": "sendStudentData(name : string, address : string, cOff : CourseOffering[])",
+          "type": "boolean"
+        },
+        {
+          "name": "finishTransferData()",
+          "type": "boolean"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "URL",
+      "documentation": "на рисунке под именем напечатано (Logical View::Middleware::java::net)",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "XmlRpcClient"
+    },
+    {
+      "id": "e6",
+      "kind": "class",
+      "name": "XmlRpcClientConfigImpl",
+      "documentation": "на рисунке под именем напечатано (Logical View::Middleware::org::apache::xmlrpc::client)",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "realization",
+      "from": "e2",
+      "to": "e1"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r4",
+      "kind": "composition",
+      "from": "e2",
+      "to": "e3",
+      "fromMultiplicity": "0..1",
+      "toMultiplicity": "0..1",
+      "toRole": "client",
+      "note": "на рисунке ромб со стороны BSAccess, у XmlRpcClient — имя полюса client",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e6",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "BSAccess",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e2",
+          "x": 60,
+          "y": 290,
+          "w": 530,
+          "h": 170
+        },
+        {
+          "id": "s2",
+          "elementId": "e4",
+          "x": 650,
+          "y": 290,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s3",
+          "elementId": "e1",
+          "x": 60,
+          "y": 90,
+          "w": 530,
+          "h": 110
+        },
+        {
+          "id": "s4",
+          "elementId": "e5",
+          "x": 650,
+          "y": 60,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s5",
+          "elementId": "e3",
+          "x": 230,
+          "y": 520,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 650,
+          "y": 520,
+          "w": 190,
+          "h": 170
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "bottom"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s1",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.1
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5215",
+    "figureNo": "5.2.15",
+    "exercise": "5.2.G",
+    "type": "class",
+    "diagramName": "BSAccess",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма классов подсистемы BSAccess",
+    "notes": "Текст называет IBSAccess, BSAccess, XmlRpcClient, CourseOffering и скрытые TypeSerializer, TypeParser, Object, TypeFactoryImpl. Рисунок 5.2.15 показывает шесть фигур (добавлены URL и XmlRpcClientConfigImpl), сигнатуры четырёх операций BSAccess, операцию toJSON() у CourseOffering и шесть связей — в том числе композицию BSAccess—XmlRpcClient с полюсом client и кратностями 0..1 / 0..1.",
+    "gaps": [
+      "полный набор классов и зависимостей текст не перечисляет: названы скрытые TypeSerializer, TypeParser, Object, TypeFactoryImpl и требуемые зависимости; остальное прочитано с рисунка",
+      "сигнатуры операций интерфейса в тексте не приведены — сказано, что они должны совпадать с сигнатурами класса BSAccess"
+    ],
+    "gapIds": [
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e1",
+      "e2",
+      "e4",
+      "r4"
+    ]
+  },
+  "sheet": {
+    "w": 900,
+    "h": 750
+  }
+}

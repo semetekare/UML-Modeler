@@ -1,0 +1,67 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-mult-lower-is-integer",
+  "name": "mult-lower-is-integer — нижняя граница кратности не целое число",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Заказ",
+      "documentation": "Правило «mult-lower-is-integer»: нижняя граница кратности не целое число.\nUML 2.5.1, п. 7.8.8.8, констрейнт MultiplicityElement::lower_is_integer: «If it is not empty, then lowerValue must have an Integer value.»\nУ конца «Заказ» стоит кратность 1.5..3: нижняя граница 1.5 не является целочисленным литералом."
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "Клиент"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "association",
+      "from": "e1",
+      "to": "e2",
+      "fromMultiplicity": "1.5..3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Диаграмма 1",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 360,
+          "y": 60,
+          "w": 190,
+          "h": 170
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

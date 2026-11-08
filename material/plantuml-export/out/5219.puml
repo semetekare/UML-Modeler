@@ -1,0 +1,39 @@
+@startuml
+title Student
+abstract class e1 as "Student" {
+  -address : string
+  -id : long {id}
+  -name : string
+  -{static}nextAvailableId : long
+  -phones : string[0..2]
+  +createSchedule(semester : byte, primary : CourseOffering[], alt : CourseOffering[]) : boolean
+  +deleteSchedule(semester : byte) : boolean
+  +getAddress() : string
+  +getId() : long
+  +getName() : string
+  +{static}getNextAvailableId() : long
+  +getPhones() : string[0..2]
+  +getScheduleCourses(semester : byte) : CourseOffering[]
+  +hasScheduleForSemester(semester : byte) : boolean
+  +setAddress(address : string) : void
+  +setId(id : long) : void
+  +setName(name : string) : void
+  -{static}setNextAvailableId(nextAvailableId : long) : void
+  +setPhones(phones : string[0..2]) : void
+}
+' source e1: image
+class e2 as "FullTimeStudent" {
+  -graduateDate : Date
+  +getGraduateDate() : Date
+  +setGraduateDate(gd : Date) : void
+}
+' source e2: image
+class e3 as "PartTimeStudent" {
+  -maxNumCourses : byte
+  +getMaxNumCourses() : byte
+  +setMaxNumCourses(mNC : byte) : void
+}
+' source e3: image
+e2 --|> e1
+e3 --|> e1
+@enduml

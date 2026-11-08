@@ -1,0 +1,82 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5107",
+    "figureNo": "5.1.7",
+    "exercise": "5.1",
+    "type": "deployment",
+    "diagramName": "Installation Example",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма размещения Installation Example",
+    "notes": "Диаграмма экземпляров: восемь экземпляров с именами и типами, связи — соединения (Link), а не ассоциации: ассоциация связывает типы и не может связывать экземпляры.",
+    "gaps": [
+      "связи между экземплярами описаны прозой («следует связать соединениями — Link»); какие именно экземпляры соединены, текст не перечисляет",
+      "поле классификатора у экземпляра не выражается в uml-model/3 — записано строкой classifier"
+    ],
+    "gapIds": [
+      "model.instanceClassifier",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "object",
+      "name": "asys : Сервер расчётной системы",
+      "classifier": "Сервер расчётной системы"
+    },
+    {
+      "id": "e2",
+      "kind": "object",
+      "name": "main : Сервер системы регистрации",
+      "classifier": "Сервер системы регистрации"
+    },
+    {
+      "id": "e3",
+      "kind": "object",
+      "name": "spider : Коммутатор",
+      "classifier": "Коммутатор"
+    },
+    {
+      "id": "e4",
+      "kind": "object",
+      "name": "laserJet : Кампусный принтер",
+      "classifier": "Кампусный принтер"
+    },
+    {
+      "id": "e5",
+      "kind": "object",
+      "name": "pc04 : Компьютер студента",
+      "classifier": "Компьютер студента"
+    },
+    {
+      "id": "e6",
+      "kind": "object",
+      "name": "srv01 : Компьютер студента",
+      "classifier": "Компьютер студента"
+    },
+    {
+      "id": "e7",
+      "kind": "object",
+      "name": "prn : Компьютер лектора",
+      "classifier": "Компьютер лектора"
+    },
+    {
+      "id": "e8",
+      "kind": "object",
+      "name": "switch : Компьютер работника учебного отдела",
+      "classifier": "Компьютер работника учебного отдела"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Installation Example",
+      "type": "deployment",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

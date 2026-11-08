@@ -1,0 +1,221 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4402",
+    "figureNo": "4.4.2",
+    "exercise": "4.4",
+    "type": "sequence",
+    "diagramName": "TransferSchedulesData Subflow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности TransferSchedulesData Subflow",
+    "notes": "Семь линий жизни и два фрагмента (opt, loop) названы текстом; двенадцать сообщений, ещё два фрагмента loop, сторожевое условие и границы итераций loop (1, 10) прочитаны с рисунка 4.4.2 — в тексте сообщения названы только по типу (длительные, асинхронные).",
+    "gaps": [
+      "сторожевые условия и границы итераций фрагментов loop/opt в тексте не приведены — прочитаны с рисунка",
+      "асинхронность сообщения не выражается в uml-model/3 — записана полем asynchronous",
+      "множественность линий жизни (Multi-object) не выражается — записана multiObject",
+      "вложенность фрагментов (loop внутри opt) и покрытие сообщений не выражаются"
+    ],
+    "gapIds": [
+      "model.async",
+      "model.fragmentCoverage",
+      "model.multiObject",
+      "source.guards"
+    ],
+    "imageDerived": [
+      "e8",
+      "e9"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Расчётная система"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "crctrl:CloseRegistrationController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "dao:DataAccess",
+      "stereotype": "control"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "studlist[i]:Student",
+      "stereotype": "entity",
+      "multiObject": true
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "cOff[j]:CourseOffering",
+      "stereotype": "entity",
+      "multiObject": true
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "studlist[i].schedule[s]:Schedule",
+      "stereotype": "entity",
+      "multiObject": true
+    },
+    {
+      "id": "e7",
+      "kind": "lifeline",
+      "name": "bs:BillingSystem",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "[bs.startTransferData()]",
+      "operator": "opt",
+      "note": "фрагмент opt; условие прочитано с рисунка",
+      "source": "image"
+    },
+    {
+      "id": "e9",
+      "kind": "fragment",
+      "name": "[for all students in list]",
+      "operator": "loop",
+      "note": "цикл по студентам; условие прочитано с рисунка",
+      "source": "image"
+    },
+    {
+      "id": "e10",
+      "kind": "fragment",
+      "name": "(1, 10) [готовность к приёму данных не подтверждена]",
+      "operator": "loop",
+      "note": "верхний цикл ожидания готовности; границы итераций прочитаны с рисунка",
+      "source": "image"
+    },
+    {
+      "id": "e11",
+      "kind": "fragment",
+      "name": "[for all cOff[j]]",
+      "operator": "loop",
+      "note": "цикл по курсам внутри передачи данных студента",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "getStudentList() : Student[]",
+      "from": "e2",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "startTransferData()",
+      "from": "e2",
+      "to": "e7",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "isReady",
+      "from": "e7",
+      "to": "e1",
+      "asynchronous": true,
+      "note": "асинхронное сообщение",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "getName() : string",
+      "from": "e2",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "getAddress() : string",
+      "from": "e2",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "getScheduleCourses(semester : byte)",
+      "from": "e2",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "message",
+      "name": "getCourseOfferingList() : CourseOffering[]",
+      "from": "e4",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "message",
+      "name": "sendStudentData(name : string, address : string, cOff : CourseOffering[])",
+      "from": "e2",
+      "to": "e7",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "message",
+      "name": "toJSON() : string",
+      "from": "e7",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "message",
+      "name": "sendStudentData",
+      "from": "e7",
+      "to": "e1",
+      "asynchronous": true,
+      "note": "асинхронное сообщение",
+      "source": "image"
+    },
+    {
+      "id": "r11",
+      "kind": "message",
+      "name": "finishTransferData()",
+      "from": "e2",
+      "to": "e7",
+      "source": "image"
+    },
+    {
+      "id": "r12",
+      "kind": "message",
+      "name": "endOfData",
+      "from": "e7",
+      "to": "e1",
+      "asynchronous": true,
+      "note": "асинхронное сообщение",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "TransferSchedulesData Subflow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

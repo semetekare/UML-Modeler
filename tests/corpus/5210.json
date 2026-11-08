@@ -1,0 +1,101 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5210",
+    "figureNo": "5.2.10",
+    "exercise": "5.2.F",
+    "type": "sequence",
+    "diagramName": "init",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности, описывающая реализацию операции init() в подсистеме DBAccess",
+    "notes": "Текст называет линию жизни db:DBAccess и то, что входящее сообщение связано с операцией init. Рисунок 5.2.10 показывает три линии жизни (db:DBAccess «subsystem proxy», drMan:DriverManager, c:Connection), пять сообщений, найденное сообщение слева (init() : boolean) и потерянное справа (c <> NULL).",
+    "gaps": [
+      "остальные линии жизни и сообщения в тексте не названы — прочитаны с рисунка",
+      "потерянное и найденное сообщения не выражаются в uml-model/3 — записаны связью без получателя и полем в unrepresented"
+    ],
+    "gapIds": [
+      "model.lostMessage",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e1",
+      "r1",
+      "r2"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "db:DBAccess",
+      "stereotype": "subsystem proxy",
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "drMan:DriverManager",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "c:Connection",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "init() : boolean",
+      "from": "e1",
+      "to": "e1",
+      "note": "найденное сообщение: отправитель на рисунке не показан",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "getConnection(url : string, user : string, password : string) : Connection",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e2",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "reply",
+      "name": "return(c)",
+      "from": "e2",
+      "to": "e1",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "reply",
+      "name": "c <> NULL",
+      "from": "e1",
+      "to": null,
+      "note": "потерянное сообщение типа «возврат»; получатель на рисунке не показан",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "init",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

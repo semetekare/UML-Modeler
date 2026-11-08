@@ -1,0 +1,107 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-4201",
+  "name": "Начальный эскиз UML-диаграммы классов VOPC Login",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "LoginForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "LoginController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "DataAccess",
+      "stereotype": "control"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "User",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "MainMenuForm",
+      "stereotype": "boundary"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "VOPC Login",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 310,
+          "y": 60,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s2",
+          "elementId": "e3",
+          "x": 310,
+          "y": 290,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s3",
+          "elementId": "e4",
+          "x": 60,
+          "y": 60,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s4",
+          "elementId": "e5",
+          "x": 560,
+          "y": 60,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s5",
+          "elementId": "e2",
+          "x": 60,
+          "y": 290,
+          "w": 190,
+          "h": 170
+        }
+      ],
+      "links": []
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "4201",
+    "figureNo": "4.2.1",
+    "exercise": "4.2",
+    "type": "class",
+    "diagramName": "VOPC Login",
+    "group": "diagram",
+    "reproducible": "да",
+    "altText": "Начальный эскиз UML-диаграммы классов VOPC Login",
+    "notes": "Начальный эскиз: пять классов анализа со стереотипами и без ассоциаций — текст прямо говорит, что связи будут добавлены позже («В дальнейшем нам потребуется доработать этот эскиз, добавив ассоциации между классами»).",
+    "gaps": [],
+    "gapIds": []
+  },
+  "sheet": {
+    "w": 810,
+    "h": 520
+  }
+}

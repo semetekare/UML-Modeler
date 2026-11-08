@@ -1,0 +1,11 @@
+@startuml
+title init
+participant e1 as "db:DBAccess" <<subsystem proxy>>
+participant e2 as "drMan:DriverManager"
+participant e3 as "c:Connection"
+e1 -> e1 : init() : boolean
+e1 -> e2 : getConnection(url : string, user : string, password : string) : Connection
+create e3
+e2 -> e3 : new
+e2 --> e1 : return(c)
+@enduml

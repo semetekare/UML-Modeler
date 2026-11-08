@@ -1,0 +1,96 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5103",
+    "figureNo": "5.1.3",
+    "exercise": "5.1",
+    "type": "composite",
+    "diagramName": "Design Use Case Realizations",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма составной структуры Design Use Case Realizations",
+    "notes": "Текст не описывает эту диаграмму: сказано только «UML-диаграмма составной структуры внутри этого пакета примет вид, представленный на рисунке 5.1.3». С рисунка прочитаны три варианта использования («Войти в систему» и «Закрыть регистрацию» — fish level, «Зарегистрироваться на курсы» — sea level) и три связи реализации от коопераций к реализуемым вариантам — как на рис. 4.1.2.",
+    "gaps": [
+      "текст не описывает ни части этой диаграммы, ни связи между ними: сказано только «UML-диаграмма составной структуры внутри этого пакета примет вид, представленный на рисунке 5.1.3»",
+      "вложенность частей в кооперацию и коннекторы частей не выражаются в uml-model/3"
+    ],
+    "gapIds": [
+      "model.packageOwner",
+      "source.unlisted"
+    ],
+    "imageDerived": []
+  },
+  "elements": [
+    {
+      "id": "e5",
+      "kind": "usecase",
+      "name": "Зарегистрироваться на курсы",
+      "stereotype": "sea level usecase",
+      "source": "image"
+    },
+    {
+      "id": "e6",
+      "kind": "usecase",
+      "name": "Закрыть регистрацию",
+      "stereotype": "fish level usecase",
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "usecase",
+      "name": "Войти в систему",
+      "stereotype": "fish level usecase",
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "collaboration",
+      "name": "DesignRegisterForCourses",
+      "stereotype": "usecase realization"
+    },
+    {
+      "id": "e3",
+      "kind": "collaboration",
+      "name": "DesignCloseRegistration",
+      "stereotype": "usecase realization"
+    },
+    {
+      "id": "e1",
+      "kind": "collaboration",
+      "name": "DesignLogin",
+      "stereotype": "usecase realization"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "realization",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "realization",
+      "from": "e2",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "realization",
+      "from": "e3",
+      "to": "e6",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Design Use Case Realizations",
+      "type": "composite",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

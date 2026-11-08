@@ -1,0 +1,166 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5202",
+    "figureNo": "5.2.2",
+    "exercise": "5.2.B",
+    "type": "sequence",
+    "diagramName": "Design RegisterForCourses Basic Flow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Уточнённая UML-диаграмма последовательности Design RegisterForCourses Basic Flow",
+    "notes": "Проектная версия основного потока: с линий жизни сняты стереотипы анализа, самая правая линия жизни — экземпляр интерфейса dao:IDBAccess со стереотипом «interface», сообщение new() удалено.",
+    "gaps": [
+      "сторожевые условия операндов в тексте не приведены",
+      "состав сообщений взят из упражнения 4.3 с учётом правки: удалено new()",
+      "покрытие сообщений фрагментами не выражается"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "source.guards",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Студент"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "menu:MainMenuForm"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "rform:RegistrationForm"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "rctrl:RegistrationController"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "dao:IDBAccess",
+      "stereotype": "interface"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "curStud:Student"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "opt"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "alt",
+      "note": "два операнда"
+    },
+    {
+      "id": "e9",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "alt",
+      "note": "четыре операнда со ссылками на подчинённые потоки"
+    },
+    {
+      "id": "e10",
+      "kind": "interactionUse",
+      "name": "Design CreateSchedule Subflow",
+      "operator": "ref",
+      "refersTo": "Design CreateSchedule Subflow"
+    },
+    {
+      "id": "e11",
+      "kind": "interactionUse",
+      "name": "Design UpdateSchedule Subflow",
+      "operator": "ref",
+      "refersTo": "Design UpdateSchedule Subflow"
+    },
+    {
+      "id": "e12",
+      "kind": "interactionUse",
+      "name": "Design DeleteSchedule Subflow",
+      "operator": "ref",
+      "refersTo": "Design DeleteSchedule Subflow"
+    },
+    {
+      "id": "e13",
+      "kind": "interactionUse",
+      "name": "Design SubmitSchedule Subflow",
+      "operator": "ref",
+      "refersTo": "Design SubmitSchedule Subflow"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "registerForCourses",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "isRegistrationOpened",
+      "from": "e4",
+      "to": "e4",
+      "note": "рефлексивное сообщение"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "не названо в тексте",
+      "from": "e4",
+      "to": "e5"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "hasScheduleForSemester(semester):boolean",
+      "from": "e4",
+      "to": "e6"
+    },
+    {
+      "id": "r6",
+      "kind": "reply",
+      "name": "",
+      "from": "e4",
+      "to": "e2"
+    },
+    {
+      "id": "r7",
+      "kind": "createMessage",
+      "name": "open",
+      "from": "e2",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Design RegisterForCourses Basic Flow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

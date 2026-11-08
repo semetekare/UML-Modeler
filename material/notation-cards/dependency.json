@@ -1,0 +1,48 @@
+{
+  "key": "dependency",
+  "kind": "connector",
+  "title": "Зависимость",
+  "oneLine": "Зависимость — связь «использует»: изменение одного элемента может потребовать изменения другого.",
+  "draws": "Пунктирная линия со стрелкой от зависящего элемента к тому, от которого он зависит; стереотип в двойных угловых скобках уточняет вид («use», «import», «trace»). Стереотип на зависимости часто опускают, но тогда читателю неясно, какого рода использование. Зависимость направляют и к пакету, и к отдельному элементу внутри него.",
+  "differs": "От ассоциации отличается тем, что не создаёт структурной связи: зависимость не означает поля или ссылки, она означает, что элемент нужен для работы. От реализации — тем, что не обещает выполнить контракт. Если нарисовать зависимость вместо ассоциации, модель не покажет, что объект хранит ссылку на другой, и структуру данных по ней не проверить. Признак ошибки: зависимость идёт от того, кто нужен, к тому, кому нужен, — стрелка перевёрнута. Зависимость не создаёт поля; если объект хранит ссылку, нужна ассоциация.",
+  "clause": {
+    "number": "7.7",
+    "title": "Dependencies",
+    "id": "7.7-dependencies"
+  },
+  "rules": [
+    "usecase-include-cycle"
+  ],
+  "example": "«RegistrationController» зависит от «Schedule»: вызывает его операции, но не хранит ссылку.",
+  "plantuml": "A ..> B",
+  "stereotypes": [
+    "Expose",
+    "Categorization",
+    "appliedProfile",
+    "conform",
+    "modelLibrary",
+    "trace",
+    "bind",
+    "representation",
+    "flow",
+    "instanceOf",
+    "substitute",
+    "import"
+  ],
+  "seeAlso": [
+    "association",
+    "realization",
+    "usage",
+    "trace"
+  ],
+  "sources": [
+    "uml.json#connectors.dependency",
+    "crossrefs.json#notationToClause.dependency",
+    "spec-tree.json#7.7",
+    "rules-uml-2.5.1.json#usecase-include-cycle",
+    "crossrefs.json#stereotypeToShape",
+    "plantuml-grammar.json#assoc-dependency",
+    "DIAGRAM-TYPES.md#3.3"
+  ],
+  "diagrams": "3.3"
+}

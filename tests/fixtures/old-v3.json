@@ -1,0 +1,180 @@
+{
+  "schema": "uml-model/3",
+  "id": "mmw2v53lg",
+  "name": "Новая модель",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Пользователь"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "lform:LoginForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "menu:MainMenuForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "lctrl:LoginController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "dao:DataAccess",
+      "stereotype": "control"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "curUser:User",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "логин указан верно",
+      "operator": "opt"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "alt"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "login()",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "getUserByLogin(l:string):User",
+      "from": "e4",
+      "to": "e5"
+    },
+    {
+      "id": "r4",
+      "kind": "createMessage",
+      "name": "create",
+      "from": "e5",
+      "to": "e6",
+      "note": "внутри операнда opt"
+    },
+    {
+      "id": "r5",
+      "kind": "reply",
+      "from": "e5",
+      "to": "e4"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "checkPassword(pswrd:string):boolean",
+      "from": "e4",
+      "to": "e6"
+    },
+    {
+      "id": "r7",
+      "kind": "reply",
+      "from": "e6",
+      "to": "e4"
+    },
+    {
+      "id": "r8",
+      "kind": "createMessage",
+      "name": "open(curUser)",
+      "from": "e4",
+      "to": "e3",
+      "note": "первый операнд alt"
+    },
+    {
+      "id": "r9",
+      "kind": "message",
+      "name": "getType():UserType",
+      "from": "e3",
+      "to": "e6",
+      "note": "первый операнд alt"
+    },
+    {
+      "id": "r10",
+      "kind": "message",
+      "name": "displayError()",
+      "from": "e4",
+      "to": "e2",
+      "note": "второй операнд alt"
+    },
+    {
+      "id": "r11",
+      "kind": "destroyMessage",
+      "name": "close",
+      "from": "e4",
+      "to": "e2",
+      "note": "ниже фрагмента alt"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Login Basic Flow",
+      "kind": "class",
+      "shapes": [],
+      "links": [],
+      "type": "sequence",
+      "connectors": []
+    }
+  ],
+  "currentDiagramId": "d1",
+  "source": {
+    "figure": "4202",
+    "figureNo": "4.2.2",
+    "exercise": "4.2",
+    "type": "sequence",
+    "diagramName": "Login Basic Flow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности Login Basic Flow",
+    "notes": "Состав линий жизни и сообщений восстановлен по пошаговому описанию упражнения 4.2. Операции, которые должны появиться в модели, перечислены в expect.operations.",
+    "gaps": [
+      "сторожевые условия операндов фрагментов opt и alt в тексте описаны словами («если логин указан верно»), дословных значений нет",
+      "порядок сообщений задаётся вертикальной геометрией; в структурной записи он передан порядком массива relationships",
+      "какие сообщения покрывает каждый фрагмент, в uml-model/3 не выражается",
+      "тип сообщения close — Destroy — выражен видом связи destroyMessage"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.messageOrder",
+      "source.guards"
+    ]
+  },
+  "expect": {
+    "operations": [
+      "LoginForm::login()",
+      "LoginForm::displayError()",
+      "LoginForm::close()",
+      "LoginController::login()",
+      "DataAccess::getUserByLogin(l:string):User",
+      "User::checkPassword(pswrd:string):boolean",
+      "User::getType():UserType"
+    ]
+  }
+}

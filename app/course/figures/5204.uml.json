@@ -1,0 +1,457 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5204",
+  "name": "Уточнённая UML-диаграмма последовательности Design CreateSchedule Subflow",
+  "elements": [
+    {
+      "id": "e4",
+      "kind": "actorLifeline",
+      "name": "Студент",
+      "source": "image"
+    },
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "cOff[i]:CourseOffering",
+      "multiObject": true
+    },
+    {
+      "id": "e2",
+      "kind": "fragment",
+      "name": "[учебный план на текущий семестр у студента отсутствует]",
+      "documentation": "условие фрагмента opt; прочитано с рисунка, охватывает все сообщения диаграммы",
+      "operator": "opt",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "interactionUse",
+      "name": "Design DisplayCourseOfferings Subflow",
+      "refersTo": "Design DisplayCourseOfferings Subflow",
+      "operator": "ref"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "rform:RegistrationForm",
+      "source": "image"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "rctrl:RegistrationController",
+      "source": "image"
+    },
+    {
+      "id": "e7",
+      "kind": "lifeline",
+      "name": "dao:IDBAccess",
+      "stereotype": "interface",
+      "source": "image"
+    },
+    {
+      "id": "e8",
+      "kind": "lifeline",
+      "name": "curStud:Student",
+      "source": "image"
+    },
+    {
+      "id": "e9",
+      "kind": "lifeline",
+      "name": "sch:Schedule",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "createSchedule(semester : byte) : void",
+      "from": "e4",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "createSchedule(semester : byte) : boolean",
+      "from": "e5",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "getCourseOfferingList(semester : byte) : CourseOfferingList",
+      "from": "e6",
+      "to": "e7",
+      "source": "image"
+    },
+    {
+      "id": "r1",
+      "kind": "createMessage",
+      "name": "new",
+      "from": "e8",
+      "to": "e9",
+      "note": "создание учебного плана: curStud создаёт sch",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "displayBlankSchedule() : void",
+      "from": "e5",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "selectPrimaryCourse(nums : long[4]) : void",
+      "from": "e4",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "message",
+      "name": "selectAltCourse(nums : long[2]) : void",
+      "from": "e4",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "message",
+      "name": "submitSelectedCourses(semester : byte, primary : long[4], alt : long[2]) : void",
+      "from": "e4",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "message",
+      "name": "submitSelectedCourses(semester : byte, primary : CourseOffering[4], alt : CourseOffering[2]) : boolean",
+      "from": "e5",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "message",
+      "name": "createSchedule(semester : byte, primary : CourseOffering[4], alt : CourseOffering[2]) : boolean",
+      "from": "e6",
+      "to": "e8",
+      "source": "image"
+    },
+    {
+      "id": "r11",
+      "kind": "message",
+      "name": "updateStudent(st : Student) : boolean",
+      "from": "e6",
+      "to": "e7",
+      "source": "image"
+    },
+    {
+      "id": "r12",
+      "kind": "message",
+      "name": "displayMessage(msg : string) : void",
+      "from": "e5",
+      "to": "e5",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Design CreateSchedule Subflow",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e4",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 630
+        },
+        {
+          "id": "s2",
+          "elementId": "e1",
+          "x": 320,
+          "y": 60,
+          "w": 200,
+          "h": 630
+        },
+        {
+          "id": "s3",
+          "elementId": "e2",
+          "x": 60,
+          "y": 150,
+          "w": 1760,
+          "h": 230
+        },
+        {
+          "id": "s4",
+          "elementId": "e3",
+          "x": 60,
+          "y": 420,
+          "w": 1760,
+          "h": 230
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 580,
+          "y": 60,
+          "w": 200,
+          "h": 630
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 840,
+          "y": 60,
+          "w": 200,
+          "h": 630
+        },
+        {
+          "id": "s7",
+          "elementId": "e7",
+          "x": 1100,
+          "y": 60,
+          "w": 200,
+          "h": 630
+        },
+        {
+          "id": "s8",
+          "elementId": "e8",
+          "x": 1360,
+          "y": 60,
+          "w": 200,
+          "h": 630
+        },
+        {
+          "id": "s9",
+          "elementId": "e9",
+          "x": 1620,
+          "y": 60,
+          "w": 200,
+          "h": 630
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.19
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.19
+          },
+          "y": 180
+        },
+        {
+          "id": "l2",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.238
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.238
+          },
+          "y": 210
+        },
+        {
+          "id": "l3",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s6",
+            "side": "right",
+            "t": 0.286
+          },
+          "to": {
+            "shapeId": "s7",
+            "side": "left",
+            "t": 0.286
+          },
+          "y": 240
+        },
+        {
+          "id": "l4",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s8",
+            "side": "right",
+            "t": 0.333
+          },
+          "to": {
+            "shapeId": "s9",
+            "side": "left",
+            "t": 0.333
+          },
+          "y": 270
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.381
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.413
+          },
+          "y": 300
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.429
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.429
+          },
+          "y": 330
+        },
+        {
+          "id": "l7",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.619
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.619
+          },
+          "y": 450
+        },
+        {
+          "id": "l8",
+          "relId": "r8",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.667
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.667
+          },
+          "y": 480
+        },
+        {
+          "id": "l9",
+          "relId": "r9",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.714
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.714
+          },
+          "y": 510
+        },
+        {
+          "id": "l10",
+          "relId": "r10",
+          "from": {
+            "shapeId": "s6",
+            "side": "right",
+            "t": 0.762
+          },
+          "to": {
+            "shapeId": "s8",
+            "side": "left",
+            "t": 0.762
+          },
+          "y": 540
+        },
+        {
+          "id": "l11",
+          "relId": "r11",
+          "from": {
+            "shapeId": "s6",
+            "side": "right",
+            "t": 0.81
+          },
+          "to": {
+            "shapeId": "s7",
+            "side": "left",
+            "t": 0.81
+          },
+          "y": 570
+        },
+        {
+          "id": "l12",
+          "relId": "r12",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.857
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.889
+          },
+          "y": 600
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5204",
+    "figureNo": "5.2.4",
+    "exercise": "5.2.D",
+    "type": "sequence",
+    "diagramName": "Design CreateSchedule Subflow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Уточнённая UML-диаграмма последовательности Design CreateSchedule Subflow",
+    "notes": "Текст называет только линию жизни cOff[i]:CourseOffering и правки относительно рис. 4.3.4. Шесть линий жизни (Студент, rform:RegistrationForm, rctrl:RegistrationController, dao:IDBAccess, curStud:Student, sch:Schedule), двенадцать сообщений и условие фрагмента opt прочитаны с рисунка 5.2.4.",
+    "gaps": [
+      "состав линий жизни, кроме cOff[i]:CourseOffering, и сообщения в тексте не перечислены — прочитаны с рисунка",
+      "покрытие сообщений фрагментом opt не выражается",
+      "поле Refers to у Interaction Use не выражается — записано refersTo"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.interactionRef",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e2"
+    ]
+  },
+  "sheet": {
+    "w": 1880,
+    "h": 750
+  }
+}

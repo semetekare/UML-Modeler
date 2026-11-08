@@ -1,0 +1,30 @@
+@startuml
+title Design DeleteSchedule Subflow
+actor e1 as "Студент"
+participant e2 as "rform:RegistrationForm"
+participant e3 as "rctrl:RegistrationController"
+participant e4 as "dao:IDBAccess" <<interface>>
+participant e5 as "curStud:Student"
+participant e6 as "curSched:Schedule"
+collections e7 as "primary[i]:CourseOffering"
+collections e8 as "alternative[i]:CourseOffering"
+loop for all primary courses
+e1 -> e2 : deleteSchedule(semester : byte) : void
+e2 -> e3 : deleteSchedule(semester : byte) : boolean
+e3 -> e5 : getScheduleCourses(semester : byte) : CourseOffering[]
+e5 -> e6 : getCourseOfferingList() : CourseOffering[]
+e2 -> e2 : requestDeleteScheduleConfirmation() : void
+end
+ref over e1, e2, e3, e4, e5, e6, e7, e8 : Design DisplayCourseOfferings Subflow
+e1 -> e2 : confirmDeleteSchedule() : void
+e2 -> e3 : confirmDeleteSchedule() : void
+e3 -> e5 : deleteSchedule(semester : byte) : boolean
+e5 -> e6 : delete()
+e6 -> e7 : removeSchedule(sch : Schedule) : boolean
+loop for all alternative courses
+e6 -> e8 : removeSchedule(sch : Schedule) : boolean
+e3 -> e4 : updateCourseOfferings(cOffs : CourseOffering[]) : boolean
+e3 -> e4 : updateStudent(st : Student) : boolean
+e2 -> e2 : displayMessage(msg : string) : void
+end
+@enduml

@@ -1,0 +1,364 @@
+[
+  {
+    "id": "element-isolated",
+    "level": "warning",
+    "appliesTo": {
+      "element": [
+        "class",
+        "interface",
+        "enumeration",
+        "datatype",
+        "component",
+        "artifact",
+        "deploymentSpec",
+        "node",
+        "device",
+        "executionEnvironment",
+        "object",
+        "part",
+        "collaboration",
+        "collaborationUse",
+        "stereotype",
+        "metaclass",
+        "actor",
+        "usecase",
+        "state",
+        "initial",
+        "final",
+        "choice",
+        "junction",
+        "historyShallow",
+        "historyDeep",
+        "entryPoint",
+        "exitPoint",
+        "terminate",
+        "action",
+        "activity",
+        "decision",
+        "merge",
+        "fork",
+        "join",
+        "objectNode",
+        "lifeline",
+        "actorLifeline",
+        "interaction"
+      ],
+      "scope": "model"
+    },
+    "check": "element-isolated",
+    "message": "Элемент не участвует ни в одной связи",
+    "hint": "Соедините его с другими элементами или удалите, если он лишний",
+    "rationale": "Изолированный элемент ничего не сообщает читателю диаграммы: он не связан с моделью и обычно остаётся от недоведённой правки."
+  },
+  {
+    "id": "element-not-on-any-diagram",
+    "level": "warning",
+    "appliesTo": {
+      "element": [
+        "class",
+        "interface",
+        "enumeration",
+        "datatype",
+        "package",
+        "model",
+        "profile",
+        "component",
+        "artifact",
+        "deploymentSpec",
+        "node",
+        "device",
+        "executionEnvironment",
+        "object",
+        "part",
+        "port",
+        "collaboration",
+        "collaborationUse",
+        "stereotype",
+        "metaclass",
+        "actor",
+        "usecase",
+        "systemBoundary",
+        "note",
+        "text",
+        "state",
+        "initial",
+        "final",
+        "choice",
+        "junction",
+        "historyShallow",
+        "historyDeep",
+        "entryPoint",
+        "exitPoint",
+        "terminate",
+        "action",
+        "activity",
+        "decision",
+        "merge",
+        "fork",
+        "join",
+        "objectNode",
+        "activityParameter",
+        "swimlane",
+        "lifeline",
+        "actorLifeline",
+        "activation",
+        "fragment",
+        "interactionUse",
+        "interaction",
+        "timingLane"
+      ],
+      "scope": "model"
+    },
+    "check": "element-not-on-any-diagram",
+    "message": "Элемент есть в модели, но не показан ни на одной диаграмме",
+    "hint": "Покажите элемент на подходящей диаграмме или удалите его из модели, если он больше не нужен",
+    "rationale": "Элемент без фигуры не видно: его имя и связи живут сами по себе, и заметить ошибку в них можно только случайно."
+  },
+  {
+    "id": "element-unnamed",
+    "level": "warning",
+    "appliesTo": {
+      "element": [
+        "class",
+        "interface",
+        "enumeration",
+        "datatype",
+        "component",
+        "artifact",
+        "deploymentSpec",
+        "node",
+        "device",
+        "executionEnvironment",
+        "object",
+        "part",
+        "collaboration",
+        "collaborationUse",
+        "stereotype",
+        "metaclass",
+        "actor",
+        "usecase",
+        "state",
+        "action",
+        "activity",
+        "objectNode",
+        "lifeline",
+        "actorLifeline",
+        "interaction"
+      ],
+      "scope": "model"
+    },
+    "check": "element-unnamed",
+    "message": "У элемента пустое имя",
+    "hint": "Дайте элементу имя: по нему его узнают на диаграмме и в списке элементов",
+    "rationale": "Безымянный элемент не обсудить: на него нельзя сослаться ни в разговоре о модели, ни в отчёте. Имя — единственное, за что читатель может зацепиться."
+  },
+  {
+    "id": "relationship-duplicate",
+    "level": "warning",
+    "appliesTo": {
+      "relationship": [
+        "association",
+        "aggregation",
+        "composition",
+        "generalization",
+        "realization",
+        "dependency"
+      ],
+      "scope": "model"
+    },
+    "check": "relationship-duplicate",
+    "message": "Между этими элементами уже есть такая же связь — совпадают вид, концы, роли и кратности",
+    "hint": "Оставьте одну: если связи разные по смыслу, различите их именами ролей, кратностями или именем связи",
+    "rationale": "Две одинаковые стрелки между одной парой не значат «сильнее»: непонятно, какая из них главная, а правка одной половины делает модель противоречивой. Но две РАЗНЫЕ ассоциации между одной парой — законный UML: их различают имена полюсов и кратности."
+  },
+  {
+    "id": "relationship-not-on-any-diagram",
+    "level": "warning",
+    "appliesTo": {
+      "relationship": [
+        "association",
+        "aggregation",
+        "composition",
+        "generalization",
+        "realization",
+        "dependency",
+        "usage",
+        "import",
+        "merge",
+        "include",
+        "extend",
+        "assembly",
+        "delegation",
+        "connector",
+        "controlFlow",
+        "objectFlow",
+        "transition",
+        "message",
+        "reply",
+        "createMessage",
+        "destroyMessage",
+        "link",
+        "deployment",
+        "communicationPath",
+        "manifest",
+        "trace",
+        "extension"
+      ],
+      "scope": "model"
+    },
+    "check": "relationship-not-on-any-diagram",
+    "message": "Связь есть в модели, но не показана ни на одной диаграмме",
+    "hint": "Покажите связь на диаграмме или удалите её, если она больше не нужна",
+    "rationale": "Связь, которой нет ни на одном листе, невозможно проверить глазами: она живёт только в модели и всплывает неожиданно, например при удалении элемента."
+  },
+  {
+    "id": "shape-isolated-on-diagram",
+    "level": "warning",
+    "appliesTo": {
+      "element": [
+        "class",
+        "interface",
+        "enumeration",
+        "datatype",
+        "component",
+        "artifact",
+        "deploymentSpec",
+        "node",
+        "device",
+        "executionEnvironment",
+        "object",
+        "part",
+        "collaboration",
+        "collaborationUse",
+        "stereotype",
+        "metaclass",
+        "actor",
+        "usecase",
+        "state",
+        "initial",
+        "final",
+        "choice",
+        "junction",
+        "historyShallow",
+        "historyDeep",
+        "entryPoint",
+        "exitPoint",
+        "terminate",
+        "action",
+        "activity",
+        "decision",
+        "merge",
+        "fork",
+        "join",
+        "objectNode",
+        "lifeline",
+        "actorLifeline",
+        "interaction"
+      ],
+      "scope": "model"
+    },
+    "check": "shape-isolated-on-diagram",
+    "message": "Фигура на диаграмме не соединена ни с одной другой",
+    "hint": "Дорисуйте связи, которые уже есть в модели, или уберите фигуру с этого листа",
+    "rationale": "Связи элемента — обычно и есть причина показать его на листе: одинокая фигура среди стрелок читается как ошибка рисования, хотя в модели связи есть."
+  },
+  {
+    "id": "name-not-clash",
+    "level": "warning",
+    "appliesTo": {
+      "scope": "profile"
+    },
+    "check": "stereotype-name-not-clash",
+    "message": "Имя стереотипа уже занято другим стереотипом на том же метаклассе",
+    "hint": "Переименуйте стереотип или смените метакласс: две одинаковые строки в списке неразличимы",
+    "rationale": "Два стереотипа с одним именем на одном метаклассе дают в списке инспектора две одинаковые строки, и человек не понимает, какая из них его. Это не §12.4.9.6 name_not_clash (там речь о совпадении с ключевым словом расширяемого элемента) и не нарушение стандарта: по §7.4.3.2 usecase и UseCase — разные строки, то есть формально различимые члены. Это наше правило удобства: имя, которое уже занято на том же baseType, второй раз не занимают, а если очень нужно — называют иначе или берут псевдоним ключевого слова (IncludeStereotype)."
+  },
+  {
+    "id": "object-classifier-kind",
+    "level": "warning",
+    "appliesTo": {
+      "element": [
+        "object"
+      ],
+      "scope": "model"
+    },
+    "check": "object-classifier-kind",
+    "message": "Классификатор объекта — не классификатор",
+    "hint": "Выберите тип, экземпляром которого объект является: класс, интерфейс, перечисление, компонент, узел. Пустая ссылка молчит: объект без классификатора — законный UML. Битая ссылка тоже молчит: её снимает загрузчик, и второе замечание об одном и том же было бы шумом.",
+    "rationale": "UML не требует, чтобы у объекта был классификатор, поэтому это не констрейнт стандарта. Но заполненная ссылка на пакет, заметку или актёра — ошибка инструмента, а не модели: объект объявляет себя экземпляром того, у чего экземпляров не бывает, и читатель ищет у «классификатора» атрибуты, которых там нет."
+  },
+  {
+    "id": "action-behavior-is-activity",
+    "level": "warning",
+    "appliesTo": {
+      "element": [
+        "action"
+      ],
+      "scope": "model"
+    },
+    "check": "action-behavior-is-activity",
+    "message": "Действие вызывает не деятельность",
+    "hint": "Ссылка «вызывает» указывает на деятельность — поведение с собственным графом. Пустая ссылка молчит: обычное действие ничего не вызывает. Битая ссылка тоже молчит: её снимает загрузчик.",
+    "rationale": "UML не требует, чтобы у действия была вызываемая деятельность: обычное действие её не имеет, и это норма. Но если ссылка заполнена, она называет поведение, и действие, «вызывающее» класс или пакет, обещает поддиаграмму, которой нет ни у цели, ни в модели."
+  },
+  {
+    "id": "swimlane-represents-kind",
+    "level": "warning",
+    "appliesTo": {
+      "element": [
+        "swimlane"
+      ],
+      "scope": "model"
+    },
+    "check": "swimlane-represents-kind",
+    "message": "Дорожка представляет не классификатор",
+    "hint": "Дорожка делит лист деятельности по классификатору: актёру, классу, компоненту, узлу. Пакет, заметка и другая дорожка классификаторами не являются. Пустая ссылка молчит: дорожка без представляемого элемента — обычное деление листа. Битая ссылка молчит: её снимает загрузчик.",
+    "rationale": "Дорожка — это ActivityPartition, и её «представляет» отвечает на вопрос «кто или что исполняет эти действия». Пакет или заметка на этот вопрос не отвечают: подпись «: Подсистема заказов» под дорожкой читается как ошибка, а не как участник, а дорожка в дорожке — просто путаница."
+  },
+  {
+    "id": "interaction-use-refers-kind",
+    "level": "warning",
+    "appliesTo": {
+      "element": [
+        "interactionUse"
+      ],
+      "scope": "model"
+    },
+    "check": "interaction-use-refers-kind",
+    "message": "Ссылка на взаимодействие ведёт не на лист взаимодействия",
+    "hint": "Ссылка «ссылается на» указывает на отдельный лист взаимодействия: последовательности, коммуникации, времени или обзора взаимодействий, и не на тот лист, где стоит сама. Пустая ссылка молчит: ссылка без цели — заготовка. Битая ссылка и имя подпотока, которого нет в файле, тоже молчат: такие ссылки разрешает загрузчик, и судить их здесь значило бы сообщать об одном дважды.",
+    "rationale": "Ссылка на взаимодействие обещает читателю: «подробности на том листе». Если она ведёт на лист классов или на саму себя, обещание ложно: подробностей там нет, а рекурсивная ссылка не разворачивается никогда. UML при этом разрешает ссылку на взаимодействие, которого нет в файле (подпоток), поэтому пустая и неразрешённая ссылки — не ошибка."
+  },
+  {
+    "id": "lifeline-represents-classifier",
+    "level": "warning",
+    "appliesTo": {
+      "element": [
+        "lifeline",
+        "actorLifeline"
+      ],
+      "scope": "model"
+    },
+    "check": "lifeline-represents-classifier",
+    "message": "Линия жизни представляет не классификатор",
+    "hint": "Линия жизни отвечает на вопрос «чей экземпляр участвует в сценарии», поэтому представляет классификатор: класс, интерфейс, компонент, актёра, узел. Пакет, заметка, состояние и другая линия жизни классификаторами не являются. Пустая ссылка молчит: линия жизни без классификатора — законная заготовка. Битая ссылка тоже молчит: её снимает загрузчик, и второе замечание об одном и том же было бы шумом.",
+    "rationale": "`Lifeline::same_classifier` (17.12.17.5) требует `interaction.context`, а у взаимодействия в нашей модели поля `context` нет, поэтому констрейнт стандарта невыразим. Остаётся практический вред: подпись «: Подсистема заказов» под линией жизни обещает экземпляр того, у чего экземпляров не бывает, и читатель ищет у «классификатора» операции и атрибуты, которых там нет."
+  },
+  {
+    "id": "message-signature-operation",
+    "level": "warning",
+    "appliesTo": {
+      "relationship": [
+        "message",
+        "reply",
+        "createMessage",
+        "destroyMessage"
+      ],
+      "scope": "model"
+    },
+    "check": "message-signature-operation",
+    "message": "Сигнатура сообщения называет операцию, которой нет у классификатора",
+    "hint": "Подпись сообщения — имя вызываемой операции с параметрами: `updateStudent(st: Student)`. Сверяется первый идентификатор до «(» или «:» (`updateStudent`, `ok`) со списком `operations[].name` классификатора получателя (по `represents` линии жизни `to`) и классификатора отправителя; ведущий маркер видимости «+», «-», «#», «~» отбрасывается — в модели он хранится отдельным полем `vis`. Пустая сигнатура молчит: подпись не обязательна. У линии жизни получателя нет `represents` — молчим: сверять не с чем. У классификатора нет ни одной операции — молчим: пустой список не доказывает, что операции нет. Битая ссылка `represents` молчит: её снимает загрузчик.",
+    "rationale": "`Message::signature_refer_to` (17.12.18.7) требует `Operation`/`Signal` как ЭЛЕМЕНТЫ модели со своими id, а у нас операция — строка члена `operations[].name` без id. Настоящий констрейнт невыразим, но междиаграммная сверка по имени ловит самый частый дефект: на диаграмме последовательности вызывают операцию, которой у класса на диаграмме классов нет. Это и есть обещание, которое сценарий не выполняет."
+  }
+]

@@ -1,0 +1,97 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-final-node-no-outgoing-edges",
+  "name": "final_node_no_outgoing_edges — из конечного узла выходит ребро",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "action",
+      "name": "Отгрузить"
+    },
+    {
+      "id": "e2",
+      "kind": "final",
+      "name": "",
+      "documentation": "Правило «final-node-no-outgoing-edges»: UML 2.5.1, п. 15.7.15.5, констрейнт FinalNode::no_outgoing_edges: «A FinalNode has no outgoing ActivityEdges.»\nКонечный узел завершает поток, а из него выходит ребро r2: после завершения потока продолжения нет."
+    },
+    {
+      "id": "e3",
+      "kind": "action",
+      "name": "Уведомить клиента"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "controlFlow",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "controlFlow",
+      "from": "e2",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "final_node_no_outgoing_edges — из конечного узла выходит ребро",
+      "kind": "activity",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 580,
+          "y": 60,
+          "w": 140,
+          "h": 50
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

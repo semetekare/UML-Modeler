@@ -1,0 +1,82 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5218",
+    "figureNo": "5.2.18",
+    "exercise": "5.2.G",
+    "type": "sequence",
+    "diagramName": "sendStudentData",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности, описывающая реализацию операции sendStudentData() в подсистеме BSAccess",
+    "notes": "Четыре линии жизни: cn:BSAccess (стереотип «subsystem proxy»), cOff[i]:CourseOffering, client:XMLRpcClient и действующее лицо Расчётная система. Фрагмент loop, вызов toJSON():string, потерянное сообщение типа «возврат».",
+    "gaps": [],
+    "gapIds": [
+      "model.lostMessage"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "cn:BSAccess",
+      "stereotype": "subsystem proxy"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "cOff[i]:CourseOffering",
+      "multiObject": true
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "client:XMLRpcClient"
+    },
+    {
+      "id": "e4",
+      "kind": "actorLifeline",
+      "name": "Расчётная система"
+    },
+    {
+      "id": "e5",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "loop"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "sendStudentData()",
+      "from": "e1",
+      "to": "e1",
+      "note": "входящее сообщение связано с операцией"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "toJSON():string",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r3",
+      "kind": "reply",
+      "name": "не названо в тексте",
+      "from": "e1",
+      "to": null,
+      "note": "потерянное сообщение (Lost Message) типа «возврат»"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "sendStudentData",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

@@ -1,0 +1,3396 @@
+{
+ "schema": "vp-shape-types/1",
+ "note": "Every shape type the reference editor 17.3 registers and the model class it builds. Read with java_method_show from v.mm#initDiagramElementClassTable()V; each \"at\" is the bytecode offset of the entry.",
+ "source": {
+  "jar": "lib/vpplatform.jar",
+  "sha256": "21cb389907020c7f445e522db0903498054caf0a340425eafbbfa43e0b439f36",
+  "class": "v.mm",
+  "method": "initDiagramElementClassTable()V",
+  "entries": 834
+ },
+ "buildKinds": {
+  "class": "Class",
+  "interface": "InterfaceClass",
+  "enumeration": "Enumeration",
+  "datatype": "DataType",
+  "package": "Package",
+  "model": "Model",
+  "component": "Component",
+  "artifact": "Artifact",
+  "deploymentSpec": "DeploymentSpecification",
+  "node": "Node",
+  "device": "DeviceNode",
+  "executionEnvironment": "ExecutionEnvironmentNode",
+  "part": "Part",
+  "port": "Port",
+  "collaboration": "Collaboration",
+  "stereotype": "Stereotype",
+  "actor": "Actor",
+  "usecase": "UseCase",
+  "note": "NOTE",
+  "text": "TextBox",
+  "state": "State",
+  "initial": "InitialNode",
+  "final": "FinalState",
+  "choice": "Choice",
+  "junction": "Junction",
+  "historyShallow": "ShallowHistory",
+  "historyDeep": "DeepHistory",
+  "entryPoint": "EntryPoint",
+  "exitPoint": "ExitPoint",
+  "terminate": "Terminate",
+  "action": "ActivityAction",
+  "activity": "Activity",
+  "decision": "DecisionNode",
+  "merge": "MergeNode",
+  "fork": "ForkNode",
+  "join": "JoinNode",
+  "objectNode": "ObjectNode",
+  "activityParameter": "ActivityParameterNode",
+  "swimlane": "ActivitySwimLane",
+  "lifeline": "InteractionLifeLine",
+  "actorLifeline": "InteractionActor",
+  "activation": "Activation",
+  "fragment": "CombinedFragment",
+  "interaction": "Interaction",
+  "timingLane": "TimingFrame"
+ },
+ "types": {
+  "ANDBPGateway": {
+   "model": "v.cnk.rv",
+   "at": "0x0000"
+  },
+  "AbstractPersistableClass": {
+   "model": "v.cnk.vd",
+   "at": "0x0008"
+  },
+  "AcceptEventAction": {
+   "model": "v.cnk.mv",
+   "at": "0x0010"
+  },
+  "AcceptTimeEventAction": {
+   "model": "v.cnk.mv",
+   "at": "0x0018"
+  },
+  "ActionState": {
+   "model": "v.cnk.mw",
+   "at": "0x0020"
+  },
+  "Activation": {
+   "model": "v.cnk.na",
+   "at": "0x0028"
+  },
+  "Activity": {
+   "model": "v.cnk.nn",
+   "at": "0x0030"
+  },
+  "ActivityAction": {
+   "model": "v.cnk.nc",
+   "at": "0x0038"
+  },
+  "ActivityDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0040"
+  },
+  "ActivityEdgeConnector": {
+   "model": "v.cnk.nd",
+   "at": "0x0048"
+  },
+  "ActivityFinalNode": {
+   "model": "v.cnk.ne",
+   "at": "0x0050"
+  },
+  "ActivityObject": {
+   "model": "v.cnk.nf",
+   "at": "0x0058"
+  },
+  "ActivityParameterNode": {
+   "model": "v.cnk.ng",
+   "at": "0x0060"
+  },
+  "ActivityPartitionHeader": {
+   "model": "v.cnk.nh",
+   "at": "0x0068"
+  },
+  "ActivitySwimLane": {
+   "model": "v.cnk.nm",
+   "at": "0x0070"
+  },
+  "ActivitySwimlane2": {
+   "model": "v.cnk.nk",
+   "at": "0x0078"
+  },
+  "ActivitySwimlane2Compartment": {
+   "model": "v.cnk.nj",
+   "at": "0x0080"
+  },
+  "ActivitySwimlane2_deprecated": {
+   "model": "v.cnk.nl",
+   "at": "0x0088"
+  },
+  "Actor": {
+   "model": "v.cnk.no",
+   "at": "0x0090"
+  },
+  "AltCombinedFragment": {
+   "model": "v.cnk.we",
+   "at": "0x0098"
+  },
+  "AnalysisDiagramGroupNode": {
+   "model": "v.cnk.nq",
+   "at": "0x00a0"
+  },
+  "AnalysisDiagramNode": {
+   "model": "v.cnk.nr",
+   "at": "0x00a8"
+  },
+  "AnalysisDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x00b0"
+  },
+  "AnalysisLogicalViewGroupNode": {
+   "model": "v.cnk.ns",
+   "at": "0x00b8"
+  },
+  "AnalysisLogicalViewNode": {
+   "model": "v.cnk.nt",
+   "at": "0x00c0"
+  },
+  "AnalysisModelGroupNode": {
+   "model": "v.cnk.nu",
+   "at": "0x00ca"
+  },
+  "AnalysisModelNode": {
+   "model": "v.cnk.nv",
+   "at": "0x00d4"
+  },
+  "AnalysisViewGroupNode": {
+   "model": "v.cnk.nx",
+   "at": "0x00de"
+  },
+  "AnalysisViewNode": {
+   "model": "v.cnk.ny",
+   "at": "0x00e8"
+  },
+  "ArchiMateApplicationCollaboration": {
+   "model": "v.cnk.nz",
+   "at": "0x00f2"
+  },
+  "ArchiMateApplicationComponent": {
+   "model": "v.cnk.oa",
+   "at": "0x00fc"
+  },
+  "ArchiMateApplicationEvent": {
+   "model": "v.cnk.ob",
+   "at": "0x0106"
+  },
+  "ArchiMateApplicationFunction": {
+   "model": "v.cnk.oc",
+   "at": "0x0110"
+  },
+  "ArchiMateApplicationInteraction": {
+   "model": "v.cnk.od",
+   "at": "0x011a"
+  },
+  "ArchiMateApplicationInterface": {
+   "model": "v.cnk.oe",
+   "at": "0x0124"
+  },
+  "ArchiMateApplicationProcess": {
+   "model": "v.cnk.of",
+   "at": "0x012e"
+  },
+  "ArchiMateApplicationService": {
+   "model": "v.cnk.og",
+   "at": "0x0138"
+  },
+  "ArchiMateArtifact": {
+   "model": "v.cnk.oh",
+   "at": "0x0142"
+  },
+  "ArchiMateAssessment": {
+   "model": "v.cnk.oi",
+   "at": "0x014c"
+  },
+  "ArchiMateBusinessActor": {
+   "model": "v.cnk.oj",
+   "at": "0x0156"
+  },
+  "ArchiMateBusinessCollaboration": {
+   "model": "v.cnk.ok",
+   "at": "0x0160"
+  },
+  "ArchiMateBusinessEvent": {
+   "model": "v.cnk.ol",
+   "at": "0x016a"
+  },
+  "ArchiMateBusinessFunction": {
+   "model": "v.cnk.om",
+   "at": "0x0174"
+  },
+  "ArchiMateBusinessInteraction": {
+   "model": "v.cnk.on",
+   "at": "0x017e"
+  },
+  "ArchiMateBusinessInterface": {
+   "model": "v.cnk.oo",
+   "at": "0x0188"
+  },
+  "ArchiMateBusinessObject": {
+   "model": "v.cnk.op",
+   "at": "0x0192"
+  },
+  "ArchiMateBusinessProcess": {
+   "model": "v.cnk.oq",
+   "at": "0x019c"
+  },
+  "ArchiMateBusinessRole": {
+   "model": "v.cnk.or",
+   "at": "0x01a6"
+  },
+  "ArchiMateBusinessService": {
+   "model": "v.cnk.os",
+   "at": "0x01b0"
+  },
+  "ArchiMateCapability": {
+   "model": "v.cnk.ot",
+   "at": "0x01ba"
+  },
+  "ArchiMateCommunicationPathBox": {
+   "model": "v.cnk.ou",
+   "at": "0x01c4"
+  },
+  "ArchiMateConstraint": {
+   "model": "v.cnk.ov",
+   "at": "0x01ce"
+  },
+  "ArchiMateContract": {
+   "model": "v.cnk.ow",
+   "at": "0x01d8"
+  },
+  "ArchiMateCourseOfAction": {
+   "model": "v.cnk.ox",
+   "at": "0x01e2"
+  },
+  "ArchiMateDataObject": {
+   "model": "v.cnk.oy",
+   "at": "0x01ec"
+  },
+  "ArchiMateDeliverable": {
+   "model": "v.cnk.oz",
+   "at": "0x01f6"
+  },
+  "ArchiMateDevice": {
+   "model": "v.cnk.pa",
+   "at": "0x0200"
+  },
+  "ArchiMateDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x020a"
+  },
+  "ArchiMateDistributionNetworkBox": {
+   "model": "v.cnk.pb",
+   "at": "0x0213"
+  },
+  "ArchiMateDriver": {
+   "model": "v.cnk.pc",
+   "at": "0x021d"
+  },
+  "ArchiMateEquipment": {
+   "model": "v.cnk.pd",
+   "at": "0x0227"
+  },
+  "ArchiMateFacility": {
+   "model": "v.cnk.pe",
+   "at": "0x0231"
+  },
+  "ArchiMateGap": {
+   "model": "v.cnk.pf",
+   "at": "0x023b"
+  },
+  "ArchiMateGoal": {
+   "model": "v.cnk.pg",
+   "at": "0x0245"
+  },
+  "ArchiMateGrouping": {
+   "model": "v.cnk.ph",
+   "at": "0x024f"
+  },
+  "ArchiMateImplementationEvent": {
+   "model": "v.cnk.pi",
+   "at": "0x0259"
+  },
+  "ArchiMateInfrastructureFunction": {
+   "model": "v.cnk.pj",
+   "at": "0x0263"
+  },
+  "ArchiMateInfrastructureInterface": {
+   "model": "v.cnk.pk",
+   "at": "0x026d"
+  },
+  "ArchiMateInfrastructureService": {
+   "model": "v.cnk.pl",
+   "at": "0x0277"
+  },
+  "ArchiMateJunction": {
+   "model": "v.cnk.pm",
+   "at": "0x0281"
+  },
+  "ArchiMateLocation": {
+   "model": "v.cnk.pn",
+   "at": "0x028b"
+  },
+  "ArchiMateMaterial": {
+   "model": "v.cnk.po",
+   "at": "0x0295"
+  },
+  "ArchiMateMeaning": {
+   "model": "v.cnk.pp",
+   "at": "0x029f"
+  },
+  "ArchiMateNetworkBox": {
+   "model": "v.cnk.pq",
+   "at": "0x02a9"
+  },
+  "ArchiMateNode": {
+   "model": "v.cnk.pr",
+   "at": "0x02b3"
+  },
+  "ArchiMateOrJunction": {
+   "model": "v.cnk.ps",
+   "at": "0x02bd"
+  },
+  "ArchiMateOutcome": {
+   "model": "v.cnk.pt",
+   "at": "0x02c7"
+  },
+  "ArchiMatePlateau": {
+   "model": "v.cnk.pu",
+   "at": "0x02d1"
+  },
+  "ArchiMatePrinciple": {
+   "model": "v.cnk.pv",
+   "at": "0x02db"
+  },
+  "ArchiMateProduct": {
+   "model": "v.cnk.pw",
+   "at": "0x02e5"
+  },
+  "ArchiMateRepresentation": {
+   "model": "v.cnk.px",
+   "at": "0x02ef"
+  },
+  "ArchiMateRequirement": {
+   "model": "v.cnk.py",
+   "at": "0x02f9"
+  },
+  "ArchiMateResource": {
+   "model": "v.cnk.pz",
+   "at": "0x0303"
+  },
+  "ArchiMateStakeholder": {
+   "model": "v.cnk.qa",
+   "at": "0x030d"
+  },
+  "ArchiMateSystemSoftware": {
+   "model": "v.cnk.qb",
+   "at": "0x0317"
+  },
+  "ArchiMateTechnologyCollaboration": {
+   "model": "v.cnk.qc",
+   "at": "0x0321"
+  },
+  "ArchiMateTechnologyEvent": {
+   "model": "v.cnk.qd",
+   "at": "0x032b"
+  },
+  "ArchiMateTechnologyInteraction": {
+   "model": "v.cnk.qe",
+   "at": "0x0335"
+  },
+  "ArchiMateTechnologyProcess": {
+   "model": "v.cnk.qf",
+   "at": "0x033f"
+  },
+  "ArchiMateValue": {
+   "model": "v.cnk.qh",
+   "at": "0x0349"
+  },
+  "ArchiMateValueStream": {
+   "model": "v.cnk.qg",
+   "at": "0x0353"
+  },
+  "ArchiMateWorkPackage": {
+   "model": "v.cnk.qi",
+   "at": "0x035d"
+  },
+  "ArchitectureRoadmapOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0367"
+  },
+  "Artifact": {
+   "model": "v.cnk.qj",
+   "at": "0x0370"
+  },
+  "BMMAssessment": {
+   "model": "v.cnk.qk",
+   "at": "0x037a"
+  },
+  "BMMAsset": {
+   "model": "v.cnk.ql",
+   "at": "0x0384"
+  },
+  "BMMBusinessPolicy": {
+   "model": "v.cnk.qm",
+   "at": "0x038e"
+  },
+  "BMMBusinessProcess": {
+   "model": "v.cnk.qn",
+   "at": "0x0398"
+  },
+  "BMMBusinessRule": {
+   "model": "v.cnk.qo",
+   "at": "0x03a2"
+  },
+  "BMMEnd": {
+   "model": "v.cnk.qp",
+   "at": "0x03ac"
+  },
+  "BMMExternalInfluencer": {
+   "model": "v.cnk.qq",
+   "at": "0x03b6"
+  },
+  "BMMGoal": {
+   "model": "v.cnk.qr",
+   "at": "0x03c0"
+  },
+  "BMMInfluencingOrganization": {
+   "model": "v.cnk.qs",
+   "at": "0x03ca"
+  },
+  "BMMInternalInfluencer": {
+   "model": "v.cnk.qt",
+   "at": "0x03d4"
+  },
+  "BMMLiability": {
+   "model": "v.cnk.qu",
+   "at": "0x03de"
+  },
+  "BMMMeans": {
+   "model": "v.cnk.qv",
+   "at": "0x03e8"
+  },
+  "BMMMission": {
+   "model": "v.cnk.qw",
+   "at": "0x03f2"
+  },
+  "BMMObjective": {
+   "model": "v.cnk.qx",
+   "at": "0x03fc"
+  },
+  "BMMOrganizationUnit": {
+   "model": "v.cnk.qy",
+   "at": "0x0406"
+  },
+  "BMMPotentialReward": {
+   "model": "v.cnk.qz",
+   "at": "0x0410"
+  },
+  "BMMRisk": {
+   "model": "v.cnk.ra",
+   "at": "0x041a"
+  },
+  "BMMStrategy": {
+   "model": "v.cnk.rb",
+   "at": "0x0424"
+  },
+  "BMMTactic": {
+   "model": "v.cnk.rc",
+   "at": "0x042e"
+  },
+  "BMMVision": {
+   "model": "v.cnk.rd",
+   "at": "0x0438"
+  },
+  "BPCallActivity": {
+   "model": "v.cnk.re",
+   "at": "0x0442"
+  },
+  "BPCallChoreographyActivity": {
+   "model": "v.cnk.rf",
+   "at": "0x044c"
+  },
+  "BPChoreographySubProcess": {
+   "model": "v.cnk.ri",
+   "at": "0x0456"
+  },
+  "BPChoreographyTask": {
+   "model": "v.cnk.rj",
+   "at": "0x0460"
+  },
+  "BPDataInput": {
+   "model": "v.cnk.rk",
+   "at": "0x046a"
+  },
+  "BPDataObject": {
+   "model": "v.cnk.rm",
+   "at": "0x0474"
+  },
+  "BPDataOutput": {
+   "model": "v.cnk.ro",
+   "at": "0x047e"
+  },
+  "BPDataStore": {
+   "model": "v.cnk.rq",
+   "at": "0x0488"
+  },
+  "BPEndEvent": {
+   "model": "v.cnk.rs",
+   "at": "0x0492"
+  },
+  "BPGateway": {
+   "model": "v.cnk.rv",
+   "at": "0x049c"
+  },
+  "BPGroup": {
+   "model": "v.cnk.rx",
+   "at": "0x04a5"
+  },
+  "BPIntermediateEvent": {
+   "model": "v.cnk.ry",
+   "at": "0x04af"
+  },
+  "BPLane": {
+   "model": "v.cnk.rz",
+   "at": "0x04b9"
+  },
+  "BPMessage": {
+   "model": "v.cnk.sc",
+   "at": "0x04c3"
+  },
+  "BPPool": {
+   "model": "v.cnk.sd",
+   "at": "0x04cd"
+  },
+  "BPPoolLane": {
+   "model": "v.cnk.sd",
+   "at": "0x04d7"
+  },
+  "BPStartEvent": {
+   "model": "v.cnk.se",
+   "at": "0x04e1"
+  },
+  "BPSubProcess": {
+   "model": "v.cnk.sf",
+   "at": "0x04eb"
+  },
+  "BPTask": {
+   "model": "v.cnk.sg",
+   "at": "0x04f5"
+  },
+  "BPTextAnnotation": {
+   "model": "v.cnk.sh",
+   "at": "0x04ff"
+  },
+  "BSElement": {
+   "model": "v.cnk.si",
+   "at": "0x0509"
+  },
+  "BitmapShape": {
+   "model": "v.cnk.sz",
+   "at": "0x0513"
+  },
+  "BlockDefinitionDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x051d"
+  },
+  "BlueBrainstormNote": {
+   "model": "v.cnk.tc",
+   "at": "0x0526"
+  },
+  "BoundaryCommunicationLifeLine": {
+   "model": "v.cnk.wg",
+   "at": "0x0530"
+  },
+  "BoundaryInteractionLifeline": {
+   "model": "v.cnk.abb",
+   "at": "0x053a"
+  },
+  "BrainstormNote": {
+   "model": "v.cnk.tc",
+   "at": "0x0544"
+  },
+  "BrainstormOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x054e"
+  },
+  "BreakdownStructureOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0557"
+  },
+  "BusinessMotivationModelDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0560"
+  },
+  "BusinessProcessDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0569"
+  },
+  "BusinessRule": {
+   "model": "v.cnk.tf",
+   "at": "0x0572"
+  },
+  "BusinessRuleBPTask": {
+   "model": "v.cnk.sg",
+   "at": "0x057c"
+  },
+  "BusinessRuleGroup": {
+   "model": "v.cnk.te",
+   "at": "0x0586"
+  },
+  "BusinessWorkflowDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0590"
+  },
+  "CMMNCaseFileItem": {
+   "model": "v.cnk.tg",
+   "at": "0x0599"
+  },
+  "CMMNCasePlanModel": {
+   "model": "v.cnk.th",
+   "at": "0x05a3"
+  },
+  "CMMNCaseTask": {
+   "model": "v.cnk.tk",
+   "at": "0x05ad"
+  },
+  "CMMNCaseTaskDiscretionaryItem": {
+   "model": "v.cnk.ti",
+   "at": "0x05b7"
+  },
+  "CMMNCaseTaskPlanItem": {
+   "model": "v.cnk.tj",
+   "at": "0x05c1"
+  },
+  "CMMNDecisionTask": {
+   "model": "v.cnk.tn",
+   "at": "0x05cb"
+  },
+  "CMMNDecisionTaskDiscretionaryItem": {
+   "model": "v.cnk.tl",
+   "at": "0x05d5"
+  },
+  "CMMNDecisionTaskPlanItem": {
+   "model": "v.cnk.tm",
+   "at": "0x05df"
+  },
+  "CMMNDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x05e9"
+  },
+  "CMMNEntryCriterion": {
+   "model": "v.cnk.to",
+   "at": "0x05f2"
+  },
+  "CMMNExitCriterion": {
+   "model": "v.cnk.tp",
+   "at": "0x05fc"
+  },
+  "CMMNGeneralEventListener": {
+   "model": "v.cnk.tr",
+   "at": "0x0606"
+  },
+  "CMMNGeneralEventListenerPlanItem": {
+   "model": "v.cnk.tq",
+   "at": "0x0610"
+  },
+  "CMMNGeneralTask": {
+   "model": "v.cnk.tu",
+   "at": "0x061a"
+  },
+  "CMMNGeneralTaskDiscretionaryItem": {
+   "model": "v.cnk.ts",
+   "at": "0x0624"
+  },
+  "CMMNGeneralTaskPlanItem": {
+   "model": "v.cnk.tt",
+   "at": "0x062e"
+  },
+  "CMMNHumanTask": {
+   "model": "v.cnk.tx",
+   "at": "0x0638"
+  },
+  "CMMNHumanTaskDiscretionaryItem": {
+   "model": "v.cnk.tv",
+   "at": "0x0642"
+  },
+  "CMMNHumanTaskPlanItem": {
+   "model": "v.cnk.tw",
+   "at": "0x064c"
+  },
+  "CMMNMilestone": {
+   "model": "v.cnk.tz",
+   "at": "0x0656"
+  },
+  "CMMNMilestonePlanItem": {
+   "model": "v.cnk.ty",
+   "at": "0x0660"
+  },
+  "CMMNPlanFragment": {
+   "model": "v.cnk.ub",
+   "at": "0x066a"
+  },
+  "CMMNPlanFragmentDiscretionaryItem": {
+   "model": "v.cnk.ua",
+   "at": "0x0674"
+  },
+  "CMMNPlanningTable": {
+   "model": "v.cnk.uc",
+   "at": "0x067e"
+  },
+  "CMMNProcessTask": {
+   "model": "v.cnk.uf",
+   "at": "0x0688"
+  },
+  "CMMNProcessTaskDiscretionaryItem": {
+   "model": "v.cnk.ud",
+   "at": "0x0692"
+  },
+  "CMMNProcessTaskPlanItem": {
+   "model": "v.cnk.ue",
+   "at": "0x069c"
+  },
+  "CMMNStage": {
+   "model": "v.cnk.ui",
+   "at": "0x06a6"
+  },
+  "CMMNStageDiscretionaryItem": {
+   "model": "v.cnk.ug",
+   "at": "0x06b0"
+  },
+  "CMMNStagePlanItem": {
+   "model": "v.cnk.uh",
+   "at": "0x06ba"
+  },
+  "CMMNTextAnnotation": {
+   "model": "v.cnk.uj",
+   "at": "0x06c4"
+  },
+  "CMMNTimerEventListener": {
+   "model": "v.cnk.ul",
+   "at": "0x06ce"
+  },
+  "CMMNTimerEventListenerPlanItem": {
+   "model": "v.cnk.uk",
+   "at": "0x06d8"
+  },
+  "CMMNUserEventListener": {
+   "model": "v.cnk.uo",
+   "at": "0x06e2"
+  },
+  "CMMNUserEventListenerPlanItem": {
+   "model": "v.cnk.un",
+   "at": "0x06ec"
+  },
+  "COLLABORATION_ACTOR_deprecated": {
+   "model": "v.cnk.vw",
+   "at": "0x06f6"
+  },
+  "CRCCard": {
+   "model": "v.cnk.us",
+   "at": "0x0700"
+  },
+  "CRCCardDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x070a"
+  },
+  "CallCommunicationMessage": {
+   "model": "v.cnk.wh",
+   "at": "0x0713"
+  },
+  "CallCommunicationReverseMessage": {
+   "model": "v.cnk.wi",
+   "at": "0x071d"
+  },
+  "CallConversation": {
+   "model": "v.cnk.ut",
+   "at": "0x0727"
+  },
+  "CallState": {
+   "model": "v.cnk.uu",
+   "at": "0x0731"
+  },
+  "Callout": {
+   "model": "v.cnk.uv",
+   "at": "0x073b"
+  },
+  "CancelBPEndEvent": {
+   "model": "v.cnk.rs",
+   "at": "0x0745"
+  },
+  "CancelBPIntermediateEvent": {
+   "model": "v.cnk.ry",
+   "at": "0x074f"
+  },
+  "CandidateItem": {
+   "model": "v.cnk.uw",
+   "at": "0x0759"
+  },
+  "CentralBufferNode": {
+   "model": "v.cnk.uz",
+   "at": "0x0763"
+  },
+  "ChartDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x076d"
+  },
+  "Choice": {
+   "model": "v.cnk.va",
+   "at": "0x0776"
+  },
+  "Class": {
+   "model": "v.cnk.vd",
+   "at": "0x0780"
+  },
+  "ClassDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0789"
+  },
+  "Collaboration": {
+   "model": "v.cnk.wb",
+   "at": "0x0792"
+  },
+  "Collaboration2": {
+   "model": "v.cnk.vv",
+   "at": "0x079c"
+  },
+  "CollaborationObject": {
+   "model": "v.cnk.vy",
+   "at": "0x07a6"
+  },
+  "CollaborationOccurrence": {
+   "model": "v.cnk.vz",
+   "at": "0x07b0"
+  },
+  "CollaborationSwimLane": {
+   "model": "v.cnk.wa",
+   "at": "0x07ba"
+  },
+  "CombinedFragment": {
+   "model": "v.cnk.we",
+   "at": "0x07c4"
+  },
+  "CommunicationActor": {
+   "model": "v.cnk.wf",
+   "at": "0x07cd"
+  },
+  "CommunicationDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x07d7"
+  },
+  "CommunicationLifeLine": {
+   "model": "v.cnk.wg",
+   "at": "0x07e0"
+  },
+  "CommunicationMessage": {
+   "model": "v.cnk.wh",
+   "at": "0x07ea"
+  },
+  "CommunicationReverseMessage": {
+   "model": "v.cnk.wi",
+   "at": "0x07f4"
+  },
+  "CompensationBPEndEvent": {
+   "model": "v.cnk.rs",
+   "at": "0x07fe"
+  },
+  "CompensationBPIntermediateEvent": {
+   "model": "v.cnk.ry",
+   "at": "0x0808"
+  },
+  "CompensationBPStartEvent": {
+   "model": "v.cnk.se",
+   "at": "0x0812"
+  },
+  "ComplexBPGateway": {
+   "model": "v.cnk.rv",
+   "at": "0x081c"
+  },
+  "Component": {
+   "model": "v.cnk.wo",
+   "at": "0x0825"
+  },
+  "ComponentDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x082f"
+  },
+  "ComponentInstance": {
+   "model": "v.cnk.wl",
+   "at": "0x0838"
+  },
+  "ComponentInterface": {
+   "model": "v.cnk.wm",
+   "at": "0x0842"
+  },
+  "ComponentObject": {
+   "model": "v.cnk.wn",
+   "at": "0x084c"
+  },
+  "CompositeStructureDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0856"
+  },
+  "ConceptualDBTable": {
+   "model": "v.cnk.xb",
+   "at": "0x085f"
+  },
+  "Concurrent": {
+   "model": "v.cnk.wt",
+   "at": "0x0869"
+  },
+  "ConcurrentState": {
+   "model": "v.cnk.ws",
+   "at": "0x0873"
+  },
+  "ConditionalNode": {
+   "model": "v.cnk.wu",
+   "at": "0x087d"
+  },
+  "ConditionalNodeWithRegions": {
+   "model": "v.cnk.wv",
+   "at": "0x0887"
+  },
+  "ConstraintElement": {
+   "model": "v.cnk.ww",
+   "at": "0x0891"
+  },
+  "Continuation": {
+   "model": "v.cnk.wx",
+   "at": "0x089b"
+  },
+  "ControlCommunicationLifeLine": {
+   "model": "v.cnk.wg",
+   "at": "0x08a5"
+  },
+  "ControlInteractionLifeline": {
+   "model": "v.cnk.abb",
+   "at": "0x08af"
+  },
+  "ConversationCommunication": {
+   "model": "v.cnk.wy",
+   "at": "0x08b9"
+  },
+  "ConversationDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x08c3"
+  },
+  "ConversationParticipant": {
+   "model": "v.cnk.wz",
+   "at": "0x08cc"
+  },
+  "DBSequence": {
+   "model": "v.cnk.xa",
+   "at": "0x08d6"
+  },
+  "DBTable": {
+   "model": "v.cnk.xb",
+   "at": "0x08e0"
+  },
+  "DBTriggerContainer": {
+   "model": "v.cnk.xe",
+   "at": "0x08ea"
+  },
+  "DBView": {
+   "model": "v.cnk.xh",
+   "at": "0x08f4"
+  },
+  "DBViewTable": {
+   "model": "v.cnk.xg",
+   "at": "0x08fe"
+  },
+  "DFDataStore": {
+   "model": "v.cnk.xl",
+   "at": "0x0908"
+  },
+  "DFExternalEntity": {
+   "model": "v.cnk.xn",
+   "at": "0x0912"
+  },
+  "DFProcess": {
+   "model": "v.cnk.xo",
+   "at": "0x091c"
+  },
+  "DMBusinessDecision": {
+   "model": "v.cnk.xp",
+   "at": "0x0926"
+  },
+  "DMRuleFamily": {
+   "model": "v.cnk.xu",
+   "at": "0x0930"
+  },
+  "DTBDecisionTable": {
+   "model": "v.cnk.yb",
+   "at": "0x093a"
+  },
+  "DTBDecisionTableOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0944"
+  },
+  "DataBasedXORBPGateway": {
+   "model": "v.cnk.rv",
+   "at": "0x094d"
+  },
+  "DataFlowDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0956"
+  },
+  "DataStoreNode": {
+   "model": "v.cnk.yc",
+   "at": "0x095f"
+  },
+  "DataType": {
+   "model": "v.cnk.yd",
+   "at": "0x0969"
+  },
+  "DecisionModelDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0973"
+  },
+  "DecisionNode": {
+   "model": "v.cnk.ye",
+   "at": "0x097c"
+  },
+  "DecisionPoint": {
+   "model": "v.cnk.yf",
+   "at": "0x0986"
+  },
+  "DeepHistory": {
+   "model": "v.cnk.yg",
+   "at": "0x0990"
+  },
+  "DependencyJunction": {
+   "model": "v.cnk.yh",
+   "at": "0x099a"
+  },
+  "DeploymentDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x09a4"
+  },
+  "DeploymentSpecification": {
+   "model": "v.cnk.yi",
+   "at": "0x09ad"
+  },
+  "DestroyCommunicationMessage": {
+   "model": "v.cnk.wh",
+   "at": "0x09b7"
+  },
+  "DestroyCommunicationReverseMessage": {
+   "model": "v.cnk.wi",
+   "at": "0x09c1"
+  },
+  "DeviceNode": {
+   "model": "v.cnk.ace",
+   "at": "0x09cb"
+  },
+  "DiagramInfo": {
+   "model": "v.cnk.yk",
+   "at": "0x09d5"
+  },
+  "DiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x09df"
+  },
+  "DocumentationCabinetCabinet": {
+   "model": "v.cnk.yn",
+   "at": "0x09e8"
+  },
+  "DocumentationCabinetDrawer": {
+   "model": "v.cnk.yo",
+   "at": "0x09f2"
+  },
+  "DocumentationCabinetOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x09fc"
+  },
+  "DomainSysMLBlock": {
+   "model": "v.cnk.agt",
+   "at": "0x0a05"
+  },
+  "DynamicPoint": {
+   "model": "v.cnk.yp",
+   "at": "0x0a0f"
+  },
+  "EJBDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0a19"
+  },
+  "EPCAndOperator": {
+   "model": "v.cnk.yq",
+   "at": "0x0a22"
+  },
+  "EPCDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0a2c"
+  },
+  "EPCEvent": {
+   "model": "v.cnk.yr",
+   "at": "0x0a35"
+  },
+  "EPCFunction": {
+   "model": "v.cnk.ys",
+   "at": "0x0a3f"
+  },
+  "EPCInformationResource": {
+   "model": "v.cnk.yt",
+   "at": "0x0a49"
+  },
+  "EPCOrOperator": {
+   "model": "v.cnk.yu",
+   "at": "0x0a53"
+  },
+  "EPCOrganizationUnit": {
+   "model": "v.cnk.yv",
+   "at": "0x0a5d"
+  },
+  "EPCProcessPath": {
+   "model": "v.cnk.yw",
+   "at": "0x0a67"
+  },
+  "EPCRole": {
+   "model": "v.cnk.yx",
+   "at": "0x0a71"
+  },
+  "EPCSystem": {
+   "model": "v.cnk.yy",
+   "at": "0x0a7b"
+  },
+  "EPCXOROperator": {
+   "model": "v.cnk.yz",
+   "at": "0x0a85"
+  },
+  "ETLTable": {
+   "model": "v.cnk.zb",
+   "at": "0x0a8f"
+  },
+  "EmbeddedBPSubProcess": {
+   "model": "v.cnk.sf",
+   "at": "0x0a99"
+  },
+  "EntityBeanClass": {
+   "model": "v.cnk.vd",
+   "at": "0x0aa3"
+  },
+  "EntityBeanPrimaryKeyClass": {
+   "model": "v.cnk.vd",
+   "at": "0x0aac"
+  },
+  "EntityCommunicationLifeLine": {
+   "model": "v.cnk.wg",
+   "at": "0x0ab5"
+  },
+  "EntityInteractionLifeline": {
+   "model": "v.cnk.abb",
+   "at": "0x0abf"
+  },
+  "EntityRelationshipDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0ac9"
+  },
+  "EntryPoint": {
+   "model": "v.cnk.ze",
+   "at": "0x0ad2"
+  },
+  "Enumeration": {
+   "model": "v.cnk.zf",
+   "at": "0x0adc"
+  },
+  "ErrorBPEndEvent": {
+   "model": "v.cnk.rs",
+   "at": "0x0ae6"
+  },
+  "ErrorBPIntermediateEvent": {
+   "model": "v.cnk.ry",
+   "at": "0x0af0"
+  },
+  "ErrorBPStartEvent": {
+   "model": "v.cnk.se",
+   "at": "0x0afa"
+  },
+  "EscalationBPEndEvent": {
+   "model": "v.cnk.rs",
+   "at": "0x0b04"
+  },
+  "EscalationBPIntermediateEvent": {
+   "model": "v.cnk.ry",
+   "at": "0x0b0e"
+  },
+  "EscalationBPStartEvent": {
+   "model": "v.cnk.se",
+   "at": "0x0b18"
+  },
+  "EventBPSubProcess": {
+   "model": "v.cnk.sf",
+   "at": "0x0b22"
+  },
+  "EventBasedXORBPGateway": {
+   "model": "v.cnk.rv",
+   "at": "0x0b2c"
+  },
+  "ExecutionEnvironmentNode": {
+   "model": "v.cnk.ace",
+   "at": "0x0b35"
+  },
+  "ExecutionOccurrence": {
+   "model": "v.cnk.zg",
+   "at": "0x0b3f"
+  },
+  "ExitPoint": {
+   "model": "v.cnk.zh",
+   "at": "0x0b49"
+  },
+  "ExpansionNode": {
+   "model": "v.cnk.zi",
+   "at": "0x0b53"
+  },
+  "ExpansionRegion": {
+   "model": "v.cnk.zj",
+   "at": "0x0b5d"
+  },
+  "ExternalSysMLBlock": {
+   "model": "v.cnk.agt",
+   "at": "0x0b67"
+  },
+  "FactDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0b71"
+  },
+  "FactType": {
+   "model": "v.cnk.zm",
+   "at": "0x0b7a"
+  },
+  "FactTypeArrow": {
+   "model": "v.cnk.zk",
+   "at": "0x0b84"
+  },
+  "FinalState": {
+   "model": "v.cnk.zo",
+   "at": "0x0b8e"
+  },
+  "FinalState2": {
+   "model": "v.cnk.zn",
+   "at": "0x0b98"
+  },
+  "FishboneDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0ba2"
+  },
+  "FixedAssetBMMAsset": {
+   "model": "v.cnk.ql",
+   "at": "0x0bab"
+  },
+  "FlowFinalNode": {
+   "model": "v.cnk.zp",
+   "at": "0x0bb5"
+  },
+  "Fork": {
+   "model": "v.cnk.zr",
+   "at": "0x0bbf"
+  },
+  "ForkNode": {
+   "model": "v.cnk.zq",
+   "at": "0x0bc9"
+  },
+  "Frame": {
+   "model": "v.cnk.zt",
+   "at": "0x0bd3"
+  },
+  "Freehand": {
+   "model": "v.cnk.zu",
+   "at": "0x0bdd"
+  },
+  "FreehandDiagram2Overview": {
+   "model": "v.cnk.yl",
+   "at": "0x0be7"
+  },
+  "Gate": {
+   "model": "v.cnk.zx",
+   "at": "0x0bf0"
+  },
+  "GeneralizationSet": {
+   "model": "v.cnk.zy",
+   "at": "0x0bfa"
+  },
+  "GenericResourceShape": {
+   "model": "v.cnk.aac",
+   "at": "0x0c04"
+  },
+  "GenericShape": {
+   "model": "v.cnk.aad",
+   "at": "0x0c0e"
+  },
+  "Glossary": {
+   "model": "v.cnk.aaf",
+   "at": "0x0c18"
+  },
+  "GraphicShape": {
+   "model": "v.cnk.aag",
+   "at": "0x0c22"
+  },
+  "GreenBrainstormNote": {
+   "model": "v.cnk.tc",
+   "at": "0x0c2c"
+  },
+  "HTMLNote": {
+   "model": "v.cnk.aah",
+   "at": "0x0c36"
+  },
+  "HistoryState": {
+   "model": "v.cnk.aak",
+   "at": "0x0c40"
+  },
+  "HorizontalBPPool": {
+   "model": "v.cnk.sd",
+   "at": "0x0c4a"
+  },
+  "HorizontalSwimlane": {
+   "model": "v.cnk.nk",
+   "at": "0x0c54"
+  },
+  "HorizontalSynchronizationbar": {
+   "model": "v.cnk.aal",
+   "at": "0x0c5d"
+  },
+  "HorizontalUIScrollBar": {
+   "model": "v.cnk.aiv",
+   "at": "0x0c67"
+  },
+  "ImageShape": {
+   "model": "v.cnk.aao",
+   "at": "0x0c71"
+  },
+  "IndependentBPSubProcess": {
+   "model": "v.cnk.sf",
+   "at": "0x0c7b"
+  },
+  "InformationItem": {
+   "model": "v.cnk.aar",
+   "at": "0x0c85"
+  },
+  "InitialNode": {
+   "model": "v.cnk.aas",
+   "at": "0x0c8f"
+  },
+  "InitialPseudoState": {
+   "model": "v.cnk.aat",
+   "at": "0x0c99"
+  },
+  "InitialState": {
+   "model": "v.cnk.aau",
+   "at": "0x0ca3"
+  },
+  "InputActivityParameterNode": {
+   "model": "v.cnk.ng",
+   "at": "0x0cad"
+  },
+  "InputPin": {
+   "model": "v.cnk.aav",
+   "at": "0x0cb6"
+  },
+  "InstanceSpecification": {
+   "model": "v.cnk.aax",
+   "at": "0x0cc0"
+  },
+  "Interaction": {
+   "model": "v.cnk.abe",
+   "at": "0x0cca"
+  },
+  "InteractionActor": {
+   "model": "v.cnk.aay",
+   "at": "0x0cd4"
+  },
+  "InteractionConstraint": {
+   "model": "v.cnk.aaz",
+   "at": "0x0cde"
+  },
+  "InteractionLifeLine": {
+   "model": "v.cnk.abb",
+   "at": "0x0ce8"
+  },
+  "InteractionOccurrence": {
+   "model": "v.cnk.abc",
+   "at": "0x0cf2"
+  },
+  "InteractionOperand": {
+   "model": "v.cnk.abd",
+   "at": "0x0cfc"
+  },
+  "InteractionOverviewDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0d06"
+  },
+  "Interaction_deprecated": {
+   "model": "v.cnk.zs",
+   "at": "0x0d0f"
+  },
+  "InterfaceClass": {
+   "model": "v.cnk.abf",
+   "at": "0x0d19"
+  },
+  "InternalBlockDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0d23"
+  },
+  "InterruptibleActivityRegion": {
+   "model": "v.cnk.abg",
+   "at": "0x0d2c"
+  },
+  "Join": {
+   "model": "v.cnk.abi",
+   "at": "0x0d36"
+  },
+  "JoinNode": {
+   "model": "v.cnk.abh",
+   "at": "0x0d40"
+  },
+  "Junction": {
+   "model": "v.cnk.abk",
+   "at": "0x0d4a"
+  },
+  "JunctionPoint": {
+   "model": "v.cnk.abj",
+   "at": "0x0d54"
+  },
+  "Label": {
+   "model": "v.cnk.abl",
+   "at": "0x0d5e"
+  },
+  "LinkBPEndEvent": {
+   "model": "v.cnk.rs",
+   "at": "0x0d68"
+  },
+  "LinkBPIntermediateEvent": {
+   "model": "v.cnk.ry",
+   "at": "0x0d72"
+  },
+  "LinkBPStartEvent": {
+   "model": "v.cnk.se",
+   "at": "0x0d7c"
+  },
+  "LoopCombinedFragment": {
+   "model": "v.cnk.we",
+   "at": "0x0d86"
+  },
+  "LoopNode": {
+   "model": "v.cnk.abr",
+   "at": "0x0d8f"
+  },
+  "LoopNodeWithRegions": {
+   "model": "v.cnk.abs",
+   "at": "0x0d99"
+  },
+  "LostFoundMessageEnd": {
+   "model": "v.cnk.abt",
+   "at": "0x0da3"
+  },
+  "ManualBPTask": {
+   "model": "v.cnk.sg",
+   "at": "0x0dad"
+  },
+  "MatrixDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0db7"
+  },
+  "MaturityAnalysisOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0dc0"
+  },
+  "MergeNode": {
+   "model": "v.cnk.abu",
+   "at": "0x0dc9"
+  },
+  "MessageBPEndEvent": {
+   "model": "v.cnk.rs",
+   "at": "0x0dd3"
+  },
+  "MessageBPIntermediateEvent": {
+   "model": "v.cnk.ry",
+   "at": "0x0ddd"
+  },
+  "MessageBPStartEvent": {
+   "model": "v.cnk.se",
+   "at": "0x0de7"
+  },
+  "MessageDrivenBeanClass": {
+   "model": "v.cnk.vd",
+   "at": "0x0df1"
+  },
+  "MigrationRoadmapOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0dfa"
+  },
+  "MindMapDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0e03"
+  },
+  "MindMapNode": {
+   "model": "v.cnk.abx",
+   "at": "0x0e0c"
+  },
+  "Model": {
+   "model": "v.cnk.aca",
+   "at": "0x0e16"
+  },
+  "MultipleBPEndEvent": {
+   "model": "v.cnk.rs",
+   "at": "0x0e20"
+  },
+  "MultipleBPIntermediateEvent": {
+   "model": "v.cnk.ry",
+   "at": "0x0e2a"
+  },
+  "MultipleBPStartEvent": {
+   "model": "v.cnk.se",
+   "at": "0x0e34"
+  },
+  "NARY": {
+   "model": "v.cnk.acb",
+   "at": "0x0e3e"
+  },
+  "NOTE": {
+   "model": "v.cnk.ach",
+   "at": "0x0e48"
+  },
+  "Node": {
+   "model": "v.cnk.ace",
+   "at": "0x0e52"
+  },
+  "NodeInstance": {
+   "model": "v.cnk.acd",
+   "at": "0x0e5c"
+  },
+  "OCUnit": {
+   "model": "v.cnk.aci",
+   "at": "0x0e66"
+  },
+  "ORBPGateway": {
+   "model": "v.cnk.rv",
+   "at": "0x0e70"
+  },
+  "ORMComponentClass": {
+   "model": "v.cnk.vd",
+   "at": "0x0e79"
+  },
+  "ORMContainer": {
+   "model": "v.cnk.acj",
+   "at": "0x0e82"
+  },
+  "ORMDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0e8c"
+  },
+  "ORMParameterizedTypeClass": {
+   "model": "v.cnk.vd",
+   "at": "0x0e95"
+  },
+  "ORMPersistableClass": {
+   "model": "v.cnk.vd",
+   "at": "0x0e9e"
+  },
+  "ORMUserTypeClass": {
+   "model": "v.cnk.vd",
+   "at": "0x0ea7"
+  },
+  "ObjectDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0eb0"
+  },
+  "ObjectNode": {
+   "model": "v.cnk.ack",
+   "at": "0x0eb9"
+  },
+  "OfferingBMMAsset": {
+   "model": "v.cnk.ql",
+   "at": "0x0ec3"
+  },
+  "OpaqueAction": {
+   "model": "v.cnk.acm",
+   "at": "0x0ecd"
+  },
+  "OppositeFactType": {
+   "model": "v.cnk.acn",
+   "at": "0x0ed7"
+  },
+  "OrangeBrainstormNote": {
+   "model": "v.cnk.tc",
+   "at": "0x0ee1"
+  },
+  "OrganizationChartOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0eeb"
+  },
+  "OutputActivityParameterNode": {
+   "model": "v.cnk.ng",
+   "at": "0x0ef4"
+  },
+  "OutputPin": {
+   "model": "v.cnk.aco",
+   "at": "0x0efd"
+  },
+  "Oval": {
+   "model": "v.cnk.acp",
+   "at": "0x0f07"
+  },
+  "OverviewDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0f11"
+  },
+  "PERTChartOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0f1a"
+  },
+  "PERTLane": {
+   "model": "v.cnk.acr",
+   "at": "0x0f23"
+  },
+  "PERTTask": {
+   "model": "v.cnk.acs",
+   "at": "0x0f2d"
+  },
+  "PMProcess": {
+   "model": "v.cnk.act",
+   "at": "0x0f37"
+  },
+  "PMReceive": {
+   "model": "v.cnk.acu",
+   "at": "0x0f41"
+  },
+  "PMSend": {
+   "model": "v.cnk.acv",
+   "at": "0x0f4b"
+  },
+  "Package": {
+   "model": "v.cnk.acw",
+   "at": "0x0f55"
+  },
+  "PackageDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0f5f"
+  },
+  "ParallelMultipleBPIntermediateEvent": {
+   "model": "v.cnk.ry",
+   "at": "0x0f68"
+  },
+  "ParallelMultipleBPStartEvent": {
+   "model": "v.cnk.se",
+   "at": "0x0f72"
+  },
+  "ParameterSet": {
+   "model": "v.cnk.acy",
+   "at": "0x0f7c"
+  },
+  "ParametricDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0f86"
+  },
+  "Part": {
+   "model": "v.cnk.acz",
+   "at": "0x0f8f"
+  },
+  "Polygon": {
+   "model": "v.cnk.adb",
+   "at": "0x0f99"
+  },
+  "Port": {
+   "model": "v.cnk.ade",
+   "at": "0x0fa3"
+  },
+  "PortBehavior": {
+   "model": "v.cnk.add",
+   "at": "0x0fad"
+  },
+  "Primitive": {
+   "model": "v.cnk.adf",
+   "at": "0x0fb7"
+  },
+  "ProcedureContainer": {
+   "model": "v.cnk.adg",
+   "at": "0x0fc1"
+  },
+  "ProcedureResultSet": {
+   "model": "v.cnk.adj",
+   "at": "0x0fcb"
+  },
+  "ProcessConnector": {
+   "model": "v.cnk.sg",
+   "at": "0x0fd5"
+  },
+  "ProcessMapDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x0fdf"
+  },
+  "Property": {
+   "model": "v.cnk.acz",
+   "at": "0x0fe8"
+  },
+  "PurpleBrainstormNote": {
+   "model": "v.cnk.tc",
+   "at": "0x0ff2"
+  },
+  "Qualifier": {
+   "model": "v.cnk.ado",
+   "at": "0x0ffc"
+  },
+  "ReceiveBPTask": {
+   "model": "v.cnk.sg",
+   "at": "0x1006"
+  },
+  "Rectangle": {
+   "model": "v.cnk.adp",
+   "at": "0x1010"
+  },
+  "RedBrainstormNote": {
+   "model": "v.cnk.tc",
+   "at": "0x101a"
+  },
+  "ReferenceBPSubProcess": {
+   "model": "v.cnk.sf",
+   "at": "0x1024"
+  },
+  "ReferenceBPTask": {
+   "model": "v.cnk.sg",
+   "at": "0x102e"
+  },
+  "Region": {
+   "model": "v.cnk.adr",
+   "at": "0x1038"
+  },
+  "RegulationBMMExternalInfluencer": {
+   "model": "v.cnk.qq",
+   "at": "0x1042"
+  },
+  "Requirement": {
+   "model": "v.cnk.adt",
+   "at": "0x104c"
+  },
+  "RequirementDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x1056"
+  },
+  "RequirementModel": {
+   "model": "v.cnk.ads",
+   "at": "0x105f"
+  },
+  "ResourceBMMAsset": {
+   "model": "v.cnk.ql",
+   "at": "0x1069"
+  },
+  "RestResource": {
+   "model": "v.cnk.adw",
+   "at": "0x1073"
+  },
+  "RestResourceRequestBody": {
+   "model": "v.cnk.adu",
+   "at": "0x107d"
+  },
+  "RestResourceResponseBody": {
+   "model": "v.cnk.adv",
+   "at": "0x1087"
+  },
+  "ReturnCommunicationMessage": {
+   "model": "v.cnk.wh",
+   "at": "0x1091"
+  },
+  "ReturnCommunicationReverseMessage": {
+   "model": "v.cnk.wi",
+   "at": "0x109b"
+  },
+  "ReversedSysMLItemFlow": {
+   "model": "v.cnk.ahc",
+   "at": "0x10a5"
+  },
+  "RuleBPIntermediateEvent": {
+   "model": "v.cnk.ry",
+   "at": "0x10af"
+  },
+  "RuleBPStartEvent": {
+   "model": "v.cnk.se",
+   "at": "0x10b9"
+  },
+  "SEArc": {
+   "model": "v.cnk.aed",
+   "at": "0x10c3"
+  },
+  "SEBezierSurfaceTextShape": {
+   "model": "v.cnk.aee",
+   "at": "0x10cd"
+  },
+  "SEChord": {
+   "model": "v.cnk.aef",
+   "at": "0x10d7"
+  },
+  "SECurveShape": {
+   "model": "v.cnk.aeg",
+   "at": "0x10e1"
+  },
+  "SEDiamond": {
+   "model": "v.cnk.aeh",
+   "at": "0x10eb"
+  },
+  "SEDoubleArrowShape": {
+   "model": "v.cnk.aei",
+   "at": "0x10f5"
+  },
+  "SEEllipse": {
+   "model": "v.cnk.aej",
+   "at": "0x10ff"
+  },
+  "SEHexagon": {
+   "model": "v.cnk.aek",
+   "at": "0x1109"
+  },
+  "SEIsoscelesTrapezoid": {
+   "model": "v.cnk.ael",
+   "at": "0x1113"
+  },
+  "SEIsoscelesTriangle": {
+   "model": "v.cnk.aem",
+   "at": "0x111d"
+  },
+  "SELabelLine": {
+   "model": "v.cnk.aen",
+   "at": "0x1127"
+  },
+  "SEParallelogram": {
+   "model": "v.cnk.aeo",
+   "at": "0x1131"
+  },
+  "SEPie": {
+   "model": "v.cnk.aep",
+   "at": "0x113b"
+  },
+  "SERectangleShape": {
+   "model": "v.cnk.aeq",
+   "at": "0x1145"
+  },
+  "SERegularPolygonShape": {
+   "model": "v.cnk.aer",
+   "at": "0x114f"
+  },
+  "SERoundRectangleShape": {
+   "model": "v.cnk.aes",
+   "at": "0x1159"
+  },
+  "SERoundedRectangle": {
+   "model": "v.cnk.aet",
+   "at": "0x1163"
+  },
+  "SESingleArrowShape": {
+   "model": "v.cnk.aev",
+   "at": "0x116d"
+  },
+  "SESpiralShape": {
+   "model": "v.cnk.aew",
+   "at": "0x1177"
+  },
+  "SEText": {
+   "model": "v.cnk.aex",
+   "at": "0x1181"
+  },
+  "SETrapezoid": {
+   "model": "v.cnk.aey",
+   "at": "0x118b"
+  },
+  "SEVPRectangle": {
+   "model": "v.cnk.aez",
+   "at": "0x1195"
+  },
+  "SVGShape": {
+   "model": "v.cnk.afd",
+   "at": "0x119f"
+  },
+  "ScreenCapture": {
+   "model": "v.cnk.aao",
+   "at": "0x11a9"
+  },
+  "ScriptBPTask": {
+   "model": "v.cnk.sg",
+   "at": "0x11b3"
+  },
+  "SendBPTask": {
+   "model": "v.cnk.sg",
+   "at": "0x11bd"
+  },
+  "SendCommunicationMessage": {
+   "model": "v.cnk.wh",
+   "at": "0x11c7"
+  },
+  "SendCommunicationReverseMessage": {
+   "model": "v.cnk.wi",
+   "at": "0x11d1"
+  },
+  "SendSignalAction": {
+   "model": "v.cnk.afh",
+   "at": "0x11db"
+  },
+  "SequenceCommunicationMessage": {
+   "model": "v.cnk.wh",
+   "at": "0x11e5"
+  },
+  "SequenceCommunicationReverseMessage": {
+   "model": "v.cnk.wi",
+   "at": "0x11ef"
+  },
+  "SequenceConcurrent_deprecated": {
+   "model": "v.cnk.afi",
+   "at": "0x11f9"
+  },
+  "SequenceDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x1203"
+  },
+  "SequenceNode": {
+   "model": "v.cnk.afk",
+   "at": "0x120c"
+  },
+  "ServiceBPTask": {
+   "model": "v.cnk.sg",
+   "at": "0x1216"
+  },
+  "SessionBeanClass": {
+   "model": "v.cnk.vd",
+   "at": "0x1220"
+  },
+  "ShallowHistory": {
+   "model": "v.cnk.afl",
+   "at": "0x1229"
+  },
+  "SignalBPEndEvent": {
+   "model": "v.cnk.rs",
+   "at": "0x1233"
+  },
+  "SignalBPIntermediateEvent": {
+   "model": "v.cnk.ry",
+   "at": "0x123d"
+  },
+  "SignalBPStartEvent": {
+   "model": "v.cnk.se",
+   "at": "0x1247"
+  },
+  "SignalReceipt": {
+   "model": "v.cnk.aft",
+   "at": "0x1251"
+  },
+  "SignalSending": {
+   "model": "v.cnk.afu",
+   "at": "0x125b"
+  },
+  "SoaMLAgent": {
+   "model": "v.cnk.agg",
+   "at": "0x1265"
+  },
+  "SoaMLCapability": {
+   "model": "v.cnk.vd",
+   "at": "0x126f"
+  },
+  "SoaMLCatalog": {
+   "model": "v.cnk.acw",
+   "at": "0x1278"
+  },
+  "SoaMLCategory": {
+   "model": "v.cnk.qj",
+   "at": "0x1282"
+  },
+  "SoaMLCategoryValue": {
+   "model": "v.cnk.aax",
+   "at": "0x128c"
+  },
+  "SoaMLConsumer": {
+   "model": "v.cnk.vd",
+   "at": "0x1296"
+  },
+  "SoaMLExternalRole": {
+   "model": "v.cnk.acz",
+   "at": "0x129f"
+  },
+  "SoaMLInternalRole": {
+   "model": "v.cnk.acz",
+   "at": "0x12a9"
+  },
+  "SoaMLMessageType": {
+   "model": "v.cnk.vd",
+   "at": "0x12b3"
+  },
+  "SoaMLMilestone": {
+   "model": "v.cnk.ach",
+   "at": "0x12bc"
+  },
+  "SoaMLParticipant": {
+   "model": "v.cnk.agg",
+   "at": "0x12c6"
+  },
+  "SoaMLProvider": {
+   "model": "v.cnk.vd",
+   "at": "0x12d0"
+  },
+  "SoaMLRequestPort": {
+   "model": "v.cnk.ade",
+   "at": "0x12d9"
+  },
+  "SoaMLServiceCategorizationDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x12e3"
+  },
+  "SoaMLServiceContract": {
+   "model": "v.cnk.vv",
+   "at": "0x12ec"
+  },
+  "SoaMLServiceContractDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x12f6"
+  },
+  "SoaMLServiceContractUse": {
+   "model": "v.cnk.vz",
+   "at": "0x12ff"
+  },
+  "SoaMLServiceInterface": {
+   "model": "v.cnk.agg",
+   "at": "0x1309"
+  },
+  "SoaMLServiceInterfaceDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x1313"
+  },
+  "SoaMLServiceParticipantDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x131c"
+  },
+  "SoaMLServicePort": {
+   "model": "v.cnk.ade",
+   "at": "0x1325"
+  },
+  "SoaMLServicesArchitecture": {
+   "model": "v.cnk.vv",
+   "at": "0x132f"
+  },
+  "SoaMLServicesArchitectureDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x1339"
+  },
+  "State": {
+   "model": "v.cnk.agb",
+   "at": "0x1342"
+  },
+  "State2": {
+   "model": "v.cnk.afv",
+   "at": "0x134c"
+  },
+  "StateDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x1356"
+  },
+  "StateInvariant": {
+   "model": "v.cnk.aga",
+   "at": "0x135f"
+  },
+  "Stereotype": {
+   "model": "v.cnk.agc",
+   "at": "0x1369"
+  },
+  "StructuredActivityNode": {
+   "model": "v.cnk.agd",
+   "at": "0x1373"
+  },
+  "StructuredActivityRegion": {
+   "model": "v.cnk.agf",
+   "at": "0x137d"
+  },
+  "StructuredClass": {
+   "model": "v.cnk.agg",
+   "at": "0x1387"
+  },
+  "StructuredInterface": {
+   "model": "v.cnk.agh",
+   "at": "0x1391"
+  },
+  "StubState": {
+   "model": "v.cnk.agi",
+   "at": "0x139b"
+  },
+  "SubActivity": {
+   "model": "v.cnk.agm",
+   "at": "0x13a5"
+  },
+  "SubConversation": {
+   "model": "v.cnk.agj",
+   "at": "0x13af"
+  },
+  "SubLevelInFlow": {
+   "model": "v.cnk.agk",
+   "at": "0x13b9"
+  },
+  "SubLevelOutFlow": {
+   "model": "v.cnk.agl",
+   "at": "0x13c3"
+  },
+  "SubmachineState": {
+   "model": "v.cnk.ago",
+   "at": "0x13cd"
+  },
+  "SubmachineState2": {
+   "model": "v.cnk.agn",
+   "at": "0x13d7"
+  },
+  "Subsystem": {
+   "model": "v.cnk.agp",
+   "at": "0x13e1"
+  },
+  "SynchState": {
+   "model": "v.cnk.agq",
+   "at": "0x13eb"
+  },
+  "SysMLActivityBlock": {
+   "model": "v.cnk.ags",
+   "at": "0x13f5"
+  },
+  "SysMLBlock": {
+   "model": "v.cnk.agt",
+   "at": "0x13ff"
+  },
+  "SysMLBoundReference": {
+   "model": "v.cnk.agu",
+   "at": "0x1409"
+  },
+  "SysMLConstraintBlock": {
+   "model": "v.cnk.agv",
+   "at": "0x1413"
+  },
+  "SysMLConstraintParameter": {
+   "model": "v.cnk.agw",
+   "at": "0x141d"
+  },
+  "SysMLConstraintProperty": {
+   "model": "v.cnk.agx",
+   "at": "0x1427"
+  },
+  "SysMLControlOperatorAction": {
+   "model": "v.cnk.nc",
+   "at": "0x1431"
+  },
+  "SysMLControlOperatorActivity": {
+   "model": "v.cnk.nn",
+   "at": "0x143a"
+  },
+  "SysMLElementGroup": {
+   "model": "v.cnk.agy",
+   "at": "0x1443"
+  },
+  "SysMLFlowPort": {
+   "model": "v.cnk.agz",
+   "at": "0x144d"
+  },
+  "SysMLFlowSpecification": {
+   "model": "v.cnk.aha",
+   "at": "0x1457"
+  },
+  "SysMLFullPort": {
+   "model": "v.cnk.ade",
+   "at": "0x1461"
+  },
+  "SysMLInterfaceBlock": {
+   "model": "v.cnk.ahb",
+   "at": "0x146b"
+  },
+  "SysMLItemFlow": {
+   "model": "v.cnk.ahc",
+   "at": "0x1475"
+  },
+  "SysMLNamespaceCompartment": {
+   "model": "v.cnk.ahd",
+   "at": "0x147f"
+  },
+  "SysMLPartProperty": {
+   "model": "v.cnk.ahe",
+   "at": "0x1489"
+  },
+  "SysMLParticipantProperty": {
+   "model": "v.cnk.ahf",
+   "at": "0x1493"
+  },
+  "SysMLProblem": {
+   "model": "v.cnk.ach",
+   "at": "0x149d"
+  },
+  "SysMLProperty": {
+   "model": "v.cnk.ahg",
+   "at": "0x14a7"
+  },
+  "SysMLProxyPort": {
+   "model": "v.cnk.ade",
+   "at": "0x14b1"
+  },
+  "SysMLQuantityKind": {
+   "model": "v.cnk.ahh",
+   "at": "0x14bb"
+  },
+  "SysMLRationale": {
+   "model": "v.cnk.ach",
+   "at": "0x14c5"
+  },
+  "SysMLReferenceProperty": {
+   "model": "v.cnk.ahi",
+   "at": "0x14cf"
+  },
+  "SysMLSignal": {
+   "model": "v.cnk.ahj",
+   "at": "0x14d9"
+  },
+  "SysMLStructureCompartment": {
+   "model": "v.cnk.ahl",
+   "at": "0x14e3"
+  },
+  "SysMLUnit": {
+   "model": "v.cnk.ahm",
+   "at": "0x14ed"
+  },
+  "SysMLValueProperty": {
+   "model": "v.cnk.ahn",
+   "at": "0x14f7"
+  },
+  "SysMLValueSpecificationAction": {
+   "model": "v.cnk.nc",
+   "at": "0x1501"
+  },
+  "SysMLValueType": {
+   "model": "v.cnk.aho",
+   "at": "0x150a"
+  },
+  "SysMLView": {
+   "model": "v.cnk.acw",
+   "at": "0x1514"
+  },
+  "SysMLViewpoint": {
+   "model": "v.cnk.vd",
+   "at": "0x151e"
+  },
+  "System": {
+   "model": "v.cnk.ahp",
+   "at": "0x1527"
+  },
+  "SystemSysMLBlock": {
+   "model": "v.cnk.agt",
+   "at": "0x1531"
+  },
+  "Terminate": {
+   "model": "v.cnk.ahq",
+   "at": "0x153b"
+  },
+  "TerminateBPEndEvent": {
+   "model": "v.cnk.rs",
+   "at": "0x1545"
+  },
+  "TerminateCommunicationMessage": {
+   "model": "v.cnk.wh",
+   "at": "0x154f"
+  },
+  "TerminateCommunicationReverseMessage": {
+   "model": "v.cnk.wi",
+   "at": "0x1559"
+  },
+  "TestCase": {
+   "model": "v.cnk.ahr",
+   "at": "0x1563"
+  },
+  "TextBox": {
+   "model": "v.cnk.ahs",
+   "at": "0x156d"
+  },
+  "TextualAnalysisOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x1577"
+  },
+  "TimeConstraint": {
+   "model": "v.cnk.ahu",
+   "at": "0x1580"
+  },
+  "TimerBPIntermediateEvent": {
+   "model": "v.cnk.ry",
+   "at": "0x158a"
+  },
+  "TimerBPStartEvent": {
+   "model": "v.cnk.se",
+   "at": "0x1594"
+  },
+  "TimingDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x159e"
+  },
+  "TimingFrame": {
+   "model": "v.cnk.ahw",
+   "at": "0x15a7"
+  },
+  "UIButton": {
+   "model": "v.cnk.aij",
+   "at": "0x15b1"
+  },
+  "UICheckBox": {
+   "model": "v.cnk.aik",
+   "at": "0x15bb"
+  },
+  "UIComboBox": {
+   "model": "v.cnk.ail",
+   "at": "0x15c5"
+  },
+  "UIFrame": {
+   "model": "v.cnk.ain",
+   "at": "0x15cf"
+  },
+  "UILabel": {
+   "model": "v.cnk.aio",
+   "at": "0x15d9"
+  },
+  "UIList": {
+   "model": "v.cnk.aip",
+   "at": "0x15e3"
+  },
+  "UIMenubar": {
+   "model": "v.cnk.aiq",
+   "at": "0x15ed"
+  },
+  "UIPanel": {
+   "model": "v.cnk.air",
+   "at": "0x15f7"
+  },
+  "UIPasswordField": {
+   "model": "v.cnk.ais",
+   "at": "0x1601"
+  },
+  "UIProgressBar": {
+   "model": "v.cnk.ait",
+   "at": "0x160b"
+  },
+  "UIRadioButton": {
+   "model": "v.cnk.aiu",
+   "at": "0x1615"
+  },
+  "UIScrollBar": {
+   "model": "v.cnk.aiv",
+   "at": "0x161f"
+  },
+  "UISeparator": {
+   "model": "v.cnk.aiw",
+   "at": "0x1629"
+  },
+  "UISlider": {
+   "model": "v.cnk.aix",
+   "at": "0x1633"
+  },
+  "UISpinner": {
+   "model": "v.cnk.aiy",
+   "at": "0x163d"
+  },
+  "UITabbedHeader": {
+   "model": "v.cnk.aiz",
+   "at": "0x1647"
+  },
+  "UITable": {
+   "model": "v.cnk.aja",
+   "at": "0x1651"
+  },
+  "UITextArea": {
+   "model": "v.cnk.ajb",
+   "at": "0x165b"
+  },
+  "UITextField": {
+   "model": "v.cnk.ajc",
+   "at": "0x1665"
+  },
+  "UIToggleButton": {
+   "model": "v.cnk.ajd",
+   "at": "0x166f"
+  },
+  "UITree": {
+   "model": "v.cnk.aje",
+   "at": "0x1679"
+  },
+  "UIWebButtonInput": {
+   "model": "v.cnk.ajf",
+   "at": "0x1683"
+  },
+  "UIWebCheckBoxInput": {
+   "model": "v.cnk.ajg",
+   "at": "0x168d"
+  },
+  "UIWebComboBox": {
+   "model": "v.cnk.ajh",
+   "at": "0x1697"
+  },
+  "UIWebFileInput": {
+   "model": "v.cnk.aji",
+   "at": "0x16a1"
+  },
+  "UIWebLabel": {
+   "model": "v.cnk.ajj",
+   "at": "0x16ab"
+  },
+  "UIWebList": {
+   "model": "v.cnk.ajk",
+   "at": "0x16b5"
+  },
+  "UIWebPanel": {
+   "model": "v.cnk.ajl",
+   "at": "0x16bf"
+  },
+  "UIWebPasswordInput": {
+   "model": "v.cnk.ajm",
+   "at": "0x16c9"
+  },
+  "UIWebRadioInput": {
+   "model": "v.cnk.ajn",
+   "at": "0x16d3"
+  },
+  "UIWebResetInput": {
+   "model": "v.cnk.ajo",
+   "at": "0x16dd"
+  },
+  "UIWebSubmitInput": {
+   "model": "v.cnk.ajp",
+   "at": "0x16e7"
+  },
+  "UIWebTextArea": {
+   "model": "v.cnk.ajq",
+   "at": "0x16f1"
+  },
+  "UIWebTextInput": {
+   "model": "v.cnk.ajr",
+   "at": "0x16fb"
+  },
+  "UninterpretedCommunicationMessage": {
+   "model": "v.cnk.wh",
+   "at": "0x1705"
+  },
+  "UninterpretedCommunicationReverseMessage": {
+   "model": "v.cnk.wi",
+   "at": "0x170f"
+  },
+  "UseCase": {
+   "model": "v.cnk.aju",
+   "at": "0x1719"
+  },
+  "UseCaseDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x1723"
+  },
+  "UserBPTask": {
+   "model": "v.cnk.sg",
+   "at": "0x172c"
+  },
+  "UserInterfaceOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x1736"
+  },
+  "UserStory": {
+   "model": "v.cnk.ajv",
+   "at": "0x173f"
+  },
+  "ValuePin": {
+   "model": "v.cnk.ajy",
+   "at": "0x1749"
+  },
+  "VerticalBPPool": {
+   "model": "v.cnk.sd",
+   "at": "0x1753"
+  },
+  "VerticalSwimlane": {
+   "model": "v.cnk.nk",
+   "at": "0x175d"
+  },
+  "VerticalSynchronizationbar": {
+   "model": "v.cnk.ajz",
+   "at": "0x1766"
+  },
+  "VerticalUIScrollBar": {
+   "model": "v.cnk.aiv",
+   "at": "0x1770"
+  },
+  "VisioShape": {
+   "model": "v.cnk.aka",
+   "at": "0x177a"
+  },
+  "WSDLDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x1784"
+  },
+  "WireflowDecisionNode": {
+   "model": "v.cnk.akb",
+   "at": "0x178d"
+  },
+  "WireflowDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x1797"
+  },
+  "WireflowNode": {
+   "model": "v.cnk.akc",
+   "at": "0x17a0"
+  },
+  "YellowBrainstormNote": {
+   "model": "v.cnk.tc",
+   "at": "0x17aa"
+  },
+  "ZachmanDiagramOverview": {
+   "model": "v.cnk.yl",
+   "at": "0x17b4"
+  },
+  "Abstraction": {
+   "model": "v.cmq.bh",
+   "at": "0x17bd"
+  },
+  "Access": {
+   "model": "v.cmq.bi",
+   "at": "0x17c7"
+  },
+  "ActAsBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x17d1"
+  },
+  "ActAsRegulationBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x17db"
+  },
+  "ActivityObjectFlow": {
+   "model": "v.cmq.bk",
+   "at": "0x17e5"
+  },
+  "AffectAchievementBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x17ef"
+  },
+  "AffectEmploymentBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x17f9"
+  },
+  "Aggregation": {
+   "model": "v.cmq.cu",
+   "at": "0x1803"
+  },
+  "AmplifyBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x180d"
+  },
+  "AnalysisComposition": {
+   "model": "v.cmq.bl",
+   "at": "0x1817"
+  },
+  "AnalysisDiagramTransitor": {
+   "model": "v.cmq.bn",
+   "at": "0x1821"
+  },
+  "AnalysisLogicalView": {
+   "model": "v.cmq.bo",
+   "at": "0x182b"
+  },
+  "AnalysisParentChild": {
+   "model": "v.cmq.bp",
+   "at": "0x1835"
+  },
+  "AnalysisReference": {
+   "model": "v.cmq.bq",
+   "at": "0x183f"
+  },
+  "AnalysisRelationship": {
+   "model": "v.cmq.bt",
+   "at": "0x1849"
+  },
+  "AnalysisRelationshipFrom": {
+   "model": "v.cmq.br",
+   "at": "0x1853"
+  },
+  "AnalysisRelationshipTo": {
+   "model": "v.cmq.bs",
+   "at": "0x185d"
+  },
+  "AnalysisSubDiagram": {
+   "model": "v.cmq.bu",
+   "at": "0x1867"
+  },
+  "AnalysisTransitor": {
+   "model": "v.cmq.bv",
+   "at": "0x1871"
+  },
+  "AnalysisUsed": {
+   "model": "v.cmq.bw",
+   "at": "0x187b"
+  },
+  "AnalysisView": {
+   "model": "v.cmq.by",
+   "at": "0x1885"
+  },
+  "AnalysisViewParentChild": {
+   "model": "v.cmq.bx",
+   "at": "0x188f"
+  },
+  "Anchor": {
+   "model": "v.cmq.bz",
+   "at": "0x1899"
+  },
+  "ArchiMateAccess": {
+   "model": "v.cmq.ca",
+   "at": "0x18a3"
+  },
+  "ArchiMateAggregation": {
+   "model": "v.cmq.cb",
+   "at": "0x18ad"
+  },
+  "ArchiMateAssignment": {
+   "model": "v.cmq.cc",
+   "at": "0x18b7"
+  },
+  "ArchiMateAssociation": {
+   "model": "v.cmq.cd",
+   "at": "0x18c1"
+  },
+  "ArchiMateCommunicationPath": {
+   "model": "v.cmq.ce",
+   "at": "0x18cb"
+  },
+  "ArchiMateComposition": {
+   "model": "v.cmq.cf",
+   "at": "0x18d5"
+  },
+  "ArchiMateDerived": {
+   "model": "v.cmq.cg",
+   "at": "0x18df"
+  },
+  "ArchiMateDistributionNetwork": {
+   "model": "v.cmq.ch",
+   "at": "0x18e9"
+  },
+  "ArchiMateFlow": {
+   "model": "v.cmq.ci",
+   "at": "0x18f3"
+  },
+  "ArchiMateInfluence": {
+   "model": "v.cmq.cj",
+   "at": "0x18fd"
+  },
+  "ArchiMateNetwork": {
+   "model": "v.cmq.ck",
+   "at": "0x1907"
+  },
+  "ArchiMateProvide": {
+   "model": "v.cmq.cl",
+   "at": "0x1911"
+  },
+  "ArchiMateReadAccess": {
+   "model": "v.cmq.ca",
+   "at": "0x191b"
+  },
+  "ArchiMateReadWriteAccess": {
+   "model": "v.cmq.ca",
+   "at": "0x1925"
+  },
+  "ArchiMateRealization": {
+   "model": "v.cmq.cm",
+   "at": "0x192f"
+  },
+  "ArchiMateRequire": {
+   "model": "v.cmq.cn",
+   "at": "0x1939"
+  },
+  "ArchiMateSpecialization": {
+   "model": "v.cmq.co",
+   "at": "0x1943"
+  },
+  "ArchiMateTriggering": {
+   "model": "v.cmq.cp",
+   "at": "0x194d"
+  },
+  "ArchiMateUndirectedAccess": {
+   "model": "v.cmq.ca",
+   "at": "0x1957"
+  },
+  "ArchiMateUsedBy": {
+   "model": "v.cmq.cq",
+   "at": "0x1961"
+  },
+  "ArchiMateWriteAccess": {
+   "model": "v.cmq.ca",
+   "at": "0x196b"
+  },
+  "Association": {
+   "model": "v.cmq.cu",
+   "at": "0x1975"
+  },
+  "AssociationClass": {
+   "model": "v.cmq.cr",
+   "at": "0x197f"
+  },
+  "AssociationRole": {
+   "model": "v.cmq.ct",
+   "at": "0x1989"
+  },
+  "AttributeColumnMapping": {
+   "model": "v.cmq.cv",
+   "at": "0x1993"
+  },
+  "BMMComposition": {
+   "model": "v.cmq.cw",
+   "at": "0x199d"
+  },
+  "BMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x19a7"
+  },
+  "BPAssociation": {
+   "model": "v.cmq.cy",
+   "at": "0x19b1"
+  },
+  "BPCompensationAssociation": {
+   "model": "v.cmq.cy",
+   "at": "0x19bb"
+  },
+  "BPDataAssociation": {
+   "model": "v.cmq.cz",
+   "at": "0x19c5"
+  },
+  "BPMessageFlow": {
+   "model": "v.cmq.de",
+   "at": "0x19cf"
+  },
+  "BPSeqMsgFlow": {
+   "model": "v.cmq.df",
+   "at": "0x19d9"
+  },
+  "BPSequenceFlow": {
+   "model": "v.cmq.dg",
+   "at": "0x19e3"
+  },
+  "BSConnector": {
+   "model": "v.cmq.dh",
+   "at": "0x19ed"
+  },
+  "BasisForBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x19f7"
+  },
+  "BiDirectionalManyToManyAssociation": {
+   "model": "v.cmq.cu",
+   "at": "0x1a01"
+  },
+  "BiDirectionalOneToManyAssociation": {
+   "model": "v.cmq.cu",
+   "at": "0x1a0b"
+  },
+  "BiDirectionalOneToOneAssociation": {
+   "model": "v.cmq.cu",
+   "at": "0x1a15"
+  },
+  "BidirectionalMindLink": {
+   "model": "v.cmq.fv",
+   "at": "0x1a1f"
+  },
+  "BindingDependency": {
+   "model": "v.cmq.dj",
+   "at": "0x1a29"
+  },
+  "BusinessRuleAssociation": {
+   "model": "v.cmq.dk",
+   "at": "0x1a33"
+  },
+  "CMMNAssociation": {
+   "model": "v.cmq.dl",
+   "at": "0x1a3d"
+  },
+  "CMMNCaseFileItemOnPart": {
+   "model": "v.cmq.dm",
+   "at": "0x1a47"
+  },
+  "CMMNDiscretionaryAssociation": {
+   "model": "v.cmq.do",
+   "at": "0x1a51"
+  },
+  "CMMNPlanItemOnPart": {
+   "model": "v.cmq.dr",
+   "at": "0x1a5b"
+  },
+  "CallConversationLink": {
+   "model": "v.cmq.ea",
+   "at": "0x1a65"
+  },
+  "CallMessage": {
+   "model": "v.cmq.fs",
+   "at": "0x1a6f"
+  },
+  "ChannelEffortsBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1a79"
+  },
+  "ClaimBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1a83"
+  },
+  "ClassEntityMapping": {
+   "model": "v.cmq.dt",
+   "at": "0x1a8d"
+  },
+  "CollaborationLink": {
+   "model": "v.cmq.du",
+   "at": "0x1a97"
+  },
+  "CollaborationRole": {
+   "model": "v.cmq.dv",
+   "at": "0x1aa1"
+  },
+  "ComponentOfPlanForBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1aab"
+  },
+  "Composition": {
+   "model": "v.cmq.cu",
+   "at": "0x1ab5"
+  },
+  "Constraint": {
+   "model": "v.cmq.dx",
+   "at": "0x1abf"
+  },
+  "Containment": {
+   "model": "v.cmq.dy",
+   "at": "0x1ac9"
+  },
+  "ControlFlow": {
+   "model": "v.cmq.dz",
+   "at": "0x1ad3"
+  },
+  "ConversationLink": {
+   "model": "v.cmq.ea",
+   "at": "0x1add"
+  },
+  "CreateMessage": {
+   "model": "v.cmq.fs",
+   "at": "0x1ae7"
+  },
+  "DBForeignKey": {
+   "model": "v.cmq.eb",
+   "at": "0x1af1"
+  },
+  "DBViewJoin": {
+   "model": "v.cmq.ec",
+   "at": "0x1afb"
+  },
+  "DFBidirectionalDataFlow": {
+   "model": "v.cmq.ed",
+   "at": "0x1b05"
+  },
+  "DFDataFlow": {
+   "model": "v.cmq.ed",
+   "at": "0x1b0f"
+  },
+  "DMDecisionRuleFamilyRelationship": {
+   "model": "v.cmq.ee",
+   "at": "0x1b19"
+  },
+  "DMInfluence": {
+   "model": "v.cmq.ef",
+   "at": "0x1b23"
+  },
+  "DTBDecisionTableAssociation": {
+   "model": "v.cmq.eg",
+   "at": "0x1b2d"
+  },
+  "DefaultBPSequenceFlow": {
+   "model": "v.cmq.dg",
+   "at": "0x1b37"
+  },
+  "DefineBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1b41"
+  },
+  "DeliverBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1b4b"
+  },
+  "Dependency": {
+   "model": "v.cmq.eh",
+   "at": "0x1b55"
+  },
+  "DeployBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1b5f"
+  },
+  "Deployment": {
+   "model": "v.cmq.ei",
+   "at": "0x1b69"
+  },
+  "Derive": {
+   "model": "v.cmq.ej",
+   "at": "0x1b73"
+  },
+  "DestroyMessage": {
+   "model": "v.cmq.fs",
+   "at": "0x1b7d"
+  },
+  "DetermineBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1b87"
+  },
+  "DirectionalGenericConnector": {
+   "model": "v.cmq.ev",
+   "at": "0x1b91"
+  },
+  "DischargeBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1b9b"
+  },
+  "DocumentationCabinetLink": {
+   "model": "v.cmq.el",
+   "at": "0x1ba5"
+  },
+  "DurationMessage": {
+   "model": "v.cmq.fs",
+   "at": "0x1baf"
+  },
+  "EPCControlFlow": {
+   "model": "v.cmq.eo",
+   "at": "0x1bb9"
+  },
+  "EPCInformationFlow": {
+   "model": "v.cmq.ep",
+   "at": "0x1bc3"
+  },
+  "EPCOrganizationUnitAssignment": {
+   "model": "v.cmq.eq",
+   "at": "0x1bcd"
+  },
+  "EffectEnforcementLevelBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1bd7"
+  },
+  "EnableBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1be1"
+  },
+  "EntityBeanPrimaryKeyLink": {
+   "model": "v.cmq.er",
+   "at": "0x1beb"
+  },
+  "EstablishBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1bf5"
+  },
+  "ExceptionHandler": {
+   "model": "v.cmq.es",
+   "at": "0x1bff"
+  },
+  "ExpressionBPSequenceFlow": {
+   "model": "v.cmq.dg",
+   "at": "0x1c09"
+  },
+  "Extend": {
+   "model": "v.cmq.et",
+   "at": "0x1c13"
+  },
+  "FormulatedBasedOnBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1c1d"
+  },
+  "FromMindLink": {
+   "model": "v.cmq.fv",
+   "at": "0x1c27"
+  },
+  "Generalization": {
+   "model": "v.cmq.eu",
+   "at": "0x1c31"
+  },
+  "GenericConnector": {
+   "model": "v.cmq.ev",
+   "at": "0x1c3b"
+  },
+  "GenericResourceConnector": {
+   "model": "v.cmq.ey",
+   "at": "0x1c45"
+  },
+  "GlossaryFactConnector": {
+   "model": "v.cmq.ez",
+   "at": "0x1c4f"
+  },
+  "GlossaryFactTypeAssociation": {
+   "model": "v.cmq.fg",
+   "at": "0x1c59"
+  },
+  "GovernBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1c63"
+  },
+  "GuideBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1c6d"
+  },
+  "IFRepresented": {
+   "model": "v.cmq.fi",
+   "at": "0x1c77"
+  },
+  "IdentifyBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1c81"
+  },
+  "ImplementBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1c8b"
+  },
+  "Import": {
+   "model": "v.cmq.fj",
+   "at": "0x1c95"
+  },
+  "Include": {
+   "model": "v.cmq.fk",
+   "at": "0x1c9f"
+  },
+  "InformationFlow": {
+   "model": "v.cmq.fl",
+   "at": "0x1ca9"
+  },
+  "Instantiation": {
+   "model": "v.cmq.fm",
+   "at": "0x1cb3"
+  },
+  "InteractionDiagramDurationConstraintConnector": {
+   "model": "v.cmq.fn",
+   "at": "0x1cbd"
+  },
+  "InteractionLifeLineLink": {
+   "model": "v.cmq.fo",
+   "at": "0x1cc7"
+  },
+  "JudgeBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1cd1"
+  },
+  "Link": {
+   "model": "v.cmq.fq",
+   "at": "0x1cdb"
+  },
+  "LostMessage": {
+   "model": "v.cmq.fs",
+   "at": "0x1ce5"
+  },
+  "MakeBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1cef"
+  },
+  "MakeOperativeBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1cf9"
+  },
+  "ManageBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1d03"
+  },
+  "Manifestation": {
+   "model": "v.cmq.eh",
+   "at": "0x1d0d"
+  },
+  "ManyToManyAssociation": {
+   "model": "v.cmq.cu",
+   "at": "0x1d17"
+  },
+  "ManyToManyRelationship": {
+   "model": "v.cmq.eb",
+   "at": "0x1d21"
+  },
+  "ManyToOneAssociation": {
+   "model": "v.cmq.cu",
+   "at": "0x1d2b"
+  },
+  "ManyToOneRelationship": {
+   "model": "v.cmq.eb",
+   "at": "0x1d35"
+  },
+  "Merge": {
+   "model": "v.cmq.fr",
+   "at": "0x1d3f"
+  },
+  "Message": {
+   "model": "v.cmq.fs",
+   "at": "0x1d49"
+  },
+  "MindConnector": {
+   "model": "v.cmq.fu",
+   "at": "0x1d53"
+  },
+  "MindLink": {
+   "model": "v.cmq.fv",
+   "at": "0x1d5d"
+  },
+  "OCLine": {
+   "model": "v.cmq.fw",
+   "at": "0x1d67"
+  },
+  "ObjectFlow": {
+   "model": "v.cmq.fx",
+   "at": "0x1d71"
+  },
+  "Occurrence": {
+   "model": "v.cmq.fy",
+   "at": "0x1d7b"
+  },
+  "OneToManyAssociation": {
+   "model": "v.cmq.cu",
+   "at": "0x1d85"
+  },
+  "OneToManyRelationship": {
+   "model": "v.cmq.eb",
+   "at": "0x1d8f"
+  },
+  "OneToOneAssociation": {
+   "model": "v.cmq.cu",
+   "at": "0x1d99"
+  },
+  "OneToOneRelationship": {
+   "model": "v.cmq.eb",
+   "at": "0x1da3"
+  },
+  "PERTDependency": {
+   "model": "v.cmq.fz",
+   "at": "0x1dad"
+  },
+  "PMProcessLink": {
+   "model": "v.cmq.ga",
+   "at": "0x1db7"
+  },
+  "Permission": {
+   "model": "v.cmq.gb",
+   "at": "0x1dc1"
+  },
+  "ProvideBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1dcb"
+  },
+  "ProvideImpetusBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1dd5"
+  },
+  "QuantifyBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1ddf"
+  },
+  "RQRefine": {
+   "model": "v.cmq.gd",
+   "at": "0x1de9"
+  },
+  "RQTrace": {
+   "model": "v.cmq.ge",
+   "at": "0x1df3"
+  },
+  "Realization": {
+   "model": "v.cmq.gf",
+   "at": "0x1dfd"
+  },
+  "RealizeBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1e07"
+  },
+  "RecognizeBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1e11"
+  },
+  "RecursiveMessage": {
+   "model": "v.cmq.fs",
+   "at": "0x1e1b"
+  },
+  "ReentrantMessage": {
+   "model": "v.cmq.fs",
+   "at": "0x1e25"
+  },
+  "Refine": {
+   "model": "v.cmq.gg",
+   "at": "0x1e2f"
+  },
+  "Represents": {
+   "model": "v.cmq.gh",
+   "at": "0x1e39"
+  },
+  "RequireBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1e43"
+  },
+  "RequirementDerive": {
+   "model": "v.cmq.gi",
+   "at": "0x1e4d"
+  },
+  "ResponsibleBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1e57"
+  },
+  "ReturnMessage": {
+   "model": "v.cmq.fs",
+   "at": "0x1e61"
+  },
+  "ReversedDeployment": {
+   "model": "v.cmq.ei",
+   "at": "0x1e6b"
+  },
+  "ReversedRealization": {
+   "model": "v.cmq.gf",
+   "at": "0x1e75"
+  },
+  "ReversedStructuredUsage": {
+   "model": "v.cmq.ha",
+   "at": "0x1e7f"
+  },
+  "RoleBinding": {
+   "model": "v.cmq.gj",
+   "at": "0x1e89"
+  },
+  "Satisfy": {
+   "model": "v.cmq.gk",
+   "at": "0x1e93"
+  },
+  "SelfMessage": {
+   "model": "v.cmq.fs",
+   "at": "0x1e9d"
+  },
+  "SendMessage": {
+   "model": "v.cmq.fs",
+   "at": "0x1ea7"
+  },
+  "SequenceCreateMessage_deprecated": {
+   "model": "v.cmq.gl",
+   "at": "0x1eb1"
+  },
+  "SequenceDurationMessage_deprecated": {
+   "model": "v.cmq.gm",
+   "at": "0x1ebb"
+  },
+  "SequenceRecursiveMessage_deprecated": {
+   "model": "v.cmq.gn",
+   "at": "0x1ec5"
+  },
+  "SequenceSelfMessage_deprecated": {
+   "model": "v.cmq.go",
+   "at": "0x1ecf"
+  },
+  "SequenceTypeMessage": {
+   "model": "v.cmq.fs",
+   "at": "0x1ed9"
+  },
+  "SignificantToBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1ee3"
+  },
+  "SoaMLCategorization": {
+   "model": "v.cmq.eh",
+   "at": "0x1eed"
+  },
+  "SoaMLExpose": {
+   "model": "v.cmq.eh",
+   "at": "0x1ef7"
+  },
+  "SoaMLServiceChannel": {
+   "model": "v.cmq.gr",
+   "at": "0x1f01"
+  },
+  "SourceBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1f0b"
+  },
+  "StructuredConnector": {
+   "model": "v.cmq.gr",
+   "at": "0x1f15"
+  },
+  "SubConversationLink": {
+   "model": "v.cmq.ea",
+   "at": "0x1f1f"
+  },
+  "Substitution": {
+   "model": "v.cmq.gs",
+   "at": "0x1f29"
+  },
+  "SupportAchievementBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1f33"
+  },
+  "SynchMessage_deprecated": {
+   "model": "v.cmq.gp",
+   "at": "0x1f3d"
+  },
+  "SysMLAllocate": {
+   "model": "v.cmq.gt",
+   "at": "0x1f47"
+  },
+  "SysMLAssociationBlock": {
+   "model": "v.cmq.gu",
+   "at": "0x1f51"
+  },
+  "SysMLBindingConnector": {
+   "model": "v.cmq.gv",
+   "at": "0x1f5b"
+  },
+  "SysMLConform": {
+   "model": "v.cmq.eh",
+   "at": "0x1f65"
+  },
+  "SysMLConform2": {
+   "model": "v.cmq.eu",
+   "at": "0x1f6f"
+  },
+  "SysMLCopy": {
+   "model": "v.cmq.gw",
+   "at": "0x1f79"
+  },
+  "SysMLPartAssociation": {
+   "model": "v.cmq.cu",
+   "at": "0x1f83"
+  },
+  "SysMLReferenceAssociation": {
+   "model": "v.cmq.cu",
+   "at": "0x1f8d"
+  },
+  "SysMLSharedAssociation": {
+   "model": "v.cmq.cu",
+   "at": "0x1f97"
+  },
+  "TerminateMessage": {
+   "model": "v.cmq.fs",
+   "at": "0x1fa1"
+  },
+  "ToMindLink": {
+   "model": "v.cmq.fv",
+   "at": "0x1fab"
+  },
+  "Trace": {
+   "model": "v.cmq.gx",
+   "at": "0x1fb5"
+  },
+  "Transition": {
+   "model": "v.cmq.gz",
+   "at": "0x1fbf"
+  },
+  "Transition2": {
+   "model": "v.cmq.gy",
+   "at": "0x1fc9"
+  },
+  "UninterpretedMessage": {
+   "model": "v.cmq.fs",
+   "at": "0x1fd3"
+  },
+  "Usage": {
+   "model": "v.cmq.ha",
+   "at": "0x1fdd"
+  },
+  "UseBMMRelationship": {
+   "model": "v.cmq.cx",
+   "at": "0x1fe7"
+  },
+  "Verify": {
+   "model": "v.cmq.hb",
+   "at": "0x1ff1"
+  },
+  "WireflowConnector": {
+   "model": "v.cmq.hc",
+   "at": "0x1ffb"
+  },
+  "diagramContainment": {
+   "model": "v.cmq.ek",
+   "at": "0x2005"
+  }
+ }
+}

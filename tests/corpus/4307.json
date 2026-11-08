@@ -1,0 +1,230 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4307",
+    "figureNo": "4.3.7",
+    "exercise": "4.3.C",
+    "type": "sequence",
+    "diagramName": "DeleteSchedule Subflow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности DeleteSchedule Subflow",
+    "notes": "Восемь линий жизни названы текстом; четырнадцать сообщений, условия двух фрагментов loop ([for all primary courses], [for all alternative courses]) и покрытие ими сообщений 10–11 прочитаны с рисунка 4.3.7 — в тексте их нет («проведём сообщения вызова между объектами»). Линия жизни curSched:Schedule завершена после сообщения 11.",
+    "gaps": [
+      "какие операции создаются — не названо в тексте; подписи сообщений прочитаны с рисунка",
+      "состояние линии жизни Stopped не выражается — записано полем stopped",
+      "покрытие сообщений фрагментами loop не выражается",
+      "параметр сообщения removeSchedule прочитан по-разному (sch / sdh): две модели дали разные ответы, факт не установлен — записано sch"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.lifelineState",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e6",
+      "e9"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Студент"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "rform:RegistrationForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "rctrl:RegistrationController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "dao:DataAccess",
+      "stereotype": "control"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "curStud:Student",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "curSched:Schedule",
+      "stereotype": "entity",
+      "stopped": true,
+      "note": "линия жизни завершена (крестик) после сообщения 11",
+      "source": "image"
+    },
+    {
+      "id": "e7",
+      "kind": "lifeline",
+      "name": "primary[i]:CourseOffering",
+      "stereotype": "entity",
+      "multiObject": true
+    },
+    {
+      "id": "e8",
+      "kind": "lifeline",
+      "name": "alternative[i]:CourseOffering",
+      "stereotype": "entity",
+      "multiObject": true
+    },
+    {
+      "id": "e9",
+      "kind": "fragment",
+      "name": "[for all primary courses]",
+      "operator": "loop",
+      "note": "цикл по основным курсам; условие прочитано с рисунка 4.3.7, покрывает сообщение 10",
+      "source": "image"
+    },
+    {
+      "id": "e10",
+      "kind": "interactionUse",
+      "name": "DisplayCourseOfferings Subflow",
+      "operator": "ref",
+      "refersTo": "DisplayCourseOfferings Subflow"
+    },
+    {
+      "id": "e11",
+      "kind": "fragment",
+      "name": "[for all alternative courses]",
+      "operator": "loop",
+      "note": "цикл по альтернативным курсам; покрывает сообщение 11",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "deleteSchedule(semester : byte)",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "deleteSchedule(semester : byte)",
+      "from": "e2",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "getScheduleCourses(semester : byte)",
+      "from": "e3",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "getCourseOfferingList() : CourseOffering[]",
+      "from": "e5",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "requestDeleteScheduleConfirmation()",
+      "from": "e2",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "confirmDeleteSchedule()",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "message",
+      "name": "confirmDeleteSchedule()",
+      "from": "e2",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "message",
+      "name": "deleteSchedule(semester : byte)",
+      "from": "e3",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "message",
+      "name": "delete()",
+      "from": "e5",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "message",
+      "name": "removeSchedule(sch : Schedule)",
+      "from": "e6",
+      "to": "e7",
+      "note": "параметр прочитан по-разному: одно чтение даёт sdh : Schedule — факт не установлен",
+      "source": "image"
+    },
+    {
+      "id": "r11",
+      "kind": "message",
+      "name": "removeSchedule(sch : Schedule)",
+      "from": "e6",
+      "to": "e8",
+      "source": "image"
+    },
+    {
+      "id": "r12",
+      "kind": "message",
+      "name": "updateCourseOfferings(cOffs : CourseOffering[])",
+      "from": "e3",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r13",
+      "kind": "message",
+      "name": "updateStudent(s : Student)",
+      "from": "e3",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r14",
+      "kind": "message",
+      "name": "displayMessage(msg : string)",
+      "from": "e2",
+      "to": "e2",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "DeleteSchedule Subflow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

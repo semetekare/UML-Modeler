@@ -1,0 +1,67 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-composite-upper-bound-le-1-ok",
+  "name": "composite-upper-bound-le-1 (без нарушения) — у конца композиции верхняя граница 1",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Заказ",
+      "documentation": "Правило «composite-upper-bound-le-1», контрольный случай без нарушения: у конца композиции верхняя граница 1.\nUML 2.5.1, п. 9.9.17.8, констрейнт Property::multiplicity_of_composite: «A multiplicity on the composing end of a composite aggregation must not have an upper bound greater than 1.»\nУ конца композиции кратность 1 — верхняя граница не больше 1."
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "Строка заказа"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "composition",
+      "from": "e1",
+      "to": "e2",
+      "fromMultiplicity": "1"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Диаграмма 1",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 360,
+          "y": 60,
+          "w": 190,
+          "h": 170
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

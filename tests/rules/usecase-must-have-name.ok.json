@@ -1,0 +1,33 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-usecase-must-have-name-ok",
+  "name": "usecase-must-have-name (без нарушения) — у варианта использования есть имя",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "usecase",
+      "name": "Оплатить обучение",
+      "documentation": "Правило «usecase-must-have-name», контрольный случай без нарушения: у варианта использования есть имя.\nUML 2.5.1, п. 18.2.5.6, констрейнт UseCase::must_have_name: «A UseCase must have a name.»\nИмя варианта использования — «Оплатить обучение»."
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Диаграмма 1",
+      "kind": "usecase",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 120,
+          "h": 60
+        }
+      ],
+      "links": []
+    }
+  ],
+  "currentDiagramId": "d1"
+}

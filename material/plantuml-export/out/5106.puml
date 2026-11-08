@@ -1,0 +1,32 @@
+@startuml
+title Main
+node e5 as "Компьютер студента" <<executionEnvironment>> {
+component e8 as "StudentApplication.exe"
+}
+' doc e5: на рисунке компьютер — среда выполнения «executionEnvironment», а не устройство
+' source e5: image
+node e4 as "Кампусный принтер" <<device>>
+node e6 as "Компьютер лектора" <<executionEnvironment>> {
+component e9 as "ProfessorApplication.exe"
+}
+' doc e6: на рисунке компьютер — среда выполнения «executionEnvironment», а не устройство
+' source e6: image
+node e3 as "Коммутатор" <<device>>
+node e1 as "Сервер системы регистрации" <<executionEnvironment>> {
+component e11 as "RegistrationProcess"
+component e12 as "BSAccessProcess"
+component e13 as "DBAccessProcess"
+}
+node e7 as "Компьютер работника учебного отдела" <<executionEnvironment>> {
+component e10 as "RegistrarApplication.exe"
+}
+' doc e7: на рисунке компьютер — среда выполнения «executionEnvironment», а не устройство
+' source e7: image
+node e2 as "Сервер расчётной системы" <<executionEnvironment>>
+e5 -- e3 : Campus Wi-Fi
+e6 -- e3 : Campus Wi-Fi
+e7 -- e3 : Campus LAN
+e3 -- e4 : USB
+e3 -- e1 : Campus LAN
+e1 -- e2 : Accounting Department LAN
+@enduml

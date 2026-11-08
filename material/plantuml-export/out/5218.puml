@@ -1,0 +1,18 @@
+@startuml
+title sendStudentData
+actor e4 as "Расчётная система"
+participant e1 as "cn:BSAccess" <<subsystem proxy>>
+collections e2 as "cOff[i]:CourseOffering"
+participant e3 as "client:XMLRpcClient"
+loop for all courses
+e1 -> e1 : sendStudentData(name : string, address : string, cOff : CourseOffering[]) : boolean
+e1 -> e1 : init(serverURL : string) : void
+e1 -> e2 : toJSON() : string
+e1 -> e3 : execute(pMethodName : String = requestName, pParams : Object[]) : Object
+end
+opt client == NULL
+e3 -> e4 : xmlrpcRequest
+e4 --> e3 : return(xmlrpcResult)
+e3 --> e1 : return(result)
+end
+@enduml

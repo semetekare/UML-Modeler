@@ -1,0 +1,97 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-pseudostate-history-vertices",
+  "name": "pseudostate_history_vertices — у истории два исходящих перехода",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "state",
+      "name": "Сохранён"
+    },
+    {
+      "id": "e2",
+      "kind": "state",
+      "name": "Возобновлён"
+    },
+    {
+      "id": "e3",
+      "kind": "historyShallow",
+      "name": "",
+      "documentation": "Правило «pseudostate-history-vertices»: UML 2.5.1, п. 14.5.6.7, констрейнт Pseudostate::history_vertices: «History Vertices can have at most one outgoing Transition.»\nИстория восстанавливает одно состояние, а из неё выходят два перехода (r1, r2)."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "transition",
+      "from": "e3",
+      "to": "e1"
+    },
+    {
+      "id": "r2",
+      "kind": "transition",
+      "from": "e3",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "pseudostate_history_vertices — у истории два исходящих перехода",
+      "kind": "state",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 580,
+          "y": 60,
+          "w": 20,
+          "h": 20
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s3",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s3",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

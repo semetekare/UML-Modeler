@@ -1,0 +1,80 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-instance-deployment-artifact",
+  "name": "instance_deployment_artifact — развёрнут экземпляр класса, а не артефакта",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "Сервер приложений"
+    },
+    {
+      "id": "e2",
+      "kind": "object",
+      "name": ":Сервер приложений",
+      "documentation": "Правило «instance-deployment-artifact»: UML 2.5.1, п. 9.9.9.6, констрейнт InstanceSpecification::deployment_artifact: «Спецификация экземпляра может выступать как развёртываемый артефакт, если она представляет экземпляр артефакта.»\nЭкземпляр «:Сервер приложений» развёрнут на узле «app-сервер», но представляет экземпляр класса, а не артефакта. Разворачивать можно только экземпляр артефакта.",
+      "classifierId": "e1"
+    },
+    {
+      "id": "e3",
+      "kind": "node",
+      "name": "app-сервер"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "deployment",
+      "from": "e2",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "instance_deployment_artifact — развёрнут экземпляр класса, а не артефакта",
+      "kind": "deployment",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 120
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 200,
+          "h": 90
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 620,
+          "y": 60,
+          "w": 200,
+          "h": 160
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

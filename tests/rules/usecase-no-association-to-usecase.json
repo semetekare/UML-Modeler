@@ -1,0 +1,67 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-usecase-no-association-to-usecase",
+  "name": "usecase-no-association-to-usecase — ассоциация между вариантами использования",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "usecase",
+      "name": "Оплатить обучение",
+      "documentation": "Правило «usecase-no-association-to-usecase»: ассоциация между вариантами использования.\nUML 2.5.1, п. 18.2.5.6, констрейнт UseCase::no_association_to_use_case: «UseCases cannot have Associations to UseCases specifying the same subject.»\nДва варианта использования соединены ассоциацией; субъект у обоих не задан, то есть совпадает."
+    },
+    {
+      "id": "e2",
+      "kind": "usecase",
+      "name": "Проверить задолженность"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "association",
+      "from": "e1",
+      "to": "e2",
+      "fromMultiplicity": "1"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Диаграмма 1",
+      "kind": "usecase",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 120,
+          "h": 60
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 360,
+          "y": 60,
+          "w": 120,
+          "h": 60
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

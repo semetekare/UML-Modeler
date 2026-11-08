@@ -1,0 +1,84 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5214",
+    "figureNo": "5.2.14",
+    "exercise": "5.2.G",
+    "type": "package",
+    "diagramName": "BSAccess",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма пакетов подсистемы BSAccess",
+    "notes": "Пакет-подсистема BSAccess зависит от java::net и org::apache::xmlrpc и связан зависимостью «bind» с параметризованным пакетом XMLRPCInterchange.",
+    "gaps": [
+      "точный состав пакетов на снимке в тексте не перечислен: названы только java::net, org::apache::xmlrpc и XMLRPCInterchange",
+      "вложенность org::apache::xmlrpc не выражается: у элемента нет владельца"
+    ],
+    "gapIds": [
+      "model.packageOwner",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "package",
+      "name": "BSAccess",
+      "stereotype": "subsystem"
+    },
+    {
+      "id": "e2",
+      "kind": "package",
+      "name": "XMLRPCInterchange",
+      "templateParameters": [
+        "ObjectToSend",
+        "ObjectToReceive",
+        "CustomTypeFactory",
+        "CustomParser",
+        "CustomSerializer",
+        "XMLRPCConnector"
+      ]
+    },
+    {
+      "id": "e3",
+      "kind": "package",
+      "name": "java::net"
+    },
+    {
+      "id": "e4",
+      "kind": "package",
+      "name": "org::apache::xmlrpc"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e3"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "name": "<XMLRPCConnector -> BSAccess>",
+      "stereotype": "bind",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "BSAccess",
+      "type": "package",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

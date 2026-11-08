@@ -1,0 +1,90 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5206",
+    "figureNo": "5.2.6",
+    "exercise": "5.2.D",
+    "type": "sequence",
+    "diagramName": "Design DeleteSchedule Subflow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Уточнённая UML-диаграмма последовательности DeleteSchedule Subflow",
+    "notes": "Проектная версия: состав линий жизни взят из эскизной версии (рис. 4.3.7) без стереотипов анализа.",
+    "gaps": [
+      "сообщения в тексте не перечислены — только правки упражнения 5.2.D",
+      "состояние линии жизни Stopped не выражается — записано stopped"
+    ],
+    "gapIds": [
+      "model.lifelineState",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Студент"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "rform:RegistrationForm"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "rctrl:RegistrationController"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "dao:IDBAccess",
+      "stereotype": "interface"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "curStud:Student"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "curSched:Schedule"
+    },
+    {
+      "id": "e7",
+      "kind": "lifeline",
+      "name": "primary[i]:CourseOffering",
+      "multiObject": true
+    },
+    {
+      "id": "e8",
+      "kind": "lifeline",
+      "name": "alternative[i]:CourseOffering",
+      "multiObject": true
+    },
+    {
+      "id": "e9",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "loop"
+    },
+    {
+      "id": "e10",
+      "kind": "interactionUse",
+      "name": "Design DisplayCourseOfferings Subflow",
+      "operator": "ref",
+      "refersTo": "Design DisplayCourseOfferings Subflow"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Design DeleteSchedule Subflow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

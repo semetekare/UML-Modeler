@@ -1,0 +1,167 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5106",
+    "figureNo": "5.1.6",
+    "exercise": "5.1",
+    "type": "deployment",
+    "diagramName": "Main",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма размещения Main",
+    "notes": "Состав узлов и компонентов назван текстом; стереотипы узлов, шесть путей коммуникации с кратностями и подписями (Campus Wi-Fi, Campus LAN, USB, Accounting Department LAN) прочитаны с рисунка 5.1.6. Компьютеры на рисунке — среды выполнения «executionEnvironment», а не устройства «device»: вид трёх узлов исправлен по рисунку.",
+    "gaps": [
+      "типы узлов названы в тексте только прозой («сервера регистрации», «коммутатор», «принтер», «компьютеры трёх типов») — стереотипы прочитаны с рисунка",
+      "точная топология связей и размещение компонентов по узлам в тексте не описаны — прочитаны с рисунка",
+      "вложенность компонента в узел не выражается в uml-model/3",
+      "кратности на концах пути коммуникации не выражаются в uml-model/3 (у вида связи нет кратностей) — записаны в документации связи"
+    ],
+    "gapIds": [
+      "model.nodeNesting",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e5",
+      "e6",
+      "e7"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e5",
+      "kind": "executionEnvironment",
+      "name": "Компьютер студента",
+      "note": "на рисунке компьютер — среда выполнения «executionEnvironment», а не устройство",
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "device",
+      "name": "Кампусный принтер"
+    },
+    {
+      "id": "e6",
+      "kind": "executionEnvironment",
+      "name": "Компьютер лектора",
+      "note": "на рисунке компьютер — среда выполнения «executionEnvironment», а не устройство",
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "device",
+      "name": "Коммутатор"
+    },
+    {
+      "id": "e1",
+      "kind": "executionEnvironment",
+      "name": "Сервер системы регистрации"
+    },
+    {
+      "id": "e7",
+      "kind": "executionEnvironment",
+      "name": "Компьютер работника учебного отдела",
+      "note": "на рисунке компьютер — среда выполнения «executionEnvironment», а не устройство",
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "executionEnvironment",
+      "name": "Сервер расчётной системы"
+    },
+    {
+      "id": "e8",
+      "kind": "component",
+      "name": "StudentApplication.exe"
+    },
+    {
+      "id": "e9",
+      "kind": "component",
+      "name": "ProfessorApplication.exe"
+    },
+    {
+      "id": "e10",
+      "kind": "component",
+      "name": "RegistrarApplication.exe"
+    },
+    {
+      "id": "e11",
+      "kind": "component",
+      "name": "RegistrationProcess"
+    },
+    {
+      "id": "e12",
+      "kind": "component",
+      "name": "BSAccessProcess"
+    },
+    {
+      "id": "e13",
+      "kind": "component",
+      "name": "DBAccessProcess"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "communicationPath",
+      "name": "Campus Wi-Fi",
+      "from": "e5",
+      "to": "e3",
+      "documentation": "кратности на рисунке: 0..* — 0..1",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "communicationPath",
+      "name": "Campus Wi-Fi",
+      "from": "e6",
+      "to": "e3",
+      "documentation": "кратности на рисунке: 0..* — 0..1",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "communicationPath",
+      "name": "Campus LAN",
+      "from": "e7",
+      "to": "e3",
+      "documentation": "кратности на рисунке: 0..* — 0..1",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "communicationPath",
+      "name": "USB",
+      "from": "e3",
+      "to": "e4",
+      "documentation": "кратности на рисунке: 0..1 — 0..1",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "communicationPath",
+      "name": "Campus LAN",
+      "from": "e3",
+      "to": "e1",
+      "documentation": "кратности на рисунке: 0..1 — 0..1",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "communicationPath",
+      "name": "Accounting Department LAN",
+      "from": "e1",
+      "to": "e2",
+      "documentation": "кратности на рисунке: 1 — 1",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Main",
+      "type": "deployment",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

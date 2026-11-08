@@ -1,0 +1,42 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5211",
+    "figureNo": "5.2.11",
+    "exercise": "5.2.F",
+    "type": "sequence",
+    "diagramName": "close",
+    "group": "diagram",
+    "reproducible": "да",
+    "altText": "UML-диаграмма последовательности, описывающая реализацию операции close() в подсистеме DBAccess",
+    "notes": "Одна линия жизни db:DBAccess, входящее сообщение связано с операцией close. Больше текст ничего не называет.",
+    "gaps": [],
+    "gapIds": []
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "db:DBAccess"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "close()",
+      "from": "e1",
+      "to": "e1",
+      "note": "входящее сообщение связано с операцией close"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "close",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

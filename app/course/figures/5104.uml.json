@@ -1,0 +1,251 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5104",
+  "name": "UML-диаграмма пакетов Dependencies. Связи подпакетов уровня Application",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "package",
+      "name": "Login"
+    },
+    {
+      "id": "e3",
+      "kind": "package",
+      "name": "CloseRegistration"
+    },
+    {
+      "id": "e2",
+      "kind": "package",
+      "name": "Registration"
+    },
+    {
+      "id": "e5",
+      "kind": "package",
+      "name": "UniversityArtefacts",
+      "documentation": "на рисунке под именем напечатан квалификатор (BusinessServices)",
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "package",
+      "name": "Interfaces",
+      "documentation": "на рисунке под именем напечатан квалификатор (BusinessServices)",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e5"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "from": "e3",
+      "to": "e5"
+    },
+    {
+      "id": "r4",
+      "kind": "dependency",
+      "from": "e3",
+      "to": "e4"
+    },
+    {
+      "id": "r5",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e5"
+    },
+    {
+      "id": "r6",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r7",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Dependencies",
+      "kind": "package",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 260,
+          "y": 60,
+          "w": 140,
+          "h": 100
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 260,
+          "y": 220,
+          "w": 140,
+          "h": 100
+        },
+        {
+          "id": "s3",
+          "elementId": "e5",
+          "x": 60,
+          "y": 60,
+          "w": 140,
+          "h": 100
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 460,
+          "y": 60,
+          "w": 140,
+          "h": 100
+        },
+        {
+          "id": "s5",
+          "elementId": "e3",
+          "x": 60,
+          "y": 220,
+          "w": 140,
+          "h": 100
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s5",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "bottom"
+          }
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s1",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "right"
+          }
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s1",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l7",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5104",
+    "figureNo": "5.1.4",
+    "exercise": "5.1",
+    "type": "package",
+    "diagramName": "Dependencies",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма пакетов Dependencies. Связи подпакетов уровня Application",
+    "notes": "Пять пакетов названы текстом; рисунок 5.1.4 показывает семь зависимостей — в корпусе не было одной (Login → Interfaces), она добавлена. Обе модели со зрением подтвердили её отдельным вопросом. Под именами Interfaces и UniversityArtefacts на рисунке напечатан квалификатор (BusinessServices).",
+    "gaps": [
+      "вложенность Interfaces и UniversityArtefacts в BusinessServices не выражается: у элемента нет владельца",
+      "направление зависимости Registration—UniversityArtefacts прочитано по-разному двумя прогонами — факт не установлен; оставлено направление из текста"
+    ],
+    "gapIds": [
+      "model.packageOwner",
+      "source.navigation"
+    ],
+    "imageDerived": [
+      "e4",
+      "e5"
+    ]
+  },
+  "sheet": {
+    "w": 660,
+    "h": 400
+  }
+}

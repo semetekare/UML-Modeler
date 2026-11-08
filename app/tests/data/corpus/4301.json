@@ -1,0 +1,62 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4301",
+    "figureNo": "4.3.1",
+    "exercise": "4.3",
+    "type": "class",
+    "diagramName": "VOPC RegisterForCourses",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма классов VOPC RegisterForCourses",
+    "notes": "Начальный эскиз: пять классов анализа со стереотипами, без ассоциаций. MainMenuForm и DataAccess в упражнении названы уже созданными; на рисунке 4.3.1 по указателю показаны только эти пять классов.",
+    "gaps": [
+      "текст не говорит, показаны ли на рисунке 4.3.1 уже существующие MainMenuForm и DataAccess; в модели их нет"
+    ],
+    "gapIds": [
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "RegistrationForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "RegistrationController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "Student",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "CourseOffering",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "Schedule",
+      "stereotype": "entity"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "VOPC RegisterForCourses",
+      "type": "class",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

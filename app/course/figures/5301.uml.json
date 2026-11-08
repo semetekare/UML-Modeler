@@ -1,0 +1,699 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5301",
+  "name": "UML-диаграмма классов DataBase Schema",
+  "elements": [
+    {
+      "id": "e7",
+      "kind": "class",
+      "name": "TableStaticValues",
+      "stereotype": "table",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "studentNextAvailableId",
+          "type": "long"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "TableProfessor",
+      "stereotype": "table",
+      "documentation": "внешние ключи (<<FK>>): login; первичный ключ (<<PK>>) записан полем isID",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "name",
+          "type": "string",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "login",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "academicDegree",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "phone1",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "phone2",
+          "type": "string"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e9",
+      "kind": "class",
+      "name": "TableCourseRequisites",
+      "stereotype": "table",
+      "documentation": "внешние ключи (<<FK>>): preCourse, postCourse; первичный ключ (<<PK>>) записан полем isID",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "preCourse",
+          "type": "string",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "postCourse",
+          "type": "string",
+          "isID": true
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e6",
+      "kind": "class",
+      "name": "TableUser",
+      "stereotype": "table",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "login",
+          "type": "string",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "passwordHash1",
+          "type": "long"
+        },
+        {
+          "vis": "private",
+          "name": "passwordHash2",
+          "type": "long"
+        },
+        {
+          "vis": "private",
+          "name": "type",
+          "type": "byte"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "TableCourse",
+      "stereotype": "table",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "code",
+          "type": "string",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "duration",
+          "type": "byte"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "TableCourseOffering",
+      "stereotype": "table",
+      "documentation": "внешние ключи (<<FK>>): code, professorName; первичный ключ (<<PK>>) записан полем isID",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "number",
+          "type": "long",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "code",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "professorName",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "day",
+          "type": "byte"
+        },
+        {
+          "vis": "private",
+          "name": "pair",
+          "type": "byte"
+        },
+        {
+          "vis": "private",
+          "name": "semester",
+          "type": "byte"
+        },
+        {
+          "vis": "private",
+          "name": "isCanceled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "vis": "private",
+          "name": "isClosed",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "TableStudent",
+      "stereotype": "table",
+      "documentation": "внешние ключи (<<FK>>): login; первичный ключ (<<PK>>) записан полем isID",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "id",
+          "type": "long",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "login",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "address",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "classification",
+          "type": "byte"
+        },
+        {
+          "vis": "private",
+          "name": "graduateDate",
+          "type": "Date"
+        },
+        {
+          "vis": "private",
+          "name": "maxNumCourses",
+          "type": "byte"
+        },
+        {
+          "vis": "private",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "phone1",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "phone2",
+          "type": "string"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e8",
+      "kind": "class",
+      "name": "TablePrimaryCourse",
+      "stereotype": "table",
+      "documentation": "внешние ключи (<<FK>>): courseOffering, schedule; первичный ключ (<<PK>>) записан полем isID",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "courseOffering",
+          "type": "long",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "schedule",
+          "type": "long",
+          "isID": true
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "TableSchedule",
+      "stereotype": "table",
+      "documentation": "внешние ключи (<<FK>>): altCourse1, altCourse2, student; первичный ключ (<<PK>>) записан полем isID",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "id",
+          "type": "long",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "altCourse1",
+          "type": "long"
+        },
+        {
+          "vis": "private",
+          "name": "altCourse2",
+          "type": "long"
+        },
+        {
+          "vis": "private",
+          "name": "student",
+          "type": "long"
+        },
+        {
+          "vis": "private",
+          "name": "semester",
+          "type": "byte"
+        }
+      ],
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "composition",
+      "stereotype": "non identifying",
+      "from": "e1",
+      "to": "e2",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "*",
+      "navigable": "both",
+      "note": "каскадированное удаление дочерних записей",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "association",
+      "stereotype": "non identifying",
+      "from": "e3",
+      "to": "e2",
+      "fromMultiplicity": "0..1",
+      "toMultiplicity": "*",
+      "fromRole": "alt1",
+      "navigable": "both",
+      "note": "на рисунке ассоциация идёт от TableCourseOffering к TableSchedule с полюсом alt1",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "composition",
+      "stereotype": "identifying",
+      "from": "e2",
+      "to": "e8",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "0..4",
+      "navigable": "both",
+      "note": "ромб со стороны TableSchedule; связь через TablePrimaryCourse",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "association",
+      "stereotype": "identifying",
+      "from": "e3",
+      "to": "e8",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "*",
+      "navigable": "both",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "composition",
+      "stereotype": "identifying",
+      "from": "e4",
+      "to": "e9",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "*",
+      "fromRole": "pre",
+      "navigable": "both",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "association",
+      "stereotype": "non identifying",
+      "from": "e4",
+      "to": "e3",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "*",
+      "navigable": "both",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "association",
+      "stereotype": "non identifying",
+      "from": "e5",
+      "to": "e3",
+      "fromMultiplicity": "0..1",
+      "toMultiplicity": "*",
+      "navigable": "both",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "composition",
+      "stereotype": "non identifying",
+      "from": "e6",
+      "to": "e1",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "0..1",
+      "navigable": "both",
+      "note": "ромб композиции на стороне TableUser",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "composition",
+      "stereotype": "non identifying",
+      "from": "e6",
+      "to": "e5",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "0..1",
+      "navigable": "both",
+      "note": "ромб композиции на стороне TableUser",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "association",
+      "stereotype": "non identifying",
+      "from": "e3",
+      "to": "e2",
+      "fromMultiplicity": "0..1",
+      "toMultiplicity": "*",
+      "fromRole": "alt2",
+      "source": "image"
+    },
+    {
+      "id": "r11",
+      "kind": "association",
+      "stereotype": "identifying",
+      "from": "e4",
+      "to": "e9",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "*",
+      "fromRole": "post",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "DataBase Schema",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e3",
+          "x": 320,
+          "y": 300,
+          "w": 200,
+          "h": 170
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 580,
+          "y": 300,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s3",
+          "elementId": "e4",
+          "x": 330,
+          "y": 60,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s4",
+          "elementId": "e5",
+          "x": 580,
+          "y": 60,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s5",
+          "elementId": "e9",
+          "x": 330,
+          "y": 530,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 580,
+          "y": 530,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s7",
+          "elementId": "e1",
+          "x": 70,
+          "y": 290,
+          "w": 190,
+          "h": 180
+        },
+        {
+          "id": "s8",
+          "elementId": "e8",
+          "x": 830,
+          "y": 300,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s9",
+          "elementId": "e7",
+          "x": 60,
+          "y": 60,
+          "w": 200,
+          "h": 170
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s7",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s8",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s8",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s3",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s3",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "top",
+            "t": 0.525
+          }
+        },
+        {
+          "id": "l7",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l8",
+          "relId": "r8",
+          "from": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s7",
+            "side": "right",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l9",
+          "relId": "r9",
+          "from": {
+            "shapeId": "s6",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "bottom"
+          }
+        },
+        {
+          "id": "l10",
+          "relId": "r10",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l11",
+          "relId": "r11",
+          "from": {
+            "shapeId": "s3",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "top"
+          },
+          "ldy": 22
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5301",
+    "figureNo": "5.3.1",
+    "exercise": "5.3",
+    "type": "class",
+    "diagramName": "DataBase Schema",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма классов DataBase Schema",
+    "notes": "Состав таблиц назван текстом; столбцы всех девяти таблиц, одиннадцать связей с кратностями, именами полюсов (pre, post, alt1, alt2) и стереотипами «identifying» / «non identifying», а также ограничение {almost one} прочитаны с рисунка 5.3.1. Направления связей TableUser—TableProfessor и TableUser—TableStudent исправлены: ромб композиции стоит на стороне TableUser.",
+    "gaps": [
+      "столбцы-атрибуты таблиц в тексте не перечислены — прочитаны с рисунка",
+      "набор связей и мощностей между таблицами текст не перечисляет — прочитаны с рисунка",
+      "пометки <<PK>> и <<FK>> у столбцов не выражаются полностью: <<PK>> записан полем isID, <<FK>> — полем isFK",
+      "ограничение {almost one} на паре связей TableUser—TableProfessor и TableUser—TableStudent не выражается — записано в documentation связей"
+    ],
+    "gapIds": [
+      "source.associations",
+      "source.names"
+    ],
+    "imageDerived": [
+      "e1",
+      "e2",
+      "e3",
+      "e4",
+      "e5",
+      "e6",
+      "e7",
+      "e8",
+      "e9",
+      "r1",
+      "r2",
+      "r3",
+      "r4",
+      "r5",
+      "r6",
+      "r7",
+      "r8",
+      "r9"
+    ]
+  },
+  "sheet": {
+    "w": 1080,
+    "h": 760
+  }
+}

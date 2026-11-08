@@ -1,0 +1,106 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-finalstate-no-regions-ok",
+  "name": "finalstate_no_regions (без нарушения) — регион у обычного состояния, не у конечного",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "state",
+      "name": "Заказ",
+      "documentation": "Правило «finalstate-no-regions»: UML 2.5.1, п. 14.5.2.5, констрейнт FinalState::no_regions: «У конечного состояния не может быть регионов.»\nКонтроль: регион есть у ОБЫЧНОГО состояния «Заказ» (это составное состояние, ему регион положен), а конечное состояние «Закрыт» регионов не имеет.",
+      "regions": [
+        {
+          "id": "g1",
+          "name": "Внутренняя область",
+          "states": [
+            "e3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e2",
+      "kind": "final",
+      "name": ""
+    },
+    {
+      "id": "e3",
+      "kind": "state",
+      "name": "Оплачен"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "transition",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "transition",
+      "from": "e1",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "finalstate_no_regions (без нарушения) — регион у обычного состояния",
+      "kind": "state",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 320,
+          "y": 220,
+          "w": 150,
+          "h": 80
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

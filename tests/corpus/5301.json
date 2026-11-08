@@ -1,0 +1,479 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5301",
+    "figureNo": "5.3.1",
+    "exercise": "5.3",
+    "type": "class",
+    "diagramName": "DataBase Schema",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма классов DataBase Schema",
+    "notes": "Состав таблиц назван текстом; столбцы всех девяти таблиц, одиннадцать связей с кратностями, именами полюсов (pre, post, alt1, alt2) и стереотипами «identifying» / «non identifying», а также ограничение {almost one} прочитаны с рисунка 5.3.1. Направления связей TableUser—TableProfessor и TableUser—TableStudent исправлены: ромб композиции стоит на стороне TableUser.",
+    "gaps": [
+      "столбцы-атрибуты таблиц в тексте не перечислены — прочитаны с рисунка",
+      "набор связей и мощностей между таблицами текст не перечисляет — прочитаны с рисунка",
+      "пометки <<PK>> и <<FK>> у столбцов не выражаются полностью: <<PK>> записан полем isID, <<FK>> — полем isFK",
+      "ограничение {almost one} на паре связей TableUser—TableProfessor и TableUser—TableStudent не выражается — записано в documentation связей"
+    ],
+    "gapIds": [
+      "source.associations",
+      "source.names"
+    ],
+    "imageDerived": [
+      "e1",
+      "e2",
+      "e3",
+      "e4",
+      "e5",
+      "e6",
+      "e7",
+      "e8",
+      "e9",
+      "r1",
+      "r2",
+      "r3",
+      "r4",
+      "r5",
+      "r6",
+      "r7",
+      "r8",
+      "r9"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e7",
+      "kind": "class",
+      "name": "TableStaticValues",
+      "stereotype": "table",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "studentNextAvailableId",
+          "type": "long"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "TableProfessor",
+      "stereotype": "table",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "name",
+          "type": "string",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "login",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "academicDegree",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "phone1",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "phone2",
+          "type": "string"
+        }
+      ],
+      "note": "внешние ключи (<<FK>>): login; первичный ключ (<<PK>>) записан полем isID",
+      "source": "image"
+    },
+    {
+      "id": "e9",
+      "kind": "class",
+      "name": "TableCourseRequisites",
+      "stereotype": "table",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "preCourse",
+          "type": "string",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "postCourse",
+          "type": "string",
+          "isID": true
+        }
+      ],
+      "note": "внешние ключи (<<FK>>): preCourse, postCourse; первичный ключ (<<PK>>) записан полем isID",
+      "source": "image"
+    },
+    {
+      "id": "e6",
+      "kind": "class",
+      "name": "TableUser",
+      "stereotype": "table",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "login",
+          "type": "string",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "passwordHash1",
+          "type": "long"
+        },
+        {
+          "vis": "private",
+          "name": "passwordHash2",
+          "type": "long"
+        },
+        {
+          "vis": "private",
+          "name": "type",
+          "type": "byte"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "TableCourse",
+      "stereotype": "table",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "code",
+          "type": "string",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "duration",
+          "type": "byte"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "TableCourseOffering",
+      "stereotype": "table",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "number",
+          "type": "long",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "code",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "professorName",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "day",
+          "type": "byte"
+        },
+        {
+          "vis": "private",
+          "name": "pair",
+          "type": "byte"
+        },
+        {
+          "vis": "private",
+          "name": "semester",
+          "type": "byte"
+        },
+        {
+          "vis": "private",
+          "name": "isCanceled",
+          "type": "boolean",
+          "default": "false"
+        },
+        {
+          "vis": "private",
+          "name": "isClosed",
+          "type": "boolean",
+          "default": "false"
+        }
+      ],
+      "note": "внешние ключи (<<FK>>): code, professorName; первичный ключ (<<PK>>) записан полем isID",
+      "source": "image"
+    },
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "TableStudent",
+      "stereotype": "table",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "id",
+          "type": "long",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "login",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "address",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "classification",
+          "type": "byte"
+        },
+        {
+          "vis": "private",
+          "name": "graduateDate",
+          "type": "Date"
+        },
+        {
+          "vis": "private",
+          "name": "maxNumCourses",
+          "type": "byte"
+        },
+        {
+          "vis": "private",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "phone1",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "phone2",
+          "type": "string"
+        }
+      ],
+      "note": "внешние ключи (<<FK>>): login; первичный ключ (<<PK>>) записан полем isID",
+      "source": "image"
+    },
+    {
+      "id": "e8",
+      "kind": "class",
+      "name": "TablePrimaryCourse",
+      "stereotype": "table",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "courseOffering",
+          "type": "long",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "schedule",
+          "type": "long",
+          "isID": true
+        }
+      ],
+      "note": "внешние ключи (<<FK>>): courseOffering, schedule; первичный ключ (<<PK>>) записан полем isID",
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "TableSchedule",
+      "stereotype": "table",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "id",
+          "type": "long",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "altCourse1",
+          "type": "long"
+        },
+        {
+          "vis": "private",
+          "name": "altCourse2",
+          "type": "long"
+        },
+        {
+          "vis": "private",
+          "name": "student",
+          "type": "long"
+        },
+        {
+          "vis": "private",
+          "name": "semester",
+          "type": "byte"
+        }
+      ],
+      "note": "внешние ключи (<<FK>>): altCourse1, altCourse2, student; первичный ключ (<<PK>>) записан полем isID",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "composition",
+      "from": "e1",
+      "to": "e2",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "*",
+      "navigable": "both",
+      "note": "каскадированное удаление дочерних записей",
+      "stereotype": "non identifying",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "association",
+      "from": "e3",
+      "to": "e2",
+      "fromMultiplicity": "0..1",
+      "toMultiplicity": "*",
+      "navigable": "both",
+      "note": "на рисунке ассоциация идёт от TableCourseOffering к TableSchedule с полюсом alt1",
+      "fromRole": "alt1",
+      "stereotype": "non identifying",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "composition",
+      "from": "e2",
+      "to": "e8",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "0..4",
+      "navigable": "both",
+      "stereotype": "identifying",
+      "note": "ромб со стороны TableSchedule; связь через TablePrimaryCourse",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "association",
+      "from": "e3",
+      "to": "e8",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "*",
+      "navigable": "both",
+      "stereotype": "identifying",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "composition",
+      "from": "e4",
+      "to": "e9",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "*",
+      "navigable": "both",
+      "fromRole": "pre",
+      "stereotype": "identifying",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "association",
+      "from": "e4",
+      "to": "e3",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "*",
+      "navigable": "both",
+      "stereotype": "non identifying",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "association",
+      "from": "e5",
+      "to": "e3",
+      "fromMultiplicity": "0..1",
+      "toMultiplicity": "*",
+      "navigable": "both",
+      "stereotype": "non identifying",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "composition",
+      "from": "e6",
+      "to": "e1",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "0..1",
+      "navigable": "both",
+      "stereotype": "non identifying",
+      "note": "ромб композиции на стороне TableUser",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "composition",
+      "from": "e6",
+      "to": "e5",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "0..1",
+      "navigable": "both",
+      "stereotype": "non identifying",
+      "note": "ромб композиции на стороне TableUser",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "association",
+      "from": "e3",
+      "to": "e2",
+      "fromMultiplicity": "0..1",
+      "toMultiplicity": "*",
+      "fromRole": "alt2",
+      "stereotype": "non identifying",
+      "source": "image"
+    },
+    {
+      "id": "r11",
+      "kind": "association",
+      "from": "e4",
+      "to": "e9",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "*",
+      "fromRole": "post",
+      "stereotype": "identifying",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "DataBase Schema",
+      "type": "class",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

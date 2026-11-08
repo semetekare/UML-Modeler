@@ -1,0 +1,14 @@
+@startuml
+title object
+object "курс : CourseOffering" as e1 {
+  +номер = 3101
+}
+object "студент : Student" as e2 {
+  +имя = «Анна»
+}
+class e3 as "CourseOffering" {
+  -номер : long {id}
+}
+e2 -- e1 : 1
+e1 ..> e3
+@enduml

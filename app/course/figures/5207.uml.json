@@ -1,0 +1,283 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5207",
+  "name": "UML-диаграмма пакетов в подсистеме DBAccess",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "package",
+      "name": "DBAccess",
+      "stereotype": "subsystem"
+    },
+    {
+      "id": "e2",
+      "kind": "package",
+      "name": "RDBMS-JDBC",
+      "documentation": "параметризованный пакет; под именем на рисунке напечатано (Persistency), в присоединённой рамке — три параметра",
+      "templateParameters": [
+        "DBClass",
+        "PersistentObject",
+        "PersistentObjectList"
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "package",
+      "name": "lang",
+      "documentation": "на рисунке имя пакета — lang, под ним квалификатор (Logical View::Middleware::java)",
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "package",
+      "name": "util",
+      "documentation": "на рисунке имя пакета — util, под ним квалификатор (Logical View::Middleware::java)",
+      "source": "image"
+    },
+    {
+      "id": "e5",
+      "kind": "package",
+      "name": "sql",
+      "documentation": "на рисунке имя пакета — sql, под ним квалификатор (Logical View::Middleware::java)",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "dependency",
+      "stereotype": "import",
+      "from": "e1",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "stereotype": "import",
+      "from": "e1",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "stereotype": "import",
+      "from": "e1",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "dependency",
+      "name": "<DBClass -> DBAccess, PersistentObject -> CourseOffering, User, Student, PersistentObjectList -> CourseOfferingList>",
+      "stereotype": "bind",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "dependency",
+      "stereotype": "import",
+      "from": "e2",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "dependency",
+      "stereotype": "import",
+      "from": "e2",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "dependency",
+      "stereotype": "import",
+      "from": "e2",
+      "to": "e5",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "DBAccess",
+      "kind": "package",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 260,
+          "y": 60,
+          "w": 140,
+          "h": 100
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 260,
+          "y": 220,
+          "w": 140,
+          "h": 100
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 60,
+          "y": 60,
+          "w": 140,
+          "h": 100
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 460,
+          "y": 60,
+          "w": 140,
+          "h": 100
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 60,
+          "y": 220,
+          "w": 140,
+          "h": 100
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "right"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s1",
+            "side": "left",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s1",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l7",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s2",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "right"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5207",
+    "figureNo": "5.2.7",
+    "exercise": "5.2.F",
+    "type": "package",
+    "diagramName": "DBAccess",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма пакетов в подсистеме DBAccess",
+    "notes": "Текст называет пакеты java::lang, java::util, java::sql и RDBMS-JDBC и оставляет тип зависимости на выбор. Рисунок 5.2.7 показывает: пакеты подписаны короткими именами lang, util, sql с квалификатором (Logical View::Middleware::java) под именем; все шесть зависимостей помечены стереотипом «import»; у RDBMS-JDBC есть рамка параметров шаблона (DBClass, PersistentObject, PersistentObjectList), а связь DBAccess—RDBMS-JDBC помечена «bind» с привязкой параметров.",
+    "gaps": [
+      "точный состав пакетов на снимке в тексте не перечислен: названы только java::lang, java::util, java::sql и RDBMS-JDBC",
+      "вложенность java::lang в java не выражается: у элемента нет владельца",
+      "тип зависимости (Import или Dependency) текст оставляет на выбор — на рисунке все шесть помечены «import»",
+      "параметры параметризованного пакета и привязка параметров не выражаются в uml-model/3 — записаны полем templateParameters и подписью связи"
+    ],
+    "gapIds": [
+      "model.packageOwner",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e2",
+      "e3",
+      "e4",
+      "e5",
+      "r1",
+      "r2",
+      "r3",
+      "r4"
+    ]
+  },
+  "sheet": {
+    "w": 660,
+    "h": 400
+  }
+}

@@ -1,0 +1,855 @@
+{
+  "schema": "uml-reference-terms/1",
+  "note": "В спецификации 0 кириллических словоупотреблений из 199 275: без таблицы псевдонимов русский запрос не находит ничего",
+  "pairs": {
+    "квалификатор": "Qualifier",
+    "кратность": "Multiplicity",
+    "множественность": "Multiplicity",
+    "роль": "Property",
+    "навигация": "navigability",
+    "видимость": "visibility",
+    "абстрактный": "isAbstract",
+    "статический": "isStatic",
+    "производный": "isDerived",
+    "ограничение": "Constraint",
+    "инвариант": "Constraint",
+    "стереотип": "Stereotype",
+    "профиль": "Profile",
+    "метамодель": "Metamodel",
+    "пакет": "Package",
+    "импорт": "PackageImport",
+    "слияние": "PackageMerge",
+    "зависимость": "Dependency",
+    "обобщение": "Generalization",
+    "реализация": "InterfaceRealization",
+    "композиция": "composite aggregation",
+    "агрегация": "Aggregation",
+    "ассоциация": "Association",
+    "атрибут": "Property",
+    "операция": "Operation",
+    "интерфейс": "Interface",
+    "перечисление": "Enumeration",
+    "класс": "Class",
+    "действующее лицо": "Actor",
+    "актор": "Actor",
+    "вариант использования": "Use Case",
+    "прецедент": "Use Case",
+    "состояние": "State",
+    "переход": "Transition",
+    "действие": "Action",
+    "деятельность": "Activity",
+    "дорожка": "ActivityPartition",
+    "узел": "Node",
+    "артефакт": "Artifact",
+    "линия жизни": "Lifeline",
+    "сообщение": "Message",
+    "фрагмент": "CombinedFragment",
+    "сторож": "InteractionOperand",
+    "сторожевое условие": "InteractionOperand",
+    "регион": "Region",
+    "порт": "Port",
+    "коннектор": "Connector",
+    "соединитель": "Connector",
+    "часть": "Parts and Roles",
+    "экземпляр": "InstanceSpecification",
+    "тип данных": "DataType",
+    "компонент": "Component",
+    "развёртывание": "Deployment",
+    "развертывание": "Deployment",
+    "включение": "Include",
+    "расширение": "Extend",
+    "обобщение множества": "Generalization Set",
+    "модель": "model",
+    "спецификация развёртывания": "deploymentspecification",
+    "устройство": "device",
+    "среда выполнения": "executionenvironment",
+    "объект": "instancespecification",
+    "кооперация": "collaboration",
+    "использование кооперации": "collaborationuse",
+    "метакласс": "metaclass",
+    "актёр": "actor",
+    "граница системы": "systemboundary",
+    "примечание": "comment",
+    "начальное состояние": "initialnode",
+    "конечное состояние": "activityfinalnode",
+    "выбор": "pseudostate",
+    "решение": "decisionnode",
+    "разделение": "forknode",
+    "объединение": "joinnode",
+    "объект данных": "objectnode",
+    "параметр деятельности": "activityparameternode",
+    "активация": "executionspecification",
+    "комбинированный фрагмент": "combinedfragment",
+    "ссылка на взаимодействие": "interactionuse",
+    "взаимодействие": "interaction",
+    "использование": "usage",
+    "слияние пакетов": "packagemerge",
+    "сборка": "connector",
+    "поток управления": "controlflow",
+    "поток объектов": "objectflow",
+    "ответ": "messagesort",
+    "путь связи": "communicationpath",
+    "манифестация": "manifestation",
+    "трассировка": "abstraction",
+    "расширение профиля": "extension",
+    "пространство имён": "namespace",
+    "спецификация выполнения": "execution specification",
+    "элемент информации": "information item",
+    "шаблон": "template",
+    "примитивный тип": "primitive type"
+  },
+  "anchors": [
+    {
+      "term": "class",
+      "ru": "Класс",
+      "aliases": [
+        "class",
+        "класс"
+      ],
+      "clause": "11.4",
+      "confidence": "exact"
+    },
+    {
+      "term": "interface",
+      "ru": "Интерфейс",
+      "aliases": [
+        "interface",
+        "интерфейс"
+      ],
+      "clause": "10.4",
+      "confidence": "exact"
+    },
+    {
+      "term": "enumeration",
+      "ru": "Перечисление",
+      "aliases": [
+        "enumeration",
+        "перечисление"
+      ],
+      "clause": "10.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "datatype",
+      "ru": "Тип данных",
+      "aliases": [
+        "datatype",
+        "тип данных"
+      ],
+      "clause": "10.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "package",
+      "ru": "Пакет",
+      "aliases": [
+        "package",
+        "пакет"
+      ],
+      "clause": "12.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "model",
+      "ru": "Модель",
+      "aliases": [
+        "model",
+        "модель"
+      ],
+      "clause": "22.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "profile",
+      "ru": "Профиль",
+      "aliases": [
+        "profile",
+        "профиль"
+      ],
+      "clause": "12.3",
+      "confidence": "exact"
+    },
+    {
+      "term": "component",
+      "ru": "Компонент",
+      "aliases": [
+        "component",
+        "компонент"
+      ],
+      "clause": "11.6",
+      "confidence": "exact"
+    },
+    {
+      "term": "artifact",
+      "ru": "Артефакт",
+      "aliases": [
+        "artifact",
+        "артефакт"
+      ],
+      "clause": "19.3",
+      "confidence": "exact"
+    },
+    {
+      "term": "deploymentspecification",
+      "ru": "Спецификация развёртывания",
+      "aliases": [
+        "deploymentspec",
+        "спецификация развёртывания"
+      ],
+      "clause": "19.2",
+      "confidence": "derived"
+    },
+    {
+      "term": "node",
+      "ru": "Узел",
+      "aliases": [
+        "node",
+        "узел"
+      ],
+      "clause": "19.4",
+      "confidence": "exact"
+    },
+    {
+      "term": "device",
+      "ru": "Устройство",
+      "aliases": [
+        "device",
+        "устройство"
+      ],
+      "clause": "19.4",
+      "confidence": "derived"
+    },
+    {
+      "term": "executionenvironment",
+      "ru": "Среда выполнения",
+      "aliases": [
+        "executionenvironment",
+        "среда выполнения"
+      ],
+      "clause": "19.4",
+      "confidence": "derived"
+    },
+    {
+      "term": "instancespecification",
+      "ru": "Объект",
+      "aliases": [
+        "object",
+        "объект"
+      ],
+      "clause": "9.8",
+      "confidence": "exact"
+    },
+    {
+      "term": "property",
+      "ru": "Часть",
+      "aliases": [
+        "part",
+        "часть"
+      ],
+      "clause": "11.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "port",
+      "ru": "Порт",
+      "aliases": [
+        "port",
+        "порт"
+      ],
+      "clause": "11.3",
+      "confidence": "exact"
+    },
+    {
+      "term": "collaboration",
+      "ru": "Кооперация",
+      "aliases": [
+        "collaboration",
+        "кооперация"
+      ],
+      "clause": "11.7",
+      "confidence": "exact"
+    },
+    {
+      "term": "collaborationuse",
+      "ru": "Использование кооперации",
+      "aliases": [
+        "collaborationuse",
+        "использование кооперации"
+      ],
+      "clause": "11.7",
+      "confidence": "exact"
+    },
+    {
+      "term": "stereotype",
+      "ru": "Стереотип",
+      "aliases": [
+        "stereotype",
+        "стереотип"
+      ],
+      "clause": "12.3",
+      "confidence": "exact"
+    },
+    {
+      "term": "metaclass",
+      "ru": "Метакласс",
+      "aliases": [
+        "metaclass",
+        "метакласс"
+      ],
+      "clause": "12.3",
+      "confidence": "derived"
+    },
+    {
+      "term": "actor",
+      "ru": "Актёр",
+      "aliases": [
+        "actor",
+        "актёр"
+      ],
+      "clause": "18.1",
+      "confidence": "derived"
+    },
+    {
+      "term": "usecase",
+      "ru": "Вариант использования",
+      "aliases": [
+        "usecase",
+        "вариант использования"
+      ],
+      "clause": "18.1",
+      "confidence": "exact"
+    },
+    {
+      "term": "systemboundary",
+      "ru": "Граница системы",
+      "aliases": [
+        "systemboundary",
+        "граница системы"
+      ],
+      "clause": "18.1",
+      "confidence": "derived"
+    },
+    {
+      "term": "comment",
+      "ru": "Примечание",
+      "aliases": [
+        "note",
+        "примечание"
+      ],
+      "clause": "7.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "state",
+      "ru": "Состояние",
+      "aliases": [
+        "state",
+        "состояние"
+      ],
+      "clause": "14.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "initialnode",
+      "ru": "Начальное состояние",
+      "aliases": [
+        "initial",
+        "начальное состояние"
+      ],
+      "clause": "15.3",
+      "confidence": "exact"
+    },
+    {
+      "term": "activityfinalnode",
+      "ru": "Конечное состояние",
+      "aliases": [
+        "final",
+        "конечное состояние"
+      ],
+      "clause": "15.3",
+      "confidence": "exact"
+    },
+    {
+      "term": "pseudostate",
+      "ru": "Выбор",
+      "aliases": [
+        "choice",
+        "выбор"
+      ],
+      "clause": "14.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "action",
+      "ru": "Действие",
+      "aliases": [
+        "action",
+        "действие"
+      ],
+      "clause": "16.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "activity",
+      "ru": "Деятельность",
+      "aliases": [
+        "activity",
+        "деятельность"
+      ],
+      "clause": "15.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "decisionnode",
+      "ru": "Решение",
+      "aliases": [
+        "decision",
+        "решение"
+      ],
+      "clause": "15.3",
+      "confidence": "exact"
+    },
+    {
+      "term": "mergenode",
+      "ru": "Слияние",
+      "aliases": [
+        "merge",
+        "слияние"
+      ],
+      "clause": "15.3",
+      "confidence": "exact"
+    },
+    {
+      "term": "forknode",
+      "ru": "Разделение",
+      "aliases": [
+        "fork",
+        "разделение"
+      ],
+      "clause": "15.3",
+      "confidence": "exact"
+    },
+    {
+      "term": "joinnode",
+      "ru": "Объединение",
+      "aliases": [
+        "join",
+        "объединение"
+      ],
+      "clause": "15.3",
+      "confidence": "exact"
+    },
+    {
+      "term": "objectnode",
+      "ru": "Объект данных",
+      "aliases": [
+        "objectnode",
+        "объект данных"
+      ],
+      "clause": "15.4",
+      "confidence": "exact"
+    },
+    {
+      "term": "activityparameternode",
+      "ru": "Параметр деятельности",
+      "aliases": [
+        "activityparameter",
+        "параметр деятельности"
+      ],
+      "clause": "15.4",
+      "confidence": "exact"
+    },
+    {
+      "term": "activitypartition",
+      "ru": "Дорожка",
+      "aliases": [
+        "swimlane",
+        "дорожка"
+      ],
+      "clause": "15.6",
+      "confidence": "exact"
+    },
+    {
+      "term": "lifeline",
+      "ru": "Линия жизни",
+      "aliases": [
+        "lifeline",
+        "линия жизни"
+      ],
+      "clause": "17.3",
+      "confidence": "exact"
+    },
+    {
+      "term": "executionspecification",
+      "ru": "Активация",
+      "aliases": [
+        "activation",
+        "активация"
+      ],
+      "clause": "17.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "combinedfragment",
+      "ru": "Комбинированный фрагмент",
+      "aliases": [
+        "fragment",
+        "комбинированный фрагмент"
+      ],
+      "clause": "17.6",
+      "confidence": "exact"
+    },
+    {
+      "term": "interactionuse",
+      "ru": "Ссылка на взаимодействие",
+      "aliases": [
+        "interactionuse",
+        "ссылка на взаимодействие"
+      ],
+      "clause": "17.7",
+      "confidence": "exact"
+    },
+    {
+      "term": "interaction",
+      "ru": "Взаимодействие",
+      "aliases": [
+        "interaction",
+        "взаимодействие"
+      ],
+      "clause": "17.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "association",
+      "ru": "Ассоциация",
+      "aliases": [
+        "association",
+        "ассоциация"
+      ],
+      "clause": "11.5",
+      "confidence": "exact"
+    },
+    {
+      "term": "aggregation",
+      "ru": "Агрегация",
+      "aliases": [
+        "aggregation",
+        "агрегация"
+      ],
+      "clause": "11.5",
+      "confidence": "derived"
+    },
+    {
+      "term": "composition",
+      "ru": "Композиция",
+      "aliases": [
+        "composition",
+        "композиция"
+      ],
+      "clause": "11.5",
+      "confidence": "derived"
+    },
+    {
+      "term": "generalization",
+      "ru": "Обобщение",
+      "aliases": [
+        "generalization",
+        "обобщение"
+      ],
+      "clause": "9.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "interfacerealization",
+      "ru": "Реализация",
+      "aliases": [
+        "realization",
+        "реализация"
+      ],
+      "clause": "7.7",
+      "confidence": "exact"
+    },
+    {
+      "term": "dependency",
+      "ru": "Зависимость",
+      "aliases": [
+        "dependency",
+        "зависимость"
+      ],
+      "clause": "7.7",
+      "confidence": "exact"
+    },
+    {
+      "term": "usage",
+      "ru": "Использование",
+      "aliases": [
+        "usage",
+        "использование"
+      ],
+      "clause": "7.7",
+      "confidence": "exact"
+    },
+    {
+      "term": "packageimport",
+      "ru": "Импорт",
+      "aliases": [
+        "import",
+        "импорт"
+      ],
+      "clause": "7.4",
+      "confidence": "exact"
+    },
+    {
+      "term": "packagemerge",
+      "ru": "Слияние пакетов",
+      "aliases": [
+        "merge",
+        "слияние пакетов"
+      ],
+      "clause": "12.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "include",
+      "ru": "Включение",
+      "aliases": [
+        "include",
+        "включение"
+      ],
+      "clause": "18.1",
+      "confidence": "exact"
+    },
+    {
+      "term": "extend",
+      "ru": "Расширение",
+      "aliases": [
+        "extend",
+        "расширение"
+      ],
+      "clause": "18.1",
+      "confidence": "exact"
+    },
+    {
+      "term": "connector",
+      "ru": "Сборка",
+      "aliases": [
+        "assembly",
+        "сборка"
+      ],
+      "clause": "11.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "controlflow",
+      "ru": "Поток управления",
+      "aliases": [
+        "controlflow",
+        "поток управления"
+      ],
+      "clause": "15.2",
+      "confidence": "derived"
+    },
+    {
+      "term": "objectflow",
+      "ru": "Поток объектов",
+      "aliases": [
+        "objectflow",
+        "поток объектов"
+      ],
+      "clause": "15.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "transition",
+      "ru": "Переход",
+      "aliases": [
+        "transition",
+        "переход"
+      ],
+      "clause": "14.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "message",
+      "ru": "Сообщение",
+      "aliases": [
+        "message",
+        "сообщение"
+      ],
+      "clause": "17.4",
+      "confidence": "exact"
+    },
+    {
+      "term": "messagesort",
+      "ru": "Ответ",
+      "aliases": [
+        "reply",
+        "ответ"
+      ],
+      "clause": "17.4",
+      "confidence": "exact"
+    },
+    {
+      "term": "deployment",
+      "ru": "Развёртывание",
+      "aliases": [
+        "deployment",
+        "развёртывание"
+      ],
+      "clause": "19.2",
+      "confidence": "exact"
+    },
+    {
+      "term": "communicationpath",
+      "ru": "Путь связи",
+      "aliases": [
+        "communicationpath",
+        "путь связи"
+      ],
+      "clause": "19.4",
+      "confidence": "derived"
+    },
+    {
+      "term": "manifestation",
+      "ru": "Манифестация",
+      "aliases": [
+        "manifest",
+        "манифестация"
+      ],
+      "clause": "19.3",
+      "confidence": "derived"
+    },
+    {
+      "term": "abstraction",
+      "ru": "Трассировка",
+      "aliases": [
+        "trace",
+        "трассировка"
+      ],
+      "clause": "7.7",
+      "confidence": "exact"
+    },
+    {
+      "term": "extension",
+      "ru": "Расширение профиля",
+      "aliases": [
+        "extension",
+        "расширение профиля"
+      ],
+      "clause": "12.3",
+      "confidence": "exact"
+    },
+    {
+      "term": "qualifier",
+      "ru": "квалификатор",
+      "aliases": [],
+      "clause": "9.5",
+      "confidence": "derived"
+    },
+    {
+      "term": "multiplicity",
+      "ru": "кратность",
+      "aliases": [],
+      "clause": "7.5",
+      "confidence": "derived"
+    },
+    {
+      "term": "guard",
+      "ru": "сторожевое условие",
+      "aliases": [],
+      "clause": "17.6",
+      "confidence": "derived"
+    },
+    {
+      "term": "operation",
+      "ru": "операция",
+      "aliases": [],
+      "clause": "9.6",
+      "confidence": "derived"
+    },
+    {
+      "term": "attribute",
+      "ru": "атрибут",
+      "aliases": [],
+      "clause": "9.5",
+      "confidence": "derived"
+    },
+    {
+      "term": "namespace",
+      "ru": "пространство имён",
+      "aliases": [],
+      "clause": "7.4",
+      "confidence": "derived"
+    },
+    {
+      "term": "visibility",
+      "ru": "видимость",
+      "aliases": [],
+      "clause": "7.4",
+      "confidence": "derived"
+    },
+    {
+      "term": "constraint",
+      "ru": "ограничение",
+      "aliases": [],
+      "clause": "7.6",
+      "confidence": "derived"
+    },
+    {
+      "term": "invariant",
+      "ru": "инвариант",
+      "aliases": [],
+      "clause": "7.6",
+      "confidence": "derived"
+    },
+    {
+      "term": "realization",
+      "ru": "реализация",
+      "aliases": [],
+      "clause": "10.4",
+      "confidence": "derived"
+    },
+    {
+      "term": "execution specification",
+      "ru": "спецификация выполнения",
+      "aliases": [],
+      "clause": "17.2",
+      "confidence": "derived"
+    },
+    {
+      "term": "region",
+      "ru": "регион",
+      "aliases": [],
+      "clause": "14.2",
+      "confidence": "derived"
+    },
+    {
+      "term": "information item",
+      "ru": "элемент информации",
+      "aliases": [],
+      "clause": "20.1",
+      "confidence": "derived"
+    },
+    {
+      "term": "instance",
+      "ru": "экземпляр",
+      "aliases": [],
+      "clause": "9.8",
+      "confidence": "derived"
+    },
+    {
+      "term": "template",
+      "ru": "шаблон",
+      "aliases": [],
+      "clause": "7.3",
+      "confidence": "derived"
+    },
+    {
+      "term": "primitive type",
+      "ru": "примитивный тип",
+      "aliases": [],
+      "clause": "21",
+      "confidence": "derived"
+    }
+  ]
+}

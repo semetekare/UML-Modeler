@@ -1,0 +1,27 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-geo-overlap",
+  "name": "Геометрия: настоящее наложение и законная вложенность",
+  "elements": [
+    { "id": "e1", "kind": "class", "name": "Заказ" },
+    { "id": "e2", "kind": "class", "name": "Клиент" },
+    { "id": "e3", "kind": "component", "name": "Оплата", "ownerId": "e1" },
+    { "id": "e4", "kind": "class", "name": "Счёт" }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "kind": "class",
+      "name": "Классы",
+      "shapes": [
+        { "id": "s1", "elementId": "e1", "x": 60, "y": 60, "w": 200, "h": 150 },
+        { "id": "s2", "elementId": "e2", "x": 190, "y": 120, "w": 200, "h": 150 },
+        { "id": "s3", "elementId": "e3", "x": 80, "y": 80, "w": 100, "h": 60 },
+        { "id": "s4", "elementId": "e4", "x": 620, "y": 60, "w": 200, "h": 150 }
+      ],
+      "links": []
+    }
+  ],
+  "currentDiagramId": "d1"
+}

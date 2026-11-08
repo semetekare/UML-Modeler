@@ -1,0 +1,68 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-actor-association-targets-ok",
+  "name": "actor-association-targets (без нарушения) — актёр связан ассоциацией с вариантом использования",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actor",
+      "name": "Студент",
+      "documentation": "Правило «actor-association-targets», контрольный случай без нарушения: актёр связан ассоциацией с вариантом использования.\nUML 2.5.1, п. 18.2.1.4, констрейнт Actor::associations: «An Actor can only have Associations to UseCases, Components, and Classes. Furthermore these Associations must be binary.»\nАктёр связан с вариантом использования — допустимая цель."
+    },
+    {
+      "id": "e2",
+      "kind": "usecase",
+      "name": "Оплатить обучение"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "association",
+      "from": "e1",
+      "to": "e2",
+      "fromMultiplicity": "1",
+      "navigable": "from"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Диаграмма 1",
+      "kind": "usecase",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 40,
+          "h": 64
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 360,
+          "y": 60,
+          "w": 120,
+          "h": 60
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

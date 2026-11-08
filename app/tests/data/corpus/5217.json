@@ -1,0 +1,43 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5217",
+    "figureNo": "5.2.17",
+    "exercise": "5.2.G",
+    "type": "sequence",
+    "diagramName": "init",
+    "group": "diagram",
+    "reproducible": "да",
+    "altText": "UML-диаграмма последовательности, описывающая реализацию операции init() в подсистеме BSAccess",
+    "notes": "Одна линия жизни cn:BSAccess со стереотипом «subsystem proxy», входящее сообщение связано с операцией init; линия жизни фабрики и два нижних сообщения удалены.",
+    "gaps": [],
+    "gapIds": []
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "lifeline",
+      "name": "cn:BSAccess",
+      "stereotype": "subsystem proxy"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "init()",
+      "from": "e1",
+      "to": "e1",
+      "note": "входящее сообщение связано с операцией init"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "init",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

@@ -1,0 +1,802 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5223",
+  "name": "Уточнённая диаграмма классов Design VOPC RegisterForCourses",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "RegistrationForm",
+      "operations": [
+        {
+          "name": "confirmDeleteSchedule()",
+          "type": "void"
+        },
+        {
+          "name": "createSchedule(semester : byte)",
+          "type": "void"
+        },
+        {
+          "name": "deleteSchedule()",
+          "type": "void"
+        },
+        {
+          "name": "displayBlankSchedule()",
+          "type": "void"
+        },
+        {
+          "name": "displayCourseString(cf : string)",
+          "type": "void"
+        },
+        {
+          "name": "displayMessage(msg : string)",
+          "type": "void"
+        },
+        {
+          "name": "requestDeleteScheduleConfirmation()",
+          "type": "void"
+        },
+        {
+          "name": "selectAltCourse(number : long)",
+          "type": "void"
+        },
+        {
+          "name": "selectPrimaryCourse(number : long)",
+          "type": "void"
+        },
+        {
+          "name": "submitSelectedCourses()",
+          "type": "void"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "MainMenuForm",
+      "operations": [
+        {
+          "name": "displayError(errorMsg : string)",
+          "type": "void"
+        },
+        {
+          "name": "open(user : User)",
+          "type": "void"
+        },
+        {
+          "name": "registerForCourses()",
+          "type": "void"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "RegistrationController",
+      "operations": [
+        {
+          "name": "confirmDeleteSchedule()",
+          "type": "void"
+        },
+        {
+          "name": "createSchedule(semester : byte)",
+          "type": "boolean"
+        },
+        {
+          "name": "deleteSchedule(semester : byte)",
+          "type": "boolean"
+        },
+        {
+          "name": "getCourseOfferingList()",
+          "type": "CourseOffering[]"
+        },
+        {
+          "name": "isRegistrationOpened()",
+          "type": "boolean"
+        },
+        {
+          "name": "registerForCourses(user : User)",
+          "type": "boolean"
+        },
+        {
+          "name": "submitSelectedCourses(primary : long[4], alternative : long[2])",
+          "type": "boolean"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "interface",
+      "name": "IDBAccess"
+    },
+    {
+      "id": "e6",
+      "kind": "class",
+      "name": "Student"
+    },
+    {
+      "id": "e8",
+      "kind": "class",
+      "name": "CourseOffering",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "day",
+          "type": "DayOfWeek"
+        },
+        {
+          "vis": "private",
+          "name": "isCancelled",
+          "type": "boolean",
+          "default": "FALSE"
+        },
+        {
+          "vis": "private",
+          "name": "isClosed",
+          "type": "boolean",
+          "default": "FALSE"
+        },
+        {
+          "vis": "private",
+          "name": "number",
+          "type": "long"
+        },
+        {
+          "vis": "private",
+          "name": "numStudents",
+          "type": "byte",
+          "default": "0",
+          "isDerived": true
+        },
+        {
+          "vis": "private",
+          "name": "pair",
+          "type": "byte"
+        },
+        {
+          "vis": "private",
+          "name": "semester",
+          "type": "byte"
+        }
+      ],
+      "operations": [
+        {
+          "name": "addSchedule(sch : Schedule)",
+          "type": "boolean"
+        },
+        {
+          "name": "cancel()",
+          "type": "void"
+        },
+        {
+          "name": "close()",
+          "type": "void"
+        },
+        {
+          "name": "destroy()",
+          "type": "void"
+        },
+        {
+          "name": "getAttribute()",
+          "type": "string"
+        },
+        {
+          "name": "getDay()",
+          "type": "DayOfWeek"
+        },
+        {
+          "name": "getNumber()",
+          "type": "long"
+        },
+        {
+          "name": "getPair()",
+          "type": "byte"
+        },
+        {
+          "name": "getSemester()",
+          "type": "byte"
+        },
+        {
+          "name": "new()",
+          "type": "CourseOffering"
+        },
+        {
+          "name": "removeSchedule(sch : Schedule)",
+          "type": "boolean"
+        },
+        {
+          "name": "setAttribute(value : string)",
+          "type": "void"
+        },
+        {
+          "name": "setDay(day : DayOfWeek)",
+          "type": "void"
+        },
+        {
+          "name": "setNumber(number : long)",
+          "type": "void"
+        },
+        {
+          "name": "setPair(pair : byte)",
+          "type": "void"
+        },
+        {
+          "name": "setSemester(semester : byte)",
+          "type": "void"
+        },
+        {
+          "name": "toString()",
+          "type": "string"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e7",
+      "kind": "class",
+      "name": "Schedule",
+      "attributes": [
+        {
+          "name": "semester",
+          "type": "byte"
+        }
+      ],
+      "operations": [
+        {
+          "name": "delete()",
+          "type": "void"
+        },
+        {
+          "name": "getCourseOfferingList()",
+          "type": "CourseOffering[]"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e9",
+      "kind": "class",
+      "name": "Classification",
+      "abstract": true
+    },
+    {
+      "id": "e10",
+      "kind": "class",
+      "name": "FullTimeClassification",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "graduateDate",
+          "type": "Date"
+        }
+      ],
+      "operations": [
+        {
+          "name": "getGraduateDate()",
+          "type": "Date"
+        },
+        {
+          "name": "setGraduateDate(gd : Date)",
+          "type": "void"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e11",
+      "kind": "class",
+      "name": "PartTimeClassification",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "maxNumCourses",
+          "type": "byte"
+        }
+      ],
+      "operations": [
+        {
+          "name": "getMaxNumCourses()",
+          "type": "byte"
+        },
+        {
+          "name": "setMaxNumCourses(mNC : byte)",
+          "type": "void"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e12",
+      "kind": "class",
+      "name": "CourseOfferingList",
+      "documentation": "класс-список курсов; на рисунке связан зависимостями с IDBAccess и CourseOffering",
+      "source": "image"
+    },
+    {
+      "id": "e5",
+      "kind": "interface",
+      "name": "IBSAccess"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "aggregation",
+      "from": "e1",
+      "to": "e3",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "0..1",
+      "navigable": "both",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "aggregation",
+      "from": "e2",
+      "to": "e3",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "0..1",
+      "navigable": "both",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "aggregation",
+      "from": "e3",
+      "to": "e4",
+      "fromMultiplicity": "0..1",
+      "toMultiplicity": "0..1",
+      "navigable": "from",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "association",
+      "from": "e3",
+      "to": "e5",
+      "navigable": "from"
+    },
+    {
+      "id": "r5",
+      "kind": "association",
+      "from": "e3",
+      "to": "e6",
+      "navigable": "both"
+    },
+    {
+      "id": "r6",
+      "kind": "association",
+      "from": "e3",
+      "to": "e8",
+      "navigable": "both"
+    },
+    {
+      "id": "r7",
+      "kind": "composition",
+      "from": "e6",
+      "to": "e7",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "0..1",
+      "navigable": "both",
+      "documentation": "квалифицированная ассоциация: на рисунке у конца Student стоит квалификатор -semester : byte; в uml-model/3 квалификатор не выражается",
+      "note": "двунаправленная; на полюсе у Schedule стоит квалификатор",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "association",
+      "from": "e7",
+      "to": "e8",
+      "fromMultiplicity": "*",
+      "toMultiplicity": "0..2",
+      "toRole": "alternative",
+      "navigable": "both",
+      "note": "на рисунке две ассоциации Schedule—CourseOffering: alternative 0..2 и primary 0..4",
+      "source": "image"
+    },
+    {
+      "id": "r9",
+      "kind": "composition",
+      "from": "e6",
+      "to": "e9",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "1",
+      "navigable": "both",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "generalization",
+      "from": "e10",
+      "to": "e9"
+    },
+    {
+      "id": "r11",
+      "kind": "generalization",
+      "from": "e11",
+      "to": "e9"
+    },
+    {
+      "id": "r12",
+      "kind": "association",
+      "from": "e7",
+      "to": "e8",
+      "fromMultiplicity": "*",
+      "toMultiplicity": "0..4",
+      "fromRole": "primary",
+      "source": "image"
+    },
+    {
+      "id": "r13",
+      "kind": "dependency",
+      "from": "e4",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r14",
+      "kind": "dependency",
+      "from": "e4",
+      "to": "e12",
+      "source": "image"
+    },
+    {
+      "id": "r15",
+      "kind": "dependency",
+      "from": "e12",
+      "to": "e8",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Design VOPC RegisterForCourses",
+      "kind": "class",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e3",
+          "x": 1160,
+          "y": 520,
+          "w": 470,
+          "h": 170
+        },
+        {
+          "id": "s2",
+          "elementId": "e6",
+          "x": 910,
+          "y": 530,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s3",
+          "elementId": "e8",
+          "x": 480,
+          "y": 60,
+          "w": 270,
+          "h": 400
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 910,
+          "y": 210,
+          "w": 190,
+          "h": 110
+        },
+        {
+          "id": "s5",
+          "elementId": "e7",
+          "x": 480,
+          "y": 760,
+          "w": 280,
+          "h": 170
+        },
+        {
+          "id": "s6",
+          "elementId": "e9",
+          "x": 910,
+          "y": 760,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s7",
+          "elementId": "e12",
+          "x": 100,
+          "y": 530,
+          "w": 190,
+          "h": 170
+        },
+        {
+          "id": "s8",
+          "elementId": "e1",
+          "x": 380,
+          "y": 520,
+          "w": 280,
+          "h": 180
+        },
+        {
+          "id": "s9",
+          "elementId": "e2",
+          "x": 60,
+          "y": 180,
+          "w": 260,
+          "h": 170
+        },
+        {
+          "id": "s10",
+          "elementId": "e10",
+          "x": 1190,
+          "y": 180,
+          "w": 230,
+          "h": 170
+        },
+        {
+          "id": "s11",
+          "elementId": "e11",
+          "x": 70,
+          "y": 760,
+          "w": 240,
+          "h": 170
+        },
+        {
+          "id": "s12",
+          "elementId": "e5",
+          "x": 1210,
+          "y": 790,
+          "w": 190,
+          "h": 110
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s8",
+            "side": "top"
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s9",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s1",
+            "side": "left",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s1",
+            "side": "bottom",
+            "t": 0.309
+          },
+          "to": {
+            "shapeId": "s12",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s1",
+            "side": "left",
+            "t": 0.529
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.471
+          }
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s1",
+            "side": "left",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l7",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.9
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.1
+          }
+        },
+        {
+          "id": "l8",
+          "relId": "r8",
+          "from": {
+            "shapeId": "s5",
+            "side": "top",
+            "t": 0.75
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "bottom",
+            "t": 0.75
+          }
+        },
+        {
+          "id": "l9",
+          "relId": "r9",
+          "from": {
+            "shapeId": "s2",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l10",
+          "relId": "r10",
+          "from": {
+            "shapeId": "s10",
+            "side": "bottom",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "top",
+            "t": 0.9
+          }
+        },
+        {
+          "id": "l11",
+          "relId": "r11",
+          "from": {
+            "shapeId": "s11",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l12",
+          "relId": "r12",
+          "from": {
+            "shapeId": "s5",
+            "side": "top",
+            "t": 0.75
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "bottom",
+            "t": 0.75
+          }
+        },
+        {
+          "id": "l13",
+          "relId": "r13",
+          "from": {
+            "shapeId": "s4",
+            "side": "bottom"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l14",
+          "relId": "r14",
+          "from": {
+            "shapeId": "s4",
+            "side": "left"
+          },
+          "to": {
+            "shapeId": "s7",
+            "side": "top"
+          }
+        },
+        {
+          "id": "l15",
+          "relId": "r15",
+          "from": {
+            "shapeId": "s7",
+            "side": "right",
+            "t": 0.1
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left",
+            "t": 0.9
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5223",
+    "figureNo": "5.2.23",
+    "exercise": "5.2.H",
+    "type": "class",
+    "diagramName": "Design VOPC RegisterForCourses",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Уточнённая диаграмма классов Design VOPC RegisterForCourses",
+    "notes": "Текст называет правки проектной диаграммы (композиции вместо ассоциаций, квалификатор, направления, метаморфоза подтипов), но не полный состав. Рисунок 5.2.23 показывает двенадцать фигур (добавлена CourseOfferingList), члены классов, композиции Student—Schedule с квалификатором -semester : byte и Student—Classification, агрегации от контроллера, две ассоциации Schedule—CourseOffering с полюсами primary и alternative и ограничение {complete, disjoint}; всё это прочитано с рисунка.",
+    "gaps": [
+      "полный набор классов и связей проектной диаграммы текст не перечисляет: названы правки (композиции вместо ассоциаций, квалификатор, направления, метаморфоза подтипов) — остальное прочитано с рисунка",
+      "квалификатор на полюсе ассоциации (-semester : byte у Student—Schedule) не выражается в uml-model/3 — записан в documentation связи",
+      "набор обобщений с ограничением {complete, disjoint} не выражается полностью — набор описан блоком generalizationSets",
+      "интерфейс IBSAccess оставлен в модели по тексту упражнения (метаморфоза подтипов), хотя на рисунке 5.2.23 обе модели его не увидели — факт не установлен",
+      "пометки источника сняты с полей, которые рисуются (r4.fromMultiplicity, r4.toMultiplicity, r5.fromMultiplicity, r5.toMultiplicity, r6.fromMultiplicity, r6.toMultiplicity): значение в источнике не названо"
+    ],
+    "gapIds": [
+      "model.qualifier",
+      "source.associations",
+      "source.unlisted"
+    ],
+    "imageDerived": [
+      "e1",
+      "e10",
+      "e11",
+      "e2",
+      "e3",
+      "e7",
+      "e8",
+      "r1",
+      "r2",
+      "r3",
+      "r7",
+      "r8",
+      "r9"
+    ]
+  },
+  "sheet": {
+    "w": 1690,
+    "h": 990
+  }
+}

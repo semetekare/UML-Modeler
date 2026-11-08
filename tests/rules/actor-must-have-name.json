@@ -1,0 +1,33 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-actor-must-have-name",
+  "name": "actor-must-have-name — у актёра нет имени",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actor",
+      "name": "",
+      "documentation": "Правило «actor-must-have-name»: у актёра нет имени.\nUML 2.5.1, п. 18.2.1.4, констрейнт Actor::must_have_name: «An Actor must have a name.»\nУ актёра пустое имя."
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Диаграмма 1",
+      "kind": "usecase",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 40,
+          "h": 64
+        }
+      ],
+      "links": []
+    }
+  ],
+  "currentDiagramId": "d1"
+}

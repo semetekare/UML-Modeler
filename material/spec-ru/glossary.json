@@ -1,0 +1,1765 @@
+{
+  "version": 1,
+  "meta": {
+    "spec": "UML 2.5.1 (formal/2017-12-05)",
+    "purpose": "Единая терминология для перевода reference/spec/md/*.md на русский язык",
+    "sources": [
+      "app/notation/uml.json — label/hint 51 фигуры и 27 связей (терминология проекта, обязательна)",
+      "docs/rules-uml-2.5.1.json — сообщения и подсказки правил",
+      "docs/uml-tutorial.md — пособие ВМК МГУ",
+      "docs/REFERENCE-CONTENT.md — устройство данных читалки"
+    ],
+    "conflictsResolved": "Там, где проект уже назвал понятие (панель нотации, правила), перевод следует проекту буквально, даже если в литературе есть варианты."
+  },
+  "terms": [
+    {
+      "en": "Abstraction",
+      "ru": "абстракция",
+      "kind": "relationship",
+      "note": "родственная зависимость; не путать с «абстрактный класс»"
+    },
+    {
+      "en": "Action",
+      "ru": "действие",
+      "kind": "metaclass",
+      "note": "как в панели проекта: «Действие». Action — единица работы внутри Activity"
+    },
+    {
+      "en": "Activity",
+      "ru": "деятельность",
+      "kind": "metaclass",
+      "note": "как в панели: «Деятельность». Не «активность»"
+    },
+    {
+      "en": "ActivityEdge",
+      "ru": "ребро деятельности",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ActivityFinalNode",
+      "ru": "конечный узел деятельности",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ActivityGroup",
+      "ru": "группа деятельности",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ActivityNode",
+      "ru": "узел деятельности",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ActivityParameterNode",
+      "ru": "узел параметра деятельности",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ActivityPartition",
+      "ru": "раздел деятельности",
+      "kind": "metaclass",
+      "note": "дорожка (swimlane) — это нотация раздела; сам метакласс — «раздел»"
+    },
+    {
+      "en": "Actor",
+      "ru": "актёр",
+      "kind": "metaclass",
+      "note": "как в панели: «Актёр»"
+    },
+    {
+      "en": "Aggregation",
+      "ru": "агрегация",
+      "kind": "concept",
+      "note": "как в панели: «Агрегация — часть-целое без владения»"
+    },
+    {
+      "en": "Annex",
+      "ru": "приложение",
+      "kind": "structure",
+      "note": "Annex A → «Приложение A»"
+    },
+    {
+      "en": "Artifact",
+      "ru": "артефакт",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Association",
+      "ru": "ассоциация",
+      "kind": "metaclass",
+      "note": "не «связь»: связь — родовое понятие (relationship), ассоциация — конкретный метакласс"
+    },
+    {
+      "en": "AssociationClass",
+      "ru": "класс ассоциации",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Attribute",
+      "ru": "атрибут",
+      "kind": "metaclass",
+      "note": "атрибут — частный случай свойства (Property); сам Property переводится «свойство»"
+    },
+    {
+      "en": "Behavior",
+      "ru": "поведение",
+      "kind": "metaclass"
+    },
+    {
+      "en": "BehavioralFeature",
+      "ru": "поведенческая характеристика",
+      "kind": "metaclass",
+      "note": "см. Feature"
+    },
+    {
+      "en": "BehavioredClassifier",
+      "ru": "классификатор с поведением",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Binding",
+      "ru": "связывание",
+      "kind": "concept",
+      "note": "связывание шаблона; не «привязка»"
+    },
+    {
+      "en": "Boolean",
+      "ru": "Boolean",
+      "kind": "primitive",
+      "note": "имя примитивного типа не переводится (это идентификатор типа в модели)"
+    },
+    {
+      "en": "CallAction",
+      "ru": "действие вызова",
+      "kind": "metaclass"
+    },
+    {
+      "en": "CallEvent",
+      "ru": "событие вызова",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ChangeEvent",
+      "ru": "событие изменения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Class",
+      "ru": "класс",
+      "kind": "metaclass",
+      "note": "как в панели: «Класс»"
+    },
+    {
+      "en": "Classifier",
+      "ru": "классификатор",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Clause",
+      "ru": "пункт",
+      "kind": "structure",
+      "note": "по ISO — «пункт»; подпункт — subclause. В данных читалки те же единицы называются «клаузами», это внутренний термин проекта, в тексте перевода не используется"
+    },
+    {
+      "en": "Collaboration",
+      "ru": "кооперация",
+      "kind": "metaclass",
+      "note": "как в панели: «Кооперация». Не «сотрудничество»"
+    },
+    {
+      "en": "CollaborationUse",
+      "ru": "использование кооперации",
+      "kind": "metaclass"
+    },
+    {
+      "en": "CombinedFragment",
+      "ru": "комбинированный фрагмент",
+      "kind": "metaclass",
+      "note": "как в панели: «Комбинированный фрагмент»"
+    },
+    {
+      "en": "CommunicationPath",
+      "ru": "путь связи",
+      "kind": "metaclass",
+      "note": "как в панели: «Путь связи»"
+    },
+    {
+      "en": "Component",
+      "ru": "компонент",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Composite State",
+      "ru": "составное состояние",
+      "kind": "concept",
+      "note": "composite — «составной», composition — «композиция»; это разные слова"
+    },
+    {
+      "en": "Composition",
+      "ru": "композиция",
+      "kind": "concept",
+      "note": "как в панели: «Композиция — части живут с целым»"
+    },
+    {
+      "en": "Conformance",
+      "ru": "соответствие",
+      "kind": "concept",
+      "note": "не «конформность»: раздел 2 называется «Соответствие»"
+    },
+    {
+      "en": "Connector",
+      "ru": "коннектор",
+      "kind": "metaclass",
+      "note": "как в панели: «Коннектор — соединение частей композита»"
+    },
+    {
+      "en": "ConnectorEnd",
+      "ru": "конец коннектора",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ConnectionPointReference",
+      "ru": "ссылка на точку соединения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Constraint",
+      "ru": "ограничение",
+      "kind": "metaclass",
+      "note": "не «констрейнт»; подразделы Constraints → «Ограничения»"
+    },
+    {
+      "en": "ControlFlow",
+      "ru": "поток управления",
+      "kind": "metaclass",
+      "note": "как в панели: «Поток управления»"
+    },
+    {
+      "en": "DataType",
+      "ru": "тип данных",
+      "kind": "metaclass",
+      "note": "как в панели: «Тип данных»"
+    },
+    {
+      "en": "DecisionNode",
+      "ru": "узел решения",
+      "kind": "metaclass",
+      "note": "как в панели: «Решение»"
+    },
+    {
+      "en": "Dependency",
+      "ru": "зависимость",
+      "kind": "metaclass",
+      "note": "как в панели: «Зависимость — использование, пунктир»"
+    },
+    {
+      "en": "Deployment",
+      "ru": "развёртывание",
+      "kind": "metaclass",
+      "note": "не «деплой»/«развертывание» с «е»"
+    },
+    {
+      "en": "DeploymentSpecification",
+      "ru": "спецификация развёртывания",
+      "kind": "metaclass"
+    },
+    {
+      "en": "DeploymentTarget",
+      "ru": "цель развёртывания",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Derived",
+      "ru": "производный",
+      "kind": "concept",
+      "note": "derived property → «производное свойство»; в нотации помечается «/»"
+    },
+    {
+      "en": "Device",
+      "ru": "устройство",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Diagram",
+      "ru": "диаграмма",
+      "kind": "concept"
+    },
+    {
+      "en": "DirectedRelationship",
+      "ru": "направленная связь",
+      "kind": "metaclass",
+      "note": "relationship здесь — «связь», родовое понятие"
+    },
+    {
+      "en": "Effect",
+      "ru": "эффект",
+      "kind": "concept",
+      "note": "effect перехода; «воздействие» не используется"
+    },
+    {
+      "en": "Element",
+      "ru": "элемент",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ElementImport",
+      "ru": "импорт элемента",
+      "kind": "metaclass"
+    },
+    {
+      "en": "EncapsulatedClassifier",
+      "ru": "инкапсулированный классификатор",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Enumeration",
+      "ru": "перечисление",
+      "kind": "metaclass",
+      "note": "как в панели: «Перечисление»"
+    },
+    {
+      "en": "EnumerationLiteral",
+      "ru": "литерал перечисления",
+      "kind": "metaclass",
+      "note": "как в панели: раздел «Литералы»"
+    },
+    {
+      "en": "Event",
+      "ru": "событие",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ExceptionHandler",
+      "ru": "обработчик исключений",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ExecutionEnvironment",
+      "ru": "среда выполнения",
+      "kind": "metaclass",
+      "note": "как в панели: «Среда выполнения»"
+    },
+    {
+      "en": "ExecutionOccurrence",
+      "ru": "вхождение выполнения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ExecutableNode",
+      "ru": "исполняемый узел",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ExpansionNode",
+      "ru": "узел расширения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ExpansionRegion",
+      "ru": "область расширения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Extend",
+      "ru": "расширение",
+      "kind": "relationship",
+      "note": "как в панели: «Расширение — необязательный вариант». Как глагол — «расширять»"
+    },
+    {
+      "en": "Extension",
+      "ru": "расширение",
+      "kind": "metaclass",
+      "note": "расширение стереотипа (профиль); в панели — «Расширение профиля»"
+    },
+    {
+      "en": "ExtensionPoint",
+      "ru": "точка расширения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Feature",
+      "ru": "характеристика",
+      "kind": "metaclass",
+      "note": "ложный друг: не «функция» и не «свойство». Feature — родовое понятие для атрибутов/операций/приёмов. «Свойство» закреплено за Property"
+    },
+    {
+      "en": "FinalState",
+      "ru": "конечное состояние",
+      "kind": "metaclass",
+      "note": "как в панели: «Конечное состояние»"
+    },
+    {
+      "en": "Flow",
+      "ru": "поток",
+      "kind": "concept"
+    },
+    {
+      "en": "ForkNode",
+      "ru": "узел разделения",
+      "kind": "metaclass",
+      "note": "как в панели: «Разделение»"
+    },
+    {
+      "en": "Gate",
+      "ru": "шлюз",
+      "kind": "metaclass",
+      "note": "gate взаимодействия; не «ворота» и не «вентиль»"
+    },
+    {
+      "en": "Generalization",
+      "ru": "обобщение",
+      "kind": "metaclass",
+      "note": "как в панели: «Обобщение — наследование»"
+    },
+    {
+      "en": "GeneralizationSet",
+      "ru": "набор обобщений",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Guard",
+      "ru": "сторожевое условие",
+      "kind": "concept",
+      "note": "не «охрана»/«защита»; в нотации — [условие]"
+    },
+    {
+      "en": "Image",
+      "ru": "изображение",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Import",
+      "ru": "импорт",
+      "kind": "relationship",
+      "note": "как в панели: «Импорт»"
+    },
+    {
+      "en": "Include",
+      "ru": "включение",
+      "kind": "relationship",
+      "note": "как в панели: «Включение — обязательный вариант»"
+    },
+    {
+      "en": "InformationFlow",
+      "ru": "информационный поток",
+      "kind": "metaclass"
+    },
+    {
+      "en": "InformationItem",
+      "ru": "информационный элемент",
+      "kind": "metaclass"
+    },
+    {
+      "en": "InitialNode",
+      "ru": "начальный узел",
+      "kind": "metaclass",
+      "note": "как в панели: «Начальное состояние» — для состояний; для деятельности «начальный узел»"
+    },
+    {
+      "en": "Instance",
+      "ru": "экземпляр",
+      "kind": "concept",
+      "note": "ложный друг: не «пример» (example)"
+    },
+    {
+      "en": "InstanceSpecification",
+      "ru": "спецификация экземпляра",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Integer",
+      "ru": "Integer",
+      "kind": "primitive",
+      "note": "имя типа не переводится"
+    },
+    {
+      "en": "Interaction",
+      "ru": "взаимодействие",
+      "kind": "metaclass",
+      "note": "как в панели: «Взаимодействие»"
+    },
+    {
+      "en": "InteractionFragment",
+      "ru": "фрагмент взаимодействия",
+      "kind": "metaclass"
+    },
+    {
+      "en": "InteractionOperand",
+      "ru": "операнд взаимодействия",
+      "kind": "metaclass"
+    },
+    {
+      "en": "InteractionUse",
+      "ru": "использование взаимодействия",
+      "kind": "metaclass",
+      "note": "как в панели: «Ссылка на взаимодействие»"
+    },
+    {
+      "en": "Interface",
+      "ru": "интерфейс",
+      "kind": "metaclass",
+      "note": "как в панели: «Интерфейс — контракт без реализации»"
+    },
+    {
+      "en": "InterruptibleActivityRegion",
+      "ru": "прерываемая область деятельности",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Invariant",
+      "ru": "инвариант",
+      "kind": "concept",
+      "note": "ключевое слово OCL inv не переводится"
+    },
+    {
+      "en": "JoinNode",
+      "ru": "узел объединения",
+      "kind": "metaclass",
+      "note": "как в панели: «Объединение»"
+    },
+    {
+      "en": "Keyword",
+      "ru": "ключевое слово",
+      "kind": "concept"
+    },
+    {
+      "en": "Leaf",
+      "ru": "листовой",
+      "kind": "concept",
+      "note": "isLeaf → «листовой» (не «лист»)"
+    },
+    {
+      "en": "Lifeline",
+      "ru": "линия жизни",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Link",
+      "ru": "связь",
+      "kind": "metaclass",
+      "note": "link — экземплярная связь между объектами (в панели: «Связь объектов»); ассоциация — ассоциация"
+    },
+    {
+      "en": "LinkEndData",
+      "ru": "данные конца связи",
+      "kind": "metaclass"
+    },
+    {
+      "en": "LiteralSpecification",
+      "ru": "литеральная спецификация",
+      "kind": "metaclass"
+    },
+    {
+      "en": "LoopNode",
+      "ru": "узел цикла",
+      "kind": "metaclass",
+      "note": "в панели фигуры нет; loop — «цикл»"
+    },
+    {
+      "en": "Manifestation",
+      "ru": "манифестация",
+      "kind": "metaclass",
+      "note": "как в панели: «Манифестация — артефакт воплощает компонент»"
+    },
+    {
+      "en": "Merge",
+      "ru": "слияние",
+      "kind": "relationship",
+      "note": "merge пакета — «слияние пакетов»; MergeNode — «узел слияния»"
+    },
+    {
+      "en": "Message",
+      "ru": "сообщение",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Metaclass",
+      "ru": "метакласс",
+      "kind": "concept"
+    },
+    {
+      "en": "Metamodel",
+      "ru": "метамодель",
+      "kind": "concept"
+    },
+    {
+      "en": "Model",
+      "ru": "модель",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Multiplicity",
+      "ru": "кратность",
+      "kind": "concept",
+      "note": "не «множественность»; lower/upper bound — «нижняя/верхняя граница» (как в docs/rules-uml-2.5.1.json)"
+    },
+    {
+      "en": "MultiplicityElement",
+      "ru": "элемент кратности",
+      "kind": "metaclass"
+    },
+    {
+      "en": "NamedElement",
+      "ru": "именованный элемент",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Namespace",
+      "ru": "пространство имён",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Navigable",
+      "ru": "навигабельный",
+      "kind": "concept",
+      "note": "navigable end → «навигабельный конец»; не «навигируемый»"
+    },
+    {
+      "en": "Node",
+      "ru": "узел",
+      "kind": "metaclass",
+      "note": "в развёртывании — «Узел»; в деятельности — «узел деятельности»",
+      "forms": [
+        "узл"
+      ]
+    },
+    {
+      "en": "Notation",
+      "ru": "нотация",
+      "kind": "structure",
+      "note": "подраздел Notation → «Нотация»"
+    },
+    {
+      "en": "Object",
+      "ru": "объект",
+      "kind": "concept"
+    },
+    {
+      "en": "ObjectFlow",
+      "ru": "поток объектов",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ObjectNode",
+      "ru": "узел объектов",
+      "kind": "metaclass",
+      "note": "в панели: «Объект данных»"
+    },
+    {
+      "en": "OCL",
+      "ru": "OCL",
+      "kind": "keep",
+      "note": "Object Constraint Language — не переводится и не расшифровывается по-русски"
+    },
+    {
+      "en": "OpaqueExpression",
+      "ru": "непрозрачное выражение",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Operation",
+      "ru": "операция",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Ordered",
+      "ru": "упорядоченный",
+      "kind": "concept",
+      "note": "в OCL и в фигурных скобках нотации — ordered"
+    },
+    {
+      "en": "Package",
+      "ru": "пакет",
+      "kind": "metaclass",
+      "note": "ложный друг: не «упаковка»"
+    },
+    {
+      "en": "PackageableElement",
+      "ru": "упаковываемый элемент",
+      "kind": "metaclass"
+    },
+    {
+      "en": "PackageImport",
+      "ru": "импорт пакета",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Parameter",
+      "ru": "параметр",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ParameterableElement",
+      "ru": "параметризуемый элемент",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Part",
+      "ru": "часть",
+      "kind": "concept",
+      "note": "в панели: «Часть»; part — свойство, играющее роль части в композите"
+    },
+    {
+      "en": "Permission",
+      "ru": "разрешение",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Pin",
+      "ru": "вывод",
+      "kind": "metaclass",
+      "note": "InputPin — «входной вывод», OutputPin — «выходной вывод»; не «штифт» и не «контакт»"
+    },
+    {
+      "en": "Port",
+      "ru": "порт",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Postcondition",
+      "ru": "постусловие",
+      "kind": "concept"
+    },
+    {
+      "en": "Precondition",
+      "ru": "предусловие",
+      "kind": "concept"
+    },
+    {
+      "en": "PrimitiveType",
+      "ru": "примитивный тип",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Profile",
+      "ru": "профиль",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Property",
+      "ru": "свойство",
+      "kind": "metaclass",
+      "note": "ложный друг: не «имущество» и не «собственность». Атрибут — частный случай свойства",
+      "forms": [
+        "свойств"
+      ]
+    },
+    {
+      "en": "ProtocolStateMachine",
+      "ru": "протокольная машина состояний",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Pseudostate",
+      "ru": "псевдосостояние",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Real",
+      "ru": "Real",
+      "kind": "primitive",
+      "note": "имя типа не переводится"
+    },
+    {
+      "en": "Realization",
+      "ru": "реализация",
+      "kind": "relationship",
+      "note": "ложный друг: это вид зависимости (класс выполняет контракт интерфейса), а не «реализация в коде». В панели: «Реализация — класс выполняет контракт»"
+    },
+    {
+      "en": "Reception",
+      "ru": "приём",
+      "kind": "metaclass",
+      "note": "объявление приёма сигнала; не «ресепшн» и не «получение»"
+    },
+    {
+      "en": "RedefinableElement",
+      "ru": "переопределяемый элемент",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Redefinition",
+      "ru": "переопределение",
+      "kind": "concept"
+    },
+    {
+      "en": "Refinement",
+      "ru": "уточнение",
+      "kind": "concept"
+    },
+    {
+      "en": "Region",
+      "ru": "регион",
+      "kind": "metaclass",
+      "note": "регион состояния/машины; не «область» (область — region расширения — тоже регион)"
+    },
+    {
+      "en": "Relationship",
+      "ru": "связь",
+      "kind": "metaclass",
+      "note": "родовое понятие; «связь» в панели — именно оно. Ассоциация, обобщение, зависимость — виды связи"
+    },
+    {
+      "en": "Role",
+      "ru": "роль",
+      "kind": "concept"
+    },
+    {
+      "en": "Root",
+      "ru": "корневой",
+      "kind": "concept"
+    },
+    {
+      "en": "Semantics",
+      "ru": "семантика",
+      "kind": "structure"
+    },
+    {
+      "en": "Signal",
+      "ru": "сигнал",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Slot",
+      "ru": "слот",
+      "kind": "metaclass",
+      "note": "ложный друг: не «щель»; слот хранит значение атрибута экземпляра"
+    },
+    {
+      "en": "Specialization",
+      "ru": "специализация",
+      "kind": "concept",
+      "note": "обратное к обобщению"
+    },
+    {
+      "en": "State",
+      "ru": "состояние",
+      "kind": "metaclass"
+    },
+    {
+      "en": "StateInvariant",
+      "ru": "инвариант состояния",
+      "kind": "metaclass"
+    },
+    {
+      "en": "StateMachine",
+      "ru": "машина состояний",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Stereotype",
+      "ru": "стереотип",
+      "kind": "metaclass"
+    },
+    {
+      "en": "String",
+      "ru": "String",
+      "kind": "primitive",
+      "note": "имя типа не переводится (иначе путается с «строкой» текста)"
+    },
+    {
+      "en": "StructuralFeature",
+      "ru": "структурная характеристика",
+      "kind": "metaclass",
+      "note": "см. Feature"
+    },
+    {
+      "en": "StructuredActivityNode",
+      "ru": "структурированный узел деятельности",
+      "kind": "metaclass"
+    },
+    {
+      "en": "StructuredClassifier",
+      "ru": "структурированный классификатор",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Subject",
+      "ru": "субъект",
+      "kind": "metaclass",
+      "note": "субъект варианта использования; не «предмет»"
+    },
+    {
+      "en": "Submachine",
+      "ru": "подавтомат",
+      "kind": "concept"
+    },
+    {
+      "en": "Subset",
+      "ru": "подмножество",
+      "kind": "concept",
+      "note": "в OCL и {subsets …} не переводится"
+    },
+    {
+      "en": "Substitution",
+      "ru": "подстановка",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Template",
+      "ru": "шаблон",
+      "kind": "concept"
+    },
+    {
+      "en": "TemplateBinding",
+      "ru": "связывание шаблона",
+      "kind": "metaclass"
+    },
+    {
+      "en": "TemplateParameter",
+      "ru": "параметр шаблона",
+      "kind": "metaclass"
+    },
+    {
+      "en": "TemplateSignature",
+      "ru": "сигнатура шаблона",
+      "kind": "metaclass"
+    },
+    {
+      "en": "TemplateableElement",
+      "ru": "шаблонизируемый элемент",
+      "kind": "metaclass"
+    },
+    {
+      "en": "TimeEvent",
+      "ru": "событие времени",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Token",
+      "ru": "маркер",
+      "kind": "concept",
+      "note": "в семантике деятельности; не «жетон» и не «токен»"
+    },
+    {
+      "en": "Trace",
+      "ru": "трассировка",
+      "kind": "relationship",
+      "note": "как в панели: «Трассировка»"
+    },
+    {
+      "en": "Transition",
+      "ru": "переход",
+      "kind": "metaclass",
+      "note": "как в панели: «Переход между состояниями»"
+    },
+    {
+      "en": "Trigger",
+      "ru": "триггер",
+      "kind": "metaclass",
+      "note": "не «запуск»/«спусковой крючок»"
+    },
+    {
+      "en": "Type",
+      "ru": "тип",
+      "kind": "metaclass"
+    },
+    {
+      "en": "TypedElement",
+      "ru": "типизированный элемент",
+      "kind": "metaclass"
+    },
+    {
+      "en": "UnlimitedNatural",
+      "ru": "UnlimitedNatural",
+      "kind": "primitive",
+      "note": "имя типа не переводится; неограниченное значение в кратности — «*»"
+    },
+    {
+      "en": "Usage",
+      "ru": "использование",
+      "kind": "metaclass",
+      "note": "usage — вид зависимости; в панели: «Использование»"
+    },
+    {
+      "en": "UseCase",
+      "ru": "вариант использования",
+      "kind": "metaclass",
+      "note": "как в панели и в docs/rules-uml-2.5.1.json"
+    },
+    {
+      "en": "ValueSpecification",
+      "ru": "спецификация значения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Variable",
+      "ru": "переменная",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Vertex",
+      "ru": "вершина",
+      "kind": "metaclass",
+      "note": "вершина графа переходов (состояние или псевдосостояние)"
+    },
+    {
+      "en": "Visibility",
+      "ru": "видимость",
+      "kind": "concept",
+      "note": "литералы public/private/protected/package не переводятся"
+    },
+    {
+      "en": "Well-formedness",
+      "ru": "корректность",
+      "kind": "concept",
+      "note": "well-formed → «корректно построенный»; не «правильность построения»"
+    },
+    {
+      "en": "Abstract Syntax",
+      "ru": "абстрактный синтаксис",
+      "kind": "structure"
+    },
+    {
+      "en": "Concrete Syntax",
+      "ru": "конкретный синтаксис",
+      "kind": "structure"
+    },
+    {
+      "en": "Constraints",
+      "ru": "Ограничения",
+      "kind": "structure",
+      "note": "заголовок подраздела"
+    },
+    {
+      "en": "Description",
+      "ru": "Описание",
+      "kind": "structure"
+    },
+    {
+      "en": "Attributes",
+      "ru": "Атрибуты",
+      "kind": "structure",
+      "note": "заголовок подраздела метакласса"
+    },
+    {
+      "en": "Associations",
+      "ru": "Ассоциации",
+      "kind": "structure",
+      "note": "заголовок подраздела метакласса"
+    },
+    {
+      "en": "Operations",
+      "ru": "Операции",
+      "kind": "structure"
+    },
+    {
+      "en": "Examples",
+      "ru": "Примеры",
+      "kind": "structure"
+    },
+    {
+      "en": "Summary",
+      "ru": "Краткое описание",
+      "kind": "structure",
+      "note": "в проекте «Краткое пояснение» для tutorial; здесь — «Краткое описание»"
+    },
+    {
+      "en": "Additional Information",
+      "ru": "Дополнительная информация",
+      "kind": "structure"
+    },
+    {
+      "en": "Terms and Definitions",
+      "ru": "Термины и определения",
+      "kind": "structure"
+    },
+    {
+      "en": "Normative References",
+      "ru": "Нормативные ссылки",
+      "kind": "structure"
+    },
+    {
+      "en": "Scope",
+      "ru": "Область применения",
+      "kind": "structure"
+    },
+    {
+      "en": "Notational Conventions",
+      "ru": "Условные обозначения",
+      "kind": "structure"
+    },
+    {
+      "en": "association end",
+      "ru": "конец ассоциации",
+      "kind": "concept"
+    },
+    {
+      "en": "binary association",
+      "ru": "бинарная ассоциация",
+      "kind": "concept"
+    },
+    {
+      "en": "n-ary association",
+      "ru": "n-арная ассоциация",
+      "kind": "concept"
+    },
+    {
+      "en": "classifier behavior",
+      "ru": "поведение классификатора",
+      "kind": "concept"
+    },
+    {
+      "en": "owning / owned",
+      "ru": "владеющий / принадлежащий",
+      "kind": "concept",
+      "note": "ownedAttribute → «принадлежащий атрибут» (в OCL остаётся ownedAttribute)"
+    },
+    {
+      "en": "feature",
+      "ru": "характеристика",
+      "kind": "concept",
+      "note": "см. Feature"
+    },
+    {
+      "en": "member",
+      "ru": "член",
+      "kind": "concept",
+      "note": "member → «член» (пространства имён), а не «участник»"
+    },
+    {
+      "en": "ends",
+      "ru": "концы",
+      "kind": "concept",
+      "note": "в заголовках таблиц — «Концы»"
+    },
+    {
+      "en": "notation element",
+      "ru": "элемент нотации",
+      "kind": "concept"
+    },
+    {
+      "en": "stereotype keyword",
+      "ru": "ключевое слово стереотипа",
+      "kind": "concept"
+    },
+    {
+      "en": "value specification",
+      "ru": "спецификация значения",
+      "kind": "concept"
+    },
+    {
+      "en": "default value",
+      "ru": "значение по умолчанию",
+      "kind": "concept"
+    },
+    {
+      "en": "upper bound",
+      "ru": "верхняя граница",
+      "kind": "concept"
+    },
+    {
+      "en": "lower bound",
+      "ru": "нижняя граница",
+      "kind": "concept"
+    },
+    {
+      "en": "unlimited",
+      "ru": "неограниченно",
+      "kind": "concept",
+      "note": "«*» в кратности"
+    },
+    {
+      "en": "identifier",
+      "ru": "идентификатор",
+      "kind": "concept"
+    },
+    {
+      "en": "name compartment",
+      "ru": "раздел имени",
+      "kind": "concept",
+      "note": "compartment → «раздел» (полоса на фигуре), чтобы не путать с «отсеком»"
+    },
+    {
+      "en": "diagram frame",
+      "ru": "рамка диаграммы",
+      "kind": "concept"
+    },
+    {
+      "en": "qualified name",
+      "ru": "полное имя",
+      "kind": "concept",
+      "note": "qualified name — «полное (квалифицированное) имя», в тексте — «полное имя»"
+    },
+    {
+      "en": "Entry",
+      "ru": "поведение при входе",
+      "kind": "concept",
+      "note": "entry Behavior; entry — существительное «вход», но переводится оборотом, чтобы не путать с entryPoint"
+    },
+    {
+      "en": "Exit",
+      "ru": "поведение при выходе",
+      "kind": "concept",
+      "note": "exit Behavior; см. Entry"
+    },
+    {
+      "en": "DoActivity",
+      "ru": "поведение doActivity",
+      "kind": "concept",
+      "note": "doActivity Behavior — деятельность, выполняемая, пока состояние активно; идентификатор doActivity не переводится"
+    },
+    {
+      "en": "Submachine State",
+      "ru": "состояние-подавтомат",
+      "kind": "concept",
+      "note": "isSubmachineState; не «состояние подмашины»"
+    },
+    {
+      "en": "PseudostateKind",
+      "ru": "вид псевдосостояния",
+      "kind": "metaclass"
+    },
+    {
+      "en": "TransitionKind",
+      "ru": "вид перехода",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Deferred Event",
+      "ru": "отложенное событие",
+      "kind": "concept",
+      "note": "deferrableTrigger"
+    },
+    {
+      "en": "History",
+      "ru": "история",
+      "kind": "concept",
+      "note": "псевдосостояние истории; deepHistory — «глубокая история», shallowHistory — «мелкая история» (как в панели проекта)"
+    },
+    {
+      "en": "Initial",
+      "ru": "начальное",
+      "kind": "concept",
+      "note": "псевдосостояние initial → «начальное псевдосостояние»"
+    },
+    {
+      "en": "Terminate",
+      "ru": "завершение",
+      "kind": "concept",
+      "note": "псевдосостояние terminate; как в панели: «Завершение»"
+    },
+    {
+      "en": "Join",
+      "ru": "объединение",
+      "kind": "concept",
+      "note": "псевдосостояние join; как в панели: «Объединение»"
+    },
+    {
+      "en": "Fork",
+      "ru": "разделение",
+      "kind": "concept",
+      "note": "псевдосостояние fork; как в панели: «Разделение»"
+    },
+    {
+      "en": "Choice",
+      "ru": "выбор",
+      "kind": "concept",
+      "note": "псевдосостояние choice; как в панели: «Выбор»"
+    },
+    {
+      "en": "Junction",
+      "ru": "соединение",
+      "kind": "concept",
+      "note": "псевдосостояние junction; как в панели: «Соединение»"
+    },
+    {
+      "en": "Entry Point",
+      "ru": "точка входа",
+      "kind": "concept",
+      "note": "псевдосостояние entryPoint; как в панели"
+    },
+    {
+      "en": "Exit Point",
+      "ru": "точка выхода",
+      "kind": "concept",
+      "note": "псевдосостояние exitPoint; как в панели"
+    },
+    {
+      "en": "Completion Event",
+      "ru": "событие завершения",
+      "kind": "concept"
+    },
+    {
+      "en": "State Configuration",
+      "ru": "конфигурация состояний",
+      "kind": "concept"
+    },
+    {
+      "en": "Active State Configuration",
+      "ru": "активная конфигурация состояний",
+      "kind": "concept"
+    },
+    {
+      "en": "Orthogonal",
+      "ru": "ортогональный",
+      "kind": "concept",
+      "note": "orthogonal Region/State — параллельные регионы; не «перпендикулярный»"
+    },
+    {
+      "en": "Compound Transition",
+      "ru": "составной переход",
+      "kind": "concept",
+      "note": "compound transition — путь из нескольких переходов через псевдосостояния"
+    },
+    {
+      "en": "State Invariant",
+      "ru": "инвариант состояния",
+      "kind": "metaclass",
+      "note": "уже было; здесь для раздела 14"
+    },
+    {
+      "en": "ProtocolConformance",
+      "ru": "соответствие протоколу",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ProtocolTransition",
+      "ru": "протокольный переход",
+      "kind": "metaclass"
+    },
+    {
+      "en": "InputPin",
+      "ru": "входной вывод",
+      "kind": "metaclass",
+      "note": "Pin → «вывод»; не «штифт» и не «контакт». Согласовано с 15"
+    },
+    {
+      "en": "OutputPin",
+      "ru": "выходной вывод",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ValuePin",
+      "ru": "вывод значения",
+      "kind": "metaclass",
+      "note": "ValuePin — вывод, несущий постоянное значение; вида элемента в панели нет, переводим как есть"
+    },
+    {
+      "en": "ActionInputPin",
+      "ru": "входной вывод действия",
+      "kind": "metaclass",
+      "note": "ActionInputPin вычисляет значение действием; вида в панели нет"
+    },
+    {
+      "en": "ActionExecution",
+      "ru": "выполнение действия",
+      "kind": "concept"
+    },
+    {
+      "en": "InvocationAction",
+      "ru": "действие вызова",
+      "kind": "metaclass"
+    },
+    {
+      "en": "CallOperationAction",
+      "ru": "действие вызова операции",
+      "kind": "metaclass"
+    },
+    {
+      "en": "CallBehaviorAction",
+      "ru": "действие вызова поведения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "SendSignalAction",
+      "ru": "действие отправки сигнала",
+      "kind": "metaclass"
+    },
+    {
+      "en": "SendObjectAction",
+      "ru": "действие отправки объекта",
+      "kind": "metaclass"
+    },
+    {
+      "en": "BroadcastSignalAction",
+      "ru": "действие широковещательного сигнала",
+      "kind": "metaclass"
+    },
+    {
+      "en": "AcceptEventAction",
+      "ru": "действие приёма события",
+      "kind": "metaclass",
+      "note": "Reception — «приём», не «получение»"
+    },
+    {
+      "en": "AcceptCallAction",
+      "ru": "действие приёма вызова",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ReplyAction",
+      "ru": "действие ответа",
+      "kind": "metaclass"
+    },
+    {
+      "en": "RaiseExceptionAction",
+      "ru": "действие возбуждения исключения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "LinkAction",
+      "ru": "действие над связями",
+      "kind": "metaclass",
+      "note": "Link → «связь» (экземплярная), не «ассоциация»"
+    },
+    {
+      "en": "CreateLinkAction",
+      "ru": "действие создания связи",
+      "kind": "metaclass"
+    },
+    {
+      "en": "DestroyLinkAction",
+      "ru": "действие уничтожения связи",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ClearAssociationAction",
+      "ru": "действие очистки ассоциации",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ReadLinkAction",
+      "ru": "действие чтения связи",
+      "kind": "metaclass"
+    },
+    {
+      "en": "StructuralFeatureAction",
+      "ru": "действие над структурной характеристикой",
+      "kind": "metaclass",
+      "note": "см. Feature → «характеристика»"
+    },
+    {
+      "en": "WriteStructuralFeatureAction",
+      "ru": "действие записи структурной характеристики",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ReadStructuralFeatureAction",
+      "ru": "действие чтения структурной характеристики",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ClearStructuralFeatureAction",
+      "ru": "действие очистки структурной характеристики",
+      "kind": "metaclass"
+    },
+    {
+      "en": "AddStructuralFeatureValueAction",
+      "ru": "действие добавления значения структурной характеристики",
+      "kind": "metaclass"
+    },
+    {
+      "en": "RemoveStructuralFeatureValueAction",
+      "ru": "действие удаления значения структурной характеристики",
+      "kind": "metaclass"
+    },
+    {
+      "en": "VariableAction",
+      "ru": "действие над переменной",
+      "kind": "metaclass"
+    },
+    {
+      "en": "WriteVariableAction",
+      "ru": "действие записи переменной",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ReadVariableAction",
+      "ru": "действие чтения переменной",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ClearVariableAction",
+      "ru": "действие очистки переменной",
+      "kind": "metaclass"
+    },
+    {
+      "en": "CreateObjectAction",
+      "ru": "действие создания объекта",
+      "kind": "metaclass"
+    },
+    {
+      "en": "DestroyObjectAction",
+      "ru": "действие уничтожения объекта",
+      "kind": "metaclass"
+    },
+    {
+      "en": "TestIdentityAction",
+      "ru": "действие проверки идентичности",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ReadSelfAction",
+      "ru": "действие чтения self",
+      "kind": "metaclass",
+      "note": "self — ключевое слово OCL, не переводится"
+    },
+    {
+      "en": "ReadExtentAction",
+      "ru": "действие чтения экстента",
+      "kind": "metaclass",
+      "note": "extent — множество всех экземпляров классификатора"
+    },
+    {
+      "en": "ReclassifyObjectAction",
+      "ru": "действие переклассификации объекта",
+      "kind": "metaclass"
+    },
+    {
+      "en": "UnmarshallAction",
+      "ru": "действие демультиплексирования",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ValueSpecificationAction",
+      "ru": "действие спецификации значения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "OpaqueAction",
+      "ru": "непрозрачное действие",
+      "kind": "metaclass"
+    },
+    {
+      "en": "StartClassifierBehaviorAction",
+      "ru": "действие запуска поведения классификатора",
+      "kind": "metaclass"
+    },
+    {
+      "en": "StartObjectBehaviorAction",
+      "ru": "действие запуска поведения объекта",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ConditionalNode",
+      "ru": "условный узел",
+      "kind": "metaclass"
+    },
+    {
+      "en": "SequenceNode",
+      "ru": "узел последовательности",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ExpansionKind",
+      "ru": "вид расширения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "LinkEndCreationData",
+      "ru": "данные конца связи при создании",
+      "kind": "metaclass"
+    },
+    {
+      "en": "LinkEndDestructionData",
+      "ru": "данные конца связи при уничтожении",
+      "kind": "metaclass"
+    },
+    {
+      "en": "QualifierValue",
+      "ru": "значение квалификатора",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ReduceAction",
+      "ru": "действие свёртки",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ReadIsClassifiedObjectAction",
+      "ru": "действие проверки классификации объекта",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ReadLinkObjectEndAction",
+      "ru": "действие чтения конца связи-объекта",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ReadLinkObjectEndQualifierAction",
+      "ru": "действие чтения квалификатора конца связи-объекта",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Occurrence",
+      "ru": "вхождение",
+      "kind": "concept",
+      "note": "единица взаимодействия; EventOccurrence — «вхождение события»"
+    },
+    {
+      "en": "OccurrenceSpecification",
+      "ru": "спецификация вхождения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ExecutionSpecification",
+      "ru": "спецификация выполнения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "MessageEnd",
+      "ru": "конец сообщения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "MessageOccurrenceSpecification",
+      "ru": "спецификация вхождения сообщения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "DestructionOccurrenceSpecification",
+      "ru": "спецификация вхождения уничтожения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ExecutionOccurrenceSpecification",
+      "ru": "спецификация вхождения выполнения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ActionExecutionSpecification",
+      "ru": "спецификация выполнения действия",
+      "kind": "metaclass"
+    },
+    {
+      "en": "BehaviorExecutionSpecification",
+      "ru": "спецификация выполнения поведения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "GeneralOrdering",
+      "ru": "общее упорядочение",
+      "kind": "metaclass",
+      "note": "не «общий порядок»"
+    },
+    {
+      "en": "InteractionConstraint",
+      "ru": "ограничение взаимодействия",
+      "kind": "metaclass"
+    },
+    {
+      "en": "InteractionOperatorKind",
+      "ru": "вид оператора взаимодействия",
+      "kind": "metaclass"
+    },
+    {
+      "en": "MessageSort",
+      "ru": "вид сообщения",
+      "kind": "metaclass",
+      "note": "значения synchCall, asynchCall, asynchSignal, createMessage, deleteMessage, reply — не переводятся"
+    },
+    {
+      "en": "MessageKind",
+      "ru": "род сообщения",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Continuation",
+      "ru": "продолжение",
+      "kind": "metaclass"
+    },
+    {
+      "en": "ConsiderIgnoreFragment",
+      "ru": "фрагмент рассмотрения/игнорирования",
+      "kind": "metaclass",
+      "note": "комбинированный фрагмент с оператором consider или ignore"
+    },
+    {
+      "en": "PartDecomposition",
+      "ru": "декомпозиция части",
+      "kind": "metaclass"
+    },
+    {
+      "en": "Sequence diagram",
+      "ru": "диаграмма последовательности",
+      "kind": "concept"
+    },
+    {
+      "en": "Communication diagram",
+      "ru": "диаграмма коммуникации",
+      "kind": "concept"
+    },
+    {
+      "en": "Timing diagram",
+      "ru": "диаграмма синхронизации",
+      "kind": "concept"
+    },
+    {
+      "en": "Interaction overview diagram",
+      "ru": "диаграмма обзора взаимодействий",
+      "kind": "concept"
+    },
+    {
+      "en": "Interaction diagram",
+      "ru": "диаграмма взаимодействия",
+      "kind": "concept"
+    },
+    {
+      "en": "coregion",
+      "ru": "корегион",
+      "kind": "concept",
+      "note": "нотационное сокращение для параллельных комбинированных фрагментов"
+    },
+    {
+      "en": "wildcard",
+      "ru": "подстановочное значение",
+      "kind": "concept",
+      "note": "аргумент сообщения, представляющий любое допустимое значение; в нотации «-»"
+    },
+    {
+      "en": "execution engine",
+      "ru": "исполняющее ядро",
+      "kind": "concept",
+      "note": "инструмент, выполняющий действия UML (16.1.1.2, 16.2.3, 16.4.3.6); не «машина выполнения» и не «движок»"
+    },
+    {
+      "en": "WriteLinkAction",
+      "ru": "действие записи связи",
+      "kind": "metaclass",
+      "note": "абстрактный класс CreateLinkAction и DestroyLinkAction"
+    },
+    {
+      "en": "CreateLinkObjectAction",
+      "ru": "действие создания объекта-связи",
+      "kind": "metaclass",
+      "note": "link object — «объект-связь»; ср. ReadLinkObjectEndAction"
+    }
+  ],
+  "keepEnglish": [
+    "OCL",
+    "UML",
+    "MOF",
+    "XMI",
+    "UMLDI",
+    "DI",
+    "ISO",
+    "IEC",
+    "IEEE",
+    "OCL-ключевые слова: self, inv, pre, post, body, def, let, in, and, or, not, implies, if, then, else, endif, oclIsKindOf, oclIsTypeOf, oclAsType, oclInState, allInstances, result, true, false, null, invalid",
+    "строки inv: и всё содержимое блоков ```ocl",
+    "имена метаклассов и свойств внутри OCL-выражений (ownedAttribute, isReadOnly, memberEnd, …)",
+    "имена примитивных типов Integer, Boolean, String, UnlimitedNatural, Real",
+    "литералы видимости public, private, protected, package",
+    "ключевые слова в фигурных скобках нотации: ordered, subsets, redefines, readOnly, union, unique",
+    "имена стереотипов в кавычках-ёлочках: «interface», «primitive», «enumeration», «dataType», «model», «profile»",
+    "номера пунктов и рисунков (11.5.3, Figure 11.12)",
+    "обозначения кратности (0..1, 1..*, *), имена файлов (.uml, .xmi), имена XML-элементов в Приложении B",
+    "весь ASCII-арт диаграмм (блоки ```text)"
+  ],
+  "styleRules": [
+    "Нормативность: shall → «должен», shall not → «не должен», may → «может», should → «следует», cannot → «не может». Не смягчать и не усиливать.",
+    "Переводить, а не пересказывать: «A Class cannot be its own superclass» → «Класс не может быть своим собственным суперклассом».",
+    "Заголовки: номер сохраняется дословно; название переводится. `# 11 Structured Classifiers` → `# 11 Структурированные классификаторы`.",
+    "Клаузы-метаклассы (уровни 3–5 вида `NN.N.N Метакласс [Вид]`) сохраняют английское имя как идентификатор, русское название — в скобках: `10.5.4 EnumerationLiteral (литерал перечисления) [Class]`. Так заголовок остаётся и русским, и находимым по имени метакласса.",
+    "Служебные подразделы (Summary, Semantics, Notation, Examples, Constraints, Description, Attributes, Associations, Operations, Abstract Syntax) переводятся полностью: «Краткое описание», «Семантика», «Нотация», «Примеры», «Ограничения», «Описание», «Атрибуты», «Ассоциации», «Операции», «Абстрактный синтаксис».",
+    "Строчная буква у родовых понятий («класс», «ассоциация»), заглавная — в начале предложения и в заголовках.",
+    "Перекрёстные ссылки: «see 11.5.3» → «см. 11.5.3»; «in sub clause 8.2» → «в подпункте 8.2». Номера не меняются.",
+    "Figure/Table: «**Figure 11.12** *Название*» → «**Рисунок 11.12** *Название*», «**Table 11.1**» → «**Таблица 11.1**».",
+    "Метаметамодель (блоки ```text с диаграммами классов) и OCL (блоки ```ocl) не трогать побайтово.",
+    "Кавычки — «ёлочки», внутренние — „лапки“. Тире — длинное (—).",
+    "Если термин встретился, а в словаре его нет — добавить в glossary.json и отметить в отчёте, а не переводить наобум.",
+    "Термин один раз за файл можно уточнить английским в скобках при первом употреблении, дальше — только по-русски."
+  ]
+}

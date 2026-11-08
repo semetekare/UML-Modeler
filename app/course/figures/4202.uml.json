@@ -1,0 +1,463 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-4202",
+  "name": "UML-диаграмма последовательности Login Basic Flow",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Пользователь"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "lform:LoginForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "menu:MainMenuForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "lctrl:LoginController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "dao:DataAccess",
+      "stereotype": "control"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "curUser:User",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "[getUserByLogin() != NULL]",
+      "documentation": "в тексте условие описано словами «если логин указан верно»; дословная запись прочитана с рисунка; покрытие операндов прочитано с рисунка 4.2.2",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[getUserByLogin() != NULL]",
+          "messages": [
+            "r3",
+            "r4",
+            "r5",
+            "r6",
+            "r7"
+          ]
+        }
+      ],
+      "operator": "opt",
+      "source": "image"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "[curUser != NULL && curUser.checkPassword() == TRUE] / [else]",
+      "documentation": "два операнда: первый — при верном пароле, второй — [else]; границы операндов прочитаны с рисунка; покрытие операндов прочитано с рисунка 4.2.2",
+      "operands": [
+        {
+          "id": "o1",
+          "guard": "[curUser != NULL && curUser.checkPassword() == TRUE]",
+          "messages": [
+            "r8",
+            "r9"
+          ]
+        },
+        {
+          "id": "o2",
+          "guard": "[else]",
+          "messages": [
+            "r10"
+          ]
+        }
+      ],
+      "operator": "alt",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "login()",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "login()",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "getUserByLogin(l:string):User",
+      "from": "e4",
+      "to": "e5"
+    },
+    {
+      "id": "r4",
+      "kind": "createMessage",
+      "name": "create",
+      "from": "e5",
+      "to": "e6",
+      "note": "внутри операнда opt"
+    },
+    {
+      "id": "r5",
+      "kind": "reply",
+      "name": "result",
+      "from": "e5",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "checkPassword(pswrd:string):boolean",
+      "from": "e4",
+      "to": "e6"
+    },
+    {
+      "id": "r7",
+      "kind": "reply",
+      "name": "result",
+      "from": "e6",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "createMessage",
+      "name": "open(curUser)",
+      "from": "e4",
+      "to": "e3",
+      "note": "первый операнд alt"
+    },
+    {
+      "id": "r9",
+      "kind": "message",
+      "name": "getType():UserType",
+      "from": "e3",
+      "to": "e6",
+      "note": "первый операнд alt"
+    },
+    {
+      "id": "r10",
+      "kind": "message",
+      "name": "displayError()",
+      "from": "e4",
+      "to": "e2",
+      "note": "второй операнд alt"
+    },
+    {
+      "id": "r11",
+      "kind": "destroyMessage",
+      "name": "close",
+      "from": "e4",
+      "to": "e2",
+      "note": "ниже фрагмента alt"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Login Basic Flow",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 600
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 270,
+          "y": 60,
+          "w": 150,
+          "h": 600
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 480,
+          "y": 60,
+          "w": 150,
+          "h": 600
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 690,
+          "y": 60,
+          "w": 150,
+          "h": 600
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 900,
+          "y": 60,
+          "w": 150,
+          "h": 600
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 1110,
+          "y": 60,
+          "w": 150,
+          "h": 600
+        },
+        {
+          "id": "s7",
+          "elementId": "e7",
+          "x": 60,
+          "y": 150,
+          "w": 1200,
+          "h": 230
+        },
+        {
+          "id": "s8",
+          "elementId": "e8",
+          "x": 60,
+          "y": 420,
+          "w": 1200,
+          "h": 200
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.2
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.2
+          },
+          "y": 180
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.25
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.25
+          },
+          "y": 210
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.3
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.3
+          },
+          "y": 240
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s5",
+            "side": "right",
+            "t": 0.35
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.35
+          },
+          "y": 270
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.4
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.4
+          },
+          "y": 300
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.45
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.45
+          },
+          "y": 330
+        },
+        {
+          "id": "l7",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.65
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.65
+          },
+          "y": 360
+        },
+        {
+          "id": "l8",
+          "relId": "r8",
+          "from": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.7
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.7
+          },
+          "y": 480
+        },
+        {
+          "id": "l9",
+          "relId": "r9",
+          "from": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.75
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.75
+          },
+          "y": 510
+        },
+        {
+          "id": "l10",
+          "relId": "r10",
+          "from": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.8
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.8
+          },
+          "y": 540
+        },
+        {
+          "id": "l11",
+          "relId": "r11",
+          "from": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.85
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.85
+          },
+          "y": 650
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "4202",
+    "figureNo": "4.2.2",
+    "exercise": "4.2",
+    "type": "sequence",
+    "diagramName": "Login Basic Flow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма последовательности Login Basic Flow",
+    "notes": "Состав линий жизни и порядок сообщений названы текстом; дословные сторожевые условия фрагментов opt и alt, подпись входа login() и подписи возвратов result прочитаны с рисунка 4.2.2 — в тексте условия описаны словами («если логин указан верно»).",
+    "gaps": [
+      "сторожевые условия операндов фрагмента alt в тексте описаны словами; дословные значения прочитаны с рисунка",
+      "порядок сообщений задаётся вертикальной геометрией; в структурной записи он передан порядком массива relationships",
+      "какие сообщения покрывает каждый фрагмент, в uml-model/3 не выражается",
+      "тип сообщения close — Destroy — выражен видом связи destroyMessage",
+      "второй операнд фрагмента alt ([else]) в модели не выражается отдельным элементом — записан в имени фрагмента"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.fragmentOperands",
+      "model.messageOrder",
+      "source.guards"
+    ],
+    "imageDerived": [
+      "e7",
+      "e8",
+      "r1",
+      "r5",
+      "r7"
+    ]
+  },
+  "expect": {
+    "operations": [
+      "LoginForm::login()",
+      "LoginForm::displayError()",
+      "LoginForm::close()",
+      "LoginController::login()",
+      "DataAccess::getUserByLogin(l:string):User",
+      "User::checkPassword(pswrd:string):boolean",
+      "User::getType():UserType"
+    ]
+  },
+  "sheet": {
+    "w": 1320,
+    "h": 720
+  }
+}

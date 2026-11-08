@@ -1,0 +1,972 @@
+{
+  "version": 1,
+  "source": "docs/uml-tutorial.md (ВМК МГУ, Малышко В. В.)",
+  "counts": {
+    "chapters": 3,
+    "exercises": 20,
+    "figures": 52,
+    "withModel": 48,
+    "missing": 1
+  },
+  "chapters": [
+    {
+      "id": "ch3",
+      "number": "3",
+      "title": "UML-модель требований к создаваемой системе",
+      "intro": "course/text/ch3-intro.md",
+      "exercises": [
+        {
+          "id": "ex-3.1",
+          "number": "3.1",
+          "title": "Начальная версия UML-диаграммы вариантов использования системы регистрации на курсы",
+          "type": "usecase",
+          "text": "course/text/ex-3.1.md",
+          "figure": "course/figures/3102.uml.json",
+          "figureNo": "3.1.2",
+          "original": "reference/vp163/3102.png",
+          "figures": [
+            {
+              "figure": "3101",
+              "figureNo": "3.1.1",
+              "type": "usecase",
+              "group": "diagram",
+              "reproducible": "да",
+              "elements": 6,
+              "relationships": 0,
+              "caption": "Окно редактора с заготовкой UML-диаграммы вариантов использования (для всех вариантов)",
+              "note": "Рамка системы «Система регистрации на курсы» (стереотип «subject») и пять действующих лиц; вариантов использования и связей ещё нет",
+              "model": "course/figures/3101.uml.json",
+              "original": "reference/vp163/3101.png"
+            },
+            {
+              "figure": "3102",
+              "figureNo": "3.1.2",
+              "type": "usecase",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 16,
+              "relationships": 13,
+              "caption": "Начальная версия UML-диаграммы вариантов использования (для всех вариантов) (на диаграмме имеется дефект!)",
+              "note": "Десять вариантов использования в рамке со стереотипами уровня и ассоциации от действующих лиц; дефект: у «Войти в систему» три основных действующих лица",
+              "model": "course/figures/3102.uml.json",
+              "original": "reference/vp163/3102.png"
+            }
+          ],
+          "missing": null
+        },
+        {
+          "id": "ex-3.2",
+          "number": "3.2",
+          "title": "Уточнённая версия UML-диаграммы вариантов использования системы регистрации на курсы",
+          "type": "usecase",
+          "text": "course/text/ex-3.2.md",
+          "figure": "course/figures/3201.uml.json",
+          "figureNo": "3.2.1",
+          "original": "reference/vp163/3201.png",
+          "figures": [
+            {
+              "figure": "3201",
+              "figureNo": "3.2.1",
+              "type": "usecase",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 17,
+              "relationships": 14,
+              "caption": "Уточнённая версия UML-диаграммы вариантов использования (для всех вариантов / дефект начальной версии исправлен!)",
+              "note": "То же, но с абстрактным действующим лицом Пользователь и обобщениями от трёх ролей; лишние ассоциации удалены",
+              "model": "course/figures/3201.uml.json",
+              "original": "reference/vp163/3201.png"
+            }
+          ],
+          "missing": null
+        },
+        {
+          "id": "ex-3.3",
+          "number": "3.3",
+          "title": "Описания вариантов использования системы регистрации на курсы",
+          "type": null,
+          "text": "course/text/ex-3.3.md",
+          "figure": null,
+          "figureNo": null,
+          "original": null,
+          "figures": [],
+          "missing": "в пособии у этого упражнения нет рисунков — только текст"
+        },
+        {
+          "id": "ex-3.4",
+          "number": "3.4",
+          "title": "UML-диаграммы деятельности, моделирующие сценарии вариантов использования «Войти в систему» и «Зарегистрироваться на курсы»",
+          "type": "activity",
+          "text": "course/text/ex-3.4.md",
+          "figure": "course/figures/3402.uml.json",
+          "figureNo": "3.4.2",
+          "original": "reference/vp163/3402.png",
+          "figures": [
+            {
+              "figure": "3401",
+              "figureNo": "3.4.1",
+              "type": "activity",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 12,
+              "relationships": 9,
+              "caption": "UML-диаграмма деятельности для варианта использования «Войти в систему» (для всех вариантов)",
+              "note": "Дорожки «Пользователь» и «Система регистрации на курсы», шесть действий, узел решения, два узла завершения",
+              "model": "course/figures/3401.uml.json",
+              "original": "reference/vp163/3401.png"
+            },
+            {
+              "figure": "3402",
+              "figureNo": "3.4.2",
+              "type": "activity",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 18,
+              "relationships": 18,
+              "caption": "UML-диаграмма деятельности «Зарегистрироваться на курсы» (для всех вариантов)",
+              "note": "Четыре узла действия вызова деятельности по подчинённым потокам 5А–Г, ветвление, завершение",
+              "model": "course/figures/3402.uml.json",
+              "original": "reference/vp163/3402.png"
+            }
+          ],
+          "missing": null
+        }
+      ]
+    },
+    {
+      "id": "ch4",
+      "number": "4",
+      "title": "Эскизная UML-модель создаваемой системы",
+      "intro": "course/text/ch4-intro.md",
+      "exercises": [
+        {
+          "id": "ex-4.1",
+          "number": "4.1",
+          "title": "Состав логического архитектурного представления в соответствии с технологией Unified Process",
+          "type": "class",
+          "text": "course/text/ex-4.1.md",
+          "figure": "course/figures/4103.uml.json",
+          "figureNo": "4.1.3",
+          "original": "reference/vp163/4103.png",
+          "figures": [
+            {
+              "figure": "4101",
+              "figureNo": "4.1.1",
+              "type": "none",
+              "group": "ui",
+              "reproducible": "нет",
+              "elements": 0,
+              "relationships": 0,
+              "caption": "Состав Logical View в части, относящейся к эскизной модели (для всех вариантов)",
+              "note": "Дерево Model Explorer: пакет Logical View с подпакетами Analysis Model, Use Case Realizations и кооперациями Login, RegisterForCourses, CloseRegistration.",
+              "model": null,
+              "original": "reference/vp163/4101.png"
+            },
+            {
+              "figure": "4102",
+              "figureNo": "4.1.2",
+              "type": "composite",
+              "group": "diagram",
+              "reproducible": "да",
+              "elements": 6,
+              "relationships": 3,
+              "caption": "UML-диаграмма составной структуры Use Case Realizations (для всех вариантов)",
+              "note": "Три кооперации со стереотипом «usecase realization» и три варианта использования, связанные реализациями",
+              "model": "course/figures/4102.uml.json",
+              "original": "reference/vp163/4102.png"
+            },
+            {
+              "figure": "4103",
+              "figureNo": "4.1.3",
+              "type": "class",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 8,
+              "relationships": 10,
+              "caption": "UML-диаграмма классов Key Abstractions (для всех вариантов)",
+              "note": "Шесть классов-сущностей, перечисления DayOfWeek и UserType, атрибуты, композиция Student — Schedule, рефлексивная ассоциация Course",
+              "model": "course/figures/4103.uml.json",
+              "original": "reference/vp163/4103.png"
+            }
+          ],
+          "missing": null
+        },
+        {
+          "id": "ex-4.2",
+          "number": "4.2",
+          "title": "Эскизная реализация варианта использования «Войти в систему»",
+          "type": "sequence",
+          "text": "course/text/ex-4.2.md",
+          "figure": "course/figures/4202.uml.json",
+          "figureNo": "4.2.2",
+          "original": "reference/vp163/4202.png",
+          "figures": [
+            {
+              "figure": "4201",
+              "figureNo": "4.2.1",
+              "type": "class",
+              "group": "diagram",
+              "reproducible": "да",
+              "elements": 5,
+              "relationships": 0,
+              "caption": "Начальный эскиз UML-диаграммы классов VOPC Login (для всех вариантов) (работа над диаграммой не завершена!)",
+              "note": "Пять классов анализа VOPC Login со стереотипами, без ассоциаций",
+              "model": "course/figures/4201.uml.json",
+              "original": "reference/vp163/4201.png"
+            },
+            {
+              "figure": "4202",
+              "figureNo": "4.2.2",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 8,
+              "relationships": 11,
+              "caption": "UML-диаграмма последовательности Login Basic Flow (для всех вариантов)",
+              "note": "Шесть линий жизни, вызовы login/getUserByLogin/checkPassword, фрагменты opt и alt, создание и уничтожение объектов",
+              "model": "course/figures/4202.uml.json",
+              "original": "reference/vp163/4202.png"
+            },
+            {
+              "figure": "4203",
+              "figureNo": "4.2.3",
+              "type": "class",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 5,
+              "relationships": 6,
+              "caption": "Итоговая версия UML-диаграммы классов VOPC Login в Analysis Model (для всех вариантов)",
+              "note": "Те же пять классов с ассоциациями, кратностями, ролями и навигацией; связанный граф",
+              "model": "course/figures/4203.uml.json",
+              "original": "reference/vp163/4203.png"
+            }
+          ],
+          "missing": null
+        },
+        {
+          "id": "ex-4.3",
+          "number": "4.3",
+          "title": "Эскизная реализация варианта использования «Зарегистрироваться на курсы»",
+          "type": "sequence",
+          "text": "course/text/ex-4.3.md",
+          "figure": "course/figures/4303.uml.json",
+          "figureNo": "4.3.3",
+          "original": "reference/vp163/4303.png",
+          "figures": [
+            {
+              "figure": "4301",
+              "figureNo": "4.3.1",
+              "type": "class",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 7,
+              "relationships": 3,
+              "caption": "UML-диаграмма классов VOPC RegisterForCourses (для всех вариантов) (работа над диаграммой не завершена!)",
+              "note": "Пять классов анализа VOPC RegisterForCourses, без ассоциаций",
+              "model": "course/figures/4301.uml.json",
+              "original": "reference/vp163/4301.png"
+            },
+            {
+              "figure": "4302",
+              "figureNo": "4.3.2",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 8,
+              "relationships": 10,
+              "caption": "Начальный вид UML-диаграммы последовательности RegisterForCourses Basic Flow (для всех вариантов) (работа над диаграммой не завершена!)",
+              "note": "Основной поток регистрации: фрагменты opt и alt, создание curStud, сообщение open",
+              "model": "course/figures/4302.uml.json",
+              "original": "reference/vp163/4302.png"
+            },
+            {
+              "figure": "4303",
+              "figureNo": "4.3.3",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 13,
+              "relationships": 10,
+              "caption": "Окончательный вид UML-диаграммы последовательности RegisterForCourses Basic Flow (для всех вариантов)",
+              "note": "То же плюс вложенный alt с четырьмя операндами и ссылками на подчинённые потоки",
+              "model": "course/figures/4303.uml.json",
+              "original": "reference/vp163/4303.png"
+            }
+          ],
+          "missing": null
+        },
+        {
+          "id": "ex-4.3.A",
+          "number": "4.3.A",
+          "title": "Моделирование подчинённых потоков CreateSchedule Subflow и DisplayCourseOfferings Subflow",
+          "type": "sequence",
+          "text": "course/text/ex-4.3.A.md",
+          "figure": "course/figures/4304.uml.json",
+          "figureNo": "4.3.4",
+          "original": "reference/vp163/4304.png",
+          "figures": [
+            {
+              "figure": "4304",
+              "figureNo": "4.3.4",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 9,
+              "relationships": 13,
+              "caption": "UML-диаграмма последовательности CreateSchedule Subflow (для вариантов 1 и 3)",
+              "note": "Подчинённый поток создания плана: фрагмент opt, создающее сообщение new, множественная линия жизни cOff[i], ссылка на DisplayCourseOfferings Subflow",
+              "model": "course/figures/4304.uml.json",
+              "original": "reference/vp163/4304.png"
+            },
+            {
+              "figure": "4305",
+              "figureNo": "4.3.5",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 4,
+              "relationships": 4,
+              "caption": "UML-диаграмма последовательности DisplayCourseOfferings Subflow (для вариантов 1 и 3)",
+              "note": "Подчинённый поток вывода списка курсов: фрагмент loop (цикл for) со сторожевым условием",
+              "model": "course/figures/4305.uml.json",
+              "original": "reference/vp163/4305.png"
+            }
+          ],
+          "missing": null
+        },
+        {
+          "id": "ex-4.3.B",
+          "number": "4.3.B",
+          "title": "Уточнение диаграммы классов VOPC RegisterForCourses в соответствии с рисунком 4.3.6",
+          "type": "class",
+          "text": "course/text/ex-4.3.B.md",
+          "figure": "course/figures/4306.uml.json",
+          "figureNo": "4.3.6",
+          "original": "reference/vp163/4306.png",
+          "figures": [
+            {
+              "figure": "4306",
+              "figureNo": "4.3.6",
+              "type": "class",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 9,
+              "relationships": 12,
+              "caption": "Итоговый вид UML-диаграммы классов VOPC RegisterForCourses в Analysis Model (для всех вариантов)",
+              "note": "Итоговая диаграмма классов регистрации: операции, выводимый numStudents, FullTimeStudent/PartTimeStudent, набор обобщений {complete, disjoint}",
+              "model": "course/figures/4306.uml.json",
+              "original": "reference/vp163/4306.png"
+            }
+          ],
+          "missing": null
+        },
+        {
+          "id": "ex-4.3.C",
+          "number": "4.3.C",
+          "title": "Моделирование подчинённого потока DeleteSchedule Subflow",
+          "type": "sequence",
+          "text": "course/text/ex-4.3.C.md",
+          "figure": "course/figures/4307.uml.json",
+          "figureNo": "4.3.7",
+          "original": "reference/vp163/4307.png",
+          "figures": [
+            {
+              "figure": "4307",
+              "figureNo": "4.3.7",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 11,
+              "relationships": 14,
+              "caption": "UML-диаграмма последовательности DeleteSchedule Subflow (для вариантов 2 и 4)",
+              "note": "Подчинённый поток удаления плана: восемь линий жизни, фрагменты loop, ссылка на DisplayCourseOfferings Subflow, завершённая линия жизни",
+              "model": "course/figures/4307.uml.json",
+              "original": "reference/vp163/4307.png"
+            }
+          ],
+          "missing": null
+        },
+        {
+          "id": "ex-4.4",
+          "number": "4.4",
+          "title": "Эскизная реализация варианта использования «Закрыть регистрацию»",
+          "type": "sequence",
+          "text": "course/text/ex-4.4.md",
+          "figure": "course/figures/4402.uml.json",
+          "figureNo": "4.4.2",
+          "original": "reference/vp163/4402.png",
+          "figures": [
+            {
+              "figure": "4401",
+              "figureNo": "4.4.1",
+              "type": "class",
+              "group": "diagram",
+              "reproducible": "да",
+              "elements": 7,
+              "relationships": 3,
+              "caption": "Начальный вариант UML-диаграммы классов VOPC CloseRegistration (для всех вариантов) (работа с диаграммой не завершена)",
+              "note": "Шесть классов анализа VOPC CloseRegistration, без ассоциаций",
+              "model": "course/figures/4401.uml.json",
+              "original": "reference/vp163/4401.png"
+            },
+            {
+              "figure": "4402",
+              "figureNo": "4.4.2",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 11,
+              "relationships": 12,
+              "caption": "UML-диаграмма последовательности TransferSchedulesData Subflow (для всех вариантов)",
+              "note": "Передача данных в расчётную систему: семь линий жизни (три множественные), фрагменты opt и loop, длительные и асинхронные сообщения",
+              "model": "course/figures/4402.uml.json",
+              "original": "reference/vp163/4402.png"
+            },
+            {
+              "figure": "4403",
+              "figureNo": "4.4.3",
+              "type": "class",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 7,
+              "relationships": 8,
+              "caption": "Итоговая версия UML-диаграммы классов VOPC CloseRegistration в Analysis Model (для всех вариантов)",
+              "note": "Те же классы с ассоциациями и полными списками операций DataAccess и BillingSystem",
+              "model": "course/figures/4403.uml.json",
+              "original": "reference/vp163/4403.png"
+            }
+          ],
+          "missing": null
+        }
+      ]
+    },
+    {
+      "id": "ch5",
+      "number": "5",
+      "title": "Проектная UML-модель создаваемой системы",
+      "intro": "course/text/ch5-intro.md",
+      "exercises": [
+        {
+          "id": "ex-5.1",
+          "number": "5.1",
+          "title": "Проектная архитектура системы регистрации на курсы",
+          "type": "deployment",
+          "text": "course/text/ex-5.1.md",
+          "figure": "course/figures/5106.uml.json",
+          "figureNo": "5.1.6",
+          "original": "reference/vp163/5106.png",
+          "figures": [
+            {
+              "figure": "5101",
+              "figureNo": "5.1.1",
+              "type": "package",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 5,
+              "relationships": 6,
+              "caption": "UML-диаграмма пакетов Main (для всех вариантов)",
+              "note": "Три архитектурных уровня «layer», пакеты механизмов RemoteInterchange и Persistency, зависимости между ними",
+              "model": "course/figures/5101.uml.json",
+              "original": "reference/vp163/5101.png"
+            },
+            {
+              "figure": "5102",
+              "figureNo": "5.1.2",
+              "type": "none",
+              "group": "ui",
+              "reproducible": "нет",
+              "elements": 0,
+              "relationships": 0,
+              "caption": "Структура проектной модели (для всех вариантов)",
+              "note": "Дерево Model Explorer проектной модели: пакеты-подсистемы DBAccess и BSAccess со стереотипом «subsystem», их содержимое, вкладка Template Parameters.",
+              "model": null,
+              "original": "reference/vp163/5102.png"
+            },
+            {
+              "figure": "5103",
+              "figureNo": "5.1.3",
+              "type": "composite",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 6,
+              "relationships": 3,
+              "caption": "UML-диаграмма составной структуры Design Use Case Realizations (для всех вариантов)",
+              "note": "Части-кооперации Design… внутри Design Use Case Realizations и связи между ними",
+              "model": "course/figures/5103.uml.json",
+              "original": "reference/vp163/5103.png"
+            },
+            {
+              "figure": "5104",
+              "figureNo": "5.1.4",
+              "type": "package",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 5,
+              "relationships": 7,
+              "caption": "UML-диаграмма пакетов Dependencies. Связи подпакетов уровня Application (для всех вариантов)",
+              "note": "Пакеты уровней Application и BusinessServices, зависимости от интерфейсов и классов-артефактов",
+              "model": "course/figures/5104.uml.json",
+              "original": "reference/vp163/5104.png"
+            },
+            {
+              "figure": "5105",
+              "figureNo": "5.1.5",
+              "type": "package",
+              "group": "diagram",
+              "reproducible": "да",
+              "elements": 4,
+              "relationships": 5,
+              "caption": "Структура уровня BusinessServices (для всех вариантов)",
+              "note": "Пакеты уровня BusinessServices: Interfaces, UniversityArtefacts, подсистемы DBAccess и BSAccess с зависимостями",
+              "model": "course/figures/5105.uml.json",
+              "original": "reference/vp163/5105.png"
+            },
+            {
+              "figure": "5106",
+              "figureNo": "5.1.6",
+              "type": "deployment",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 13,
+              "relationships": 6,
+              "caption": "UML-диаграмма размещения Main (для всех вариантов)",
+              "note": "Типы узлов: среды выполнения с компонентами-процессами, устройства, пути коммуникации",
+              "model": "course/figures/5106.uml.json",
+              "original": "reference/vp163/5106.png"
+            },
+            {
+              "figure": "5107",
+              "figureNo": "5.1.7",
+              "type": "deployment",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 8,
+              "relationships": 7,
+              "caption": "UML-диаграмма размещения Installation Example (для всех вариантов)",
+              "note": "Восемь экземпляров узлов с типами и соединения между ними",
+              "model": "course/figures/5107.uml.json",
+              "original": "reference/vp163/5107.png"
+            }
+          ],
+          "missing": null
+        },
+        {
+          "id": "ex-5.2.A",
+          "number": "5.2.A",
+          "title": "Уточнение реализации варианта использования «Войти в систему»",
+          "type": "sequence",
+          "text": "course/text/ex-5.2.A.md",
+          "figure": "course/figures/5201.uml.json",
+          "figureNo": "5.2.1",
+          "original": "reference/vp163/5201.png",
+          "figures": [
+            {
+              "figure": "5201",
+              "figureNo": "5.2.1",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 8,
+              "relationships": 10,
+              "caption": "Уточнённая UML-диаграмма последовательности Design Login Basic Flow (для всех вариантов)",
+              "note": "Проектная версия входа: dao:IDBAccess со стереотипом «interface», без сообщения new()",
+              "model": "course/figures/5201.uml.json",
+              "original": "reference/vp163/5201.png"
+            }
+          ],
+          "missing": null
+        },
+        {
+          "id": "ex-5.2.B",
+          "number": "5.2.B",
+          "title": "Уточнение реализации основного сценария варианта использования «Зарегистрироваться на курсы»",
+          "type": "sequence",
+          "text": "course/text/ex-5.2.B.md",
+          "figure": "course/figures/5202.uml.json",
+          "figureNo": "5.2.2",
+          "original": "reference/vp163/5202.png",
+          "figures": [
+            {
+              "figure": "5202",
+              "figureNo": "5.2.2",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 13,
+              "relationships": 8,
+              "caption": "Уточнённая UML-диаграмма последовательности Design RegisterForCourses Basic Flow (для всех вариантов)",
+              "note": "Проектная версия основного потока регистрации: dao:IDBAccess, без new(), со ссылками на подчинённые потоки",
+              "model": "course/figures/5202.uml.json",
+              "original": "reference/vp163/5202.png"
+            }
+          ],
+          "missing": null
+        },
+        {
+          "id": "ex-5.2.C",
+          "number": "5.2.C",
+          "title": "Уточнение реализации подчинённого сценария TransferSchedulesData Subflow варианта использования «Закрыть регистрацию»",
+          "type": "sequence",
+          "text": "course/text/ex-5.2.C.md",
+          "figure": "course/figures/5203.uml.json",
+          "figureNo": "5.2.3",
+          "original": "reference/vp163/5203.png",
+          "figures": [
+            {
+              "figure": "5203",
+              "figureNo": "5.2.3",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 7,
+              "relationships": 8,
+              "caption": "Уточнённая UML-диаграмма последовательности Design TransferSchedulesData Subflow (для всех вариантов)",
+              "note": "Проектная версия передачи данных: dao:IDBAccess и bs:IBSAccess, линии жизни cOff[j] и Расчётная система удалены",
+              "model": "course/figures/5203.uml.json",
+              "original": "reference/vp163/5203.png"
+            }
+          ],
+          "missing": null
+        },
+        {
+          "id": "ex-5.2.D",
+          "number": "5.2.D",
+          "title": "Уточнение реализаций подчинённых сценариев CreateSchedule Subflow, DisplayCourseOfferings Subflow, DeleteSchedule Subflow варианта использования «Зарегистрироваться на курсы»",
+          "type": "sequence",
+          "text": "course/text/ex-5.2.D.md",
+          "figure": "course/figures/5206.uml.json",
+          "figureNo": "5.2.6",
+          "original": "reference/vp163/5206.png",
+          "figures": [
+            {
+              "figure": "5204",
+              "figureNo": "5.2.4",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 9,
+              "relationships": 12,
+              "caption": "Уточнённая UML-диаграмма последовательности Design CreateSchedule Subflow (для вариантов 1 и 3)",
+              "note": "Проектная версия создания плана: стереотипы анализа сняты, линия жизни интерфейса помечена «interface»",
+              "model": "course/figures/5204.uml.json",
+              "original": "reference/vp163/5204.png"
+            },
+            {
+              "figure": "5205",
+              "figureNo": "5.2.5",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 4,
+              "relationships": 4,
+              "caption": "Уточнённая UML-диаграмма последовательности Design DisplayCourseOfferings Subflow (для вариантов 1 и 3)",
+              "note": "Проектная версия вывода списка курсов: фрагмент loop, стереотипы анализа сняты",
+              "model": "course/figures/5205.uml.json",
+              "original": "reference/vp163/5205.png"
+            },
+            {
+              "figure": "5206",
+              "figureNo": "5.2.6",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 11,
+              "relationships": 14,
+              "caption": "Уточнённая UML-диаграмма последовательности DeleteSchedule Subflow (для вариантов 2 и 4)",
+              "note": "Проектная версия удаления плана: без стереотипов анализа, dao:IDBAccess",
+              "model": "course/figures/5206.uml.json",
+              "original": "reference/vp163/5206.png"
+            }
+          ],
+          "missing": null
+        },
+        {
+          "id": "ex-5.2.F",
+          "number": "5.2.F",
+          "title": "Проектирование подсистемы DBAccess на основе механизма JDBC",
+          "type": "class",
+          "text": "course/text/ex-5.2.F.md",
+          "figure": "course/figures/5208.uml.json",
+          "figureNo": "5.2.8",
+          "original": "reference/vp163/5208.png",
+          "figures": [
+            {
+              "figure": "5207",
+              "figureNo": "5.2.7",
+              "type": "package",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 5,
+              "relationships": 7,
+              "caption": "UML-диаграмма пакетов в подсистеме `DBAccess` (для всех вариантов)",
+              "note": "Пакеты подсистемы DBAccess: зависимости к java::lang, java::util, java::sql и связывание шаблона «bind» с RDBMS-JDBC",
+              "model": "course/figures/5207.uml.json",
+              "original": "reference/vp163/5207.png"
+            },
+            {
+              "figure": "5208",
+              "figureNo": "5.2.8",
+              "type": "class",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 11,
+              "relationships": 17,
+              "caption": "UML-диаграмма классов подсистемы `DBAccess` (для всех вариантов)",
+              "note": "Классы подсистемы DBAccess: IDBAccess, DBAccess («subsystem proxy»), зависимости к Student, User, CourseOfferingList, реализация интерфейса",
+              "model": "course/figures/5208.uml.json",
+              "original": "reference/vp163/5208.png"
+            },
+            {
+              "figure": "5209",
+              "figureNo": "5.2.9",
+              "type": "none",
+              "group": "ui",
+              "reproducible": "нет",
+              "elements": 0,
+              "relationships": 0,
+              "caption": "Структура подсистемы `DBAccess` в Model Explorer (для всех вариантов)",
+              "note": "Дерево подсистемы DBAccess: интерфейсы, классы и диаграммы, разложенные по пакетам.",
+              "model": null,
+              "original": "reference/vp163/5209.png"
+            },
+            {
+              "figure": "5210",
+              "figureNo": "5.2.10",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 3,
+              "relationships": 5,
+              "caption": "UML-диаграмма последовательности, описывающая реализацию операции init() в подсистеме `DBAccess` (для всех вариантов)",
+              "note": "Реализация init(): одна линия жизни db:DBAccess, потерянное сообщение-возврат",
+              "model": "course/figures/5210.uml.json",
+              "original": "reference/vp163/5210.png"
+            },
+            {
+              "figure": "5211",
+              "figureNo": "5.2.11",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "да",
+              "elements": 3,
+              "relationships": 2,
+              "caption": "UML-диаграмма последовательности, описывающая реализацию операции close() в подсистеме `DBAccess` (для всех вариантов)",
+              "note": "Реализация close(): одна линия жизни db:DBAccess и входящее сообщение",
+              "model": "course/figures/5211.uml.json",
+              "original": "reference/vp163/5211.png"
+            },
+            {
+              "figure": "5212",
+              "figureNo": "5.2.12",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 8,
+              "relationships": 19,
+              "caption": "UML-диаграмма последовательности, описывающая реализацию операции getCourseOfferingList() в подсистеме `DBAccess` (для вариантов 1 и 2)",
+              "note": "Реализация getCourseOfferingList(): db:DBAccess, list:CourseOfferingList, rs:ResultSet, obj:CourseOffering, сеттеры",
+              "model": "course/figures/5212.uml.json",
+              "original": "reference/vp163/5212.png"
+            },
+            {
+              "figure": "5213",
+              "figureNo": "5.2.13",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 8,
+              "relationships": 12,
+              "caption": "UML-диаграмма последовательности, описывающая реализацию операции updateStudent(st:Student) в подсистеме `DBAccess` (для вариантов 3 и 4)",
+              "note": "Реализация updateStudent(): пять линий жизни, комбинированные фрагменты, сообщение getId():long",
+              "model": "course/figures/5213.uml.json",
+              "original": "reference/vp163/5213.png"
+            }
+          ],
+          "missing": null
+        },
+        {
+          "id": "ex-5.2.G",
+          "number": "5.2.G",
+          "title": "Проектирование подсистемы BSAccess на основе механизма XMLRPCInterchange",
+          "type": "sequence",
+          "text": "course/text/ex-5.2.G.md",
+          "figure": "course/figures/5218.uml.json",
+          "figureNo": "5.2.18",
+          "original": "reference/vp163/5218.png",
+          "figures": [
+            {
+              "figure": "5214",
+              "figureNo": "5.2.14",
+              "type": "package",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 4,
+              "relationships": 5,
+              "caption": "UML-диаграмма пакетов подсистемы BSAccess (для всех вариантов)",
+              "note": "Пакеты подсистемы BSAccess: зависимости к java::net и org::apache::xmlrpc, связывание шаблона с XMLRPCInterchange",
+              "model": "course/figures/5214.uml.json",
+              "original": "reference/vp163/5214.png"
+            },
+            {
+              "figure": "5215",
+              "figureNo": "5.2.15",
+              "type": "class",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 6,
+              "relationships": 6,
+              "caption": "UML-диаграмма классов подсистемы BSAccess (для всех вариантов)",
+              "note": "Классы подсистемы BSAccess: IBSAccess, BSAccess («subsystem proxy»), XmlRpcClient, зависимость от CourseOffering",
+              "model": "course/figures/5215.uml.json",
+              "original": "reference/vp163/5215.png"
+            },
+            {
+              "figure": "5216",
+              "figureNo": "5.2.16",
+              "type": "none",
+              "group": "ui",
+              "reproducible": "нет",
+              "elements": 0,
+              "relationships": 0,
+              "caption": "Структура подсистемы BSAccess в Model Explorer (для всех вариантов)",
+              "note": "Дерево подсистемы BSAccess в Model Explorer: интерфейсы, классы, диаграммы.",
+              "model": null,
+              "original": "reference/vp163/5216.png"
+            },
+            {
+              "figure": "5217",
+              "figureNo": "5.2.17",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "да",
+              "elements": 4,
+              "relationships": 6,
+              "caption": "UML-диаграмма последовательности, описывающая реализацию операции init() в подсистеме BSAccess (для всех вариантов)",
+              "note": "Реализация init() в BSAccess: одна линия жизни cn:BSAccess со стереотипом «subsystem proxy»",
+              "model": "course/figures/5217.uml.json",
+              "original": "reference/vp163/5217.png"
+            },
+            {
+              "figure": "5218",
+              "figureNo": "5.2.18",
+              "type": "sequence",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 6,
+              "relationships": 8,
+              "caption": "UML-диаграмма последовательности, описывающая реализацию операции sendStudentData() в подсистеме BSAccess (для всех вариантов)",
+              "note": "Реализация sendStudentData(): четыре линии жизни, фрагмент loop, toJSON():string, потерянное сообщение-возврат",
+              "model": "course/figures/5218.uml.json",
+              "original": "reference/vp163/5218.png"
+            }
+          ],
+          "missing": null
+        },
+        {
+          "id": "ex-5.2.H",
+          "number": "5.2.H",
+          "title": "Проектирование классов системы",
+          "type": "class",
+          "text": "course/text/ex-5.2.H.md",
+          "figure": "course/figures/5223.uml.json",
+          "figureNo": "5.2.23",
+          "original": "reference/vp163/5223.png",
+          "figures": [
+            {
+              "figure": "5219",
+              "figureNo": "5.2.19",
+              "type": "class",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 3,
+              "relationships": 2,
+              "caption": "UML-диаграмма классов Student (для всех вариантов)",
+              "note": "Иерархия Student с FullTimeStudent и PartTimeStudent, статические члены, геттеры и сеттеры",
+              "model": "course/figures/5219.uml.json",
+              "original": "reference/vp163/5219.png"
+            },
+            {
+              "figure": "5220",
+              "figureNo": "5.2.20",
+              "type": "state",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 10,
+              "relationships": 10,
+              "caption": "UML-диаграмма состояний Lifecycle класса CourseOffering (для всех вариантов)",
+              "note": "Состояния CourseOffering: композитное Active с регионами, Open, Closed, Canceled, два псевдосостояния выбора, переходы с триггерами",
+              "model": "course/figures/5220.uml.json",
+              "original": "reference/vp163/5220.png"
+            },
+            {
+              "figure": "5221",
+              "figureNo": "5.2.21",
+              "type": "activity",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 6,
+              "relationships": 4,
+              "caption": "UML-диаграмма деятельности для операции DBAccess::updateStudent (для вариантов 1 и 4)",
+              "note": "Диаграмма деятельности операции DBAccess::updateStudent со структурированными узлами и псевдокодом",
+              "model": "course/figures/5221.uml.json",
+              "original": "reference/vp163/5221.png"
+            },
+            {
+              "figure": "5222",
+              "figureNo": "5.2.22",
+              "type": "activity",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 5,
+              "relationships": 3,
+              "caption": "UML-диаграмма деятельности для операции RegistrationForm::createSchedule (для вариантов 2 и 3)",
+              "note": "Диаграмма деятельности операции RegistrationForm::createSchedule со структурированными узлами и псевдокодом",
+              "model": "course/figures/5222.uml.json",
+              "original": "reference/vp163/5222.png"
+            },
+            {
+              "figure": "5223",
+              "figureNo": "5.2.23",
+              "type": "class",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 12,
+              "relationships": 15,
+              "caption": "Уточнённая диаграмма классов Design VOPC RegisterForCourses (для всех вариантов)",
+              "note": "Проектная диаграмма классов регистрации: композиции, квалификатор, интерфейсы подсистем, метаморфоза подтипов",
+              "model": "course/figures/5223.uml.json",
+              "original": "reference/vp163/5223.png"
+            }
+          ],
+          "missing": null
+        },
+        {
+          "id": "ex-5.3",
+          "number": "5.3",
+          "title": "UML-диаграмма классов, моделирующая схему реляционной базы данных",
+          "type": "class",
+          "text": "course/text/ex-5.3.md",
+          "figure": "course/figures/5301.uml.json",
+          "figureNo": "5.3.1",
+          "original": "reference/vp163/5301.png",
+          "figures": [
+            {
+              "figure": "5301",
+              "figureNo": "5.3.1",
+              "type": "class",
+              "group": "diagram",
+              "reproducible": "частично",
+              "elements": 9,
+              "relationships": 11,
+              "caption": "Диаграмма классов DataBase Schema (для всех вариантов)",
+              "note": "Схема БД: девять таблиц со стереотипом «table», внешние ключи ассоциациями, каскадное удаление композицией",
+              "model": "course/figures/5301.uml.json",
+              "original": "reference/vp163/5301.png"
+            }
+          ],
+          "missing": null
+        }
+      ]
+    }
+  ]
+}

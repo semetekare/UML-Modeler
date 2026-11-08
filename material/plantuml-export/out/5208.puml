@@ -1,0 +1,103 @@
+@startuml
+title DBAccess
+class e2 as "DBAccess" <<subsystem proxy>> {
+  +init() : boolean
+  +close() : void
+  +getCourseOfferingList(semester : byte) : CourseOfferingList
+  +getStudentByUser(u : User) : Student
+  +getStudentList(semester : byte) : Student[]
+  +getUserByLogin(l : string) : User
+  +updateCourseOfferings(cOffs : CourseOffering[]) : boolean
+  +updateStudent(st : Student) : boolean
+}
+' source e2: image
+interface e1 as "IDBAccess" {
+  +init() : boolean
+  +close() : void
+  +getCourseOfferingList(semester : byte) : CourseOfferingList
+  +getStudentByUser(u : User) : Student
+  +getStudentList(semester : byte) : Student[]
+  +getUserByLogin(l : string) : User
+  +updateCourseOfferings(cOffs : CourseOffering[]) : boolean
+  +updateStudent(st : Student) : boolean
+}
+' source e1: image
+class e5 as "CourseOfferingList" {
+  +add(e : CourseOffering) : boolean
+  +add(index : int, e : CourseOffering) : void
+  +clear()
+  +clone() : Object
+  +contains(o : Object) : boolean
+  +equals(o : Object) : boolean
+  +get(index : int) : CourseOffering
+  +indexOf(o : Object) : int
+  +isEmpty() : boolean
+  +remove(index : int) : CourseOffering
+  +remove(o : Object) : boolean
+  +set(index : int, element : CourseOffering) : CourseOffering
+  +size() : int
+  +toString() : string
+}
+' source e5: image
+class e4 as "User"
+interface e7 as "Connection" <<Interface>> {
+  +close() : void
+  +createStatement() : Statement
+}
+' source e7: image
+class e3 as "Student"
+interface e8 as "Statement" <<Interface>> {
+  +executeQuery(sql : string) : ResultSet
+  +executeUpdate(sql : string) : int
+}
+' source e8: image
+class e6 as "DriverManager" {
+  +getConnection(url : string, user : string, password : string) : Connection
+}
+' source e6: image
+interface e9 as "ResultSet" <<Interface>> {
+  +first() : boolean
+  +getBoolean(columnLabel : string) : boolean
+  +getByte(columnLabel : string) : byte
+  +getDate(columnLabel : string) : Date
+  +getDouble(columnLabel : string) : double
+  +getFloat(columnLabel : string) : float
+  +getInt(columnLabel : string) : int
+  +getLong(columnLabel : string) : long
+  +getObject(columnLabel : string) : Object
+  +getShort(columnLabel : string) : short
+  +getString(columnLabel : string) : string
+  +getTime(columnLabel : string) : Time
+  +isAfterLast() : boolean
+  +isBeforeFirst() : boolean
+  +isFirst() : boolean
+  +isLast() : boolean
+  +last() : boolean
+  +next() : boolean
+  +previous() : boolean
+  +relative(rows : int) : boolean
+}
+' source e9: image
+class e10 as "CourseOffering"
+' source e10: image
+class e11 as "ArrayList<E>"
+' doc e11: параметризованный класс; параметр шаблона E виден на рисунке
+' source e11: image
+e2 ..|> e1
+e1 ..> e3
+e1 ..> e4
+e1 ..> e5
+e2 ..> e3
+e2 ..> e4
+e4 "1" *-- "0..1" e3
+e2 ..> e6
+e2 "0..1" -- "1" e7
+e2 ..> e8
+e2 ..> e5
+e2 ..> e9
+e6 ..> e7
+e7 ..> e8
+e8 ..> e9
+e5 ..> e10
+e5 ..> e11 : <<bind>>
+@enduml

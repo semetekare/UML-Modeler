@@ -1,0 +1,80 @@
+{
+  "upstream": {
+    "name": "archify",
+    "version": "3.0.1",
+    "license": "MIT",
+    "path_at_copy": "~/deepseek-harness/.dsh/pnpm-store/v11/tmp/_tmp_2059320_783c0e6bb589e8d488037cdd6ae086cc/archify",
+    "snapshot": "~/Документы/Craft Anything/archify-3.0.1-source",
+    "copied": "2026-11-07"
+  },
+  "layout": "paths kept identical to upstream so relative imports work untouched",
+  "files": {
+    "renderers/architecture/routing.mjs": {
+      "sha256": "b952b3ec0364827fa7fbff10a28e2a83f0ba11921c67f5ee224e5ef58c833cbb",
+      "bytes": 54784
+    },
+    "renderers/shared/desktop-readability.mjs": {
+      "sha256": "de68f2ed92573ae714659d556f97eca01296f4e0063b94c429370efcc38f909a",
+      "bytes": 6873
+    },
+    "renderers/shared/i18n.mjs": {
+      "sha256": "03f5356110a08b2cf684a484af5502bb392482de1ef61123707c6da2724c5201",
+      "bytes": 43162
+    },
+    "renderers/shared/layout-report.mjs": {
+      "sha256": "4b5fa6e1af2b2efdd57d7fac16359089a059a745cc19ad1595ba42c3e483aec7",
+      "bytes": 1130
+    },
+    "renderers/shared/diagnostics.node.mjs": {
+      "sha256": "d052a0e72eec2a2bf29c70dacdd3350100e2c76fc2627d14f79234077c571e3f",
+      "bytes": 6828
+    },
+    "renderers/shared/diagnostics.mjs": {
+      "sha256": "c1226a18def2cc125b3d8d6df47c8cd9677fe8120f6497cceb18994ca21ec707",
+      "bytes": 4418
+    },
+    "renderers/shared/utils.mjs": {
+      "sha256": "422b66c6945de473b1f96e4f3641339b6a24c8ccef60795a38ca2386e10bc26b",
+      "bytes": 12556
+    },
+    "renderers/shared/spatial-grid.mjs": {
+      "sha256": "e728bf6a729972f95ae09e368ea370490d10ff94d49debe2fab2e9bac923ee1a",
+      "bytes": 2440
+    },
+    "renderers/shared/geometry.mjs": {
+      "sha256": "36a6251eafb64c387a375cf0692d5a929d4490f8cbc01ea93be512c913f2ef5d",
+      "bytes": 83700
+    },
+    "renderers/shared/text-fit.mjs": {
+      "sha256": "ebd499072ef4fe31c9aabf45a01c204a9c2c142d45f087c3240673f90f477038",
+      "bytes": 5195
+    },
+    "renderers/shared/route-quality.mjs": {
+      "sha256": "0ae7e16210f8e00bb615da34d5323dee65efe52ceb11a40ea49fdd10b5257daa",
+      "bytes": 23585
+    }
+  },
+  "deviations": [
+    {
+      "file": "renderers/shared/diagnostics.mjs",
+      "kind": "replaced",
+      "what": "browser-safe replacement; original kept as diagnostics.node.mjs",
+      "why": "upstream imports node:fs and node:path at module top, which fails in a page",
+      "original_sha256": "d052a0e72eec2a2bf29c70dacdd3350100e2c76fc2627d14f79234077c571e3f",
+      "shim_sha256": "c1226a18def2cc125b3d8d6df47c8cd9677fe8120f6497cceb18994ca21ec707"
+    },
+    {
+      "file": "renderers/shared/geometry.mjs",
+      "kind": "one line patched",
+      "what": "process.env.ARCHIFY_QUALITY_PROFILE guarded with typeof process",
+      "why": "browser has no process; the read throws ReferenceError in 6 call sites",
+      "upstream_sha256": "b25d849e6e256b1eef37fa3bb88712d0617d6eb646a2355a934505fcaa9be75d",
+      "patched_sha256": "36a6251eafb64c387a375cf0692d5a929d4490f8cbc01ea93be512c913f2ef5d"
+    }
+  ],
+  "our_files": [
+    "geometry-adapter.mjs",
+    "selftest.mjs",
+    "README.md"
+  ]
+}

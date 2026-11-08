@@ -1,0 +1,401 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-corpus-5201",
+  "name": "Уточнённая UML-диаграмма последовательности Design Login Basic Flow",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Пользователь"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "lform:LoginForm"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "menu:MainMenuForm"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "lctrl:LoginController"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "dao:IDBAccess",
+      "stereotype": "interface"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "curUser:User"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "[getUserByLogin(l) != NULL]",
+      "documentation": "условие фрагмента opt; прочитано с рисунка",
+      "operator": "opt",
+      "source": "image"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "[curUser != NULL && curUser.checkPassword(pswrd) == TRUE] / [else]",
+      "documentation": "два операнда; условия прочитаны с рисунка",
+      "operator": "alt",
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "login(l : string, pswrd : string) : void",
+      "from": "e1",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "login(l : string, pswrd : string) : boolean",
+      "from": "e2",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "getUserByLogin(l : string) : User",
+      "from": "e4",
+      "to": "e5",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "reply",
+      "name": "result",
+      "from": "e5",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "message",
+      "name": "checkPassword(pswrd : string) : boolean",
+      "from": "e4",
+      "to": "e6",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "reply",
+      "name": "result",
+      "from": "e6",
+      "to": "e4",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "createMessage",
+      "name": "open(curUser)",
+      "from": "e4",
+      "to": "e3",
+      "note": "первый операнд alt",
+      "source": "image"
+    },
+    {
+      "id": "r8",
+      "kind": "message",
+      "name": "getType():UserType",
+      "from": "e3",
+      "to": "e6"
+    },
+    {
+      "id": "r9",
+      "kind": "message",
+      "name": "displayError(errorMsg : string) : void",
+      "from": "e4",
+      "to": "e2",
+      "note": "второй операнд alt",
+      "source": "image"
+    },
+    {
+      "id": "r10",
+      "kind": "destroyMessage",
+      "name": "close()",
+      "from": "e4",
+      "to": "e2",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Design Login Basic Flow",
+      "kind": "sequence",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 570
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 270,
+          "y": 60,
+          "w": 150,
+          "h": 570
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 480,
+          "y": 60,
+          "w": 150,
+          "h": 570
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 690,
+          "y": 60,
+          "w": 150,
+          "h": 570
+        },
+        {
+          "id": "s5",
+          "elementId": "e5",
+          "x": 900,
+          "y": 60,
+          "w": 150,
+          "h": 570
+        },
+        {
+          "id": "s6",
+          "elementId": "e6",
+          "x": 1110,
+          "y": 60,
+          "w": 150,
+          "h": 570
+        },
+        {
+          "id": "s7",
+          "elementId": "e7",
+          "x": 60,
+          "y": 150,
+          "w": 1200,
+          "h": 200
+        },
+        {
+          "id": "s8",
+          "elementId": "e8",
+          "x": 60,
+          "y": 390,
+          "w": 1200,
+          "h": 200
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right",
+            "t": 0.211
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left",
+            "t": 0.211
+          },
+          "y": 180
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.263
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.263
+          },
+          "y": 210
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.316
+          },
+          "to": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.316
+          },
+          "y": 240
+        },
+        {
+          "id": "l4",
+          "relId": "r4",
+          "from": {
+            "shapeId": "s5",
+            "side": "left",
+            "t": 0.368
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.368
+          },
+          "y": 270
+        },
+        {
+          "id": "l5",
+          "relId": "r5",
+          "from": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.421
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.421
+          },
+          "y": 300
+        },
+        {
+          "id": "l6",
+          "relId": "r6",
+          "from": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.632
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "right",
+            "t": 0.632
+          },
+          "y": 420
+        },
+        {
+          "id": "l7",
+          "relId": "r7",
+          "from": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.684
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.684
+          },
+          "y": 450
+        },
+        {
+          "id": "l8",
+          "relId": "r8",
+          "from": {
+            "shapeId": "s3",
+            "side": "right",
+            "t": 0.737
+          },
+          "to": {
+            "shapeId": "s6",
+            "side": "left",
+            "t": 0.737
+          },
+          "y": 480
+        },
+        {
+          "id": "l9",
+          "relId": "r9",
+          "from": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.789
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.789
+          },
+          "y": 510
+        },
+        {
+          "id": "l10",
+          "relId": "r10",
+          "from": {
+            "shapeId": "s4",
+            "side": "left",
+            "t": 0.842
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "right",
+            "t": 0.842
+          },
+          "y": 540
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1",
+  "unrepresented": [],
+  "source": {
+    "figure": "5201",
+    "figureNo": "5.2.1",
+    "exercise": "5.2.A",
+    "type": "sequence",
+    "diagramName": "Design Login Basic Flow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Уточнённая UML-диаграмма последовательности Design Login Basic Flow",
+    "notes": "Состав взят из упражнения 4.2 с правкой (сообщение new() удалено). Дословные подписи сообщений и сторожевые условия фрагментов opt ([getUserByLogin(l) != NULL]) и alt ([curUser != NULL && curUser.checkPassword(pswrd) == TRUE] / [else]) прочитаны с рисунка 5.2.1.",
+    "gaps": [
+      "сторожевые условия операндов в тексте не приведены — прочитаны с рисунка",
+      "сообщение new() удалено, но остальные сообщения текст не перечисляет заново — состав взят из упражнения 4.2 с учётом правки, подписи уточнены по рисунку",
+      "покрытие сообщений фрагментами не выражается"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "source.guards"
+    ],
+    "imageDerived": [
+      "e7",
+      "e8",
+      "r1",
+      "r10",
+      "r2",
+      "r3",
+      "r4",
+      "r5",
+      "r6",
+      "r7",
+      "r9"
+    ]
+  },
+  "sheet": {
+    "w": 1320,
+    "h": 690
+  }
+}

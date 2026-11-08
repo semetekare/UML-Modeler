@@ -1,0 +1,66 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-pseudostate-choice-vertex",
+  "name": "pseudostate_choice_vertex — у выбора нет исходящего перехода",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "state",
+      "name": "Проверка"
+    },
+    {
+      "id": "e2",
+      "kind": "choice",
+      "name": "",
+      "documentation": "Правило «pseudostate-choice-vertex»: UML 2.5.1, п. 14.5.6.7, констрейнт Pseudostate::choice_vertex: «In a complete statemachine, a choice Vertex must have at least one incoming and one outgoing Transition.»\nВход у выбора есть (r1), а выхода нет: выбор без исходящего перехода — тупик, а не выбор."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "transition",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "pseudostate_choice_vertex — у выбора нет исходящего перехода",
+      "kind": "state",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 30,
+          "h": 30
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

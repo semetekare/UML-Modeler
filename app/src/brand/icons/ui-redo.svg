@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <title>ui-redo</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <polyline points="15,6 19.5,10.5 15,15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M19.5 10.5 L10 10.5 C7.791 10.5 6 12.291 6 14.5 C6 16.709 7.791 18.5 10 18.5 L13 18.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

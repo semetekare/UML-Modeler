@@ -1,0 +1,1536 @@
+[
+  {
+    "id": "element-not-own-self",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "7.8.6.6",
+      "constraint": "Element::not_own_self",
+      "metaclass": "Element",
+      "name": "not_own_self",
+      "text": "Элемент не может прямо или косвенно владеть сам собой.",
+      "ocl": "inv: not allOwnedElements()->includes(self)",
+      "page": 44,
+      "file": "07-common-structure.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "package",
+        "model",
+        "profile",
+        "component",
+        "node",
+        "device",
+        "executionEnvironment",
+        "class",
+        "interface",
+        "artifact",
+        "state",
+        "activity"
+      ],
+      "scope": "containment"
+    },
+    "check": "element-own-self",
+    "message": "Элемент прямо или косвенно содержит сам себя",
+    "hint": "Владение в схеме двойное: `ownerId` и членство в регионе (регион принадлежит владельцу, его члены — тоже). Цикл по `ownerId` запрещает редактор и снимает загрузчик при открытии файла; цикл по членству в регионе загрузчик не снимает, и правило ловит его. Элемент не может быть своим собственным контейнером — прямо или через цепочку."
+  },
+  {
+    "id": "mult-upper-ge-lower",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "7.8.8.8",
+      "constraint": "MultiplicityElement::upper_ge_lower",
+      "metaclass": "MultiplicityElement",
+      "name": "upper_ge_lower",
+      "text": "The upper bound must be greater than or equal to the lower bound.",
+      "ocl": "inv: upperBound() >= lowerBound()",
+      "page": 47,
+      "file": "07-common-structure.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "multiplicity": true,
+      "relationship": [
+        "association"
+      ]
+    },
+    "check": "multiplicity-upper-ge-lower",
+    "message": "Верхняя граница кратности меньше нижней",
+    "hint": "Верхняя граница должна быть больше или равна нижней (например 0..1, 1..*, 2..5)"
+  },
+  {
+    "id": "mult-lower-non-negative",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "7.8.8.8",
+      "constraint": "MultiplicityElement::lower_ge_0",
+      "metaclass": "MultiplicityElement",
+      "name": "lower_ge_0",
+      "text": "The lower bound must be a non-negative integer literal.",
+      "ocl": "inv: lowerBound() >= 0",
+      "page": 47,
+      "file": "07-common-structure.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "multiplicity": true,
+      "relationship": [
+        "association"
+      ]
+    },
+    "check": "multiplicity-lower-non-negative",
+    "message": "Нижняя граница кратности отрицательна",
+    "hint": "Нижняя граница кратности — неотрицательное целое число"
+  },
+  {
+    "id": "mult-lower-is-integer",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "7.8.8.8",
+      "constraint": "MultiplicityElement::lower_is_integer",
+      "metaclass": "MultiplicityElement",
+      "name": "lower_is_integer",
+      "text": "If it is not empty, then lowerValue must have an Integer value.",
+      "ocl": "inv: lowerValue <> null implies lowerValue.integerValue() <> null",
+      "page": 47,
+      "file": "07-common-structure.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "multiplicity": true
+    },
+    "check": "multiplicity-lower-integer",
+    "message": "Нижняя граница кратности не является целым числом",
+    "hint": "Нижняя граница должна быть целочисленным литералом"
+  },
+  {
+    "id": "mult-upper-is-unlimited-natural",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "7.8.8.8",
+      "constraint": "MultiplicityElement::upper_is_unlimitedNatural",
+      "metaclass": "MultiplicityElement",
+      "name": "upper_is_unlimitedNatural",
+      "text": "If it is not empty, then upperValue must have an UnlimitedNatural value.",
+      "ocl": "inv: upperValue <> null implies upperValue.unlimitedValue() <> null",
+      "page": 47,
+      "file": "07-common-structure.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "multiplicity": true
+    },
+    "check": "multiplicity-upper-unlimited-natural",
+    "message": "Верхняя граница кратности не является целым числом или «*»",
+    "hint": "Верхняя граница — целое число или «*» (неограниченно)"
+  },
+  {
+    "id": "namespace-members-distinguishable",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "7.8.10.7",
+      "constraint": "Namespace::members_distinguishable",
+      "metaclass": "Namespace",
+      "name": "members_distinguishable",
+      "text": "All the members of a Namespace are distinguishable within it.",
+      "ocl": "inv: membersAreDistinguishable()",
+      "page": 51,
+      "file": "07-common-structure.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "warning",
+    "appliesTo": {
+      "element": [
+        "class",
+        "interface",
+        "enumeration",
+        "package",
+        "component",
+        "node"
+      ],
+      "scope": "namespace"
+    },
+    "check": "namespace-members-distinguishable",
+    "message": "В одном пространстве имён есть неразличимые члены",
+    "hint": "Переименуйте члены: имена членов одного владельца должны различаться"
+  },
+  {
+    "id": "generalization-compatible-kinds",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "9.9.4.8",
+      "constraint": "Classifier::specialize_type",
+      "metaclass": "Classifier",
+      "name": "specialize_type",
+      "text": "A Classifier may only specialize Classifiers of a valid type.",
+      "ocl": "inv: parents()->forAll(c | self.maySpecializeType(c))",
+      "page": 136,
+      "file": "09-classification.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "warning",
+    "appliesTo": {
+      "relationship": [
+        "generalization"
+      ]
+    },
+    "check": "generalization-compatible-kinds",
+    "message": "Обобщение связывает элементы несовместимых видов",
+    "hint": "Обобщение допустимо между элементами одного вида или от частного к общему (класс → класс, интерфейс → интерфейс, перечисление → перечисление)"
+  },
+  {
+    "id": "generalization-cycle",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "9.9.4.8",
+      "constraint": "Classifier::no_cycles_in_generalization",
+      "metaclass": "Classifier",
+      "name": "no_cycles_in_generalization",
+      "text": "Generalization hierarchies must be directed and acyclical. A Classifier can not be both a transitively general and transitively specific Classifier of the same Classifier.",
+      "ocl": "inv: not allParents()->includes(self)",
+      "page": 136,
+      "file": "09-classification.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "relationship": [
+        "generalization"
+      ]
+    },
+    "check": "generalization-cycle",
+    "message": "Цикл в иерархии обобщения",
+    "hint": "Класс не может быть собственным предком; удалите лишнее обобщение"
+  },
+  {
+    "id": "composite-upper-bound-le-1",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "9.9.17.8",
+      "constraint": "Property::multiplicity_of_composite",
+      "metaclass": "Property",
+      "name": "multiplicity_of_composite",
+      "text": "A multiplicity on the composing end of a composite aggregation must not have an upper bound greater than 1.",
+      "ocl": "inv: isComposite and association <> null implies opposite.upperBound() <= 1",
+      "page": 152,
+      "file": "09-classification.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "relationship": [
+        "composition"
+      ],
+      "multiplicity": true
+    },
+    "check": "composite-end-upper-bound",
+    "message": "Верхняя граница кратности композиции больше 1",
+    "hint": "У конца композиции верхняя граница должна быть не больше 1"
+  },
+  {
+    "id": "interface-feature-visibility-public",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "10.5.5.5",
+      "constraint": "Interface::visibility",
+      "metaclass": "Interface",
+      "name": "visibility",
+      "text": "The visibility of all Features owned by an Interface must be public.",
+      "ocl": "inv: feature->forAll(visibility = VisibilityKind::public)",
+      "page": 177,
+      "file": "10-simple-classifiers.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "interface"
+      ],
+      "member": [
+        "attribute",
+        "operation"
+      ]
+    },
+    "check": "interface-feature-visibility",
+    "message": "У члена интерфейса видимость не public",
+    "hint": "Все атрибуты и операции интерфейса должны быть public"
+  },
+  {
+    "id": "association-aggregation-binary-only",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "11.8.1.8",
+      "constraint": "Association::binary_associations",
+      "metaclass": "Association",
+      "name": "binary_associations",
+      "text": "Only binary Associations can be aggregations.",
+      "ocl": "inv: memberEnd->exists(aggregation <> AggregationKind::none) implies (memberEnd->size() = 2\nand memberEnd->exists(aggregation = AggregationKind::none))",
+      "page": 220,
+      "file": "11-structured-classifiers.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "relationship": [
+        "association",
+        "aggregation",
+        "composition"
+      ]
+    },
+    "check": "aggregation-binary-only",
+    "message": "Агрегация или композиция на небинарной ассоциации",
+    "hint": "Агрегация и композиция допустимы только для ассоциации ровно с двумя концами"
+  },
+  {
+    "id": "association-end-typed",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "11.8.1.8",
+      "constraint": "Association::ends_must_be_typed",
+      "metaclass": "Association",
+      "name": "ends_must_be_typed",
+      "text": "(no prose description in the specification; the constraint is given only as OCL)",
+      "ocl": "inv: memberEnd->forAll(type->notEmpty())",
+      "page": 220,
+      "file": "11-structured-classifiers.md",
+      "textMissing": true,
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "relationship": [
+        "association",
+        "aggregation",
+        "composition"
+      ],
+      "role": true
+    },
+    "check": "association-end-typed",
+    "message": "У конца ассоциации не указан тип",
+    "hint": "Каждый конец ассоциации должен быть типизирован классом или другим классификатором"
+  },
+  {
+    "id": "component-no-nested-classifier",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "11.8.6.7",
+      "constraint": "Component::no_nested_classifiers",
+      "metaclass": "Component",
+      "name": "no_nested_classifiers",
+      "text": "Компонент не может вкладывать классификаторы.",
+      "ocl": "inv: nestedClassifier->isEmpty()",
+      "page": 225,
+      "file": "11-structured-classifiers.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "component"
+      ],
+      "scope": "containment"
+    },
+    "check": "component-nested-classifier",
+    "message": "У компонента внутри класса есть вложенные классификаторы",
+    "hint": "Компонент, который лежит внутри класса, — часть класса, и классификаторов внутри него нет. Границы: компонент верхнего уровня — норма; компонент внутри компонента — тоже норма (ближайший контейнер-классификатор — компонент, а не класс). Промежуточный пакет картину не меняет: пакет — пространство имён, а не классификатор, и компонент в пакете внутри класса всё равно часть класса."
+  },
+  {
+    "id": "package-element-visibility",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "12.4.5.8",
+      "constraint": "Package::elements_public_or_private",
+      "metaclass": "Package",
+      "name": "elements_public_or_private",
+      "text": "If an element that is owned by a package has visibility, it is public or private.",
+      "ocl": "inv: packagedElement->forAll(e | e.visibility<> null implies e.visibility =\nVisibilityKind::public or e.visibility = VisibilityKind::private)",
+      "page": 278,
+      "file": "12-packages.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "package"
+      ],
+      "scope": "namespace"
+    },
+    "check": "package-element-visibility",
+    "message": "У элемента пакета видимость не public и не private",
+    "hint": "Элементы пакета могут быть только public или private"
+  },
+  {
+    "id": "stereotype-binary-association",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "12.4.9.6",
+      "constraint": "Stereotype::binaryAssociationsOnly",
+      "metaclass": "Stereotype",
+      "name": "binaryAssociationsOnly",
+      "text": "Stereotypes may only participate in binary associations.",
+      "ocl": "inv: ownedAttribute.association->forAll(memberEnd->size()=2)",
+      "page": 280,
+      "file": "12-packages.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "stereotype": true,
+      "relationship": [
+        "association"
+      ]
+    },
+    "check": "stereotype-binary-association",
+    "message": "Стереотип участвует в небинарной ассоциации",
+    "hint": "Стереотип может участвовать только в бинарных ассоциациях"
+  },
+  {
+    "id": "stereotype-generalizes-stereotype",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "12.4.9.6",
+      "constraint": "Stereotype::generalize",
+      "metaclass": "Stereotype",
+      "name": "generalize",
+      "text": "A Stereotype may only generalize or specialize another Stereotype.",
+      "ocl": "inv: allParents()->forAll(oclIsKindOf(Stereotype))\nand Classifier.allInstances()->forAll(c | c.allParents()->exists(oclIsKindOf(Stereotype))\nimplies c.oclIsKindOf(Stereotype))",
+      "page": 280,
+      "file": "12-packages.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "stereotype": true,
+      "relationship": [
+        "generalization"
+      ]
+    },
+    "check": "stereotype-generalizes-stereotype",
+    "message": "Стереотип обобщает не стереотип",
+    "hint": "Стереотип может обобщать или специализировать только другой стереотип"
+  },
+  {
+    "id": "transition-same-container",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "14.5.11.8",
+      "constraint": "Transition::transition_vertices",
+      "metaclass": "Transition",
+      "name": "transition_vertices",
+      "text": "The source and target Vertices of a Transition must be contained in the same StateMachine as the Transition.",
+      "ocl": "inv: let stateMachine = self.containingStateMachine() in\nsource.containingStateMachine() = stateMachine and\ntarget.containingStateMachine() = stateMachine",
+      "page": 362,
+      "file": "14-statemachines.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "warning",
+    "appliesTo": {
+      "relationship": [
+        "transition"
+      ],
+      "element": [
+        "state"
+      ]
+    },
+    "check": "transition-same-container",
+    "message": "Переход соединяет состояния из разных контейнеров",
+    "hint": "Источник и цель перехода должны принадлежать той же машине состояний, что и сам переход"
+  },
+  {
+    "id": "actor-association-targets",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "18.2.1.4",
+      "constraint": "Actor::associations",
+      "metaclass": "Actor",
+      "name": "associations",
+      "text": "An Actor can only have Associations to UseCases, Components, and Classes. Furthermore these Associations must be binary.",
+      "ocl": "inv: Association.allInstances()->forAll( a |\na.memberEnd->collect(type)->includes(self) implies\n(\na.memberEnd->size() = 2 and\nlet actorEnd : Property = a.memberEnd->any(type = self) in\nactorEnd.opposite.class.oclIsKindOf(UseCase) or\n( actorEnd.opposite.class.oclIsKindOf(Class) and not\nactorEnd.opposite.class.oclIsKindOf(Behavior))\n)\n)",
+      "page": 647,
+      "file": "18-usecases.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "actor"
+      ],
+      "relationship": [
+        "association"
+      ]
+    },
+    "check": "actor-association-targets",
+    "message": "Актёр связан ассоциацией с недопустимым элементом",
+    "hint": "Актёр может иметь ассоциации только с вариантами использования, компонентами и классами, и только бинарные"
+  },
+  {
+    "id": "actor-must-have-name",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "18.2.1.4",
+      "constraint": "Actor::must_have_name",
+      "metaclass": "Actor",
+      "name": "must_have_name",
+      "text": "An Actor must have a name.",
+      "ocl": "inv: name->notEmpty()",
+      "page": 647,
+      "file": "18-usecases.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "actor"
+      ]
+    },
+    "check": "actor-must-have-name",
+    "message": "У актёра нет имени",
+    "hint": "Дайте актёру имя: безымянный актёр недопустим"
+  },
+  {
+    "id": "usecase-binary-association",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "18.2.5.6",
+      "constraint": "UseCase::binary_associations",
+      "metaclass": "UseCase",
+      "name": "binary_associations",
+      "text": "UseCases can only be involved in binary Associations.",
+      "ocl": "inv: Association.allInstances()->forAll(a | a.memberEnd.type->includes(self) implies\na.memberEnd->size() = 2)",
+      "page": 650,
+      "file": "18-usecases.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "usecase"
+      ],
+      "relationship": [
+        "association"
+      ]
+    },
+    "check": "usecase-binary-association",
+    "message": "Вариант использования участвует в небинарной ассоциации",
+    "hint": "Вариант использования может участвовать только в бинарных ассоциациях"
+  },
+  {
+    "id": "usecase-no-association-to-usecase",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "18.2.5.6",
+      "constraint": "UseCase::no_association_to_use_case",
+      "metaclass": "UseCase",
+      "name": "no_association_to_use_case",
+      "text": "UseCases cannot have Associations to UseCases specifying the same subject.",
+      "ocl": "inv: Association.allInstances()->forAll(a | a.memberEnd.type->includes(self) implies\n(\nlet usecases: Set(UseCase) = a.memberEnd.type->select(oclIsKindOf(UseCase))-\n>collect(oclAsType(UseCase))->asSet() in\nusecases->size() > 1 implies usecases->collect(subject)->size() > 1\n)\n)",
+      "page": 650,
+      "file": "18-usecases.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "warning",
+    "appliesTo": {
+      "element": [
+        "usecase"
+      ],
+      "relationship": [
+        "association"
+      ]
+    },
+    "check": "usecase-no-association-to-usecase",
+    "message": "Ассоциация между вариантами использования с одним субъектом",
+    "hint": "Связывайте варианты использования зависимостями «include»/«extend», а не ассоциацией"
+  },
+  {
+    "id": "usecase-include-cycle",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "18.2.5.6",
+      "constraint": "UseCase::cannot_include_self",
+      "metaclass": "UseCase",
+      "name": "cannot_include_self",
+      "text": "A UseCase cannot include UseCases that directly or indirectly include it.",
+      "ocl": "inv: not allIncludedUseCases()->includes(self)",
+      "page": 650,
+      "file": "18-usecases.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "warning",
+    "appliesTo": {
+      "element": [
+        "usecase"
+      ],
+      "relationship": [
+        "dependency"
+      ]
+    },
+    "check": "usecase-include-cycle",
+    "message": "Цикл в зависимостях «include» между вариантами использования",
+    "hint": "Вариант использования не может прямо или косвенно включать сам себя"
+  },
+  {
+    "id": "usecase-must-have-name",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "18.2.5.6",
+      "constraint": "UseCase::must_have_name",
+      "metaclass": "UseCase",
+      "name": "must_have_name",
+      "text": "A UseCase must have a name.",
+      "ocl": "inv: name -> notEmpty ()",
+      "page": 650,
+      "file": "18-usecases.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "usecase"
+      ]
+    },
+    "check": "usecase-must-have-name",
+    "message": "У варианта использования нет имени",
+    "hint": "Дайте варианту использования имя: безымянный вариант недопустим"
+  },
+  {
+    "id": "opt_loop_break_neg",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "17.12.3.7",
+      "constraint": "CombinedFragment::opt_loop_break_neg",
+      "metaclass": "CombinedFragment",
+      "name": "opt_loop_break_neg",
+      "text": "If the interactionOperator is opt, loop, break, assert or neg, there must be exactly one operand.",
+      "ocl": "inv: (interactionOperator = InteractionOperatorKind::opt or interactionOperator =\nInteractionOperatorKind::loop or\ninteractionOperator = InteractionOperatorKind::break or interactionOperator =\nInteractionOperatorKind::assert or\ninteractionOperator = InteractionOperatorKind::neg)\nimplies operand->size()=1",
+      "page": 608,
+      "file": "17-interactions.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "fragment"
+      ]
+    },
+    "check": "opt-loop-break-neg",
+    "message": "У фрагмента opt/loop/break/assert/neg не один операнд",
+    "hint": "У фрагментов opt, loop, break, assert и neg должен быть ровно один операнд. Фрагмент без операндов (только что нарисованный) правило не трогает: операнды ещё не заведены, и это договорённость, а не пропуск проверки."
+  },
+  {
+    "id": "break",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "17.12.3.7",
+      "constraint": "CombinedFragment::break",
+      "metaclass": "CombinedFragment",
+      "name": "break",
+      "text": "If the interactionOperator is break, the corresponding InteractionOperand must cover all Lifelines covered by the enclosing InteractionFragment.",
+      "ocl": "inv: interactionOperator=InteractionOperatorKind::break implies\nenclosingInteraction.oclAsType(InteractionFragment)->asSet()->union(\nenclosingOperand.oclAsType(InteractionFragment)->asSet()).covered->asSet() =\nself.covered->asSet()",
+      "page": 608,
+      "file": "17-interactions.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "fragment"
+      ]
+    },
+    "check": "break-covers-enclosing",
+    "message": "Фрагмент break покрывает не все линии жизни объемлющего фрагмента",
+    "hint": "Операнд break должен покрывать те же линии жизни, что и объемлющий фрагмент: сообщения break — на всех его линиях. Покрытие выводится из from/to сообщений операндов; фрагмент без сообщений (в том числе только что нарисованный) не проверяется — покрытие ещё не выведено."
+  },
+  {
+    "id": "fork-one-incoming-edge",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "15.7.17.4",
+      "constraint": "ForkNode::one_incoming_edge",
+      "metaclass": "ForkNode",
+      "name": "one_incoming_edge",
+      "text": "A ForkNode has one incoming ActivityEdge.",
+      "ocl": "inv: incoming->size()=1",
+      "page": 425,
+      "file": "15-activities.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "fork"
+      ],
+      "relationship": [
+        "controlFlow",
+        "objectFlow"
+      ]
+    },
+    "check": "fork-one-incoming-edge",
+    "message": "У разделения не одно входящее ребро",
+    "hint": "Разделение разводит один поток на несколько, поэтому входящее ребро у него ровно одно. Фигура без единой связи молчит: только что нарисованное разделение ещё не соединено, и это не нарушение."
+  },
+  {
+    "id": "fork-edges",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "15.7.17.4",
+      "constraint": "ForkNode::edges",
+      "metaclass": "ForkNode",
+      "name": "edges",
+      "text": "The ActivityEdges incoming to and outgoing from a ForkNode must be either all ObjectFlows or all ControlFlows.",
+      "ocl": "inv: let allEdges : Set(ActivityEdge) = incoming->union(outgoing) in\nallEdges->forAll(oclIsKindOf(ControlFlow)) or allEdges->forAll(oclIsKindOf(ObjectFlow))",
+      "page": 425,
+      "file": "15-activities.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "fork"
+      ],
+      "relationship": [
+        "controlFlow",
+        "objectFlow"
+      ]
+    },
+    "check": "fork-edges",
+    "message": "В разделении смешаны потоки управления и объектов",
+    "hint": "Рёбра разделения — либо все потоки управления, либо все потоки объектов: узел не разводит маркер и значение одним движением. Одно ребро смешать не с чем, поэтому на свежей фигуре правило молчит само."
+  },
+  {
+    "id": "join-one-outgoing-edge",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "15.7.20.6",
+      "constraint": "JoinNode::one_outgoing_edge",
+      "metaclass": "JoinNode",
+      "name": "one_outgoing_edge",
+      "text": "A JoinNode has one outgoing ActivityEdge.",
+      "ocl": "inv: outgoing->size() = 1",
+      "page": 427,
+      "file": "15-activities.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "join"
+      ],
+      "relationship": [
+        "controlFlow",
+        "objectFlow"
+      ]
+    },
+    "check": "join-one-outgoing-edge",
+    "message": "У объединения не одно исходящее ребро",
+    "hint": "Объединение синхронизирует параллельные ветви и выпускает один поток, поэтому исходящее ребро у него ровно одно. Фигура без единой связи молчит: только что нарисованное объединение ещё не соединено, и это не нарушение."
+  },
+  {
+    "id": "join-incoming-object-flow",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "15.7.20.6",
+      "constraint": "JoinNode::incoming_object_flow",
+      "metaclass": "JoinNode",
+      "name": "incoming_object_flow",
+      "text": "If one of the incoming ActivityEdges of a JoinNode is an ObjectFlow, then its outgoing ActivityEdge must be an ObjectFlow. Otherwise its outgoing ActivityEdge must be a ControlFlow.",
+      "ocl": "inv: if incoming->exists(oclIsKindOf(ObjectFlow)) then outgoing->forAll(oclIsKindOf(ObjectFlow))\nelse outgoing->forAll(oclIsKindOf(ControlFlow))\nendif",
+      "page": 427,
+      "file": "15-activities.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "join"
+      ],
+      "relationship": [
+        "controlFlow",
+        "objectFlow"
+      ]
+    },
+    "check": "join-incoming-object-flow",
+    "message": "Род потока у объединения меняется на выходе",
+    "hint": "Если среди входящих рёбер есть поток объектов, исходящее тоже поток объектов; иначе исходящее — поток управления. Пока у объединения нет ни одного входящего ребра, сверять нечего, и правило молчит."
+  },
+  {
+    "id": "merge-one-outgoing-edge",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "15.7.21.4",
+      "constraint": "MergeNode::one_outgoing_edge",
+      "metaclass": "MergeNode",
+      "name": "one_outgoing_edge",
+      "text": "A MergeNode has one outgoing ActivityEdge.",
+      "ocl": "inv: outgoing->size()=1",
+      "page": 427,
+      "file": "15-activities.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "merge"
+      ],
+      "relationship": [
+        "controlFlow",
+        "objectFlow"
+      ]
+    },
+    "check": "merge-one-outgoing-edge",
+    "message": "У слияния не одно исходящее ребро",
+    "hint": "Слияние сводит альтернативные потоки в один, поэтому исходящее ребро у него ровно одно. Фигура без единой связи молчит: только что нарисованное слияние ещё не соединено, и это не нарушение."
+  },
+  {
+    "id": "merge-edges",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "15.7.21.4",
+      "constraint": "MergeNode::edges",
+      "metaclass": "MergeNode",
+      "name": "edges",
+      "text": "The ActivityEdges incoming to and outgoing from a MergeNode must be either all ObjectFlows or all ControlFlows.",
+      "ocl": "inv: let allEdges : Set(ActivityEdge) = incoming->union(outgoing) in\nallEdges->forAll(oclIsKindOf(ControlFlow)) or allEdges->forAll(oclIsKindOf(ObjectFlow))",
+      "page": 427,
+      "file": "15-activities.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "merge"
+      ],
+      "relationship": [
+        "controlFlow",
+        "objectFlow"
+      ]
+    },
+    "check": "merge-edges",
+    "message": "В слиянии смешаны потоки управления и объектов",
+    "hint": "Рёбра слияния — либо все потоки управления, либо все потоки объектов. Одно ребро смешать не с чем, поэтому на свежей фигуре правило молчит само."
+  },
+  {
+    "id": "decision-incoming-outgoing-edges",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "15.7.12.5",
+      "constraint": "DecisionNode::incoming_outgoing_edges",
+      "metaclass": "DecisionNode",
+      "name": "incoming_outgoing_edges",
+      "text": "A DecisionNode has one or two incoming ActivityEdges and at least one outgoing ActivityEdge.",
+      "ocl": "inv: (incoming->size() = 1 or incoming->size() = 2) and outgoing->size() > 0",
+      "page": 422,
+      "file": "15-activities.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "decision"
+      ],
+      "relationship": [
+        "controlFlow",
+        "objectFlow"
+      ]
+    },
+    "check": "decision-incoming-outgoing-edges",
+    "message": "У решения неверное число входящих или исходящих рёбер",
+    "hint": "У решения одно или два входящих ребра и хотя бы одно исходящее: решение без выхода — тупик. Фигура без единой связи молчит: только что нарисованное решение ещё не соединено, и это не нарушение."
+  },
+  {
+    "id": "final-node-no-outgoing-edges",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "15.7.15.5",
+      "constraint": "FinalNode::no_outgoing_edges",
+      "metaclass": "FinalNode",
+      "name": "no_outgoing_edges",
+      "text": "A FinalNode has no outgoing ActivityEdges.",
+      "ocl": "inv: outgoing->isEmpty()",
+      "page": 424,
+      "file": "15-activities.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "final",
+        "terminate"
+      ],
+      "relationship": [
+        "controlFlow",
+        "objectFlow"
+      ]
+    },
+    "check": "final-node-no-outgoing-edges",
+    "message": "У конечного узла есть исходящее ребро",
+    "hint": "Конечный узел завершает поток, поэтому исходящих рёбер у него нет. Здесь граница «только что нарисовано» не нужна: ноль связей и есть норма."
+  },
+  {
+    "id": "pseudostate-initial-vertex",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "14.5.6.7",
+      "constraint": "Pseudostate::initial_vertex",
+      "metaclass": "Pseudostate",
+      "name": "initial_vertex",
+      "text": "An initial Vertex can have at most one outgoing Transition.",
+      "ocl": "inv: (kind = PseudostateKind::initial) implies (outgoing->size() <= 1)",
+      "page": 351,
+      "file": "14-statemachines.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "initial"
+      ],
+      "relationship": [
+        "transition"
+      ]
+    },
+    "check": "pseudostate-initial-vertex",
+    "message": "У начального состояния больше одного исходящего перехода",
+    "hint": "Начальное состояние имеет не больше одного исходящего перехода: два выхода из него не выбираются. Ноль переходов ограничение выполняет, поэтому свежая фигура молчит сама."
+  },
+  {
+    "id": "pseudostate-choice-vertex",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "14.5.6.7",
+      "constraint": "Pseudostate::choice_vertex",
+      "metaclass": "Pseudostate",
+      "name": "choice_vertex",
+      "text": "In a complete statemachine, a choice Vertex must have at least one incoming and one outgoing Transition.",
+      "ocl": "inv: (kind = PseudostateKind::choice) implies (incoming->size() >= 1 and outgoing->size() >= 1)",
+      "page": 350,
+      "file": "14-statemachines.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "choice"
+      ],
+      "relationship": [
+        "transition"
+      ]
+    },
+    "check": "pseudostate-choice-vertex",
+    "message": "У выбора нет входа или выхода",
+    "hint": "В полной машине состояний у выбора есть хотя бы один входящий и один исходящий переход. Фигура без единой связи молчит: только что нарисованный выбор ещё не соединён, и это не нарушение."
+  },
+  {
+    "id": "pseudostate-junction-vertex",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "14.5.6.7",
+      "constraint": "Pseudostate::junction_vertex",
+      "metaclass": "Pseudostate",
+      "name": "junction_vertex",
+      "text": "In a complete StateMachine, a junction Vertex must have at least one incoming and one outgoing Transition.",
+      "ocl": "inv: (kind = PseudostateKind::junction) implies (incoming->size() >= 1 and outgoing->size() >= 1)",
+      "page": 351,
+      "file": "14-statemachines.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "junction"
+      ],
+      "relationship": [
+        "transition"
+      ]
+    },
+    "check": "pseudostate-junction-vertex",
+    "message": "У соединения нет входа или выхода",
+    "hint": "В полной машине состояний у соединения есть хотя бы один входящий и один исходящий переход. Фигура без единой связи молчит: только что нарисованное соединение ещё не соединено, и это не нарушение."
+  },
+  {
+    "id": "pseudostate-fork-vertex",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "14.5.6.7",
+      "constraint": "Pseudostate::fork_vertex",
+      "metaclass": "Pseudostate",
+      "name": "fork_vertex",
+      "text": "In a complete StateMachine, a fork Vertex must have at least two outgoing Transitions and exactly one incoming Transition.",
+      "ocl": "inv: (kind = PseudostateKind::fork) implies (incoming->size() = 1 and outgoing->size() >= 2)",
+      "page": 351,
+      "file": "14-statemachines.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "fork"
+      ],
+      "relationship": [
+        "transition"
+      ]
+    },
+    "check": "pseudostate-fork-vertex",
+    "message": "У разделения неверное число переходов",
+    "hint": "В машине состояний у разделения один входящий переход и не меньше двух исходящих. Фигура без единой связи молчит: только что нарисованное разделение ещё не соединено, и это не нарушение."
+  },
+  {
+    "id": "pseudostate-join-vertex",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "14.5.6.7",
+      "constraint": "Pseudostate::join_vertex",
+      "metaclass": "Pseudostate",
+      "name": "join_vertex",
+      "text": "In a complete StateMachine, a join Vertex must have at least two incoming Transitions and exactly one outgoing Transition.",
+      "ocl": "inv: (kind = PseudostateKind::join) implies (outgoing->size() = 1 and incoming->size() >= 2)",
+      "page": 351,
+      "file": "14-statemachines.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "join"
+      ],
+      "relationship": [
+        "transition"
+      ]
+    },
+    "check": "pseudostate-join-vertex",
+    "message": "У объединения неверное число переходов",
+    "hint": "В машине состояний у объединения не меньше двух входящих переходов и ровно один исходящий. Фигура без единой связи молчит: только что нарисованное объединение ещё не соединено, и это не нарушение."
+  },
+  {
+    "id": "pseudostate-history-vertices",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "14.5.6.7",
+      "constraint": "Pseudostate::history_vertices",
+      "metaclass": "Pseudostate",
+      "name": "history_vertices",
+      "text": "History Vertices can have at most one outgoing Transition.",
+      "ocl": "inv: ((kind = PseudostateKind::deepHistory) or (kind = PseudostateKind::shallowHistory)) implies (outgoing->size() <= 1)",
+      "page": 351,
+      "file": "14-statemachines.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "historyShallow",
+        "historyDeep"
+      ],
+      "relationship": [
+        "transition"
+      ]
+    },
+    "check": "pseudostate-history-vertices",
+    "message": "У истории больше одного исходящего перехода",
+    "hint": "История — мелкая и глубокая — имеет не больше одного исходящего перехода. Ноль переходов ограничение выполняет, поэтому свежая фигура молчит сама."
+  },
+  {
+    "id": "finalstate-no-outgoing-transitions",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "14.5.2.5",
+      "constraint": "FinalState::no_outgoing_transitions",
+      "metaclass": "FinalState",
+      "name": "no_outgoing_transitions",
+      "text": "A FinalState cannot have any outgoing Transitions.",
+      "ocl": "inv: outgoing->size() = 0",
+      "page": 346,
+      "file": "14-statemachines.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "final"
+      ],
+      "relationship": [
+        "transition"
+      ]
+    },
+    "check": "finalstate-no-outgoing-transitions",
+    "message": "Из конечного состояния есть исходящий переход",
+    "hint": "Из конечного состояния выйти нельзя, поэтому исходящих переходов у него нет. Здесь граница «только что нарисовано» не нужна: ноль связей и есть норма."
+  },
+  {
+    "id": "objectflow-no-executable-nodes",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "15.7.22.6",
+      "constraint": "ObjectFlow::no_executable_nodes",
+      "metaclass": "ObjectFlow",
+      "name": "no_executable_nodes",
+      "text": "ObjectFlows may not have ExecutableNodes at either end.",
+      "ocl": "inv: not (source.oclIsKindOf(ExecutableNode) or target.oclIsKindOf(ExecutableNode))",
+      "page": 428,
+      "file": "15-activities.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "relationship": [
+        "objectFlow"
+      ],
+      "element": [
+        "action"
+      ]
+    },
+    "check": "objectflow-no-executable-nodes",
+    "message": "Поток объектов начинается или заканчивается исполняемым узлом",
+    "hint": "Концами потока объектов служат узлы объектов (узел объекта, объект, параметр деятельности), а не действия: действие — исполняемый узел, и стандарт запрещает ему быть концом потока объектов."
+  },
+  {
+    "id": "port-encapsulated-owner",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "11.8.14.7",
+      "constraint": "Port::encapsulated_owner",
+      "metaclass": "Port",
+      "name": "encapsulated_owner",
+      "text": "Все порты принадлежат инкапсулированному классификатору.",
+      "ocl": "inv: owner = encapsulatedClassifier",
+      "page": 232,
+      "file": "11-structured-classifiers.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "port"
+      ],
+      "scope": "containment"
+    },
+    "check": "port-encapsulated-owner",
+    "message": "Порт не принадлежит инкапсулированному классификатору",
+    "hint": "Порт существует только внутри класса, компонента, интерфейса, узла, артефакта или кооперации: задайте владельца в инспекторе. Граница: порт без владельца и без единой связи молчит — только что нарисованная фигура ещё не заявлена как порт; как только у порта появилась связь, отсутствие владельца становится нарушением."
+  },
+  {
+    "id": "activity-parameter-node-no-edges",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "15.7.6.5",
+      "constraint": "ActivityParameterNode::no_edges",
+      "metaclass": "ActivityParameterNode",
+      "name": "no_edges",
+      "text": "Узел параметра деятельности может иметь все входящие рёбра деятельности или все исходящие, но не должен иметь одновременно и входящие, и исходящие.",
+      "ocl": "inv: incoming->isEmpty() or outgoing->isEmpty()",
+      "page": 417,
+      "file": "15-activities.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "activityParameter"
+      ],
+      "relationship": [
+        "controlFlow",
+        "objectFlow"
+      ]
+    },
+    "check": "activity-parameter-node-no-edges",
+    "message": "У узла параметра деятельности есть и входящие, и исходящие рёбра",
+    "hint": "Узел параметра — вход или выход деятельности, поэтому рёбра у него бывают только одного направления. Граница: ноль рёбер — норма, а не молчание по договорённости: у свежей фигуры оба множества пусты, и правило молчит само."
+  },
+  {
+    "id": "instance-slot-unique-feature",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "9.9.9.6",
+      "constraint": "InstanceSpecification::structural_feature",
+      "metaclass": "InstanceSpecification",
+      "name": "structural_feature",
+      "text": "В спецификации экземпляра не более одного слота могут иметь один и тот же definingFeature.",
+      "ocl": "inv: classifier->forAll(c | (c.allSlottableFeatures()->forAll(f | slot->select(s |\n  s.definingFeature = f)->size() <= 1)))",
+      "page": 140,
+      "file": "09-classification.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "object"
+      ]
+    },
+    "check": "instance-slot-unique-feature",
+    "message": "У характеристики экземпляра больше одного слота",
+    "hint": "Слот заполняет характеристику один к одному: второй слот с тем же именем — это два значения одного атрибута. Граница: объект без ссылки на классификатор (classifierId) молчит — сверять слоты не с чем, а по букве OCL проверка на пустом множестве классификаторов выполняется всегда."
+  },
+  {
+    "id": "instance-slot-defining-feature",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "9.9.9.6",
+      "constraint": "InstanceSpecification::defining_feature",
+      "metaclass": "InstanceSpecification",
+      "name": "defining_feature",
+      "text": "definingFeature каждого слота — это структурная характеристика, связанная с классификатором спецификации экземпляра, включая прямые атрибуты, унаследованные атрибуты, закрытые атрибуты в обобщениях и концы-члены ассоциаций, но за исключением переопределённых структурных характеристик.",
+      "ocl": "inv: slot->forAll(s | classifier->exists (c | c.allSlottableFeatures()->includes\n  (s.definingFeature)))",
+      "page": 141,
+      "file": "09-classification.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "object"
+      ]
+    },
+    "check": "instance-slot-defining-feature",
+    "message": "Слот называет характеристику, которой нет у классификатора",
+    "hint": "Слот заполняет атрибут своего класса, унаследованный атрибут или роль ассоциации. Граница: объект без classifierId молчит — в учебных моделях таких много (объект назван «заказ1: Заказ», а ссылки на класс нет), и судить его слоты нечем."
+  },
+  {
+    "id": "instance-deployment-artifact",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "9.9.9.6",
+      "constraint": "InstanceSpecification::deployment_artifact",
+      "metaclass": "InstanceSpecification",
+      "name": "deployment_artifact",
+      "text": "Спецификация экземпляра может выступать как развёртываемый артефакт, если она представляет экземпляр артефакта.",
+      "ocl": "inv: deploymentForArtifact->notEmpty() implies classifier->exists(oclIsKindOf(Artifact))",
+      "page": 140,
+      "file": "09-classification.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "object"
+      ],
+      "relationship": [
+        "deployment"
+      ]
+    },
+    "check": "instance-deployment-artifact",
+    "message": "Разворачиваемый экземпляр не представляет артефакт",
+    "hint": "Экземпляр, который стоит началом связи развёртывания, должен представлять артефакт. Граница: экземпляр без единой связи deployment молчит — правило говорит только о развёрнутых; а отсутствие классификатора у развёрнутого экземпляра, наоборот, нарушение, а не повод молчать."
+  },
+  {
+    "id": "transition-fork-target-state",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "14.5.11.8",
+      "constraint": "Transition::fork_segment_state",
+      "metaclass": "Transition",
+      "name": "fork_segment_state",
+      "text": "Сегмент разделения всегда должен иметь целью состояние.",
+      "ocl": "inv: (source.oclIsKindOf(Pseudostate) and source.oclAsType(Pseudostate).kind =\n  PseudostateKind::fork) implies (target.oclIsKindOf(State))",
+      "page": 361,
+      "file": "14-statemachines.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "fork",
+        "state",
+        "final"
+      ],
+      "relationship": [
+        "transition"
+      ]
+    },
+    "check": "transition-fork-target-state",
+    "message": "Переход из разделения ведёт не в состояние",
+    "hint": "Сегмент разделения ведёт в состояние машины состояний. Граница: переходов нет — правило молчит, проверять нечего. Переход «разделение → конечное состояние» (и в другие псевдосостояния) даётся предупреждением, а не ошибкой: по букве OCL цель не State, но так рисуют, и объявлять это ошибкой значило бы ругаться на нормальные диаграммы. Действие или объект на месте цели остаются ошибкой: это уже чужая диаграмма."
+  },
+  {
+    "id": "transition-join-source-state",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "14.5.11.8",
+      "constraint": "Transition::join_segment_state",
+      "metaclass": "Transition",
+      "name": "join_segment_state",
+      "text": "Сегмент объединения всегда должен исходить из состояния.",
+      "ocl": "inv: (target.oclIsKindOf(Pseudostate) and target.oclAsType(Pseudostate).kind =\n  PseudostateKind::join) implies (source.oclIsKindOf(State))",
+      "page": 361,
+      "file": "14-statemachines.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "join",
+        "state",
+        "initial"
+      ],
+      "relationship": [
+        "transition"
+      ]
+    },
+    "check": "transition-join-source-state",
+    "message": "В объединение переход приходит не из состояния",
+    "hint": "Сегмент объединения исходит из состояния машины состояний. Граница: переходов нет — правило молчит. Переход из начального состояния или другого псевдосостояния в объединение даётся предупреждением: по букве OCL начало не State, но так рисуют; действие или объект на месте начала остаются ошибкой."
+  },
+  {
+    "id": "deploy-spec-target-environment",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "19.5.5.6",
+      "constraint": "DeploymentSpecification::deployment_target",
+      "metaclass": "DeploymentSpecification",
+      "name": "deployment_target",
+      "text": "Цель развёртывания спецификации развёртывания — вид среды выполнения.",
+      "ocl": "inv: deployment->forAll (location.oclIsKindOf(ExecutionEnvironment))",
+      "page": 662,
+      "file": "19-deployments.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "deploymentSpec",
+        "executionEnvironment"
+      ],
+      "relationship": [
+        "deployment"
+      ]
+    },
+    "check": "deploy-spec-target-environment",
+    "message": "Спецификация развёртывания развёрнута не в среду выполнения",
+    "hint": "Спецификация развёртывания описывает конфигурацию среды, поэтому её цель — среда выполнения, а не голый узел. Граница: у спецификации нет ни одной связи deployment — норма, правило молчит, проверять нечего."
+  },
+  {
+    "id": "deploy-spec-deployed-components",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "19.5.5.6",
+      "constraint": "DeploymentSpecification::deployed_elements",
+      "metaclass": "DeploymentSpecification",
+      "name": "deployed_elements",
+      "text": "deployedElements цели развёртывания, участвующие в развёртывании, с которым связана спецификация развёртывания, — вид компонента (то есть конфигурируемые компоненты).",
+      "ocl": "inv: deployment->forAll (location.deployedElement->forAll (oclIsKindOf(Component)))",
+      "page": 662,
+      "file": "19-deployments.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "warning",
+    "appliesTo": {
+      "element": [
+        "deploymentSpec",
+        "component"
+      ],
+      "relationship": [
+        "deployment"
+      ]
+    },
+    "check": "deploy-spec-deployed-components",
+    "message": "На цели спецификации развёрнуто не только компоненты",
+    "hint": "Рядом со спецификацией развёртывания на той же цели стоят компоненты — сконфигурированные части системы. Это приближение: какие именно элементы «участвуют в развёртывании спецификации», модель не говорит, поэтому берётся всё, что развёрнуто на ту же цель, кроме самих спецификаций. Граница: нет ни одной связи deployment — правило молчит."
+  },
+  {
+    "id": "message-crosses-fragment",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "17.12.18.7",
+      "constraint": "Message::cannot_cross_boundaries",
+      "metaclass": "Message",
+      "name": "cannot_cross_boundaries",
+      "text": "Сообщения не могут пересекать границы комбинированных фрагментов или их операндов. Это верно тогда и только тогда, когда оба конца сообщения заключены в одном и том же фрагменте взаимодействия (то есть в операнде взаимодействия или во взаимодействии).",
+      "ocl": "inv: sendEvent->notEmpty() and receiveEvent->notEmpty() implies\n  let sendEnclosingFrag : Set(InteractionFragment) =\n  sendEvent->asOrderedSet()->first().enclosingFragment()\n  in\n  let receiveEnclosingFrag : Set(InteractionFragment) =\n  receiveEvent->asOrderedSet()->first().enclosingFragment()\n  in sendEnclosingFrag = receiveEnclosingFrag",
+      "page": 625,
+      "file": "17-interactions.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "warning",
+    "appliesTo": {
+      "element": [
+        "fragment"
+      ],
+      "relationship": [
+        "message",
+        "reply",
+        "createMessage",
+        "destroyMessage"
+      ]
+    },
+    "check": "message-crosses-fragment",
+    "message": "Сообщение названо в операндах двух разных фрагментов",
+    "hint": "Проверяется слабая форма констрейнта: одно сообщение не должно стоять в списке сообщений двух операндов фрагментов, между которыми нет вложенности. Сильная форма («оба конца сообщения в одном фрагменте») требует поля покрытия у фрагмента, которого в модели нет, и по выведенному покрытию была бы тавтологией. Граница: сообщение вне операндов (верхний уровень взаимодействия) — норма; сообщение в двух операндах одного фрагмента — дубль внутри фрагмента, а не пересечение границы; сообщение вложенного фрагмента, перечисленное и в объемлющем, — тоже норма: так выводится покрытие объемлющего, и правило на нём молчит."
+  },
+  {
+    "id": "component-nested-in-class",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "11.8.6.7",
+      "constraint": "Component::no_packaged_elements",
+      "metaclass": "Component",
+      "name": "no_packaged_elements",
+      "text": "Компонент, вложенный в класс, не может иметь упаковываемых элементов.",
+      "ocl": "inv: nestingClass <> null implies packagedElement->isEmpty()",
+      "page": 225,
+      "file": "11-structured-classifiers.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "warning",
+    "appliesTo": {
+      "element": [
+        "component"
+      ],
+      "scope": "containment"
+    },
+    "check": "component-nested-in-class",
+    "message": "Компонент внутри класса имеет своё содержимое",
+    "hint": "Компонент, вложенный в класс, — это часть класса, и собственного содержимого у неё нет. Граница: компонент внутри компонента правило не трогает (nestingClass — именно класс), компонент верхнего уровня с содержимым — норма."
+  },
+  {
+    "id": "interaction-not-nested",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "17.12.11.5",
+      "constraint": "Interaction::not_contained",
+      "metaclass": "Interaction",
+      "name": "not_contained",
+      "text": "Экземпляр взаимодействия не должен содержаться внутри другого экземпляра взаимодействия.",
+      "ocl": "inv: enclosingInteraction->isEmpty()",
+      "page": 616,
+      "file": "17-interactions.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "interaction"
+      ],
+      "scope": "containment"
+    },
+    "check": "interaction-not-nested",
+    "message": "Взаимодействие вложено в другое взаимодействие",
+    "hint": "Взаимодействие — самостоятельный сценарий, и внутри другого взаимодействия его быть не должно; сослаться на него можно «ссылкой на взаимодействие». Граница: interactionUse внутри interaction — это ссылка, а не вложение, правило молчит; взаимодействие внутри пакета тоже молчит — пакет не является объемлющим взаимодействием."
+  },
+  {
+    "id": "association-specialization-ends",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "11.8.1.8",
+      "constraint": "Association::specialized_end_types",
+      "metaclass": "Association",
+      "name": "specialized_end_types",
+      "text": "Когда ассоциация специализирует другую ассоциацию, каждый конец специфической ассоциации соответствует концу общей ассоциации, и специфический конец достигает того же типа или подтипа соответствующего общего конца.",
+      "ocl": "inv: Sequence{1..memberEnd->size()}->\n  forAll(i | general->select(oclIsKindOf(Association)).oclAsType(Association)->\n  forAll(ga | self.memberEnd->at(i).type.conformsTo(ga.memberEnd->at(i).type)))",
+      "page": 220,
+      "file": "11-structured-classifiers.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "warning",
+    "appliesTo": {
+      "relationship": [
+        "generalization",
+        "association",
+        "aggregation",
+        "composition"
+      ]
+    },
+    "check": "association-specialization-ends",
+    "message": "Конец специфической ассоциации не совместим с концом общей",
+    "hint": "Правило не проверяется: в схеме нет обобщения между ассоциациями — концы обобщения обязаны указывать на элементы, и обобщение с id связи загрузчик выбрасывает. Записано невыразимым в `coverage.js` с названным полем, а не спрятано."
+  },
+  {
+    "id": "finalstate-no-regions",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "14.5.2.5",
+      "constraint": "FinalState::no_regions",
+      "metaclass": "FinalState",
+      "name": "no_regions",
+      "text": "У конечного состояния не может быть регионов.",
+      "ocl": "inv: region->size() = 0",
+      "page": 346,
+      "file": "14-statemachines.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "final"
+      ],
+      "scope": "containment"
+    },
+    "check": "finalstate-no-regions",
+    "message": "У конечного состояния есть регион",
+    "hint": "Конечное состояние — лист машины состояний: внутренних областей у него нет, поэтому нет и регионов. Пустой список регионов — норма, а не нарушение: свежее конечное состояние молчит. Вид `final` один для машины состояний и для деятельности, и правило судит по виду: у конечного узла деятельности регионов тоже не бывает."
+  },
+  {
+    "id": "finalstate-no-entry",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "14.5.2.5",
+      "constraint": "FinalState::no_entry_behavior",
+      "metaclass": "FinalState",
+      "name": "no_entry_behavior",
+      "text": "У конечного состояния нет поведения при входе.",
+      "ocl": "inv: entry->isEmpty()",
+      "page": 347,
+      "file": "14-statemachines.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "final"
+      ]
+    },
+    "check": "finalstate-no-entry",
+    "message": "У конечного состояния задан текст входа",
+    "hint": "В конечное состояние не входят — оно завершает область, — поэтому текст входа у него пуст. Пустое поле (в том числе одни пробелы) — норма, а не нарушение: свежее конечное состояние молчит само."
+  },
+  {
+    "id": "finalstate-no-exit",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "14.5.2.5",
+      "constraint": "FinalState::no_exit_behavior",
+      "metaclass": "FinalState",
+      "name": "no_exit_behavior",
+      "text": "У конечного состояния нет поведения при выходе.",
+      "ocl": "inv: exit->isEmpty()",
+      "page": 346,
+      "file": "14-statemachines.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "error",
+    "appliesTo": {
+      "element": [
+        "final"
+      ]
+    },
+    "check": "finalstate-no-exit",
+    "message": "У конечного состояния задан текст выхода",
+    "hint": "Из конечного состояния не выходят: исходящих переходов у него нет, поэтому нет и текста выхода. Пустое поле (в том числе одни пробелы) — норма, а не нарушение."
+  },
+  {
+    "id": "finalstate-no-do",
+    "source": {
+      "spec": "UML 2.5.1",
+      "clause": "14.5.2.5",
+      "constraint": "FinalState::no_state_behavior",
+      "metaclass": "FinalState",
+      "name": "no_state_behavior",
+      "text": "У конечного состояния нет поведения состояния (doActivity).",
+      "ocl": "inv: doActivity->isEmpty()",
+      "page": 347,
+      "file": "14-statemachines.md",
+      "notice": "app/reference/NOTICE.md"
+    },
+    "level": "warning",
+    "appliesTo": {
+      "element": [
+        "final"
+      ]
+    },
+    "check": "finalstate-no-do",
+    "message": "У конечного состояния задан текст do",
+    "hint": "Приближение: `doActivity` — это поведение, а в модели поле `do` хранит текст. Непустой `do` значит, что «пока в состоянии» пытались описать, а у конечного состояния такого «пока» нет вовсе. Уровень warning: текст не доказывает заданное поведение. Пустое поле — норма."
+  }
+]

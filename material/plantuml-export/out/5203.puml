@@ -1,0 +1,20 @@
+@startuml
+title Design TransferSchedulesData Subflow
+participant e1 as "crctrl:CloseRegistrationController"
+participant e2 as "dao:IDBAccess" <<interface>>
+collections e3 as "studlist[i]:Student"
+collections e4 as "studlist[i].schedule[s]:Schedule"
+participant e5 as "bs:IBSAccess" <<interface>>
+opt bs.startTransferData()
+e1 -> e2 : getStudentList(semester : byte) : Student[]
+e1 -> e5 : startTransferData() : boolean
+e1 -> e3 : getName() : string
+e1 -> e3 : getAddress() : string
+end
+loop for all students in list
+e1 -> e3 : getScheduleCourses(semester : byte) : CourseOffering[]
+e3 -> e4 : getCourseOfferingList() : CourseOffering[]
+e1 -> e5 : sendStudentData(name : string, address : string, cOff : CourseOffering[]) : boolean
+e1 -> e5 : finishTransferData() : boolean
+end
+@enduml

@@ -1,0 +1,233 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4203",
+    "figureNo": "4.2.3",
+    "exercise": "4.2",
+    "type": "class",
+    "diagramName": "VOPC Login",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Итоговая версия UML-диаграммы классов VOPC Login в Analysis Model",
+    "notes": "Состав классов назван текстом; операции классов, атрибуты User и направление навигации ассоциаций прочитаны с рисунка 4.2.3 — текст их не перечисляет и прямо оговаривает, что сигнатуры могут отличаться от рисунка. Две строки операций DataAccess на рисунке обрезаны («getCourseOfferingLi…», «updateCourseOfferi…»): полные имена взяты из корпуса рис. 4.4.3 и 5.2.8, где они названы текстом.",
+    "gaps": [
+      "порядок операций и их сигнатуры в тексте признаны необязательными: «если количество операций и их сигнатуры отличаются от рисунка, в этом нет ошибки»",
+      "две строки операций DataAccess на рисунке обрезаны многоточием — полные имена восстановлены по другим рисункам корпуса",
+      "направление навигации ассоциации LoginForm—LoginController прочитано по-разному двумя прогонами — факт не установлен, поле navigable не заполнено"
+    ],
+    "gapIds": [
+      "source.navigation"
+    ],
+    "imageDerived": [
+      "e1",
+      "e2",
+      "e3",
+      "e4",
+      "e5",
+      "r1",
+      "r2",
+      "r3",
+      "r4",
+      "r5",
+      "r6"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "LoginForm",
+      "stereotype": "boundary",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "login()"
+        },
+        {
+          "vis": "public",
+          "name": "displayError()"
+        },
+        {
+          "vis": "public",
+          "name": "close()"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "LoginController",
+      "stereotype": "control",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "login()"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "DataAccess",
+      "stereotype": "control",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "getUserByLogin()"
+        },
+        {
+          "vis": "public",
+          "name": "getStudentByUser()"
+        },
+        {
+          "vis": "public",
+          "name": "getCourseOfferingList()"
+        },
+        {
+          "vis": "public",
+          "name": "updateStudent()"
+        },
+        {
+          "vis": "public",
+          "name": "updateCourseOfferings()"
+        },
+        {
+          "vis": "public",
+          "name": "getStudentList()"
+        }
+      ],
+      "note": "на рисунке две строки операций обрезаны многоточием: «getCourseOfferingLi…» и «updateCourseOfferi…»; полные имена взяты из корпуса рис. 4.4.3 и 5.2.8",
+      "source": "image"
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "MainMenuForm",
+      "stereotype": "boundary",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "open(user : User)"
+        },
+        {
+          "vis": "public",
+          "name": "registerForCourses()"
+        },
+        {
+          "vis": "public",
+          "name": "displayError()"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "User",
+      "stereotype": "entity",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "login",
+          "type": "string",
+          "isID": true
+        },
+        {
+          "vis": "private",
+          "name": "passwordHash",
+          "type": "long[2]"
+        },
+        {
+          "vis": "private",
+          "name": "type",
+          "type": "UserType"
+        }
+      ],
+      "operations": [
+        {
+          "vis": "public",
+          "name": "checkPassword()"
+        },
+        {
+          "vis": "public",
+          "name": "getType()",
+          "type": "UserType"
+        }
+      ],
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "association",
+      "from": "e1",
+      "to": "e3",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "note": "направление навигации прочитано по-разному (к LoginForm / в обе стороны) — не установлено",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "association",
+      "from": "e3",
+      "to": "e4",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "navigable": "from",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "association",
+      "from": "e3",
+      "to": "e5",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "navigable": "from",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "association",
+      "from": "e3",
+      "to": "e2",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "navigable": "from",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "association",
+      "from": "e4",
+      "to": "e5",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "navigable": "from",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "association",
+      "from": "e2",
+      "to": "e5",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "navigable": "from",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "VOPC Login",
+      "type": "class",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

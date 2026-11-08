@@ -1,0 +1,167 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4401",
+    "figureNo": "4.4.1",
+    "exercise": "4.4",
+    "type": "class",
+    "diagramName": "VOPC CloseRegistration",
+    "group": "diagram",
+    "reproducible": "да",
+    "altText": "Начальный вариант UML-диаграммы классов VOPC CloseRegistration",
+    "notes": "Текст называет шесть классов; рисунок 4.4.1 показывает семь — в нём есть ещё DataAccess, а также атрибуты Student, Schedule и CourseOffering и три связи с кратностями и именами полюсов (композиция Student—Schedule, ассоциации Schedule—CourseOffering с полюсами alternative 0..2 и primary 0..4). Всё это прочитано с рисунка; пробелов не осталось.",
+    "gaps": [],
+    "gapIds": [],
+    "imageDerived": [
+      "e4",
+      "e5",
+      "e6"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "SystemClock",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "BillingSystem",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e7",
+      "kind": "class",
+      "name": "DataAccess",
+      "stereotype": "control",
+      "source": "image"
+    },
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "CloseRegistrationController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e6",
+      "kind": "class",
+      "name": "Schedule",
+      "stereotype": "entity",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "semester",
+          "type": "byte"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "Student",
+      "stereotype": "entity",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "address",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "id",
+          "type": "long"
+        },
+        {
+          "vis": "private",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "phones",
+          "type": "string[0..2]"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "CourseOffering",
+      "stereotype": "entity",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "day",
+          "type": "DayOfWeek"
+        },
+        {
+          "vis": "private",
+          "name": "number",
+          "type": "long"
+        },
+        {
+          "vis": "private",
+          "name": "numStudents",
+          "type": "byte",
+          "isDerived": true
+        },
+        {
+          "vis": "private",
+          "name": "pair",
+          "type": "byte"
+        },
+        {
+          "vis": "private",
+          "name": "semester",
+          "type": "byte"
+        }
+      ],
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "composition",
+      "from": "e4",
+      "to": "e6",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "*",
+      "note": "ромб со стороны Student: учебный план — часть студента",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "association",
+      "from": "e6",
+      "to": "e5",
+      "toRole": "alternative",
+      "fromMultiplicity": "*",
+      "toMultiplicity": "0..2",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "association",
+      "from": "e6",
+      "to": "e5",
+      "toRole": "primary",
+      "fromMultiplicity": "*",
+      "toMultiplicity": "0..4",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "VOPC CloseRegistration",
+      "type": "class",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

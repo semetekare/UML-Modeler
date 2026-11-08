@@ -1,0 +1,135 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5107",
+    "figureNo": "5.1.7",
+    "exercise": "5.1",
+    "type": "deployment",
+    "diagramName": "Installation Example",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма размещения Installation Example",
+    "notes": "Восемь экземпляров названы текстом; рисунок 5.1.7 показывает те же восемь типов, но с другими именами экземпляров (iNote, dellNote, spPC, eduPC вместо pc04, srv01, prn, switch) — имена из текста оставлены, расхождение источников записано в пробелах. Семь соединений (Link) между экземплярами прочитаны с рисунка: их текст не перечисляет.",
+    "gaps": [
+      "связи между экземплярами описаны прозой («следует связать соединениями — Link»); какие именно экземпляры соединены, текст не перечисляет — прочитаны с рисунка",
+      "поле классификатора у экземпляра не выражается в uml-model/3 — записано строкой classifier",
+      "имена экземпляров в тексте и на рисунке расходятся: текст называет pc04, srv01, prn, switch, рисунок — iNote, dellNote, spPC, eduPC; оставлены имена из текста, расхождение источников не разрешено"
+    ],
+    "gapIds": [
+      "model.instanceClassifier",
+      "source.contradiction",
+      "source.unlisted"
+    ],
+    "imageDerived": []
+  },
+  "elements": [
+    {
+      "id": "e4",
+      "kind": "object",
+      "name": "laserJet : Кампусный принтер",
+      "classifier": "Кампусный принтер"
+    },
+    {
+      "id": "e3",
+      "kind": "object",
+      "name": "spider : Коммутатор",
+      "classifier": "Коммутатор"
+    },
+    {
+      "id": "e2",
+      "kind": "object",
+      "name": "main : Сервер системы регистрации",
+      "classifier": "Сервер системы регистрации"
+    },
+    {
+      "id": "e1",
+      "kind": "object",
+      "name": "asys : Сервер расчётной системы",
+      "classifier": "Сервер расчётной системы"
+    },
+    {
+      "id": "e5",
+      "kind": "object",
+      "name": "pc04 : Компьютер студента",
+      "classifier": "Компьютер студента"
+    },
+    {
+      "id": "e6",
+      "kind": "object",
+      "name": "srv01 : Компьютер студента",
+      "classifier": "Компьютер студента"
+    },
+    {
+      "id": "e7",
+      "kind": "object",
+      "name": "prn : Компьютер лектора",
+      "classifier": "Компьютер лектора"
+    },
+    {
+      "id": "e8",
+      "kind": "object",
+      "name": "switch : Компьютер работника учебного отдела",
+      "classifier": "Компьютер работника учебного отдела"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "link",
+      "from": "e5",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "link",
+      "from": "e6",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "link",
+      "from": "e7",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "link",
+      "from": "e8",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r5",
+      "kind": "link",
+      "from": "e4",
+      "to": "e3",
+      "source": "image"
+    },
+    {
+      "id": "r6",
+      "kind": "link",
+      "from": "e3",
+      "to": "e2",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "link",
+      "from": "e2",
+      "to": "e1",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "Installation Example",
+      "type": "deployment",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

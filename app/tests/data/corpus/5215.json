@@ -1,0 +1,126 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "5215",
+    "figureNo": "5.2.15",
+    "exercise": "5.2.G",
+    "type": "class",
+    "diagramName": "BSAccess",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "UML-диаграмма классов подсистемы BSAccess",
+    "notes": "Класс BSAccess со стереотипом «subsystem proxy» реализует интерфейс IBSAccess; есть клиент XML-RPC и зависимость от класса CourseOffering; лишние элементы скрыты с диаграммы, но остаются в модели.",
+    "gaps": [
+      "класс преобразования данных в JSON на рисунке есть, но в тексте не назван",
+      "полный набор классов и зависимостей текст не перечисляет: названы скрытые TypeSerializer, TypeParser, Object, TypeFactoryImpl и требуемые зависимости",
+      "сигнатуры операций интерфейса в тексте не приведены — сказано, что они должны совпадать с сигнатурами класса BSAccess"
+    ],
+    "gapIds": [
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "interface",
+      "name": "IBSAccess",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "init()",
+          "type": ""
+        },
+        {
+          "vis": "public",
+          "name": "sendStudentData()",
+          "type": ""
+        },
+        {
+          "vis": "public",
+          "name": "startTransferData()",
+          "type": ""
+        },
+        {
+          "vis": "public",
+          "name": "finishTransferData()",
+          "type": ""
+        }
+      ]
+    },
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "BSAccess",
+      "stereotype": "subsystem proxy",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "init()",
+          "type": ""
+        },
+        {
+          "vis": "public",
+          "name": "sendStudentData()",
+          "type": ""
+        },
+        {
+          "vis": "public",
+          "name": "startTransferData()",
+          "type": ""
+        },
+        {
+          "vis": "public",
+          "name": "finishTransferData()",
+          "type": ""
+        }
+      ]
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "XmlRpcClient"
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "CourseOffering"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "realization",
+      "from": "e2",
+      "to": "e1"
+    },
+    {
+      "id": "r2",
+      "kind": "dependency",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r3",
+      "kind": "dependency",
+      "from": "e1",
+      "to": "e4"
+    },
+    {
+      "id": "r4",
+      "kind": "association",
+      "from": "e2",
+      "to": "e3",
+      "fromMultiplicity": "не названо в тексте",
+      "toMultiplicity": "не названо в тексте"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "BSAccess",
+      "type": "class",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

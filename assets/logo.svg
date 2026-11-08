@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
+  <title>logo-mark-b</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <path id="model-plane" d="M130 92 L334 92 C343.941 92 352 100.059 352 110 L352 354 C352 363.941 343.941 372 334 372 L130 372 C120.059 372 112 363.941 112 354 L112 110 C112 100.059 120.059 92 130 92 Z" fill="#fa5d00"/>
+    <path id="view-box" d="M178 140 L382 140 C391.941 140 400 148.059 400 158 L400 402 C400 411.941 391.941 420 382 420 L178 420 C168.059 420 160 411.941 160 402 L160 158 C160 148.059 168.059 140 178 140 Z" fill="#ffffff" stroke="#1d1e1c" stroke-width="12" stroke-miterlimit="10"/>
+    <line id="divider-1" x1="166" y1="210" x2="394" y2="210" fill="none" stroke="#1d1e1c" stroke-width="8" stroke-miterlimit="10"/>
+    <line id="divider-2" x1="166" y1="290" x2="394" y2="290" fill="none" stroke="#1d1e1c" stroke-width="8" stroke-miterlimit="10"/>
+  </g>
+</svg>

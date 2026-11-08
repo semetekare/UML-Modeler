@@ -1,0 +1,66 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-pseudostate-history-vertices-ok",
+  "name": "pseudostate_history_vertices (без нарушения) — один исходящий переход",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "state",
+      "name": "Возобновлён"
+    },
+    {
+      "id": "e2",
+      "kind": "historyDeep",
+      "name": "",
+      "documentation": "Правило «pseudostate-history-vertices»: UML 2.5.1, п. 14.5.6.7, констрейнт Pseudostate::history_vertices: «History Vertices can have at most one outgoing Transition.»\nКонтроль: у глубокой истории один исходящий переход."
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "transition",
+      "from": "e2",
+      "to": "e1"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "pseudostate_history_vertices (без нарушения) — один исходящий переход",
+      "kind": "state",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 20,
+          "h": 20
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s1",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

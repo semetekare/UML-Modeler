@@ -1,0 +1,2191 @@
+{
+  "schema": "plantuml-export-mapping/1",
+  "about": "Соответствие «тип uml-model/3 → синтаксис PlantUML 1.2021.00». Источник истины по синтаксису — docs/plantuml-grammar.json (169 конструкций, вынутых из jar). Поле `checks` ссылается на id конструкции оттуда: строки из `lines` обязаны совпасть с её шаблоном, строки из `not` — не совпасть. Поле `example` — готовый .puml; check.mjs прогоняет его через jar (-syntax и -tsvg -pipe).",
+  "plantuml": {
+    "version": "1.2021.00",
+    "jar": "~/.vscode-oss/extensions/jebbs.plantuml-2.18.1-universal/plantuml.jar",
+    "grammar": "docs/plantuml-grammar.json",
+    "families": {
+      "class": "Класс-диаграммы (CommandCreateClass / CommandLinkClass). Счёт: CLASS (N entities).",
+      "description": "Диаграммы описаний (CommandCreateElementFull / CommandLinkElement): актёры, компоненты, узлы, варианты использования. Счёт: DESCRIPTION (N entities).",
+      "sequence": "Sequence (CommandParticipantA / CommandArrow). Счёт: SEQUENCE (N participants).",
+      "activity": "Activity 3 (CommandStart3 / CommandActivity3). Счётчика сущностей нет.",
+      "state": "State (CommandCreateState / CommandLinkState). Счёт: STATE (N entities)."
+    },
+    "counting": "Сущностью PlantUML считает КАЖДОЕ объявление, у которого НЕТ тела: контейнер с телом (`package X { … }`, `node N { … }`, `state S { … }`, `component C { … }`, `rectangle R { … }`) в счёт не входит, а содержимое — входит. Заметка (`note … end note`) считается. Начальный и конечный `[*]` считаются по одному на диаграмму, сколько бы раз ни встречались. Поэтому check.mjs сравнивает не с числом фигур на листе, а с числом объявлений без тела.",
+    "arrowRules": {
+      "generalization": {
+        "syntax": "{child} --|> {parent}",
+        "note": "Пустой треугольник на РОДИТЕЛЕ. В модели `from` — потомок, поэтому `from --|> to`."
+      },
+      "realization": {
+        "syntax": "{class} ..|> {interface}",
+        "note": "Пустой треугольник на ИНТЕРФЕЙСЕ (`to`), линия пунктирная."
+      },
+      "dependency": {
+        "syntax": "{client} ..> {supplier}",
+        "note": "Открытая стрелка на том, ОТ КОГО зависят (`to`)."
+      },
+      "composition": {
+        "syntax": "{whole} *-- {part}",
+        "note": "Залитый ромб на ЦЕЛОМ."
+      },
+      "aggregation": {
+        "syntax": "{whole} o-- {part}",
+        "note": "Полый ромб на ЦЕЛОМ."
+      },
+      "association": {
+        "syntax": "{from} -- {to}",
+        "note": "Наконечника нет; `-->`, `<--`, `<-->` показывают навигацию."
+      },
+      "message": {
+        "syntax": "{from} -> {to}",
+        "note": "Стрелка у получателя; `-->` — ответ."
+      }
+    }
+  },
+  "diagram": {
+    "class": {
+      "family": "class",
+      "keyword": "class",
+      "opener": "@startuml",
+      "closer": "@enduml",
+      "note": "Основной случай: семейство классов PlantUML, включая объекты и пакеты.",
+      "example": "@startuml\nclass e1 as \"A\"\nclass e2 as \"B\"\ne1 --> e2\n@enduml",
+      "checks": [
+        {
+          "construct": "class-decl",
+          "lines": [
+            "class e1 as \"A\""
+          ]
+        },
+        {
+          "construct": "assoc-directed",
+          "lines": [
+            "e1 --> e2"
+          ]
+        },
+        {
+          "construct": "state",
+          "not": [
+            "class e1 as \"A\""
+          ]
+        }
+      ]
+    },
+    "component": {
+      "family": "description",
+      "keyword": "component",
+      "opener": "@startuml",
+      "closer": "@enduml",
+      "note": "Компоненты живут в семействе описаний (`CommandCreateElementFull`). Если на листе есть и `class`, нужен `allow_mixing` — иначе «Use allowmixing if you want to mix classes and other UML elements» (проверено).",
+      "example": "@startuml\nallow_mixing\ncomponent \"Компонент\"\nclass \"Класс\"\n\"Класс\" : -номер : int\n\"Компонент\" ..> \"Класс\"\n@enduml",
+      "note2": "Смешанный лист: PlantUML разбирает его командами класса, а они не принимают `component x as \"…\"` и не принимают тело у кавычного имени (проверено — часть форм ещё и валит отрисовку). Поэтому в смешанной диаграмме ВСЁ печатается одним кавычным именем, члены — строками «имя : член», а связи адресуют фигуры по имени.",
+      "checks": [
+        {
+          "construct": "class-decl",
+          "lines": [
+            "class \"Класс\""
+          ]
+        },
+        {
+          "construct": "add-member-by-name",
+          "lines": [
+            "\"Класс\" : -номер : int"
+          ]
+        },
+        {
+          "construct": "assoc-dependency",
+          "lines": [
+            "\"Компонент\" ..> \"Класс\""
+          ]
+        }
+      ]
+    },
+    "composite": {
+      "family": "class",
+      "keyword": "class",
+      "opener": "@startuml",
+      "closer": "@enduml",
+      "note": "Композитная структура своего вида в PlantUML не имеет: части и порты выгружаются классами/компонентами со стереотипами, коннекторы — линиями.",
+      "example": "@startuml\nclass e1 as \"a : A\" <<part>>\nclass e2 as \"b : B\" <<part>>\ne1 -- e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc",
+          "lines": [
+            "e1 -- e2"
+          ]
+        }
+      ]
+    },
+    "deployment": {
+      "family": "description",
+      "keyword": "node",
+      "opener": "@startuml",
+      "closer": "@enduml",
+      "note": "`node`, `artifact`, `component`. Пустой `node N {}` не разбирается — тело обязательно, поэтому одиночный узел печатается строкой.",
+      "example": "@startuml\nnode n1 as \"Сервер\" {\n  artifact a1 as \"app.exe\"\n}\na1 ..> n1 : <<deploy>>\n@enduml",
+      "checks": [
+        {
+          "construct": "package-usymbol",
+          "lines": [
+            "node n1 as \"Сервер\" {"
+          ]
+        },
+        {
+          "construct": "link-directed",
+          "lines": [
+            "a1 ..> n1 : <<deploy>>"
+          ]
+        }
+      ]
+    },
+    "object": {
+      "family": "class",
+      "keyword": "object",
+      "opener": "@startuml",
+      "closer": "@enduml",
+      "note": "Объекты — семейство классов; порядок объявления обратный: `object \"имя\" as id`.",
+      "example": "@startuml\nobject \"a : A\" as o1\nobject \"b : B\" as o2\no1 -- o2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc",
+          "lines": [
+            "o1 -- o2"
+          ]
+        }
+      ]
+    },
+    "package": {
+      "family": "class",
+      "keyword": "package",
+      "opener": "@startuml",
+      "closer": "@enduml",
+      "note": "Вложенность пакетов — из геометрии, вложенными блоками `package \"X\" as p { }`.",
+      "example": "@startuml\npackage \"P1\" as p1 {\n  package \"P2\" as p2 {\n    class e1 as \"A\"\n  }\n}\n@enduml",
+      "checks": [
+        {
+          "construct": "package",
+          "lines": [
+            "package \"P1\" as p1 {"
+          ]
+        }
+      ]
+    },
+    "profile": {
+      "family": "class",
+      "keyword": "package",
+      "opener": "@startuml",
+      "closer": "@enduml",
+      "note": "Профиль — пакет со стереотипом `profile`; стереотипы внутри — классы со стереотипом `stereotype`; расширение — `--|>`.",
+      "example": "@startuml\npackage \"Профиль\" as pf <<profile>> {\n  class s1 as \"entity\" <<stereotype>>\n  class m1 as \"Class\" <<metaclass>>\n  s1 --|> m1\n}\n@enduml",
+      "checks": [
+        {
+          "construct": "package",
+          "lines": [
+            "package \"Профиль\" as pf <<profile>> {"
+          ]
+        }
+      ]
+    },
+    "activity": {
+      "family": "activity",
+      "keyword": "start",
+      "opener": "@startuml",
+      "closer": "@enduml",
+      "note": "Движок activity3. Счётчика сущностей `-syntax` для него не печатает (проверено: только `ACTIVITY` / `activity3`), поэтому проверка идёт по именам в SVG.",
+      "example": "@startuml\n|Lane|\nstart\n:Действие;\nstop\n@enduml",
+      "checks": [
+        {
+          "construct": "start",
+          "diagram": "activity",
+          "lines": [
+            "start"
+          ]
+        },
+        {
+          "construct": "swimlane",
+          "diagram": "activity",
+          "lines": [
+            "|Lane|"
+          ]
+        },
+        {
+          "construct": "action",
+          "diagram": "activity",
+          "lines": [
+            ":Действие;"
+          ]
+        }
+      ]
+    },
+    "state": {
+      "family": "state",
+      "keyword": "state",
+      "opener": "@startuml",
+      "closer": "@enduml",
+      "note": "`state`, `[*]`, псевдосостояния через `<<…>>`.",
+      "example": "@startuml\n[*] --> a\nstate a as \"A\"\na --> b : go\nstate b as \"B\"\nb --> [*]\n@enduml",
+      "checks": [
+        {
+          "construct": "state-as",
+          "lines": [
+            "state a as \"A\""
+          ]
+        },
+        {
+          "construct": "link-description",
+          "lines": [
+            "a --> b : go"
+          ]
+        },
+        {
+          "construct": "class-decl",
+          "not": [
+            "state a as \"A\""
+          ]
+        }
+      ]
+    },
+    "usecase": {
+      "family": "description",
+      "keyword": "usecase",
+      "opener": "@startuml",
+      "closer": "@enduml",
+      "note": "`actor`, `usecase`, рамка системы — `rectangle` со стереотипом `subject`.",
+      "example": "@startuml\nrectangle sys as \"Система\" <<subject>> {\n  usecase uc1 as \"Войти\"\n}\nactor u1 as \"Студент\"\nu1 -- uc1\n@enduml",
+      "checks": [
+        {
+          "construct": "element-usecase",
+          "diagram": "usecase",
+          "lines": [
+            "usecase uc1 as \"Войти\""
+          ]
+        },
+        {
+          "construct": "link",
+          "diagram": "usecase",
+          "lines": [
+            "u1 -- uc1"
+          ]
+        }
+      ]
+    },
+    "sequence": {
+      "family": "sequence",
+      "keyword": "participant",
+      "opener": "@startuml",
+      "closer": "@enduml",
+      "note": "Порядок сообщений — вертикаль: сортируем по `y` вида связи, а не по порядку в модели.",
+      "example": "@startuml\nparticipant p1 as \"A\"\nparticipant p2 as \"B\"\np1 -> p2 : hi\n@enduml",
+      "checks": [
+        {
+          "construct": "participant-as-display",
+          "lines": [
+            "participant p1 as \"A\""
+          ]
+        },
+        {
+          "construct": "message",
+          "lines": [
+            "p1 -> p2 : hi"
+          ]
+        },
+        {
+          "construct": "class-decl",
+          "not": [
+            "participant p1 as \"A\""
+          ]
+        }
+      ]
+    },
+    "communication": {
+      "family": "class",
+      "keyword": "object",
+      "opener": "@startuml",
+      "closer": "@enduml",
+      "note": "Диаграммы коммуникации в PlantUML нет. Выгружаем объекты и линии, сообщение — подписью с номером. В корпусе таких моделей нет: на jar НЕ проверено.",
+      "example": "@startuml\nobject \"a : A\" as o1\nobject \"b : B\" as o2\no1 -- o2 : 1: login()\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-label",
+          "lines": [
+            "o1 -- o2 : 1: login()"
+          ]
+        }
+      ]
+    },
+    "timing": {
+      "family": "sequence",
+      "keyword": "participant",
+      "opener": "@startuml",
+      "closer": "@enduml",
+      "note": "Диаграммы таймингов в PlantUML 1.2021.0 нет. Шкала выгружается заметкой `note over` со списком состояний: текст сохраняется, форма нет. В корпусе нет — на jar не проверено.",
+      "example": "@startuml\nparticipant p1 as \"Шкала\"\nnote over p1 : Active: 0 to 100\n@enduml",
+      "checks": [
+        {
+          "construct": "note-right",
+          "lines": [
+            "note over p1 : Active: 0 to 100"
+          ]
+        }
+      ]
+    },
+    "interaction-overview": {
+      "family": "sequence",
+      "keyword": "ref over",
+      "opener": "@startuml",
+      "closer": "@enduml",
+      "note": "Обзор взаимодействий — последовательность со ссылками `ref over`. В корпусе нет — на jar не проверено.",
+      "example": "@startuml\nparticipant p1 as \"A\"\nparticipant p2 as \"B\"\nref over p1, p2 : Обзор\n@enduml",
+      "checks": [
+        {
+          "construct": "ref-over",
+          "lines": [
+            "ref over p1, p2 : Обзор"
+          ]
+        }
+      ]
+    }
+  },
+  "shapes": {
+    "class": {
+      "keyword": "class",
+      "family": "class",
+      "syntax": "class {alias} as \"{name}\"",
+      "carries": [
+        "attributes",
+        "operations",
+        "abstract",
+        "stereotype"
+      ],
+      "note": "Основная форма. Тело `{ … }` необязательно: без членов печатается одна строка объявления. Абстрактность — своим ключевым словом `abstract class`.",
+      "example": "@startuml\nclass e1 as \"Заказ\" {\n  -номер : int\n  +оформить(st : Student) : boolean\n}\nabstract class e2 as \"Субъект\"\n@enduml",
+      "checks": [
+        {
+          "construct": "class-body-open",
+          "lines": [
+            "class e1 as \"Заказ\" {"
+          ]
+        },
+        {
+          "construct": "class-abstract",
+          "lines": [
+            "abstract class e2 as \"Субъект\""
+          ]
+        }
+      ]
+    },
+    "interface": {
+      "keyword": "interface",
+      "family": "class",
+      "syntax": "interface {alias} as \"{name}\"",
+      "carries": [
+        "attributes",
+        "operations",
+        "stereotype"
+      ],
+      "note": "Своё ключевое слово, а не `class <<interface>>`: PlantUML сам рисует кружок-стереотип. В смешанной диаграмме печатается кавычным именем без id (см. component).",
+      "example": "@startuml\ninterface e5 as \"IDBAccess\" {\n  +find(id : long) : Student\n}\n@enduml",
+      "checks": [
+        {
+          "construct": "class-body-open",
+          "lines": [
+            "interface e5 as \"IDBAccess\" {"
+          ]
+        }
+      ]
+    },
+    "enumeration": {
+      "keyword": "enum",
+      "family": "class",
+      "syntax": "enum {alias} as \"{name}\"",
+      "carries": [
+        "literals"
+      ],
+      "note": "Литералы — по строке в теле, без видимости и типа: у литерала их нет.",
+      "example": "@startuml\nenum e8 as \"UserType\" {\n  STUDENT\n  PROFESSOR\n}\n@enduml",
+      "checks": [
+        {
+          "construct": "class-body-open",
+          "lines": [
+            "enum e8 as \"UserType\" {"
+          ]
+        }
+      ]
+    },
+    "datatype": {
+      "keyword": "class",
+      "family": "class",
+      "syntax": "class {alias} as \"{name}\" <<dataType>>",
+      "carries": [
+        "attributes",
+        "stereotype"
+      ],
+      "note": "Своего ключевого слова в PlantUML нет — `dataType` остаётся стереотипом (группа 5 шаблона `class-decl`).",
+      "example": "@startuml\nclass e9 as \"Деньги\" <<dataType>>\nclass e1 as \"Цена\" {\n  +сумма : decimal\n}\n@enduml",
+      "checks": [
+        {
+          "construct": "class-decl",
+          "lines": [
+            "class e9 as \"Деньги\" <<dataType>>"
+          ]
+        }
+      ]
+    },
+    "package": {
+      "keyword": "package",
+      "family": "class",
+      "syntax": "package \"{name}\" as {alias}",
+      "carries": [
+        "containment"
+      ],
+      "note": "ВНИМАНИЕ: у пакета порядок обратный классу — СНАЧАЛА имя в кавычках, потом `as {alias}`. `package p1 as \"X\" {` PlantUML принимает, но шаблон `CommandPackage` (группа 2 = имя, группа 3 = id после `as`) описывает именно `\"X\" as p1`. Пустой пакет — `package \"X\" as p1 {}`.",
+      "example": "@startuml\npackage \"Домены\" as p1 {\n  class e1 as \"Заказ\"\n}\npackage \"Пусто\" as p2 {}\n@enduml",
+      "checks": [
+        {
+          "construct": "package",
+          "lines": [
+            "package \"Домены\" as p1 {"
+          ]
+        },
+        {
+          "construct": "package-empty",
+          "lines": [
+            "package \"Пусто\" as p2 {}"
+          ]
+        }
+      ]
+    },
+    "model": {
+      "keyword": "package",
+      "family": "class",
+      "syntax": "package \"{name}\" as {alias} <<model>>",
+      "carries": [
+        "containment",
+        "stereotype"
+      ],
+      "note": "Корневой пакет: вида «модель» нет, стереотип сохраняет смысл.",
+      "example": "@startuml\npackage \"Модель\" as m1 <<model>> {\n  class e1 as \"A\"\n}\n@enduml",
+      "checks": [
+        {
+          "construct": "package",
+          "lines": [
+            "package \"Модель\" as m1 <<model>> {"
+          ]
+        }
+      ]
+    },
+    "profile": {
+      "keyword": "package",
+      "family": "class",
+      "syntax": "package \"{name}\" as {alias} <<profile>>",
+      "carries": [
+        "containment",
+        "stereotype"
+      ],
+      "note": "Профиль — пакет со стереотипом `profile`; стереотипы внутри — классы со стереотипом `stereotype`.",
+      "example": "@startuml\npackage \"Профиль\" as pf <<profile>> {\n  class s1 as \"entity\" <<stereotype>>\n}\n@enduml",
+      "checks": [
+        {
+          "construct": "package",
+          "lines": [
+            "package \"Профиль\" as pf <<profile>> {"
+          ]
+        }
+      ]
+    },
+    "component": {
+      "keyword": "component",
+      "family": "description",
+      "syntax": "component {alias} as \"{name}\"",
+      "carries": [
+        "attributes",
+        "operations",
+        "containment"
+      ],
+      "note": "Ключевое слово семейства описаний (`CommandCreateElementFull`), тело открывает `CommandPackageWithUSymbol`. В одном файле с `class` нужен `allow_mixing`.",
+      "example": "@startuml\ncomponent e1 as \"Биллинг\" {\n  component e2 as \"Оплата\"\n}\n@enduml",
+      "checks": [
+        {
+          "construct": "package-usymbol",
+          "diagram": "usecase",
+          "lines": [
+            "component e1 as \"Биллинг\" {"
+          ]
+        },
+        {
+          "construct": "element-usecase",
+          "diagram": "usecase",
+          "lines": [
+            "component e2 as \"Оплата\""
+          ]
+        }
+      ]
+    },
+    "artifact": {
+      "keyword": "artifact",
+      "family": "description",
+      "syntax": "artifact {alias} as \"{name}\"",
+      "carries": [
+        "containment"
+      ],
+      "note": "Артефакт — «файл». Вложенность (артефакт внутри узла) — из геометрии.",
+      "example": "@startuml\nnode e1 as \"Сервер\" {\n  artifact a1 as \"app.exe\"\n}\n@enduml",
+      "checks": [
+        {
+          "construct": "element-usecase",
+          "lines": [
+            "artifact a1 as \"app.exe\""
+          ]
+        }
+      ]
+    },
+    "deploymentSpec": {
+      "keyword": "artifact",
+      "family": "description",
+      "syntax": "artifact {alias} as \"{name}\" <<deployment spec>>",
+      "carries": [
+        "stereotype"
+      ],
+      "note": "Спецификация развёртывания — артефакт со стереотипом.",
+      "example": "@startuml\nartifact d1 as \"web.xml\" <<deployment spec>>\n@enduml",
+      "checks": [
+        {
+          "construct": "element-usecase",
+          "lines": [
+            "artifact d1 as \"web.xml\" <<deployment spec>>"
+          ]
+        }
+      ]
+    },
+    "node": {
+      "keyword": "node",
+      "family": "description",
+      "syntax": "node {alias} as \"{name}\"",
+      "carries": [
+        "containment"
+      ],
+      "note": "Узел держит содержимое: `node N { artifact A }`. Пустой узел печатается без скобок — `node N {}` не разбирается (проверено).",
+      "example": "@startuml\nnode n1 as \"Сервер\" {\n  artifact a1 as \"app.exe\"\n}\n@enduml",
+      "checks": [
+        {
+          "construct": "package-usymbol",
+          "lines": [
+            "node n1 as \"Сервер\" {"
+          ]
+        }
+      ]
+    },
+    "device": {
+      "keyword": "node",
+      "family": "description",
+      "syntax": "node {alias} as \"{name}\" <<device>>",
+      "carries": [
+        "stereotype",
+        "containment"
+      ],
+      "note": "Устройство — узел со стереотипом `device`.",
+      "example": "@startuml\nnode d1 as \"Принтер\" <<device>>\n@enduml",
+      "checks": [
+        {
+          "construct": "element-usecase",
+          "lines": [
+            "node d1 as \"Принтер\" <<device>>"
+          ]
+        }
+      ]
+    },
+    "executionEnvironment": {
+      "keyword": "node",
+      "family": "description",
+      "syntax": "node {alias} as \"{name}\" <<executionEnvironment>>",
+      "carries": [
+        "stereotype",
+        "containment"
+      ],
+      "note": "Среда выполнения — узел со стереотипом.",
+      "example": "@startuml\nnode x1 as \"JVM\" <<executionEnvironment>> {\n  component c1 as \"Сервис\"\n}\n@enduml",
+      "checks": [
+        {
+          "construct": "package-usymbol",
+          "lines": [
+            "node x1 as \"JVM\" <<executionEnvironment>> {"
+          ]
+        }
+      ]
+    },
+    "object": {
+      "keyword": "object",
+      "family": "class",
+      "syntax": "object \"{name}\" as {alias}",
+      "carries": [
+        "slots",
+        "classifier"
+      ],
+      "note": "Порядок как у пакета: сначала имя в кавычках, потом `as {alias}`. `object o1 as \"…\"` — ошибка (проверено). ВАЖНО: объявления `object` среди 169 извлечённых конструкций НЕТ — ключевого слова `object` нет в списке `CommandCreateClass`, объекты создаёт команда, не попавшая в извлечение. Проверено только jar.",
+      "example": "@startuml\nobject \"курс : CourseOffering\" as o1 {\n  +номер = 3101\n}\n@enduml",
+      "checks": []
+    },
+    "part": {
+      "keyword": "class",
+      "family": "class",
+      "syntax": "class {alias} as \"{name}\" <<part>>",
+      "carries": [
+        "stereotype"
+      ],
+      "note": "Части композитной структуры своего вида не имеют; стереотип говорит, что это часть.",
+      "example": "@startuml\nclass e1 as \"двигатель : Engine\" <<part>>\n@enduml",
+      "checks": [
+        {
+          "construct": "class-decl",
+          "lines": [
+            "class e1 as \"двигатель : Engine\" <<part>>"
+          ]
+        }
+      ]
+    },
+    "port": {
+      "keyword": "port",
+      "family": "description",
+      "syntax": "port {alias} as \"{name}\"",
+      "carries": [],
+      "note": "Порт — квадратик на границе. Размер и привязка к границе не переносятся. В СМЕШАННОЙ диаграмме голый `port` валит отрисовку (GraphViz NPE на кластере без родителя), поэтому там порт становится классом со стереотипом `port`.",
+      "example": "@startuml\ncomponent e1 as \"Компонент\" {\n  port p1 as \"http\"\n}\n@enduml",
+      "checks": [
+        {
+          "construct": "element-usecase",
+          "lines": [
+            "port p1 as \"http\""
+          ]
+        }
+      ]
+    },
+    "collaboration": {
+      "keyword": "usecase",
+      "family": "description",
+      "syntax": "usecase {alias} as \"{name}\" <<collaboration>>",
+      "carries": [
+        "stereotype"
+      ],
+      "note": "Кооперацию PlantUML не рисует. Берём эллипс (`usecase`) — ту же форму, что в нотации, — и стереотипом говорим, что это кооперация.",
+      "example": "@startuml\nusecase c1 as \"RegisterForCourses\" <<collaboration>>\n@enduml",
+      "checks": [
+        {
+          "construct": "element-usecase",
+          "lines": [
+            "usecase c1 as \"RegisterForCourses\" <<collaboration>>"
+          ]
+        }
+      ]
+    },
+    "collaborationUse": {
+      "keyword": "class",
+      "family": "class",
+      "syntax": "class {alias} as \"{name}\" <<use>>",
+      "carries": [
+        "stereotype"
+      ],
+      "note": "Ссылка на кооперацию — прямоугольник со стереотипом.",
+      "example": "@startuml\nclass u1 as \"Login\" <<use>>\n@enduml",
+      "checks": [
+        {
+          "construct": "class-decl",
+          "lines": [
+            "class u1 as \"Login\" <<use>>"
+          ]
+        }
+      ]
+    },
+    "stereotype": {
+      "keyword": "class",
+      "family": "class",
+      "syntax": "class {alias} as \"{name}\" <<stereotype>>",
+      "carries": [
+        "attributes",
+        "stereotype"
+      ],
+      "note": "Стереотип профиля — класс со стереотипом `stereotype`; tagged definitions идут членами.",
+      "example": "@startuml\nclass s1 as \"entity\" <<stereotype>> {\n  +owner : text\n}\n@enduml",
+      "checks": [
+        {
+          "construct": "class-decl",
+          "lines": [
+            "class s1 as \"entity\" <<stereotype>>"
+          ]
+        },
+        {
+          "construct": "class-body-open",
+          "lines": [
+            "class s1 as \"entity\" <<stereotype>> {"
+          ]
+        }
+      ]
+    },
+    "metaclass": {
+      "keyword": "class",
+      "family": "class",
+      "syntax": "class {alias} as \"{name}\" <<metaclass>>",
+      "carries": [
+        "stereotype"
+      ],
+      "note": "Метакласс — класс со стереотипом.",
+      "example": "@startuml\nclass m1 as \"Class\" <<metaclass>>\n@enduml",
+      "checks": [
+        {
+          "construct": "class-decl",
+          "lines": [
+            "class m1 as \"Class\" <<metaclass>>"
+          ]
+        }
+      ]
+    },
+    "actor": {
+      "keyword": "actor",
+      "family": "description",
+      "syntax": "actor {alias} as \"{name}\"",
+      "carries": [],
+      "note": "Одинокая строка `actor X` без связей заставляет PlantUML угадывать тип диаграммы — он может решить, что это sequence (проверено). Поэтому актёр всегда идёт вместе с фигурами своего листа.",
+      "example": "@startuml\nactor u1 as \"Студент\"\nusecase uc1 as \"Войти\"\nu1 -- uc1\n@enduml",
+      "checks": [
+        {
+          "construct": "element-actor",
+          "lines": [
+            "actor u1 as \"Студент\""
+          ]
+        }
+      ]
+    },
+    "usecase": {
+      "keyword": "usecase",
+      "family": "description",
+      "syntax": "usecase {alias} as \"{name}\"",
+      "carries": [
+        "extensionPoints"
+      ],
+      "note": "Точки расширения (`extensionPoints`) в семействе описаний не выводятся: `usecase a : текст` там не разбирается (проверено). Теряются.",
+      "example": "@startuml\nusecase uc1 as \"Войти\"\nactor u1 as \"Студент\"\nu1 -- uc1\n@enduml",
+      "checks": [
+        {
+          "construct": "element-usecase",
+          "lines": [
+            "usecase uc1 as \"Войти\""
+          ]
+        }
+      ]
+    },
+    "systemBoundary": {
+      "keyword": "rectangle",
+      "family": "description",
+      "syntax": "rectangle {alias} as \"{name}\" <<subject>>",
+      "carries": [
+        "containment",
+        "stereotype"
+      ],
+      "note": "Рамка моделируемой системы — `rectangle` со стереотипом `subject` (это и есть UML-субъект). Содержимое — из геометрии: фигура, чей центр внутри рамки.",
+      "example": "@startuml\nrectangle sys as \"Система регистрации\" <<subject>> {\n  usecase uc1 as \"Войти\"\n}\nactor u1 as \"Студент\"\nu1 -- uc1\n@enduml",
+      "checks": [
+        {
+          "construct": "package-usymbol",
+          "lines": [
+            "rectangle sys as \"Система регистрации\" <<subject>> {"
+          ]
+        }
+      ]
+    },
+    "note": {
+      "keyword": "note",
+      "family": "class",
+      "syntax": "note as {alias}\n{text}\nend note",
+      "carries": [
+        "documentation"
+      ],
+      "note": "Многострочный блок: `note \"…\" as N` не принимает перевод строки (проверено). Многострочную форму собирает `CommandFactoryNote.createMultiLine`, которой в извлечении нет, — проверено только jar.",
+      "example": "@startuml\nclass e1 as \"Заказ\"\nnote as n1\nдругие геттеры и сеттеры аналогично\nend note\n@enduml",
+      "checks": []
+    },
+    "text": {
+      "keyword": "note",
+      "family": "class",
+      "syntax": "note as {alias}\n{text}\nend note",
+      "carries": [
+        "name"
+      ],
+      "note": "Свободная надпись своего вида не имеет — выгружается заметкой. Стереотип на многострочной заметке не принимается (проверено), поэтому он теряется.",
+      "example": "@startuml\nclass e1 as \"Заказ\"\nnote as t1\nПояснение на поле\nend note\n@enduml",
+      "checks": []
+    },
+    "state": {
+      "keyword": "state",
+      "family": "state",
+      "syntax": "state {alias} as \"{name}\"",
+      "carries": [
+        "entry",
+        "do",
+        "exit",
+        "documentation"
+      ],
+      "note": "Действия пишутся строками `{alias} : entry / …` ВНЕ тела. Тело `state A { … }` делает A составным, и PlantUML перестаёт считать его сущностью (проверено: 0 entities).",
+      "example": "@startuml\nstate a as \"Active\"\na : entry / open()\na : do / wait()\n[*] --> a\n@enduml",
+      "checks": [
+        {
+          "construct": "state-as",
+          "lines": [
+            "state a as \"Active\""
+          ]
+        },
+        {
+          "construct": "add-field",
+          "lines": [
+            "a : entry / open()"
+          ]
+        }
+      ]
+    },
+    "initial": {
+      "keyword": "[*]",
+      "family": "state",
+      "syntax": "[*]",
+      "carries": [],
+      "note": "Один узел на диаграмму: два начальных псевдосостояния PlantUML сливает в один `[*]` — видно по счётчику сущностей (2 состояния + 2 начала = 3 entities).",
+      "example": "@startuml\n[*] --> a\nstate a as \"A\"\na --> [*]\n@enduml",
+      "checks": [
+        {
+          "construct": "link-start",
+          "lines": [
+            "[*] --> a"
+          ]
+        }
+      ]
+    },
+    "final": {
+      "keyword": "[*]",
+      "family": "state",
+      "syntax": "[*]",
+      "carries": [],
+      "note": "Тот же `[*]`, что и начало: различаются местом в строке, а не записью.",
+      "example": "@startuml\n[*] --> a\nstate a as \"A\"\na --> [*]\n@enduml",
+      "checks": [
+        {
+          "construct": "link-start",
+          "lines": [
+            "a --> [*]"
+          ]
+        }
+      ]
+    },
+    "choice": {
+      "keyword": "state … <<choice>>",
+      "family": "state",
+      "syntax": "state {alias} <<choice>>",
+      "carries": [],
+      "note": "Псевдосостояния PlantUML выражает стереотипом состояния. Имени у `choice` нет — печатается только псевдоним.",
+      "example": "@startuml\nstate c1 <<choice>>\nstate a as \"A\"\na --> c1\n@enduml",
+      "checks": [
+        {
+          "construct": "state",
+          "lines": [
+            "state c1 <<choice>>"
+          ]
+        }
+      ]
+    },
+    "junction": {
+      "keyword": "state … <<junction>>",
+      "family": "state",
+      "syntax": "state {alias} <<junction>>",
+      "carries": [],
+      "note": "Как `choice`; стереотип `junction` (маленький кружок).",
+      "example": "@startuml\nstate j1 <<junction>>\nstate a as \"A\"\na --> j1\n@enduml",
+      "checks": [
+        {
+          "construct": "state",
+          "lines": [
+            "state j1 <<junction>>"
+          ]
+        }
+      ]
+    },
+    "historyShallow": {
+      "keyword": "state … <<history>>",
+      "family": "state",
+      "syntax": "state {alias} <<history>>",
+      "carries": [],
+      "note": "Поверхностная история — стереотип `history` (кружок с H).",
+      "example": "@startuml\nstate h1 <<history>>\nstate a as \"A\"\na --> h1\n@enduml",
+      "checks": [
+        {
+          "construct": "state",
+          "lines": [
+            "state h1 <<history>>"
+          ]
+        }
+      ]
+    },
+    "historyDeep": {
+      "keyword": "state … <<history*>>",
+      "family": "state",
+      "syntax": "state {alias} <<history*>>",
+      "carries": [],
+      "note": "Глубокая история — `history*` (H*).",
+      "example": "@startuml\nstate h1 <<history*>>\nstate a as \"A\"\na --> h1\n@enduml",
+      "checks": [
+        {
+          "construct": "state",
+          "lines": [
+            "state h1 <<history*>>"
+          ]
+        }
+      ]
+    },
+    "entryPoint": {
+      "keyword": "state … <<entryPoint>>",
+      "family": "state",
+      "syntax": "state {alias} <<entryPoint>>",
+      "carries": [],
+      "note": "Точка входа — стереотип `entryPoint`.",
+      "example": "@startuml\nstate e1 <<entryPoint>>\nstate a as \"A\"\n@enduml",
+      "checks": [
+        {
+          "construct": "state",
+          "lines": [
+            "state e1 <<entryPoint>>"
+          ]
+        }
+      ]
+    },
+    "exitPoint": {
+      "keyword": "state … <<exitPoint>>",
+      "family": "state",
+      "syntax": "state {alias} <<exitPoint>>",
+      "carries": [],
+      "note": "Точка выхода — стереотип `exitPoint`.",
+      "example": "@startuml\nstate x1 <<exitPoint>>\nstate a as \"A\"\n@enduml",
+      "checks": [
+        {
+          "construct": "state",
+          "lines": [
+            "state x1 <<exitPoint>>"
+          ]
+        }
+      ]
+    },
+    "terminate": {
+      "keyword": "state … <<end>>",
+      "family": "state",
+      "syntax": "state {alias} <<end>>",
+      "carries": [],
+      "note": "Завершение — `<<end>>`, рисуется крестом.",
+      "example": "@startuml\nstate t1 <<end>>\nstate a as \"A\"\na --> t1\n@enduml",
+      "checks": [
+        {
+          "construct": "state",
+          "lines": [
+            "state t1 <<end>>"
+          ]
+        }
+      ]
+    },
+    "action": {
+      "keyword": ":…;",
+      "family": "activity",
+      "syntax": ":{name};",
+      "carries": [
+        "name"
+      ],
+      "note": "Действие — строка в двоеточиях. Точка с запятой обязательна: без неё PlantUML считает строку незакрытой.",
+      "example": "@startuml\nstart\n:Проверить логин и пароль;\nstop\n@enduml",
+      "checks": [
+        {
+          "construct": "action",
+          "lines": [
+            ":Проверить логин и пароль;"
+          ]
+        }
+      ]
+    },
+    "activity": {
+      "keyword": "partition",
+      "family": "activity",
+      "syntax": "partition \"{name}\" {",
+      "carries": [
+        "containment"
+      ],
+      "note": "Рамку деятельности PlantUML понимает как `partition` — группу. Дорожки внутри задаются строками `|Имя|`.",
+      "example": "@startuml\npartition \"Регистрация\" {\n  start\n  :Принять заявку;\n  stop\n}\n@enduml",
+      "checks": [
+        {
+          "construct": "partition",
+          "lines": [
+            "partition \"Регистрация\" {"
+          ]
+        }
+      ]
+    },
+    "decision": {
+      "keyword": "if (…) then (…)",
+      "family": "activity",
+      "syntax": "if ({name}) then ({ветвь})\n…\nelse ({ветвь})\n…\nendif",
+      "carries": [
+        "controlFlow labels"
+      ],
+      "note": "Ромба отдельной фигурой нет: решение выражается блоком `if`, подписи исходящих потоков становятся подписями ветвей. Если граф имеет слияние ветвей, вложить его в ветвь нельзя — тогда решение выгружается плоской цепью `:решение;` с подписями `-> …;`.",
+      "example": "@startuml\nstart\n:Проверить;\nif (?) then ([верно])\n  :Пустить;\nelse ([else])\n  :Отказать;\nendif\nstop\n@enduml",
+      "checks": [
+        {
+          "construct": "if",
+          "lines": [
+            "if (?) then ([верно])"
+          ]
+        },
+        {
+          "construct": "else",
+          "lines": [
+            "else ([else])"
+          ]
+        },
+        {
+          "construct": "endif",
+          "lines": [
+            "endif"
+          ]
+        }
+      ]
+    },
+    "merge": {
+      "keyword": "—",
+      "family": "activity",
+      "syntax": "(слияния как узла нет)",
+      "carries": [],
+      "note": "Слияние — проходная точка: в структурированной выгрузке от него не остаётся строки, в плоской он становится действием с именем «merge».",
+      "example": "@startuml\nstart\n:Создать;\nstop\n@enduml",
+      "checks": [
+        {
+          "construct": "start",
+          "lines": [
+            "start"
+          ]
+        }
+      ]
+    },
+    "fork": {
+      "keyword": "fork",
+      "family": "activity",
+      "syntax": "fork\n…\nfork again\n…\nend fork",
+      "carries": [],
+      "note": "Полоса разделения — блок `fork`.",
+      "example": "@startuml\nstart\nfork\n  :Ветвь 1;\nfork again\n  :Ветвь 2;\nend fork\nstop\n@enduml",
+      "checks": [
+        {
+          "construct": "fork",
+          "lines": [
+            "fork"
+          ]
+        },
+        {
+          "construct": "fork-again",
+          "lines": [
+            "fork again"
+          ]
+        },
+        {
+          "construct": "end-fork",
+          "lines": [
+            "end fork"
+          ]
+        }
+      ]
+    },
+    "join": {
+      "keyword": "end fork",
+      "family": "activity",
+      "syntax": "end fork",
+      "carries": [],
+      "note": "Синхронизация — конец блока `fork`; есть синонимы `end merge`, `fork end`.",
+      "example": "@startuml\nstart\nfork\n  :A;\nfork again\n  :B;\nend merge\nstop\n@enduml",
+      "checks": [
+        {
+          "construct": "end-fork",
+          "lines": [
+            "end merge"
+          ]
+        }
+      ]
+    },
+    "objectNode": {
+      "keyword": ":…;",
+      "family": "activity",
+      "syntax": ":{name};",
+      "carries": [
+        "name"
+      ],
+      "note": "Объекта данных как фигуры в activity3 нет: выгружается действием с тем же именем, форма теряется.",
+      "example": "@startuml\nstart\n:План обучения;\nstop\n@enduml",
+      "checks": [
+        {
+          "construct": "action",
+          "lines": [
+            ":План обучения;"
+          ]
+        }
+      ]
+    },
+    "activityParameter": {
+      "keyword": ":…;",
+      "family": "activity",
+      "syntax": ":{name};",
+      "carries": [
+        "name"
+      ],
+      "note": "Параметр деятельности — тоже только действием: рамки входа/выхода нет.",
+      "example": "@startuml\nstart\n:Вход — заявка;\nstop\n@enduml",
+      "checks": [
+        {
+          "construct": "action",
+          "lines": [
+            ":Вход — заявка;"
+          ]
+        }
+      ]
+    },
+    "swimlane": {
+      "keyword": "|…|",
+      "family": "activity",
+      "syntax": "|{name}|",
+      "carries": [
+        "name"
+      ],
+      "note": "Дорожка объявляется один раз В НАЧАЛЕ диаграммы, до `start`; иначе «This swimlane must be defined at the start of the diagram» (проверено).",
+      "example": "@startuml\n|Студент|\n|Система|\nstart\n|Студент|\n:Подать заявку;\n|Система|\n:Принять;\nstop\n@enduml",
+      "checks": [
+        {
+          "construct": "swimlane",
+          "lines": [
+            "|Студент|"
+          ]
+        }
+      ]
+    },
+    "lifeline": {
+      "keyword": "participant",
+      "family": "sequence",
+      "syntax": "participant {alias} as \"{name}\"",
+      "carries": [
+        "name",
+        "multiObject"
+      ],
+      "note": "`multiObject` (стопка экземпляров) — ключевое слово `collections` вместо `participant`.",
+      "example": "@startuml\nparticipant p1 as \"lform:LoginForm\"\nparticipant p2 as \"Студент\"\np1 -> p2 : login()\n@enduml",
+      "checks": [
+        {
+          "construct": "participant-as-display",
+          "lines": [
+            "participant p1 as \"lform:LoginForm\""
+          ]
+        }
+      ]
+    },
+    "actorLifeline": {
+      "keyword": "actor",
+      "family": "sequence",
+      "syntax": "actor {alias} as \"{name}\"",
+      "carries": [
+        "name"
+      ],
+      "note": "Актёр в sequence — своё ключевое слово, рисуется человечком.",
+      "example": "@startuml\nactor a1 as \"Студент\"\nparticipant p1 as \"Система\"\na1 -> p1 : войти()\n@enduml",
+      "checks": [
+        {
+          "construct": "participant-as-display",
+          "lines": [
+            "actor a1 as \"Студент\""
+          ]
+        }
+      ]
+    },
+    "activation": {
+      "keyword": "activate / deactivate",
+      "family": "sequence",
+      "syntax": "activate {alias}\n…\ndeactivate {alias}",
+      "carries": [],
+      "note": "Полоса выполнения — пара команд вокруг сообщений; границы берутся из геометрии полосы (`y`, `h`). В корпусе полос нет, поэтому на jar это НЕ проверено.",
+      "example": "@startuml\nparticipant p1 as \"A\"\nparticipant p2 as \"B\"\np1 -> p2 : x\nactivate p2\np2 --> p1 : ok\ndeactivate p2\n@enduml",
+      "checks": [
+        {
+          "construct": "activate",
+          "lines": [
+            "activate p2",
+            "deactivate p2"
+          ]
+        }
+      ]
+    },
+    "fragment": {
+      "keyword": "alt / opt / loop / par / break / critical / group",
+      "family": "sequence",
+      "syntax": "{operator} {condition}\n…\nelse {condition}\n…\nend",
+      "carries": [
+        "operator",
+        "name"
+      ],
+      "note": "Оператор берётся из поля `operator`. Имя рамки вида «[a] / [b]» делится по « / » на операнды: первый идёт в заголовок, остальные — в `else`. Какие сообщения накрыты рамкой, в модели не записано — выводится из геометрии рамки.",
+      "example": "@startuml\nparticipant p1 as \"A\"\nparticipant p2 as \"B\"\nalt [есть пользователь]\np1 -> p2 : login()\nelse [else]\np1 -> p2 : refuse()\nend\n@enduml",
+      "checks": [
+        {
+          "construct": "grouping-alt",
+          "lines": [
+            "alt [есть пользователь]",
+            "else [else]",
+            "end"
+          ]
+        }
+      ]
+    },
+    "interactionUse": {
+      "keyword": "ref over",
+      "family": "sequence",
+      "syntax": "ref over {p1}, {p2} : {name}",
+      "carries": [
+        "refersTo",
+        "name"
+      ],
+      "note": "Ссылка на другое взаимодействие — `ref over`. Участники под рамкой — из геометрии.",
+      "example": "@startuml\nparticipant p1 as \"A\"\nparticipant p2 as \"B\"\nref over p1, p2 : Создать расписание\n@enduml",
+      "checks": [
+        {
+          "construct": "ref-over",
+          "lines": [
+            "ref over p1, p2 : Создать расписание"
+          ]
+        }
+      ]
+    },
+    "interaction": {
+      "keyword": "ref over",
+      "family": "sequence",
+      "syntax": "ref over {p1}, {p2} : {name}",
+      "carries": [
+        "name"
+      ],
+      "note": "Обзор взаимодействий — последовательность со ссылками `ref`; отдельного вида в PlantUML нет.",
+      "example": "@startuml\nparticipant p1 as \"A\"\nparticipant p2 as \"B\"\nref over p1, p2 : Обзор\n@enduml",
+      "checks": [
+        {
+          "construct": "ref-over",
+          "lines": [
+            "ref over p1, p2 : Обзор"
+          ]
+        }
+      ]
+    },
+    "timingLane": {
+      "keyword": "—",
+      "family": "sequence",
+      "syntax": "(не выражается)",
+      "carries": [
+        "timeline"
+      ],
+      "note": "Диаграммы таймингов в PlantUML 1.2021.0 нет. Шкала выгружается заметкой со списком «состояние: с … по …» — текст сохраняется, шкала нет. В корпусе таких моделей нет, на jar не проверено.",
+      "example": "@startuml\nparticipant p1 as \"Шкала\"\nnote over p1 : Active: 0 to 100\n@enduml",
+      "checks": [
+        {
+          "construct": "note-right",
+          "lines": [
+            "note over p1 : Active: 0 to 100"
+          ]
+        }
+      ]
+    }
+  },
+  "connectors": {
+    "association": {
+      "syntax": "{from} \"{mult}\" -- \"{mult}\" {to} : {label}",
+      "arrow": "--",
+      "family": "class",
+      "direction": "наконечника нет",
+      "note": "Прямая линия. `--` значит «навигация не показана»; см. раздел navigation.",
+      "example": "@startuml\nclass e1 as \"Студент\"\nclass e2 as \"Курс\"\ne1 \"0..*\" -- \"0..*\" e2 : записан на\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-multiplicity",
+          "lines": [
+            "e1 \"0..*\" -- \"0..*\" e2 : записан на"
+          ]
+        }
+      ]
+    },
+    "aggregation": {
+      "syntax": "{whole} o-- {part}",
+      "arrow": "o--",
+      "family": "class",
+      "direction": "полый ромб у ЦЕЛОГО",
+      "note": "Ромб стоит у целого; в модели целое — конец `from`, поэтому ромб слева.",
+      "example": "@startuml\nclass e1 as \"Кафедра\"\nclass e2 as \"Профессор\"\ne1 o-- e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-aggregation",
+          "lines": [
+            "e1 o-- e2"
+          ]
+        }
+      ]
+    },
+    "composition": {
+      "syntax": "{whole} *-- {part}",
+      "arrow": "*--",
+      "family": "class",
+      "direction": "залитый ромб у ЦЕЛОГО",
+      "note": "Обратная запись `{part} --* {whole}` — то же зеркально; пишем всегда `from` слева, потому что кратности и роли привязаны к концам.",
+      "example": "@startuml\nclass e1 as \"Заказ\"\nclass e2 as \"Строка\"\ne1 \"1\" *-- \"0..*\" e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-composition",
+          "lines": [
+            "e1 \"1\" *-- \"0..*\" e2"
+          ]
+        }
+      ]
+    },
+    "generalization": {
+      "syntax": "{child} --|> {parent}",
+      "arrow": "--|>",
+      "family": "class",
+      "direction": "стрелка на РОДИТЕЛЕ",
+      "note": "В модели `from` — потомок, `to` — родитель, поэтому перестановок нет: `from --|> to`.",
+      "example": "@startuml\nclass e1 as \"Студент\"\nclass e2 as \"Человек\"\ne1 --|> e2\n@enduml",
+      "checks": [
+        {
+          "construct": "generalization",
+          "lines": [
+            "e1 --|> e2"
+          ]
+        }
+      ]
+    },
+    "realization": {
+      "syntax": "{implementer} ..|> {interface}",
+      "arrow": "..|>",
+      "family": "class",
+      "direction": "пустой треугольник у ИНТЕРФЕЙСА",
+      "note": "Пунктир и пустой треугольник у `to`.",
+      "example": "@startuml\nclass e1 as \"DBAccess\"\ninterface e2 as \"IDBAccess\"\ne1 ..|> e2\n@enduml",
+      "checks": [
+        {
+          "construct": "realization",
+          "lines": [
+            "e1 ..|> e2"
+          ]
+        }
+      ]
+    },
+    "dependency": {
+      "syntax": "{client} ..> {supplier}",
+      "arrow": "..>",
+      "family": "class",
+      "direction": "открытая стрелка у того, ОТ КОГО зависят",
+      "note": "Пунктир, открытая стрелка у `to`.",
+      "example": "@startuml\nclass e1 as \"Контроллер\"\nclass e2 as \"Сервис\"\ne1 ..> e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-dependency",
+          "lines": [
+            "e1 ..> e2"
+          ]
+        }
+      ]
+    },
+    "usage": {
+      "syntax": "{client} ..> {supplier} : <<use>>",
+      "arrow": "..>",
+      "family": "class",
+      "direction": "стрелка у используемого",
+      "note": "Своего наконечника нет: это зависимость со стереотипом `use` в подписи.",
+      "example": "@startuml\nclass e1 as \"A\"\nclass e2 as \"B\"\ne1 ..> e2 : <<use>>\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-label",
+          "lines": [
+            "e1 ..> e2 : <<use>>"
+          ]
+        }
+      ]
+    },
+    "import": {
+      "syntax": "{package} ..> {package} : <<import>>",
+      "arrow": "..>",
+      "family": "class",
+      "direction": "стрелка у импортируемого пакета",
+      "note": "Импорт пакета — зависимость со стереотипом `import`.",
+      "example": "@startuml\npackage \"A\" as p1 {}\npackage \"B\" as p2 {}\np1 ..> p2 : <<import>>\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-label",
+          "lines": [
+            "p1 ..> p2 : <<import>>"
+          ]
+        }
+      ]
+    },
+    "merge": {
+      "syntax": "{package} ..> {package} : <<merge>>",
+      "arrow": "..>",
+      "family": "class",
+      "direction": "стрелка у того, в кого вливают",
+      "note": "Слияние ПАКЕТОВ. Не путать с узлом деятельности `merge` — это разные вещи с одним словом.",
+      "example": "@startuml\npackage \"A\" as p1 {}\npackage \"B\" as p2 {}\np1 ..> p2 : <<merge>>\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-label",
+          "lines": [
+            "p1 ..> p2 : <<merge>>"
+          ]
+        }
+      ]
+    },
+    "include": {
+      "syntax": "{base} ..> {included} : <<include>>",
+      "arrow": "..>",
+      "family": "description",
+      "direction": "стрелка у включаемого варианта",
+      "note": "Включение варианта использования — зависимость со стереотипом `include`.",
+      "example": "@startuml\nusecase u1 as \"Зарегистрироваться\"\nusecase u2 as \"Войти\"\nu1 ..> u2 : <<include>>\n@enduml",
+      "checks": [
+        {
+          "construct": "link-directed",
+          "lines": [
+            "u1 ..> u2 : <<include>>"
+          ]
+        }
+      ]
+    },
+    "extend": {
+      "syntax": "{extension} ..> {base} : <<extend>>",
+      "arrow": "..>",
+      "family": "description",
+      "direction": "стрелка у БАЗОВОГО варианта",
+      "note": "Стрелка идёт от расширяющего варианта к базовому.",
+      "example": "@startuml\nusecase u1 as \"Оплатить бонусами\"\nusecase u2 as \"Оплатить\"\nu1 ..> u2 : <<extend>>\n@enduml",
+      "checks": [
+        {
+          "construct": "link-directed",
+          "lines": [
+            "u1 ..> u2 : <<extend>>"
+          ]
+        }
+      ]
+    },
+    "assembly": {
+      "syntax": "{provided} --() {required}",
+      "arrow": "--()",
+      "family": "description",
+      "direction": "болл у предоставляемого интерфейса",
+      "note": "Болл ставится на конце `to`, гнездо — на `from`, поэтому порядок обратный: `to --() from`.",
+      "example": "@startuml\ncomponent c1 as \"Клиент\"\ncomponent c2 as \"Сервис\"\nc2 --() c1\n@enduml",
+      "checks": [
+        {
+          "construct": "lollipop",
+          "lines": [
+            "c2 --() c1"
+          ]
+        }
+      ]
+    },
+    "delegation": {
+      "syntax": "{port} --> {part}",
+      "arrow": "-->",
+      "family": "description",
+      "direction": "стрелка у делегата",
+      "note": "Сплошная линия с открытой стрелкой у `to`.",
+      "example": "@startuml\ncomponent c1 as \"Компонент\" {\n  port p1 as \"http\"\n  component c2 as \"Внутри\"\n}\np1 --> c2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-directed",
+          "lines": [
+            "p1 --> c2"
+          ]
+        }
+      ]
+    },
+    "connector": {
+      "syntax": "{part} -- {part}",
+      "arrow": "--",
+      "family": "class",
+      "direction": "наконечника нет",
+      "note": "Коннектор композитной структуры — просто линия между частями.",
+      "example": "@startuml\nclass e1 as \"a : A\" <<part>>\nclass e2 as \"b : B\" <<part>>\ne1 -- e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc",
+          "lines": [
+            "e1 -- e2"
+          ]
+        }
+      ]
+    },
+    "controlFlow": {
+      "syntax": "-> {label};",
+      "arrow": "->",
+      "family": "activity",
+      "direction": "по ходу потока",
+      "note": "В структурной выгрузке поток — это следующий оператор или подпись ветви; в плоской — строка `-> подпись;`.",
+      "example": "@startuml\nstart\n:Проверить;\n-> [верно];\n:Пустить;\nstop\n@enduml",
+      "checks": [
+        {
+          "construct": "arrow-label",
+          "lines": [
+            "-> [верно];"
+          ]
+        }
+      ]
+    },
+    "objectFlow": {
+      "syntax": "-> {label};",
+      "arrow": "->",
+      "family": "activity",
+      "direction": "по ходу потока",
+      "note": "Отдельной стрелки для данных в activity3 нет: та же стрелка с подписью.",
+      "example": "@startuml\nstart\n:Взять данные;\n-> заявка;\n:Обработать;\nstop\n@enduml",
+      "checks": [
+        {
+          "construct": "arrow-label",
+          "lines": [
+            "-> заявка;"
+          ]
+        }
+      ]
+    },
+    "transition": {
+      "syntax": "{from} --> {to} : {label}",
+      "arrow": "-->",
+      "family": "state",
+      "direction": "по ходу перехода",
+      "note": "Подпись «событие [страж] / действие» пишется целиком, как в модели.",
+      "example": "@startuml\nstate a as \"Open\"\nstate b as \"Closed\"\na --> b : close [ok] / isClosed=TRUE\n@enduml",
+      "checks": [
+        {
+          "construct": "link-description",
+          "lines": [
+            "a --> b : close [ok] / isClosed=TRUE"
+          ]
+        }
+      ]
+    },
+    "message": {
+      "syntax": "{from} -> {to} : {name}",
+      "arrow": "->",
+      "family": "sequence",
+      "direction": "от отправителя к получателю",
+      "note": "Пунктир `-->` — это ОТВЕТ, а не сообщение. `asynchronous: true` даёт `->>`. Порядок сообщений — по `y` вида связи.",
+      "example": "@startuml\nparticipant p1 as \"A\"\nparticipant p2 as \"B\"\np1 -> p2 : login(l, pswrd)\n@enduml",
+      "checks": [
+        {
+          "construct": "message",
+          "lines": [
+            "p1 -> p2 : login(l, pswrd)"
+          ]
+        }
+      ]
+    },
+    "reply": {
+      "syntax": "{from} --> {to} : {name}",
+      "arrow": "-->",
+      "family": "sequence",
+      "direction": "назад к вызывающему",
+      "note": "Ответ — пунктирная стрелка.",
+      "example": "@startuml\nparticipant p1 as \"A\"\nparticipant p2 as \"B\"\np2 --> p1 : result\n@enduml",
+      "checks": [
+        {
+          "construct": "message-return",
+          "lines": [
+            "p2 --> p1 : result"
+          ]
+        }
+      ]
+    },
+    "createMessage": {
+      "syntax": "create {to}\n{from} -> {to} : {name}",
+      "arrow": "->",
+      "family": "sequence",
+      "direction": "от создателя к создаваемому",
+      "note": "Команда `create` перед сообщением ставит новую голову линии жизни.",
+      "example": "@startuml\nparticipant p1 as \"A\"\nparticipant p2 as \"B\"\ncreate p2\np1 -> p2 : new()\n@enduml",
+      "checks": [
+        {
+          "construct": "activate",
+          "lines": [
+            "create p2"
+          ]
+        }
+      ]
+    },
+    "destroyMessage": {
+      "syntax": "{from} -> {to} : {name}\ndestroy {to}",
+      "arrow": "->",
+      "family": "sequence",
+      "direction": "от уничтожающего к уничтожаемому",
+      "note": "`destroy` после сообщения ставит крест на линии жизни.",
+      "example": "@startuml\nparticipant p1 as \"A\"\nparticipant p2 as \"B\"\np1 -> p2 : dispose()\ndestroy p2\n@enduml",
+      "checks": [
+        {
+          "construct": "activate",
+          "lines": [
+            "destroy p2"
+          ]
+        }
+      ]
+    },
+    "link": {
+      "syntax": "{from} -- {to} : {label}",
+      "arrow": "--",
+      "family": "class",
+      "direction": "наконечника нет",
+      "note": "Связь объектов — та же линия, что ассоциация; номера (`numbered`) переезжают в подпись.",
+      "example": "@startuml\nobject \"a : A\" as o1\nobject \"b : B\" as o2\no1 -- o2 : 1\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-label",
+          "lines": [
+            "o1 -- o2 : 1"
+          ]
+        }
+      ]
+    },
+    "deployment": {
+      "syntax": "{artifact} ..> {node} : <<deploy>>",
+      "arrow": "..>",
+      "family": "description",
+      "direction": "стрелка у узла",
+      "note": "Развёртывание — зависимость со стереотипом `deploy`.",
+      "example": "@startuml\nnode n1 as \"Сервер\"\nartifact a1 as \"app.exe\"\na1 ..> n1 : <<deploy>>\n@enduml",
+      "checks": [
+        {
+          "construct": "link-directed",
+          "lines": [
+            "a1 ..> n1 : <<deploy>>"
+          ]
+        }
+      ]
+    },
+    "communicationPath": {
+      "syntax": "{node} -- {node} : {label}",
+      "arrow": "--",
+      "family": "description",
+      "direction": "наконечника нет",
+      "note": "Канал между узлами — линия без наконечника.",
+      "example": "@startuml\nnode n1 as \"Сервер\"\nnode n2 as \"Коммутатор\"\nn1 -- n2 : Campus LAN\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-label",
+          "lines": [
+            "n1 -- n2 : Campus LAN"
+          ]
+        }
+      ]
+    },
+    "manifest": {
+      "syntax": "{artifact} ..> {component} : <<manifest>>",
+      "arrow": "..>",
+      "family": "description",
+      "direction": "стрелка у компонента",
+      "note": "Манифестация — зависимость со стереотипом `manifest`.",
+      "example": "@startuml\ncomponent c1 as \"Сервис\"\nartifact a1 as \"svc.jar\"\na1 ..> c1 : <<manifest>>\n@enduml",
+      "checks": [
+        {
+          "construct": "link-directed",
+          "lines": [
+            "a1 ..> c1 : <<manifest>>"
+          ]
+        }
+      ]
+    },
+    "trace": {
+      "syntax": "{from} ..> {to} : <<trace>>",
+      "arrow": "..>",
+      "family": "class",
+      "direction": "стрелка к тому, к чему тянут след",
+      "note": "Трассировка — зависимость со стереотипом `trace`.",
+      "example": "@startuml\nclass e1 as \"Требование\"\nclass e2 as \"Сценарий\"\ne1 ..> e2 : <<trace>>\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-label",
+          "lines": [
+            "e1 ..> e2 : <<trace>>"
+          ]
+        }
+      ]
+    },
+    "extension": {
+      "syntax": "{stereotype} --|> {metaclass}",
+      "arrow": "--|>",
+      "family": "class",
+      "direction": "стрелка у метакласса",
+      "note": "Расширение профиля — обобщение; в нотации треугольник залитый, PlantUML рисует пустой: заливка теряется.",
+      "example": "@startuml\nclass s1 as \"entity\" <<stereotype>>\nclass m1 as \"Class\" <<metaclass>>\ns1 --|> m1\n@enduml",
+      "checks": [
+        {
+          "construct": "generalization",
+          "lines": [
+            "s1 --|> m1"
+          ]
+        }
+      ]
+    }
+  },
+  "members": {
+    "attribute": {
+      "syntax": "{vis}{name} : {type} = {default}",
+      "carries": [
+        "vis",
+        "name",
+        "type",
+        "default"
+      ],
+      "note": "Видимость — первый символ: `+` public, `-` private, `#` protected, `~` package. Значение по умолчанию — `= …` после типа. ВАЖНО: строка члена разбирается PlantUML ПРОЦЕДУРНО (видимость читается первым символом), отдельного регулярного выражения у неё нет — в грамматике это помечено «— (см. 6)». Поэтому проверка здесь только через jar.",
+      "example": "@startuml\nclass e1 as \"Заказ\" {\n  -номер : int = 0\n  #статус : string\n}\n@enduml",
+      "checks": []
+    },
+    "operation": {
+      "syntax": "{vis}{name}({params}) : {returnType}",
+      "carries": [
+        "vis",
+        "name",
+        "type"
+      ],
+      "note": "Параметры остаются внутри имени (как в модели: `updateStudent(st:Student)`), тип возврата — после двоеточия. Как и атрибут, проверяется только jar.",
+      "example": "@startuml\nclass e1 as \"Студент\" {\n  +updateStudent(st : Student) : boolean\n}\n@enduml",
+      "checks": []
+    },
+    "static": {
+      "syntax": "{static} {vis}{name} : {type}",
+      "carries": [
+        "isStatic"
+      ],
+      "note": "`{static}` — единственный маркер модели, у которого есть родной синтаксис PlantUML: имя рисуется подчёркнутым.",
+      "example": "@startuml\nclass e1 as \"Счётчик\" {\n  {static} +count : int\n}\n@enduml",
+      "checks": [
+        {
+          "construct": "member-static",
+          "lines": [
+            "  {static} +count : int"
+          ]
+        }
+      ]
+    },
+    "abstractMember": {
+      "syntax": "{abstract} {vis}{name}() : {type}",
+      "carries": [],
+      "note": "`{abstract}` PlantUML понимает, но у модели такого флага НЕТ: абстрактность хранится у класса (`element.abstract`), а не у члена. Не выгружается, потому что нечего выгружать.",
+      "example": "@startuml\nabstract class e1 as \"Фигура\" {\n  {abstract} +area() : double\n}\n@enduml",
+      "checks": [
+        {
+          "construct": "member-abstract",
+          "lines": [
+            "  {abstract} +area() : double"
+          ]
+        }
+      ]
+    },
+    "derived": {
+      "syntax": "{vis}/{name} : {type}",
+      "carries": [
+        "isDerived"
+      ],
+      "note": "Производный член: `/` перед именем. PlantUML печатает его как есть, отдельного смысла не придаёт — текст переносится, семантика остаётся только в модели.",
+      "example": "@startuml\nclass e1 as \"Заказ\" {\n  +/итого : decimal\n}\n@enduml",
+      "checks": []
+    },
+    "id": {
+      "syntax": "{vis}{name} : {type} {id}",
+      "carries": [
+        "isID"
+      ],
+      "note": "`{id}` в конце строки PlantUML принимает как текст (проверено). Своей семантики нет — но и не теряется.",
+      "example": "@startuml\nclass e1 as \"Студент\" {\n  -id : long {id}\n}\n@enduml",
+      "checks": []
+    },
+    "literal": {
+      "syntax": "{literal}",
+      "carries": [
+        "name"
+      ],
+      "note": "Литерал перечисления — строка без видимости и типа.",
+      "example": "@startuml\nenum e1 as \"День\" {\n  MO\n  TU\n}\n@enduml",
+      "checks": [
+        {
+          "construct": "class-body-open",
+          "lines": [
+            "enum e1 as \"День\" {"
+          ]
+        }
+      ]
+    },
+    "slot": {
+      "syntax": "{vis}{name} = {value}",
+      "carries": [
+        "name",
+        "type",
+        "default"
+      ],
+      "note": "Слот объекта: `имя = значение`; тип, если он записан, идёт после имени.",
+      "example": "@startuml\nobject \"курс : CourseOffering\" as o1 {\n  +номер = 3101\n}\n@enduml",
+      "checks": []
+    }
+  },
+  "stereotypes": {
+    "element": {
+      "syntax": "{keyword} {alias} as \"{name}\" <<{stereotype}>>",
+      "carries": [
+        "stereotype"
+      ],
+      "note": "Стереотип — двойные угловые скобки в конце объявления (группа 5 шаблона `class-decl`). Второй путь — отдельной строкой `Foo <<x>>` (`CommandStereotype`), но он адресует элемент ПО ИМЕНИ, а у нас адресация псевдонимами.",
+      "example": "@startuml\nclass e1 as \"Заказ\" <<entity>>\n@enduml",
+      "checks": [
+        {
+          "construct": "class-decl",
+          "lines": [
+            "class e1 as \"Заказ\" <<entity>>"
+          ]
+        }
+      ]
+    },
+    "relationship": {
+      "syntax": "{a} ..> {b} : <<{stereotype}>>",
+      "carries": [
+        "stereotype"
+      ],
+      "note": "У СВЯЗИ стереотип пишется в ПОДПИСЬ: `A -- B <<trace>>` — синтаксическая ошибка (проверено jar). Родные стереотипы: `<<use>>`, `<<import>>`, `<<merge>>`, `<<include>>`, `<<extend>>`, `<<deploy>>`, `<<manifest>>`, `<<trace>>`.",
+      "example": "@startuml\nclass e1 as \"A\"\nclass e2 as \"B\"\ne1 ..> e2 : <<trace>>\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-label",
+          "lines": [
+            "e1 ..> e2 : <<trace>>"
+          ]
+        },
+        {
+          "construct": "assoc",
+          "not": [
+            "e1 -- e2 <<trace>>"
+          ]
+        }
+      ]
+    },
+    "taggedValues": {
+      "syntax": "' tag {alias} {name} = {value}",
+      "carries": [
+        "taggedValues"
+      ],
+      "note": "Tagged values в PlantUML 1.2021.0 не выражаются (в языке нет пар «имя/значение» у элемента). Сохраняются КОММЕНТАРИЕМ в файле: текст не теряется, на рисунке их нет.",
+      "example": "@startuml\nclass e1 as \"Заказ\"\n' tag e1 table = orders\n@enduml",
+      "checks": [
+        {
+          "construct": "class-decl",
+          "lines": [
+            "class e1 as \"Заказ\""
+          ]
+        }
+      ]
+    }
+  },
+  "notes": {
+    "standalone": {
+      "syntax": "note as {alias}\n{text}\nend note",
+      "carries": [
+        "documentation",
+        "name"
+      ],
+      "note": "Каждая заметка — одна сущность в счёте PlantUML, как и в модели. Многострочную форму собирает `createMultiLine`, которой среди извлечённых конструкций нет — проверено jar.",
+      "example": "@startuml\nclass e1 as \"A\"\nnote as n1\nпояснение\nend note\n@enduml",
+      "checks": []
+    },
+    "attached": {
+      "syntax": "note right of {alias} : {text}",
+      "carries": [
+        "documentation"
+      ],
+      "note": "Привязки заметки к фигуре в модели НЕТ (заметка — свободный элемент), поэтому этот вид не используется: привязку пришлось бы выдумывать. Осторожно: в семействе описаний `note right of X` вообще переключает диаграмму на sequence (проверено).",
+      "example": "@startuml\nclass e1 as \"A\"\nnote right of e1 : пояснение\n@enduml",
+      "checks": [
+        {
+          "construct": "note-on-entity",
+          "lines": [
+            "note right of e1 : пояснение"
+          ]
+        }
+      ]
+    },
+    "sequence": {
+      "syntax": "note over {p1} : {text}",
+      "carries": [
+        "documentation"
+      ],
+      "note": "В sequence заметка не входит в число участников (проверено: 1 participant на участника + заметку).",
+      "example": "@startuml\nparticipant p1 as \"A\"\nnote over p1 : пояснение\n@enduml",
+      "checks": [
+        {
+          "construct": "note-right",
+          "lines": [
+            "note over p1 : пояснение"
+          ]
+        }
+      ]
+    },
+    "activity": {
+      "syntax": "note right : {text}",
+      "carries": [
+        "documentation"
+      ],
+      "note": "В activity заметка вешается на предыдущий оператор.",
+      "example": "@startuml\nstart\n:Действие;\nnote right : пояснение\nstop\n@enduml",
+      "checks": [
+        {
+          "construct": "note",
+          "lines": [
+            "note right : пояснение"
+          ]
+        }
+      ]
+    },
+    "onLink": {
+      "syntax": "note on link : {text}",
+      "carries": [],
+      "note": "Заметка на связи в модели не выражается: у заметки нет ссылки на связь.",
+      "example": "@startuml\nclass e1 as \"A\"\nclass e2 as \"B\"\ne1 -- e2\nnote on link : пояснение\n@enduml",
+      "checks": [
+        {
+          "construct": "note-on-link",
+          "lines": [
+            "note on link : пояснение"
+          ]
+        }
+      ]
+    }
+  },
+  "multiplicity": {
+    "both": {
+      "syntax": "{from} \"{mult}\" -- \"{mult}\" {to}",
+      "carries": [
+        "fromMultiplicity",
+        "toMultiplicity"
+      ],
+      "note": "Каждая кратность — в кавычках у СВОЕГО конца. Слот кавычек на конце один и занят кратностью, поэтому имена полюсов туда не влезают.",
+      "example": "@startuml\nclass e1 as \"Заказ\"\nclass e2 as \"Строка\"\ne1 \"1\" -- \"0..*\" e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-multiplicity",
+          "lines": [
+            "e1 \"1\" -- \"0..*\" e2"
+          ]
+        }
+      ]
+    },
+    "range": {
+      "syntax": "{a} \"2..5\" -- \"0..1\" {b}",
+      "carries": [
+        "fromMultiplicity",
+        "toMultiplicity"
+      ],
+      "note": "Диапазоны и `*` пишутся как есть: PlantUML не проверяет содержимое кавычек.",
+      "example": "@startuml\nclass e1 as \"A\"\nclass e2 as \"B\"\ne1 \"2..5\" -- \"0..1\" e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-cardinality-online",
+          "lines": [
+            "e1 \"2..5\" -- \"0..1\" e2"
+          ]
+        }
+      ]
+    },
+    "withNavigation": {
+      "syntax": "{from} \"1\" --> \"0..*\" {to}",
+      "carries": [
+        "fromMultiplicity",
+        "toMultiplicity",
+        "navigable"
+      ],
+      "note": "Кратность и открытая стрелка совместимы: `A \"1\" --> \"0..*\" B` разбирается (проверено).",
+      "example": "@startuml\nclass e1 as \"A\"\nclass e2 as \"B\"\ne1 \"1\" --> \"0..*\" e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-multiplicity",
+          "lines": [
+            "e1 \"1\" --> \"0..*\" e2"
+          ]
+        }
+      ]
+    },
+    "roles": {
+      "syntax": "{a} -- {b} : {fromRole} → {toRole}",
+      "carries": [
+        "fromRole",
+        "toRole"
+      ],
+      "note": "ИМЕНА ПОЛЮСОВ отдельного места не имеют. Пишем их в подпись как «роль → роль» (отсутствующая роль — «·»). Это потеря МЕСТА, а не смысла: оба имени остаются в файле.",
+      "example": "@startuml\nclass e1 as \"Студент\"\nclass e2 as \"Курс\"\ne1 -- e2 : студент → курс\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-label",
+          "lines": [
+            "e1 -- e2 : студент → курс"
+          ]
+        }
+      ]
+    }
+  },
+  "navigation": {
+    "none": {
+      "syntax": "{a} -- {b}",
+      "arrow": "--",
+      "carries": [
+        "navigable = \"none\""
+      ],
+      "note": "Навигация не показана — просто линия. Это умолчание модели.",
+      "example": "@startuml\nclass e1 as \"A\"\nclass e2 as \"B\"\ne1 -- e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc",
+          "lines": [
+            "e1 -- e2"
+          ]
+        }
+      ]
+    },
+    "from": {
+      "syntax": "{from} --> {to}",
+      "arrow": "-->",
+      "carries": [
+        "navigable = \"from\""
+      ],
+      "note": "`navigable: \"from\"` читается «от from к to», поэтому открытая стрелка у `to` — там, куда можно пройти.",
+      "example": "@startuml\nclass e1 as \"A\"\nclass e2 as \"B\"\ne1 --> e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-directed",
+          "lines": [
+            "e1 --> e2"
+          ]
+        }
+      ]
+    },
+    "to": {
+      "syntax": "{from} <-- {to}",
+      "arrow": "<--",
+      "carries": [
+        "navigable = \"to\""
+      ],
+      "note": "Обратная навигация: стрелка у `from`. Пишем `<--`, а не `{to} --> {from}`, чтобы концы остались на своих местах — иначе кратности и роли перепутаются.",
+      "example": "@startuml\nclass e1 as \"A\"\nclass e2 as \"B\"\ne1 <-- e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc",
+          "lines": [
+            "e1 <-- e2"
+          ]
+        }
+      ]
+    },
+    "both": {
+      "syntax": "{from} <--> {to}",
+      "arrow": "<-->",
+      "carries": [
+        "navigable = \"both\""
+      ],
+      "note": "Навигация в обе стороны — стрелки на обоих концах. PlantUML рисует обе головки (проверено), но `parse()` в редакторе этой формы пока не знает и читает строку как конец с именем `> b`; до правки импорта экспорт пишет линию без стрелок и называет потерю комментарием.",
+      "example": "@startuml\nclass e1 as \"A\"\nclass e2 as \"B\"\ne1 <--> e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc",
+          "lines": [
+            "e1 <--> e2"
+          ]
+        }
+      ]
+    },
+    "withDiamond": {
+      "syntax": "{whole} *--> {part}",
+      "arrow": "*-->",
+      "carries": [
+        "fromAggregation",
+        "navigable"
+      ],
+      "note": "Ромб и стрелка вместе: `*-->` и `o-->` разбираются (проверено). Ромб остаётся у целого, стрелка — у того, к кому ведёт навигация. Головку на том же конце, где стоит ромб, PlantUML не рисует: `o<-->` и `<o--` — синтаксическая ошибка, поэтому `aggregation`/`composition` с `navigable` `to`/`both` выгружаются ромбом без стрелки.",
+      "example": "@startuml\nclass e1 as \"Заказ\"\nclass e2 as \"Строка\"\ne1 *--> e2\ne1 o--> e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-composition",
+          "lines": [
+            "e1 *--> e2",
+            "e1 o--> e2"
+          ]
+        }
+      ]
+    }
+  },
+  "diamonds": {
+    "compositionLeft": {
+      "syntax": "{whole} *-- {part}",
+      "note": "`*--`: залитый ромб у ЛЕВОГО конца. Так и пишем: целое у нас всегда `from`.",
+      "example": "@startuml\nclass e1 as \"Целое\"\nclass e2 as \"Часть\"\ne1 *-- e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-composition",
+          "lines": [
+            "e1 *-- e2"
+          ]
+        }
+      ]
+    },
+    "compositionRight": {
+      "syntax": "{part} --* {whole}",
+      "note": "`--*`: тот же ромб у ПРАВОГО конца. Запись зеркальная, смысл тот же; не используем, потому что пришлось бы менять местами кратности и роли.",
+      "example": "@startuml\nclass e1 as \"Часть\"\nclass e2 as \"Целое\"\ne1 --* e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-composition",
+          "lines": [
+            "e1 --* e2"
+          ]
+        }
+      ]
+    },
+    "aggregationLeft": {
+      "syntax": "{whole} o-- {part}",
+      "note": "`o--`: полый ромб у левого конца. Агрегация — часть может жить отдельно.",
+      "example": "@startuml\nclass e1 as \"Целое\"\nclass e2 as \"Часть\"\ne1 o-- e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-aggregation",
+          "lines": [
+            "e1 o-- e2"
+          ]
+        }
+      ]
+    },
+    "aggregationRight": {
+      "syntax": "{part} --o {whole}",
+      "note": "`--o`: полый ромб у правого конца.",
+      "example": "@startuml\nclass e1 as \"Часть\"\nclass e2 as \"Целое\"\ne1 --o e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-aggregation",
+          "lines": [
+            "e1 --o e2"
+          ]
+        }
+      ]
+    },
+    "onEitherEnd": {
+      "syntax": "{a} o-- {b}   /   {a} --o {b}",
+      "note": "В UML агрегация живёт на КОНЦЕ ассоциации, а не на связи. Модель хранит её так же (`fromAggregation`/`toAggregation`), поэтому `o--` ставит ромб на `from`, а `--o` — на `to`.",
+      "example": "@startuml\nclass e1 as \"A\"\nclass e2 as \"B\"\ne1 --o e2\n@enduml",
+      "checks": [
+        {
+          "construct": "assoc-aggregation",
+          "lines": [
+            "e1 --o e2"
+          ]
+        }
+      ]
+    }
+  }
+}

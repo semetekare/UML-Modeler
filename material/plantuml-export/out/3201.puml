@@ -1,0 +1,36 @@
+@startuml
+title Main
+' ! «Пользователь» абстрактен, но PlantUML 1.2021 пишет abstract только в семействе классов — флаг в тексте не выражен
+actor e2 as "Пользователь"
+actor e4 as "Профессор"
+actor e7 as "Время"
+actor e3 as "Студент"
+actor e6 as "Расчётная система"
+actor e5 as "Регистратор"
+rectangle e1 as "Система регистрации на курсы" <<subject>> {
+usecase e9 as "Войти в систему" <<fish level usecase>>
+usecase e11 as "Выбрать читаемые курсы" <<sea level usecase>>
+usecase e8 as "Зарегистрироваться на курсы" <<sea level usecase>>
+usecase e10 as "Просмотреть табель" <<sea level usecase>>
+usecase e17 as "Закрыть регистрацию" <<fish level usecase>>
+usecase e13 as "CRUD данных о профессорах" <<sea level usecase>>
+usecase e16 as "Открыть регистрацию" <<sea level usecase>>
+usecase e14 as "CRUD данных о студентах" <<sea level usecase>>
+usecase e12 as "Поставить оценки" <<sea level usecase>>
+usecase e15 as "CRUD данных о курсах и дисциплинах" <<sea level usecase>>
+}
+e3 --|> e2
+e4 --|> e2
+e5 --|> e2
+e2 --> e9
+e3 --> e8
+e3 --> e10
+e4 --> e11
+e4 --> e12
+e5 --> e16
+e5 --> e13
+e5 --> e14
+e5 --> e15
+e7 --> e17
+e6 <-- e17
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+title init
+participant e1 as "cn:BSAccess" <<subsystem proxy>>
+participant e2 as "config:XmlRpcClientConfigImpl"
+participant e3 as "url:URL"
+participant e4 as "client:XmlRpcClient"
+e1 -> e1 : init(serverURL : string) : void
+create e2
+e1 -> e2 : XmlRpcClientConfigImpl()
+create e3
+e1 -> e3 : URL(spec : String = serverURL)
+e1 -> e2 : setServerURL(serverURL : URL = url) : void
+create e4
+e1 -> e4 : new
+e1 -> e4 : setConfig(config : XmlRpcClientConfig = config) : void
+@enduml

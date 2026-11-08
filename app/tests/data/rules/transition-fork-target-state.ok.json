@@ -1,0 +1,128 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-transition-fork-target-state-ok",
+  "name": "transition_fork_segment_state (без нарушения) — оба сегмента ведут в состояния",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "initial",
+      "name": ""
+    },
+    {
+      "id": "e2",
+      "kind": "fork",
+      "name": ""
+    },
+    {
+      "id": "e3",
+      "kind": "state",
+      "name": "Оплачен",
+      "documentation": "Правило «transition-fork-target-state»: UML 2.5.1, п. 14.5.11.8, констрейнт Transition::fork_segment_state: «Сегмент разделения всегда должен иметь целью состояние.»\nКонтроль: Сегмент разделения ведёт в состояние «Оплачен» — так и должно быть."
+    },
+    {
+      "id": "e4",
+      "kind": "state",
+      "name": "Отгружен"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "transition",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "transition",
+      "from": "e2",
+      "to": "e3"
+    },
+    {
+      "id": "r3",
+      "kind": "transition",
+      "from": "e2",
+      "to": "e4"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "transition_fork_segment_state (без нарушения) — оба сегмента ведут в состояния",
+      "kind": "state",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 120,
+          "w": 24,
+          "h": 24
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 200,
+          "y": 120,
+          "w": 120,
+          "h": 10
+        },
+        {
+          "id": "s3",
+          "elementId": "e3",
+          "x": 400,
+          "y": 60,
+          "w": 180,
+          "h": 80
+        },
+        {
+          "id": "s4",
+          "elementId": "e4",
+          "x": 400,
+          "y": 220,
+          "w": 180,
+          "h": 80
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l2",
+          "relId": "r2",
+          "from": {
+            "shapeId": "s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s3",
+            "side": "left"
+          }
+        },
+        {
+          "id": "l3",
+          "relId": "r3",
+          "from": {
+            "shapeId": "s2",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s4",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

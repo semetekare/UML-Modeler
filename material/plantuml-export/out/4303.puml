@@ -1,0 +1,35 @@
+@startuml
+title RegisterForCourses Basic Flow
+actor e1 as "Студент"
+participant e2 as "menu:MainMenuForm" <<boundary>>
+participant e3 as "rform:RegistrationForm" <<boundary>>
+participant e4 as "rctrl:RegistrationController" <<control>>
+participant e5 as "dao:DataAccess" <<control>>
+participant e6 as "curStud:Student" <<entity>>
+opt rctrl.isRegistrationOpened(s)
+e1 -> e2 : registerForCourses()
+e2 -> e4 : registerForCourses(u : User)
+end
+alt !rctrl.registerForCourses(curUser)
+e4 -> e4 : isRegistrationOpened(semester : byte) : boolean
+else else
+end
+alt создаётся учебный план
+e4 -> e5 : getStudentByUser(u : User) : Student
+create e6
+e5 -> e6 : new
+else изменяется учебный план
+else удаляется учебный план
+else утверждается учебный план
+end
+ref over e1, e2, e3, e4, e5, e6 : CreateSchedule Subflow
+e6 --> e4 : curStud
+ref over e1, e2, e3, e4, e5, e6 : UpdateSchedule Subflow
+e4 -> e6 : hasScheduleForSemester(semester : byte)
+e4 --> e2 : result
+ref over e1, e2, e3, e4, e5, e6 : DeleteSchedule Subflow
+e2 -> e2 : displayError()
+ref over e1, e2, e3, e4, e5, e6 : SubmitSchedule Subflow
+create e3
+e2 -> e3 : open
+@enduml

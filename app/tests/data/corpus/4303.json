@@ -1,0 +1,177 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4303",
+    "figureNo": "4.3.3",
+    "exercise": "4.3",
+    "type": "sequence",
+    "diagramName": "RegisterForCourses Basic Flow",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Окончательный вид UML-диаграммы последовательности RegisterForCourses Basic Flow",
+    "notes": "К диаграмме 4.3.2 добавлены вложенный alt с четырьмя операндами и по одной ссылке на взаимодействие в каждом операнде — по подчинённому потоку варианта использования.",
+    "gaps": [
+      "имена четырёх подчинённых потоков, на которые ссылаются Interaction Use, в упражнении 4.3 не перечислены; взяты из перечня упражнения 4.1 п.5 и списка переименований §5.2",
+      "сторожевые условия четырёх операндов вложенного alt не приведены",
+      "поле Refers to у Interaction Use (ссылка на диаграмму) не выражается в uml-model/3 — записано полем refersTo"
+    ],
+    "gapIds": [
+      "model.fragmentCoverage",
+      "model.interactionRef",
+      "source.names"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "actorLifeline",
+      "name": "Студент"
+    },
+    {
+      "id": "e2",
+      "kind": "lifeline",
+      "name": "menu:MainMenuForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e3",
+      "kind": "lifeline",
+      "name": "rform:RegistrationForm",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e4",
+      "kind": "lifeline",
+      "name": "rctrl:RegistrationController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e5",
+      "kind": "lifeline",
+      "name": "dao:DataAccess",
+      "stereotype": "control"
+    },
+    {
+      "id": "e6",
+      "kind": "lifeline",
+      "name": "curStud:Student",
+      "stereotype": "entity"
+    },
+    {
+      "id": "e7",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "opt"
+    },
+    {
+      "id": "e8",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "alt",
+      "note": "два операнда"
+    },
+    {
+      "id": "e9",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "alt",
+      "note": "четыре операнда, по одному на подчинённый поток 5А–Г"
+    },
+    {
+      "id": "e10",
+      "kind": "interactionUse",
+      "name": "CreateSchedule Subflow",
+      "operator": "ref",
+      "refersTo": "CreateSchedule Subflow"
+    },
+    {
+      "id": "e11",
+      "kind": "interactionUse",
+      "name": "UpdateSchedule Subflow",
+      "operator": "ref",
+      "refersTo": "UpdateSchedule Subflow"
+    },
+    {
+      "id": "e12",
+      "kind": "interactionUse",
+      "name": "DeleteSchedule Subflow",
+      "operator": "ref",
+      "refersTo": "DeleteSchedule Subflow"
+    },
+    {
+      "id": "e13",
+      "kind": "interactionUse",
+      "name": "SubmitSchedule Subflow",
+      "operator": "ref",
+      "refersTo": "SubmitSchedule Subflow"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "message",
+      "name": "",
+      "from": "e1",
+      "to": "e2"
+    },
+    {
+      "id": "r2",
+      "kind": "message",
+      "name": "registerForCourses",
+      "from": "e2",
+      "to": "e4"
+    },
+    {
+      "id": "r3",
+      "kind": "message",
+      "name": "isRegistrationOpened",
+      "from": "e4",
+      "to": "e4",
+      "note": "рефлексивное сообщение"
+    },
+    {
+      "id": "r4",
+      "kind": "message",
+      "name": "не названо в тексте",
+      "from": "e4",
+      "to": "e5"
+    },
+    {
+      "id": "r5",
+      "kind": "createMessage",
+      "name": "create",
+      "from": "e5",
+      "to": "e6"
+    },
+    {
+      "id": "r6",
+      "kind": "message",
+      "name": "hasScheduleForSemester(semester):boolean",
+      "from": "e4",
+      "to": "e6"
+    },
+    {
+      "id": "r7",
+      "kind": "reply",
+      "name": "",
+      "from": "e4",
+      "to": "e2"
+    },
+    {
+      "id": "r8",
+      "kind": "createMessage",
+      "name": "open",
+      "from": "e2",
+      "to": "e3"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "RegisterForCourses Basic Flow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

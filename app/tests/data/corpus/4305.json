@@ -1,0 +1,41 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4305",
+    "figureNo": "4.3.5",
+    "exercise": "4.3.A",
+    "type": "sequence",
+    "diagramName": "DisplayCourseOfferings Subflow",
+    "group": "diagram",
+    "reproducible": "нет",
+    "altText": "UML-диаграмма последовательности DisplayCourseOfferings Subflow",
+    "notes": "Модель содержит только то, что текст называет прямо. Восстановить остальное по снимку нельзя (изображения не разбираются).",
+    "gaps": [
+      "ни линии жизни, ни сообщения этой диаграммы в тексте не названы; описаны только фрагмент loop с циклом типа for и то, что на диаграмму ссылаются через Interaction Use",
+      "сторожевое условие цикла не приведено"
+    ],
+    "gapIds": [
+      "source.guards",
+      "source.unlisted"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "fragment",
+      "name": "не названо в тексте",
+      "operator": "loop",
+      "note": "цикл типа for; сторожевое условие в тексте не приведено"
+    }
+  ],
+  "relationships": [],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "DisplayCourseOfferings Subflow",
+      "type": "sequence",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

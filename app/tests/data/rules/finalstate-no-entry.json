@@ -1,0 +1,69 @@
+{
+  "schema": "uml-model/3",
+  "id": "m-finalstate-no-entry",
+  "name": "finalstate-no-entry — у конечного состояния задан текст входа",
+  "elements": [
+    {
+      "id": "e1",
+      "kind": "state",
+      "name": "Закрыт"
+    },
+    {
+      "id": "e2",
+      "kind": "final",
+      "name": "",
+      "documentation": "Правило «finalstate-no-entry»: UML 2.5.1, п. 14.5.2.5, констрейнт FinalState::no_entry_behavior: «У конечного состояния нет поведения при входе.»\nУ конечного состояния заполнено поле «entry» («Записать в журнал»), а текст входа у него быть не может.",
+      "entry": [
+        "Записать в журнал"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "transition",
+      "from": "e1",
+      "to": "e2"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "finalstate-no-entry — у конечного состояния задан текст входа",
+      "kind": "state",
+      "shapes": [
+        {
+          "id": "s1",
+          "elementId": "e1",
+          "x": 60,
+          "y": 60,
+          "w": 150,
+          "h": 80
+        },
+        {
+          "id": "s2",
+          "elementId": "e2",
+          "x": 320,
+          "y": 60,
+          "w": 20,
+          "h": 20
+        }
+      ],
+      "links": [
+        {
+          "id": "l1",
+          "relId": "r1",
+          "from": {
+            "shapeId": "s1",
+            "side": "right"
+          },
+          "to": {
+            "shapeId": "s2",
+            "side": "left"
+          }
+        }
+      ]
+    }
+  ],
+  "currentDiagramId": "d1"
+}

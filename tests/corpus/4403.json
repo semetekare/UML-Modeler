@@ -1,0 +1,319 @@
+{
+  "schema": "uml-model/3",
+  "source": {
+    "figure": "4403",
+    "figureNo": "4.4.3",
+    "exercise": "4.4",
+    "type": "class",
+    "diagramName": "VOPC CloseRegistration",
+    "group": "diagram",
+    "reproducible": "частично",
+    "altText": "Итоговая версия UML-диаграммы классов VOPC CloseRegistration в Analysis Model",
+    "notes": "Текст не перечисляет ассоциации: сказано только «добавим ассоциации, необходимые для того, чтобы взаимодействие было осуществимо». Все восемь связей рисунка 4.4.3 (в том числе композиция Student—Schedule и ассоциации Schedule—CourseOffering с полюсами primary и alternative), их кратности и члены классов прочитаны с рисунка. Пять связей, которые корпус вывел из требования текста, на рисунке отсутствуют — обе модели со зрением прямо ответили «нет» на вопрос о каждой из них; они удалены.",
+    "gaps": [
+      "ассоциации и их мощности в тексте не перечислены — прочитаны с рисунка",
+      "направления навигации в тексте указаны словами («укажем Navigable Unspecified»), но не перечислены по связям",
+      "две строки операций (DataAccess и Student) на рисунке обрезаны многоточием; полные сигнатуры восстановлены по рис. 4.2.3 и 5.2.8",
+      "пометки источника сняты с полей, которые рисуются (r7.fromMultiplicity, r7.toMultiplicity): значение в источнике не названо"
+    ],
+    "gapIds": [
+      "source.associations",
+      "source.navigation"
+    ],
+    "imageDerived": [
+      "e3",
+      "e4",
+      "e5",
+      "e6",
+      "e7",
+      "r1",
+      "r2",
+      "r3",
+      "r4",
+      "r7"
+    ]
+  },
+  "elements": [
+    {
+      "id": "e2",
+      "kind": "class",
+      "name": "SystemClock",
+      "stereotype": "boundary"
+    },
+    {
+      "id": "e3",
+      "kind": "class",
+      "name": "BillingSystem",
+      "stereotype": "boundary",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "finishTransferData()"
+        },
+        {
+          "vis": "public",
+          "name": "sendStudentData(name : string, address : string, cOff : CourseOffering[])"
+        },
+        {
+          "vis": "public",
+          "name": "startTransferData()"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e4",
+      "kind": "class",
+      "name": "DataAccess",
+      "stereotype": "control",
+      "operations": [
+        {
+          "vis": "public",
+          "name": "getCourseOfferingList(semester : byte)",
+          "type": "CourseOffering[]"
+        },
+        {
+          "vis": "public",
+          "name": "getStudentByUser(u : User)",
+          "type": "Student"
+        },
+        {
+          "vis": "public",
+          "name": "getStudentList()",
+          "type": "Student[]"
+        },
+        {
+          "vis": "public",
+          "name": "getUserByLogin(l : string)",
+          "type": "User"
+        },
+        {
+          "vis": "public",
+          "name": "updateCourseOfferings(cOffs : CourseOffering[])"
+        },
+        {
+          "vis": "public",
+          "name": "updateStudent(s : Student)"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e1",
+      "kind": "class",
+      "name": "CloseRegistrationController",
+      "stereotype": "control"
+    },
+    {
+      "id": "e7",
+      "kind": "class",
+      "name": "Schedule",
+      "stereotype": "entity",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "semester",
+          "type": "byte"
+        }
+      ],
+      "operations": [
+        {
+          "vis": "public",
+          "name": "getCourseOfferingList()",
+          "type": "CourseOffering[]"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e5",
+      "kind": "class",
+      "name": "Student",
+      "stereotype": "entity",
+      "abstract": true,
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "address",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "id",
+          "type": "long"
+        },
+        {
+          "vis": "private",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "vis": "private",
+          "name": "phones",
+          "type": "string[0..2]"
+        }
+      ],
+      "operations": [
+        {
+          "vis": "public",
+          "name": "createSchedule(semester : byte, primary : CourseOffering[4], alt : CourseOffering[2])"
+        },
+        {
+          "vis": "public",
+          "name": "deleteSchedule(semester : byte)"
+        },
+        {
+          "vis": "public",
+          "name": "getAddress()",
+          "type": "string"
+        },
+        {
+          "vis": "public",
+          "name": "getName()",
+          "type": "string"
+        },
+        {
+          "vis": "public",
+          "name": "getScheduleCourses(semester : byte)"
+        },
+        {
+          "vis": "public",
+          "name": "hasScheduleForSemester(semester : byte)"
+        }
+      ],
+      "source": "image"
+    },
+    {
+      "id": "e6",
+      "kind": "class",
+      "name": "CourseOffering",
+      "stereotype": "entity",
+      "attributes": [
+        {
+          "vis": "private",
+          "name": "day",
+          "type": "DayOfWeek"
+        },
+        {
+          "vis": "private",
+          "name": "number",
+          "type": "long"
+        },
+        {
+          "vis": "private",
+          "name": "numStudents",
+          "type": "byte",
+          "isDerived": true
+        },
+        {
+          "vis": "private",
+          "name": "pair",
+          "type": "byte"
+        },
+        {
+          "vis": "private",
+          "name": "semester",
+          "type": "byte"
+        }
+      ],
+      "operations": [
+        {
+          "vis": "public",
+          "name": "toJSON()",
+          "type": "string"
+        }
+      ],
+      "source": "image"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "r1",
+      "kind": "association",
+      "from": "e2",
+      "to": "e1",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "0..1",
+      "navigable": "from",
+      "source": "image"
+    },
+    {
+      "id": "r2",
+      "kind": "association",
+      "from": "e1",
+      "to": "e4",
+      "fromMultiplicity": "0..1",
+      "toMultiplicity": "1",
+      "source": "image"
+    },
+    {
+      "id": "r3",
+      "kind": "association",
+      "from": "e1",
+      "to": "e3",
+      "fromMultiplicity": "0..1",
+      "toMultiplicity": "1",
+      "navigable": "from",
+      "source": "image"
+    },
+    {
+      "id": "r4",
+      "kind": "association",
+      "from": "e1",
+      "to": "e5",
+      "fromMultiplicity": "0..1",
+      "toMultiplicity": "*",
+      "navigable": "from",
+      "source": "image"
+    },
+    {
+      "id": "r7",
+      "kind": "association",
+      "from": "e4",
+      "to": "e5",
+      "fromMultiplicity": "",
+      "toMultiplicity": "",
+      "navigable": "from",
+      "source": "image"
+    },
+    {
+      "id": "r11",
+      "kind": "composition",
+      "from": "e5",
+      "to": "e7",
+      "fromMultiplicity": "1",
+      "toMultiplicity": "*",
+      "note": "ромб со стороны Student: учебный план — часть студента",
+      "source": "image"
+    },
+    {
+      "id": "r12",
+      "kind": "association",
+      "from": "e7",
+      "to": "e6",
+      "toRole": "alternative",
+      "fromMultiplicity": "*",
+      "toMultiplicity": "0..2",
+      "source": "image"
+    },
+    {
+      "id": "r13",
+      "kind": "association",
+      "from": "e7",
+      "to": "e6",
+      "toRole": "primary",
+      "fromMultiplicity": "*",
+      "toMultiplicity": "0..4",
+      "source": "image"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "d1",
+      "name": "VOPC CloseRegistration",
+      "type": "class",
+      "shapes": [],
+      "connectors": []
+    }
+  ]
+}

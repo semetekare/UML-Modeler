@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <title>shape-interaction-16</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <rect x="2" y="3.33" width="12" height="9.34" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="2,6 6,6 6,3.33" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="5.33" y1="7" x2="5.33" y2="12.67" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round" stroke-dasharray="2 1.33"/>
+    <line x1="8" y1="7" x2="8" y2="12.67" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round" stroke-dasharray="2 1.33"/>
+    <line x1="10.67" y1="7" x2="10.67" y2="12.67" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round" stroke-dasharray="2 1.33"/>
+  </g>
+</svg>

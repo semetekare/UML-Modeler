@@ -1,0 +1,18 @@
+@startuml
+title BSAccess
+package "BSAccess" as e1 <<subsystem>>
+package "XMLRPCInterchange" as e2 <<mechanism>>
+' doc e2: на рисунке под именем напечатано (RemoteInterchange), в присоединённой рамке — шесть параметров шаблона
+' source e2: image
+package "net" as e3
+' doc e3: на рисунке имя пакета — net, под ним квалификатор (Logical View::Middleware::java)
+' source e3: image
+package "xmlrpc" as e4
+' doc e4: на рисунке имя пакета — xmlrpc, под ним квалификатор (Logical View::Middleware::org::apache)
+' source e4: image
+e1 ..> e3 : <<import>>
+e1 ..> e4 : <<import>>
+e1 ..> e2 : <<bind>> <XMLRPCConnector -> BSAccess>
+e2 ..> e3 : <<import>>
+e2 ..> e4 : <<import>>
+@enduml
