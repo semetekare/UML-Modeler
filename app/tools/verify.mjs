@@ -19,7 +19,7 @@
 // браузер, и несколько профилей сразу дерутся за один порт.
 
 import { spawnSync } from 'node:child_process';
-import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -35,6 +35,8 @@ const SUITES = [
   // Авто-раскладка: план, идемпотентность, инварианты после применения.
   'auto-route',
   'rules', 'demo', 'smoke', 'types', 'connectors', 'plantuml-import', 'layout', 'theme',
+  // Счётчик: обычная сборка не содержит адреса, --stand без .build.env падает.
+  'telemetry',
   // Третий слой правил (правила проекта): DSL, движок, хранение в файле модели.
   'project-rules',
 ];
@@ -88,6 +90,10 @@ function compareCopies() {
   const problems = [];
   let compared = 0;
   let specSkipped = 0;
+  // Сгенерированные артефакты сборки, которым нечего искать в исходниках.
+  // build.json описывает сам каталог (режим, время, коммит) — это манифест,
+  // а не файл проекта.
+  let generated = 0;
 
   for (const rel of distFiles) {
     // `reference/spec/*.json` в dist намеренно НЕ совпадает с app/reference:
@@ -96,6 +102,7 @@ function compareCopies() {
     // Побайтовая сверка здесь невозможна; что прозы в dist нет, проверяет
     // отдельный шаг ниже.
     if (rel.startsWith('reference/spec/')) { specSkipped += 1; continue; }
+    if (rel === 'build.json') { generated += 1; continue; }
     const inApp = path.join(APP, rel);
     let a;
     try {
@@ -121,7 +128,7 @@ function compareCopies() {
     return ['нет папки app/src'];
   }
 
-  return { problems, count: compared, specSkipped };
+  return { problems, count: compared, specSkipped, generated };
 }
 
 function suite(file) {
@@ -182,9 +189,9 @@ if (Array.isArray(copies)) {
   for (const p of copies.problems.slice(0, 20)) console.log(`  ${p}`);
   if (copies.problems.length > 20) console.log(`  … всего ${copies.problems.length}`);
 } else {
-  const skipped = copies.specSkipped
+  const skipped = (copies.specSkipped
     ? ` (+${copies.specSkipped} файлов spec/ вне сверки: поставка идёт без прозы OMG)`
-    : '';
+    : '') + (copies.generated ? ' (+build.json — манифест сборки)' : '');
   console.log(`  src↔dist: ${copies.count} файлов, 0 расхождений${skipped}`);
 }
 
@@ -280,6 +287,45 @@ console.log('\n— поисковый индекс справочника —');
       + '&& node tools/build-reference.mjs');
   } else {
     console.log(`  ok reference/search.json: ${indexed} правил — столько же, сколько в наборе`);
+  }
+}
+
+console.log('\n— лендинг (seo-check) —');
+// Лендинг живёт вне публичного репозитория (landing/ в .gitignore), поэтому в
+// свежем клоне проверять нечего — seo-check сам пишет «пропуск». Отсутствие
+// предмета не выдаётся за зелёный результат: строка так и начинается.
+{
+  const r = spawnSync(process.execPath, [path.join('tools', 'seo-check.mjs')], {
+    cwd: APP,
+    encoding: 'utf8',
+    maxBuffer: 32 * 1024 * 1024,
+  });
+  const lines = `${r.stdout ?? ''}${r.stderr ?? ''}`.trim().split('\n');
+  if (r.status === 0) {
+    console.log(lines[0].startsWith('пропуск') ? `  ${lines[0]}` : `  ok ${lines[0]}`);
+  } else {
+    bad += 1;
+    for (const line of lines.slice(0, 20)) console.log(`  ${line}`);
+  }
+  // Вёрстка: 1440 и 390, обе темы, шесть акцентов, контраст и шрифт — в живом
+  // Chromium. Это не «красиво ли», а «не поехало ли»: горизонтальная прокрутка,
+  // ненайденный Inter и текст на акценте ниже AA ловятся только там.
+  const landingDist = path.join(ROOT, 'landing', 'dist', 'index.html');
+  if (existsSync(landingDist)) {
+    const started = Date.now();
+    const layout = spawnSync(process.execPath, [path.join(ROOT, 'landing', 'tools', 'layout-check.mjs')], {
+      cwd: ROOT,
+      encoding: 'utf8',
+      maxBuffer: 32 * 1024 * 1024,
+    });
+    const out = `${layout.stdout ?? ''}${layout.stderr ?? ''}`.trim().split('\n');
+    const summary = out.reverse().find((l) => /проверок|красн|не выполнен/i.test(l)) ?? '';
+    if (layout.status === 0) {
+      console.log(`  ok ${summary.trim()} (${Math.round((Date.now() - started) / 1000)} с)`);
+    } else {
+      bad += 1;
+      for (const line of out.slice(-14).reverse()) console.log(`  ${line}`);
+    }
   }
 }
 
